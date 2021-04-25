@@ -1,1 +1,11 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/home/about/ for how to compile this example.
+作为商业数据分析师，我学习使用R已经有一段时间，我用R主要是处理数据，自动化报表，可视化等，做shin看板y等。
+
+R极大的拓展了我数据处理能力,让我有更多精力聚焦在具体的业务问题上，所以很感谢R语言。
+
+本文主要记录个人学习过程中的经验，集中在数据处理相关包的介绍上，如`data.table`,`tidyverse`,`dbplyr`等。
+
+因个人能力有限，难免出现错误，如阅读中发现错误，欢迎联系本人更正。
+
+联系邮箱:598253220@qq.com
+
+微信公众号: 宇飞的世界
