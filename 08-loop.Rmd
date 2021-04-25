@@ -1,0 +1,195 @@
+# Loop structure
+
+实际场景中,当需要重复做某动作时,可运用循环结构。
+
+
+## 简单示例
+
+利用循环实现1到100连续相加求和
+
+```{r}
+total <- 0
+for(i in 1:100){
+  total <- total+i
+}
+print(paste0('1到100连续相加求和等于:',total))
+
+# loop structure
+# for (var in seq) {expr}
+```
+
+
+## 循环基础
+
+### 循环结构 
+
+R中有三种循环结构：
+
+- Repeat
+
+```{r}
+i <- 1
+total <- 0
+repeat{
+  total <- total+i
+  i <- i+1
+  if(i > 100){
+    print(paste0('连续相加求和等于:',total))
+    break
+  }
+}
+```
+
+- while
+
+```{r}
+i <- 1
+total <- 0
+while(i <= 1000){
+  total <- total+i
+  i <- i+1
+}
+print(paste0('1到1000连续相加求和等于:',total))
+# not run
+# sum(1:1000)
+```
+
+- for 
+
+代码如示例所示
+
+```{r message=FALSE,warning=FALSE}
+library(tidyverse)
+df <- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)
+
+output <- vector("double", ncol(df))  # 1. output
+for (i in seq_along(df)) {            # 2. sequence
+  output[[i]] <- median(df[[i]])      # 3. body
+}
+output
+```
+
+循环中尽可能利用R中的向量化,比如指定output的长度,当数据量大的时候效率提升将比较明显,养成向量化的意识对提高代码效率有显著效果.
+
+上面代码中 `vector`函数创建一个空向量带指定长度，有两个参数，第一个时向量类型('逻辑','整数','双精度','字符'等)，第二个是向量长度 `vector(length=5)`,类型默认是逻辑型.
+
+`seq_along`可以`?seq`查看用法.
+
+hadely 解释如下:
+
+You might not have seen seq_along() before. It’s a safe version of the familiar 1:length(l), with an important difference: if you have a zero-length vector, seq_along() does the right thing:
+
+```{r}
+#wrong
+seq_along(c())
+1:length(c())
+
+# generates the integer sequence 1, 2, ..., length(along.with). (along.with is usually abbreviated to along, and  seq_along is much faster.)
+```
+
+### next break 用法
+
+
+- next 用法
+
+```{r}
+for(i in letters[1:6] ){
+  if(i == "d"){
+  next
+  }
+  print(i)
+}
+```
+
+- break 用法
+
+可以当条件满足时跳出循环常常与repeat循环结构配合使用。
+
+
+### 嵌套循环
+
+
+```{r}
+# not run
+v <- vector(length = 100)
+for(i in 1:10){
+  for(j in 1:10){
+    v[i*j] = i * j 
+  }
+}
+```
+
+
+## 循环变化
+
+### 修改已有对象
+
+```{r}
+res <- 1:100
+for(i in seq_along(res)){
+  res[i] <- res[i] * i
+}
+str(res)
+```
+
+
+### 循环模式
+
+共有三种遍历向量的方法,之前展示的都是遍历数字索引`for (i in seq_along(xs))`,并使用提取值`x[[i]]`.还有两种方式:
+
+- 循环遍历元素
+
+`for(i in xs)`,例如我们需要保存文件时,可以利用这种循环模式
+
+- 遍历名称
+
+`for (nm in names(xs))`,我们可以使用`x[[nm]]` 该名称访问.当我们要在文件名中使用名称时会比较方便.
+
+```{r eval=FALSE}
+results <- vector("list", length(x))
+names(results) <- names(x)
+```
+
+数字索引的循环模式最常用,因为可以根据位置提取名称和值.
+
+```{r eval=FALSE}
+for (i in seq_along(x)) {
+  name <- names(x)[[i]]
+  value <- x[[i]]
+}
+```
+
+
+
+### 未知长度输出
+
+有时候我们的循环我们不确定输出的长度是多少.这样会逐步增加向量的长度,如下所示：
+
+```{r}
+means <- c(0, 1, 2)
+
+output <- double()
+for (i in seq_along(means)) {
+  n <- sample(100, 1)
+  output <- c(output, rnorm(n, means[[i]]))
+}
+str(output)
+```
+
+但是这种方式浪费时间，当数据量大时候效率会很低下.因为时间复杂度为($O(n^2)$).解决方案是将结果保存在列表中,然后在完成循环后合并为单个向量:
+
+```{r}
+out <- vector("list", length(means))
+for (i in seq_along(means)) {
+  n <- sample(100, 1)
+  out[[i]] <- rnorm(n, means[[i]])
+}
+str(out)
+str(unlist(out)) #unlist将列表向量化
+```
+

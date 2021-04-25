@@ -1,0 +1,228 @@
+# Iteration
+
+常常需要重复操作同样的功能函数，这时可以用迭代来实现。purrr包提供了一套完整的函数来处理循环迭代,可以有效减少重复性工作和代码。
+
+<https://purrr.tidyverse.org/>
+
+## 简单用法
+
+
+- map
+
+
+用map循环迭代,map函数始终返回list对象。
+
+```{r message=FALSE,warning=FALSE}
+library(tidyverse)
+
+# define function
+addTen <- function(.x) {
+  return(.x + 10)
+}
+
+map(.x = c(1, 4, 7), .f = addTen)
+# not run
+# map(c(1, 4, 7), addTen) # same above
+```
+
+
+
+
+
+- map_dbl
+
+用map_dbl循环迭代，map_dbl函数返回vector。
+
+```{r}
+#library(purrr)
+add1 <- function(x) {
+  (x+1)*x
+}
+result1 <- map_dbl(1:1000,add1) # maP_dbl 输出结果为向量
+
+#for版本
+result2 <- vector(length = 1000)
+for(i in 1:1000){
+  result2[i] <- (i+1) * i
+}
+# test 
+#not run
+#table(result1 == result2)
+# all equal
+identical(result1,result2)
+```
+
+
+## map系列常用函数
+
+
+- map_chr
+
+`map_chr(.x, .f)` ,map_chr 返回对象为字符串
+
+- map_dbl
+
+`map_dbl(.x, .f)` ,map_dbl 返回数字向量(双精度)
+
+- map_df
+
+`map_df(.x, .f)`,map_df 返回对象为数据框,类似函数 `map_dfr(.x,.f)`,`map_dfc(.x,.f)`
+
+- map_gl
+
+`map_lgl(.x, .f)` 返回逻辑向量
+
+- map_int
+
+`map_int(.x, .f, ...)` 返回整数
+
+
+map_df()函数示例
+
+```{r}
+# 采用匿名函数
+map_df(c(1, 4, 7), function(.x) {
+  return(data.frame(old_number = .x, 
+                    new_number = addTen(.x)))
+})
+
+#同上
+#step1 定义函数
+make_dataframe <- function(x){
+  data.frame(old_number = x,new_number = addTen(x))
+}
+#step2 计算
+map_df(c(1,4,7),make_dataframe)
+
+```
+
+
+## 归约累计函数
+
+reduce、accumulate()函数用法介绍.
+
+- reduce
+
+在实际工作中,我长用reduce函数实现merge()功能。示例如下：
+
+```{r}
+reduce(1:100,`+`)
+reduce(100:1,`-`)
+```
+
+将函数功能不断运用到list上得到最后结果。
+
+```{r eval=FALSE}
+n <- 10
+dt1 <- data.frame(a=letters[n],b1=rnorm(n))
+dt2 <- data.frame(a=letters[n],b2=rnorm(n))
+dt3 <- data.frame(a=letters[n],b3=rnorm(n))
+dt4 <- data.frame(a=letters[n],b4=rnorm(n))
+
+reduce(list(dt1,dt2,dt3,dt4),merge)
+# not run
+# reduce(list(dt1,dt2,dt3,dt4),merge,by='a') same above
+
+```
+
+
+- accumulate
+
+```{r}
+1:5 %>% accumulate(`+`)
+accumulate(letters[1:5], paste, sep = ".")
+```
+
+
+## 安全函数 
+
+possibly() 和 safely(),当循环时候遇到错误报错导致整个程序停止,这不是我们想要的。
+
+```{r eval=FALSE}
+l <- list(1,2,3,4,'5')
+map(l,function(.x) .x+1)
+
+```
+
+以上程序将会报错,不能正确得到结果。
+
+```{r}
+l <- list(1,2,3,4,'5')
+test_fun <- safely(function(.x) .x+1)
+map(l,test_fun)
+```
+
+用safely()函数将原始function包裹起来,即使执行过程中遇到错误也可以完成整个任务,不会因为中途报错停止,在大型循环过程中,如爬虫过程中比较实用。
+
+## 映射多个参数 
+
+map2 和 pmap 函数可以映射两个及以上参数。
+
+```{r}
+li1 <- list(1,3,5)
+li2 <- list(2,4,6)
+map2(li1,li2,`+`)
+```
+
+类似函数 map2_dbl,map2_chr,map2_dfr等等。
+
+```{r}
+li1 <- list(1,3,5)
+li2 <- list(2,4,6)
+li3 <- list(2,4,6)
+li1 <- c(1,3,5)
+li2 <- c(2,4,6)
+li3 <- c(2,3,4)
+li <- list(li1,li2,li3)
+pmap(li,sum)
+```
+
+同上有pmap_int,pmap_dbl,pmap_dfr等函数。
+
+
+## 其他函数介绍
+
+- flatten
+
+flatten()系列函数可以将列表输出为稳定类型。purrr package 自带Examples。
+
+```{r eval=FALSE}
+x <- rerun(2, sample(4))
+x
+x %>% flatten()
+x %>% flatten_int()
+# You can use flatten in conjunction with map
+x %>% map(1L) %>% flatten_int()
+# But it's more efficient to use the typed map instead.
+x %>% map_int(1L)
+```
+
+- imap
+
+imap()系列函数官方描述：
+
+imap_xxx(x, ...), an indexed map, is short hand for map2(x, names(x), ...) if x has names, or map2(x, seq_along(x), ...) if it does not. This is useful if you need to compute on both the value and the position of an element.
+
+
+imap,当x有names(x)或者seq_along(x)属性,imap是map2的另一种表达方式。
+
+使用公式快捷方式时,第一个参数是值(.x),第二个参数是位置/名称(.y)。
+
+详情请查看:?imap
+
+示例1：
+
+```{r}
+imap_chr(sample(10), ~ paste0(.y, ": ", .x))
+```
+
+sample(10),没有names(),只有长度信息。转化成map2表达如下:
+
+
+```{r}
+#same above
+
+map2_chr(sample(10),1:10,~paste0(.y,": ",.x)) # 第二个list 为位置信息.
+
+```
+

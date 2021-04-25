@@ -1,0 +1,353 @@
+# define function
+
+
+函数功能使我们尽可能避免复制粘贴代码,而且需要更改的时候不需要大面积修改代码仅需要调整函数参数,使代码整体更加模块化.
+
+
+假设有工作任务需要给商品SKU排名,在代码中需要重复以下代码5次,当区间需要修改的时候就是灾难.
+
+原始代码示例如下:
+
+```{r message=FALSE,warning=FALSE}
+library(tidyverse)
+num <- sample(1:1000,1000)
+res1 <- if_else(num <= 50,"1-50",
+                if_else(num <= 100,"51-100",
+                        if_else(num <= 150,"101-150",
+                                if_else(num <= 200 ,"151-200",
+                                        if_else(num >200,"200以上",'其他')))))
+
+
+# same above
+# case_when(num <= 50 ~ '1-50',
+#           num <= 100 ~ '51-100',
+#           num <= 150 ~ '101-150',
+#           num <= 200 ~ '151-200',
+#           num > 100 ~ '200以上'
+#           )
+
+# 个人倾向data.table 
+# data.table::fifelse()
+# data.table::fcase() 是sql中case when的实现
+```
+
+函数化后代码示例如下:
+
+当需要修改区间时候仅仅只需要调整参数,而不必大量修改代码,当在脚本中需要调用多次时,能简洁代码.
+
+```{r eval=FALSE}
+# 排名区间函数
+#library(tidyverse)
+cut_function <- function(vecto,x,n){
+  vec <- c(0)
+  for(i in 1:n){
+    kong <-  i*x
+    vec <- c(vec,kong)
+  }
+  vec <- c(vec,Inf)
+  labels <- c()
+  j <- 1
+  
+  while (j<=n) {
+    labels[j] <- str_c(vec[j]+1,"-",vec[j+1])
+    j <- j+1
+  }
+  labels <- c(labels,paste0(vec[j],'以上'))
+  res <- cut(x = vecto,breaks = vec,labels = labels) %>% as.character()
+}
+
+res2 <- cut_function(num,50,4)
+
+# identical(res1,res2)
+# > TRUE
+```
+
+
+[参考资料](https://r4ds.had.co.nz/functions.html)
+
+
+
+## 简单示例
+
+
+给函数取一个合适名字是很难的事情,徐尽可能从函数名称看出你实现的功能.
+
+```{r}
+add_ten <- function(x){
+  res <- x+10
+  return(res) #可以不用显示返回
+}
+add_ten(1)
+```
+
+写函数时需要考虑函数使用情况,尽可能考虑容错情况,当输入不符合预期时能友好提示错误.
+
+```{r}
+add_ten <- function(x){
+  if(is.numeric(x)==TRUE){
+    x+10
+  } else {
+    print('Error,请输入数字')
+  }
+}
+```
+
+## 条件执行
+
+```{r}
+has_name <- function(x) {
+  nms <- names(x)
+  if (is.null(nms)) {
+    rep(FALSE, length(x))
+  } else {
+    !is.na(nms) & nms != ""
+  }
+}
+```
+
+### 多条件执行
+
+```{r eval=FALSE}
+if (this) {
+  # do that
+} else if (that) {
+  # do something else
+} else {
+  # 
+}
+```
+
+当需要很多if时可考虑用switch()功能
+
+```{r eval=FALSE}
+function(x, y, op) {
+   switch(op,
+     plus = x + y,
+     minus = x - y,
+     times = x * y,
+     divide = x / y,
+     stop("Unknown op!")
+   )
+ }
+```
+
+
+## 函数参数
+
+函数的参数通常分为两大类,一组是提供要计算的参数,另外一组提供计算时的细节参数.
+
+
+```{r}
+mean_ci <- function(x, conf = 0.95) {
+  se <- sd(x) / sqrt(length(x))
+  alpha <- 1 - conf
+  mean(x) + se * qnorm(c(alpha / 2, 1 - alpha / 2))
+}
+x <- runif(100)
+mean_ci(x)
+mean_ci(x, conf = 0.99)
+```
+
+
+### 参数名称
+
+参数的名称很重要,方便我们理解参数含义,调用时不会混乱.以下时几个重要的参数名称
+
+- x, y, z: vectors.
+- w: a vector of weights.
+- df: a data frame.
+- i, j: numeric indices (typically rows and columns).
+- n: length, or number of rows.
+- p: number of columns.
+
+
+### 检查参数值
+
+在写函数时,并不清楚最终函数的输出,在编写函数时进行约束是有必要的.
+
+
+```{r}
+wt_mean <- function(x, w) {
+  if (length(x) != length(w)) {
+    stop("`x` and `w` must be the same length", call. = FALSE)
+  }
+  sum(w * x) / sum(w)
+}
+```
+
+### ...参数
+
+R中的许多函数都能接受任意数量的输入：
+
+```{r}
+sum(1,2,3,4,5,6,7,8,9,10)
+stringr::str_c('a','b','d','e','f','g','h')
+```
+
+下面的例子中
+
+```{r}
+commas <- function(...) stringr::str_c(..., collapse = ", ")
+commas(letters[1:10])
+#> [1] "a, b, c, d, e, f, g, h, i, j"
+
+rule <- function(..., pad = "-") {
+  title <- paste0(...)
+  width <- getOption("width") - nchar(title) - 5
+  cat(title, " ", stringr::str_dup(pad, width), "\n", sep = "")
+}
+rule("Important output")
+
+```
+
+
+
+## 返回值
+
+###  显式返回
+
+函数返回的通常是最后一句代码的计算结果,可以显式利用return()提前返回。但是R for Data Science 中作者说:
+'我认为最好不要使用return()来表示,您可以使用更简单的解决方案尽早返回'
+
+- A common reason to do this is because the inputs are empty:
+
+```{r}
+complicated_function <- function(x, y, z) {
+  if (length(x) == 0 || length(y) == 0) {
+    return(0)
+  }
+  # Complicated code here
+}
+```
+
+
+- Another reason is because you have a if statement with one complex block and one simple block. For example, you might write an if statement like this:
+
+```{r}
+f <- function() {
+  if (x) {
+    # Do 
+    # something
+    # that
+    # takes
+    # many
+    # lines
+    # to
+    # express
+  } else {
+    # return something short
+  }
+}
+```
+
+### 编写管道函数
+
+管道函数有两种基本类型: transformations and side-effects。使用transformations时，会将对象传递到函数的第一个参数，然后返回修改后的对象。使用side-effects时,不会对传递的对象进行转换。相反，该函数对对象执行操作，例如绘制图或保存文件。副作用函数应该“无形地”返回第一个参数，以便在不打印它们时仍可以在管道中使用它们。例如，以下简单函数在数据框中打印缺失值的数量：
+
+以上从 R for Data Science 中翻译得来。
+
+```{r}
+show_missings <- function(df) {
+  n <- sum(is.na(df))
+  cat("Missing values: ", n, "\n", sep = "")
+  
+  invisible(df)
+}
+```
+
+以交互invisible()方式调用它,则意味着输入df不会被打印出来:
+
+```{r}
+show_missings(mtcars)
+```
+
+但是结果仍存在，默认情况下只是不打印显示出来:
+
+```{r}
+x <- show_missings(mtcars) 
+class(x)
+dim(x)
+```
+
+在管道中继续使用
+
+```{r}
+mtcars %>% 
+  show_missings() %>% 
+  mutate(mpg = ifelse(mpg < 20, NA, mpg)) %>% 
+  show_missings() 
+```
+
+
+## 环境
+
+环境是复杂的,建议阅读原文.
+
+The last component of a function is its environment. This is not something you need to understand deeply when you first start writing functions. However, it’s important to know a little bit about environments because they are crucial to how functions work. The environment of a function controls how R finds the value associated with a name. For example, take this function:
+
+
+```{r}
+f <- function(x) {
+  x + y
+} 
+```
+
+在很多其他的编程语言中这样定义函数是错误的，因为没有定义`y`.在R中,这是有效的代码,因为R使用称为` lexical scoping `的方式寻找关联值.在函数内部没有定义`y`,将在上一层环境中查看`y`:
+
+```{r}
+y <- 100
+f(10)
+
+y <- 1000
+f(10)
+```
+
+具体详细的资料请查阅：
+
+<https://r4ds.had.co.nz/functions.html#environment>
+
+<http://adv-r.had.co.nz/>
+
+
+## 拓展部分
+
+
+在我之前工作中遇到需要分组计算时,我想要编写一个函数实现某些功能,但是分组的group_by()字段不一样时,导致代码没办法复用。
+
+参考资料：<https://dplyr.tidyverse.org/articles/programming.html>
+
+```{r eval=FALSE}
+#library(tidyverse)
+mean_mpg = function(data, group_col) {
+  data %>% 
+    group_by(group_col) %>%
+    summarize(mean_mpg = mean(mpg))
+}
+mtcars %>% mean_mpg(cyl)
+mtcars %>% mean_mpg(gear)
+```
+
+当编写如下函数时,代码将成功运行
+
+```{r}
+#自定义函数
+my_summarise3 <- function(data, group_var,mean_var, sd_var) {
+  data %>% 
+    group_by({{ group_var }}) %>% 
+    summarise(mean = mean({{ mean_var }}), sd = mean({{ sd_var }}))
+}
+
+res1 <- my_summarise3(data = mtcars,group_var = cyl,mean_var = carb,sd_var = gear)
+my_summarise3(data = mtcars,group_var = am,mean_var = carb,sd_var = gear)
+#正常写法
+res2 <- mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(mean=mean(carb),sd=mean(gear))
+
+identical(res1,res2)
+
+#res1 和res2 结果完全一致
+```
+
+ 
+以上my_summarise3()函数可以按照需求任意指定聚合汇总字段。

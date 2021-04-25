@@ -1,0 +1,531 @@
+# lubridate
+
+
+
+
+数据清洗中,经常涉及到时间处理。个人R中用来处理时间的包是`lubridate`，本文将介绍该包中部分函数用法。
+
+该包能灵活处理日期和时间数据，但是日期处理是比较复杂的，就拿简单的同环比来说，如果是想利用基础函数自定义函数来处理同环比，你遇到的第一个问题就是每个月的天数不一样，第二个问题就是闰年问题导致年天数不一致。
+
+经过一番折腾，完全放弃了自己处理时间日期数据的想法，投入了`lubridate`包的怀抱。由于能力有限以及处理过的日期数据有限，并不能面面俱到，更加深入的问题，可自行去了解该包的文档，甚至去通读源码。
+
+
+在`Excel`的`Power Pivot`中有一组DAX智能函数，如：
+
+- 基础函数
+
+`date`,`datediff`,`datevalue`,`edate`,`eomonth`,`quarter`,`TIMEVALUE`等等
+
+- 智能函数
+
+`dateadd`,` DATESBETWEEN`,`DATESMTD`,`TOTALMTD`,`TOTALQTD`,`TOTALYTD`等等
+
+`Excel`中因为有了以上时间智能函数，用度量值在透视表中计算同环比变得简单
+
+熟悉DAX时间智能函数，在`R`中设计相关功能或实现时可以借鉴参考DAX函数的思路。比如在R中写自动化报表时，涉及到同环比计算时就可以按照这个模式设计。
+
+-------------------------------------------
+
+注意事项：
+
+`R`中日期起始时间是`1970-01-01`,Excel中是`1900-01-01`,转化成数字两者相差25568。在用R读取Excel文件时，设计到日期数字转化成日期时需要注意其中差异。
+
+R中日期 : `r Sys.Date() ` 转化成数字: `r as.integer(Sys.Date()) `,
+Excel 中 `r Sys.Date() `转化成数字:`r as.integer(as.integer(Sys.Date())+25568) `,两者相差25568.
+
+
+
+
+## 基础用法
+
+获取当前日期、时间；拆解时间日期中的年、月、日、星期、计算年月天数，记录时刻等常用的时间日期功能，`lubridate`包中都有相对应的功能函数。
+
+### 安装包
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+# 仅仅只安装lubridate
+install.packages('lubridate')
+# 开发版
+devtools::install_github("tidyverse/lubridate")
+```
+
+
+```{r}
+# 加载包
+library(lubridate,warn.conflicts = FALSE)
+```
+
+### 获取当前时间日期
+
+- `now`函数
+
+```{r}
+now(tzone = 'Asia/Shanghai')
+#base R
+base::Sys.time()
+```
+
+输出结果中，`CST`是指中国标准时间，即时区概念。
+
+查看时区，时区和所用系统设置相关
+
+```{r}
+Sys.timezone()
+# windows 系统默认的时区 中国台北
+# linux 上是"Asia/Shanghai"
+```
+ 
+- `today`函数
+
+```{r}
+today(tzone = 'Asia/Shanghai')
+#base R
+base::Sys.Date()
+```
+
+### 获取日期时间中的组成部分
+
+```{r}
+#获取年
+year(now())  
+#获取月
+month(now())
+# 当前时间所在年份天数
+yday(now())
+# 当前时间所在月天数
+mday(now())
+# 周几
+wday(now(),label = TRUE,week_start = 1)
+# 所在时刻
+hour(now())
+# 所在时刻
+minute(now())
+# 所在时刻
+second(now())
+
+```
+
+
+## 处理时区
+
+如果生成数据时区与本地一致时，没必要处理，但是当数据是跨时区的或者不同生产系统的时区不一致，我们将要处理统一。
+
+用`with_tz()`，`force_tz()`处理时区问题
+
+```{r}
+time <- ymd_hms("2020-12-13 15:30:30")
+time
+
+# Changes printing
+with_tz(time, "Asia/Shanghai")
+# Changes time
+force_tz(time, "Asia/Shanghai")
+
+```
+
+
+
+## 解析日期和时间
+
+从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
+
+```{r message=FALSE,warning=FALSE,echo=TRUE}
+
+# 整数和字符都可以
+ymd(20200604) 
+ymd('20200604')
+mdy(06042020)
+dmy(04062020)
+```
+
+遇到unix 时间戳 可以用 .POSIXct()函数转化.
+
+[unix在线转换](https://unixtime.51240.com/)
+
+```{r}
+.POSIXct(1591709615)
+ymd_hms(.POSIXct(1591709615))
+```
+
+unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区
+
+```{r}
+ymd_hms(.POSIXct(1591709615),tz = 'asia/shanghai')
+```
+
+
+从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。
+
+
+如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.
+
+* <https://home.kpn.nl/vanadovv/time/TZworld.html#asi>
+
+```{r}
+lubridate::now()
+as_datetime(now()) #默认是UTC
+as_datetime(now(),tz = 'asia/shanghai')
+```
+
+
+
+
+## 构造日期或时间
+
+使用数值直接创建日期时间`make_date`和`make_datetime`函数默认时区为"UTC"
+
+```{r eval=FALSE}
+make_date(year = year(today()), month = month(today()), day = day(today()), tz = "asia/shanghai")
+make_datetime(
+  year = year(today()),
+  month = month(today()),
+  day = day(today()),
+  hour = hour(now()),
+  min = minute(now()),
+  sec = second(now()),
+  tz = "asia/shanghai"
+)
+
+```
+
+使用数值或字符直接创建日期时间
+
+```{r}
+as_datetime('2020-01-09 09:15:40',tz='asia/shanghai')
+as_date('2020-01-09') #ymd格式
+# same above
+#as_date('2020/01/09')
+#as_date('20200109')
+```
+
+## 时间间隔
+
+我们可以用`lubridate`将时间间隔保存为`interveal`类对象
+
+```{r}
+arrive <- ymd_hms("2020-12-04 12:00:00", tz = "asia/shanghai")
+arrive
+
+leave <- ymd_hms("2020-12-10 14:00:00", tz = "asia/shanghai")
+leave
+
+res <- interval(arrive, leave) 
+# same above
+res <- arrive %--% leave
+```
+
+两个时间间隔是否重复
+ 
+```{r}
+jsm <- interval(ymd(20201020, tz = "asia/shanghai"), ymd(20201231, tz = "asia/shanghai"))
+jsm
+int_overlaps(jsm, res)
+```
+
+更多详细用法`?interveal`
+
+```{r eval=FALSE}
+interval(start = NULL, end = NULL, tzone = tz(start))
+
+start %--% end
+
+is.interval(x)
+
+int_start(int)
+
+int_start(int) <- value
+
+int_end(int)
+
+int_end(int) <- value
+
+int_length(int)
+
+int_flip(int)
+
+int_shift(int, by)
+
+int_overlaps(int1, int2)
+
+int_standardize(int)
+
+int_aligns(int1, int2)
+
+int_diff(times)
+```
+
+## 时间日期计算
+
+时间日期计算以`number line`为依据计算。原文是`Because the timeline is not as reliable as the number line`。
+
+```{r}
+minutes(2)
+dminutes(2)
+dhours(2)
+```
+
+注意闰年时计算年份的差异
+
+```{r}
+leap_year(2019)
+ymd(20190101) + dyears(1)
+ymd(20190101) + years(1)
+
+leap_year(2020)
+ymd(20200101) + dyears(1)  # 注意查看闰年时的差异
+ymd(20200101) + years(1)
+```
+
+`lubridate`中的函数都已向量化
+
+```{r}
+meeting <- ymd_hms("2020-12-01 09:00:00", tz = "asia/shanghai")
+meeting <- meeting + weeks(0:5)
+meeting %within% jsm
+```
+
+除法计算
+
+```{r}
+res / ddays(1)
+res / dminutes(1)
+
+
+res %/% months(1)
+res %% months(1)
+```
+
+`as.period`用法
+
+```{r}
+as.period(res %% months(1))
+```
+
+对于日期而言，因为月天数、年天数不一致，导致不能直接加减天数，如下：
+
+```{r}
+jan31 <- ymd("2020-01-31")
+jan31 + months(0:11)
+```
+
+`lubridate`中不存在的日期返回`NA`
+
+解决方案是：`%m+%`或`%m-%`
+
+```{r}
+jan31 %m+% months(0:11)
+jan31 %m-% months(0:11)
+```
+
+
+
+## 案例
+
+
+### 年同环比
+
+`floor_date()`函数根据要求周期回滚日期，
+
+```{r}
+floor_date(today(),unit = 'year')
+floor_date(today(),unit = 'month') #可与rollback函数达到同样效果
+floor_date(today(),unit = 'week')
+```
+
+- 计算年同比
+
+```{r}
+n <- 1 
+date <- today()
+# current 
+current_start_date <-  floor_date(date,unit = 'year')
+current_start_date
+date 
+# last year
+last_start_date <- floor_date(date,unit = 'year') %m-% years(n)
+last_start_date
+last_end_date <- date %m-% years(n)
+last_end_date
+```
+
+月同比类似，回滚时间周期调整为"month"即可
+
+- 计算月环比
+
+`%m+%`或`%m-%`可以很好解决月份天数不一的问题
+
+```{r}
+as_date('2020-03-30') %m-% months(1)
+today()
+today() %m-% months(1)
+```
+
+
+得到了两对时间周期，然后在订单数据或者其他中筛选即可获得同比维度数据
+
+模拟计算
+
+```{r}
+# 构造数据
+bill_date <- as_date((as_date('2019-01-01'):as_date('2020-12-01')))
+area <-  sample(c('华东','华西','华南','华北'),size = length(bill_date),replace = TRUE)
+dt <- tibble::tibble(bill_date = bill_date ,money = sample(80:150,size = length(bill_date),replace = TRUE),area = area)
+head(dt)
+```
+
+```{r}
+library(dplyr,warn.conflicts = FALSE)
+
+y_to_y <- function(.dt,date,n = 1,...){
+  
+  date <- ymd(date)
+  
+  if(is.na(date)){
+    stop('请输入正确日期格式，如20200101')
+  } 
+  
+  # current 
+ current_start_date <-  floor_date(date,unit = 'year')
+ 
+ # last year
+ last_start_date <- floor_date(date,unit = 'year') %m-% years(n)
+ last_end_date <- date %m-% years(n)
+ 
+ .dt %>% mutate( 类型 = case_when(between(bill_date,current_start_date,date) ~ "当前",
+               between(bill_date,last_start_date,last_end_date) ~ "同期",
+               TRUE ~ "其他")) %>% 
+   filter(类型 != "其他") %>% 
+   group_by(...) %>% 
+   summarise(金额 = sum(money,na.rm = TRUE)) %>% 
+   ungroup() 
+ 
+ #%>% pivot_wider(names_from = '类型',values_from = '金额')
+ 
+}
+```
+
+```{r}
+y_to_y(dt,date = '20200101',n = 1,area,类型)
+```
+
+### 清洗不同类型日期格式
+
+如将`c('2001/2/13 10:33','1/24/13 11:16')`转换为相同格式的日期格式;
+
+通过一个简单自定义函数解决，本质是区分不同类型日期后采用不同函数去解析日期格式
+
+```{r message=FALSE}
+
+library(lubridate)
+library(tidyverse)
+
+date1 <- c('2001/2/13 10:33','1/24/13 11:16')
+
+myfun <- function(x){
+  
+  n_length <- length(x)
+  res <- vector(length = n_length)
+  
+  for(i in 1:n_length){
+    n <- strsplit(x[i],'/') %>% `[[`(1) %>% `[[`(1)
+    if(str_length(n)==4){
+      res[i] <- ymd_hm(x[i],tz = 'Asia/Shanghai')
+    } else {
+      res[i] <- mdy_hm(x[i],tz = 'Asia/Shanghai')
+    }
+  }
+  as_datetime(res,tz = 'Asia/Shanghai')
+}
+
+myfun(date1)
+
+```
+
+
+### 扫码后中奖时间匹配
+
+假定有两张表，一张是用户扫码表，一张是用户中奖表，如下所示：
+
+![数据源视图](picture/datetime/p1.png)
+
+由于中奖时间和扫码时间不完全一致，导致没办法直接通过`客户ID`以及`时间`关联匹配找到客户每次中奖时的积分码,现在要求找到客户每次中奖时对应的积分码？
+
+思路：通过观察数据，发现扫码后如果中奖，一般几秒钟内会有中奖记录，那我们就可以通过"每次中奖时间最近的一次扫码时间的积分码"就是该次中奖对应的积分码解决问题。这样我们通过简单编写自定义函数即可获取答案，即一个时间点从一串时间中找到离自己最近时间点。
+
+```{r eval=FALSE}
+testfun <- function(x,y){
+  result <- data.frame() #应采用列表存储结果向量化
+  n  <-  length(x)
+  for( i in 1:n){
+    res <- x[i]-y
+    res <- abs(res) %>% which.min() #本处不对，应该判断res大于0的部分中谁最小
+    kong <- data.frame(中奖时间 = x[i],扫的时间 = y[res])
+    result <- rbind(kong,result)
+    
+  }
+  return(result)
+}
+res <- testfun(dt$时间,scan_dt$时间)
+```
+
+改进代码
+
+```{r  eval= FALSE}
+testfun <- function(x,y){
+  n  <-  length(x)
+  result <- list()
+  
+  for( i in 1:n){
+    y <- y[x>y]
+    res <- x[i]-y
+    res <- res %>% which.min() 
+    kong <- data.frame(中奖时间 = x[i],扫的时间 = y[res])
+    result[[i]] <- kong
+  }
+  return(result)
+}
+
+res <- testfun(dt$时间,scan_dt$时间)
+```
+
+
+理论上不同用户可以在同一时间扫码且同时中奖，那上面的代码即不可以获取正确答案。但是我们只要通过按照用户ID切割数据框后稍微改造上面的自定义函数即可。
+
+```{r eval=FALSE }
+testfun <- function(dt){
+  
+  x <- dt$中奖时间
+  y <- dt$扫的时间
+  n  <-  length(x)
+  result <- list()
+  
+  for( i in 1:n){
+    y <- y[x>y]
+    res <- x[i]-y
+    res <- res %>% which.min() 
+    kong <- data.frame(中奖时间 = x[i],扫的时间 = y[res])
+    result[[i]] <- kong
+  }
+  result <- dplyr::bind_rows(result)
+  return(result)
+}
+dtlist <- split(alldt,'客户ID')
+purrr::map_dfr(dtlist,testfun)
+
+```
+
+
+虽然可以通过寻找最近一次的扫码记录判断积分码，但是因为网络延迟或中途接电话等各种原因导致扫码时间和中奖时间相差并不是几秒，导致情景复杂，那我们就应该在设计系统时就设计好锁定对应关系，从根本上解决问题。
+
+
+
+## 资料
+
+* <https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html>
+
+* <https://www.rdocumentation.org/packages/lubridate/versions/1.7.8>
+
+* pdf 下载  <https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf>
+
+* Excle中dax时间智能函数  <https://docs.microsoft.com/en-us/dax/time-intelligence-functions-dax>

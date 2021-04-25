@@ -1,0 +1,391 @@
+
+# stringr 
+
+
+实际工作中,经常需要处理字符串.R包stringr处理字符相对简单,本章记录工作中常用的字符处理方式方法。
+
+本文部分案例照搬[R for Data Science](https://r4ds.had.co.nz/strings.html)的字符部分。
+
+Excle中自带的字符函数如: `left`,`len`,`mid`,`find`,`Proper`,`rept`,`trim`,`upper`,`substitute`,`concatenate`,以及`Excle`2019新出的`concat`,`TEX
+
+TJOIN`等函数，新出的`textjoin`函数我个人比较喜欢用。 
+
+学习的时候可以先用`stringr`包实现以上相对应功能。
+
+* <https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html>
+
+## 基础
+
+字符串处理的难点，个人觉得在于【正则表达式】的掌握程度，但是需要用到正则表达式时都是比较复杂的字符处理工作，在实际商业文本数据中
+
+运用较多。对大部分常规商业数据分析工作者的面对的表格数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作。
+
+
+### 单双引号
+
+`R`语言中字符串输入时，可以使用单引号，也可以使用双引号。
+
+ - 单双引号用法和意义没有差别
+ 
+ - R中推荐使用双引号分隔符，打印、显示时都是用双引号
+ 
+ - 单引号字符串通常用在字符串内包含双引号时，如用R执行sql字符串代码时
+
+### 转义 
+
+要在字符串中包含单引号或双引号，可以使用\ 转义它，即遇到特殊符号时需要转义。
+
+```{r}
+#install.packages('stringr')
+library(stringr)
+char <- "我是一名\'小学生\'"   #字符串建议用双引号包裹,单引号也可以
+char
+```
+
+打印会显示转义符。要查看字符串的原始内容,可使用writeLines()或cat()
+
+```{r eval=FALSE}
+x <- c("\"", "\\")
+x
+#> [1] "\"" "\\"
+writeLines(x)
+cat(char)
+#> "
+#> \
+```
+
+在正则表达式中\ 有特殊含义,有时需要两个\ ，多体会下面这段，代码实现移除"||"的功能。
+
+```{r}
+str_remove(string = 'a||b',pattern = "\\|\\|")
+```
+
+
+另外常见的\\n, \\t需要被转义处理,在字符清洗,如小说语义分析,网页爬虫后整理等数据清洗过程中经常用到.
+
+
+### 字符串长度
+
+```{r}
+char <- "我是R语言学习者"
+str_length(char)
+# 向量化
+str_length(c("a", "R for data science", NA))
+
+```
+
+### 连接字符串
+
+R中字符串不像python中可以用加号连接字符串,如下所示:
+
+R 版本
+
+```{r}
+#base R
+paste0('a','b')
+
+#stringr
+str_c("a","b")
+str_c("a", "b", sep = ", ") #sep 参数控制分隔符
+```
+
+Python 版本
+
+```{python}
+'a' + 'b'
+```
+
+
+多个字符串合并为一个字符,`stringr`中的函数都是向量化的，合并一个和多个字符都是同样道理。
+
+```{r}
+#base R
+paste0(c('a','b','d','e'),collapse = ',')
+#stringr
+str_c(c('a','b','d','e'),collapse = ',')  #collapse 参数控制
+```
+
+
+实际运用案例
+
+ * 合并
+
+```{r}
+library(data.table)
+dt <- data.table(col=rep('a',10),letters=letters[1:10])
+dt[,newcol:=str_c(letters,collapse = '|'),by=.(col)][]
+```
+
+* 拆解
+
+```{r}
+
+#工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等
+dt <- data.table(col='a',letters=str_c(letters[1:10],collapse = '|'))
+
+my_str_split <- function(x){
+  
+  str_split(x,pattern = "\\|") %>% unlist()  #str_split 拆解出来是列表 需要向量化
+}
+
+dt[,list(newcol=my_str_split(letters)),by=.(col)]
+```
+
+
+### R4.0后新特性
+
+[新特性](https://www.r-bloggers.com/4-for-4-0-0-four-useful-new-features-in-r-4-0-0/)
+
+
+```{r}
+char <- r"(\\a\ab\d\e\f)" #windows下路径好用,不用转义路径复制和直接可用
+char
+```
+
+```{r}
+char <- "我是一名\'小学生\'" 
+cat(char)
+
+char <- r"(我是一名'R语言'学习者)"
+cat(char)
+```
+
+
+
+## 常用函数
+
+
+### 截取
+
+与`Excle`中`left`,`mid`,`right`函数功能类似
+
+str_sub() 函数 三个参数:
+
+string:需要被截取的字符串
+
+start: 默认1L,即从最开始截取
+
+end:默认-1L,即截取到最后
+
+
+```{r}
+#注意end 3 和 -3的区别
+str_sub(string = '我是R语言学习者',start = 2,end = 3)
+str_sub(string = '我是R语言学习者',start = 2,end = -3)
+```
+
+
+
+### 匹配
+
+查看函数帮助文档,str_match()按照指定pattern(正则表达式)查找字符.重点困难点正则表达式的编写.
+
+```{r eval=FALSE}
+?str_match()
+?str_match_all()
+?str_extract()
+?str_extract_all()
+```
+
+str_extract()函数返回向量,str_match()函数返回矩阵.
+
+```{r}
+#原文来源烽火戏诸侯的<剑来>
+strings <- c('陈平安放下新折的那根桃枝,吹灭蜡烛,走出屋子后,坐在台阶上,仰头望去,星空璀璨.') 
+str_extract(strings,'陈平安')
+str_match(strings,'陈平安')
+```
+
+* 匹配中文
+
+匹配中文的正则表达式\[\u4e00-\u9fa5\]
+
+```{r}
+str_extract_all(strings,'[\u4e00-\u9fa5]') #返回list
+```
+
+* 匹配数字或英文
+
+查找数字的正则表达式[0-9];查找英文的正则表达式:[a-zA-Z]
+
+
+```{r}
+strings <- c('00123545','LOL league of legends')
+str_extract_all(strings,'[0-9]')
+str_extract_all(strings,'[a-zA-Z]') 
+
+```
+
+
+### 添加字符
+
+str_pad() 函数向字符串添加字符
+
+像工作中处理月份的时候,1,2,3,4,5,6,7,8,9,10,11,12变成01,02,03,04,05,06,07,08,09,10,11,12.按照日期时间输出文件名称,如下所示:
+
+
+```{r}
+str_pad(string = 1:12,width = 2,side = 'left',pad = '0')
+```
+
+### 去除空格
+
+与`excel`中`trim`函数功能类似，剔除字符中的空格，但是不可以剔除字符中的空格
+
+```{r}
+# side 可选 both  left right
+str_trim(' ab af ',side = 'both')
+```
+
+
+### 分割字符
+
+`str_split()`处理后的结果是列表
+
+```{r}
+# 得到列表,需要向量化
+str_split("a,b,d,e",pattern = ',')
+
+str_split('ab||cd','\\|\\|') %>% unlist()
+# same above
+#str_split('ab||cd','\\|\\|') %>% purrr::as_vector()
+```
+
+当待处理的字符串是字符串向量时，得到的列表长度与向量长度一致
+
+```{r}
+fruits <- c(
+  "apples and oranges and pears and bananas",
+  "pineapples and mangos and guavas"
+)
+
+str_split(fruits, " and ")
+```
+
+### 替换字符
+
+`str_replace()`，`str_replace_all()`函数用来替换字符
+
+```{r}
+fruits <- c("one apple", "two pears", "three bananas")
+str_replace(fruits, "[aeiou]", "-")
+str_replace_all(fruits, "[aeiou]", "-")
+```
+
+### 移除字符
+
+`str_remove()`,`str_remove_all()`移除字符。本人常用该函数剔除文本中的空格。
+
+```{r}
+fruits <- c("one apple", "two pears", "three bananas")
+str_remove(fruits, "[aeiou]")
+str_remove_all(fruits, "[aeiou]")
+```
+
+移除文本中空格
+
+```{r}
+str_replace_all(string = ' d a  b ',pattern = ' ',replacement = '')
+```
+
+
+### 其他函数
+
+* str_subset() str_which()
+
+匹配字符串本身行筛选时候能用
+
+
+```{r}
+
+fruit <- c("apple", "banana", "pear", "pinapple")
+str_subset(fruit, "a")
+str_which(fruit, "a") # 匹配字符首次出现的位置
+```
+
+ 
+```{r eval=FALSE}
+#str_which 是which(str_detect(x,pattern))的包装
+#str_which()
+
+#str_subset是对x[str_detect(x,pattern)]的包装
+#str_subset()
+
+#筛选出字母行
+set.seed(24)
+dt <- data.table::data.table(col=sample(c(letters,1:10),100,replace = T))
+head(dt[str_which(col,pattern = '[a-z]')])
+
+```
+
+
+* str_dup()
+
+复制字符串
+
+```{r eval=FALSE}
+fruit <- c("apple", "pear", "banana")
+str_dup(fruit, 2)
+str_dup(fruit, 1:3)
+str_c("ba", str_dup("na", 0:5))
+```
+
+
+
+* str_starts()  str_ends()
+
+从str_detect()包装得到.
+
+```{r}
+str_starts('abd','a')
+str_detect('abd','^a')
+
+str_ends('abd','d')
+str_detect('abd','a$')
+
+
+```
+
+ * 大小写转换
+ 
+```{r}
+dog <- "The quick brown dog"
+str_to_upper(dog)
+str_to_lower(dog)
+str_to_title(dog)
+str_to_sentence("the quick brown dog")
+```
+ 
+ 
+## R实现Excel字符函数
+
+以下函数实现，仅仅只是从`stringr`包的函数上修改，并且没有完善，没有报错提示等的简陋版本，如果感兴趣的可以尝试利用`Rcpp`写出高性能版本的同功能函数。
+
+- left
+
+```{r}
+r_left <- function(str,num){
+  str_sub(string = str,start = 1,end = num)
+}
+r_left('我是R语言学习者',3)
+```
+
+- right
+
+```{r}
+r_right <- function(str,num){
+  str_sub(string = str,start = str_length(str) - num + 1)
+}
+r_right('我是R语言学习者',3)
+```
+
+- mid
+
+```{r}
+r_mid <- function(str,start,num){
+  str_sub(string = str,start = start,end = start + num -1)
+}
+r_mid('我是R语言学习者',3,3)
+```
+
+其余函数可以自行实现
