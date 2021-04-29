@@ -118,7 +118,7 @@
 
 \title{R学习笔记}
 \author{Yufei Zhong}
-\date{2021-04-25}
+\date{2021-04-29}
 
 \begin{document}
 \maketitle
@@ -142,7 +142,7 @@
 \begin{Highlighting}[]
 \CommentTok{\#查看版本信息}
 \FunctionTok{sessionInfo}\NormalTok{()}
-\CommentTok{\#\textgreater{} R version 4.0.3 (2020{-}10{-}10)}
+\CommentTok{\#\textgreater{} R version 4.0.5 (2021{-}03{-}31)}
 \CommentTok{\#\textgreater{} Platform: x86\_64{-}w64{-}mingw32/x64 (64{-}bit)}
 \CommentTok{\#\textgreater{} Running under: Windows 10 x64 (build 19041)}
 \CommentTok{\#\textgreater{} }
@@ -159,10 +159,10 @@
 \CommentTok{\#\textgreater{} [1] stats     graphics  grDevices utils     datasets  methods   base     }
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} loaded via a namespace (and not attached):}
-\CommentTok{\#\textgreater{}  [1] compiler\_4.0.3    magrittr\_2.0.1    bookdown\_0.21     htmltools\_0.5.1.1}
-\CommentTok{\#\textgreater{}  [5] tools\_4.0.3       rstudioapi\_0.13   yaml\_2.2.1        stringi\_1.5.3    }
+\CommentTok{\#\textgreater{}  [1] compiler\_4.0.5    magrittr\_2.0.1    bookdown\_0.21     htmltools\_0.5.1.1}
+\CommentTok{\#\textgreater{}  [5] tools\_4.0.5       rstudioapi\_0.13   yaml\_2.2.1        stringi\_1.5.3    }
 \CommentTok{\#\textgreater{}  [9] rmarkdown\_2.7     knitr\_1.32        stringr\_1.4.0     digest\_0.6.27    }
-\CommentTok{\#\textgreater{} [13] xfun\_0.21         rlang\_0.4.10      evaluate\_0.14}
+\CommentTok{\#\textgreater{} [13] xfun\_0.22         rlang\_0.4.10      evaluate\_0.14}
 \end{Highlighting}
 \end{Shaded}
 
@@ -203,7 +203,6 @@ data.table个人理解主要有三大类参数,i 参数做筛选,j参数做计�
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(data.table)}
-\CommentTok{\#\textgreater{} Warning: 程辑包\textquotesingle{}data.table\textquotesingle{}是用R版本4.0.4 来建造的}
 \NormalTok{flights }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"./data/flights.csv"}\NormalTok{)}
 \NormalTok{flights[year}\SpecialCharTok{==}\DecValTok{2014} \SpecialCharTok{\&}\NormalTok{ month}\SpecialCharTok{==}\DecValTok{6}\NormalTok{,.(求和项}\AttributeTok{distance=}\FunctionTok{sum}\NormalTok{(distance)),by}\OtherTok{=}\NormalTok{.(origin,dest)]}
 \CommentTok{\#\textgreater{}      origin dest 求和项distance}
@@ -1145,6 +1144,33 @@ fun参数即 fun.aggregate的简写，可以是自定义的函数。
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{shift}{%
+\subsection{shift}\label{shift}}
+
+向前或向后功能,通俗来说就是像前或向后移动位置。示例如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\CommentTok{\# lag with n=1 and pad with NA (returns vector)}
+\FunctionTok{shift}\NormalTok{(x, }\AttributeTok{n=}\DecValTok{1}\NormalTok{, }\AttributeTok{fill=}\ConstantTok{NA}\NormalTok{, }\AttributeTok{type=}\StringTok{"lag"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] NA  1  2  3  4}
+\end{Highlighting}
+\end{Shaded}
+
+其中参数n控制偏移量，n正负数和type的参数相对应。, n=-1 and type=`lead' 与 n=1 and type='lag'效果相同。
+
+在data.table上使用：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DT }\OtherTok{=} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{year=}\DecValTok{2010}\SpecialCharTok{:}\DecValTok{2014}\NormalTok{, }\AttributeTok{v1=}\FunctionTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{), }\AttributeTok{v2=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\AttributeTok{v3=}\NormalTok{letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{])}
+\NormalTok{cols }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"v1"}\NormalTok{,}\StringTok{"v2"}\NormalTok{,}\StringTok{"v3"}\NormalTok{)}
+\NormalTok{anscols }\OtherTok{=} \FunctionTok{paste}\NormalTok{(}\StringTok{"lead"}\NormalTok{, cols, }\AttributeTok{sep=}\StringTok{"\_"}\NormalTok{)}
+\NormalTok{DT[, (anscols) }\SpecialCharTok{:}\ErrorTok{=} \FunctionTok{shift}\NormalTok{(.SD, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\StringTok{"lead"}\NormalTok{), .SDcols}\OtherTok{=}\NormalTok{cols]}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{ux8fd0ux7528}{%
 \section{运用}\label{ux8fd0ux7528}}
 
@@ -1477,7 +1503,7 @@ MS\href{https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads}{下载}
 \end{Highlighting}
 \end{Shaded}
 
-至于其他如安装sql server 命令行工具请{[}查阅官网{]}自行安装(\url{https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15\&preserve-view=true})。
+至于其他如安装sql server 命令行工具请\href{https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15\&preserve-view=true}{查阅官网安装}。
 
 接下来我们就R语言与数据库的交互包展开介绍。
 
@@ -1502,18 +1528,27 @@ MS\href{https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads}{下载}
   连接MS SQL SERVER
 \end{itemize}
 
-如果你是用windows系统，自己安装数据库后，并配置好账户密码，启动了数据库。发现乱码时，根据数据库编码指定\texttt{encoding}参数即可，常规在win下面用sql server设置\texttt{encoding\ =\ "GBK"}。
+通过以下代码即可连接到服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(DBI)}
+\NormalTok{con }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(}
+  \AttributeTok{drv =}\NormalTok{ odbc}\SpecialCharTok{::}\FunctionTok{odbc}\NormalTok{(), }\AttributeTok{Driver =} \StringTok{"SQL Server"}\NormalTok{, }\AttributeTok{server =} \StringTok{"172.16.88.2"}\NormalTok{,}\AttributeTok{database =} \StringTok{"spb"}\NormalTok{, }\AttributeTok{uid =} \StringTok{"zhongyf"}\NormalTok{, }\AttributeTok{pwd =} \StringTok{"Zyf123456"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
+如果你用windows系统，通过DBI包连接数据库发现乱码时，根据数据库编码指定encoding参数即可，常规在win下连接sqlserver设置encoding = ``GBK''。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DBI)}
 \CommentTok{\#根据数据库编码方式指定encoding}
 \NormalTok{con }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(}
   \AttributeTok{drv =}\NormalTok{ odbc}\SpecialCharTok{::}\FunctionTok{odbc}\NormalTok{(), }\AttributeTok{Driver =} \StringTok{"SQL Server"}\NormalTok{, }\AttributeTok{server =} \StringTok{"172.16.88.2"}\NormalTok{,}
   \AttributeTok{database =} \StringTok{"spb"}\NormalTok{, }\AttributeTok{uid =} \StringTok{"zhongyf"}\NormalTok{, }\AttributeTok{pwd =} \StringTok{"Zyf123456"}\NormalTok{, }\AttributeTok{encoding =} \StringTok{"GBK"}
 \NormalTok{)}
-
 \CommentTok{\# 查看本机可用驱动 如缺少相应驱动则安装，ODBC Driver 17 for SQL Server 就是个人安装的驱动}
 
 \NormalTok{Drivers\_tbl }\OtherTok{\textless{}{-}}\NormalTok{ odbc}\SpecialCharTok{::}\FunctionTok{odbcListDrivers}\NormalTok{() }
@@ -1549,7 +1584,7 @@ MS\href{https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads}{下载}
   连接mysql
 \end{itemize}
 
-\texttt{MySQL()}函数来源\texttt{RMySQL}包，用来创建\texttt{\textless{}MySQLDriver\textgreater{}}驱动
+\texttt{MySQL()}函数来源\texttt{RMySQL}包，用来创建\texttt{\textless{}MySQLDriver\textgreater{}}驱动，以下代码可连接到阿里云的MySQL数据库。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1570,12 +1605,13 @@ MS\href{https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads}{下载}
   \AttributeTok{Server =} \StringTok{"localhost"}\NormalTok{, }\AttributeTok{UID =} \StringTok{"root"}\NormalTok{, }\AttributeTok{PWD =} \StringTok{"123456"}\NormalTok{, }\AttributeTok{Database =} \StringTok{"mysql"}\NormalTok{,}
   \AttributeTok{Port =} \DecValTok{3306}
 \NormalTok{)}
-\CommentTok{\#mysql 数据库默认端口是3306 访问不通时记得检查3306端口是否开放}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux67e5ux8be2ux4e0aux4f20ux7b49ux4efbux52a1}{%
-\subsection{查询上传等任务}\label{ux67e5ux8be2ux4e0aux4f20ux7b49ux4efbux52a1}}
+mysql数据库默认端口是3306,访问不通时记得检查3306端口是否开放。
+
+\hypertarget{ux6267ux884csqlux4efbux52a1}{%
+\subsection{执行sql任务}\label{ux6267ux884csqlux4efbux52a1}}
 
 dbGetQuery()函数处理由DBI包创建的con连接查询任务,dbExecute()执行一些数据库任务
 
@@ -1652,7 +1688,7 @@ odbc可以运用于包括(SQL Server, Oracle, MySQL,PostgreSQL,SQLite)等odbc驱
 
 当你在Win系统上连接Sql Server时，如果你使用的数据库是中文环境时，最好设置\texttt{encoding}参数。
 
-如果是linux上通过odbc连接Sql Server,在连接字符中设置字符编码charset=zh\_CN.GBK，如果设置为gbk会报错。
+如果是linux上通过odbc连接SqlServer,一般情况下可以不用设置编码。如果还是乱码，在连接字符中设置字符编码charset=zh\_CN.GBK，设置为gbk会报错。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1756,7 +1792,7 @@ sql server 请参照\href{https://www.connectionstrings.com/microsoft-odbc-drive
 \hypertarget{roracleux5305}{%
 \section{ROracle包}\label{roracleux5305}}
 
-在第一次安装这个包时遇到了很多困难，首先需要安装oracle客户端，其次配置好环境变量，最后安装包。应该与Oracle的连接需要安装\href{https://www.oracle.com/database/technologies/instant-client.html}{Oracle Instant Client}，
+在第一次安装这个包时遇到了很多困难，首先需要安装oracle客户端，其次配置好环境变量，最后安装包。R与Oracle的连接需要安装\href{https://www.oracle.com/database/technologies/instant-client.html}{Oracle Instant Client}，
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1786,7 +1822,7 @@ linxu上安装\texttt{Roracle}包，可以参考我的
 
 微信公众号：宇飞的世界
 
-\href{https://mp.weixin.qq.com/s?src=11\&timestamp=1615369254\&ver=2938\&signature=5EYogLq8uU76XutqyrSggmI8mzylgzPNtKFix*WGTyxSLmbiX3HvNhCXajeGkqDJNh06WE4UPveuz5WxibQeR2usoXyWPo-Wq7maE6DbSMzub8yadc0oXDiau-D1bKLT\&new=1}{公众号文章连接}
+\href{https://mp.weixin.qq.com/s/QLwedZ5mTybqSXdHMTGRIw}{公众号文章连接}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1831,6 +1867,14 @@ linxu上安装\texttt{Roracle}包，可以参考我的
 \end{Highlighting}
 \end{Shaded}
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  乱码问题
+\end{enumerate}
+
 如果连接oracle数据库，中文乱码设置以下环境变量即可，或者在启动文件配置该环境变量。
 
 linux下可以在文件Renviron中添加，记得引号，路径为{[}/opt/R/4.0.2/lib/R/etc/Renviron{]}
@@ -1846,14 +1890,42 @@ linux下可以在文件Renviron中添加，记得引号，路径为{[}/opt/R/4.0
 \hypertarget{rmysqlux5305}{%
 \section{RMySQL包}\label{rmysqlux5305}}
 
-\texttt{RMySQL}包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下
+RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下.该包正在逐渐被淘汰，可以使用RMariaDB包替换。
+
+\hypertarget{ux5b89ux88c5-1}{%
+\subsection{安装}\label{ux5b89ux88c5-1}}
+
+Win系统下直接安装即可，其它平台下需提前安装依赖环境。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#On recent Debian or Ubuntu install libmariadbclient{-}dev}
+
+\FunctionTok{sudo}\NormalTok{ apt{-}get install {-}y libmariadbclient{-}dev}
+\CommentTok{\#On Fedora, CentOS or RHEL we need mariadb{-}devel:}
+
+\FunctionTok{sudo}\NormalTok{ yum install mariadb{-}devel}
+\CommentTok{\#On OS{-}X use mariadb{-}connector{-}c from Homebrew:}
+
+\ExtensionTok{brew}\NormalTok{ install mariadb{-}connector{-}c}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}RMySQL\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux8fdeux63a5ux4f7fux7528}{%
+\subsection{连接使用}\label{ux8fdeux63a5ux4f7fux7528}}
+
+连接数据库，与上述连接方式基本一致。
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(RMySQL)}
 \NormalTok{con }\OtherTok{\textless{}{-}}\NormalTok{ RMySQL}\SpecialCharTok{::}\FunctionTok{dbConnect}\NormalTok{(}\AttributeTok{drv =}\NormalTok{ RMySQL}\SpecialCharTok{::}\FunctionTok{MySQL}\NormalTok{(),}\AttributeTok{host=}\StringTok{\textquotesingle{}localhost\textquotesingle{}}\NormalTok{,}\AttributeTok{dbname=}\StringTok{"mysql"}\NormalTok{,}\AttributeTok{username=}\StringTok{"root"}\NormalTok{,}\AttributeTok{password=}\StringTok{\textquotesingle{}123456\textquotesingle{}}\NormalTok{)}
-\CommentTok{\#dbListTables(con) 查看该库全部表格}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2146,9 +2218,7 @@ rstudio关于数据库介绍 \url{https://db.rstudio.com/databases}
 
 本文部分案例照搬\href{https://r4ds.had.co.nz/strings.html}{R for Data Science}的字符部分。
 
-Excle中自带的字符函数如: \texttt{left},\texttt{len},\texttt{mid},\texttt{find},\texttt{Proper},\texttt{rept},\texttt{trim},\texttt{upper},\texttt{substitute},\texttt{concatenate},以及\texttt{Excle}2019新出的\texttt{concat},`TEX
-
-TJOIN\texttt{等函数，新出的}textjoin`函数我个人比较喜欢用。
+Excle中自带的字符函数如: \texttt{left},\texttt{len},\texttt{mid},\texttt{find},\texttt{Proper},\texttt{rept},\texttt{trim},\texttt{upper},\texttt{substitute},\texttt{concatenate},以及\texttt{Excle}2019新出的\texttt{concat},\texttt{TEXTJOIN}等函数，新出的\texttt{textjoin}函数我个人比较喜欢用。
 
 学习的时候可以先用\texttt{stringr}包实现以上相对应功能。
 
@@ -2667,8 +2737,8 @@ str\_pad() 函数向字符串添加字符
 
 \texttt{R}中日期起始时间是\texttt{1970-01-01},Excel中是\texttt{1900-01-01},转化成数字两者相差25568。在用R读取Excel文件时，设计到日期数字转化成日期时需要注意其中差异。
 
-R中日期 : 2021-04-25 转化成数字: 18742,
-Excel 中 2021-04-25转化成数字:44310,两者相差25568.
+R中日期 : 2021-04-29 转化成数字: 18746,
+Excel 中 2021-04-29转化成数字:44314,两者相差25568.
 
 \hypertarget{ux57faux7840ux7528ux6cd5-1}{%
 \section{基础用法}\label{ux57faux7840ux7528ux6cd5-1}}
@@ -3298,8 +3368,8 @@ unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注�
 
 在日常使用数据过程中，这种数据存储方式是一种标准的数据存储方式，像关系型数据中数据的存储。
 
-\hypertarget{ux5b89ux88c5-1}{%
-\section{安装}\label{ux5b89ux88c5-1}}
+\hypertarget{ux5b89ux88c5-2}{%
+\section{安装}\label{ux5b89ux88c5-2}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3940,8 +4010,8 @@ nest的反面 unnest
   \texttt{arrange()} 行排序
 \end{itemize}
 
-\hypertarget{ux5b89ux88c5-2}{%
-\section{安装}\label{ux5b89ux88c5-2}}
+\hypertarget{ux5b89ux88c5-3}{%
+\section{安装}\label{ux5b89ux88c5-3}}
 
 \begin{Shaded}
 \begin{Highlighting}[]

@@ -52,7 +52,7 @@ sudo apt-get install -y mssql-server
 systemctl status mssql-server --no-pager
 ```
 
-至于其他如安装sql server 命令行工具请[查阅官网]自行安装(https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15&preserve-view=true)。
+至于其他如安装sql server 命令行工具请[查阅官网安装](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15&preserve-view=true)。
 
 
 接下来我们就R语言与数据库的交互包展开介绍。
@@ -71,17 +71,25 @@ install.packages('DBI')
 
 - 连接MS SQL SERVER 
 
-如果你是用windows系统，自己安装数据库后，并配置好账户密码，启动了数据库。发现乱码时，根据数据库编码指定`encoding`参数即可，常规在win下面用sql server设置`encoding = "GBK"`。
+通过以下代码即可连接到服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。
+
+```{r}
+library(DBI)
+con <- dbConnect(
+  drv = odbc::odbc(), Driver = "SQL Server", server = "172.16.88.2",database = "spb", uid = "zhongyf", pwd = "Zyf123456"
+)
+```
+
+
+如果你用windows系统，通过DBI包连接数据库发现乱码时，根据数据库编码指定encoding参数即可，常规在win下连接sqlserver设置encoding = "GBK"。
 
 ```{r }
 library(DBI)
-
 #根据数据库编码方式指定encoding
 con <- dbConnect(
   drv = odbc::odbc(), Driver = "SQL Server", server = "172.16.88.2",
   database = "spb", uid = "zhongyf", pwd = "Zyf123456", encoding = "GBK"
 )
-
 # 查看本机可用驱动 如缺少相应驱动则安装，ODBC Driver 17 for SQL Server 就是个人安装的驱动
 
 Drivers_tbl <- odbc::odbcListDrivers() 
@@ -112,7 +120,7 @@ DBI::dbDisconnect(con)
 
 - 连接mysql
 
-`MySQL()`函数来源`RMySQL`包，用来创建`<MySQLDriver>`驱动
+`MySQL()`函数来源`RMySQL`包，用来创建`<MySQLDriver>`驱动，以下代码可连接到阿里云的MySQL数据库。
 
 ```{r eval=FALSE}
 library(RMySQL)
@@ -130,11 +138,12 @@ con <- DBI::dbConnect(odbc::odbc(),
   Server = "localhost", UID = "root", PWD = "123456", Database = "mysql",
   Port = 3306
 )
-#mysql 数据库默认端口是3306 访问不通时记得检查3306端口是否开放
+
 ```
 
+mysql数据库默认端口是3306,访问不通时记得检查3306端口是否开放。
 
-### 查询上传等任务
+### 执行sql任务
 
 dbGetQuery()函数处理由DBI包创建的con连接查询任务,dbExecute()执行一些数据库任务
 
@@ -206,7 +215,7 @@ install.packages('odbc')
 
 当你在Win系统上连接Sql Server时，如果你使用的数据库是中文环境时，最好设置`encoding`参数。
 
-如果是linux上通过odbc连接Sql Server,在连接字符中设置字符编码charset=zh_CN.GBK，如果设置为gbk会报错。
+如果是linux上通过odbc连接SqlServer,一般情况下可以不用设置编码。如果还是乱码，在连接字符中设置字符编码charset=zh_CN.GBK，设置为gbk会报错。
 
 ```{r eval=FALSE}
 library(odbc)
@@ -295,7 +304,7 @@ sql server 请参照[sql server连接字符串](https://www.connectionstrings.co
 ## ROracle包
 
 
-在第一次安装这个包时遇到了很多困难，首先需要安装oracle客户端，其次配置好环境变量，最后安装包。应该与Oracle的连接需要安装[Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html)，
+在第一次安装这个包时遇到了很多困难，首先需要安装oracle客户端，其次配置好环境变量，最后安装包。R与Oracle的连接需要安装[Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html)，
 
 1. 安装客户端
 
@@ -316,7 +325,7 @@ linxu上安装`Roracle`包，可以参考我的
 
 微信公众号：宇飞的世界
 
-[公众号文章连接](https://mp.weixin.qq.com/s?src=11&timestamp=1615369254&ver=2938&signature=5EYogLq8uU76XutqyrSggmI8mzylgzPNtKFix*WGTyxSLmbiX3HvNhCXajeGkqDJNh06WE4UPveuz5WxibQeR2usoXyWPo-Wq7maE6DbSMzub8yadc0oXDiau-D1bKLT&new=1)
+[公众号文章连接](https://mp.weixin.qq.com/s/QLwedZ5mTybqSXdHMTGRIw)
 
 
 3. 安装包
@@ -346,6 +355,8 @@ connect.string <- '(DESCRIPTION =
 con <- dbConnect(drv,username = "query", password = "query",dbname = connect.string)
 ```
 
+5. 乱码问题 
+
 如果连接oracle数据库，中文乱码设置以下环境变量即可，或者在启动文件配置该环境变量。
 
 linux下可以在文件Renviron中添加，记得引号，路径为[/opt/R/4.0.2/lib/R/etc/Renviron]
@@ -360,13 +371,37 @@ Sys.setenv(NLS_LANG="SIMPLIFIED CHINESE_CHINA.AL32UTF8")
 
 ## RMySQL包
 
-`RMySQL`包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下
+RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下.该包正在逐渐被淘汰，可以使用RMariaDB包替换。
+
+### 安装
+
+Win系统下直接安装即可，其它平台下需提前安装依赖环境。
+
+```{bash }
+#On recent Debian or Ubuntu install libmariadbclient-dev
+
+sudo apt-get install -y libmariadbclient-dev
+#On Fedora, CentOS or RHEL we need mariadb-devel:
+
+sudo yum install mariadb-devel
+#On OS-X use mariadb-connector-c from Homebrew:
+
+brew install mariadb-connector-c
+
+```
+
+```{r}
+install.packages('RMySQL')
+```
+
+
+### 连接使用
+
+连接数据库，与上述连接方式基本一致。
 
 ```{r eval=FALSE}
-install.packages('RMySQL')
 library(RMySQL)
 con <- RMySQL::dbConnect(drv = RMySQL::MySQL(),host='localhost',dbname="mysql",username="root",password='123456')
-#dbListTables(con) 查看该库全部表格
 ```
 
 `RMariaDB`包与`RMySQL`包用法基本一致，在连接时注意驱动的选择即可。

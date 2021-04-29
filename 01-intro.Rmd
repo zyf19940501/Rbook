@@ -586,7 +586,26 @@ rleidv(DT, "grp") # same as above
 rleid(DT$grp, prefix="grp") # prefix with 'grp'
 ```
 
+### shift
 
+向前或向后功能,通俗来说就是像前或向后移动位置。示例如下：
+
+```{r}
+x = 1:5
+# lag with n=1 and pad with NA (returns vector)
+shift(x, n=1, fill=NA, type="lag")
+```
+
+其中参数n控制偏移量，n正负数和type的参数相对应。, n=-1 and type='lead' 与 n=1 and type='lag'效果相同。
+
+在data.table上使用：
+
+```{r}
+DT = data.table(year=2010:2014, v1=runif(5), v2=1:5, v3=letters[1:5])
+cols = c("v1","v2","v3")
+anscols = paste("lead", cols, sep="_")
+DT[, (anscols) := shift(.SD, 1, 0, "lead"), .SDcols=cols]
+```
 
 ## 运用
 

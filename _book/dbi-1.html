@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10 Iteration | R学习笔记</title>
+  <title>12.2 DBI | Untitled</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10 Iteration | R学习笔记" />
+  <meta property="og:title" content="12.2 DBI | Untitled" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10 Iteration | R学习笔记" />
+  <meta name="twitter:title" content="12.2 DBI | Untitled" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="循环变化.html"/>
-<link rel="next" href="简单用法.html"/>
+<link rel="prev" href="安装数据库-1.html"/>
+<link rel="next" href="odbc包-1.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -181,17 +181,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>3.2.2</b> 连接数据库</a></li>
-<li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>3.2.3</b> 执行sql任务</a></li>
+<li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#查询上传等任务"><i class="fa fa-check"></i><b>3.2.3</b> 查询上传等任务</a></li>
 <li class="chapter" data-level="3.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>3.2.4</b> 函数介绍</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="odbc包.html"><a href="odbc包.html"><i class="fa fa-check"></i><b>3.3</b> odbc包</a></li>
 <li class="chapter" data-level="3.4" data-path="rodbc包.html"><a href="rodbc包.html"><i class="fa fa-check"></i><b>3.4</b> RODBC包</a></li>
 <li class="chapter" data-level="3.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>3.5</b> ROracle包</a></li>
-<li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a>
-<ul>
-<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-1"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
-<li class="chapter" data-level="3.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>3.6.2</b> 连接使用</a></li>
-</ul></li>
+<li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a></li>
 <li class="chapter" data-level="3.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>3.7</b> 常见问题</a>
 <ul>
 <li class="chapter" data-level="3.7.1" data-path="常见问题.html"><a href="常见问题.html#乱码问题"><i class="fa fa-check"></i><b>3.7.1</b> 乱码问题</a></li>
@@ -255,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
+<li class="chapter" data-level="7.1" data-path="安装-1.html"><a href="安装-1.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
 <li class="chapter" data-level="7.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>7.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>7.2.1</b> 宽转长</a></li>
@@ -270,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
-<li class="chapter" data-level="8.2" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
+<li class="chapter" data-level="8.2" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
 <li class="chapter" data-level="8.3" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.3</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="基础用法-2.html"><a href="基础用法-2.html#filter"><i class="fa fa-check"></i><b>8.3.1</b> filter</a></li>
@@ -365,6 +361,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="环境.html"><a href="环境.html"><i class="fa fa-check"></i><b>11.5</b> 环境</a></li>
 <li class="chapter" data-level="11.6" data-path="拓展部分.html"><a href="拓展部分.html"><i class="fa fa-check"></i><b>11.6</b> 拓展部分</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="database-1.html"><a href="database-1.html"><i class="fa fa-check"></i><b>12</b> database</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="安装数据库-1.html"><a href="安装数据库-1.html"><i class="fa fa-check"></i><b>12.1</b> 安装数据库</a></li>
+<li class="chapter" data-level="12.2" data-path="dbi-1.html"><a href="dbi-1.html"><i class="fa fa-check"></i><b>12.2</b> DBI</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="dbi-1.html"><a href="dbi-1.html#安装-3"><i class="fa fa-check"></i><b>12.2.1</b> 安装</a></li>
+<li class="chapter" data-level="12.2.2" data-path="dbi-1.html"><a href="dbi-1.html#连接数据库-1"><i class="fa fa-check"></i><b>12.2.2</b> 连接数据库</a></li>
+<li class="chapter" data-level="12.2.3" data-path="dbi-1.html"><a href="dbi-1.html#查询上传等任务-1"><i class="fa fa-check"></i><b>12.2.3</b> 查询上传等任务</a></li>
+<li class="chapter" data-level="12.2.4" data-path="dbi-1.html"><a href="dbi-1.html#函数介绍-1"><i class="fa fa-check"></i><b>12.2.4</b> 函数介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="odbc包-1.html"><a href="odbc包-1.html"><i class="fa fa-check"></i><b>12.3</b> odbc包</a></li>
+<li class="chapter" data-level="12.4" data-path="rodbc包-1.html"><a href="rodbc包-1.html"><i class="fa fa-check"></i><b>12.4</b> RODBC包</a></li>
+<li class="chapter" data-level="12.5" data-path="roracle包-1.html"><a href="roracle包-1.html"><i class="fa fa-check"></i><b>12.5</b> ROracle包</a></li>
+<li class="chapter" data-level="12.6" data-path="rmysql包-1.html"><a href="rmysql包-1.html"><i class="fa fa-check"></i><b>12.6</b> RMySQL包</a></li>
+<li class="chapter" data-level="12.7" data-path="常见问题-1.html"><a href="常见问题-1.html"><i class="fa fa-check"></i><b>12.7</b> 常见问题</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="常见问题-1.html"><a href="常见问题-1.html#乱码问题-1"><i class="fa fa-check"></i><b>12.7.1</b> 乱码问题</a></li>
+<li class="chapter" data-level="12.7.2" data-path="常见问题-1.html"><a href="常见问题-1.html#无法连接问题-1"><i class="fa fa-check"></i><b>12.7.2</b> 无法连接问题</a></li>
+<li class="chapter" data-level="12.7.3" data-path="常见问题-1.html"><a href="常见问题-1.html#远程连接-1"><i class="fa fa-check"></i><b>12.7.3</b> 远程连接</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="dbplyr-1.html"><a href="dbplyr-1.html"><i class="fa fa-check"></i><b>12.8</b> dbplyr</a>
+<ul>
+<li class="chapter" data-level="12.8.1" data-path="dbplyr-1.html"><a href="dbplyr-1.html#基础用法-3"><i class="fa fa-check"></i><b>12.8.1</b> 基础用法</a></li>
+<li class="chapter" data-level="12.8.2" data-path="dbplyr-1.html"><a href="dbplyr-1.html#无法正确转化-1"><i class="fa fa-check"></i><b>12.8.2</b> 无法正确转化</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="参考资料-1.html"><a href="参考资料-1.html"><i class="fa fa-check"></i><b>12.9</b> 参考资料</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -377,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Untitled</a>
           </h1>
         </div>
 
@@ -385,18 +408,113 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="iteration" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> Iteration</h1>
-<p>常常需要重复操作同样的功能函数，这时可以用迭代来实现。purrr包提供了一套完整的函数来处理循环迭代,可以有效减少重复性工作和代码。</p>
-<p><a href="https://purrr.tidyverse.org/" class="uri">https://purrr.tidyverse.org/</a></p>
+<div id="dbi-1" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> DBI</h2>
+<div id="安装-3" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> 安装</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="dbi-1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;DBI&#39;</span>)</span></code></pre></div>
+</div>
+<div id="连接数据库-1" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> 连接数据库</h3>
+<ul>
+<li>连接MS SQL SERVER</li>
+</ul>
+<p>如果你是用windows系统，自己安装数据库后，并配置好账户密码，启动了数据库。发现乱码时，根据数据库编码指定<code>encoding</code>参数即可，常规在win下面用sql server设置<code>encoding = "GBK"</code>。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="dbi-1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb3-2"><a href="dbi-1.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="dbi-1.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#根据数据库编码方式指定encoding</span></span>
+<span id="cb3-4"><a href="dbi-1.html#cb3-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb3-5"><a href="dbi-1.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>,</span>
+<span id="cb3-6"><a href="dbi-1.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;GBK&quot;</span></span>
+<span id="cb3-7"><a href="dbi-1.html#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-8"><a href="dbi-1.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="dbi-1.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看本机可用驱动 如缺少相应驱动则安装，ODBC Driver 17 for SQL Server 就是个人安装的驱动</span></span>
+<span id="cb3-10"><a href="dbi-1.html#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="dbi-1.html#cb3-11" aria-hidden="true" tabindex="-1"></a>Drivers_tbl <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">odbcListDrivers</span>() </span>
+<span id="cb3-12"><a href="dbi-1.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Drivers_tbl)</span></code></pre></div>
+<p>查询数据库编码方式,从而选择连接数据库时相应的编码方式。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="dbi-1.html#cb4-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb4-2"><a href="dbi-1.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>,</span>
+<span id="cb4-3"><a href="dbi-1.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>, <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
+<span id="cb4-4"><a href="dbi-1.html#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-5"><a href="dbi-1.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="dbi-1.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#查看编码是否是936 代表中文简体</span></span>
+<span id="cb4-7"><a href="dbi-1.html#cb4-7" aria-hidden="true" tabindex="-1"></a>sql <span class="ot">&lt;-</span> <span class="st">&quot;SELECT COLLATIONPROPERTY( &#39;chinese_prc_ci_as&#39;, &#39;codepage&#39; )&quot;</span></span>
+<span id="cb4-8"><a href="dbi-1.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="dbi-1.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con,sql)</span>
+<span id="cb4-10"><a href="dbi-1.html#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="dbi-1.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb4-12"><a href="dbi-1.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute(con,sql)</span></span>
+<span id="cb4-13"><a href="dbi-1.html#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="dbi-1.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 用完后记得关闭数据库连接</span></span>
+<span id="cb4-15"><a href="dbi-1.html#cb4-15" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<ul>
+<li>连接mysql</li>
+</ul>
+<p><code>MySQL()</code>函数来源<code>RMySQL</code>包，用来创建<code>&lt;MySQLDriver&gt;</code>驱动</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dbi-1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb5-2"><a href="dbi-1.html#cb5-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),</span>
+<span id="cb5-3"><a href="dbi-1.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">&quot;test&quot;</span>, <span class="at">user =</span> <span class="st">&quot;test_admin&quot;</span>, <span class="at">password =</span> <span class="st">&quot;30HL1234M7#￥lD6gxjB&quot;</span>,</span>
+<span id="cb5-4"><a href="dbi-1.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">&quot;prd-public-mypersonal.mysql.test.zhangjiabei.rds.aliyuncs.com&quot;</span></span>
+<span id="cb5-5"><a href="dbi-1.html#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>或者通过本地已安装驱动连接数据库</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="dbi-1.html#cb6-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
+<span id="cb6-2"><a href="dbi-1.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;MySQL ODBC 8.0 Unicode Driver&quot;</span>,</span>
+<span id="cb6-3"><a href="dbi-1.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Server =</span> <span class="st">&quot;localhost&quot;</span>, <span class="at">UID =</span> <span class="st">&quot;root&quot;</span>, <span class="at">PWD =</span> <span class="st">&quot;123456&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;mysql&quot;</span>,</span>
+<span id="cb6-4"><a href="dbi-1.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Port =</span> <span class="dv">3306</span></span>
+<span id="cb6-5"><a href="dbi-1.html#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="dbi-1.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#mysql 数据库默认端口是3306 访问不通时记得检查3306端口是否开放</span></span></code></pre></div>
+</div>
+<div id="查询上传等任务-1" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> 查询上传等任务</h3>
+<p>dbGetQuery()函数处理由DBI包创建的con连接查询任务,dbExecute()执行一些数据库任务</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="dbi-1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dbGetQuery 直接查询</span></span>
+<span id="cb7-2"><a href="dbi-1.html#cb7-2" aria-hidden="true" tabindex="-1"></a>res_table <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from table&#39;</span>) <span class="co">#直接获取sql查询结果</span></span>
+<span id="cb7-3"><a href="dbi-1.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="dbi-1.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#dbReadTable直接读取</span></span>
+<span id="cb7-5"><a href="dbi-1.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con,<span class="st">&#39;tbl_name&#39;</span>) <span class="co">#直接读取数据库中某表</span></span>
+<span id="cb7-6"><a href="dbi-1.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="dbi-1.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dbSendQuery 执行一个查询任务 </span></span>
+<span id="cb7-8"><a href="dbi-1.html#cb7-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(<span class="at">conn =</span> con,<span class="at">statement =</span> <span class="st">&#39;select * FROM tab&#39;</span>)</span>
+<span id="cb7-9"><a href="dbi-1.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(res)</span>
+<span id="cb7-10"><a href="dbi-1.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
+<span id="cb7-11"><a href="dbi-1.html#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="dbi-1.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute</span></span>
+<span id="cb7-13"><a href="dbi-1.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con,<span class="st">&#39;delete from table where num &lt;=1000&#39;</span>) <span class="co">#类似任务</span></span>
+<span id="cb7-14"><a href="dbi-1.html#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="dbi-1.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># dbWriteTable()</span></span>
+<span id="cb7-16"><a href="dbi-1.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传数据,指定表名,需上传的数据框df,overwrite是否覆盖,append是否可追加</span></span>
+<span id="cb7-17"><a href="dbi-1.html#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(<span class="at">conn =</span> con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> df,<span class="at">overwrite=</span>TURE,<span class="at">append=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="函数介绍-1" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> 函数介绍</h3>
+<p>查看数据库信息,查看表名,删除表，关闭连接等常用操作.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="dbi-1.html#cb8-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb8-2"><a href="dbi-1.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
+<span id="cb8-3"><a href="dbi-1.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>, <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>, </span>
+<span id="cb8-4"><a href="dbi-1.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;GBK&quot;</span></span>
+<span id="cb8-5"><a href="dbi-1.html#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="dbi-1.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="dbi-1.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#查看数据版本连接信息</span></span>
+<span id="cb8-8"><a href="dbi-1.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetInfo</span>(con)</span>
+<span id="cb8-9"><a href="dbi-1.html#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="dbi-1.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据库中的全部表名</span></span>
+<span id="cb8-11"><a href="dbi-1.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con) <span class="co">#win下中文表名还是会乱码</span></span>
+<span id="cb8-12"><a href="dbi-1.html#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="dbi-1.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除表</span></span>
+<span id="cb8-14"><a href="dbi-1.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dbRemoveTable</span>(con,<span class="st">&#39;tbl_name&#39;</span>)</span>
+<span id="cb8-15"><a href="dbi-1.html#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="dbi-1.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 关闭连接</span></span>
+<span id="cb8-17"><a href="dbi-1.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="循环变化.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="简单用法.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="安装数据库-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="odbc包-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -446,20 +564,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
