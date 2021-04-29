@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-25" />
+<meta name="date" content="2021-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,6 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.4.5</b> 透视表功能</a></li>
 <li class="chapter" data-level="2.4.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.4.6</b> 非重复计数</a></li>
 <li class="chapter" data-level="2.4.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.4.7</b> rleid</a></li>
+<li class="chapter" data-level="2.4.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.4.8</b> shift</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
 <ul>
@@ -382,17 +383,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="安装-1" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> 安装</h2>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="安装-1.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 最简单是的方式就是安装tidyverse</span></span>
-<span id="cb147-2"><a href="安装-1.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
-<span id="cb147-3"><a href="安装-1.html#cb147-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-4"><a href="安装-1.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者仅仅安装 tidyr:</span></span>
-<span id="cb147-5"><a href="安装-1.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyr&#39;</span>)</span>
-<span id="cb147-6"><a href="安装-1.html#cb147-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-7"><a href="安装-1.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者从github 安装开发版本</span></span>
-<span id="cb147-8"><a href="安装-1.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb147-9"><a href="安装-1.html#cb147-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/tidyr&quot;</span>)</span>
-<span id="cb147-10"><a href="安装-1.html#cb147-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-11"><a href="安装-1.html#cb147-11" aria-hidden="true" tabindex="-1"></a><span class="co"># CTEST CODE</span></span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="安装-1.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 最简单是的方式就是安装tidyverse</span></span>
+<span id="cb149-2"><a href="安装-1.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
+<span id="cb149-3"><a href="安装-1.html#cb149-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-4"><a href="安装-1.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者仅仅安装 tidyr:</span></span>
+<span id="cb149-5"><a href="安装-1.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyr&#39;</span>)</span>
+<span id="cb149-6"><a href="安装-1.html#cb149-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-7"><a href="安装-1.html#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者从github 安装开发版本</span></span>
+<span id="cb149-8"><a href="安装-1.html#cb149-8" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb149-9"><a href="安装-1.html#cb149-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/tidyr&quot;</span>)</span>
+<span id="cb149-10"><a href="安装-1.html#cb149-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-11"><a href="安装-1.html#cb149-11" aria-hidden="true" tabindex="-1"></a><span class="co"># CTEST CODE</span></span></code></pre></div>
 </div>
             </section>
 
