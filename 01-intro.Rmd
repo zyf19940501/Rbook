@@ -378,6 +378,8 @@ DT[, c(.N, lapply(.SD, sum)), by=x] #按照x分组后 行数计数和每列求�
 
 ## 常用函数
 
+常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。
+
 ### 排序函数 frank
 
 `frank`和`frankv`函数参数如下：
@@ -596,6 +598,7 @@ DT
 ```
 
 
+
 ### 非重复计数
 
 `uniqueN`相当于`length(unique(x))`,但是计算更快，内存效率更高。
@@ -610,6 +613,11 @@ DT <- data.table(A = rep(1:3, each=4), B = rep(1:4, each=3),
 uniqueN(DT, by = key(DT))
 uniqueN(DT)
 ```
+
+## 高级函数
+
+使用频率不高，但在实现某些功能时特别好用的函数。
+
 
 ### rleid
 
@@ -637,7 +645,10 @@ rleid(DT$grp, prefix="grp") # prefix with 'grp'
 
 ### shift
 
-向前或向后功能,通俗来说就是像前或向后移动位置。示例如下：
+向前或向后功能,通俗来说就是向前或向后移动位置。
+
+
+示例如下：
 
 ```{r}
 x = 1:5
@@ -655,6 +666,17 @@ cols = c("v1","v2","v3")
 anscols = paste("lead", cols, sep="_")
 DT[, (anscols) := shift(.SD, 1, 0, "lead"), .SDcols=cols]
 ```
+
+例如求某人连续消费时间间隔天数时：
+
+```{r}
+DT = data.table(dates =lubridate::ymd(c(20210105,20210115,20210124,20210218,20210424)))
+DT[,newdate:=shift(dates)]
+DT
+```
+
+通过构造新列newdate，然后将两列相减`dates-newdate`即可得到每次购物间隔天数。
+
 
 ## 运用
 

@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="常规操作.html"/>
-<link rel="next" href="运用.html"/>
+<link rel="next" href="高级函数.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -162,14 +162,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
 <li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.1</b> rleid</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.2</b> shift</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -387,6 +390,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="常用函数" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> 常用函数</h2>
+<p>常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。</p>
 <div id="排序函数-frank" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> 排序函数 frank</h3>
 <p><code>frank</code>和<code>frankv</code>函数参数如下：</p>
@@ -619,37 +623,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb40-10"><a href="常用函数.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT)</span>
 <span id="cb40-11"><a href="常用函数.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
 </div>
-<div id="rleid" class="section level3" number="2.3.7">
-<h3><span class="header-section-number">2.3.7</span> rleid</h3>
-<p>该函数根据分组生成长度列。</p>
-<p>即将0011001110111101类似这种分组成1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8。在特定时候是很便捷的一个函数。如在计算股票连续上涨或下跌天数时。</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="常用函数.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb41-2"><a href="常用函数.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8</span></span></code></pre></div>
-<p>参数如下所示：</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="常用函数.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(..., <span class="at">prefix=</span><span class="cn">NULL</span>)</span>
-<span id="cb42-2"><a href="常用函数.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">prefix=</span><span class="cn">NULL</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="常用函数.html#cb43-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">grp=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)), <span class="at">value=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb43-2"><a href="常用函数.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp) <span class="co"># get run-length ids</span></span>
-<span id="cb43-3"><a href="常用函数.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
-<span id="cb43-4"><a href="常用函数.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(DT, <span class="st">&quot;grp&quot;</span>) <span class="co"># same as above</span></span>
-<span id="cb43-5"><a href="常用函数.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
-<span id="cb43-6"><a href="常用函数.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp, <span class="at">prefix=</span><span class="st">&quot;grp&quot;</span>) <span class="co"># prefix with &#39;grp&#39;</span></span>
-<span id="cb43-7"><a href="常用函数.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;grp1&quot; &quot;grp1&quot; &quot;grp2&quot; &quot;grp2&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp4&quot; &quot;grp5&quot; &quot;grp5&quot;</span></span></code></pre></div>
-</div>
-<div id="shift" class="section level3" number="2.3.8">
-<h3><span class="header-section-number">2.3.8</span> shift</h3>
-<p>向前或向后功能,通俗来说就是像前或向后移动位置。示例如下：</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="常用函数.html#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb44-2"><a href="常用函数.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lag with n=1 and pad with NA (returns vector)</span></span>
-<span id="cb44-3"><a href="常用函数.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shift</span>(x, <span class="at">n=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">type=</span><span class="st">&quot;lag&quot;</span>)</span>
-<span id="cb44-4"><a href="常用函数.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  1  2  3  4</span></span></code></pre></div>
-<p>其中参数n控制偏移量，n正负数和type的参数相对应。, n=-1 and type=‘lead’ 与 n=1 and type=’lag’效果相同。</p>
-<p>在data.table上使用：</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="常用函数.html#cb45-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">year=</span><span class="dv">2010</span><span class="sc">:</span><span class="dv">2014</span>, <span class="at">v1=</span><span class="fu">runif</span>(<span class="dv">5</span>), <span class="at">v2=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">v3=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb45-2"><a href="常用函数.html#cb45-2" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;v1&quot;</span>,<span class="st">&quot;v2&quot;</span>,<span class="st">&quot;v3&quot;</span>)</span>
-<span id="cb45-3"><a href="常用函数.html#cb45-3" aria-hidden="true" tabindex="-1"></a>anscols <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&quot;lead&quot;</span>, cols, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
-<span id="cb45-4"><a href="常用函数.html#cb45-4" aria-hidden="true" tabindex="-1"></a>DT[, (anscols) <span class="sc">:</span><span class="er">=</span> <span class="fu">shift</span>(.SD, <span class="dv">1</span>, <span class="dv">0</span>, <span class="st">&quot;lead&quot;</span>), .SDcols<span class="ot">=</span>cols]</span></code></pre></div>
-</div>
 </div>
             </section>
 
@@ -657,7 +630,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="常规操作.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="运用.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="高级函数.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

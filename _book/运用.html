@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.4 运用 | R学习笔记</title>
+  <title>2.5 运用 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.4 运用 | R学习笔记" />
+  <meta property="og:title" content="2.5 运用 | R学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.4 运用 | R学习笔记" />
+  <meta name="twitter:title" content="2.5 运用 | R学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="常用函数.html"/>
+<link rel="prev" href="高级函数.html"/>
 <link rel="next" href="database.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -162,14 +162,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
 <li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.1</b> rleid</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.2</b> shift</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -385,10 +388,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="运用" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> 运用</h2>
-<div id="自定义函数计算" class="section level3" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> 自定义函数计算</h3>
+<div id="运用" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> 运用</h2>
+<div id="自定义函数计算" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> 自定义函数计算</h3>
 <p>1.自定义函数处理列</p>
 <p>按照自定义函数计算修改单列或多列</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="运用.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 测试函数</span></span>
@@ -424,8 +427,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb46-31"><a href="运用.html#cb46-31" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
 <span id="cb46-32"><a href="运用.html#cb46-32" aria-hidden="true" tabindex="-1"></a><span class="co"># dt &lt;- dt[,colnames(dt):=lapply(.SD[,1:ncol(dt)],myfun)] #很重要的用法</span></span></code></pre></div>
 </div>
-<div id="带汇总的聚合运算" class="section level3" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> 带汇总的聚合运算</h3>
+<div id="带汇总的聚合运算" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> 带汇总的聚合运算</h3>
 <p>按照by的字段级别汇总.</p>
 <ol style="list-style-type: decimal">
 <li>rollup</li>
@@ -551,8 +554,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb50-8"><a href="运用.html#cb50-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>最后还有cube()函数,可?cube查看用法</p>
 </div>
-<div id="行列转变" class="section level3" number="2.4.3">
-<h3><span class="header-section-number">2.4.3</span> 行列转变</h3>
+<div id="行列转变" class="section level3" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> 行列转变</h3>
 <ul>
 <li>一列变多行</li>
 </ul>
@@ -604,7 +607,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="常用函数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="高级函数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="database.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
