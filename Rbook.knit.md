@@ -2,7 +2,7 @@
 title: "R学习笔记"
 knit: "bookdown::render_book"
 author: "Yufei Zhong"
-date: "`r Sys.Date()`"
+date: "2021-05-10"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -10,30 +10,12 @@ biblio-style: apalike
 link-citations: yes
 description: "个人学习R语言笔记"
 ---
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 
 
 # 说明
 
-```{r eval=TRUE,include=FALSE}
-a <- version
-```
+
 
 作为商业数据分析师，我学习使用`R`以及有一段时间，主要用`R`来处理数据，自动化报表，ETL，可视化等，另外用`shiny`做看板。
 
@@ -50,31 +32,38 @@ Email: <598253220@qq.com>
 语雀: https://www.yuque.com/zyufei
 
 
-```{r}
+
+```r
 #查看版本信息
 sessionInfo()
+#> R version 4.0.3 (2020-10-10)
+#> Platform: x86_64-w64-mingw32/x64 (64-bit)
+#> Running under: Windows 10 x64 (build 19041)
+#> 
+#> Matrix products: default
+#> 
+#> locale:
+#> [1] LC_COLLATE=Chinese (Simplified)_China.936 
+#> [2] LC_CTYPE=Chinese (Simplified)_China.936   
+#> [3] LC_MONETARY=Chinese (Simplified)_China.936
+#> [4] LC_NUMERIC=C                              
+#> [5] LC_TIME=Chinese (Simplified)_China.936    
+#> 
+#> attached base packages:
+#> [1] stats     graphics  grDevices utils     datasets  methods   base     
+#> 
+#> loaded via a namespace (and not attached):
+#>  [1] bookdown_0.22     digest_0.6.27     R6_2.5.0          jsonlite_1.7.2   
+#>  [5] magrittr_2.0.1    evaluate_0.14     stringi_1.5.3     rlang_0.4.10     
+#>  [9] rstudioapi_0.13   jquerylib_0.1.3   bslib_0.2.4       rmarkdown_2.7    
+#> [13] tools_4.0.3       stringr_1.4.0     xfun_0.22         yaml_2.2.1       
+#> [17] compiler_4.0.3    htmltools_0.5.1.1 knitr_1.32        sass_0.3.1
 ```
 
 
 <!--chapter:end:index.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 # data.table
 
 
@@ -102,7 +91,8 @@ data.table 优势：
 
 安装详细信息请参考[the Installation wiki](https://github.com/Rdatatable/data.table/wiki/Installation)，有关于不同系统安装首次以及相关说明。
 
-```{r eval=FALSE}
+
+```r
 install.packages("data.table")
 # latest development version:
 data.table::update.dev.pkg()
@@ -123,7 +113,8 @@ fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线�
 
 本文会照搬很多官方关于data.table的demo.
 
-```{r}
+
+```r
 library(data.table)
 input <- if (file.exists("./data/flights.csv")) {
    "./data/flights.csv" #本地文件
@@ -133,12 +124,26 @@ input <- if (file.exists("./data/flights.csv")) {
 flights <- fread(input) #具体参数请参照文档  实际工作中可能会用到的encoding参数,编码 encoding='UTF-8'
 
 head(flights)
-
+#>    year month day dep_delay arr_delay carrier origin dest air_time distance
+#> 1: 2014     1   1        14        13      AA    JFK  LAX      359     2475
+#> 2: 2014     1   1        -3        13      AA    JFK  LAX      363     2475
+#> 3: 2014     1   1         2         9      AA    JFK  LAX      351     2475
+#> 4: 2014     1   1        -8       -26      AA    LGA  PBI      157     1035
+#> 5: 2014     1   1         2         1      AA    JFK  LAX      350     2475
+#> 6: 2014     1   1         4         0      AA    EWR  LAX      339     2454
+#>    hour
+#> 1:    9
+#> 2:   11
+#> 3:   19
+#> 4:    7
+#> 5:   13
+#> 6:   18
 ```
 
 本文读取本地文件,如果该数据集下载失败,可更改地址为(http://www.zhongyufei.com/datatable/data/flights.csv)
 
-```{r eval=FALSE}
+
+```r
 flights <- fread("http://www.zhongyufei.com/datatable/data/flights.csv")
 ```
 
@@ -155,7 +160,8 @@ flights <- fread("http://www.zhongyufei.com/datatable/data/flights.csv")
 
 ![i-j-by](https://gitee.com/zhongyufei/photo-bed/raw/pic/img/data.table-i-j-by%E4%BB%8B%E7%BB%8D.png)
 
-```{r eval=FALSE}
+
+```r
 DT[i, j, by]
 ##   R:                 i                 j        by
 ## SQL:  where | order by   select | update  group by
@@ -171,10 +177,23 @@ data.table个人理解主要有三大类参数,i参数做筛选,j参数做计算
 
 代码求2014年6月,从各始发机场到各目的机场的飞行距离求和.
 
-```{r}
+
+```r
 library(data.table)
 flights <- fread("./data/flights.csv")
 flights[year==2014 & month==6,.(求和项distance=sum(distance)),by=.(origin,dest)]
+#>      origin dest 求和项distance
+#>   1:    JFK  LAX        2663100
+#>   2:    JFK  DFW          82069
+#>   3:    JFK  LAS         795792
+#>   4:    JFK  SFO        1967946
+#>   5:    JFK  SAN         349778
+#>  ---                           
+#> 191:    EWR  ANC          13480
+#> 192:    EWR  BZN          15056
+#> 193:    LGA  TVC           7205
+#> 194:    LGA  BZN           3788
+#> 195:    JFK  HYA            980
 ```
 
 2.代码解释
@@ -205,7 +224,8 @@ by 的部分.(origin,dest),重点是写在.()中,和Excel透视表一一对应�
 在筛选时涉及到条件判断，R语言中常用的条件判断分为逻辑运算、关系运算。常用的关系运算符 >、 <、==、!=、>=、<=分别代表大于、小于、等于、不等于、大于等于、小于等于。常用的逻辑运算符 &、|、！等。
 
 
-```{r eval=FALSE}
+
+```r
 #单条件筛选
 filghts[year == 2014] #筛选year==2014
 #多条件筛选 用 & 链接
@@ -224,9 +244,22 @@ flights[month %between% c(1,7)]
 
 .()或list()是data.table中的比较特殊的实现列筛选的用法。常规数字索引，字符向量索引同样有效。
 
-```{r}
+
+```r
 #注意前面的. .()
 flights[,.(year,month,day,dep_delay,carrier,origin)] 
+#>         year month day dep_delay carrier origin
+#>      1: 2014     1   1        14      AA    JFK
+#>      2: 2014     1   1        -3      AA    JFK
+#>      3: 2014     1   1         2      AA    JFK
+#>      4: 2014     1   1        -8      AA    LGA
+#>      5: 2014     1   1         2      AA    JFK
+#>     ---                                        
+#> 253312: 2014    10  31         1      UA    LGA
+#> 253313: 2014    10  31        -5      UA    EWR
+#> 253314: 2014    10  31        -8      MQ    LGA
+#> 253315: 2014    10  31        -4      MQ    LGA
+#> 253316: 2014    10  31        -5      MQ    LGA
 # flights[,list(year,month,day,dep_delay,carrier,origin)]  same above
 
 # not run
@@ -238,7 +271,8 @@ flights[,.(year,month,day,dep_delay,carrier,origin)]
 
 setcolorder函数可以调整列的顺序，将常用的字段信息排在前面可以用过该函数实现。
 
-```{r}
+
+```r
 # not run
 # setcolorder(x = flights,neworder = c( "month","day","dep_delay" ,"arr_delay","carrier" )) 
 # 按照指定列顺序排序 其余字段保持不变,不是建立副本,是直接修改了flights 数据的列顺序
@@ -248,17 +282,31 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 
 根据最开始的Excel透视表截图，我们想要获得如截图一样的结果该怎么实现呢？代码如下：
 
-```{r,eval=FALSE}
+
+```r
 flights[year==2014 & month==6,.(求和项distance=sum(distance),平均距离=mean(distance)),by=.(origin,dest)]
 ```
 
 在i的位置做筛选，j的位置做计算，by指定分组字段。在j的位置可以做各种各样的计算，R中自带的函数，或者是自己定义的函数。
 
-```{r}
+
+```r
 myfun <- function(x){
     x^2/2
 }
 flights[year==2014 & month==6,.(myfun(distance)),by=.(origin,dest)]
+#>        origin dest      V1
+#>     1:    JFK  LAX 3062813
+#>     2:    JFK  LAX 3062813
+#>     3:    JFK  LAX 3062813
+#>     4:    JFK  LAX 3062813
+#>     5:    JFK  LAX 3062813
+#>    ---                    
+#> 26484:    JFK  HYA   19208
+#> 26485:    JFK  HYA   19208
+#> 26486:    JFK  HYA   19208
+#> 26487:    JFK  HYA   19208
+#> 26488:    JFK  HYA   19208
 ```
 
 #### by 分组
@@ -267,18 +315,45 @@ flights[year==2014 & month==6,.(myfun(distance)),by=.(origin,dest)]
 
 1.按月分组
 
-```{r}
+
+```r
 flights[,.(sum(distance)),by=.(month)]
+#>     month       V1
+#>  1:     1 25112563
+#>  2:     2 22840391
+#>  3:     3 28716598
+#>  4:     4 27816797
+#>  5:     5 28030020
+#>  6:     6 29093557
+#>  7:     7 30059175
+#>  8:     8 30322047
+#>  9:     9 27615097
+#> 10:    10 28900834
 ```
 
 2.多条件分组
 
-```{r}
+
+```r
 dt <- flights[,.(sum(distance)),by=.(carrier,origin)]
 head(dt)
+#>    carrier origin       V1
+#> 1:      AA    JFK 20492213
+#> 2:      AA    LGA 12365282
+#> 3:      AA    EWR  3550217
+#> 4:      AS    EWR  1378748
+#> 5:      B6    JFK 38117662
+#> 6:      B6    EWR  4508574
 #可直接重新命名
 dt <- flights[,.(sum(distance)),by=.(newcol1 = carrier,newcol2 = origin)]
 head(dt)
+#>    newcol1 newcol2       V1
+#> 1:      AA     JFK 20492213
+#> 2:      AA     LGA 12365282
+#> 3:      AA     EWR  3550217
+#> 4:      AS     EWR  1378748
+#> 5:      B6     JFK 38117662
+#> 6:      B6     EWR  4508574
 ```
 
 
@@ -286,9 +361,13 @@ head(dt)
 
 即得到是否大于6的两类分组
 
-```{r}
+
+```r
 dt <- flights[,.(sum(distance)),by=.(month>6)] #by里面可以做计算
 head(dt)
+#>    month        V1
+#> 1: FALSE 161609926
+#> 2:  TRUE 116897153
 ```
 
 
@@ -296,11 +375,18 @@ head(dt)
 
 行筛选在 i 的位置上进行, 列筛选在 j 的位置上进行;data.table中j的位置比较灵活多变，但是i的位置大部分时候都是进行条件筛选。我们通过上述的行列筛选已经大概知道data.table中i,j的用法。也就是我们常规数据清洗过程中的数据筛选过程，筛选符合要求的数据记录。
 
-```{r}
+
+```r
 
 dt <- flights[ year == 2014 & month == 6 & day >=15,.(year,month,day,dep_delay,carrier,origin)] 
 head(dt)
-
+#>    year month day dep_delay carrier origin
+#> 1: 2014     6  15        -4      AA    JFK
+#> 2: 2014     6  15        -8      AA    JFK
+#> 3: 2014     6  15       -12      AA    JFK
+#> 4: 2014     6  15        -4      AA    LGA
+#> 5: 2014     6  15        -3      AA    JFK
+#> 6: 2014     6  15         5      AA    JFK
 ```
 
 
@@ -317,25 +403,71 @@ head(dt)
 
 如下所示:新增addcol列，最后的[]是为了显示新增列的数据框,可不增加。
 
-```{r}
+
+```r
 #data.table()函数创建data.table数据框
 dt <- data.table(col1=1:10,col2=letters[1:10],col3=LETTERS[1:10],col4=1:10)
 # 新增列 :=
 dt[,addcol:=rep('新列',10)][] #最后的[]是为了显示新增列的数据框,可不增加
+#>     col1 col2 col3 col4 addcol
+#>  1:    1    a    A    1   新列
+#>  2:    2    b    B    2   新列
+#>  3:    3    c    C    3   新列
+#>  4:    4    d    D    4   新列
+#>  5:    5    e    E    5   新列
+#>  6:    6    f    F    6   新列
+#>  7:    7    g    G    7   新列
+#>  8:    8    h    H    8   新列
+#>  9:    9    i    I    9   新列
+#> 10:   10    j    J   10   新列
 #dt[,addcol:=rep('新列',10)] 不会显示返回结果,加上[]会显示返回
 # 新增多列
 dt[,`:=`(newcol1=rep('newcol1',10),newcol2=rep('newcol2',10))][]
+#>     col1 col2 col3 col4 addcol newcol1 newcol2
+#>  1:    1    a    A    1   新列 newcol1 newcol2
+#>  2:    2    b    B    2   新列 newcol1 newcol2
+#>  3:    3    c    C    3   新列 newcol1 newcol2
+#>  4:    4    d    D    4   新列 newcol1 newcol2
+#>  5:    5    e    E    5   新列 newcol1 newcol2
+#>  6:    6    f    F    6   新列 newcol1 newcol2
+#>  7:    7    g    G    7   新列 newcol1 newcol2
+#>  8:    8    h    H    8   新列 newcol1 newcol2
+#>  9:    9    i    I    9   新列 newcol1 newcol2
+#> 10:   10    j    J   10   新列 newcol1 newcol2
 ```
 
 - 删除
 
 删除列即将列赋值NULL即可
 
-```{r}
+
+```r
 # 删除列
 dt[,col1:=NULL][]
+#>     col2 col3 col4 addcol newcol1 newcol2
+#>  1:    a    A    1   新列 newcol1 newcol2
+#>  2:    b    B    2   新列 newcol1 newcol2
+#>  3:    c    C    3   新列 newcol1 newcol2
+#>  4:    d    D    4   新列 newcol1 newcol2
+#>  5:    e    E    5   新列 newcol1 newcol2
+#>  6:    f    F    6   新列 newcol1 newcol2
+#>  7:    g    G    7   新列 newcol1 newcol2
+#>  8:    h    H    8   新列 newcol1 newcol2
+#>  9:    i    I    9   新列 newcol1 newcol2
+#> 10:    j    J   10   新列 newcol1 newcol2
 # 删除多列
 dt[,c('newcol1','newcol2'):=NULL][]
+#>     col2 col3 col4 addcol
+#>  1:    a    A    1   新列
+#>  2:    b    B    2   新列
+#>  3:    c    C    3   新列
+#>  4:    d    D    4   新列
+#>  5:    e    E    5   新列
+#>  6:    f    F    6   新列
+#>  7:    g    G    7   新列
+#>  8:    h    H    8   新列
+#>  9:    i    I    9   新列
+#> 10:    j    J   10   新列
 ```
 
 
@@ -343,9 +475,21 @@ dt[,c('newcol1','newcol2'):=NULL][]
 
 更新即重新赋值，将现有列参与计算等于是重新赋值，可以看成是更新列。
 
-```{r}
+
+```r
 # 更新列
 dt[,col1:=11:20][]
+#>     col2 col3 col4 addcol col1
+#>  1:    a    A    1   新列   11
+#>  2:    b    B    2   新列   12
+#>  3:    c    C    3   新列   13
+#>  4:    d    D    4   新列   14
+#>  5:    e    E    5   新列   15
+#>  6:    f    F    6   新列   16
+#>  7:    g    G    7   新列   17
+#>  8:    h    H    8   新列   18
+#>  9:    i    I    9   新列   19
+#> 10:    j    J   10   新列   20
 # not run 
 # 两列间计算 也可以理解为更新
 dt[,newcol:=col1/col4]
@@ -358,7 +502,8 @@ dt[,newcol:=col1/col4]
 注意：按照函数文档说法：Note that queries like x[order(.)] are optimised internally to use data.table's fast order。即x[order(.)]这样的用法会被优化为data.table的排序方法。
 
 
-```{r}
+
+```r
 set.seed(45L)
 DT = data.table(A=sample(3, 10, TRUE),
          B=sample(letters[1:3], 10, TRUE), C=sample(10))
@@ -380,7 +525,8 @@ setorderv(DT, c("A", "B"), c(1, -1))
 
 %in%用法与 sql 中 in 用法类似。
 
-```{r eval=FALSE}
+
+```r
 # 筛选 %in% 
 flights[ hour %in% seq(1,24,2) ]
 
@@ -390,7 +536,8 @@ flights[ hour %in% seq(1,24,2) ]
 
 %chin%用法与 %in% 类似，但仅仅针对字符。
 
-```{r eval=FALSE}
+
+```r
 # 字符筛选
 flights[ origin %chin% c('JFK','LGA')]
 # not run 同上 %chin% 对字符速度筛选速度更快
@@ -402,45 +549,103 @@ flights[ origin %chin% c('JFK','LGA')]
 
 该函数的新特性矢量化挺实用。
 
-```{r}
+
+```r
 #between 函数参数
 #between(x, lower, upper, incbounds=TRUE, NAbounds=TRUE, check=FALSE)
 X <-  data.table(a=1:5, b=6:10, c=c(5:1))
 X[b %between% c(7,9)]
+#>    a b c
+#> 1: 2 7 4
+#> 2: 3 8 3
+#> 3: 4 9 2
 X[between(b, 7, 9)] #效果同上
+#>    a b c
+#> 1: 2 7 4
+#> 2: 3 8 3
+#> 3: 4 9 2
 X[c %between% list(a,b)] # 矢量化
+#>    a b c
+#> 1: 1 6 5
+#> 2: 2 7 4
+#> 3: 3 8 3
 ```
 
 - like 筛选
 
 %like% 用法与SQL中 like 类似。
 
-```{r}
+
+```r
 # %like% 用法与SQL中 like 类似
 DT = data.table(Name=c("Mary","George","Martha"), Salary=c(2,3,4))
 DT[Name %like% "^Mar"]
+#>      Name Salary
+#> 1:   Mary      2
+#> 2: Martha      4
 ```
 
 ### 特殊符号
 
 .SD,.BY,.N,.I,.NGRP和.GRP,.SDcols等,只能用在 j 的位置,.N 可以用在 i 的位置.
 
-```{r}
+
+```r
 DT = data.table(x=rep(c("b","a","c"),each=3), v=c(1,1,1,2,2,1,1,2,2), y=c(1,3,6), a=1:9, b=9:1)
 DT
+#>    x v y a b
+#> 1: b 1 1 1 9
+#> 2: b 1 3 2 8
+#> 3: b 1 6 3 7
+#> 4: a 2 1 4 6
+#> 5: a 2 3 5 5
+#> 6: a 1 6 6 4
+#> 7: c 1 1 7 3
+#> 8: c 2 3 8 2
+#> 9: c 2 6 9 1
 X = data.table(x=c("c","b"), v=8:7, foo=c(4,2))
 X
+#>    x v foo
+#> 1: c 8   4
+#> 2: b 7   2
 
 # 用在i的位置
 DT[.N] #取DT最后一行,.N 计数函数
+#>    x v y a b
+#> 1: c 2 6 9 1
 DT[,.N] #DT 共有多少行记录 返回一个整数
+#> [1] 9
 DT[, .N, by=x]  #分组计数
+#>    x N
+#> 1: b 3
+#> 2: a 3
+#> 3: c 3
 DT[, .SD, .SDcols=x:y]  # 选择x 到y 列
+#>    x v y
+#> 1: b 1 1
+#> 2: b 1 3
+#> 3: b 1 6
+#> 4: a 2 1
+#> 5: a 2 3
+#> 6: a 1 6
+#> 7: c 1 1
+#> 8: c 2 3
+#> 9: c 2 6
 #DT[, .SD, .SDcols=c("x","y")] 与上面不一样
 
 DT[, .SD[1]] #取第一行
+#>    x v y a b
+#> 1: b 1 1 1 9
 DT[, .SD[1], by=x] #按x列分组后
+#>    x v y a b
+#> 1: b 1 1 1 9
+#> 2: a 2 1 4 6
+#> 3: c 1 1 7 3
 DT[, c(.N, lapply(.SD, sum)), by=x] #按照x分组后 行数计数和每列求和
+#>    x N v  y  a  b
+#> 1: b 3 3 10  6 24
+#> 2: a 3 5 10 15 15
+#> 3: c 3 5 10 24  6
 ```
 
 
@@ -450,7 +655,8 @@ DT[, c(.N, lapply(.SD, sum)), by=x] #按照x分组后 行数计数和每列求�
 
 `frank`和`frankv`函数参数如下：
 
-```{r eval=FALSE}
+
+```r
 frank(x, ..., na.last=TRUE, ties.method=c("average",
   "first", "last", "random", "max", "min", "dense"))
 
@@ -461,30 +667,40 @@ frankv(x, cols=seq_along(x), order=1L, na.last=TRUE,
 
 官方案例,如下所示:
 
-```{r}
+
+```r
 # on vectors
 x = c(4, 1, 4, NA, 1, NA, 4)
 # NAs are considered identical (unlike base R)
 # default is average
 frankv(x) # na.last=TRUE
+#> [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0
 frankv(x, na.last=FALSE)
+#> [1] 6.0 3.5 6.0 1.5 3.5 1.5 6.0
 
 # on data.table
 DT = data.table(x, y=c(1, 1, 1, 0, NA, 0, 2))
 frankv(DT, cols="x") # same as frankv(x) from before
+#> [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0
 frankv(DT, cols="x", na.last="keep")
+#> [1] 4.0 1.5 4.0  NA 1.5  NA 4.0
 frankv(DT, cols="x", ties.method="dense", na.last=NA)
+#> [1] 2 1 2 1 2
 frank(DT, x, ties.method="dense", na.last=NA) # equivalent of above using frank
+#> [1] 2 1 2 1 2
 ```
 
 
 * frankv在排序时,NA被认为是一样的,基础base R 中认为不一样.
 
 
-```{r}
+
+```r
 x <-  c(4, 1, 4, NA, 1, NA, 4) 
 frankv(x)
+#> [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0
 rank(x)
+#> [1] 4.0 1.5 4.0 6.0 1.5 7.0 4.0
 ```
 
 
@@ -492,9 +708,12 @@ rank(x)
 
 order参数只能为1或者-1.默认为1代表升序
 
-```{r}
+
+```r
 frankv(x,order = 1L)
+#> [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0
 frankv(x,order = -1L)
+#> [1] 2.0 4.5 2.0 6.5 4.5 6.5 2.0
 ```
 
 
@@ -503,7 +722,8 @@ frankv(x,order = -1L)
 默认 average,还有dense,random,first,last,max,min等方式。其中dense是紧凑排名，random是随机让相同的随机排列后排名
 
 
-```{r eval=FALSE}
+
+```r
 x <- c(1,1,1,2,3)
 frankv(x)  #大小相同 排名相同,下一位排名除以2
 frankv(x,ties.method = 'min')  #大小相同 排名相同,取最小排名
@@ -520,11 +740,16 @@ frankv(x,ties.method = 'random')
 
 na.last参数等于TRUE时，缺失值被排最后；如果等于FALSE,放在前面；如果等于NA，将被移除；如果等于"keep",将会保留NA.
 
-```{r}
+
+```r
 frankv(c(NA,NA,1,2,3), na.last = TRUE,ties.method = 'first')
+#> [1] 4 5 1 2 3
 frankv(c(NA,NA,1,2,3), na.last = FALSE,ties.method = 'first')
+#> [1] 1 2 3 4 5
 frankv(c(NA,NA,1,2,3), na.last = NA,ties.method = 'first')
+#> [1] 1 2 3
 frankv(c(NA,NA,1,2,3), na.last = 'keep',ties.method = 'first')
+#> [1] NA NA  1  2  3
 ```
 
 
@@ -534,31 +759,38 @@ frankv(c(NA,NA,1,2,3), na.last = 'keep',ties.method = 'first')
 
 fifelse()类似`dplyr::if_else()`函数,相比base::ifelse() 更快。
 
-```{r}
+
+```r
 x <-  c(1:4, 3:2, 1:4,5)
 fifelse(x > 2L, x, x - 1L)
+#>  [1] 0 1 3 4 3 1 0 1 3 4 5
 
 fifelse(x > 2L,fifelse(x >= 4L,x + 1L,x),x-1L)
+#>  [1] 0 1 3 5 3 1 0 1 3 5 6
 ```
 
 - fcase 
 
 与sql中的case when，与dplyr中的`case_when()`函数用法相似。相比fifelse相比，嵌套更加方便。
 
-```{r}
+
+```r
 x = 1:10
 fcase(
 	x < 5L, 1L,
 	x > 5L, 3L
 )
+#>  [1]  1  1  1  1 NA  3  3  3  3  3
 
 # not run 两种函数实现方式
 fifelse(x > 5,fifelse(x >8,2,1),0)
+#>  [1] 0 0 0 0 0 1 1 1 2 2
 fcase(
   x > 8,2,
   x > 5,1,
   default = 0
 )
+#>  [1] 0 0 0 0 0 1 1 1 2 2
 ```
 
 
@@ -567,7 +799,8 @@ fcase(
 
 相当于base R 中 union(),intersect(),setdiff() 和setequal() 功能.all参数控制如何处理重复的行,和SQL中不同的是,data.table将保留行顺序.
 
-```{r eval=FALSE}
+
+```r
 
 fintersect(x, y, all = FALSE)
 fsetdiff(x, y, all = FALSE)
@@ -595,7 +828,8 @@ fsetequal(x, x2)            # setequal all
 
 键入?merge()查看函数帮助,data.table 包中和base R 中都有merge 函数,当第一个数据框是data.table格式时启用data.table::merge(). 
 
-```{r eval=FALSE}
+
+```r
 ?merge()
 merge(x, y, by = NULL, by.x = NULL, by.y = NULL, all = FALSE,
 all.x = all, all.y = all, sort = TRUE, suffixes = c(".x", ".y"), no.dups = TRUE,
@@ -614,7 +848,8 @@ x.y为连个数据框,当两个数据框连接字段相同时,用by=c('','')连�
 
 参数如下：fun.aggregate函数指定聚合函数，value.var参数指定参与聚合的字段。formula指定聚合维度，格式用x+y~z，其中x,y在行的位置，z在列的位置。
 
-```{r eval=FALSE}
+
+```r
 dcast(data, formula, fun.aggregate = NULL, sep = "_",
     ..., margins = NULL, subset = NULL, fill = NULL,
     drop = TRUE, value.var = guess(data),
@@ -624,11 +859,17 @@ dcast(data, formula, fun.aggregate = NULL, sep = "_",
 示例如下：
 
 
-```{r}
+
+```r
 dt <- data.table(分公司=rep(c('华东','华南','华西','华北'),1000),
               季度=rep(c('一季度','二季度','三季度','四季度'),1000),
               销售额=sample(100:200,4000,replace = TRUE))
 dcast(dt,分公司~季度,value.var = "销售额",fun.aggregate = sum)
+#>    分公司 一季度 三季度 二季度 四季度
+#> 1:   华东 149135      0      0      0
+#> 2:   华北      0      0      0 150585
+#> 3:   华南      0      0 149451      0
+#> 4:   华西      0 150649      0      0
 ```
 
 从版本V1.9.6起可以同时对多个值实现不同聚合后的长转宽。
@@ -636,17 +877,46 @@ dcast(dt,分公司~季度,value.var = "销售额",fun.aggregate = sum)
 fun参数即 fun.aggregate的简写，可以是自定义的函数。
 
 
-```{r}
+
+```r
 dt <-  data.table(x=sample(5,20,TRUE), y=sample(2,20,TRUE),
                 z=sample(letters[1:2], 20,TRUE), d1 = runif(20), d2=1L)
 dcast(dt, x + y ~ z, fun=list(sum,mean), value.var=c("d1","d2"))
+#>    x y d1_sum_a d1_sum_b d2_sum_a d2_sum_b d1_mean_a d1_mean_b d2_mean_a
+#> 1: 1 1    0.000   0.3141        0        1       NaN    0.3141       NaN
+#> 2: 1 2    0.675   0.7524        1        1     0.675    0.7524         1
+#> 3: 2 1    0.722   1.9725        1        3     0.722    0.6575         1
+#> 4: 2 2    1.062   0.0657        2        1     0.531    0.0657         1
+#> 5: 3 2    0.329   0.0000        1        0     0.329       NaN         1
+#> 6: 4 1    1.934   0.3536        3        1     0.645    0.3536         1
+#> 7: 4 2    1.968   0.0000        3        0     0.656       NaN         1
+#> 8: 5 2    0.404   0.8995        1        1     0.404    0.8995         1
+#>    d2_mean_b
+#> 1:         1
+#> 2:         1
+#> 3:         1
+#> 4:         1
+#> 5:       NaN
+#> 6:         1
+#> 7:       NaN
+#> 8:         1
 dcast(dt, x + y ~ z, fun=list(sum,mean), value.var=list("d1","d2")) #注意value.var是向量和列表时的区别
+#>    x y d1_sum_a d1_sum_b d2_mean_a d2_mean_b
+#> 1: 1 1    0.000   0.3141       NaN         1
+#> 2: 1 2    0.675   0.7524         1         1
+#> 3: 2 1    0.722   1.9725         1         1
+#> 4: 2 2    1.062   0.0657         1         1
+#> 5: 3 2    0.329   0.0000         1       NaN
+#> 6: 4 1    1.934   0.3536         1         1
+#> 7: 4 2    1.968   0.0000         1       NaN
+#> 8: 5 2    0.404   0.8995         1         1
 ```
 
 
 - melt函数实现宽转长
 
-```{r eval=FALSE}
+
+```r
 melt(data, id.vars, measure.vars,
     variable.name = "variable", value.name = "value",
     ..., na.rm = FALSE, variable.factor = TRUE,
@@ -656,11 +926,24 @@ melt(data, id.vars, measure.vars,
 
 示例如下:
 
-```{r}
+
+```r
 ChickWeight = as.data.table(ChickWeight)
 setnames(ChickWeight, tolower(names(ChickWeight)))
 DT <- melt(as.data.table(ChickWeight), id=2:4) # calls melt.data.table
 DT
+#>      time chick diet variable value
+#>   1:    0     1    1   weight    42
+#>   2:    2     1    1   weight    51
+#>   3:    4     1    1   weight    59
+#>   4:    6     1    1   weight    64
+#>   5:    8     1    1   weight    76
+#>  ---                               
+#> 574:   14    50    4   weight   175
+#> 575:   16    50    4   weight   205
+#> 576:   18    50    4   weight   234
+#> 577:   20    50    4   weight   264
+#> 578:   21    50    4   weight   264
 ```
 
 
@@ -668,15 +951,19 @@ DT
 
 `uniqueN`相当于`length(unique(x))`,但是计算更快，内存效率更高。
 
-```{r}
+
+```r
 x <-sample(1:10,50,replace = TRUE)
 uniqueN(x)
+#> [1] 10
 
 DT <- data.table(A = rep(1:3, each=4), B = rep(1:4, each=3),
                  C = rep(1:2, 6), key = "A,B")
 
 uniqueN(DT, by = key(DT))
+#> [1] 6
 uniqueN(DT)
+#> [1] 10
 ```
 
 ### rleid
@@ -685,39 +972,49 @@ uniqueN(DT)
 
 即将0011001110111101类似这种分组成1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8。在特定时候是很便捷的一个函数。如在计算股票连续上涨或下跌天数时。
 
-```{r}
+
+```r
 rleid(c(0,0,1,1,0,0,1,1,1,0,1,1,1,1,0,1))
+#>  [1] 1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8
 ```
 
 参数如下所示：
 
-```{r eval=FALSE}
+
+```r
 rleid(..., prefix=NULL)
 rleidv(x, cols=seq_along(x), prefix=NULL)
 ```
 
-```{r}
+
+```r
 DT = data.table(grp=rep(c("A", "B", "C", "A", "B"), c(2,2,3,1,2)), value=1:10)
 rleid(DT$grp) # get run-length ids
+#>  [1] 1 1 2 2 3 3 3 4 5 5
 rleidv(DT, "grp") # same as above
+#>  [1] 1 1 2 2 3 3 3 4 5 5
 rleid(DT$grp, prefix="grp") # prefix with 'grp'
+#>  [1] "grp1" "grp1" "grp2" "grp2" "grp3" "grp3" "grp3" "grp4" "grp5" "grp5"
 ```
 
 ### shift
 
 向前或向后功能,通俗来说就是像前或向后移动位置。示例如下：
 
-```{r}
+
+```r
 x = 1:5
 # lag with n=1 and pad with NA (returns vector)
 shift(x, n=1, fill=NA, type="lag")
+#> [1] NA  1  2  3  4
 ```
 
 其中参数n控制偏移量，n正负数和type的参数相对应。, n=-1 and type='lead' 与 n=1 and type='lag'效果相同。
 
 在data.table上使用：
 
-```{r}
+
+```r
 DT = data.table(year=2010:2014, v1=runif(5), v2=1:5, v3=letters[1:5])
 cols = c("v1","v2","v3")
 anscols = paste("lead", cols, sep="_")
@@ -732,7 +1029,8 @@ DT[, (anscols) := shift(.SD, 1, 0, "lead"), .SDcols=cols]
 
 按照自定义函数计算修改单列或多列
 
-```{r}
+
+```r
 # 测试函数
 
 fun <- function(x){
@@ -742,6 +1040,16 @@ fun <- function(x){
 DT <-  data.table(x=rep(c("b","a","c"),each=3), v=c(1,1,1,2,2,1,1,2,2), y=c(1,3,6), a=1:9, b=9:1)
 
 DT[,.(newcol=fun(y)),by=.(x)]
+#>    x newcol
+#> 1: b      2
+#> 2: b     10
+#> 3: b     37
+#> 4: a      2
+#> 5: a     10
+#> 6: a     37
+#> 7: c      2
+#> 8: c     10
+#> 9: c     37
 
 #Not run
 #DT[,lapply(.SD,fun),.SDcols=c('y','a'),by=.(x)] #多列参与计算
@@ -755,7 +1063,6 @@ DT[,.(newcol=fun(y)),by=.(x)]
 # }
 # 
 # dt <- dt[,colnames(dt):=lapply(.SD[,1:ncol(dt)],myfun)] #很重要的用法
-
 ```
 
 
@@ -767,7 +1074,8 @@ DT[,.(newcol=fun(y)),by=.(x)]
 
 分组聚合后设置id=TRUE将各个级别的汇总显示清晰,当by字段只有一个是和正常聚合计算没有区别.以下是官方案例.
 
-```{r}
+
+```r
 #Usage
 #rollup(x, j, by, .SDcols, id = FALSE, ...)
 n = 24L
@@ -780,6 +1088,43 @@ DT <- data.table(
     value = sample(c(3, 3.5, 2.5, 2), n, TRUE)
 )
 rollup(DT, j = sum(value), by = c("color","year","status")) # default id=FALSE
+#>      color       year   status   V1
+#>  1:    red 2015-01-01   active  3.5
+#>  2:  green 2015-01-01 inactive  5.5
+#>  3:  green 2014-01-01 archived  3.5
+#>  4:  green 2015-01-01 archived  2.0
+#>  5: yellow 2014-01-01   active  4.5
+#>  6:    red 2013-01-01 inactive  2.0
+#>  7:  green 2011-01-01   active  6.0
+#>  8:    red 2014-01-01 inactive  2.5
+#>  9:  green 2011-01-01 archived  2.5
+#> 10: yellow 2015-01-01   active  2.0
+#> 11:    red 2012-01-01 archived  2.0
+#> 12:    red 2011-01-01  removed  3.5
+#> 13:  green 2014-01-01 inactive  8.0
+#> 14:  green 2011-01-01  removed  2.0
+#> 15: yellow 2012-01-01 archived  2.5
+#> 16:    red 2013-01-01  removed  3.5
+#> 17:  green 2013-01-01   active  3.0
+#> 18:  green 2014-01-01  removed  2.5
+#> 19:    red 2011-01-01 archived  3.0
+#> 20:    red 2015-01-01     <NA>  3.5
+#> 21:  green 2015-01-01     <NA>  7.5
+#> 22:  green 2014-01-01     <NA> 14.0
+#> 23: yellow 2014-01-01     <NA>  4.5
+#> 24:    red 2013-01-01     <NA>  5.5
+#> 25:  green 2011-01-01     <NA> 10.5
+#> 26:    red 2014-01-01     <NA>  2.5
+#> 27: yellow 2015-01-01     <NA>  2.0
+#> 28:    red 2012-01-01     <NA>  2.0
+#> 29:    red 2011-01-01     <NA>  6.5
+#> 30: yellow 2012-01-01     <NA>  2.5
+#> 31:  green 2013-01-01     <NA>  3.0
+#> 32:    red       <NA>     <NA> 20.0
+#> 33:  green       <NA>     <NA> 35.0
+#> 34: yellow       <NA>     <NA>  9.0
+#> 35:   <NA>       <NA>     <NA> 64.0
+#>      color       year   status   V1
 #rollup(DT, j = sum(value), by = c("color","year","status"), id=TRUE)
 ```
 
@@ -790,12 +1135,46 @@ rollup(DT, j = sum(value), by = c("color","year","status")) # default id=FALSE
 
 * 新方法 rollup
 
-```{r}
+
+```r
 set.seed(25)
 N <- 1000
 dt <- data.table(col1=sample(LETTERS[1:5],N,replace = T),col2=sample(letters[1:5],N,replace = T),num=1:N)
 
 rollup(dt,j=c(list(sum(num))),by=c('col1','col2'))
+#>     col1 col2     V1
+#>  1:    E    a  19926
+#>  2:    D    a  20966
+#>  3:    A    d  12927
+#>  4:    A    b  20862
+#>  5:    A    c  15331
+#>  6:    B    d  15414
+#>  7:    C    e  20794
+#>  8:    D    e  16110
+#>  9:    C    d  22152
+#> 10:    A    a  18378
+#> 11:    C    c  19474
+#> 12:    E    d  18831
+#> 13:    B    b  19941
+#> 14:    C    a  19652
+#> 15:    E    c  16734
+#> 16:    E    e  24137
+#> 17:    E    b  21988
+#> 18:    D    b  16607
+#> 19:    B    c  25720
+#> 20:    B    a  22109
+#> 21:    A    e  18724
+#> 22:    C    b  24323
+#> 23:    D    d  20508
+#> 24:    D    c  19668
+#> 25:    B    e  29224
+#> 26:    E <NA> 101616
+#> 27:    D <NA>  93859
+#> 28:    A <NA>  86222
+#> 29:    B <NA> 112408
+#> 30:    C <NA> 106395
+#> 31: <NA> <NA> 500500
+#>     col1 col2     V1
 #同上 添加汇总项名称 total
 #rollup(dt,j=c(list(total=sum(num))),by=c('col1','col2'))
 #添加id=TRUE参数,多出的grouping 列显示聚合级别
@@ -807,24 +1186,30 @@ rollup(dt,j=c(list(sum(num))),by=c('col1','col2'))
 按照指定字段聚合.包作者说相同与SQL中的 GROUPING SETS 操作.详情参照[postgresql](http://www.postgresql.org/docs/9.5/static/queries-table-expressions.html#QUERIES-GROUPING-SETS)
 
 
-```{r}
+
+```r
 res <- groupingsets(DT, j = c(list(count=.N), lapply(.SD, sum)), by = c("color","year","status"),
              sets = list("color", c("year","status"), character()), id=TRUE)
 head(res)
+#>    grouping  color       year   status count amount value
+#> 1:        3    red       <NA>     <NA>     7     19  20.0
+#> 2:        3  green       <NA>     <NA>    13     43  35.0
+#> 3:        3 yellow       <NA>     <NA>     4     10   9.0
+#> 4:        4   <NA> 2015-01-01   active     2      8   5.5
+#> 5:        4   <NA> 2015-01-01 inactive     2      5   5.5
+#> 6:        4   <NA> 2014-01-01 archived     1      3   3.5
 ```
 
 注意groupingsets函数中sets参数,用list()包裹想要聚合的字段组合,最后还有一个character(),加上该部分相当于全部聚合.当by只有一个字段时,相当于汇总.用法类似sql中"()".
 
 
-```{r eval=FALSE,echo=FALSE}
-library(DBI)
-con <- dbConnect(odbc::odbc(), .connection_string = "Driver={SQL Server};server=Vega;database=ghzy;uid=zhongyf;pwd=Zyf123456;", timeout = 10)
-```
+
 
 
 上述语句结果等同于下面sql.
 
-```{sql eval=FALSE}
+
+```sql
 select color ,year, status,count(*) count,sum(amount) amount,sum(value) value 
 FROM dbo.DT
 GROUP BY
@@ -844,17 +1229,37 @@ GROUPING SETS(
 
 用tstrsplit()函数实现
 
-```{r}
+
+```r
 n <- 10
 dt <- data.table(name=LETTERS[1:n],char=rep('我-爱-R-语-言'),n)
 res <- dt[,.(newcol=tstrsplit(char,'-')),by=.(name)]
 head(res)
+#>    name newcol
+#> 1:    A     我
+#> 2:    A     爱
+#> 3:    A      R
+#> 4:    A     语
+#> 5:    A     言
+#> 6:    B     我
 ```
 
 * 多行变一列
 
-```{r}
+
+```r
 res[,.(char=paste0(newcol,collapse = '-')),by=.(name)]
+#>     name          char
+#>  1:    A 我-爱-R-语-言
+#>  2:    B 我-爱-R-语-言
+#>  3:    C 我-爱-R-语-言
+#>  4:    D 我-爱-R-语-言
+#>  5:    E 我-爱-R-语-言
+#>  6:    F 我-爱-R-语-言
+#>  7:    G 我-爱-R-语-言
+#>  8:    H 我-爱-R-语-言
+#>  9:    I 我-爱-R-语-言
+#> 10:    J 我-爱-R-语-言
 #同上
 #res[,.(char=stringr::str_c(newcol,collapse = '-')),by=.(name)]
 # A	我-爱-R-语-言			
@@ -872,27 +1277,9 @@ res[,.(char=paste0(newcol,collapse = '-')),by=.(name)]
 
 <!--chapter:end:01-intro.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
 
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 
-```{r setup1, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
-```
 
 
 # database
@@ -926,7 +1313,8 @@ MS[下载](https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads)，�
 以下用于 SQL Server 2019 的命令指向 Ubuntu 20.04 存储库。 如果使用的是 Ubuntu 18.04 或 16.04，请将以下路径更改为 /ubuntu/18.04/ 或 /ubuntu/16.04/，而不是 /ubuntu/20.04/。
 
 
-```{bash}
+
+```bash
 # 导入公共存储库的密钥
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
@@ -956,7 +1344,8 @@ systemctl status mssql-server --no-pager
 
 ### 安装
 
-```{r eval=FALSE}
+
+```r
 install.packages('DBI')
 ```
 
@@ -966,7 +1355,8 @@ install.packages('DBI')
 
 通过以下代码即可连接到服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。
 
-```{r}
+
+```r
 library(DBI)
 con <- dbConnect(
   drv = odbc::odbc(), Driver = "SQL Server", server = "172.16.88.2",database = "spb", uid = "zhongyf", pwd = "Zyf123456"
@@ -976,7 +1366,8 @@ con <- dbConnect(
 
 如果你用windows系统，通过DBI包连接数据库发现乱码时，根据数据库编码指定encoding参数即可，常规在win下连接sqlserver设置encoding = "GBK"。
 
-```{r }
+
+```r
 library(DBI)
 #根据数据库编码方式指定encoding
 con <- dbConnect(
@@ -991,7 +1382,8 @@ head(Drivers_tbl)
 
 查询数据库编码方式,从而选择连接数据库时相应的编码方式。
 
-```{r}
+
+```r
 con <- dbConnect(
   drv = odbc::odbc(), Driver = "ODBC Driver 17 for SQL Server",
   server = "172.16.88.2", database = "spb", uid = "zhongyf", pwd = "Zyf123456"
@@ -1015,7 +1407,8 @@ DBI::dbDisconnect(con)
 
 `MySQL()`函数来源`RMySQL`包，用来创建`<MySQLDriver>`驱动，以下代码可连接到阿里云的MySQL数据库。
 
-```{r eval=FALSE}
+
+```r
 library(RMySQL)
 con <- dbConnect(MySQL(),
   dbname = "test", user = "test_admin", password = "30HL1234M7#￥lD6gxjB",
@@ -1025,7 +1418,8 @@ con <- dbConnect(MySQL(),
 
 或者通过本地已安装驱动连接数据库
 
-```{r eval=FALSE}
+
+```r
 con <- DBI::dbConnect(odbc::odbc(),
   Driver = "MySQL ODBC 8.0 Unicode Driver",
   Server = "localhost", UID = "root", PWD = "123456", Database = "mysql",
@@ -1040,7 +1434,8 @@ mysql数据库默认端口是3306,访问不通时记得检查3306端口是否开
 
 dbGetQuery()函数处理由DBI包创建的con连接查询任务,dbExecute()执行一些数据库任务
 
-```{r eval=FALSE}
+
+```r
 # dbGetQuery 直接查询
 res_table <- dbGetQuery(con,'select * from table') #直接获取sql查询结果
 
@@ -1065,7 +1460,8 @@ dbWriteTable(conn = con,name = '表名',value = df,overwrite=TURE,append=FALSE)
 
 查看数据库信息,查看表名,删除表，关闭连接等常用操作.
 
-```{r eval=FALSE}
+
+```r
 con <- dbConnect(
   drv = odbc::odbc(),
   Driver = "ODBC Driver 17 for SQL Server", server = "172.16.88.2", 
@@ -1097,7 +1493,8 @@ odbc可以运用于包括(SQL Server, Oracle, MySQL,PostgreSQL,SQLite)等odbc驱
 
 1.安装包
 
-```{r eval=FALSE}
+
+```r
 #安装包
 install.packages('odbc')
 ```
@@ -1110,7 +1507,8 @@ install.packages('odbc')
 
 如果是linux上通过odbc连接SqlServer,一般情况下可以不用设置编码。如果还是乱码，在连接字符中设置字符编码charset=zh_CN.GBK，设置为gbk会报错。
 
-```{r eval=FALSE}
+
+```r
 library(odbc)
 con <- odbc::dbConnect(odbc(),
   Driver = "SQL Server", Server = "Vega", Database = "ghzy",
@@ -1131,14 +1529,16 @@ con_dd <- dbConnect(odbc::odbc(), .connection_string = "driver={ODBC Driver 17 f
 
 3.查询
 
-```{r  eval=FALSE}
+
+```r
 dt <- odbc::dbGetQuery(con,'select * from DT')
 head(dt)
 ```
 
 4.写入数据库
 
-```{r eval=FALSE}
+
+```r
 odbc::dbWriteTable(con,name = '表名',value = dt,overwrite = T ) # 是否覆盖
 odbc::dbWriteTable(con,name = '表名',value = dt,append = T ) # 是否追加
 ```
@@ -1151,14 +1551,16 @@ RODBC包是R语言对ODBC数据库接口,可以连接所有的ODBC数据库.
 
 1.安装包
 
-```{r eval=FALSE}
+
+```r
 install.packages('RODBC')
 ```
 
 
 2.SQL SERVER 数据库举例
 
-```{r eval=FALSE}
+
+```r
 library(RODBC)
 con <- odbcDriverConnect("driver={SQL Server};server=192.168.2.62;database=dbname;uid=zhongyf;pwd=Zyf123456")
 con
@@ -1169,7 +1571,8 @@ RODBC::sqlQuery(con,'select * from test')
 
 * 查看本机上可用驱动
 
-```{r eval=FALSE}
+
+```r
 odbc::odbcListDrivers()
 
 ```
@@ -1185,7 +1588,8 @@ ODBC for sql server driver 下载地址[地址](https://docs.microsoft.com/zh-cn
 请参照[数据库连接字符串](https://www.connectionstrings.com/)
 
 
-```{r eval=FALSE}
+
+```r
 #ODBC Driver 17 for SQL Server
 cn <- odbcDriverConnect("Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=name;UID=username;PWD=123456;") #server 数据库 UID 数据库账户 PWD 数据库账户密码
 ```
@@ -1227,7 +1631,8 @@ linxu上安装`Roracle`包，可以参考我的
 
 由于ROracle依赖于Oracle Instant Client,安装之前一定要先安装好客户端。
 
-```{r eval=FALSE}
+
+```r
 install.packages('ROracle')
 ```
 
@@ -1235,7 +1640,8 @@ install.packages('ROracle')
 
 `Roracle`可以通过`DBI`包链接，除了驱动和连接字符串有差异，其他部分一样。
 
-```{r eval=FALSE}
+
+```r
 library(ROracle)
 drv <-dbDriver("Oracle")
 connect.string <- '(DESCRIPTION =
@@ -1254,7 +1660,8 @@ con <- dbConnect(drv,username = "query", password = "query",dbname = connect.str
 
 linux下可以在文件Renviron中添加，记得引号，路径为[/opt/R/4.0.2/lib/R/etc/Renviron]
 
-```{r eval= FALSE}
+
+```r
 # 查询数据库编码
 select userenv('language') from dual
 Sys.setenv(NLS_LANG="SIMPLIFIED CHINESE_CHINA.AL32UTF8")
@@ -1270,7 +1677,8 @@ RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本
 
 Win系统下直接安装即可，其它平台下需提前安装依赖环境。
 
-```{bash }
+
+```bash
 #On recent Debian or Ubuntu install libmariadbclient-dev
 
 sudo apt-get install -y libmariadbclient-dev
@@ -1283,7 +1691,8 @@ brew install mariadb-connector-c
 
 ```
 
-```{r}
+
+```r
 install.packages('RMySQL')
 ```
 
@@ -1292,14 +1701,16 @@ install.packages('RMySQL')
 
 连接数据库，与上述连接方式基本一致。
 
-```{r eval=FALSE}
+
+```r
 library(RMySQL)
 con <- RMySQL::dbConnect(drv = RMySQL::MySQL(),host='localhost',dbname="mysql",username="root",password='123456')
 ```
 
 `RMariaDB`包与`RMySQL`包用法基本一致，在连接时注意驱动的选择即可。
 
-```{r eval=FALSE}
+
+```r
 install.packages('RMariaDB')
 library(RMariaDB)
 con <- RMySQL::dbConnect(drv = RMariaDB::MariaDB() ,host='localhost',dbname="dbtest",username="root",password='123456')
@@ -1318,7 +1729,8 @@ R中中文乱码问题一直都很麻烦，并且常常遇见，尤其是使用w
 
 修改encoding参数，在win系统下，可以考虑使用RODBC包连接查询数据库，因为该包将自动转换编码，不会存在乱码问题。但是上传效率奇慢，为了减少包依赖保持代码一致性使用odbc连接数据库时遇到乱码，在连接数据库时设定encoding即可。
 
-```{r eval = FALSE}
+
+```r
 # win
 con_spb <- dbConnect(odbc(),
   .connection_string =
@@ -1338,7 +1750,8 @@ con_spb <- dbConnect(odbc(),
 
 1.代码修改
 
-```{r eval=FALSE}
+
+```r
 #执行查询语句前执行
 dbSendQuery(con,'SET NAMES gbk')
 ```
@@ -1356,7 +1769,8 @@ dbSendQuery(con,'SET NAMES gbk')
 
 可能是由于 mysql8 之前的版本中加密规则是mysql_native_password,而在mysql8之后,加密规则是caching_sha2_password,通过修改加密规则可解决无法连接问题。
 
-```{sql eval=FALSE}
+
+```sql
 
 --cmd 登录本地数据
 mysql -u root -p
@@ -1399,7 +1813,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password
 ### 基础用法
 
 
-```{r eval=FALSE}
+
+```r
 library(dplyr)
 library(dbplyr)
 
@@ -1415,7 +1830,8 @@ mf %>%
 
 
 
-```{r eval=FALSE}
+
+```r
 library(dplyr)
 #connect database
 con <- DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
@@ -1448,7 +1864,8 @@ flights_db %>%
 
 部分简单不复杂的sql语句可以用dplyr的语法代替.
 
-```{r eval=FALSE}
+
+```r
 tailnum_delay_db <- flights_db %>% 
   group_by(tailnum) %>%
   summarise(
@@ -1475,7 +1892,8 @@ tailnum_delay <- tailnum_delay_db %>% collect() #把数据从数据库加载到R
 
 - date
 
-```{r eval=FALSE}
+
+```r
 #个人写的争对目前公司数仓写的包中获取销售数据的一段代码
 get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,category_name = NULL,shop_no = NULL){
 
@@ -1510,7 +1928,8 @@ get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type =
 
 - like
 
-```{r eval=FALSE}
+
+```r
 mf %>% 
   filter(x %LIKE% "%foo%") %>% 
   show_query()
@@ -1521,7 +1940,8 @@ mf %>%
 
 特殊情况可以使用`sql()`函数
 
-```{r eval=FALSE}
+
+```r
 mf %>% 
   transmute(factorial = sql("x!")) %>% 
   show_query()
@@ -1546,23 +1966,7 @@ rstudio关于数据库介绍 <https://db.rstudio.com/databases>
 
 <!--chapter:end:02-database.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 
 # stringr 
 
@@ -1598,7 +2002,8 @@ Excle中自带的字符函数如: `left`,`len`,`mid`,`find`,`Proper`,`rept`,`tri
 
 要在字符串中包含单引号或双引号，可以使用\ 转义它，即遇到特殊符号时需要转义。
 
-```{r}
+
+```r
 #install.packages('stringr')
 library(stringr)
 char <- "我是一名\'小学生\'"   #字符串建议用双引号包裹,单引号也可以
@@ -1607,7 +2012,8 @@ char
 
 打印会显示转义符。要查看字符串的原始内容,可使用writeLines()或cat()
 
-```{r eval=FALSE}
+
+```r
 x <- c("\"", "\\")
 x
 #> [1] "\"" "\\"
@@ -1619,7 +2025,8 @@ cat(char)
 
 在正则表达式中\ 有特殊含义,有时需要两个\ ，多体会下面这段，代码实现移除"||"的功能。
 
-```{r}
+
+```r
 str_remove(string = 'a||b',pattern = "\\|\\|")
 ```
 
@@ -1629,7 +2036,8 @@ str_remove(string = 'a||b',pattern = "\\|\\|")
 
 ### 字符串长度
 
-```{r}
+
+```r
 char <- "我是R语言学习者"
 str_length(char)
 # 向量化
@@ -1643,7 +2051,8 @@ R中字符串不像python中可以用加号连接字符串,如下所示:
 
 R 版本
 
-```{r}
+
+```r
 #base R
 paste0('a','b')
 
@@ -1654,14 +2063,16 @@ str_c("a", "b", sep = ", ") #sep 参数控制分隔符
 
 Python 版本
 
-```{python}
+
+```python
 'a' + 'b'
 ```
 
 
 多个字符串合并为一个字符,`stringr`中的函数都是向量化的，合并一个和多个字符都是同样道理。
 
-```{r}
+
+```r
 #base R
 paste0(c('a','b','d','e'),collapse = ',')
 #stringr
@@ -1673,7 +2084,8 @@ str_c(c('a','b','d','e'),collapse = ',')  #collapse 参数控制
 
  * 合并
 
-```{r}
+
+```r
 library(data.table)
 dt <- data.table(col=rep('a',10),letters=letters[1:10])
 dt[,newcol:=str_c(letters,collapse = '|'),by=.(col)][]
@@ -1681,7 +2093,8 @@ dt[,newcol:=str_c(letters,collapse = '|'),by=.(col)][]
 
 * 拆解
 
-```{r}
+
+```r
 
 #工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等
 dt <- data.table(col='a',letters=str_c(letters[1:10],collapse = '|'))
@@ -1700,12 +2113,14 @@ dt[,list(newcol=my_str_split(letters)),by=.(col)]
 [新特性](https://www.r-bloggers.com/4-for-4-0-0-four-useful-new-features-in-r-4-0-0/)
 
 
-```{r}
+
+```r
 char <- r"(\\a\ab\d\e\f)" #windows下路径好用,不用转义路径复制和直接可用
 char
 ```
 
-```{r}
+
+```r
 char <- "我是一名\'小学生\'" 
 cat(char)
 
@@ -1731,7 +2146,8 @@ start: 默认1L,即从最开始截取
 end:默认-1L,即截取到最后
 
 
-```{r}
+
+```r
 #注意end 3 和 -3的区别
 str_sub(string = '我是R语言学习者',start = 2,end = 3)
 str_sub(string = '我是R语言学习者',start = 2,end = -3)
@@ -1743,7 +2159,8 @@ str_sub(string = '我是R语言学习者',start = 2,end = -3)
 
 查看函数帮助文档,str_match()按照指定pattern(正则表达式)查找字符.重点困难点正则表达式的编写.
 
-```{r eval=FALSE}
+
+```r
 ?str_match()
 ?str_match_all()
 ?str_extract()
@@ -1752,7 +2169,8 @@ str_sub(string = '我是R语言学习者',start = 2,end = -3)
 
 str_extract()函数返回向量,str_match()函数返回矩阵.
 
-```{r}
+
+```r
 #原文来源烽火戏诸侯的<剑来>
 strings <- c('陈平安放下新折的那根桃枝,吹灭蜡烛,走出屋子后,坐在台阶上,仰头望去,星空璀璨.') 
 str_extract(strings,'陈平安')
@@ -1763,7 +2181,8 @@ str_match(strings,'陈平安')
 
 匹配中文的正则表达式\[\u4e00-\u9fa5\]
 
-```{r}
+
+```r
 str_extract_all(strings,'[\u4e00-\u9fa5]') #返回list
 ```
 
@@ -1772,7 +2191,8 @@ str_extract_all(strings,'[\u4e00-\u9fa5]') #返回list
 查找数字的正则表达式[0-9];查找英文的正则表达式:[a-zA-Z]
 
 
-```{r}
+
+```r
 strings <- c('00123545','LOL league of legends')
 str_extract_all(strings,'[0-9]')
 str_extract_all(strings,'[a-zA-Z]') 
@@ -1787,7 +2207,8 @@ str_pad() 函数向字符串添加字符
 像工作中处理月份的时候,1,2,3,4,5,6,7,8,9,10,11,12变成01,02,03,04,05,06,07,08,09,10,11,12.按照日期时间输出文件名称,如下所示:
 
 
-```{r}
+
+```r
 str_pad(string = 1:12,width = 2,side = 'left',pad = '0')
 ```
 
@@ -1795,7 +2216,8 @@ str_pad(string = 1:12,width = 2,side = 'left',pad = '0')
 
 与`excel`中`trim`函数功能类似，剔除字符中的空格，但是不可以剔除字符中的空格
 
-```{r}
+
+```r
 # side 可选 both  left right
 str_trim(' ab af ',side = 'both')
 ```
@@ -1805,7 +2227,8 @@ str_trim(' ab af ',side = 'both')
 
 `str_split()`处理后的结果是列表
 
-```{r}
+
+```r
 # 得到列表,需要向量化
 str_split("a,b,d,e",pattern = ',')
 
@@ -1816,7 +2239,8 @@ str_split('ab||cd','\\|\\|') %>% unlist()
 
 当待处理的字符串是字符串向量时，得到的列表长度与向量长度一致
 
-```{r}
+
+```r
 fruits <- c(
   "apples and oranges and pears and bananas",
   "pineapples and mangos and guavas"
@@ -1829,7 +2253,8 @@ str_split(fruits, " and ")
 
 `str_replace()`，`str_replace_all()`函数用来替换字符
 
-```{r}
+
+```r
 fruits <- c("one apple", "two pears", "three bananas")
 str_replace(fruits, "[aeiou]", "-")
 str_replace_all(fruits, "[aeiou]", "-")
@@ -1839,7 +2264,8 @@ str_replace_all(fruits, "[aeiou]", "-")
 
 `str_remove()`,`str_remove_all()`移除字符。本人常用该函数剔除文本中的空格。
 
-```{r}
+
+```r
 fruits <- c("one apple", "two pears", "three bananas")
 str_remove(fruits, "[aeiou]")
 str_remove_all(fruits, "[aeiou]")
@@ -1847,7 +2273,8 @@ str_remove_all(fruits, "[aeiou]")
 
 移除文本中空格
 
-```{r}
+
+```r
 str_replace_all(string = ' d a  b ',pattern = ' ',replacement = '')
 ```
 
@@ -1856,7 +2283,8 @@ str_replace_all(string = ' d a  b ',pattern = ' ',replacement = '')
 
 numeric参数决定是否按照数字排序。
 
-```{r eval=FALSE}
+
+```r
 str_order(x, decreasing = FALSE, na_last = TRUE, locale = "en",
   numeric = FALSE, ...)
 
@@ -1864,14 +2292,16 @@ str_sort(x, decreasing = FALSE, na_last = TRUE, locale = "en",
   numeric = FALSE, ...)
 ```
 
-```{r}
+
+```r
 str_order(letters)
 str_sort(letters)
 ```
 
 numeric参数
 
-```{r}
+
+```r
 x <- c("100a10", "100a5", "2b", "2a")
 str_sort(x)
 str_sort(x, numeric = TRUE)
@@ -1883,13 +2313,15 @@ str_sort(x, numeric = TRUE)
 
 - 参数
 
-```{r}
+
+```r
 word(string, start = 1L, end = start, sep = fixed(" "))
 ```
 
 - 案例
 
-```{r}
+
+```r
 sentences <- c("Jane saw a cat", "Jane sat down")
 word(sentences, 2, -1)
 word(sentences[1], 1:3, -1)
@@ -1897,7 +2329,8 @@ word(sentences[1], 1:3, -1)
 
 指定分隔符
 
-```{r}
+
+```r
 # Can define words by other separators
 str <- 'abc.def..123.4568.999'
 word(str, 1, sep = fixed('..'))
@@ -1913,7 +2346,8 @@ word(str, 2, sep = fixed('..'))
 匹配字符串本身行筛选时候能用
 
 
-```{r}
+
+```r
 
 fruit <- c("apple", "banana", "pear", "pinapple")
 str_subset(fruit, "a")
@@ -1921,7 +2355,8 @@ str_which(fruit, "a") # 匹配字符首次出现的位置
 ```
 
  
-```{r eval=FALSE}
+
+```r
 #str_which 是which(str_detect(x,pattern))的包装
 #str_which()
 
@@ -1940,7 +2375,8 @@ head(dt[str_which(col,pattern = '[a-z]')])
 
 复制字符串
 
-```{r eval=FALSE}
+
+```r
 fruit <- c("apple", "pear", "banana")
 str_dup(fruit, 2)
 str_dup(fruit, 1:3)
@@ -1953,19 +2389,20 @@ str_c("ba", str_dup("na", 0:5))
 
 从str_detect()包装得到.
 
-```{r}
+
+```r
 str_starts('abd','a')
 str_detect('abd','^a')
 
 str_ends('abd','d')
 str_detect('abd','a$')
 
-
 ```
 
  * 大小写转换
  
-```{r}
+
+```r
 dog <- "The quick brown dog"
 str_to_upper(dog)
 str_to_lower(dog)
@@ -1980,7 +2417,8 @@ str_to_sentence("the quick brown dog")
 
 - left
 
-```{r}
+
+```r
 r_left <- function(str,num){
   str_sub(string = str,start = 1,end = num)
 }
@@ -1989,7 +2427,8 @@ r_left('我是R语言学习者',3)
 
 - right
 
-```{r}
+
+```r
 r_right <- function(str,num){
   str_sub(string = str,start = str_length(str) - num + 1)
 }
@@ -1998,7 +2437,8 @@ r_right('我是R语言学习者',3)
 
 - mid
 
-```{r}
+
+```r
 r_mid <- function(str,start,num){
   str_sub(string = str,start = start,end = start + num -1)
 }
@@ -2009,23 +2449,7 @@ r_mid('我是R语言学习者',3,3)
 
 <!--chapter:end:03-strings.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 # lubridate
 
 
@@ -2056,8 +2480,8 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 `R`中日期起始时间是`1970-01-01`,Excel中是`1900-01-01`,转化成数字两者相差25568。在用R读取Excel文件时，设计到日期数字转化成日期时需要注意其中差异。
 
-R中日期 : `r Sys.Date() ` 转化成数字: `r as.integer(Sys.Date()) `,
-Excel 中 `r Sys.Date() `转化成数字:`r as.integer(as.integer(Sys.Date())+25568) `,两者相差25568.
+R中日期 : 2021-05-10 转化成数字: 18757,
+Excel 中 2021-05-10转化成数字:44325,两者相差25568.
 
 
 
@@ -2068,7 +2492,8 @@ Excel 中 `r Sys.Date() `转化成数字:`r as.integer(as.integer(Sys.Date())+25
 
 ### 安装包
 
-```{r eval=FALSE}
+
+```r
 install.packages("tidyverse")
 # 仅仅只安装lubridate
 install.packages('lubridate')
@@ -2077,7 +2502,8 @@ devtools::install_github("tidyverse/lubridate")
 ```
 
 
-```{r}
+
+```r
 # 加载包
 library(lubridate,warn.conflicts = FALSE)
 ```
@@ -2086,7 +2512,8 @@ library(lubridate,warn.conflicts = FALSE)
 
 - `now`函数
 
-```{r}
+
+```r
 now(tzone = 'Asia/Shanghai')
 #base R
 base::Sys.time()
@@ -2096,7 +2523,8 @@ base::Sys.time()
 
 查看时区，时区和所用系统设置相关
 
-```{r}
+
+```r
 Sys.timezone()
 # windows 系统默认的时区 中国台北
 # linux 上是"Asia/Shanghai"
@@ -2104,7 +2532,8 @@ Sys.timezone()
  
 - `today`函数
 
-```{r}
+
+```r
 today(tzone = 'Asia/Shanghai')
 #base R
 base::Sys.Date()
@@ -2112,7 +2541,8 @@ base::Sys.Date()
 
 ### 获取日期时间中的组成部分
 
-```{r}
+
+```r
 #获取年
 year(now())  
 #获取月
@@ -2139,7 +2569,8 @@ second(now())
 
 用`with_tz()`，`force_tz()`处理时区问题
 
-```{r}
+
+```r
 time <- ymd_hms("2020-12-13 15:30:30")
 time
 
@@ -2156,7 +2587,8 @@ force_tz(time, "Asia/Shanghai")
 
 从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
 
-```{r message=FALSE,warning=FALSE,echo=TRUE}
+
+```r
 
 # 整数和字符都可以
 ymd(20200604) 
@@ -2169,14 +2601,16 @@ dmy(04062020)
 
 [unix在线转换](https://unixtime.51240.com/)
 
-```{r}
+
+```r
 .POSIXct(1591709615)
 ymd_hms(.POSIXct(1591709615))
 ```
 
 unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区
 
-```{r}
+
+```r
 ymd_hms(.POSIXct(1591709615),tz = 'asia/shanghai')
 ```
 
@@ -2188,7 +2622,8 @@ ymd_hms(.POSIXct(1591709615),tz = 'asia/shanghai')
 
 * <https://home.kpn.nl/vanadovv/time/TZworld.html#asi>
 
-```{r}
+
+```r
 lubridate::now()
 as_datetime(now()) #默认是UTC
 as_datetime(now(),tz = 'asia/shanghai')
@@ -2201,7 +2636,8 @@ as_datetime(now(),tz = 'asia/shanghai')
 
 使用数值直接创建日期时间`make_date`和`make_datetime`函数默认时区为"UTC"
 
-```{r eval=FALSE}
+
+```r
 make_date(year = year(today()), month = month(today()), day = day(today()), tz = "asia/shanghai")
 make_datetime(
   year = year(today()),
@@ -2217,7 +2653,8 @@ make_datetime(
 
 使用数值或字符直接创建日期时间
 
-```{r}
+
+```r
 as_datetime('2020-01-09 09:15:40',tz='asia/shanghai')
 as_date('2020-01-09') #ymd格式
 # same above
@@ -2229,7 +2666,8 @@ as_date('2020-01-09') #ymd格式
 
 我们可以用`lubridate`将时间间隔保存为`interveal`类对象
 
-```{r}
+
+```r
 arrive <- ymd_hms("2020-12-04 12:00:00", tz = "asia/shanghai")
 arrive
 
@@ -2243,7 +2681,8 @@ res <- arrive %--% leave
 
 两个时间间隔是否重复
  
-```{r}
+
+```r
 jsm <- interval(ymd(20201020, tz = "asia/shanghai"), ymd(20201231, tz = "asia/shanghai"))
 jsm
 int_overlaps(jsm, res)
@@ -2251,7 +2690,8 @@ int_overlaps(jsm, res)
 
 更多详细用法`?interveal`
 
-```{r eval=FALSE}
+
+```r
 interval(start = NULL, end = NULL, tzone = tz(start))
 
 start %--% end
@@ -2285,7 +2725,8 @@ int_diff(times)
 
 时间日期计算以`number line`为依据计算。原文是`Because the timeline is not as reliable as the number line`。
 
-```{r}
+
+```r
 minutes(2)
 dminutes(2)
 dhours(2)
@@ -2293,7 +2734,8 @@ dhours(2)
 
 注意闰年时计算年份的差异
 
-```{r}
+
+```r
 leap_year(2019)
 ymd(20190101) + dyears(1)
 ymd(20190101) + years(1)
@@ -2305,7 +2747,8 @@ ymd(20200101) + years(1)
 
 `lubridate`中的函数都已向量化
 
-```{r}
+
+```r
 meeting <- ymd_hms("2020-12-01 09:00:00", tz = "asia/shanghai")
 meeting <- meeting + weeks(0:5)
 meeting %within% jsm
@@ -2313,7 +2756,8 @@ meeting %within% jsm
 
 除法计算
 
-```{r}
+
+```r
 res / ddays(1)
 res / dminutes(1)
 
@@ -2324,13 +2768,15 @@ res %% months(1)
 
 `as.period`用法
 
-```{r}
+
+```r
 as.period(res %% months(1))
 ```
 
 对于日期而言，因为月天数、年天数不一致，导致不能直接加减天数，如下：
 
-```{r}
+
+```r
 jan31 <- ymd("2020-01-31")
 jan31 + months(0:11)
 ```
@@ -2339,7 +2785,8 @@ jan31 + months(0:11)
 
 解决方案是：`%m+%`或`%m-%`
 
-```{r}
+
+```r
 jan31 %m+% months(0:11)
 jan31 %m-% months(0:11)
 ```
@@ -2353,7 +2800,8 @@ jan31 %m-% months(0:11)
 
 `floor_date()`函数根据要求周期回滚日期，
 
-```{r}
+
+```r
 floor_date(today(),unit = 'year')
 floor_date(today(),unit = 'month') #可与rollback函数达到同样效果
 floor_date(today(),unit = 'week')
@@ -2361,7 +2809,8 @@ floor_date(today(),unit = 'week')
 
 - 计算年同比
 
-```{r}
+
+```r
 n <- 1 
 date <- today()
 # current 
@@ -2381,7 +2830,8 @@ last_end_date
 
 `%m+%`或`%m-%`可以很好解决月份天数不一的问题
 
-```{r}
+
+```r
 as_date('2020-03-30') %m-% months(1)
 today()
 today() %m-% months(1)
@@ -2392,7 +2842,8 @@ today() %m-% months(1)
 
 模拟计算
 
-```{r}
+
+```r
 # 构造数据
 bill_date <- as_date((as_date('2019-01-01'):as_date('2020-12-01')))
 area <-  sample(c('华东','华西','华南','华北'),size = length(bill_date),replace = TRUE)
@@ -2400,7 +2851,8 @@ dt <- tibble::tibble(bill_date = bill_date ,money = sample(80:150,size = length(
 head(dt)
 ```
 
-```{r}
+
+```r
 library(dplyr,warn.conflicts = FALSE)
 
 y_to_y <- function(.dt,date,n = 1,...){
@@ -2431,7 +2883,8 @@ y_to_y <- function(.dt,date,n = 1,...){
 }
 ```
 
-```{r}
+
+```r
 y_to_y(dt,date = '20200101',n = 1,area,类型)
 ```
 
@@ -2441,7 +2894,8 @@ y_to_y(dt,date = '20200101',n = 1,area,类型)
 
 通过一个简单自定义函数解决，本质是区分不同类型日期后采用不同函数去解析日期格式
 
-```{r message=FALSE}
+
+```r
 
 library(lubridate)
 library(tidyverse)
@@ -2479,7 +2933,8 @@ myfun(date1)
 
 思路：通过观察数据，发现扫码后如果中奖，一般几秒钟内会有中奖记录，那我们就可以通过"每次中奖时间最近的一次扫码时间的积分码"就是该次中奖对应的积分码解决问题。这样我们通过简单编写自定义函数即可获取答案，即一个时间点从一串时间中找到离自己最近时间点。
 
-```{r eval=FALSE}
+
+```r
 testfun <- function(x,y){
   result <- data.frame() #应采用列表存储结果向量化
   n  <-  length(x)
@@ -2497,7 +2952,8 @@ res <- testfun(dt$时间,scan_dt$时间)
 
 改进代码
 
-```{r  eval= FALSE}
+
+```r
 testfun <- function(x,y){
   n  <-  length(x)
   result <- list()
@@ -2518,7 +2974,8 @@ res <- testfun(dt$时间,scan_dt$时间)
 
 理论上不同用户可以在同一时间扫码且同时中奖，那上面的代码即不可以获取正确答案。但是我们只要通过按照用户ID切割数据框后稍微改造上面的自定义函数即可。
 
-```{r eval=FALSE }
+
+```r
 testfun <- function(dt){
   
   x <- dt$中奖时间
@@ -2558,23 +3015,7 @@ purrr::map_dfr(dtlist,testfun)
 
 <!--chapter:end:04-lubridate.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 # forcats
 
 我在实际工作中因子数据类型使用较少,forcats软件包用来处理因子,该软件包是tidyverse的一部分.
@@ -2585,7 +3026,8 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 因子变量会占用更小空间,R4.0改变了字符默认为因子的方式.想了解更多请参考 <https://r4ds.had.co.nz/factors.html>
 
 
-```{r }
+
+```r
 object.size(rep(letters,100000))
 object.size(rep(forcats::as_factor(letters),100000))
 ```
@@ -2594,7 +3036,8 @@ object.size(rep(forcats::as_factor(letters),100000))
 
 实际工作中,可能各个事业部或部门之间没有实际顺序,但是在数据处理过程中需要指定顺序可以用因子.
 
-```{r}
+
+```r
 library(forcats)
 vec1 <- c('部门a','部门b','部门d','部门f')
 sort(vec1)
@@ -2608,23 +3051,7 @@ sort(vec2)
 
 <!--chapter:end:05-forcats.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 # tidyr
 
 
@@ -2638,7 +3065,8 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 ## 安装
 
-```{r eval=FALSE}
+
+```r
 ## 最简单是的方式就是安装tidyverse
 install.packages('tidyverse')
 
@@ -2655,7 +3083,8 @@ devtools::install_github("tidyverse/tidyr")
 
 ## 主要功能
 
-```{r}
+
+```r
 library(tidyr)
 ```
 
@@ -2691,13 +3120,15 @@ vb1  | vb2  | vb3   |vb4    |vb5  |vb6  |vb7
 
 方便观察，但是不方便统计分析，这是我们需要把数据做处理，从"宽数据变成长数据"即宽转长。
 
-```{r}
+
+```r
 library(tidyr)
 library(dplyr)
 library(readr)
 ```
 
-```{r}
+
+```r
 relig_income %>% 
   pivot_longer(cols = !religion,names_to = 'income',values_to = "count")
 ```
@@ -2710,7 +3141,8 @@ relig_income %>%
 
 #### 列名带数字
 
-```{r}
+
+```r
 billboard %>% 
   pivot_longer(
     cols = starts_with("wk"), 
@@ -2722,7 +3154,8 @@ billboard %>%
 
 `names_prefix` 调整内容前缀，配合`names_transform`参数使用
 
-```{r}
+
+```r
 billboard %>% 
   pivot_longer(
     cols = starts_with("wk"), 
@@ -2736,7 +3169,8 @@ billboard %>%
 
 经过以上转换`week`列属性变成了整数，当然达到以上效果有其他的途径，如下：
 
-```{r eval=FALSE}
+
+```r
 library(tidyverse,warn.conflicts = TRUE)
 
 # method 1
@@ -2768,7 +3202,8 @@ billboard %>%
 
 [正则表达式介绍](https://www.runoob.com/regexp/regexp-syntax.html)
 
-```{r}
+
+```r
 who %>% pivot_longer(
   cols = new_sp_m014:newrel_f65,
   names_to = c("diagnosis", "gender", "age"), 
@@ -2779,7 +3214,8 @@ who %>% pivot_longer(
 
 进一步处理列`gender`，`age` 。
 
-```{r}
+
+```r
 who %>% pivot_longer(
   cols = new_sp_m014:newrel_f65,
   names_to = c("diagnosis", "gender", "age"), 
@@ -2799,7 +3235,8 @@ who %>% pivot_longer(
 
 #### 一行多观测值
 
-```{r}
+
+```r
 family <- tribble(
   ~family, ~dob_child1, ~dob_child2, ~gender_child1, ~gender_child2,
   1L, "1998-11-26", "2000-01-29", 1L, 2L,
@@ -2812,7 +3249,8 @@ family <- family %>% mutate_at(vars(starts_with("dob")), parse_date)
 family
 ```
 
-```{r}
+
+```r
 
 family %>% 
   pivot_longer(
@@ -2824,7 +3262,8 @@ family %>%
 ```
 
 
-```{r}
+
+```r
 anscombe %>% 
   pivot_longer(everything(), 
     names_to = c(".value", "set"), 
@@ -2835,7 +3274,8 @@ anscombe %>%
 
 
 
-```{r}
+
+```r
 pnl <- tibble(
   x = 1:4,
   a = c(1, 1,0, 0),
@@ -2857,7 +3297,8 @@ pnl %>%
 
 #### 重复列名
 
-```{r}
+
+```r
 df <- tibble(id = 1:3, y = 4:6, y = 5:7, y = 7:9, .name_repair = "minimal")
 df %>% pivot_longer(!id, names_to = "name", values_to = "value")
 ```
@@ -2868,13 +3309,15 @@ df %>% pivot_longer(!id, names_to = "name", values_to = "value")
 
 #### 基础
 
-```{r}
+
+```r
 fish_encounters %>% pivot_wider(names_from = station, values_from = seen)
 ```
 
 缺失值填充
 
-```{r}
+
+```r
 fish_encounters %>% pivot_wider(
   names_from = station, 
   values_from = seen,
@@ -2884,21 +3327,24 @@ fish_encounters %>% pivot_wider(
 
 #### 聚合
 
-```{r}
+
+```r
 warpbreaks <- warpbreaks %>% as_tibble() 
 warpbreaks %>% count(wool, tension)
 ```
 
 需要通过`values_fn`指定聚合方式
 
-```{r}
+
+```r
 warpbreaks %>% pivot_wider(names_from = wool, values_from = breaks,values_fn= list(breaks = sum))
 ```
 
 
 #### 从多个变量生成新列名
 
-```{r}
+
+```r
 production <- expand_grid(
     product = c("A", "B"), 
     country = c("AI", "EI"), 
@@ -2909,7 +3355,8 @@ production <- expand_grid(
 production
 ```
 
-```{r}
+
+```r
 production %>% pivot_wider(
   names_from = c(product, country), 
   values_from = production
@@ -2919,7 +3366,8 @@ production %>% pivot_wider(
 通过`names_sep`和`names_prefix`参数控制新的列名，或通过`names_glue`
 
 
-```{r}
+
+```r
 production %>% pivot_wider(
   names_from = c(product, country), 
   values_from = production,
@@ -2928,7 +3376,8 @@ production %>% pivot_wider(
 )
 ```
 
-```{r}
+
+```r
 production %>% pivot_wider(
   names_from = c(product, country), 
   values_from = production,
@@ -2938,7 +3387,8 @@ production %>% pivot_wider(
 
 #### 多值变宽
 
-```{r}
+
+```r
 us_rent_income %>% 
   pivot_wider(names_from = variable, values_from = c(estimate, moe))
 ```
@@ -2950,13 +3400,15 @@ us_rent_income %>%
 
 可通过`vignette("rectangle")`自行学习
 
-```{r}
+
+```r
 library(tidyr)
 library(dplyr)
 library(repurrrsive)
 ```
 
-```{r}
+
+```r
 users <- tibble(user = gh_users)
 users
 users %>% unnest_wider(user)
@@ -2965,7 +3417,8 @@ users %>% unnest_wider(user)
 
 ### 嵌套数据
 
-```{r}
+
+```r
 library(tidyr)
 library(dplyr)
 library(purrr)
@@ -2976,7 +3429,8 @@ library(purrr)
 
 嵌套数据即：数据框中嵌套数据框，如下所示：
 
-```{r}
+
+```r
 df1 <- tibble(
   g = c(1, 2, 3),
   data = list(
@@ -2990,7 +3444,8 @@ df1
 
 因为`data.frame()`的列特性【每列都是列表】【不确定理解对不对】：可以做如下操作：
 
-```{r}
+
+```r
 df2 <- tribble(
   ~g, ~x, ~y,
    1,  1,  2,
@@ -3007,14 +3462,16 @@ df2 %>% nest(data = c(x, y))
 
 nest的反面 unnest
 
-```{r}
+
+```r
 df1 %>% unnest(data)
 ```
 
 
 ### 嵌套数据和模型
 
-```{r}
+
+```r
 mtcars_nested <- mtcars %>% 
   group_by(cyl) %>% 
   nest()
@@ -3022,13 +3479,15 @@ mtcars_nested <- mtcars %>%
 mtcars_nested
 ```
 
-```{r}
+
+```r
 mtcars_nested <- mtcars_nested %>% 
   mutate(model = map(data, function(df) lm(mpg ~ wt, data = df)))
 mtcars_nested
 ```
 
-```{r}
+
+```r
 mtcars_nested <- mtcars_nested %>% 
   mutate(model = map(model, predict))
 mtcars_nested  
@@ -3041,7 +3500,8 @@ mtcars_nested
 
 有时我们需要将一列拆分为多列：
 
-```{r}
+
+```r
 library(tidyr)
 df <- data.frame(x = c(NA, "a.b", "a.d", "b.c"))
 df %>% separate(x, c("A", "B"))
@@ -3049,40 +3509,46 @@ df %>% separate(x, c("A", "B"))
 
 拆分数多列或少列时用`NA`补齐：
 
-```{r}
+
+```r
 df <- data.frame(x = c("a", "a b", "a b c", NA))
 df %>% separate(x, c("a", "b"))
 ```
 
 多余的部分舍弃，缺失填充在左边还是右边：
 
-```{r}
+
+```r
 # The same behaviour as previous, but drops the c without warnings:
 df %>% separate(x, c("a", "b"), extra = "drop", fill = "right")
 ```
 
 多余部分合并，缺失填充在左边
 
-```{r}
+
+```r
 df %>% separate(x, c("a", "b"), extra = "merge", fill = "left")
 ```
 
 或者全部保留
 
-```{r}
+
+```r
 df %>% separate(x, c("a", "b", "c"))
 ```
 
 
 指定分隔符
-```{r}
+
+```r
 df %>% separate(x, c("key", "value"), sep = ": ", extra = "merge")
 
 ```
 
 使用正则表达式
 
-```{r}
+
+```r
 # Use regular expressions to separate on multiple characters:
 df <- data.frame(x = c(NA, "a?b", "a.d", "b:c"))
 df %>% separate(x, c("A","B"), sep = "([.?:])")
@@ -3090,7 +3556,8 @@ df %>% separate(x, c("A","B"), sep = "([.?:])")
 
 #### 新列提取
 
-```{r}
+
+```r
 df <- data.frame(x = c(NA, "a-b", "a-d", "b-c", "d-e"))
 df %>% extract(x, "A")
 df %>% extract(x, c("A", "B"), "([[:alnum:]]+)-([[:alnum:]]+)")
@@ -3102,7 +3569,8 @@ df %>% extract(x, c("A", "B"), "([[:alnum:]]+)-([[:alnum:]]+)")
 
 #### 合并
 
-```{r}
+
+```r
 df <- expand_grid(x = c("a", NA), y = c("b", NA))
 df
 df %>% unite("z", x:y, remove = FALSE)
@@ -3111,13 +3579,15 @@ df %>% unite("z", x:y, remove = FALSE)
 
 移除缺失值
 
-```{r}
+
+```r
 df %>% unite("z", x:y, na.rm = TRUE, remove = FALSE)
 ```
 
 合并后再拆分
 
-```{r}
+
+```r
 df %>%
   unite("xy", x:y) %>%
   separate(xy, c("x", "y"))
@@ -3128,39 +3598,23 @@ df %>%
 
 `replace_na()`用特定值替换缺失值。
 
-```{r}
+
+```r
 df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
 df %>% replace_na(list(x = 0, y = "unknown"))
 ```
 
-```{r}
+
+```r
 df %>% dplyr::mutate(x = replace_na(x, 0))
 ```
 
 
 <!--chapter:end:06-tidyr-package.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
 
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 
-```{r setup2, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
-```
 
 #  dplyr
 
@@ -3194,7 +3648,8 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 
 ## 安装
 
-```{r eval=FALSE}
+
+```r
 ## 最简单是的方式就是安装tidyverse
 install.packages('tidyverse')
 
@@ -3211,7 +3666,8 @@ devtools::install_github("tidyverse/dplyr")
 
 ## 基础用法
 
-```{r}
+
+```r
 library(dplyr)
 ```
 
@@ -3221,7 +3677,8 @@ library(dplyr)
 
 类似Excel表格中筛选功能，筛选条件为` species == "Droid" `
 
-```{r}
+
+```r
 starwars %>% 
   filter(species == "Droid")
 ```
@@ -3230,7 +3687,8 @@ starwars %>%
 
 多条件筛选时，用逗号隔开条件
 
-```{r}
+
+```r
 starwars %>% 
   filter(species == "Droid",skin_color == "gold")
 
@@ -3244,7 +3702,8 @@ starwars %>%
 
 类似`SQL`中 `in` 的用法，或Excel中筛选条件时"或"条件
 
-```{r}
+
+```r
 starwars %>% 
   filter(species %in%  c("Droid",'Clawdite'))
 ```
@@ -3253,7 +3712,8 @@ starwars %>%
 
 注意`|` ,`&`,`!`等逻辑判断符号 , `|`为 或, `&` 为并、且条件，`!`为非,灵活运用可以方便做条件筛选
 
-```{r}
+
+```r
 library(nycflights13)
 filter(flights, !(arr_delay > 120 | dep_delay > 120))
 filter(flights, arr_delay <= 120, dep_delay <= 120)
@@ -3273,7 +3733,8 @@ starwars %>%
 
 通过指定列名称筛选，顺便指定列之间顺序
 
-```{r}
+
+```r
 starwars %>% 
   select(name,height,mass,hair_color,skin_color,eye_color)
 ```
@@ -3282,7 +3743,8 @@ starwars %>%
 
 通过列名或数字向量索引，但是不建议用列索引，避免原始数据列顺序变化后导致报错。
 
-```{r}
+
+```r
 starwars %>% 
   select(name : eye_color)
 #same above
@@ -3297,7 +3759,8 @@ starwars %>%
 
 列重命名使用`rename()`函数，新名称写前面，如下所示：
 
-```{r}
+
+```r
 starwars %>% rename(home_world = homeworld)
 # 多列同换
 starwars %>% rename(home_world = homeworld,skincolor = skin_color)
@@ -3307,7 +3770,8 @@ starwars %>% rename(home_world = homeworld,skincolor = skin_color)
 
 更改列顺序，与使用`select()`指定列顺序相似
 
-```{r}
+
+```r
 # sex:homeworld列在height列前面
 starwars %>% relocate(sex:homeworld, .before = height)
 ```
@@ -3317,7 +3781,8 @@ starwars %>% relocate(sex:homeworld, .before = height)
 
 - 新增计算列
 
-```{r}
+
+```r
 starwars %>% 
   mutate(bmi = mass / ((height / 100)  ^ 2)) %>% 
   select(name:mass,bmi)
@@ -3325,7 +3790,8 @@ starwars %>%
 
 - 新增计算列基础上新增列，
 
-```{r}
+
+```r
 starwars %>% 
   mutate(bmi = mass / ((height / 100)  ^ 2),newbmi = bmi *2) %>% 
   select(name:mass,bmi,newbmi)
@@ -3333,7 +3799,8 @@ starwars %>%
 
 - 删除列
 
-```{r}
+
+```r
 starwars %>% mutate(height = NULL)
 ```
 
@@ -3343,14 +3810,16 @@ starwars %>% mutate(height = NULL)
 - 单列排序，默认升序，通过`desc()`降序排列
 
 
-```{r}
+
+```r
 starwars %>% 
   arrange(desc(mass))
 ```
 
 - 多列排序
 
-```{r}
+
+```r
 starwars %>% 
   arrange(height,desc(mass))
 ```
@@ -3363,7 +3832,8 @@ starwars %>%
 
 按照分组聚合汇总
 
-```{r}
+
+```r
 starwars %>%
   group_by(species) %>%
   summarise(
@@ -3392,7 +3862,8 @@ starwars %>%
 
 默认会自动寻找两表中相同的字段名作为关联的条件
 
-```{r}
+
+```r
 library("nycflights13")
 # Drop unimportant variables so it's easier to understand the join results.
 flights2 <- flights %>% select(year:day, hour, origin, dest, tailnum, carrier)
@@ -3403,7 +3874,8 @@ flights2 %>%
 
 指定关联条件列，类似数据库中`on a.column = b.column `
 
-```{r}
+
+```r
 flights2 %>% left_join(planes, by = "tailnum")
 ```
 
@@ -3411,7 +3883,8 @@ flights2 %>% left_join(planes, by = "tailnum")
 
 `left_join(x,y,by = c("a" = "b", "c" = "d"))` 将会匹配 x$a to y$b 和 x$c to y$d 作为关联条件
 
-```{r}
+
+```r
 #出发机场和目的机场信息
 flights2 %>% left_join(airports, by = c("dest" = "faa"))
 #flights2 %>% left_join(airports, c("origin" = "faa"))
@@ -3426,7 +3899,8 @@ flights2 %>% left_join(airports, by = c("dest" = "faa"))
 `semi_join()`保留所有左表在右表中匹配到的行
 
 
-```{r}
+
+```r
 df1 <- tibble(a=letters[1:20],b=1:20)
 df2 <- tibble(a=letters,b=1:26)
 
@@ -3442,7 +3916,8 @@ df2 %>% anti_join(df1)
 
 3. `setdiff(x,y)`返回存在x中但是不存在y中的记录
 
-```{r}
+
+```r
 (df1 <- tibble(x = 1:2, y = c(1L, 1L)))
 (df2 <- tibble(x = 1:2, y = 1:2))
 intersect(df1, df2)
@@ -3455,7 +3930,8 @@ setdiff(df2, df1)
 
 多表操作请使用`purrr::reduce()`,当需要合并多个表格时，可用以下方式减少合并代码量。
 
-```{r}
+
+```r
 dt1 <- data.frame(x = letters)
 dt2 <- data.frame(x = letters,cola = 1:26)
 dt3 <- data.frame(x = letters,colb = 1:26)
@@ -3473,7 +3949,8 @@ purrr::reduce(dtlist,left_join,by='x')
 
 在多列上执行相同的操作是常用的操作，但是通过复制和粘贴代码，麻烦不说还容易错：
 
-```{r eval=FALSE}
+
+```r
 df %>% 
   group_by(g1, g2) %>% 
   summarise(a = mean(a), b = mean(b), c = mean(c), d = mean(d))
@@ -3481,7 +3958,8 @@ df %>%
 
 通过`across()`函数可以更简洁地重写上面代码：
 
-```{r eval=FALSE}
+
+```r
 df %>% 
   group_by(g1, g2) %>% 
   summarise(across(a:d, mean))
@@ -3497,7 +3975,8 @@ across() 有两个主要参数：
 - 第二个参数，.fns是要应用于每一列的一个函数或函数列表。这也可以是purrr样式的公式（或公式列表），例如~ .x / 2。
 
 
-```{r}
+
+```r
 starwars %>% 
   summarise(across(where(is.character), ~ length(unique(.x))))
 
@@ -3521,7 +4000,8 @@ starwars %>%
 
 `across()` 不会选择分组变量：
 
-```{r}
+
+```r
 df <- data.frame(g = c(1, 1, 2), x = c(-1, 1, 3), y = c(-1, -4, -9))
 df %>% 
   group_by(g) %>% 
@@ -3533,7 +4013,8 @@ df %>%
 通过在第二个参数提供函数或lambda函数的命名列表，可是使用多个函数转换每个变量：
 
 
-```{r}
+
+```r
 min_max <- list(
   min = ~min(.x, na.rm = TRUE), 
   max = ~max(.x, na.rm = TRUE)
@@ -3548,20 +4029,23 @@ NB:该参数的机制没有特别理解，需多练习体会。主要是运用�
 
 以下是官方图册中的案例，但是报错：
 
-```{r eval=FALSE}
+
+```r
 starwars %>% summarise(across(where(is.numeric), min_max, .names = "{.fn}.{.col}"))
 ```
 
 修改后正常运行：
 
-```{r}
+
+```r
 starwars %>% summarise(across(where(is.numeric), min_max, .names = "{fn}.{col}"))
 ```
 
 
 区别主要是`.names`参数的使用方式问题，`.`加不加的问题。
 
-```{r eval=FALSE}
+
+```r
 
 starwars %>% summarise(across(where(is.numeric), min_max, .names = "{fn}——{col}"))
 
@@ -3573,7 +4057,8 @@ starwars %>% summarise(across(where(is.numeric), min_max, .names = "{fn}——{c
 
 该函数不是特别容易理解，需要多尝试使用加深认识。
 
-```{r}
+
+```r
 df <- tibble(x = 1:3, y = 3:5, z = 5:7)
 mult <- list(x = 1, y = 10, z = 100)
 
@@ -3586,7 +4071,8 @@ df %>% mutate(across(all_of(names(mult)), ~ .x * mult[[cur_column()]]))
 
 ### 构造数据集
 
-```{r}
+
+```r
 df <- tibble(x = 1:2, y = 3:4, z = 5:6)
 df %>% rowwise()
 ```
@@ -3594,14 +4080,16 @@ df %>% rowwise()
 像`group_by()`,`rowwise()`并没有做任何事情，它的作用是改变其他动词的工作方式：
 比较以下代码中不的不同
 
-```{r}
+
+```r
 df %>% mutate(m = mean(c(x, y, z)))
 df %>% rowwise() %>% mutate(m = mean(c(x, y, z)))
 ```
 
 `data.table`中的操作:
 
-```{r eval=FALSE}
+
+```r
 library(data.table)
 
 dt <- data.table(x = 1:2, y = 3:4, z = 5:6)
@@ -3611,7 +4099,8 @@ dt[,m:=mean(c(x,y,z)),by=.(x)][]
 
 您可以选择在调用中提供“标识符”变量`rowwise()`。这些变量在您调用时被保留`summarise()`，因此它们的行为与传递给的分组变量有些相似`group_by()`：
 
-```{r}
+
+```r
 df <- tibble(name = c("Mara", "Hadley"), x = 1:2, y = 3:4, z = 5:6)
 
 df %>% 
@@ -3628,7 +4117,8 @@ df %>%
 
 `dplyr::summarise()`使得汇总一列中各行的值非常容易。当与之结合使用时`rowwise()`，还可以轻松汇总一行中各列的值：
 
-```{r}
+
+```r
 df <- tibble(id = 1:6, w = 10:15, x = 20:25, y = 30:35, z = 40:45)
 rf <- df %>% rowwise(id)
 rf %>% mutate(total = sum(c(w, x, y, z)))
@@ -3638,7 +4128,8 @@ rf %>% summarise(total = sum(c(w, x, y, z)))
 
 键入每个变量名称很繁琐，通过`c_across()`使更简单
 
-```{r}
+
+```r
 rf %>% mutate(total = sum(c_across(w:z)))
 rf %>% mutate(total = sum(c_across(where(is.numeric))))
 
@@ -3659,14 +4150,16 @@ rf %>%
 
 ### 添加分组
 
-```{r}
+
+```r
 by_species <- starwars %>% group_by(species)
 by_sex_gender <- starwars %>% group_by(sex, gender)
 ```
 
 除了按照现有变量分组外，还可以按照函数处理后的变量分组，等效在`mutate()`之后执行`group_by`:
 
-```{r}
+
+```r
 bmi_breaks <- c(0, 18.5, 25, 30, Inf)
 starwars %>%
   group_by(bmi_cat = cut(mass/(height/100)^2, breaks=bmi_breaks)) %>%
@@ -3678,7 +4171,8 @@ starwars %>%
 
 要删除所有分组变量，使用`ungroup()`:
 
-```{r}
+
+```r
 by_species %>%
   ungroup() %>%
   tally()
@@ -3689,7 +4183,8 @@ by_species %>%
 
 `summarise()` 计算每个组的汇总，表示从`group_keys`开始右侧添加汇总变量
 
-```{r}
+
+```r
 by_species %>%
   summarise(
     n = n(),
@@ -3703,7 +4198,8 @@ by_species %>%
 从1.0.0版开始，分组信息可以保留`(.groups = "keep")`或删除 `(.groups = 'drop)`
 
 
-```{r}
+
+```r
 a <- by_species %>%
   summarise(
     n = n(),
@@ -3728,13 +4224,15 @@ object.size(b)
 
 相比于`base::ifelse`,`if_else`更为严格，无论`TRUE`或`FALSE`输出类型一致，这样速度更快。与`data.table::fifelse()`功能相似。
 
-```{r eval=FALSE}
+
+```r
 if_else(condition, true, false, missing = NULL)
 ```
 
 与`ifelse`不同的是，`if_else`保留类型
 
-```{r}
+
+```r
 x <- factor(sample(letters[1:5], 10, replace = TRUE))
 ifelse(x %in% c("a", "b", "c"), x, factor(NA))
 if_else(x %in% c("a", "b", "c"), x, factor(NA))
@@ -3745,7 +4243,8 @@ if_else(x %in% c("a", "b", "c"), x, factor(NA))
 
 当条件嵌套条件较多时，使用`case_when`,使代码可读并且不易出错。与sql 中的case when 等价。
 
-```{r}
+
+```r
 Dates <- as.Date(c('2018-10-01', '2018-10-02', '2018-10-03'))
 case_when(
   Dates == '2018-10-01' ~ Dates - 1,
@@ -3761,13 +4260,15 @@ case_when(
 
 `count()`函数用来计数。下面两种表达方式等价。
 
-```{r eval =FALSE}
+
+```r
 df %>% count(a, b)
 # same above
 df %>% group_by(a, b) %>% summarise(n = n())
 ```
 
-```{r}
+
+```r
 starwars %>% count(species)
 # same above 等价
 starwars %>% group_by(species) %>% summarise(n = n())
@@ -3778,7 +4279,8 @@ starwars %>% group_by(species) %>% summarise(n = n())
 
 `n_distinct()`与` length(unique(x))`等价，但是更快更简洁。当我们需要给门店或订单之类数据需要去重计算时采用该函数。
 
-```{r}
+
+```r
 x <- sample(1:10, 1e5, rep = TRUE)
 length(unique(x))
 n_distinct(x)
@@ -3794,7 +4296,8 @@ n_distinct(x)
 - percent_rank():返回0，1之间，通过min_rank()返回值缩放至[0,1]
 
 
-```{r }
+
+```r
 x <- c(5, 1, 3, 2, 2, NA)
 row_number(x)
 min_rank(x)
@@ -3807,13 +4310,15 @@ cume_dist(x)
 
 该系列函数是对`[[`的包装。
 
-```{r eval=FALSE}
+
+```r
 nth(x, n, order_by = NULL, default = default_missing(x))
 first(x, order_by = NULL, default = default_missing(x))
 last(x, order_by = NULL, default = default_missing(x))
 ```
 
-```{r}
+
+```r
 x <- 1:10
 y <- 10:1
 first(x)
@@ -3831,7 +4336,8 @@ group_by(),group_map(), group_nest(), group_split(), group_trim()等一系列函
 
 - group_by()
 
-```{r}
+
+```r
 #group_by()不会改变数据框
 by_cyl <- mtcars %>% group_by(cyl)
 by_cyl
@@ -3852,7 +4358,8 @@ group_map，group_modify,group_walk等三个函数是purrr类具有迭代风格�
 
 但是目前三个函数是实验性的，未来可能会发生变化。
 
-```{r}
+
+```r
 # return a list
 # 返回列表
 mtcars %>%
@@ -3862,7 +4369,8 @@ mtcars %>%
 
 
 
-```{r}
+
+```r
 iris %>%
   group_by(Species) %>%
   group_modify(~ {
@@ -3873,7 +4381,8 @@ iris %>%
 ```
 
 
-```{r eval=FALSE}
+
+```r
 # group_walk
 dir.create(temp <- tempfile())
 iris %>%
@@ -3888,7 +4397,8 @@ unlink(temp, recursive = TRUE)
 
 选择分组变量
 
-```{r}
+
+```r
 gdf <- iris %>% group_by(Species)
 gdf %>% select(group_cols())
 ```
@@ -3904,7 +4414,8 @@ gdf %>% select(group_cols())
 
 累计系列函数
 
-```{r}
+
+```r
 x <- c(1, 3, 5, 2, 2)
 cummean(x)
 cumsum(x) / seq_along(x)
@@ -3916,7 +4427,8 @@ cumany(x == 3)
 
 - distinct 
 
-```{r eval=FALSE}
+
+```r
 df <- tibble(
   x = sample(10, 100, rep = TRUE),
   y = sample(10, 100, rep = TRUE)
@@ -3947,7 +4459,8 @@ Programming with dplyr:
 
 The following function uses embracing to create a wrapper around `summarise()` that computes the minimum and maximum values of a variable, as well as the number of observations that were summarised:
 
-```{r eval=FALSE}
+
+```r
 var_summary <- function(data, var) {
   data %>%
     summarise(n = n(), min = min({{ var }}), max = max({{ var }}))
@@ -3962,7 +4475,8 @@ mtcars %>%
 
 The following example uses .data to count the number of unique values in each variable of mtcars: 
 
-```{r eval=FALSE}
+
+```r
 for (var in names(mtcars)) {
   mtcars %>% count(.data[[var]]) %>% print()
 }
@@ -3975,7 +4489,8 @@ Note that .data is not a data frame; it’s a special construct, a pronoun, that
 
 当我们不知道接下来会用哪个变量汇总时：
 
-```{r}
+
+```r
 my_summarise <- function(data, group_var) {
   data %>%
     group_by({{ group_var }}) %>%
@@ -3986,7 +4501,8 @@ my_summarise <- function(data, group_var) {
 
 如果在多个位置使用：
 
-```{r}
+
+```r
 my_summarise2 <- function(data, expr) {
   data %>% summarise(
     mean = mean({{ expr }}),
@@ -3999,7 +4515,8 @@ my_summarise2 <- function(data, expr) {
 
 当多个表达式时：
 
-```{r}
+
+```r
 my_summarise3 <- function(data, mean_var, sd_var) {
   data %>% 
     summarise(mean = mean({{ mean_var }}), sd = mean({{ sd_var }}))
@@ -4008,7 +4525,8 @@ my_summarise3 <- function(data, mean_var, sd_var) {
 
 如果要输出变量名时：
 
-```{r}
+
+```r
 my_summarise4 <- function(data, expr) {
   data %>% summarise(
     "mean_{{expr}}" := mean({{ expr }}),
@@ -4030,7 +4548,8 @@ my_summarise5 <- function(data, mean_var, sd_var) {
 
 这种使用场景更多
 
-```{r}
+
+```r
 my_summarise <- function(.data, ...) {
   .data %>%
     group_by(...) %>%
@@ -4045,23 +4564,7 @@ starwars %>% my_summarise(sex, gender)
 
 <!--chapter:end:07-Data-manipulation.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 # Loop structure
 
 实际场景中,当需要重复做某动作时,可运用循环结构。
@@ -4071,7 +4574,8 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 利用循环实现1到100连续相加求和
 
-```{r}
+
+```r
 total <- 0
 for(i in 1:100){
   total <- total+i
@@ -4091,7 +4595,8 @@ R中有三种循环结构：
 
 - Repeat
 
-```{r}
+
+```r
 i <- 1
 total <- 0
 repeat{
@@ -4106,7 +4611,8 @@ repeat{
 
 - while
 
-```{r}
+
+```r
 i <- 1
 total <- 0
 while(i <= 1000){
@@ -4122,7 +4628,8 @@ print(paste0('1到1000连续相加求和等于:',total))
 
 代码如示例所示
 
-```{r message=FALSE,warning=FALSE}
+
+```r
 library(tidyverse)
 df <- tibble(
   a = rnorm(10),
@@ -4148,7 +4655,8 @@ hadely 解释如下:
 
 You might not have seen seq_along() before. It’s a safe version of the familiar 1:length(l), with an important difference: if you have a zero-length vector, seq_along() does the right thing:
 
-```{r}
+
+```r
 #wrong
 seq_along(c())
 1:length(c())
@@ -4161,7 +4669,8 @@ seq_along(c())
 
 - next 用法
 
-```{r}
+
+```r
 for(i in letters[1:6] ){
   if(i == "d"){
   next
@@ -4178,7 +4687,8 @@ for(i in letters[1:6] ){
 ### 嵌套循环
 
 
-```{r}
+
+```r
 # not run
 v <- vector(length = 100)
 for(i in 1:10){
@@ -4193,7 +4703,8 @@ for(i in 1:10){
 
 ### 修改已有对象
 
-```{r}
+
+```r
 res <- 1:100
 for(i in seq_along(res)){
   res[i] <- res[i] * i
@@ -4214,14 +4725,16 @@ str(res)
 
 `for (nm in names(xs))`,我们可以使用`x[[nm]]` 该名称访问.当我们要在文件名中使用名称时会比较方便.
 
-```{r eval=FALSE}
+
+```r
 results <- vector("list", length(x))
 names(results) <- names(x)
 ```
 
 数字索引的循环模式最常用,因为可以根据位置提取名称和值.
 
-```{r eval=FALSE}
+
+```r
 for (i in seq_along(x)) {
   name <- names(x)[[i]]
   value <- x[[i]]
@@ -4234,7 +4747,8 @@ for (i in seq_along(x)) {
 
 有时候我们的循环我们不确定输出的长度是多少.这样会逐步增加向量的长度,如下所示：
 
-```{r}
+
+```r
 means <- c(0, 1, 2)
 
 output <- double()
@@ -4247,7 +4761,8 @@ str(output)
 
 但是这种方式浪费时间，当数据量大时候效率会很低下.因为时间复杂度为($O(n^2)$).解决方案是将结果保存在列表中,然后在完成循环后合并为单个向量:
 
-```{r}
+
+```r
 out <- vector("list", length(means))
 for (i in seq_along(means)) {
   n <- sample(100, 1)
@@ -4260,23 +4775,7 @@ str(unlist(out)) #unlist将列表向量化
 
 <!--chapter:end:08-loop.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 # Iteration
 
 常常需要重复操作同样的功能函数，这时可以用迭代来实现。purrr包提供了一套完整的函数来处理循环迭代,可以有效减少重复性工作和代码。
@@ -4291,7 +4790,8 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 用map循环迭代,map函数始终返回list对象。
 
-```{r message=FALSE,warning=FALSE}
+
+```r
 library(tidyverse)
 
 # define function
@@ -4312,7 +4812,8 @@ map(.x = c(1, 4, 7), .f = addTen)
 
 用map_dbl循环迭代，map_dbl函数返回vector。
 
-```{r}
+
+```r
 #library(purrr)
 add1 <- function(x) {
   (x+1)*x
@@ -4358,7 +4859,8 @@ identical(result1,result2)
 
 map_df()函数示例
 
-```{r}
+
+```r
 # 采用匿名函数
 map_df(c(1, 4, 7), function(.x) {
   return(data.frame(old_number = .x, 
@@ -4384,14 +4886,16 @@ reduce、accumulate()函数用法介绍.
 
 在实际工作中,我长用reduce函数实现merge()功能。示例如下：
 
-```{r}
+
+```r
 reduce(1:100,`+`)
 reduce(100:1,`-`)
 ```
 
 将函数功能不断运用到list上得到最后结果。
 
-```{r eval=FALSE}
+
+```r
 n <- 10
 dt1 <- data.frame(a=letters[n],b1=rnorm(n))
 dt2 <- data.frame(a=letters[n],b2=rnorm(n))
@@ -4407,7 +4911,8 @@ reduce(list(dt1,dt2,dt3,dt4),merge)
 
 - accumulate
 
-```{r}
+
+```r
 1:5 %>% accumulate(`+`)
 accumulate(letters[1:5], paste, sep = ".")
 ```
@@ -4417,7 +4922,8 @@ accumulate(letters[1:5], paste, sep = ".")
 
 possibly() 和 safely(),当循环时候遇到错误报错导致整个程序停止,这不是我们想要的。
 
-```{r eval=FALSE}
+
+```r
 l <- list(1,2,3,4,'5')
 map(l,function(.x) .x+1)
 
@@ -4425,7 +4931,8 @@ map(l,function(.x) .x+1)
 
 以上程序将会报错,不能正确得到结果。
 
-```{r}
+
+```r
 l <- list(1,2,3,4,'5')
 test_fun <- safely(function(.x) .x+1)
 map(l,test_fun)
@@ -4437,7 +4944,8 @@ map(l,test_fun)
 
 map2 和 pmap 函数可以映射两个及以上参数。
 
-```{r}
+
+```r
 li1 <- list(1,3,5)
 li2 <- list(2,4,6)
 map2(li1,li2,`+`)
@@ -4445,7 +4953,8 @@ map2(li1,li2,`+`)
 
 类似函数 map2_dbl,map2_chr,map2_dfr等等。
 
-```{r}
+
+```r
 li1 <- list(1,3,5)
 li2 <- list(2,4,6)
 li3 <- list(2,4,6)
@@ -4465,7 +4974,8 @@ pmap(li,sum)
 
 flatten()系列函数可以将列表输出为稳定类型。purrr package 自带Examples。
 
-```{r eval=FALSE}
+
+```r
 x <- rerun(2, sample(4))
 x
 x %>% flatten()
@@ -4491,14 +5001,16 @@ imap,当x有names(x)或者seq_along(x)属性,imap是map2的另一种表达方式
 
 示例1：
 
-```{r}
+
+```r
 imap_chr(sample(10), ~ paste0(.y, ": ", .x))
 ```
 
 sample(10),没有names(),只有长度信息。转化成map2表达如下:
 
 
-```{r}
+
+```r
 #same above
 
 map2_chr(sample(10),1:10,~paste0(.y,": ",.x)) # 第二个list 为位置信息.
@@ -4508,23 +5020,7 @@ map2_chr(sample(10),1:10,~paste0(.y,": ",.x)) # 第二个list 为位置信息.
 
 <!--chapter:end:09-iteration.Rmd-->
 
-```{r include=FALSE, cache=FALSE}
-set.seed(1014)
-options(digits = 3)
 
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
-  fig.align = 'center',
-  fig.width = 6,
-  fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
-)
-
-options(dplyr.print_min = 6, dplyr.print_max = 6)
-```
 # define function
 
 
@@ -4535,7 +5031,8 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 原始代码示例如下:
 
-```{r message=FALSE,warning=FALSE}
+
+```r
 library(tidyverse)
 num <- sample(1:1000,1000)
 res1 <- if_else(num <= 50,"1-50",
@@ -4562,7 +5059,8 @@ res1 <- if_else(num <= 50,"1-50",
 
 当需要修改区间时候仅仅只需要调整参数,而不必大量修改代码,当在脚本中需要调用多次时,能简洁代码.
 
-```{r eval=FALSE}
+
+```r
 # 排名区间函数
 #library(tidyverse)
 cut_function <- function(vecto,x,n){
@@ -4599,7 +5097,8 @@ res2 <- cut_function(num,50,4)
 
 给函数取一个合适名字是很难的事情,徐尽可能从函数名称看出你实现的功能.
 
-```{r}
+
+```r
 add_ten <- function(x){
   res <- x+10
   return(res) #可以不用显示返回
@@ -4609,7 +5108,8 @@ add_ten(1)
 
 写函数时需要考虑函数使用情况,尽可能考虑容错情况,当输入不符合预期时能友好提示错误.
 
-```{r}
+
+```r
 add_ten <- function(x){
   if(is.numeric(x)==TRUE){
     x+10
@@ -4621,7 +5121,8 @@ add_ten <- function(x){
 
 ## 条件执行
 
-```{r}
+
+```r
 has_name <- function(x) {
   nms <- names(x)
   if (is.null(nms)) {
@@ -4634,7 +5135,8 @@ has_name <- function(x) {
 
 ### 多条件执行
 
-```{r eval=FALSE}
+
+```r
 if (this) {
   # do that
 } else if (that) {
@@ -4646,7 +5148,8 @@ if (this) {
 
 当需要很多if时可考虑用switch()功能
 
-```{r eval=FALSE}
+
+```r
 function(x, y, op) {
    switch(op,
      plus = x + y,
@@ -4664,7 +5167,8 @@ function(x, y, op) {
 函数的参数通常分为两大类,一组是提供要计算的参数,另外一组提供计算时的细节参数.
 
 
-```{r}
+
+```r
 mean_ci <- function(x, conf = 0.95) {
   se <- sd(x) / sqrt(length(x))
   alpha <- 1 - conf
@@ -4693,7 +5197,8 @@ mean_ci(x, conf = 0.99)
 在写函数时,并不清楚最终函数的输出,在编写函数时进行约束是有必要的.
 
 
-```{r}
+
+```r
 wt_mean <- function(x, w) {
   if (length(x) != length(w)) {
     stop("`x` and `w` must be the same length", call. = FALSE)
@@ -4706,14 +5211,16 @@ wt_mean <- function(x, w) {
 
 R中的许多函数都能接受任意数量的输入：
 
-```{r}
+
+```r
 sum(1,2,3,4,5,6,7,8,9,10)
 stringr::str_c('a','b','d','e','f','g','h')
 ```
 
 下面的例子中
 
-```{r}
+
+```r
 commas <- function(...) stringr::str_c(..., collapse = ", ")
 commas(letters[1:10])
 #> [1] "a, b, c, d, e, f, g, h, i, j"
@@ -4738,7 +5245,8 @@ rule("Important output")
 
 - A common reason to do this is because the inputs are empty:
 
-```{r}
+
+```r
 complicated_function <- function(x, y, z) {
   if (length(x) == 0 || length(y) == 0) {
     return(0)
@@ -4750,7 +5258,8 @@ complicated_function <- function(x, y, z) {
 
 - Another reason is because you have a if statement with one complex block and one simple block. For example, you might write an if statement like this:
 
-```{r}
+
+```r
 f <- function() {
   if (x) {
     # Do 
@@ -4773,7 +5282,8 @@ f <- function() {
 
 以上从 R for Data Science 中翻译得来。
 
-```{r}
+
+```r
 show_missings <- function(df) {
   n <- sum(is.na(df))
   cat("Missing values: ", n, "\n", sep = "")
@@ -4784,13 +5294,15 @@ show_missings <- function(df) {
 
 以交互invisible()方式调用它,则意味着输入df不会被打印出来:
 
-```{r}
+
+```r
 show_missings(mtcars)
 ```
 
 但是结果仍存在，默认情况下只是不打印显示出来:
 
-```{r}
+
+```r
 x <- show_missings(mtcars) 
 class(x)
 dim(x)
@@ -4798,7 +5310,8 @@ dim(x)
 
 在管道中继续使用
 
-```{r}
+
+```r
 mtcars %>% 
   show_missings() %>% 
   mutate(mpg = ifelse(mpg < 20, NA, mpg)) %>% 
@@ -4813,7 +5326,8 @@ mtcars %>%
 The last component of a function is its environment. This is not something you need to understand deeply when you first start writing functions. However, it’s important to know a little bit about environments because they are crucial to how functions work. The environment of a function controls how R finds the value associated with a name. For example, take this function:
 
 
-```{r}
+
+```r
 f <- function(x) {
   x + y
 } 
@@ -4821,7 +5335,8 @@ f <- function(x) {
 
 在很多其他的编程语言中这样定义函数是错误的，因为没有定义`y`.在R中,这是有效的代码,因为R使用称为` lexical scoping `的方式寻找关联值.在函数内部没有定义`y`,将在上一层环境中查看`y`:
 
-```{r}
+
+```r
 y <- 100
 f(10)
 
@@ -4843,7 +5358,8 @@ f(10)
 
 参考资料：<https://dplyr.tidyverse.org/articles/programming.html>
 
-```{r eval=FALSE}
+
+```r
 #library(tidyverse)
 mean_mpg = function(data, group_col) {
   data %>% 
@@ -4856,7 +5372,8 @@ mtcars %>% mean_mpg(gear)
 
 当编写如下函数时,代码将成功运行
 
-```{r}
+
+```r
 #自定义函数
 my_summarise3 <- function(data, group_var,mean_var, sd_var) {
   data %>% 
