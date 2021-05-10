@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.3 循环变化 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.3 循环变化 | R学习笔记" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,12 +51,15 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,24 +140,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
 <li class="chapter" data-level="2" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>2</b> data.table</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.1</b> 基础介绍</a>
+<li class="chapter" data-level="2.1" data-path="安装.html"><a href="安装.html"><i class="fa fa-check"></i><b>2.1</b> 安装</a></li>
+<li class="chapter" data-level="2.2" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.2</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.1.1</b> 基本格式</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html"><i class="fa fa-check"></i><b>2.2</b> i j by 使用</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
-<li class="chapter" data-level="2.2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行筛选"><i class="fa fa-check"></i><b>2.2.2</b> 行筛选</a></li>
-<li class="chapter" data-level="2.2.3" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#列筛选"><i class="fa fa-check"></i><b>2.2.3</b> 列筛选</a></li>
-<li class="chapter" data-level="2.2.4" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
-<li class="chapter" data-level="2.2.5" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#j-常规计算"><i class="fa fa-check"></i><b>2.2.5</b> j 常规计算</a></li>
-<li class="chapter" data-level="2.2.6" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#by-分组"><i class="fa fa-check"></i><b>2.2.6</b> by 分组</a></li>
+<li class="chapter" data-level="2.2.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
+<li class="chapter" data-level="2.2.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.2.2</b> 基本格式</a></li>
+<li class="chapter" data-level="2.2.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>2.2.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="2.2.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>2.3</b> 常规操作</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>2.3.1</b> 新增更新列</a></li>
 <li class="chapter" data-level="2.3.2" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>2.3.2</b> 排序</a></li>
-<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选-1"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
+<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常规操作.html"><a href="常规操作.html#特殊符号"><i class="fa fa-check"></i><b>2.3.4</b> 特殊符号</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>2.4</b> 常用函数</a>
@@ -179,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>3.1</b> 安装数据库</a></li>
 <li class="chapter" data-level="3.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>3.2</b> DBI</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装-1"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>3.2.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>3.2.3</b> 执行sql任务</a></li>
 <li class="chapter" data-level="3.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>3.2.4</b> 函数介绍</a></li>
@@ -189,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>3.5</b> ROracle包</a></li>
 <li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-1"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
+<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-2"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
 <li class="chapter" data-level="3.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>3.6.2</b> 连接使用</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>3.7</b> 常见问题</a>
@@ -224,7 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="常用函数-1.html"><a href="常用函数-1.html#分割字符"><i class="fa fa-check"></i><b>4.2.5</b> 分割字符</a></li>
 <li class="chapter" data-level="4.2.6" data-path="常用函数-1.html"><a href="常用函数-1.html#替换字符"><i class="fa fa-check"></i><b>4.2.6</b> 替换字符</a></li>
 <li class="chapter" data-level="4.2.7" data-path="常用函数-1.html"><a href="常用函数-1.html#移除字符"><i class="fa fa-check"></i><b>4.2.7</b> 移除字符</a></li>
-<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.8</b> 其他函数</a></li>
+<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#字符排序"><i class="fa fa-check"></i><b>4.2.8</b> 字符排序</a></li>
+<li class="chapter" data-level="4.2.9" data-path="常用函数-1.html"><a href="常用函数-1.html#提取单词"><i class="fa fa-check"></i><b>4.2.9</b> 提取单词</a></li>
+<li class="chapter" data-level="4.2.10" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.10</b> 其他函数</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="r实现excel字符函数.html"><a href="r实现excel字符函数.html"><i class="fa fa-check"></i><b>4.3</b> R实现Excel字符函数</a></li>
 </ul></li>
@@ -255,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
+<li class="chapter" data-level="7.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
 <li class="chapter" data-level="7.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>7.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>7.2.1</b> 宽转长</a></li>
@@ -270,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
-<li class="chapter" data-level="8.2" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
+<li class="chapter" data-level="8.2" data-path="安装-4.html"><a href="安装-4.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
 <li class="chapter" data-level="8.3" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.3</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="基础用法-2.html"><a href="基础用法-2.html#filter"><i class="fa fa-check"></i><b>8.3.1</b> filter</a></li>
@@ -389,11 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.3</span> 循环变化</h2>
 <div id="修改已有对象" class="section level3" number="9.3.1">
 <h3><span class="header-section-number">9.3.1</span> 修改已有对象</h3>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="循环变化.html#cb269-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb269-2"><a href="循环变化.html#cb269-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(res)){</span>
-<span id="cb269-3"><a href="循环变化.html#cb269-3" aria-hidden="true" tabindex="-1"></a>  res[i] <span class="ot">&lt;-</span> res[i] <span class="sc">*</span> i</span>
-<span id="cb269-4"><a href="循环变化.html#cb269-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb269-5"><a href="循环变化.html#cb269-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="循环变化.html#cb276-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb276-2"><a href="循环变化.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(res)){</span>
+<span id="cb276-3"><a href="循环变化.html#cb276-3" aria-hidden="true" tabindex="-1"></a>  res[i] <span class="ot">&lt;-</span> res[i] <span class="sc">*</span> i</span>
+<span id="cb276-4"><a href="循环变化.html#cb276-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb276-5"><a href="循环变化.html#cb276-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(res)</span></code></pre></div>
 </div>
 <div id="循环模式" class="section level3" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> 循环模式</h3>
@@ -406,33 +407,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>遍历名称</li>
 </ul>
 <p><code>for (nm in names(xs))</code>,我们可以使用<code>x[[nm]]</code> 该名称访问.当我们要在文件名中使用名称时会比较方便.</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="循环变化.html#cb270-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(x))</span>
-<span id="cb270-2"><a href="循环变化.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(results) <span class="ot">&lt;-</span> <span class="fu">names</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="循环变化.html#cb277-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(x))</span>
+<span id="cb277-2"><a href="循环变化.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(results) <span class="ot">&lt;-</span> <span class="fu">names</span>(x)</span></code></pre></div>
 <p>数字索引的循环模式最常用,因为可以根据位置提取名称和值.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="循环变化.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
-<span id="cb271-2"><a href="循环变化.html#cb271-2" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> <span class="fu">names</span>(x)[[i]]</span>
-<span id="cb271-3"><a href="循环变化.html#cb271-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> x[[i]]</span>
-<span id="cb271-4"><a href="循环变化.html#cb271-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="循环变化.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb278-2"><a href="循环变化.html#cb278-2" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> <span class="fu">names</span>(x)[[i]]</span>
+<span id="cb278-3"><a href="循环变化.html#cb278-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> x[[i]]</span>
+<span id="cb278-4"><a href="循环变化.html#cb278-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="未知长度输出" class="section level3" number="9.3.3">
 <h3><span class="header-section-number">9.3.3</span> 未知长度输出</h3>
 <p>有时候我们的循环我们不确定输出的长度是多少.这样会逐步增加向量的长度,如下所示：</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="循环变化.html#cb272-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb272-2"><a href="循环变化.html#cb272-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb272-3"><a href="循环变化.html#cb272-3" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">double</span>()</span>
-<span id="cb272-4"><a href="循环变化.html#cb272-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
-<span id="cb272-5"><a href="循环变化.html#cb272-5" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb272-6"><a href="循环变化.html#cb272-6" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">rnorm</span>(n, means[[i]]))</span>
-<span id="cb272-7"><a href="循环变化.html#cb272-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb272-8"><a href="循环变化.html#cb272-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(output)</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="循环变化.html#cb279-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb279-2"><a href="循环变化.html#cb279-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb279-3"><a href="循环变化.html#cb279-3" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">double</span>()</span>
+<span id="cb279-4"><a href="循环变化.html#cb279-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
+<span id="cb279-5"><a href="循环变化.html#cb279-5" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb279-6"><a href="循环变化.html#cb279-6" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">rnorm</span>(n, means[[i]]))</span>
+<span id="cb279-7"><a href="循环变化.html#cb279-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb279-8"><a href="循环变化.html#cb279-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(output)</span></code></pre></div>
 <p>但是这种方式浪费时间，当数据量大时候效率会很低下.因为时间复杂度为(<span class="math inline">\(O(n^2)\)</span>).解决方案是将结果保存在列表中,然后在完成循环后合并为单个向量:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="循环变化.html#cb273-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(means))</span>
-<span id="cb273-2"><a href="循环变化.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
-<span id="cb273-3"><a href="循环变化.html#cb273-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb273-4"><a href="循环变化.html#cb273-4" aria-hidden="true" tabindex="-1"></a>  out[[i]] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, means[[i]])</span>
-<span id="cb273-5"><a href="循环变化.html#cb273-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb273-6"><a href="循环变化.html#cb273-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(out)</span>
-<span id="cb273-7"><a href="循环变化.html#cb273-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">unlist</span>(out)) <span class="co">#unlist将列表向量化</span></span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="循环变化.html#cb280-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(means))</span>
+<span id="cb280-2"><a href="循环变化.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
+<span id="cb280-3"><a href="循环变化.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb280-4"><a href="循环变化.html#cb280-4" aria-hidden="true" tabindex="-1"></a>  out[[i]] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, means[[i]])</span>
+<span id="cb280-5"><a href="循环变化.html#cb280-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb280-6"><a href="循环变化.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(out)</span>
+<span id="cb280-7"><a href="循环变化.html#cb280-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">unlist</span>(out)) <span class="co">#unlist将列表向量化</span></span></code></pre></div>
 
 </div>
 </div>
@@ -466,6 +467,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

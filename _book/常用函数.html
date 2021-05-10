@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.4 常用函数 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.4 常用函数 | R学习笔记" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,12 +51,15 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,24 +140,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
 <li class="chapter" data-level="2" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>2</b> data.table</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.1</b> 基础介绍</a>
+<li class="chapter" data-level="2.1" data-path="安装.html"><a href="安装.html"><i class="fa fa-check"></i><b>2.1</b> 安装</a></li>
+<li class="chapter" data-level="2.2" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.2</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.1.1</b> 基本格式</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html"><i class="fa fa-check"></i><b>2.2</b> i j by 使用</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
-<li class="chapter" data-level="2.2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行筛选"><i class="fa fa-check"></i><b>2.2.2</b> 行筛选</a></li>
-<li class="chapter" data-level="2.2.3" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#列筛选"><i class="fa fa-check"></i><b>2.2.3</b> 列筛选</a></li>
-<li class="chapter" data-level="2.2.4" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
-<li class="chapter" data-level="2.2.5" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#j-常规计算"><i class="fa fa-check"></i><b>2.2.5</b> j 常规计算</a></li>
-<li class="chapter" data-level="2.2.6" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#by-分组"><i class="fa fa-check"></i><b>2.2.6</b> by 分组</a></li>
+<li class="chapter" data-level="2.2.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
+<li class="chapter" data-level="2.2.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.2.2</b> 基本格式</a></li>
+<li class="chapter" data-level="2.2.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>2.2.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="2.2.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>2.3</b> 常规操作</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>2.3.1</b> 新增更新列</a></li>
 <li class="chapter" data-level="2.3.2" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>2.3.2</b> 排序</a></li>
-<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选-1"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
+<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常规操作.html"><a href="常规操作.html#特殊符号"><i class="fa fa-check"></i><b>2.3.4</b> 特殊符号</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>2.4</b> 常用函数</a>
@@ -179,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>3.1</b> 安装数据库</a></li>
 <li class="chapter" data-level="3.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>3.2</b> DBI</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装-1"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>3.2.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>3.2.3</b> 执行sql任务</a></li>
 <li class="chapter" data-level="3.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>3.2.4</b> 函数介绍</a></li>
@@ -189,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>3.5</b> ROracle包</a></li>
 <li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-1"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
+<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-2"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
 <li class="chapter" data-level="3.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>3.6.2</b> 连接使用</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>3.7</b> 常见问题</a>
@@ -224,7 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="常用函数-1.html"><a href="常用函数-1.html#分割字符"><i class="fa fa-check"></i><b>4.2.5</b> 分割字符</a></li>
 <li class="chapter" data-level="4.2.6" data-path="常用函数-1.html"><a href="常用函数-1.html#替换字符"><i class="fa fa-check"></i><b>4.2.6</b> 替换字符</a></li>
 <li class="chapter" data-level="4.2.7" data-path="常用函数-1.html"><a href="常用函数-1.html#移除字符"><i class="fa fa-check"></i><b>4.2.7</b> 移除字符</a></li>
-<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.8</b> 其他函数</a></li>
+<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#字符排序"><i class="fa fa-check"></i><b>4.2.8</b> 字符排序</a></li>
+<li class="chapter" data-level="4.2.9" data-path="常用函数-1.html"><a href="常用函数-1.html#提取单词"><i class="fa fa-check"></i><b>4.2.9</b> 提取单词</a></li>
+<li class="chapter" data-level="4.2.10" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.10</b> 其他函数</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="r实现excel字符函数.html"><a href="r实现excel字符函数.html"><i class="fa fa-check"></i><b>4.3</b> R实现Excel字符函数</a></li>
 </ul></li>
@@ -255,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
+<li class="chapter" data-level="7.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
 <li class="chapter" data-level="7.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>7.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>7.2.1</b> 宽转长</a></li>
@@ -270,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
-<li class="chapter" data-level="8.2" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
+<li class="chapter" data-level="8.2" data-path="安装-4.html"><a href="安装-4.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
 <li class="chapter" data-level="8.3" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.3</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="基础用法-2.html"><a href="基础用法-2.html#filter"><i class="fa fa-check"></i><b>8.3.1</b> filter</a></li>
@@ -390,72 +391,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="排序函数-frank" class="section level3" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> 排序函数 frank</h3>
 <p><code>frank</code>和<code>frankv</code>函数参数如下：</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="常用函数.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(x, ..., <span class="at">na.last=</span><span class="cn">TRUE</span>, <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>,</span>
-<span id="cb24-2"><a href="常用函数.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span>
-<span id="cb24-3"><a href="常用函数.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="常用函数.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">order=</span>1L, <span class="at">na.last=</span><span class="cn">TRUE</span>,</span>
-<span id="cb24-5"><a href="常用函数.html#cb24-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;random&quot;</span>,</span>
-<span id="cb24-6"><a href="常用函数.html#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="常用函数.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(x, ..., <span class="at">na.last=</span><span class="cn">TRUE</span>, <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>,</span>
+<span id="cb25-2"><a href="常用函数.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span>
+<span id="cb25-3"><a href="常用函数.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="常用函数.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">order=</span>1L, <span class="at">na.last=</span><span class="cn">TRUE</span>,</span>
+<span id="cb25-5"><a href="常用函数.html#cb25-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;random&quot;</span>,</span>
+<span id="cb25-6"><a href="常用函数.html#cb25-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span></code></pre></div>
 <p>官方案例,如下所示:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="常用函数.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on vectors</span></span>
-<span id="cb25-2"><a href="常用函数.html#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
-<span id="cb25-3"><a href="常用函数.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs are considered identical (unlike base R)</span></span>
-<span id="cb25-4"><a href="常用函数.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default is average</span></span>
-<span id="cb25-5"><a href="常用函数.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x) <span class="co"># na.last=TRUE</span></span>
-<span id="cb25-6"><a href="常用函数.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
-<span id="cb25-7"><a href="常用函数.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">na.last=</span><span class="cn">FALSE</span>)</span>
-<span id="cb25-8"><a href="常用函数.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.0 3.5 6.0 1.5 3.5 1.5 6.0</span></span>
-<span id="cb25-9"><a href="常用函数.html#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="常用函数.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># on data.table</span></span>
-<span id="cb25-11"><a href="常用函数.html#cb25-11" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(x, <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="cn">NA</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
-<span id="cb25-12"><a href="常用函数.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>) <span class="co"># same as frankv(x) from before</span></span>
-<span id="cb25-13"><a href="常用函数.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
-<span id="cb25-14"><a href="常用函数.html#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">na.last=</span><span class="st">&quot;keep&quot;</span>)</span>
-<span id="cb25-15"><a href="常用函数.html#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0  NA 1.5  NA 4.0</span></span>
-<span id="cb25-16"><a href="常用函数.html#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>)</span>
-<span id="cb25-17"><a href="常用函数.html#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 2 1 2</span></span>
-<span id="cb25-18"><a href="常用函数.html#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(DT, x, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>) <span class="co"># equivalent of above using frank</span></span>
-<span id="cb25-19"><a href="常用函数.html#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 2 1 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="常用函数.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on vectors</span></span>
+<span id="cb26-2"><a href="常用函数.html#cb26-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb26-3"><a href="常用函数.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs are considered identical (unlike base R)</span></span>
+<span id="cb26-4"><a href="常用函数.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default is average</span></span>
+<span id="cb26-5"><a href="常用函数.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x) <span class="co"># na.last=TRUE</span></span>
+<span id="cb26-6"><a href="常用函数.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
+<span id="cb26-7"><a href="常用函数.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">na.last=</span><span class="cn">FALSE</span>)</span>
+<span id="cb26-8"><a href="常用函数.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.0 3.5 6.0 1.5 3.5 1.5 6.0</span></span>
+<span id="cb26-9"><a href="常用函数.html#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="常用函数.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># on data.table</span></span>
+<span id="cb26-11"><a href="常用函数.html#cb26-11" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(x, <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="cn">NA</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb26-12"><a href="常用函数.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>) <span class="co"># same as frankv(x) from before</span></span>
+<span id="cb26-13"><a href="常用函数.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
+<span id="cb26-14"><a href="常用函数.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">na.last=</span><span class="st">&quot;keep&quot;</span>)</span>
+<span id="cb26-15"><a href="常用函数.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0  NA 1.5  NA 4.0</span></span>
+<span id="cb26-16"><a href="常用函数.html#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>)</span>
+<span id="cb26-17"><a href="常用函数.html#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 2 1 2</span></span>
+<span id="cb26-18"><a href="常用函数.html#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(DT, x, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>) <span class="co"># equivalent of above using frank</span></span>
+<span id="cb26-19"><a href="常用函数.html#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 2 1 2</span></span></code></pre></div>
 <ul>
 <li>frankv在排序时,NA被认为是一样的,基础base R 中认为不一样.</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="常用函数.html#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>) </span>
-<span id="cb26-2"><a href="常用函数.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)</span>
-<span id="cb26-3"><a href="常用函数.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
-<span id="cb26-4"><a href="常用函数.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(x)</span>
-<span id="cb26-5"><a href="常用函数.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.0 1.5 7.0 4.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="常用函数.html#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>) </span>
+<span id="cb27-2"><a href="常用函数.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)</span>
+<span id="cb27-3"><a href="常用函数.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
+<span id="cb27-4"><a href="常用函数.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(x)</span>
+<span id="cb27-5"><a href="常用函数.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.0 1.5 7.0 4.0</span></span></code></pre></div>
 <ul>
 <li>升序降序选择</li>
 </ul>
 <p>order参数只能为1或者-1.默认为1代表升序</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="常用函数.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> 1L)</span>
-<span id="cb27-2"><a href="常用函数.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
-<span id="cb27-3"><a href="常用函数.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> <span class="sc">-</span>1L)</span>
-<span id="cb27-4"><a href="常用函数.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.0 4.5 2.0 6.5 4.5 6.5 2.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="常用函数.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> 1L)</span>
+<span id="cb28-2"><a href="常用函数.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
+<span id="cb28-3"><a href="常用函数.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> <span class="sc">-</span>1L)</span>
+<span id="cb28-4"><a href="常用函数.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.0 4.5 2.0 6.5 4.5 6.5 2.0</span></span></code></pre></div>
 <ul>
 <li>排序方式选择</li>
 </ul>
 <p>默认 average,还有dense,random,first,last,max,min等方式。其中dense是紧凑排名，random是随机让相同的随机排列后排名</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="常用函数.html#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb28-2"><a href="常用函数.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)  <span class="co">#大小相同 排名相同,下一位排名除以2</span></span>
-<span id="cb28-3"><a href="常用函数.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;min&#39;</span>)  <span class="co">#大小相同 排名相同,取最小排名</span></span>
-<span id="cb28-4"><a href="常用函数.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;max&#39;</span>)  <span class="co">#大小相同 排名相同,取最大排名</span></span>
-<span id="cb28-5"><a href="常用函数.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>) <span class="co">#相同大小排名以后往后递增 根据实际情况决定</span></span>
-<span id="cb28-6"><a href="常用函数.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;dense&#39;</span>)</span>
-<span id="cb28-7"><a href="常用函数.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;random&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="常用函数.html#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb29-2"><a href="常用函数.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)  <span class="co">#大小相同 排名相同,下一位排名除以2</span></span>
+<span id="cb29-3"><a href="常用函数.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;min&#39;</span>)  <span class="co">#大小相同 排名相同,取最小排名</span></span>
+<span id="cb29-4"><a href="常用函数.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;max&#39;</span>)  <span class="co">#大小相同 排名相同,取最大排名</span></span>
+<span id="cb29-5"><a href="常用函数.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>) <span class="co">#相同大小排名以后往后递增 根据实际情况决定</span></span>
+<span id="cb29-6"><a href="常用函数.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;dense&#39;</span>)</span>
+<span id="cb29-7"><a href="常用函数.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;random&#39;</span>)</span></code></pre></div>
 <ul>
 <li>NA处理</li>
 </ul>
 <p>默认是将NA排在最后,NAs是相同的，与base R 不一样。</p>
 <p>na.last参数等于TRUE时，缺失值被排最后；如果等于FALSE,放在前面；如果等于NA，将被移除；如果等于“keep,”将会保留NA.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="常用函数.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">TRUE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
-<span id="cb29-2"><a href="常用函数.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 5 1 2 3</span></span>
-<span id="cb29-3"><a href="常用函数.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">FALSE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
-<span id="cb29-4"><a href="常用函数.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
-<span id="cb29-5"><a href="常用函数.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">NA</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
-<span id="cb29-6"><a href="常用函数.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb29-7"><a href="常用函数.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="st">&#39;keep&#39;</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
-<span id="cb29-8"><a href="常用函数.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA NA  1  2  3</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="常用函数.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">TRUE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb30-2"><a href="常用函数.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 5 1 2 3</span></span>
+<span id="cb30-3"><a href="常用函数.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">FALSE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb30-4"><a href="常用函数.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
+<span id="cb30-5"><a href="常用函数.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">NA</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb30-6"><a href="常用函数.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb30-7"><a href="常用函数.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="st">&#39;keep&#39;</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb30-8"><a href="常用函数.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA NA  1  2  3</span></span></code></pre></div>
 </div>
 <div id="判断函数" class="section level3" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> 判断函数</h3>
@@ -463,65 +464,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>fifelse</li>
 </ul>
 <p>fifelse()类似<code>dplyr::if_else()</code>函数,相比base::ifelse() 更快。</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="常用函数.html#cb30-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb30-2"><a href="常用函数.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L, x, x <span class="sc">-</span> 1L)</span>
-<span id="cb30-3"><a href="常用函数.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 1 3 4 3 1 0 1 3 4 5</span></span>
-<span id="cb30-4"><a href="常用函数.html#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="常用函数.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L,<span class="fu">fifelse</span>(x <span class="sc">&gt;=</span> 4L,x <span class="sc">+</span> 1L,x),x<span class="sc">-</span>1L)</span>
-<span id="cb30-6"><a href="常用函数.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 1 3 5 3 1 0 1 3 5 6</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="常用函数.html#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb31-2"><a href="常用函数.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L, x, x <span class="sc">-</span> 1L)</span>
+<span id="cb31-3"><a href="常用函数.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 1 3 4 3 1 0 1 3 4 5</span></span>
+<span id="cb31-4"><a href="常用函数.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="常用函数.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L,<span class="fu">fifelse</span>(x <span class="sc">&gt;=</span> 4L,x <span class="sc">+</span> 1L,x),x<span class="sc">-</span>1L)</span>
+<span id="cb31-6"><a href="常用函数.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 1 3 5 3 1 0 1 3 5 6</span></span></code></pre></div>
 <ul>
 <li>fcase</li>
 </ul>
 <p>与sql中的case when，与dplyr中的<code>case_when()</code>函数用法相似。相比fifelse相比，嵌套更加方便。</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="常用函数.html#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb31-2"><a href="常用函数.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
-<span id="cb31-3"><a href="常用函数.html#cb31-3" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&lt;</span> 5L, 1L,</span>
-<span id="cb31-4"><a href="常用函数.html#cb31-4" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&gt;</span> 5L, 3L</span>
-<span id="cb31-5"><a href="常用函数.html#cb31-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-6"><a href="常用函数.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  1  1  1 NA  3  3  3  3  3</span></span>
-<span id="cb31-7"><a href="常用函数.html#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="常用函数.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 两种函数实现方式</span></span>
-<span id="cb31-9"><a href="常用函数.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="fu">fifelse</span>(x <span class="sc">&gt;</span><span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dv">0</span>)</span>
-<span id="cb31-10"><a href="常用函数.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 0 0 0 0 1 1 1 2 2</span></span>
-<span id="cb31-11"><a href="常用函数.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
-<span id="cb31-12"><a href="常用函数.html#cb31-12" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">8</span>,<span class="dv">2</span>,</span>
-<span id="cb31-13"><a href="常用函数.html#cb31-13" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="dv">1</span>,</span>
-<span id="cb31-14"><a href="常用函数.html#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">default =</span> <span class="dv">0</span></span>
-<span id="cb31-15"><a href="常用函数.html#cb31-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-16"><a href="常用函数.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 0 0 0 0 1 1 1 2 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="常用函数.html#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb32-2"><a href="常用函数.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
+<span id="cb32-3"><a href="常用函数.html#cb32-3" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&lt;</span> 5L, 1L,</span>
+<span id="cb32-4"><a href="常用函数.html#cb32-4" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&gt;</span> 5L, 3L</span>
+<span id="cb32-5"><a href="常用函数.html#cb32-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-6"><a href="常用函数.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  1  1  1 NA  3  3  3  3  3</span></span>
+<span id="cb32-7"><a href="常用函数.html#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="常用函数.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 两种函数实现方式</span></span>
+<span id="cb32-9"><a href="常用函数.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="fu">fifelse</span>(x <span class="sc">&gt;</span><span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dv">0</span>)</span>
+<span id="cb32-10"><a href="常用函数.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 0 0 0 0 1 1 1 2 2</span></span>
+<span id="cb32-11"><a href="常用函数.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
+<span id="cb32-12"><a href="常用函数.html#cb32-12" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">8</span>,<span class="dv">2</span>,</span>
+<span id="cb32-13"><a href="常用函数.html#cb32-13" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="dv">1</span>,</span>
+<span id="cb32-14"><a href="常用函数.html#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">default =</span> <span class="dv">0</span></span>
+<span id="cb32-15"><a href="常用函数.html#cb32-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-16"><a href="常用函数.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 0 0 0 0 1 1 1 2 2</span></span></code></pre></div>
 </div>
 <div id="交集-差集-合并" class="section level3" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> 交集 差集 合并</h3>
 <p>相当于base R 中 union(),intersect(),setdiff() 和setequal() 功能.all参数控制如何处理重复的行,和SQL中不同的是,data.table将保留行顺序.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="常用函数.html#cb32-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-2"><a href="常用函数.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb32-3"><a href="常用函数.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb32-4"><a href="常用函数.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb32-5"><a href="常用函数.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, y, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-6"><a href="常用函数.html#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="常用函数.html#cb32-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb32-8"><a href="常用函数.html#cb32-8" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># same set of rows as x</span></span>
-<span id="cb32-9"><a href="常用函数.html#cb32-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span>
-<span id="cb32-10"><a href="常用函数.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-11"><a href="常用函数.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y)            <span class="co"># intersect</span></span>
-<span id="cb32-12"><a href="常用函数.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)  <span class="co"># intersect all</span></span>
-<span id="cb32-13"><a href="常用函数.html#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-14"><a href="常用函数.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y)              <span class="co"># except</span></span>
-<span id="cb32-15"><a href="常用函数.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)    <span class="co"># except all</span></span>
-<span id="cb32-16"><a href="常用函数.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y)                <span class="co"># union</span></span>
-<span id="cb32-17"><a href="常用函数.html#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)      <span class="co"># union all</span></span>
-<span id="cb32-18"><a href="常用函数.html#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2, <span class="at">all=</span><span class="cn">FALSE</span>) <span class="co"># setequal</span></span>
-<span id="cb32-19"><a href="常用函数.html#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2)            <span class="co"># setequal all</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="常用函数.html#cb33-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-2"><a href="常用函数.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-3"><a href="常用函数.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-4"><a href="常用函数.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-5"><a href="常用函数.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, y, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-6"><a href="常用函数.html#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="常用函数.html#cb33-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb33-8"><a href="常用函数.html#cb33-8" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># same set of rows as x</span></span>
+<span id="cb33-9"><a href="常用函数.html#cb33-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span>
+<span id="cb33-10"><a href="常用函数.html#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="常用函数.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y)            <span class="co"># intersect</span></span>
+<span id="cb33-12"><a href="常用函数.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)  <span class="co"># intersect all</span></span>
+<span id="cb33-13"><a href="常用函数.html#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="常用函数.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y)              <span class="co"># except</span></span>
+<span id="cb33-15"><a href="常用函数.html#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)    <span class="co"># except all</span></span>
+<span id="cb33-16"><a href="常用函数.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y)                <span class="co"># union</span></span>
+<span id="cb33-17"><a href="常用函数.html#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)      <span class="co"># union all</span></span>
+<span id="cb33-18"><a href="常用函数.html#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2, <span class="at">all=</span><span class="cn">FALSE</span>) <span class="co"># setequal</span></span>
+<span id="cb33-19"><a href="常用函数.html#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2)            <span class="co"># setequal all</span></span></code></pre></div>
 </div>
 <div id="连接" class="section level3" number="2.4.4">
 <h3><span class="header-section-number">2.4.4</span> 连接</h3>
 <p>两个数据框之间左连,右连等操作,类似数据库中的left_join right_join,inner_join 等函数.</p>
 <p>键入?merge()查看函数帮助,data.table 包中和base R 中都有merge 函数,当第一个数据框是data.table格式时启用data.table::merge().</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="常用函数.html#cb33-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">merge</span>()</span>
-<span id="cb33-2"><a href="常用函数.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(x, y, <span class="at">by =</span> <span class="cn">NULL</span>, <span class="at">by.x =</span> <span class="cn">NULL</span>, <span class="at">by.y =</span> <span class="cn">NULL</span>, <span class="at">all =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb33-3"><a href="常用函数.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="at">all.x =</span> all, <span class="at">all.y =</span> all, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">suffixes =</span> <span class="fu">c</span>(<span class="st">&quot;.x&quot;</span>, <span class="st">&quot;.y&quot;</span>), <span class="at">no.dups =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb33-4"><a href="常用函数.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="at">allow.cartesian=</span><span class="fu">getOption</span>(<span class="st">&quot;datatable.allow.cartesian&quot;</span>),  <span class="co"># default FALSE</span></span>
-<span id="cb33-5"><a href="常用函数.html#cb33-5" aria-hidden="true" tabindex="-1"></a>...)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="常用函数.html#cb34-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">merge</span>()</span>
+<span id="cb34-2"><a href="常用函数.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(x, y, <span class="at">by =</span> <span class="cn">NULL</span>, <span class="at">by.x =</span> <span class="cn">NULL</span>, <span class="at">by.y =</span> <span class="cn">NULL</span>, <span class="at">all =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb34-3"><a href="常用函数.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="at">all.x =</span> all, <span class="at">all.y =</span> all, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">suffixes =</span> <span class="fu">c</span>(<span class="st">&quot;.x&quot;</span>, <span class="st">&quot;.y&quot;</span>), <span class="at">no.dups =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb34-4"><a href="常用函数.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="at">allow.cartesian=</span><span class="fu">getOption</span>(<span class="st">&quot;datatable.allow.cartesian&quot;</span>),  <span class="co"># default FALSE</span></span>
+<span id="cb34-5"><a href="常用函数.html#cb34-5" aria-hidden="true" tabindex="-1"></a>...)</span></code></pre></div>
 <p>x.y为连个数据框,当两个数据框连接字段相同时,用by=c(’‘,’’)连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.</p>
 </div>
 <div id="透视表功能" class="section level3" number="2.4.5">
@@ -531,124 +532,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>dcast函数能实现长转宽</li>
 </ul>
 <p>参数如下：fun.aggregate函数指定聚合函数，value.var参数指定参与聚合的字段。formula指定聚合维度，格式用x+y~z，其中x,y在行的位置，z在列的位置。</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="常用函数.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(data, formula, <span class="at">fun.aggregate =</span> <span class="cn">NULL</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>,</span>
-<span id="cb34-2"><a href="常用函数.html#cb34-2" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">margins =</span> <span class="cn">NULL</span>, <span class="at">subset =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
-<span id="cb34-3"><a href="常用函数.html#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">value.var =</span> <span class="fu">guess</span>(data),</span>
-<span id="cb34-4"><a href="常用函数.html#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="常用函数.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(data, formula, <span class="at">fun.aggregate =</span> <span class="cn">NULL</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>,</span>
+<span id="cb35-2"><a href="常用函数.html#cb35-2" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">margins =</span> <span class="cn">NULL</span>, <span class="at">subset =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb35-3"><a href="常用函数.html#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">value.var =</span> <span class="fu">guess</span>(data),</span>
+<span id="cb35-4"><a href="常用函数.html#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
 <p>示例如下：</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="常用函数.html#cb35-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(分公司<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="dv">1000</span>),</span>
-<span id="cb35-2"><a href="常用函数.html#cb35-2" aria-hidden="true" tabindex="-1"></a>              季度<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;一季度&#39;</span>,<span class="st">&#39;二季度&#39;</span>,<span class="st">&#39;三季度&#39;</span>,<span class="st">&#39;四季度&#39;</span>),<span class="dv">1000</span>),</span>
-<span id="cb35-3"><a href="常用函数.html#cb35-3" aria-hidden="true" tabindex="-1"></a>              销售额<span class="ot">=</span><span class="fu">sample</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">4000</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb35-4"><a href="常用函数.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt,分公司<span class="sc">~</span>季度,<span class="at">value.var =</span> <span class="st">&quot;销售额&quot;</span>,<span class="at">fun.aggregate =</span> sum)</span>
-<span id="cb35-5"><a href="常用函数.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    分公司 一季度 三季度 二季度 四季度</span></span>
-<span id="cb35-6"><a href="常用函数.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   华东 149135      0      0      0</span></span>
-<span id="cb35-7"><a href="常用函数.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   华北      0      0      0 150585</span></span>
-<span id="cb35-8"><a href="常用函数.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   华南      0      0 149451      0</span></span>
-<span id="cb35-9"><a href="常用函数.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:   华西      0 150649      0      0</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="常用函数.html#cb36-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(分公司<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="dv">1000</span>),</span>
+<span id="cb36-2"><a href="常用函数.html#cb36-2" aria-hidden="true" tabindex="-1"></a>              季度<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;一季度&#39;</span>,<span class="st">&#39;二季度&#39;</span>,<span class="st">&#39;三季度&#39;</span>,<span class="st">&#39;四季度&#39;</span>),<span class="dv">1000</span>),</span>
+<span id="cb36-3"><a href="常用函数.html#cb36-3" aria-hidden="true" tabindex="-1"></a>              销售额<span class="ot">=</span><span class="fu">sample</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">4000</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb36-4"><a href="常用函数.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt,分公司<span class="sc">~</span>季度,<span class="at">value.var =</span> <span class="st">&quot;销售额&quot;</span>,<span class="at">fun.aggregate =</span> sum)</span>
+<span id="cb36-5"><a href="常用函数.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    分公司 一季度 三季度 二季度 四季度</span></span>
+<span id="cb36-6"><a href="常用函数.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   华东 149135      0      0      0</span></span>
+<span id="cb36-7"><a href="常用函数.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   华北      0      0      0 150585</span></span>
+<span id="cb36-8"><a href="常用函数.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   华南      0      0 149451      0</span></span>
+<span id="cb36-9"><a href="常用函数.html#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:   华西      0 150649      0      0</span></span></code></pre></div>
 <p>从版本V1.9.6起可以同时对多个值实现不同聚合后的长转宽。</p>
 <p>fun参数即 fun.aggregate的简写，可以是自定义的函数。</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="常用函数.html#cb36-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">sample</span>(<span class="dv">5</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">y=</span><span class="fu">sample</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>),</span>
-<span id="cb36-2"><a href="常用函数.html#cb36-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">z=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">d1 =</span> <span class="fu">runif</span>(<span class="dv">20</span>), <span class="at">d2=</span>1L)</span>
-<span id="cb36-3"><a href="常用函数.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>))</span>
-<span id="cb36-4"><a href="常用函数.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x y d1_sum_a d1_sum_b d2_sum_a d2_sum_b d1_mean_a d1_mean_b d2_mean_a</span></span>
-<span id="cb36-5"><a href="常用函数.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 1 1    0.000   0.3141        0        1       NaN    0.3141       NaN</span></span>
-<span id="cb36-6"><a href="常用函数.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 1 2    0.675   0.7524        1        1     0.675    0.7524         1</span></span>
-<span id="cb36-7"><a href="常用函数.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2 1    0.722   1.9725        1        3     0.722    0.6575         1</span></span>
-<span id="cb36-8"><a href="常用函数.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2 2    1.062   0.0657        2        1     0.531    0.0657         1</span></span>
-<span id="cb36-9"><a href="常用函数.html#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 3 2    0.329   0.0000        1        0     0.329       NaN         1</span></span>
-<span id="cb36-10"><a href="常用函数.html#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 4 1    1.934   0.3536        3        1     0.645    0.3536         1</span></span>
-<span id="cb36-11"><a href="常用函数.html#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: 4 2    1.968   0.0000        3        0     0.656       NaN         1</span></span>
-<span id="cb36-12"><a href="常用函数.html#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: 5 2    0.404   0.8995        1        1     0.404    0.8995         1</span></span>
-<span id="cb36-13"><a href="常用函数.html#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    d2_mean_b</span></span>
-<span id="cb36-14"><a href="常用函数.html#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         1</span></span>
-<span id="cb36-15"><a href="常用函数.html#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         1</span></span>
-<span id="cb36-16"><a href="常用函数.html#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         1</span></span>
-<span id="cb36-17"><a href="常用函数.html#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:         1</span></span>
-<span id="cb36-18"><a href="常用函数.html#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:       NaN</span></span>
-<span id="cb36-19"><a href="常用函数.html#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:         1</span></span>
-<span id="cb36-20"><a href="常用函数.html#cb36-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7:       NaN</span></span>
-<span id="cb36-21"><a href="常用函数.html#cb36-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8:         1</span></span>
-<span id="cb36-22"><a href="常用函数.html#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">list</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>)) <span class="co">#注意value.var是向量和列表时的区别</span></span>
-<span id="cb36-23"><a href="常用函数.html#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x y d1_sum_a d1_sum_b d2_mean_a d2_mean_b</span></span>
-<span id="cb36-24"><a href="常用函数.html#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 1 1    0.000   0.3141       NaN         1</span></span>
-<span id="cb36-25"><a href="常用函数.html#cb36-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 1 2    0.675   0.7524         1         1</span></span>
-<span id="cb36-26"><a href="常用函数.html#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2 1    0.722   1.9725         1         1</span></span>
-<span id="cb36-27"><a href="常用函数.html#cb36-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2 2    1.062   0.0657         1         1</span></span>
-<span id="cb36-28"><a href="常用函数.html#cb36-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 3 2    0.329   0.0000         1       NaN</span></span>
-<span id="cb36-29"><a href="常用函数.html#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 4 1    1.934   0.3536         1         1</span></span>
-<span id="cb36-30"><a href="常用函数.html#cb36-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: 4 2    1.968   0.0000         1       NaN</span></span>
-<span id="cb36-31"><a href="常用函数.html#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: 5 2    0.404   0.8995         1         1</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="常用函数.html#cb37-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">sample</span>(<span class="dv">5</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">y=</span><span class="fu">sample</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>),</span>
+<span id="cb37-2"><a href="常用函数.html#cb37-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">z=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">d1 =</span> <span class="fu">runif</span>(<span class="dv">20</span>), <span class="at">d2=</span>1L)</span>
+<span id="cb37-3"><a href="常用函数.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>))</span>
+<span id="cb37-4"><a href="常用函数.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x y d1_sum_a d1_sum_b d2_sum_a d2_sum_b d1_mean_a d1_mean_b d2_mean_a</span></span>
+<span id="cb37-5"><a href="常用函数.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 1 1    0.000   0.3141        0        1       NaN    0.3141       NaN</span></span>
+<span id="cb37-6"><a href="常用函数.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 1 2    0.675   0.7524        1        1     0.675    0.7524         1</span></span>
+<span id="cb37-7"><a href="常用函数.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2 1    0.722   1.9725        1        3     0.722    0.6575         1</span></span>
+<span id="cb37-8"><a href="常用函数.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2 2    1.062   0.0657        2        1     0.531    0.0657         1</span></span>
+<span id="cb37-9"><a href="常用函数.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 3 2    0.329   0.0000        1        0     0.329       NaN         1</span></span>
+<span id="cb37-10"><a href="常用函数.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 4 1    1.934   0.3536        3        1     0.645    0.3536         1</span></span>
+<span id="cb37-11"><a href="常用函数.html#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: 4 2    1.968   0.0000        3        0     0.656       NaN         1</span></span>
+<span id="cb37-12"><a href="常用函数.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: 5 2    0.404   0.8995        1        1     0.404    0.8995         1</span></span>
+<span id="cb37-13"><a href="常用函数.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    d2_mean_b</span></span>
+<span id="cb37-14"><a href="常用函数.html#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:         1</span></span>
+<span id="cb37-15"><a href="常用函数.html#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:         1</span></span>
+<span id="cb37-16"><a href="常用函数.html#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:         1</span></span>
+<span id="cb37-17"><a href="常用函数.html#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:         1</span></span>
+<span id="cb37-18"><a href="常用函数.html#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:       NaN</span></span>
+<span id="cb37-19"><a href="常用函数.html#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:         1</span></span>
+<span id="cb37-20"><a href="常用函数.html#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7:       NaN</span></span>
+<span id="cb37-21"><a href="常用函数.html#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8:         1</span></span>
+<span id="cb37-22"><a href="常用函数.html#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">list</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>)) <span class="co">#注意value.var是向量和列表时的区别</span></span>
+<span id="cb37-23"><a href="常用函数.html#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x y d1_sum_a d1_sum_b d2_mean_a d2_mean_b</span></span>
+<span id="cb37-24"><a href="常用函数.html#cb37-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 1 1    0.000   0.3141       NaN         1</span></span>
+<span id="cb37-25"><a href="常用函数.html#cb37-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 1 2    0.675   0.7524         1         1</span></span>
+<span id="cb37-26"><a href="常用函数.html#cb37-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2 1    0.722   1.9725         1         1</span></span>
+<span id="cb37-27"><a href="常用函数.html#cb37-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2 2    1.062   0.0657         1         1</span></span>
+<span id="cb37-28"><a href="常用函数.html#cb37-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 3 2    0.329   0.0000         1       NaN</span></span>
+<span id="cb37-29"><a href="常用函数.html#cb37-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 4 1    1.934   0.3536         1         1</span></span>
+<span id="cb37-30"><a href="常用函数.html#cb37-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: 4 2    1.968   0.0000         1       NaN</span></span>
+<span id="cb37-31"><a href="常用函数.html#cb37-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: 5 2    0.404   0.8995         1         1</span></span></code></pre></div>
 <ul>
 <li>melt函数实现宽转长</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="常用函数.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">melt</span>(data, id.vars, measure.vars,</span>
-<span id="cb37-2"><a href="常用函数.html#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable.name =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">value.name =</span> <span class="st">&quot;value&quot;</span>,</span>
-<span id="cb37-3"><a href="常用函数.html#cb37-3" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">variable.factor =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb37-4"><a href="常用函数.html#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">value.factor =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb37-5"><a href="常用函数.html#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="常用函数.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">melt</span>(data, id.vars, measure.vars,</span>
+<span id="cb38-2"><a href="常用函数.html#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable.name =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">value.name =</span> <span class="st">&quot;value&quot;</span>,</span>
+<span id="cb38-3"><a href="常用函数.html#cb38-3" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">variable.factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-4"><a href="常用函数.html#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">value.factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb38-5"><a href="常用函数.html#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
 <p>示例如下:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="常用函数.html#cb38-1" aria-hidden="true" tabindex="-1"></a>ChickWeight <span class="ot">=</span> <span class="fu">as.data.table</span>(ChickWeight)</span>
-<span id="cb38-2"><a href="常用函数.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setnames</span>(ChickWeight, <span class="fu">tolower</span>(<span class="fu">names</span>(ChickWeight)))</span>
-<span id="cb38-3"><a href="常用函数.html#cb38-3" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">as.data.table</span>(ChickWeight), <span class="at">id=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># calls melt.data.table</span></span>
-<span id="cb38-4"><a href="常用函数.html#cb38-4" aria-hidden="true" tabindex="-1"></a>DT</span>
-<span id="cb38-5"><a href="常用函数.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      time chick diet variable value</span></span>
-<span id="cb38-6"><a href="常用函数.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:    0     1    1   weight    42</span></span>
-<span id="cb38-7"><a href="常用函数.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2:    2     1    1   weight    51</span></span>
-<span id="cb38-8"><a href="常用函数.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3:    4     1    1   weight    59</span></span>
-<span id="cb38-9"><a href="常用函数.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4:    6     1    1   weight    64</span></span>
-<span id="cb38-10"><a href="常用函数.html#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5:    8     1    1   weight    76</span></span>
-<span id="cb38-11"><a href="常用函数.html#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ---                               </span></span>
-<span id="cb38-12"><a href="常用函数.html#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 574:   14    50    4   weight   175</span></span>
-<span id="cb38-13"><a href="常用函数.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 575:   16    50    4   weight   205</span></span>
-<span id="cb38-14"><a href="常用函数.html#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 576:   18    50    4   weight   234</span></span>
-<span id="cb38-15"><a href="常用函数.html#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 577:   20    50    4   weight   264</span></span>
-<span id="cb38-16"><a href="常用函数.html#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 578:   21    50    4   weight   264</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="常用函数.html#cb39-1" aria-hidden="true" tabindex="-1"></a>ChickWeight <span class="ot">=</span> <span class="fu">as.data.table</span>(ChickWeight)</span>
+<span id="cb39-2"><a href="常用函数.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setnames</span>(ChickWeight, <span class="fu">tolower</span>(<span class="fu">names</span>(ChickWeight)))</span>
+<span id="cb39-3"><a href="常用函数.html#cb39-3" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">as.data.table</span>(ChickWeight), <span class="at">id=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># calls melt.data.table</span></span>
+<span id="cb39-4"><a href="常用函数.html#cb39-4" aria-hidden="true" tabindex="-1"></a>DT</span>
+<span id="cb39-5"><a href="常用函数.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      time chick diet variable value</span></span>
+<span id="cb39-6"><a href="常用函数.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:    0     1    1   weight    42</span></span>
+<span id="cb39-7"><a href="常用函数.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2:    2     1    1   weight    51</span></span>
+<span id="cb39-8"><a href="常用函数.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3:    4     1    1   weight    59</span></span>
+<span id="cb39-9"><a href="常用函数.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4:    6     1    1   weight    64</span></span>
+<span id="cb39-10"><a href="常用函数.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5:    8     1    1   weight    76</span></span>
+<span id="cb39-11"><a href="常用函数.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ---                               </span></span>
+<span id="cb39-12"><a href="常用函数.html#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 574:   14    50    4   weight   175</span></span>
+<span id="cb39-13"><a href="常用函数.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 575:   16    50    4   weight   205</span></span>
+<span id="cb39-14"><a href="常用函数.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 576:   18    50    4   weight   234</span></span>
+<span id="cb39-15"><a href="常用函数.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 577:   20    50    4   weight   264</span></span>
+<span id="cb39-16"><a href="常用函数.html#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 578:   21    50    4   weight   264</span></span></code></pre></div>
 </div>
 <div id="非重复计数" class="section level3" number="2.4.6">
 <h3><span class="header-section-number">2.4.6</span> 非重复计数</h3>
 <p><code>uniqueN</code>相当于<code>length(unique(x))</code>,但是计算更快，内存效率更高。</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="常用函数.html#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">50</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb39-2"><a href="常用函数.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(x)</span>
-<span id="cb39-3"><a href="常用函数.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
-<span id="cb39-4"><a href="常用函数.html#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="常用函数.html#cb39-5" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">A =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each=</span><span class="dv">4</span>), <span class="at">B =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">each=</span><span class="dv">3</span>),</span>
-<span id="cb39-6"><a href="常用函数.html#cb39-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">C =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">6</span>), <span class="at">key =</span> <span class="st">&quot;A,B&quot;</span>)</span>
-<span id="cb39-7"><a href="常用函数.html#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="常用函数.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT, <span class="at">by =</span> <span class="fu">key</span>(DT))</span>
-<span id="cb39-9"><a href="常用函数.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
-<span id="cb39-10"><a href="常用函数.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT)</span>
-<span id="cb39-11"><a href="常用函数.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="常用函数.html#cb40-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">50</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb40-2"><a href="常用函数.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(x)</span>
+<span id="cb40-3"><a href="常用函数.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
+<span id="cb40-4"><a href="常用函数.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="常用函数.html#cb40-5" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">A =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each=</span><span class="dv">4</span>), <span class="at">B =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">each=</span><span class="dv">3</span>),</span>
+<span id="cb40-6"><a href="常用函数.html#cb40-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">C =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">6</span>), <span class="at">key =</span> <span class="st">&quot;A,B&quot;</span>)</span>
+<span id="cb40-7"><a href="常用函数.html#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="常用函数.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT, <span class="at">by =</span> <span class="fu">key</span>(DT))</span>
+<span id="cb40-9"><a href="常用函数.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
+<span id="cb40-10"><a href="常用函数.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT)</span>
+<span id="cb40-11"><a href="常用函数.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
 </div>
 <div id="rleid" class="section level3" number="2.4.7">
 <h3><span class="header-section-number">2.4.7</span> rleid</h3>
 <p>该函数根据分组生成长度列。</p>
 <p>即将0011001110111101类似这种分组成1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8。在特定时候是很便捷的一个函数。如在计算股票连续上涨或下跌天数时。</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="常用函数.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb40-2"><a href="常用函数.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="常用函数.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb41-2"><a href="常用函数.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8</span></span></code></pre></div>
 <p>参数如下所示：</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="常用函数.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(..., <span class="at">prefix=</span><span class="cn">NULL</span>)</span>
-<span id="cb41-2"><a href="常用函数.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">prefix=</span><span class="cn">NULL</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="常用函数.html#cb42-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">grp=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)), <span class="at">value=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb42-2"><a href="常用函数.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp) <span class="co"># get run-length ids</span></span>
-<span id="cb42-3"><a href="常用函数.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
-<span id="cb42-4"><a href="常用函数.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(DT, <span class="st">&quot;grp&quot;</span>) <span class="co"># same as above</span></span>
-<span id="cb42-5"><a href="常用函数.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
-<span id="cb42-6"><a href="常用函数.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp, <span class="at">prefix=</span><span class="st">&quot;grp&quot;</span>) <span class="co"># prefix with &#39;grp&#39;</span></span>
-<span id="cb42-7"><a href="常用函数.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;grp1&quot; &quot;grp1&quot; &quot;grp2&quot; &quot;grp2&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp4&quot; &quot;grp5&quot; &quot;grp5&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="常用函数.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(..., <span class="at">prefix=</span><span class="cn">NULL</span>)</span>
+<span id="cb42-2"><a href="常用函数.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">prefix=</span><span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="常用函数.html#cb43-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">grp=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)), <span class="at">value=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb43-2"><a href="常用函数.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp) <span class="co"># get run-length ids</span></span>
+<span id="cb43-3"><a href="常用函数.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
+<span id="cb43-4"><a href="常用函数.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(DT, <span class="st">&quot;grp&quot;</span>) <span class="co"># same as above</span></span>
+<span id="cb43-5"><a href="常用函数.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
+<span id="cb43-6"><a href="常用函数.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp, <span class="at">prefix=</span><span class="st">&quot;grp&quot;</span>) <span class="co"># prefix with &#39;grp&#39;</span></span>
+<span id="cb43-7"><a href="常用函数.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;grp1&quot; &quot;grp1&quot; &quot;grp2&quot; &quot;grp2&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp4&quot; &quot;grp5&quot; &quot;grp5&quot;</span></span></code></pre></div>
 </div>
 <div id="shift" class="section level3" number="2.4.8">
 <h3><span class="header-section-number">2.4.8</span> shift</h3>
 <p>向前或向后功能,通俗来说就是像前或向后移动位置。示例如下：</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="常用函数.html#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb43-2"><a href="常用函数.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lag with n=1 and pad with NA (returns vector)</span></span>
-<span id="cb43-3"><a href="常用函数.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shift</span>(x, <span class="at">n=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">type=</span><span class="st">&quot;lag&quot;</span>)</span>
-<span id="cb43-4"><a href="常用函数.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  1  2  3  4</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="常用函数.html#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb44-2"><a href="常用函数.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lag with n=1 and pad with NA (returns vector)</span></span>
+<span id="cb44-3"><a href="常用函数.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shift</span>(x, <span class="at">n=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">type=</span><span class="st">&quot;lag&quot;</span>)</span>
+<span id="cb44-4"><a href="常用函数.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  1  2  3  4</span></span></code></pre></div>
 <p>其中参数n控制偏移量，n正负数和type的参数相对应。, n=-1 and type=‘lead’ 与 n=1 and type=’lag’效果相同。</p>
 <p>在data.table上使用：</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="常用函数.html#cb44-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">year=</span><span class="dv">2010</span><span class="sc">:</span><span class="dv">2014</span>, <span class="at">v1=</span><span class="fu">runif</span>(<span class="dv">5</span>), <span class="at">v2=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">v3=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb44-2"><a href="常用函数.html#cb44-2" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;v1&quot;</span>,<span class="st">&quot;v2&quot;</span>,<span class="st">&quot;v3&quot;</span>)</span>
-<span id="cb44-3"><a href="常用函数.html#cb44-3" aria-hidden="true" tabindex="-1"></a>anscols <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&quot;lead&quot;</span>, cols, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
-<span id="cb44-4"><a href="常用函数.html#cb44-4" aria-hidden="true" tabindex="-1"></a>DT[, (anscols) <span class="sc">:</span><span class="er">=</span> <span class="fu">shift</span>(.SD, <span class="dv">1</span>, <span class="dv">0</span>, <span class="st">&quot;lead&quot;</span>), .SDcols<span class="ot">=</span>cols]</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="常用函数.html#cb45-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">year=</span><span class="dv">2010</span><span class="sc">:</span><span class="dv">2014</span>, <span class="at">v1=</span><span class="fu">runif</span>(<span class="dv">5</span>), <span class="at">v2=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">v3=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb45-2"><a href="常用函数.html#cb45-2" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;v1&quot;</span>,<span class="st">&quot;v2&quot;</span>,<span class="st">&quot;v3&quot;</span>)</span>
+<span id="cb45-3"><a href="常用函数.html#cb45-3" aria-hidden="true" tabindex="-1"></a>anscols <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&quot;lead&quot;</span>, cols, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
+<span id="cb45-4"><a href="常用函数.html#cb45-4" aria-hidden="true" tabindex="-1"></a>DT[, (anscols) <span class="sc">:</span><span class="er">=</span> <span class="fu">shift</span>(.SD, <span class="dv">1</span>, <span class="dv">0</span>, <span class="st">&quot;lead&quot;</span>), .SDcols<span class="ot">=</span>cols]</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -680,6 +681,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.7 案例 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.7 案例 | R学习笔记" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,12 +51,15 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,24 +140,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
 <li class="chapter" data-level="2" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>2</b> data.table</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.1</b> 基础介绍</a>
+<li class="chapter" data-level="2.1" data-path="安装.html"><a href="安装.html"><i class="fa fa-check"></i><b>2.1</b> 安装</a></li>
+<li class="chapter" data-level="2.2" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.2</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.1.1</b> 基本格式</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html"><i class="fa fa-check"></i><b>2.2</b> i j by 使用</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
-<li class="chapter" data-level="2.2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行筛选"><i class="fa fa-check"></i><b>2.2.2</b> 行筛选</a></li>
-<li class="chapter" data-level="2.2.3" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#列筛选"><i class="fa fa-check"></i><b>2.2.3</b> 列筛选</a></li>
-<li class="chapter" data-level="2.2.4" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
-<li class="chapter" data-level="2.2.5" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#j-常规计算"><i class="fa fa-check"></i><b>2.2.5</b> j 常规计算</a></li>
-<li class="chapter" data-level="2.2.6" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#by-分组"><i class="fa fa-check"></i><b>2.2.6</b> by 分组</a></li>
+<li class="chapter" data-level="2.2.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
+<li class="chapter" data-level="2.2.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.2.2</b> 基本格式</a></li>
+<li class="chapter" data-level="2.2.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>2.2.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="2.2.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>2.3</b> 常规操作</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>2.3.1</b> 新增更新列</a></li>
 <li class="chapter" data-level="2.3.2" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>2.3.2</b> 排序</a></li>
-<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选-1"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
+<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常规操作.html"><a href="常规操作.html#特殊符号"><i class="fa fa-check"></i><b>2.3.4</b> 特殊符号</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>2.4</b> 常用函数</a>
@@ -179,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>3.1</b> 安装数据库</a></li>
 <li class="chapter" data-level="3.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>3.2</b> DBI</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装-1"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>3.2.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>3.2.3</b> 执行sql任务</a></li>
 <li class="chapter" data-level="3.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>3.2.4</b> 函数介绍</a></li>
@@ -189,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>3.5</b> ROracle包</a></li>
 <li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-1"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
+<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-2"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
 <li class="chapter" data-level="3.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>3.6.2</b> 连接使用</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>3.7</b> 常见问题</a>
@@ -224,7 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="常用函数-1.html"><a href="常用函数-1.html#分割字符"><i class="fa fa-check"></i><b>4.2.5</b> 分割字符</a></li>
 <li class="chapter" data-level="4.2.6" data-path="常用函数-1.html"><a href="常用函数-1.html#替换字符"><i class="fa fa-check"></i><b>4.2.6</b> 替换字符</a></li>
 <li class="chapter" data-level="4.2.7" data-path="常用函数-1.html"><a href="常用函数-1.html#移除字符"><i class="fa fa-check"></i><b>4.2.7</b> 移除字符</a></li>
-<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.8</b> 其他函数</a></li>
+<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#字符排序"><i class="fa fa-check"></i><b>4.2.8</b> 字符排序</a></li>
+<li class="chapter" data-level="4.2.9" data-path="常用函数-1.html"><a href="常用函数-1.html#提取单词"><i class="fa fa-check"></i><b>4.2.9</b> 提取单词</a></li>
+<li class="chapter" data-level="4.2.10" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.10</b> 其他函数</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="r实现excel字符函数.html"><a href="r实现excel字符函数.html"><i class="fa fa-check"></i><b>4.3</b> R实现Excel字符函数</a></li>
 </ul></li>
@@ -255,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
+<li class="chapter" data-level="7.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
 <li class="chapter" data-level="7.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>7.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>7.2.1</b> 宽转长</a></li>
@@ -270,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
-<li class="chapter" data-level="8.2" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
+<li class="chapter" data-level="8.2" data-path="安装-4.html"><a href="安装-4.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
 <li class="chapter" data-level="8.3" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.3</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="基础用法-2.html"><a href="基础用法-2.html#filter"><i class="fa fa-check"></i><b>8.3.1</b> filter</a></li>
@@ -390,95 +391,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="年同环比" class="section level3" number="5.7.1">
 <h3><span class="header-section-number">5.7.1</span> 年同环比</h3>
 <p><code>floor_date()</code>函数根据要求周期回滚日期，</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="案例.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
-<span id="cb140-2"><a href="案例.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;month&#39;</span>) <span class="co">#可与rollback函数达到同样效果</span></span>
-<span id="cb140-3"><a href="案例.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;week&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="案例.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
+<span id="cb147-2"><a href="案例.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;month&#39;</span>) <span class="co">#可与rollback函数达到同样效果</span></span>
+<span id="cb147-3"><a href="案例.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;week&#39;</span>)</span></code></pre></div>
 <ul>
 <li>计算年同比</li>
 </ul>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="案例.html#cb141-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
-<span id="cb141-2"><a href="案例.html#cb141-2" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
-<span id="cb141-3"><a href="案例.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="co"># current </span></span>
-<span id="cb141-4"><a href="案例.html#cb141-4" aria-hidden="true" tabindex="-1"></a>current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
-<span id="cb141-5"><a href="案例.html#cb141-5" aria-hidden="true" tabindex="-1"></a>current_start_date</span>
-<span id="cb141-6"><a href="案例.html#cb141-6" aria-hidden="true" tabindex="-1"></a>date </span>
-<span id="cb141-7"><a href="案例.html#cb141-7" aria-hidden="true" tabindex="-1"></a><span class="co"># last year</span></span>
-<span id="cb141-8"><a href="案例.html#cb141-8" aria-hidden="true" tabindex="-1"></a>last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb141-9"><a href="案例.html#cb141-9" aria-hidden="true" tabindex="-1"></a>last_start_date</span>
-<span id="cb141-10"><a href="案例.html#cb141-10" aria-hidden="true" tabindex="-1"></a>last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb141-11"><a href="案例.html#cb141-11" aria-hidden="true" tabindex="-1"></a>last_end_date</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="案例.html#cb148-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb148-2"><a href="案例.html#cb148-2" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
+<span id="cb148-3"><a href="案例.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="co"># current </span></span>
+<span id="cb148-4"><a href="案例.html#cb148-4" aria-hidden="true" tabindex="-1"></a>current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
+<span id="cb148-5"><a href="案例.html#cb148-5" aria-hidden="true" tabindex="-1"></a>current_start_date</span>
+<span id="cb148-6"><a href="案例.html#cb148-6" aria-hidden="true" tabindex="-1"></a>date </span>
+<span id="cb148-7"><a href="案例.html#cb148-7" aria-hidden="true" tabindex="-1"></a><span class="co"># last year</span></span>
+<span id="cb148-8"><a href="案例.html#cb148-8" aria-hidden="true" tabindex="-1"></a>last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb148-9"><a href="案例.html#cb148-9" aria-hidden="true" tabindex="-1"></a>last_start_date</span>
+<span id="cb148-10"><a href="案例.html#cb148-10" aria-hidden="true" tabindex="-1"></a>last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb148-11"><a href="案例.html#cb148-11" aria-hidden="true" tabindex="-1"></a>last_end_date</span></code></pre></div>
 <p>月同比类似，回滚时间周期调整为“month”即可</p>
 <ul>
 <li>计算月环比</li>
 </ul>
 <p><code>%m+%</code>或<code>%m-%</code>可以很好解决月份天数不一的问题</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="案例.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="st">&#39;2020-03-30&#39;</span>) <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
-<span id="cb142-2"><a href="案例.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb142-3"><a href="案例.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="案例.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="st">&#39;2020-03-30&#39;</span>) <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb149-2"><a href="案例.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
+<span id="cb149-3"><a href="案例.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span></code></pre></div>
 <p>得到了两对时间周期，然后在订单数据或者其他中筛选即可获得同比维度数据</p>
 <p>模拟计算</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="案例.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 构造数据</span></span>
-<span id="cb143-2"><a href="案例.html#cb143-2" aria-hidden="true" tabindex="-1"></a>bill_date <span class="ot">&lt;-</span> <span class="fu">as_date</span>((<span class="fu">as_date</span>(<span class="st">&#39;2019-01-01&#39;</span>)<span class="sc">:</span><span class="fu">as_date</span>(<span class="st">&#39;2020-12-01&#39;</span>)))</span>
-<span id="cb143-3"><a href="案例.html#cb143-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb143-4"><a href="案例.html#cb143-4" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">bill_date =</span> bill_date ,<span class="at">money =</span> <span class="fu">sample</span>(<span class="dv">80</span><span class="sc">:</span><span class="dv">150</span>,<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>),<span class="at">area =</span> area)</span>
-<span id="cb143-5"><a href="案例.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="案例.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr,<span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb144-2"><a href="案例.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-3"><a href="案例.html#cb144-3" aria-hidden="true" tabindex="-1"></a>y_to_y <span class="ot">&lt;-</span> <span class="cf">function</span>(.dt,date,<span class="at">n =</span> <span class="dv">1</span>,...){</span>
-<span id="cb144-4"><a href="案例.html#cb144-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb144-5"><a href="案例.html#cb144-5" aria-hidden="true" tabindex="-1"></a>  date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(date)</span>
-<span id="cb144-6"><a href="案例.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb144-7"><a href="案例.html#cb144-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.na</span>(date)){</span>
-<span id="cb144-8"><a href="案例.html#cb144-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&#39;请输入正确日期格式，如20200101&#39;</span>)</span>
-<span id="cb144-9"><a href="案例.html#cb144-9" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb144-10"><a href="案例.html#cb144-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb144-11"><a href="案例.html#cb144-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># current </span></span>
-<span id="cb144-12"><a href="案例.html#cb144-12" aria-hidden="true" tabindex="-1"></a> current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
-<span id="cb144-13"><a href="案例.html#cb144-13" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb144-14"><a href="案例.html#cb144-14" aria-hidden="true" tabindex="-1"></a> <span class="co"># last year</span></span>
-<span id="cb144-15"><a href="案例.html#cb144-15" aria-hidden="true" tabindex="-1"></a> last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb144-16"><a href="案例.html#cb144-16" aria-hidden="true" tabindex="-1"></a> last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb144-17"><a href="案例.html#cb144-17" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb144-18"><a href="案例.html#cb144-18" aria-hidden="true" tabindex="-1"></a> .dt <span class="sc">%&gt;%</span> <span class="fu">mutate</span>( 类型 <span class="ot">=</span> <span class="fu">case_when</span>(<span class="fu">between</span>(bill_date,current_start_date,date) <span class="sc">~</span> <span class="st">&quot;当前&quot;</span>,</span>
-<span id="cb144-19"><a href="案例.html#cb144-19" aria-hidden="true" tabindex="-1"></a>               <span class="fu">between</span>(bill_date,last_start_date,last_end_date) <span class="sc">~</span> <span class="st">&quot;同期&quot;</span>,</span>
-<span id="cb144-20"><a href="案例.html#cb144-20" aria-hidden="true" tabindex="-1"></a>               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;其他&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb144-21"><a href="案例.html#cb144-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(类型 <span class="sc">!=</span> <span class="st">&quot;其他&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb144-22"><a href="案例.html#cb144-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span> </span>
-<span id="cb144-23"><a href="案例.html#cb144-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(金额 <span class="ot">=</span> <span class="fu">sum</span>(money,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb144-24"><a href="案例.html#cb144-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() </span>
-<span id="cb144-25"><a href="案例.html#cb144-25" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb144-26"><a href="案例.html#cb144-26" aria-hidden="true" tabindex="-1"></a> <span class="co">#%&gt;% pivot_wider(names_from = &#39;类型&#39;,values_from = &#39;金额&#39;)</span></span>
-<span id="cb144-27"><a href="案例.html#cb144-27" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb144-28"><a href="案例.html#cb144-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="案例.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20200101&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="案例.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 构造数据</span></span>
+<span id="cb150-2"><a href="案例.html#cb150-2" aria-hidden="true" tabindex="-1"></a>bill_date <span class="ot">&lt;-</span> <span class="fu">as_date</span>((<span class="fu">as_date</span>(<span class="st">&#39;2019-01-01&#39;</span>)<span class="sc">:</span><span class="fu">as_date</span>(<span class="st">&#39;2020-12-01&#39;</span>)))</span>
+<span id="cb150-3"><a href="案例.html#cb150-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb150-4"><a href="案例.html#cb150-4" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">bill_date =</span> bill_date ,<span class="at">money =</span> <span class="fu">sample</span>(<span class="dv">80</span><span class="sc">:</span><span class="dv">150</span>,<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>),<span class="at">area =</span> area)</span>
+<span id="cb150-5"><a href="案例.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="案例.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr,<span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb151-2"><a href="案例.html#cb151-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-3"><a href="案例.html#cb151-3" aria-hidden="true" tabindex="-1"></a>y_to_y <span class="ot">&lt;-</span> <span class="cf">function</span>(.dt,date,<span class="at">n =</span> <span class="dv">1</span>,...){</span>
+<span id="cb151-4"><a href="案例.html#cb151-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb151-5"><a href="案例.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(date)</span>
+<span id="cb151-6"><a href="案例.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb151-7"><a href="案例.html#cb151-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.na</span>(date)){</span>
+<span id="cb151-8"><a href="案例.html#cb151-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&#39;请输入正确日期格式，如20200101&#39;</span>)</span>
+<span id="cb151-9"><a href="案例.html#cb151-9" aria-hidden="true" tabindex="-1"></a>  } </span>
+<span id="cb151-10"><a href="案例.html#cb151-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb151-11"><a href="案例.html#cb151-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># current </span></span>
+<span id="cb151-12"><a href="案例.html#cb151-12" aria-hidden="true" tabindex="-1"></a> current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
+<span id="cb151-13"><a href="案例.html#cb151-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb151-14"><a href="案例.html#cb151-14" aria-hidden="true" tabindex="-1"></a> <span class="co"># last year</span></span>
+<span id="cb151-15"><a href="案例.html#cb151-15" aria-hidden="true" tabindex="-1"></a> last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb151-16"><a href="案例.html#cb151-16" aria-hidden="true" tabindex="-1"></a> last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb151-17"><a href="案例.html#cb151-17" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb151-18"><a href="案例.html#cb151-18" aria-hidden="true" tabindex="-1"></a> .dt <span class="sc">%&gt;%</span> <span class="fu">mutate</span>( 类型 <span class="ot">=</span> <span class="fu">case_when</span>(<span class="fu">between</span>(bill_date,current_start_date,date) <span class="sc">~</span> <span class="st">&quot;当前&quot;</span>,</span>
+<span id="cb151-19"><a href="案例.html#cb151-19" aria-hidden="true" tabindex="-1"></a>               <span class="fu">between</span>(bill_date,last_start_date,last_end_date) <span class="sc">~</span> <span class="st">&quot;同期&quot;</span>,</span>
+<span id="cb151-20"><a href="案例.html#cb151-20" aria-hidden="true" tabindex="-1"></a>               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;其他&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb151-21"><a href="案例.html#cb151-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(类型 <span class="sc">!=</span> <span class="st">&quot;其他&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb151-22"><a href="案例.html#cb151-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb151-23"><a href="案例.html#cb151-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(金额 <span class="ot">=</span> <span class="fu">sum</span>(money,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb151-24"><a href="案例.html#cb151-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() </span>
+<span id="cb151-25"><a href="案例.html#cb151-25" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb151-26"><a href="案例.html#cb151-26" aria-hidden="true" tabindex="-1"></a> <span class="co">#%&gt;% pivot_wider(names_from = &#39;类型&#39;,values_from = &#39;金额&#39;)</span></span>
+<span id="cb151-27"><a href="案例.html#cb151-27" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb151-28"><a href="案例.html#cb151-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="案例.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20200101&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型)</span></code></pre></div>
 </div>
 <div id="清洗不同类型日期格式" class="section level3" number="5.7.2">
 <h3><span class="header-section-number">5.7.2</span> 清洗不同类型日期格式</h3>
 <p>如将<code>c('2001/2/13 10:33','1/24/13 11:16')</code>转换为相同格式的日期格式;</p>
 <p>通过一个简单自定义函数解决，本质是区分不同类型日期后采用不同函数去解析日期格式</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="案例.html#cb146-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-2"><a href="案例.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb146-3"><a href="案例.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb146-4"><a href="案例.html#cb146-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-5"><a href="案例.html#cb146-5" aria-hidden="true" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;2001/2/13 10:33&#39;</span>,<span class="st">&#39;1/24/13 11:16&#39;</span>)</span>
-<span id="cb146-6"><a href="案例.html#cb146-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-7"><a href="案例.html#cb146-7" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb146-8"><a href="案例.html#cb146-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb146-9"><a href="案例.html#cb146-9" aria-hidden="true" tabindex="-1"></a>  n_length <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb146-10"><a href="案例.html#cb146-10" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n_length)</span>
-<span id="cb146-11"><a href="案例.html#cb146-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb146-12"><a href="案例.html#cb146-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_length){</span>
-<span id="cb146-13"><a href="案例.html#cb146-13" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x[i],<span class="st">&#39;/&#39;</span>) <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">[[</span><span class="st">`</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">[[</span><span class="st">`</span>(<span class="dv">1</span>)</span>
-<span id="cb146-14"><a href="案例.html#cb146-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">str_length</span>(n)<span class="sc">==</span><span class="dv">4</span>){</span>
-<span id="cb146-15"><a href="案例.html#cb146-15" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="ot">&lt;-</span> <span class="fu">ymd_hm</span>(x[i],<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
-<span id="cb146-16"><a href="案例.html#cb146-16" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb146-17"><a href="案例.html#cb146-17" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="ot">&lt;-</span> <span class="fu">mdy_hm</span>(x[i],<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
-<span id="cb146-18"><a href="案例.html#cb146-18" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb146-19"><a href="案例.html#cb146-19" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb146-20"><a href="案例.html#cb146-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_datetime</span>(res,<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
-<span id="cb146-21"><a href="案例.html#cb146-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb146-22"><a href="案例.html#cb146-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-23"><a href="案例.html#cb146-23" aria-hidden="true" tabindex="-1"></a><span class="fu">myfun</span>(date1)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="案例.html#cb153-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-2"><a href="案例.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb153-3"><a href="案例.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb153-4"><a href="案例.html#cb153-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-5"><a href="案例.html#cb153-5" aria-hidden="true" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;2001/2/13 10:33&#39;</span>,<span class="st">&#39;1/24/13 11:16&#39;</span>)</span>
+<span id="cb153-6"><a href="案例.html#cb153-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-7"><a href="案例.html#cb153-7" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb153-8"><a href="案例.html#cb153-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb153-9"><a href="案例.html#cb153-9" aria-hidden="true" tabindex="-1"></a>  n_length <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb153-10"><a href="案例.html#cb153-10" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n_length)</span>
+<span id="cb153-11"><a href="案例.html#cb153-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb153-12"><a href="案例.html#cb153-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_length){</span>
+<span id="cb153-13"><a href="案例.html#cb153-13" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x[i],<span class="st">&#39;/&#39;</span>) <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">[[</span><span class="st">`</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">[[</span><span class="st">`</span>(<span class="dv">1</span>)</span>
+<span id="cb153-14"><a href="案例.html#cb153-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">str_length</span>(n)<span class="sc">==</span><span class="dv">4</span>){</span>
+<span id="cb153-15"><a href="案例.html#cb153-15" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="ot">&lt;-</span> <span class="fu">ymd_hm</span>(x[i],<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
+<span id="cb153-16"><a href="案例.html#cb153-16" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb153-17"><a href="案例.html#cb153-17" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="ot">&lt;-</span> <span class="fu">mdy_hm</span>(x[i],<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
+<span id="cb153-18"><a href="案例.html#cb153-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb153-19"><a href="案例.html#cb153-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb153-20"><a href="案例.html#cb153-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_datetime</span>(res,<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
+<span id="cb153-21"><a href="案例.html#cb153-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb153-22"><a href="案例.html#cb153-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-23"><a href="案例.html#cb153-23" aria-hidden="true" tabindex="-1"></a><span class="fu">myfun</span>(date1)</span></code></pre></div>
 </div>
 <div id="扫码后中奖时间匹配" class="section level3" number="5.7.3">
 <h3><span class="header-section-number">5.7.3</span> 扫码后中奖时间匹配</h3>
@@ -489,55 +490,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>由于中奖时间和扫码时间不完全一致，导致没办法直接通过<code>客户ID</code>以及<code>时间</code>关联匹配找到客户每次中奖时的积分码,现在要求找到客户每次中奖时对应的积分码？</p>
 <p>思路：通过观察数据，发现扫码后如果中奖，一般几秒钟内会有中奖记录，那我们就可以通过“每次中奖时间最近的一次扫码时间的积分码”就是该次中奖对应的积分码解决问题。这样我们通过简单编写自定义函数即可获取答案，即一个时间点从一串时间中找到离自己最近时间点。</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="案例.html#cb147-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
-<span id="cb147-2"><a href="案例.html#cb147-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>() <span class="co">#应采用列表存储结果向量化</span></span>
-<span id="cb147-3"><a href="案例.html#cb147-3" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
-<span id="cb147-4"><a href="案例.html#cb147-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb147-5"><a href="案例.html#cb147-5" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
-<span id="cb147-6"><a href="案例.html#cb147-6" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">abs</span>(res) <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() <span class="co">#本处不对，应该判断res大于0的部分中谁最小</span></span>
-<span id="cb147-7"><a href="案例.html#cb147-7" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
-<span id="cb147-8"><a href="案例.html#cb147-8" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kong,result)</span>
-<span id="cb147-9"><a href="案例.html#cb147-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb147-10"><a href="案例.html#cb147-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb147-11"><a href="案例.html#cb147-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb147-12"><a href="案例.html#cb147-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb147-13"><a href="案例.html#cb147-13" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">testfun</span>(dt<span class="sc">$</span>时间,scan_dt<span class="sc">$</span>时间)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="案例.html#cb154-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb154-2"><a href="案例.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>() <span class="co">#应采用列表存储结果向量化</span></span>
+<span id="cb154-3"><a href="案例.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
+<span id="cb154-4"><a href="案例.html#cb154-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb154-5"><a href="案例.html#cb154-5" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
+<span id="cb154-6"><a href="案例.html#cb154-6" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">abs</span>(res) <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() <span class="co">#本处不对，应该判断res大于0的部分中谁最小</span></span>
+<span id="cb154-7"><a href="案例.html#cb154-7" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
+<span id="cb154-8"><a href="案例.html#cb154-8" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kong,result)</span>
+<span id="cb154-9"><a href="案例.html#cb154-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb154-10"><a href="案例.html#cb154-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb154-11"><a href="案例.html#cb154-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb154-12"><a href="案例.html#cb154-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb154-13"><a href="案例.html#cb154-13" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">testfun</span>(dt<span class="sc">$</span>时间,scan_dt<span class="sc">$</span>时间)</span></code></pre></div>
 <p>改进代码</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="案例.html#cb148-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
-<span id="cb148-2"><a href="案例.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
-<span id="cb148-3"><a href="案例.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb148-4"><a href="案例.html#cb148-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb148-5"><a href="案例.html#cb148-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb148-6"><a href="案例.html#cb148-6" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> y[x<span class="sc">&gt;</span>y]</span>
-<span id="cb148-7"><a href="案例.html#cb148-7" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
-<span id="cb148-8"><a href="案例.html#cb148-8" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> res <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() </span>
-<span id="cb148-9"><a href="案例.html#cb148-9" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
-<span id="cb148-10"><a href="案例.html#cb148-10" aria-hidden="true" tabindex="-1"></a>    result[[i]] <span class="ot">&lt;-</span> kong</span>
-<span id="cb148-11"><a href="案例.html#cb148-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb148-12"><a href="案例.html#cb148-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb148-13"><a href="案例.html#cb148-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb148-14"><a href="案例.html#cb148-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-15"><a href="案例.html#cb148-15" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">testfun</span>(dt<span class="sc">$</span>时间,scan_dt<span class="sc">$</span>时间)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="案例.html#cb155-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb155-2"><a href="案例.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
+<span id="cb155-3"><a href="案例.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb155-4"><a href="案例.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb155-5"><a href="案例.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb155-6"><a href="案例.html#cb155-6" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> y[x<span class="sc">&gt;</span>y]</span>
+<span id="cb155-7"><a href="案例.html#cb155-7" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
+<span id="cb155-8"><a href="案例.html#cb155-8" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> res <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() </span>
+<span id="cb155-9"><a href="案例.html#cb155-9" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
+<span id="cb155-10"><a href="案例.html#cb155-10" aria-hidden="true" tabindex="-1"></a>    result[[i]] <span class="ot">&lt;-</span> kong</span>
+<span id="cb155-11"><a href="案例.html#cb155-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb155-12"><a href="案例.html#cb155-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb155-13"><a href="案例.html#cb155-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb155-14"><a href="案例.html#cb155-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-15"><a href="案例.html#cb155-15" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">testfun</span>(dt<span class="sc">$</span>时间,scan_dt<span class="sc">$</span>时间)</span></code></pre></div>
 <p>理论上不同用户可以在同一时间扫码且同时中奖，那上面的代码即不可以获取正确答案。但是我们只要通过按照用户ID切割数据框后稍微改造上面的自定义函数即可。</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="案例.html#cb149-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(dt){</span>
-<span id="cb149-2"><a href="案例.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb149-3"><a href="案例.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> dt<span class="sc">$</span>中奖时间</span>
-<span id="cb149-4"><a href="案例.html#cb149-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> dt<span class="sc">$</span>扫的时间</span>
-<span id="cb149-5"><a href="案例.html#cb149-5" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
-<span id="cb149-6"><a href="案例.html#cb149-6" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb149-7"><a href="案例.html#cb149-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb149-8"><a href="案例.html#cb149-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb149-9"><a href="案例.html#cb149-9" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> y[x<span class="sc">&gt;</span>y]</span>
-<span id="cb149-10"><a href="案例.html#cb149-10" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
-<span id="cb149-11"><a href="案例.html#cb149-11" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> res <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() </span>
-<span id="cb149-12"><a href="案例.html#cb149-12" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
-<span id="cb149-13"><a href="案例.html#cb149-13" aria-hidden="true" tabindex="-1"></a>    result[[i]] <span class="ot">&lt;-</span> kong</span>
-<span id="cb149-14"><a href="案例.html#cb149-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb149-15"><a href="案例.html#cb149-15" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(result)</span>
-<span id="cb149-16"><a href="案例.html#cb149-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb149-17"><a href="案例.html#cb149-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb149-18"><a href="案例.html#cb149-18" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">split</span>(alldt,<span class="st">&#39;客户ID&#39;</span>)</span>
-<span id="cb149-19"><a href="案例.html#cb149-19" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(dtlist,testfun)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="案例.html#cb156-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(dt){</span>
+<span id="cb156-2"><a href="案例.html#cb156-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb156-3"><a href="案例.html#cb156-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> dt<span class="sc">$</span>中奖时间</span>
+<span id="cb156-4"><a href="案例.html#cb156-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> dt<span class="sc">$</span>扫的时间</span>
+<span id="cb156-5"><a href="案例.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
+<span id="cb156-6"><a href="案例.html#cb156-6" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb156-7"><a href="案例.html#cb156-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb156-8"><a href="案例.html#cb156-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb156-9"><a href="案例.html#cb156-9" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> y[x<span class="sc">&gt;</span>y]</span>
+<span id="cb156-10"><a href="案例.html#cb156-10" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
+<span id="cb156-11"><a href="案例.html#cb156-11" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> res <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() </span>
+<span id="cb156-12"><a href="案例.html#cb156-12" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
+<span id="cb156-13"><a href="案例.html#cb156-13" aria-hidden="true" tabindex="-1"></a>    result[[i]] <span class="ot">&lt;-</span> kong</span>
+<span id="cb156-14"><a href="案例.html#cb156-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb156-15"><a href="案例.html#cb156-15" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(result)</span>
+<span id="cb156-16"><a href="案例.html#cb156-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb156-17"><a href="案例.html#cb156-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb156-18"><a href="案例.html#cb156-18" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">split</span>(alldt,<span class="st">&#39;客户ID&#39;</span>)</span>
+<span id="cb156-19"><a href="案例.html#cb156-19" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(dtlist,testfun)</span></code></pre></div>
 <p>虽然可以通过寻找最近一次的扫码记录判断积分码，但是因为网络延迟或中途接电话等各种原因导致扫码时间和中奖时间相差并不是几秒，导致情景复杂，那我们就应该在设计系统时就设计好锁定对应关系，从根本上解决问题。</p>
 </div>
 </div>
@@ -570,6 +571,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

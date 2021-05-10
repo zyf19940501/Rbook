@@ -287,6 +287,60 @@ str_replace_all(string = ' d a  b ',pattern = ' ',replacement = '')
 ```
 
 
+### 字符排序
+
+numeric参数决定是否按照数字排序。
+
+```{r eval=FALSE}
+str_order(x, decreasing = FALSE, na_last = TRUE, locale = "en",
+  numeric = FALSE, ...)
+
+str_sort(x, decreasing = FALSE, na_last = TRUE, locale = "en",
+  numeric = FALSE, ...)
+```
+
+```{r}
+str_order(letters)
+str_sort(letters)
+```
+
+numeric参数
+
+```{r}
+x <- c("100a10", "100a5", "2b", "2a")
+str_sort(x)
+str_sort(x, numeric = TRUE)
+```
+
+### 提取单词
+
+从句子中提取单词。
+
+- 参数
+
+```{r}
+word(string, start = 1L, end = start, sep = fixed(" "))
+```
+
+- 案例
+
+```{r}
+sentences <- c("Jane saw a cat", "Jane sat down")
+word(sentences, 2, -1)
+word(sentences[1], 1:3, -1)
+```
+
+指定分隔符
+
+```{r}
+# Can define words by other separators
+str <- 'abc.def..123.4568.999'
+word(str, 1, sep = fixed('..'))
+word(str, 2, sep = fixed('..'))
+```
+
+
+
 ### 其他函数
 
 * str_subset() str_which()

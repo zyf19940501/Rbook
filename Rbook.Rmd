@@ -35,14 +35,19 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 a <- version
 ```
 
-作为商业数据分析师，我学习使用`R`以及有一段时间，主要用`R`来处理数据，自动化报表，可视化等，`shiny`等。`R`极大的拓展了数据处理能力,让我有更多精力聚焦在具体的业务问题上，所以很感谢`R`语言。
+作为商业数据分析师，我学习使用`R`以及有一段时间，主要用`R`来处理数据，自动化报表，ETL，可视化等，另外用`shiny`做看板。
+
+`R`极大的拓展了数据处理能力,让我很轻松方便处理数据，有更多精力时间聚焦在具体问题上。
+
 
 本文主要记录个人学习过程中的经验，因个人能力有限，难免出现错误，如阅读中发现错误，欢迎联系本人更正。
 
 
-联系邮箱:<598253220@qq.com> 
+Email: <598253220@qq.com> 
 
 微信公众号: 宇飞的世界 
+
+语雀: https://www.yuque.com/zyufei
 
 
 ```{r}
@@ -73,9 +78,11 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 # data.table
 
 
-data.table包是我最常用的R包，是我目前觉得最好用的数据处理包。我简单接触过python，julia两种语言，并没有深入比较，所以我这个好用的印象仅仅是一家之言。
+data.table包是我最常用的R包，是我目前觉得最好用的数据处理包,大部分我需要用到的功能集成在包里，不需要很多的依赖包。我简单接触过python，julia两种语言，并没有深入比较，所以我这个好用的印象仅仅是个人感受。
 
-data.table包是我用了较长一段时间tidyverse系列后发现的“数据处理包”。已经忘记最初是什么吸引了我，我猜测可能是“大数据处理利器”之类的标签吸引了我，因为我喜欢“快”。但是和大部分人可能不同的是，初次接触时，语法的“怪异”并没有给我带来多少麻烦，因为我本来就没有编程基础以及很深的R语言基础。所以我死记硬背一些常用的用法，尤其喜欢拿Excle的一些用法参照，去实现Excle上面的部分操作，从读取、增、改、删除、筛选、计算列等常规操作入手。慢慢熟悉data.table语法之后，将会享受data.table带来的便利，其简洁的语法以及高效的计算速度（相比tidyverse系列）。
+data.table包是我用了较长一段时间tidyverse系列后发现的“数据处理包”。已经忘记最初是什么吸引了我，我猜测可能是“大数据处理利器”之类的标签吸引了我，因为我喜欢“快”。但是和大部分人可能不同的是，初次接触时，语法的“怪异”并没有给我带来多少麻烦，因为我本来就没有编程基础以及很深的R语言基础。
+
+所以我死记硬背data.table里一些常用用法，尤其喜欢拿Excle的一些用法参照，去实现Excle上面的部分操作，从读取、增、改、删除、筛选、计算列等常规操作入手。慢慢熟悉data.table语法之后，将会享受data.table带来的便利，其简洁的语法以及高效的计算速度（相比tidyverse系列）。
 
 另外，Python中也有该包，目前正在积极开发中，期待ing，毕竟python也是很好用，在不同需求下选择不同的语言实现功能。
 
@@ -83,51 +90,34 @@ data.table包是我用了较长一段时间tidyverse系列后发现的“数据�
 
 https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html
 
+data.table 优势：
+
+- 速度快
+- 内存效率高
+- API生命周期管理好
+- 语法简洁
+
+
+## 安装
+
+```{r eval=FALSE}
+install.packages("data.table")
+# latest development version:
+data.table::update.dev.pkg()
+```
+
+
 
 ## 基础介绍
 
-### 基本格式
+本部分简单介绍data.table句式语法，实现基础行列筛选和聚合计算。
 
-```{r eval=FALSE}
-DT[i, j, by]
-##   R:                 i                 j        by
-## SQL:  where | order by   select | update  group by
-```
-
-data.table个人理解主要有三大类参数,i 参数做筛选,j参数做计算,by参数做分组.拿Excel透视表类别,i位置参数当作『筛选』,by位置用来做汇总字段『行』,j位置当作『值』,如下所示:
-![透视表截图](./picture/chap1/01picture.png)
-
-1.代码实例
-
-代码求2014年6月,从各始发机场到各目的机场的飞行距离求和.
-
-```{r}
-library(data.table)
-flights <- fread("./data/flights.csv")
-flights[year==2014 & month==6,.(求和项distance=sum(distance)),by=.(origin,dest)]
-```
-
-2.代码解释
-
-i 的部分：条件year==2014 和 month==6 ;
-
-j 的部分：求和项distance=sum(distance)，写在.()中或者list()中；
-
-by 的部分.(origin,dest),重点是写在.()中,和Excel透视表一一对应。
-
-
-至于为什么要用.()包裹起来，最开始默认为格式强制要求。就这个问题我想说：大部分人可能觉得是比较“怪异”的用法，并且不理解，从而可能留下data.table不好用，很古怪的印象，但是我觉得任何东西存在即合理，你学一个东西总得接受一些你可能不认可的东西，这样可能才是真正的学习，就像拿Python来做数据分析，我刚开始觉得pandas很难用，很反人类，但是后来知道python代码可以直接打包封装成exe后，觉得真香，说这么多主要是想表达我们学会挑选合适的工具用，适应它，用好它就可以了。
-
-
-
-
-## i j by 使用
-
-使用data.table处理数据，首先第一步是获取数据，data.table中自带读取数据的函数fread函数。接下来我们就用该函数读取数据演示i,j,by的简单使用。
 
 ### 读取数据
 
-data.table 包读取数据主要用fread 函数,在我实际工作中接触的数据大部分以数据库,csv,Excel形式存在.fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线文件.
+在我实际工作中接触的数据大部分以数据库,csv,Excel等形式存在，并且CSV格式数据较少。但是data.table包读取数据的`fread`函数仅接受CSV格式。如果是Excel格式文件，需要通过如`readxl`，`openxlsx`等包读入后转换为`data.table`格式数据。
+
+fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线文件.
 
 本文会照搬很多官方关于data.table的demo.
 
@@ -156,9 +146,60 @@ flights <- fread("http://www.zhongyufei.com/datatable/data/flights.csv")
 具体的记录信息(特征列)，包括起飞时间、到达时间、延误时长、航空公司、始发机场、目的机场、飞行时长，和飞行距离等。
 
 
-### 行筛选
+
+### 基本格式
+
+`DT[i, j, by]`是data.table的基本样式，在不同位置上实现不同功能。
+
+![i-j-by](https://gitee.com/zhongyufei/photo-bed/raw/pic/img/data.table-i-j-by%E4%BB%8B%E7%BB%8D.png)
+
+```{r eval=FALSE}
+DT[i, j, by]
+##   R:                 i                 j        by
+## SQL:  where | order by   select | update  group by
+```
+
+data.table个人理解主要有三大类参数,i参数做筛选,j参数做计算,by参数做分组.
+
+拿Excel透视表类别,i位置参数当作『筛选』,by位置用来做汇总字段『行』,j位置当作『值』,如下所示:
+
+![透视表截图](./picture/chap1/01picture.png)
+
+1.代码实例
+
+代码求2014年6月,从各始发机场到各目的机场的飞行距离求和.
+
+```{r}
+library(data.table)
+flights <- fread("./data/flights.csv")
+flights[year==2014 & month==6,.(求和项distance=sum(distance)),by=.(origin,dest)]
+```
+
+2.代码解释
+
+i 的部分：条件year==2014 和 month==6 ;
+
+j 的部分：求和项distance=sum(distance)，写在.()中或者list()中；
+
+by 的部分.(origin,dest),重点是写在.()中,和Excel透视表一一对应。
+
+
+至于为什么要用.()包裹起来，最开始默认为格式强制要求。就这个问题我想说：大部分人可能觉得是比较“怪异”的用法，并且不理解，从而可能留下data.table不好用，很古怪的印象，但是我觉得任何东西存在即合理，你学一个东西总得接受一些你可能不认可的东西，这样可能才是真正的学习，就像拿Python来做数据分析，我刚开始觉得pandas很难用，很反人类，但是后来知道python代码可以直接打包封装成exe后，觉得真香，说这么多主要是想表达我们学会挑选合适的工具用，适应它，用好它就可以了。
+
+
+
+
+### i j by 使用
+
+使用data.table处理数据，接下来我们就用该函数读取数据演示i,j,by的简单使用。
+
+
+
+
+#### i行筛选
 
 行筛选是一种很常见的数据操作行为，类似我们Excel中的筛选，即按照一定条件筛选符合要求的数据。条件筛选一般分为单条件筛选、多条件筛选；
+
 在筛选时涉及到条件判断，R语言中常用的条件判断分为逻辑运算、关系运算。常用的关系运算符 >、 <、==、!=、>=、<=分别代表大于、小于、等于、不等于、大于等于、小于等于。常用的逻辑运算符 &、|、！等。
 
 
@@ -175,9 +216,11 @@ flights[month %in% c(1,3,5,7,9)]
 flights[month %between% c(1,7)]
 ```
 
-### 列筛选
+#### j列操作
 
-数据集较大字段较多时，由于无效信息较多可以做适当精选，这时需要我们筛选列。与sql中的select用法一致，即保留想要的字段。.()或list()是data.table中的比较特殊的实现列筛选的用法。常规数字索引，字符向量索引同样有效。
+数据集较大、字段较多时，由于无效信息较多可以做适当精选，这时需要我们筛选列。与sql中的select用法一致，即保留想要的字段。
+
+.()或list()是data.table中的比较特殊的实现列筛选的用法。常规数字索引，字符向量索引同样有效。
 
 ```{r}
 #注意前面的. .()
@@ -199,20 +242,7 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 # 按照指定列顺序排序 其余字段保持不变,不是建立副本,是直接修改了flights 数据的列顺序
 ```
 
-
-### 行列筛选总结
-
-行筛选在 i 的位置上进行, 列筛选在 j 的位置上进行;data.table中j的位置比较灵活多变，但是i的位置大部分时候都是进行条件筛选。我们通过上述的行列筛选已经大概知道data.table中i,j的用法。也就是我们常规数据清洗过程中的数据筛选过程，筛选符合要求的数据记录。
-
-```{r}
-
-dt <- flights[ year == 2014 & month == 6 & day >=15,.(year,month,day,dep_delay,carrier,origin)] 
-head(dt)
-
-```
-
-
-### j 常规计算
+- 常规计算
 
 根据最开始的Excel透视表截图，我们想要获得如截图一样的结果该怎么实现呢？代码如下：
 
@@ -229,9 +259,7 @@ myfun <- function(x){
 flights[year==2014 & month==6,.(myfun(distance)),by=.(origin,dest)]
 ```
 
-
-
-### by 分组
+#### by 分组
 
 分组是按照某种分组实现一定条件下某种聚合方式的计算。分组可以是单字段，多字段以及条件字段等。
 
@@ -260,6 +288,21 @@ head(dt)
 dt <- flights[,.(sum(distance)),by=.(month>6)] #by里面可以做计算
 head(dt)
 ```
+
+
+### 行列筛选总结
+
+行筛选在 i 的位置上进行, 列筛选在 j 的位置上进行;data.table中j的位置比较灵活多变，但是i的位置大部分时候都是进行条件筛选。我们通过上述的行列筛选已经大概知道data.table中i,j的用法。也就是我们常规数据清洗过程中的数据筛选过程，筛选符合要求的数据记录。
+
+```{r}
+
+dt <- flights[ year == 2014 & month == 6 & day >=15,.(year,month,day,dep_delay,carrier,origin)] 
+head(dt)
+
+```
+
+
+
 
 ## 常规操作
 
@@ -906,6 +949,8 @@ systemctl status mssql-server --no-pager
 
 
 ## DBI
+
+
 
 ### 安装
 
@@ -1805,6 +1850,60 @@ str_replace_all(string = ' d a  b ',pattern = ' ',replacement = '')
 ```
 
 
+### 字符排序
+
+numeric参数决定是否按照数字排序。
+
+```{r eval=FALSE}
+str_order(x, decreasing = FALSE, na_last = TRUE, locale = "en",
+  numeric = FALSE, ...)
+
+str_sort(x, decreasing = FALSE, na_last = TRUE, locale = "en",
+  numeric = FALSE, ...)
+```
+
+```{r}
+str_order(letters)
+str_sort(letters)
+```
+
+numeric参数
+
+```{r}
+x <- c("100a10", "100a5", "2b", "2a")
+str_sort(x)
+str_sort(x, numeric = TRUE)
+```
+
+### 提取单词
+
+从句子中提取单词。
+
+- 参数
+
+```{r}
+word(string, start = 1L, end = start, sep = fixed(" "))
+```
+
+- 案例
+
+```{r}
+sentences <- c("Jane saw a cat", "Jane sat down")
+word(sentences, 2, -1)
+word(sentences[1], 1:3, -1)
+```
+
+指定分隔符
+
+```{r}
+# Can define words by other separators
+str <- 'abc.def..123.4568.999'
+word(str, 1, sep = fixed('..'))
+word(str, 2, sep = fixed('..'))
+```
+
+
+
 ### 其他函数
 
 * str_subset() str_which()
@@ -1926,8 +2025,6 @@ knitr::opts_chunk$set(
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
 # lubridate
-
-
 
 
 数据清洗中,经常涉及到时间处理。个人R中用来处理时间的包是`lubridate`，本文将介绍该包中部分函数用法。

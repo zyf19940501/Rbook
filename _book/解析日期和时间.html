@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.3 解析日期和时间 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.3 解析日期和时间 | R学习笔记" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,12 +51,15 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,24 +140,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
 <li class="chapter" data-level="2" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>2</b> data.table</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.1</b> 基础介绍</a>
+<li class="chapter" data-level="2.1" data-path="安装.html"><a href="安装.html"><i class="fa fa-check"></i><b>2.1</b> 安装</a></li>
+<li class="chapter" data-level="2.2" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.2</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.1.1</b> 基本格式</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html"><i class="fa fa-check"></i><b>2.2</b> i j by 使用</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
-<li class="chapter" data-level="2.2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行筛选"><i class="fa fa-check"></i><b>2.2.2</b> 行筛选</a></li>
-<li class="chapter" data-level="2.2.3" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#列筛选"><i class="fa fa-check"></i><b>2.2.3</b> 列筛选</a></li>
-<li class="chapter" data-level="2.2.4" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
-<li class="chapter" data-level="2.2.5" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#j-常规计算"><i class="fa fa-check"></i><b>2.2.5</b> j 常规计算</a></li>
-<li class="chapter" data-level="2.2.6" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#by-分组"><i class="fa fa-check"></i><b>2.2.6</b> by 分组</a></li>
+<li class="chapter" data-level="2.2.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
+<li class="chapter" data-level="2.2.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.2.2</b> 基本格式</a></li>
+<li class="chapter" data-level="2.2.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>2.2.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="2.2.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>2.3</b> 常规操作</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>2.3.1</b> 新增更新列</a></li>
 <li class="chapter" data-level="2.3.2" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>2.3.2</b> 排序</a></li>
-<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选-1"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
+<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常规操作.html"><a href="常规操作.html#特殊符号"><i class="fa fa-check"></i><b>2.3.4</b> 特殊符号</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>2.4</b> 常用函数</a>
@@ -179,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>3.1</b> 安装数据库</a></li>
 <li class="chapter" data-level="3.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>3.2</b> DBI</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装-1"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>3.2.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>3.2.3</b> 执行sql任务</a></li>
 <li class="chapter" data-level="3.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>3.2.4</b> 函数介绍</a></li>
@@ -189,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>3.5</b> ROracle包</a></li>
 <li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-1"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
+<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-2"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
 <li class="chapter" data-level="3.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>3.6.2</b> 连接使用</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>3.7</b> 常见问题</a>
@@ -224,7 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="常用函数-1.html"><a href="常用函数-1.html#分割字符"><i class="fa fa-check"></i><b>4.2.5</b> 分割字符</a></li>
 <li class="chapter" data-level="4.2.6" data-path="常用函数-1.html"><a href="常用函数-1.html#替换字符"><i class="fa fa-check"></i><b>4.2.6</b> 替换字符</a></li>
 <li class="chapter" data-level="4.2.7" data-path="常用函数-1.html"><a href="常用函数-1.html#移除字符"><i class="fa fa-check"></i><b>4.2.7</b> 移除字符</a></li>
-<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.8</b> 其他函数</a></li>
+<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#字符排序"><i class="fa fa-check"></i><b>4.2.8</b> 字符排序</a></li>
+<li class="chapter" data-level="4.2.9" data-path="常用函数-1.html"><a href="常用函数-1.html#提取单词"><i class="fa fa-check"></i><b>4.2.9</b> 提取单词</a></li>
+<li class="chapter" data-level="4.2.10" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.10</b> 其他函数</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="r实现excel字符函数.html"><a href="r实现excel字符函数.html"><i class="fa fa-check"></i><b>4.3</b> R实现Excel字符函数</a></li>
 </ul></li>
@@ -255,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
+<li class="chapter" data-level="7.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
 <li class="chapter" data-level="7.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>7.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>7.2.1</b> 宽转长</a></li>
@@ -270,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
-<li class="chapter" data-level="8.2" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
+<li class="chapter" data-level="8.2" data-path="安装-4.html"><a href="安装-4.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
 <li class="chapter" data-level="8.3" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.3</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="基础用法-2.html"><a href="基础用法-2.html#filter"><i class="fa fa-check"></i><b>8.3.1</b> filter</a></li>
@@ -388,26 +389,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="解析日期和时间" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> 解析日期和时间</h2>
 <p>从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="解析日期和时间.html#cb124-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-2"><a href="解析日期和时间.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 整数和字符都可以</span></span>
-<span id="cb124-3"><a href="解析日期和时间.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200604</span>) </span>
-<span id="cb124-4"><a href="解析日期和时间.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;20200604&#39;</span>)</span>
-<span id="cb124-5"><a href="解析日期和时间.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="dv">06042020</span>)</span>
-<span id="cb124-6"><a href="解析日期和时间.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="dv">04062020</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="解析日期和时间.html#cb131-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-2"><a href="解析日期和时间.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 整数和字符都可以</span></span>
+<span id="cb131-3"><a href="解析日期和时间.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200604</span>) </span>
+<span id="cb131-4"><a href="解析日期和时间.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;20200604&#39;</span>)</span>
+<span id="cb131-5"><a href="解析日期和时间.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="dv">06042020</span>)</span>
+<span id="cb131-6"><a href="解析日期和时间.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="dv">04062020</span>)</span></code></pre></div>
 <p>遇到unix 时间戳 可以用 .POSIXct()函数转化.</p>
 <p><a href="https://unixtime.51240.com/">unix在线转换</a></p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="解析日期和时间.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>)</span>
-<span id="cb125-2"><a href="解析日期和时间.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="解析日期和时间.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>)</span>
+<span id="cb132-2"><a href="解析日期和时间.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>))</span></code></pre></div>
 <p>unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="解析日期和时间.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="解析日期和时间.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
 <p>从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。</p>
 <p>如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.</p>
 <ul>
 <li><a href="https://home.kpn.nl/vanadovv/time/TZworld.html#asi" class="uri">https://home.kpn.nl/vanadovv/time/TZworld.html#asi</a></li>
 </ul>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="解析日期和时间.html#cb127-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span>
-<span id="cb127-2"><a href="解析日期和时间.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>()) <span class="co">#默认是UTC</span></span>
-<span id="cb127-3"><a href="解析日期和时间.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>(),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="解析日期和时间.html#cb134-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span>
+<span id="cb134-2"><a href="解析日期和时间.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>()) <span class="co">#默认是UTC</span></span>
+<span id="cb134-3"><a href="解析日期和时间.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>(),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
 </div>
             </section>
 
@@ -438,6 +439,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

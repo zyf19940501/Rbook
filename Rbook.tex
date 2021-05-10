@@ -4,14 +4,13 @@
 %
 \documentclass[
 ]{book}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
-  \usepackage{amssymb}
 \else % if luatex or xetex
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
@@ -82,7 +81,7 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -118,7 +117,7 @@
 
 \title{R学习笔记}
 \author{Yufei Zhong}
-\date{2021-04-29}
+\date{2021-05-10}
 
 \begin{document}
 \maketitle
@@ -130,19 +129,23 @@
 \hypertarget{ux8bf4ux660e}{%
 \chapter{说明}\label{ux8bf4ux660e}}
 
-作为商业数据分析师，我学习使用\texttt{R}以及有一段时间，主要用\texttt{R}来处理数据，自动化报表，可视化等，\texttt{shiny}等。\texttt{R}极大的拓展了数据处理能力,让我有更多精力聚焦在具体的业务问题上，所以很感谢\texttt{R}语言。
+作为商业数据分析师，我学习使用\texttt{R}以及有一段时间，主要用\texttt{R}来处理数据，自动化报表，ETL，可视化等，另外用\texttt{shiny}做看板。
+
+\texttt{R}极大的拓展了数据处理能力,让我很轻松方便处理数据，有更多精力时间聚焦在具体问题上。
 
 本文主要记录个人学习过程中的经验，因个人能力有限，难免出现错误，如阅读中发现错误，欢迎联系本人更正。
 
-联系邮箱:\href{mailto:598253220@qq.com}{\nolinkurl{598253220@qq.com}}
+Email: \href{mailto:598253220@qq.com}{\nolinkurl{598253220@qq.com}}
 
 微信公众号: 宇飞的世界
+
+语雀: \url{https://www.yuque.com/zyufei}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#查看版本信息}
 \FunctionTok{sessionInfo}\NormalTok{()}
-\CommentTok{\#\textgreater{} R version 4.0.5 (2021{-}03{-}31)}
+\CommentTok{\#\textgreater{} R version 4.0.3 (2020{-}10{-}10)}
 \CommentTok{\#\textgreater{} Platform: x86\_64{-}w64{-}mingw32/x64 (64{-}bit)}
 \CommentTok{\#\textgreater{} Running under: Windows 10 x64 (build 19041)}
 \CommentTok{\#\textgreater{} }
@@ -159,8 +162,8 @@
 \CommentTok{\#\textgreater{} [1] stats     graphics  grDevices utils     datasets  methods   base     }
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} loaded via a namespace (and not attached):}
-\CommentTok{\#\textgreater{}  [1] compiler\_4.0.5    magrittr\_2.0.1    bookdown\_0.21     htmltools\_0.5.1.1}
-\CommentTok{\#\textgreater{}  [5] tools\_4.0.5       rstudioapi\_0.13   yaml\_2.2.1        stringi\_1.5.3    }
+\CommentTok{\#\textgreater{}  [1] compiler\_4.0.3    magrittr\_2.0.1    bookdown\_0.22     htmltools\_0.5.1.1}
+\CommentTok{\#\textgreater{}  [5] tools\_4.0.3       rstudioapi\_0.13   yaml\_2.2.1        stringi\_1.5.3    }
 \CommentTok{\#\textgreater{}  [9] rmarkdown\_2.7     knitr\_1.32        stringr\_1.4.0     digest\_0.6.27    }
 \CommentTok{\#\textgreater{} [13] xfun\_0.22         rlang\_0.4.10      evaluate\_0.14}
 \end{Highlighting}
@@ -169,9 +172,11 @@
 \hypertarget{data.table}{%
 \chapter{data.table}\label{data.table}}
 
-data.table包是我最常用的R包，是我目前觉得最好用的数据处理包。我简单接触过python，julia两种语言，并没有深入比较，所以我这个好用的印象仅仅是一家之言。
+data.table包是我最常用的R包，是我目前觉得最好用的数据处理包,大部分我需要用到的功能集成在包里，不需要很多的依赖包。我简单接触过python，julia两种语言，并没有深入比较，所以我这个好用的印象仅仅是个人感受。
 
-data.table包是我用了较长一段时间tidyverse系列后发现的``数据处理包''。已经忘记最初是什么吸引了我，我猜测可能是``大数据处理利器''之类的标签吸引了我，因为我喜欢``快''。但是和大部分人可能不同的是，初次接触时，语法的``怪异''并没有给我带来多少麻烦，因为我本来就没有编程基础以及很深的R语言基础。所以我死记硬背一些常用的用法，尤其喜欢拿Excle的一些用法参照，去实现Excle上面的部分操作，从读取、增、改、删除、筛选、计算列等常规操作入手。慢慢熟悉data.table语法之后，将会享受data.table带来的便利，其简洁的语法以及高效的计算速度（相比tidyverse系列）。
+data.table包是我用了较长一段时间tidyverse系列后发现的``数据处理包''。已经忘记最初是什么吸引了我，我猜测可能是``大数据处理利器''之类的标签吸引了我，因为我喜欢``快''。但是和大部分人可能不同的是，初次接触时，语法的``怪异''并没有给我带来多少麻烦，因为我本来就没有编程基础以及很深的R语言基础。
+
+所以我死记硬背data.table里一些常用用法，尤其喜欢拿Excle的一些用法参照，去实现Excle上面的部分操作，从读取、增、改、删除、筛选、计算列等常规操作入手。慢慢熟悉data.table语法之后，将会享受data.table带来的便利，其简洁的语法以及高效的计算速度（相比tidyverse系列）。
 
 另外，Python中也有该包，目前正在积极开发中，期待ing，毕竟python也是很好用，在不同需求下选择不同的语言实现功能。
 
@@ -179,66 +184,42 @@ data.table包是我用了较长一段时间tidyverse系列后发现的``数据�
 
 \url{https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html}
 
+data.table 优势：
+
+\begin{itemize}
+\tightlist
+\item
+  速度快
+\item
+  内存效率高
+\item
+  API生命周期管理好
+\item
+  语法简洁
+\end{itemize}
+
+\hypertarget{ux5b89ux88c5}{%
+\section{安装}\label{ux5b89ux88c5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"data.table"}\NormalTok{)}
+\CommentTok{\# latest development version:}
+\NormalTok{data.table}\SpecialCharTok{::}\FunctionTok{update.dev.pkg}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{ux57faux7840ux4ecbux7ecd}{%
 \section{基础介绍}\label{ux57faux7840ux4ecbux7ecd}}
 
-\hypertarget{ux57faux672cux683cux5f0f}{%
-\subsection{基本格式}\label{ux57faux672cux683cux5f0f}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{DT[i, j, by]}
-\DocumentationTok{\#\#   R:                 i                 j        by}
-\DocumentationTok{\#\# SQL:  where | order by   select | update  group by}
-\end{Highlighting}
-\end{Shaded}
-
-data.table个人理解主要有三大类参数,i 参数做筛选,j参数做计算,by参数做分组.拿Excel透视表类别,i位置参数当作『筛选』,by位置用来做汇总字段『行』,j位置当作『值』,如下所示:
-\includegraphics{./picture/chap1/01picture.png}
-
-1.代码实例
-
-代码求2014年6月,从各始发机场到各目的机场的飞行距离求和.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(data.table)}
-\NormalTok{flights }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"./data/flights.csv"}\NormalTok{)}
-\NormalTok{flights[year}\SpecialCharTok{==}\DecValTok{2014} \SpecialCharTok{\&}\NormalTok{ month}\SpecialCharTok{==}\DecValTok{6}\NormalTok{,.(求和项}\AttributeTok{distance=}\FunctionTok{sum}\NormalTok{(distance)),by}\OtherTok{=}\NormalTok{.(origin,dest)]}
-\CommentTok{\#\textgreater{}      origin dest 求和项distance}
-\CommentTok{\#\textgreater{}   1:    JFK  LAX        2663100}
-\CommentTok{\#\textgreater{}   2:    JFK  DFW          82069}
-\CommentTok{\#\textgreater{}   3:    JFK  LAS         795792}
-\CommentTok{\#\textgreater{}   4:    JFK  SFO        1967946}
-\CommentTok{\#\textgreater{}   5:    JFK  SAN         349778}
-\CommentTok{\#\textgreater{}  {-}{-}{-}                           }
-\CommentTok{\#\textgreater{} 191:    EWR  ANC          13480}
-\CommentTok{\#\textgreater{} 192:    EWR  BZN          15056}
-\CommentTok{\#\textgreater{} 193:    LGA  TVC           7205}
-\CommentTok{\#\textgreater{} 194:    LGA  BZN           3788}
-\CommentTok{\#\textgreater{} 195:    JFK  HYA            980}
-\end{Highlighting}
-\end{Shaded}
-
-2.代码解释
-
-i 的部分：条件year==2014 和 month==6 ;
-
-j 的部分：求和项distance=sum(distance)，写在.()中或者list()中；
-
-by 的部分.(origin,dest),重点是写在.()中,和Excel透视表一一对应。
-
-至于为什么要用.()包裹起来，最开始默认为格式强制要求。就这个问题我想说：大部分人可能觉得是比较``怪异''的用法，并且不理解，从而可能留下data.table不好用，很古怪的印象，但是我觉得任何东西存在即合理，你学一个东西总得接受一些你可能不认可的东西，这样可能才是真正的学习，就像拿Python来做数据分析，我刚开始觉得pandas很难用，很反人类，但是后来知道python代码可以直接打包封装成exe后，觉得真香，说这么多主要是想表达我们学会挑选合适的工具用，适应它，用好它就可以了。
-
-\hypertarget{i-j-by-ux4f7fux7528}{%
-\section{i j by 使用}\label{i-j-by-ux4f7fux7528}}
-
-使用data.table处理数据，首先第一步是获取数据，data.table中自带读取数据的函数fread函数。接下来我们就用该函数读取数据演示i,j,by的简单使用。
+本部分简单介绍data.table句式语法，实现基础行列筛选和聚合计算。
 
 \hypertarget{ux8bfbux53d6ux6570ux636e}{%
 \subsection{读取数据}\label{ux8bfbux53d6ux6570ux636e}}
 
-data.table 包读取数据主要用fread 函数,在我实际工作中接触的数据大部分以数据库,csv,Excel形式存在.fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线文件.
+在我实际工作中接触的数据大部分以数据库,csv,Excel等形式存在，并且CSV格式数据较少。但是data.table包读取数据的\texttt{fread}函数仅接受CSV格式。如果是Excel格式文件，需要通过如\texttt{readxl}，\texttt{openxlsx}等包读入后转换为\texttt{data.table}格式数据。
+
+fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线文件.
 
 本文会照搬很多官方关于data.table的demo.
 
@@ -282,10 +263,79 @@ data.table 包读取数据主要用fread 函数,在我实际工作中接触的�
 
 具体的记录信息(特征列)，包括起飞时间、到达时间、延误时长、航空公司、始发机场、目的机场、飞行时长，和飞行距离等。
 
-\hypertarget{ux884cux7b5bux9009}{%
-\subsection{行筛选}\label{ux884cux7b5bux9009}}
+\hypertarget{ux57faux672cux683cux5f0f}{%
+\subsection{基本格式}\label{ux57faux672cux683cux5f0f}}
+
+\texttt{DT{[}i,\ j,\ by{]}}是data.table的基本样式，在不同位置上实现不同功能。
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/zhongyufei/photo-bed/raw/pic/img/data.table-i-j-by\%E4\%BB\%8B\%E7\%BB\%8D.png}
+\caption{i-j-by}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DT[i, j, by]}
+\DocumentationTok{\#\#   R:                 i                 j        by}
+\DocumentationTok{\#\# SQL:  where | order by   select | update  group by}
+\end{Highlighting}
+\end{Shaded}
+
+data.table个人理解主要有三大类参数,i参数做筛选,j参数做计算,by参数做分组.
+
+拿Excel透视表类别,i位置参数当作『筛选』,by位置用来做汇总字段『行』,j位置当作『值』,如下所示:
+
+\begin{figure}
+\centering
+\includegraphics{./picture/chap1/01picture.png}
+\caption{透视表截图}
+\end{figure}
+
+1.代码实例
+
+代码求2014年6月,从各始发机场到各目的机场的飞行距离求和.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(data.table)}
+\NormalTok{flights }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"./data/flights.csv"}\NormalTok{)}
+\NormalTok{flights[year}\SpecialCharTok{==}\DecValTok{2014} \SpecialCharTok{\&}\NormalTok{ month}\SpecialCharTok{==}\DecValTok{6}\NormalTok{,.(求和项}\AttributeTok{distance=}\FunctionTok{sum}\NormalTok{(distance)),by}\OtherTok{=}\NormalTok{.(origin,dest)]}
+\CommentTok{\#\textgreater{}      origin dest 求和项distance}
+\CommentTok{\#\textgreater{}   1:    JFK  LAX        2663100}
+\CommentTok{\#\textgreater{}   2:    JFK  DFW          82069}
+\CommentTok{\#\textgreater{}   3:    JFK  LAS         795792}
+\CommentTok{\#\textgreater{}   4:    JFK  SFO        1967946}
+\CommentTok{\#\textgreater{}   5:    JFK  SAN         349778}
+\CommentTok{\#\textgreater{}  {-}{-}{-}                           }
+\CommentTok{\#\textgreater{} 191:    EWR  ANC          13480}
+\CommentTok{\#\textgreater{} 192:    EWR  BZN          15056}
+\CommentTok{\#\textgreater{} 193:    LGA  TVC           7205}
+\CommentTok{\#\textgreater{} 194:    LGA  BZN           3788}
+\CommentTok{\#\textgreater{} 195:    JFK  HYA            980}
+\end{Highlighting}
+\end{Shaded}
+
+2.代码解释
+
+i 的部分：条件year==2014 和 month==6 ;
+
+j 的部分：求和项distance=sum(distance)，写在.()中或者list()中；
+
+by 的部分.(origin,dest),重点是写在.()中,和Excel透视表一一对应。
+
+至于为什么要用.()包裹起来，最开始默认为格式强制要求。就这个问题我想说：大部分人可能觉得是比较``怪异''的用法，并且不理解，从而可能留下data.table不好用，很古怪的印象，但是我觉得任何东西存在即合理，你学一个东西总得接受一些你可能不认可的东西，这样可能才是真正的学习，就像拿Python来做数据分析，我刚开始觉得pandas很难用，很反人类，但是后来知道python代码可以直接打包封装成exe后，觉得真香，说这么多主要是想表达我们学会挑选合适的工具用，适应它，用好它就可以了。
+
+\hypertarget{i-j-by-ux4f7fux7528}{%
+\subsection{i j by 使用}\label{i-j-by-ux4f7fux7528}}
+
+使用data.table处理数据，接下来我们就用该函数读取数据演示i,j,by的简单使用。
+
+\hypertarget{iux884cux7b5bux9009}{%
+\subsubsection{i行筛选}\label{iux884cux7b5bux9009}}
 
 行筛选是一种很常见的数据操作行为，类似我们Excel中的筛选，即按照一定条件筛选符合要求的数据。条件筛选一般分为单条件筛选、多条件筛选；
+
 在筛选时涉及到条件判断，R语言中常用的条件判断分为逻辑运算、关系运算。常用的关系运算符 \textgreater、 \textless、==、!=、\textgreater=、\textless=分别代表大于、小于、等于、不等于、大于等于、小于等于。常用的逻辑运算符 \&、\textbar、！等。
 
 \begin{Shaded}
@@ -303,10 +353,12 @@ data.table 包读取数据主要用fread 函数,在我实际工作中接触的�
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux5217ux7b5bux9009}{%
-\subsection{列筛选}\label{ux5217ux7b5bux9009}}
+\hypertarget{jux5217ux64cdux4f5c}{%
+\subsubsection{j列操作}\label{jux5217ux64cdux4f5c}}
 
-数据集较大字段较多时，由于无效信息较多可以做适当精选，这时需要我们筛选列。与sql中的select用法一致，即保留想要的字段。.()或list()是data.table中的比较特殊的实现列筛选的用法。常规数字索引，字符向量索引同样有效。
+数据集较大、字段较多时，由于无效信息较多可以做适当精选，这时需要我们筛选列。与sql中的select用法一致，即保留想要的字段。
+
+.()或list()是data.table中的比较特殊的实现列筛选的用法。常规数字索引，字符向量索引同样有效。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -344,28 +396,11 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux884cux5217ux7b5bux9009ux603bux7ed3}{%
-\subsection{行列筛选总结}\label{ux884cux5217ux7b5bux9009ux603bux7ed3}}
-
-行筛选在 i 的位置上进行, 列筛选在 j 的位置上进行;data.table中j的位置比较灵活多变，但是i的位置大部分时候都是进行条件筛选。我们通过上述的行列筛选已经大概知道data.table中i,j的用法。也就是我们常规数据清洗过程中的数据筛选过程，筛选符合要求的数据记录。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-
-\NormalTok{dt }\OtherTok{\textless{}{-}}\NormalTok{ flights[ year }\SpecialCharTok{==} \DecValTok{2014} \SpecialCharTok{\&}\NormalTok{ month }\SpecialCharTok{==} \DecValTok{6} \SpecialCharTok{\&}\NormalTok{ day }\SpecialCharTok{\textgreater{}=}\DecValTok{15}\NormalTok{,.(year,month,day,dep\_delay,carrier,origin)] }
-\FunctionTok{head}\NormalTok{(dt)}
-\CommentTok{\#\textgreater{}    year month day dep\_delay carrier origin}
-\CommentTok{\#\textgreater{} 1: 2014     6  15        {-}4      AA    JFK}
-\CommentTok{\#\textgreater{} 2: 2014     6  15        {-}8      AA    JFK}
-\CommentTok{\#\textgreater{} 3: 2014     6  15       {-}12      AA    JFK}
-\CommentTok{\#\textgreater{} 4: 2014     6  15        {-}4      AA    LGA}
-\CommentTok{\#\textgreater{} 5: 2014     6  15        {-}3      AA    JFK}
-\CommentTok{\#\textgreater{} 6: 2014     6  15         5      AA    JFK}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{j-ux5e38ux89c4ux8ba1ux7b97}{%
-\subsection{j 常规计算}\label{j-ux5e38ux89c4ux8ba1ux7b97}}
+\begin{itemize}
+\tightlist
+\item
+  常规计算
+\end{itemize}
 
 根据最开始的Excel透视表截图，我们想要获得如截图一样的结果该怎么实现呢？代码如下：
 
@@ -399,7 +434,7 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 \end{Shaded}
 
 \hypertarget{by-ux5206ux7ec4}{%
-\subsection{by 分组}\label{by-ux5206ux7ec4}}
+\subsubsection{by 分组}\label{by-ux5206ux7ec4}}
 
 分组是按照某种分组实现一定条件下某种聚合方式的计算。分组可以是单字段，多字段以及条件字段等。
 
@@ -459,6 +494,26 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 \CommentTok{\#\textgreater{}    month        V1}
 \CommentTok{\#\textgreater{} 1: FALSE 161609926}
 \CommentTok{\#\textgreater{} 2:  TRUE 116897153}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux884cux5217ux7b5bux9009ux603bux7ed3}{%
+\subsection{行列筛选总结}\label{ux884cux5217ux7b5bux9009ux603bux7ed3}}
+
+行筛选在 i 的位置上进行, 列筛选在 j 的位置上进行;data.table中j的位置比较灵活多变，但是i的位置大部分时候都是进行条件筛选。我们通过上述的行列筛选已经大概知道data.table中i,j的用法。也就是我们常规数据清洗过程中的数据筛选过程，筛选符合要求的数据记录。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{dt }\OtherTok{\textless{}{-}}\NormalTok{ flights[ year }\SpecialCharTok{==} \DecValTok{2014} \SpecialCharTok{\&}\NormalTok{ month }\SpecialCharTok{==} \DecValTok{6} \SpecialCharTok{\&}\NormalTok{ day }\SpecialCharTok{\textgreater{}=}\DecValTok{15}\NormalTok{,.(year,month,day,dep\_delay,carrier,origin)] }
+\FunctionTok{head}\NormalTok{(dt)}
+\CommentTok{\#\textgreater{}    year month day dep\_delay carrier origin}
+\CommentTok{\#\textgreater{} 1: 2014     6  15        {-}4      AA    JFK}
+\CommentTok{\#\textgreater{} 2: 2014     6  15        {-}8      AA    JFK}
+\CommentTok{\#\textgreater{} 3: 2014     6  15       {-}12      AA    JFK}
+\CommentTok{\#\textgreater{} 4: 2014     6  15        {-}4      AA    LGA}
+\CommentTok{\#\textgreater{} 5: 2014     6  15        {-}3      AA    JFK}
+\CommentTok{\#\textgreater{} 6: 2014     6  15         5      AA    JFK}
 \end{Highlighting}
 \end{Shaded}
 
@@ -599,8 +654,8 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux884cux7b5bux9009-1}{%
-\subsection{行筛选}\label{ux884cux7b5bux9009-1}}
+\hypertarget{ux884cux7b5bux9009}{%
+\subsection{行筛选}\label{ux884cux7b5bux9009}}
 
 上文已经大致讲过行筛选，但是行筛选使用有一定的技巧，涉及到运算的快慢。主要是逻辑条件的设置，交集并集之间的差异。除了上文中的关系运算筛选，逻辑运算筛选除外，data.table中还有几个常用的筛选函数。
 
@@ -1487,19 +1542,19 @@ MS\href{https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads}{下载}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 导入公共存储库的密钥}
-\FunctionTok{wget}\NormalTok{ {-}qO{-} https://packages.microsoft.com/keys/microsoft.asc }\KeywordTok{|} \FunctionTok{sudo}\NormalTok{ apt{-}key add {-}}
+\FunctionTok{wget} \AttributeTok{{-}qO{-}}\NormalTok{ https://packages.microsoft.com/keys/microsoft.asc }\KeywordTok{|} \FunctionTok{sudo}\NormalTok{ apt{-}key add }\AttributeTok{{-}}
 
 \CommentTok{\# 为 SQL Server 2019 注册 Microsoft SQL Server Ubuntu 存储库}
-\FunctionTok{sudo}\NormalTok{ add{-}apt{-}repository }\StringTok{"}\VariableTok{$(}\FunctionTok{wget}\NormalTok{ {-}qO{-} https://packages.microsoft.com/config/ubuntu/20.04/mssql{-}server{-}2019.list}\VariableTok{)}\StringTok{"}
+\FunctionTok{sudo}\NormalTok{ add{-}apt{-}repository }\StringTok{"}\VariableTok{$(}\FunctionTok{wget} \AttributeTok{{-}qO{-}}\NormalTok{ https://packages.microsoft.com/config/ubuntu/20.04/mssql{-}server{-}2019.list}\VariableTok{)}\StringTok{"}
 
 \CommentTok{\# sudo add{-}apt{-}repository "$(wget {-}qO{-} https://packages.microsoft.com/config/ubuntu/18.04/mssql{-}server{-}2019.list)"}
 
 \CommentTok{\# 安装 SQL Server}
 \FunctionTok{sudo}\NormalTok{ apt{-}get update}
-\FunctionTok{sudo}\NormalTok{ apt{-}get install {-}y mssql{-}server}
+\FunctionTok{sudo}\NormalTok{ apt{-}get install }\AttributeTok{{-}y}\NormalTok{ mssql{-}server}
 
 \CommentTok{\# 验证服务是否运行}
-\ExtensionTok{systemctl}\NormalTok{ status mssql{-}server {-}{-}no{-}pager}
+\ExtensionTok{systemctl}\NormalTok{ status mssql{-}server }\AttributeTok{{-}{-}no{-}pager}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1510,8 +1565,8 @@ MS\href{https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads}{下载}
 \hypertarget{dbi}{%
 \section{DBI}\label{dbi}}
 
-\hypertarget{ux5b89ux88c5}{%
-\subsection{安装}\label{ux5b89ux88c5}}
+\hypertarget{ux5b89ux88c5-1}{%
+\subsection{安装}\label{ux5b89ux88c5-1}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1892,8 +1947,8 @@ linux下可以在文件Renviron中添加，记得引号，路径为{[}/opt/R/4.0
 
 RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下.该包正在逐渐被淘汰，可以使用RMariaDB包替换。
 
-\hypertarget{ux5b89ux88c5-1}{%
-\subsection{安装}\label{ux5b89ux88c5-1}}
+\hypertarget{ux5b89ux88c5-2}{%
+\subsection{安装}\label{ux5b89ux88c5-2}}
 
 Win系统下直接安装即可，其它平台下需提前安装依赖环境。
 
@@ -1901,7 +1956,7 @@ Win系统下直接安装即可，其它平台下需提前安装依赖环境。
 \begin{Highlighting}[]
 \CommentTok{\#On recent Debian or Ubuntu install libmariadbclient{-}dev}
 
-\FunctionTok{sudo}\NormalTok{ apt{-}get install {-}y libmariadbclient{-}dev}
+\FunctionTok{sudo}\NormalTok{ apt{-}get install }\AttributeTok{{-}y}\NormalTok{ libmariadbclient{-}dev}
 \CommentTok{\#On Fedora, CentOS or RHEL we need mariadb{-}devel:}
 
 \FunctionTok{sudo}\NormalTok{ yum install mariadb{-}devel}
@@ -2562,6 +2617,80 @@ str\_pad() 函数向字符串添加字符
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{ux5b57ux7b26ux6392ux5e8f}{%
+\subsection{字符排序}\label{ux5b57ux7b26ux6392ux5e8f}}
+
+numeric参数决定是否按照数字排序。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_order}\NormalTok{(x, }\AttributeTok{decreasing =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{na\_last =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{locale =} \StringTok{"en"}\NormalTok{,}
+  \AttributeTok{numeric =} \ConstantTok{FALSE}\NormalTok{, ...)}
+
+\FunctionTok{str\_sort}\NormalTok{(x, }\AttributeTok{decreasing =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{na\_last =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{locale =} \StringTok{"en"}\NormalTok{,}
+  \AttributeTok{numeric =} \ConstantTok{FALSE}\NormalTok{, ...)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_order}\NormalTok{(letters)}
+\FunctionTok{str\_sort}\NormalTok{(letters)}
+\end{Highlighting}
+\end{Shaded}
+
+numeric参数
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"100a10"}\NormalTok{, }\StringTok{"100a5"}\NormalTok{, }\StringTok{"2b"}\NormalTok{, }\StringTok{"2a"}\NormalTok{)}
+\FunctionTok{str\_sort}\NormalTok{(x)}
+\FunctionTok{str\_sort}\NormalTok{(x, }\AttributeTok{numeric =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux63d0ux53d6ux5355ux8bcd}{%
+\subsection{提取单词}\label{ux63d0ux53d6ux5355ux8bcd}}
+
+从句子中提取单词。
+
+\begin{itemize}
+\tightlist
+\item
+  参数
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{word}\NormalTok{(string, }\AttributeTok{start =}\NormalTok{ 1L, }\AttributeTok{end =}\NormalTok{ start, }\AttributeTok{sep =} \FunctionTok{fixed}\NormalTok{(}\StringTok{" "}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  案例
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sentences }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Jane saw a cat"}\NormalTok{, }\StringTok{"Jane sat down"}\NormalTok{)}
+\FunctionTok{word}\NormalTok{(sentences, }\DecValTok{2}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\FunctionTok{word}\NormalTok{(sentences[}\DecValTok{1}\NormalTok{], }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+指定分隔符
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Can define words by other separators}
+\NormalTok{str }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}abc.def..123.4568.999\textquotesingle{}}
+\FunctionTok{word}\NormalTok{(str, }\DecValTok{1}\NormalTok{, }\AttributeTok{sep =} \FunctionTok{fixed}\NormalTok{(}\StringTok{\textquotesingle{}..\textquotesingle{}}\NormalTok{))}
+\FunctionTok{word}\NormalTok{(str, }\DecValTok{2}\NormalTok{, }\AttributeTok{sep =} \FunctionTok{fixed}\NormalTok{(}\StringTok{\textquotesingle{}..\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{ux5176ux4ed6ux51fdux6570}{%
 \subsection{其他函数}\label{ux5176ux4ed6ux51fdux6570}}
 
@@ -2737,8 +2866,8 @@ str\_pad() 函数向字符串添加字符
 
 \texttt{R}中日期起始时间是\texttt{1970-01-01},Excel中是\texttt{1900-01-01},转化成数字两者相差25568。在用R读取Excel文件时，设计到日期数字转化成日期时需要注意其中差异。
 
-R中日期 : 2021-04-29 转化成数字: 18746,
-Excel 中 2021-04-29转化成数字:44314,两者相差25568.
+R中日期 : 2021-05-10 转化成数字: 18757,
+Excel 中 2021-05-10转化成数字:44325,两者相差25568.
 
 \hypertarget{ux57faux7840ux7528ux6cd5-1}{%
 \section{基础用法}\label{ux57faux7840ux7528ux6cd5-1}}
@@ -3368,8 +3497,8 @@ unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注�
 
 在日常使用数据过程中，这种数据存储方式是一种标准的数据存储方式，像关系型数据中数据的存储。
 
-\hypertarget{ux5b89ux88c5-2}{%
-\section{安装}\label{ux5b89ux88c5-2}}
+\hypertarget{ux5b89ux88c5-3}{%
+\section{安装}\label{ux5b89ux88c5-3}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3425,11 +3554,11 @@ unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注�
 
 \begin{longtable}[]{@{}lllllll@{}}
 \toprule
-col1 & col2 & col3 & col4 & col5 & col6 & col7\tabularnewline
+col1 & col2 & col3 & col4 & col5 & col6 & col7 \\
 \midrule
 \endhead
-v1 & v2 & v3 & v4 & v5 & v6 & v7\tabularnewline
-vb1 & vb2 & vb3 & vb4 & vb5 & vb6 & vb7\tabularnewline
+v1 & v2 & v3 & v4 & v5 & v6 & v7 \\
+vb1 & vb2 & vb3 & vb4 & vb5 & vb6 & vb7 \\
 \bottomrule
 \end{longtable}
 
@@ -4010,8 +4139,8 @@ nest的反面 unnest
   \texttt{arrange()} 行排序
 \end{itemize}
 
-\hypertarget{ux5b89ux88c5-3}{%
-\section{安装}\label{ux5b89ux88c5-3}}
+\hypertarget{ux5b89ux88c5-4}{%
+\section{安装}\label{ux5b89ux88c5-4}}
 
 \begin{Shaded}
 \begin{Highlighting}[]

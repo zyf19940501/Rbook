@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 i j by 使用 | R学习笔记</title>
+  <title>2.1 安装 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 i j by 使用 | R学习笔记" />
+  <meta property="og:title" content="2.1 安装 | R学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 i j by 使用 | R学习笔记" />
+  <meta name="twitter:title" content="2.1 安装 | R学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="基础介绍.html"/>
-<link rel="next" href="常规操作.html"/>
+<link rel="prev" href="data-table.html"/>
+<link rel="next" href="基础介绍.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,12 +51,15 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,24 +140,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
 <li class="chapter" data-level="2" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>2</b> data.table</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.1</b> 基础介绍</a>
+<li class="chapter" data-level="2.1" data-path="安装.html"><a href="安装.html"><i class="fa fa-check"></i><b>2.1</b> 安装</a></li>
+<li class="chapter" data-level="2.2" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.2</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.1.1</b> 基本格式</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html"><i class="fa fa-check"></i><b>2.2</b> i j by 使用</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
-<li class="chapter" data-level="2.2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行筛选"><i class="fa fa-check"></i><b>2.2.2</b> 行筛选</a></li>
-<li class="chapter" data-level="2.2.3" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#列筛选"><i class="fa fa-check"></i><b>2.2.3</b> 列筛选</a></li>
-<li class="chapter" data-level="2.2.4" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
-<li class="chapter" data-level="2.2.5" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#j-常规计算"><i class="fa fa-check"></i><b>2.2.5</b> j 常规计算</a></li>
-<li class="chapter" data-level="2.2.6" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#by-分组"><i class="fa fa-check"></i><b>2.2.6</b> by 分组</a></li>
+<li class="chapter" data-level="2.2.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
+<li class="chapter" data-level="2.2.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.2.2</b> 基本格式</a></li>
+<li class="chapter" data-level="2.2.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>2.2.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="2.2.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>2.3</b> 常规操作</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>2.3.1</b> 新增更新列</a></li>
 <li class="chapter" data-level="2.3.2" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>2.3.2</b> 排序</a></li>
-<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选-1"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
+<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常规操作.html"><a href="常规操作.html#特殊符号"><i class="fa fa-check"></i><b>2.3.4</b> 特殊符号</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>2.4</b> 常用函数</a>
@@ -179,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>3.1</b> 安装数据库</a></li>
 <li class="chapter" data-level="3.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>3.2</b> DBI</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装-1"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>3.2.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>3.2.3</b> 执行sql任务</a></li>
 <li class="chapter" data-level="3.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>3.2.4</b> 函数介绍</a></li>
@@ -189,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>3.5</b> ROracle包</a></li>
 <li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-1"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
+<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-2"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
 <li class="chapter" data-level="3.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>3.6.2</b> 连接使用</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>3.7</b> 常见问题</a>
@@ -224,7 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="常用函数-1.html"><a href="常用函数-1.html#分割字符"><i class="fa fa-check"></i><b>4.2.5</b> 分割字符</a></li>
 <li class="chapter" data-level="4.2.6" data-path="常用函数-1.html"><a href="常用函数-1.html#替换字符"><i class="fa fa-check"></i><b>4.2.6</b> 替换字符</a></li>
 <li class="chapter" data-level="4.2.7" data-path="常用函数-1.html"><a href="常用函数-1.html#移除字符"><i class="fa fa-check"></i><b>4.2.7</b> 移除字符</a></li>
-<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.8</b> 其他函数</a></li>
+<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#字符排序"><i class="fa fa-check"></i><b>4.2.8</b> 字符排序</a></li>
+<li class="chapter" data-level="4.2.9" data-path="常用函数-1.html"><a href="常用函数-1.html#提取单词"><i class="fa fa-check"></i><b>4.2.9</b> 提取单词</a></li>
+<li class="chapter" data-level="4.2.10" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.10</b> 其他函数</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="r实现excel字符函数.html"><a href="r实现excel字符函数.html"><i class="fa fa-check"></i><b>4.3</b> R实现Excel字符函数</a></li>
 </ul></li>
@@ -255,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
+<li class="chapter" data-level="7.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
 <li class="chapter" data-level="7.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>7.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>7.2.1</b> 宽转长</a></li>
@@ -270,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
-<li class="chapter" data-level="8.2" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
+<li class="chapter" data-level="8.2" data-path="安装-4.html"><a href="安装-4.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
 <li class="chapter" data-level="8.3" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.3</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="基础用法-2.html"><a href="基础用法-2.html#filter"><i class="fa fa-check"></i><b>8.3.1</b> filter</a></li>
@@ -385,173 +386,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="i-j-by-使用" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> i j by 使用</h2>
-<p>使用data.table处理数据，首先第一步是获取数据，data.table中自带读取数据的函数fread函数。接下来我们就用该函数读取数据演示i,j,by的简单使用。</p>
-<div id="读取数据" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> 读取数据</h3>
-<p>data.table 包读取数据主要用fread 函数,在我实际工作中接触的数据大部分以数据库,csv,Excel形式存在.fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线文件.</p>
-<p>本文会照搬很多官方关于data.table的demo.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="i-j-by-使用.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb4-2"><a href="i-j-by-使用.html#cb4-2" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)) {</span>
-<span id="cb4-3"><a href="i-j-by-使用.html#cb4-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;./data/flights.csv&quot;</span> <span class="co">#本地文件</span></span>
-<span id="cb4-4"><a href="i-j-by-使用.html#cb4-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb4-5"><a href="i-j-by-使用.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://raw.githubusercontent.com/Rdatatable/data.table/master/vignettes/flights.csv&quot;</span> <span class="co">#在线文件需翻墙</span></span>
-<span id="cb4-6"><a href="i-j-by-使用.html#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-7"><a href="i-j-by-使用.html#cb4-7" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(input) <span class="co">#具体参数请参照文档  实际工作中可能会用到的encoding参数,编码 encoding=&#39;UTF-8&#39;</span></span>
-<span id="cb4-8"><a href="i-j-by-使用.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="i-j-by-使用.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(flights)</span>
-<span id="cb4-10"><a href="i-j-by-使用.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year month day dep_delay arr_delay carrier origin dest air_time distance</span></span>
-<span id="cb4-11"><a href="i-j-by-使用.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2014     1   1        14        13      AA    JFK  LAX      359     2475</span></span>
-<span id="cb4-12"><a href="i-j-by-使用.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2014     1   1        -3        13      AA    JFK  LAX      363     2475</span></span>
-<span id="cb4-13"><a href="i-j-by-使用.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2014     1   1         2         9      AA    JFK  LAX      351     2475</span></span>
-<span id="cb4-14"><a href="i-j-by-使用.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2014     1   1        -8       -26      AA    LGA  PBI      157     1035</span></span>
-<span id="cb4-15"><a href="i-j-by-使用.html#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2014     1   1         2         1      AA    JFK  LAX      350     2475</span></span>
-<span id="cb4-16"><a href="i-j-by-使用.html#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 2014     1   1         4         0      AA    EWR  LAX      339     2454</span></span>
-<span id="cb4-17"><a href="i-j-by-使用.html#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    hour</span></span>
-<span id="cb4-18"><a href="i-j-by-使用.html#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    9</span></span>
-<span id="cb4-19"><a href="i-j-by-使用.html#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   11</span></span>
-<span id="cb4-20"><a href="i-j-by-使用.html#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   19</span></span>
-<span id="cb4-21"><a href="i-j-by-使用.html#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    7</span></span>
-<span id="cb4-22"><a href="i-j-by-使用.html#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:   13</span></span>
-<span id="cb4-23"><a href="i-j-by-使用.html#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:   18</span></span></code></pre></div>
-<p>本文读取本地文件,如果该数据集下载失败,可更改地址为(<a href="http://www.zhongyufei.com/datatable/data/flights.csv" class="uri">http://www.zhongyufei.com/datatable/data/flights.csv</a>)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="i-j-by-使用.html#cb5-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;http://www.zhongyufei.com/datatable/data/flights.csv&quot;</span>)</span></code></pre></div>
-<p>数据集记录的是 2014 年,纽约市3大机场(分别为:JFK 肯尼迪国际机场、 LGA 拉瓜迪亚机场,和 EWR 纽瓦克自由国际机场)起飞的航班信息。</p>
-<p>具体的记录信息(特征列)，包括起飞时间、到达时间、延误时长、航空公司、始发机场、目的机场、飞行时长，和飞行距离等。</p>
-</div>
-<div id="行筛选" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> 行筛选</h3>
-<p>行筛选是一种很常见的数据操作行为，类似我们Excel中的筛选，即按照一定条件筛选符合要求的数据。条件筛选一般分为单条件筛选、多条件筛选；
-在筛选时涉及到条件判断，R语言中常用的条件判断分为逻辑运算、关系运算。常用的关系运算符 &gt;、 &lt;、==、!=、&gt;=、&lt;=分别代表大于、小于、等于、不等于、大于等于、小于等于。常用的逻辑运算符 &amp;、|、！等。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="i-j-by-使用.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#单条件筛选</span></span>
-<span id="cb6-2"><a href="i-j-by-使用.html#cb6-2" aria-hidden="true" tabindex="-1"></a>filghts[year <span class="sc">==</span> <span class="dv">2014</span>] <span class="co">#筛选year==2014</span></span>
-<span id="cb6-3"><a href="i-j-by-使用.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#多条件筛选 用 &amp; 链接</span></span>
-<span id="cb6-4"><a href="i-j-by-使用.html#cb6-4" aria-hidden="true" tabindex="-1"></a>flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
-<span id="cb6-5"><a href="i-j-by-使用.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># | 相当于中文条件或 </span></span>
-<span id="cb6-6"><a href="i-j-by-使用.html#cb6-6" aria-hidden="true" tabindex="-1"></a>flights[ month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">|</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
-<span id="cb6-7"><a href="i-j-by-使用.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># %in% 类似sql中in用法</span></span>
-<span id="cb6-8"><a href="i-j-by-使用.html#cb6-8" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>)] </span>
-<span id="cb6-9"><a href="i-j-by-使用.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># %between% 类似sql中between and 用法</span></span>
-<span id="cb6-10"><a href="i-j-by-使用.html#cb6-10" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)]</span></code></pre></div>
-</div>
-<div id="列筛选" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> 列筛选</h3>
-<p>数据集较大字段较多时，由于无效信息较多可以做适当精选，这时需要我们筛选列。与sql中的select用法一致，即保留想要的字段。.()或list()是data.table中的比较特殊的实现列筛选的用法。常规数字索引，字符向量索引同样有效。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="i-j-by-使用.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#注意前面的. .()</span></span>
-<span id="cb7-2"><a href="i-j-by-使用.html#cb7-2" aria-hidden="true" tabindex="-1"></a>flights[,.(year,month,day,dep_delay,carrier,origin)] </span>
-<span id="cb7-3"><a href="i-j-by-使用.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         year month day dep_delay carrier origin</span></span>
-<span id="cb7-4"><a href="i-j-by-使用.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      1: 2014     1   1        14      AA    JFK</span></span>
-<span id="cb7-5"><a href="i-j-by-使用.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      2: 2014     1   1        -3      AA    JFK</span></span>
-<span id="cb7-6"><a href="i-j-by-使用.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      3: 2014     1   1         2      AA    JFK</span></span>
-<span id="cb7-7"><a href="i-j-by-使用.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      4: 2014     1   1        -8      AA    LGA</span></span>
-<span id="cb7-8"><a href="i-j-by-使用.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      5: 2014     1   1         2      AA    JFK</span></span>
-<span id="cb7-9"><a href="i-j-by-使用.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ---                                        </span></span>
-<span id="cb7-10"><a href="i-j-by-使用.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253312: 2014    10  31         1      UA    LGA</span></span>
-<span id="cb7-11"><a href="i-j-by-使用.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253313: 2014    10  31        -5      UA    EWR</span></span>
-<span id="cb7-12"><a href="i-j-by-使用.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253314: 2014    10  31        -8      MQ    LGA</span></span>
-<span id="cb7-13"><a href="i-j-by-使用.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253315: 2014    10  31        -4      MQ    LGA</span></span>
-<span id="cb7-14"><a href="i-j-by-使用.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253316: 2014    10  31        -5      MQ    LGA</span></span>
-<span id="cb7-15"><a href="i-j-by-使用.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,list(year,month,day,dep_delay,carrier,origin)]  same above</span></span>
-<span id="cb7-16"><a href="i-j-by-使用.html#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="i-j-by-使用.html#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb7-18"><a href="i-j-by-使用.html#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,1:3]</span></span>
-<span id="cb7-19"><a href="i-j-by-使用.html#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="i-j-by-使用.html#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb7-21"><a href="i-j-by-使用.html#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,c(&#39;year&#39;,&#39;month&#39;,&#39;day&#39;)]</span></span></code></pre></div>
-<p>setcolorder函数可以调整列的顺序，将常用的字段信息排在前面可以用过该函数实现。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="i-j-by-使用.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb8-2"><a href="i-j-by-使用.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># setcolorder(x = flights,neworder = c( &quot;month&quot;,&quot;day&quot;,&quot;dep_delay&quot; ,&quot;arr_delay&quot;,&quot;carrier&quot; )) </span></span>
-<span id="cb8-3"><a href="i-j-by-使用.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按照指定列顺序排序 其余字段保持不变,不是建立副本,是直接修改了flights 数据的列顺序</span></span></code></pre></div>
-</div>
-<div id="行列筛选总结" class="section level3" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> 行列筛选总结</h3>
-<p>行筛选在 i 的位置上进行, 列筛选在 j 的位置上进行;data.table中j的位置比较灵活多变，但是i的位置大部分时候都是进行条件筛选。我们通过上述的行列筛选已经大概知道data.table中i,j的用法。也就是我们常规数据清洗过程中的数据筛选过程，筛选符合要求的数据记录。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="i-j-by-使用.html#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="i-j-by-使用.html#cb9-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span> <span class="sc">&amp;</span> day <span class="sc">&gt;=</span><span class="dv">15</span>,.(year,month,day,dep_delay,carrier,origin)] </span>
-<span id="cb9-3"><a href="i-j-by-使用.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb9-4"><a href="i-j-by-使用.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year month day dep_delay carrier origin</span></span>
-<span id="cb9-5"><a href="i-j-by-使用.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2014     6  15        -4      AA    JFK</span></span>
-<span id="cb9-6"><a href="i-j-by-使用.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2014     6  15        -8      AA    JFK</span></span>
-<span id="cb9-7"><a href="i-j-by-使用.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2014     6  15       -12      AA    JFK</span></span>
-<span id="cb9-8"><a href="i-j-by-使用.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2014     6  15        -4      AA    LGA</span></span>
-<span id="cb9-9"><a href="i-j-by-使用.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2014     6  15        -3      AA    JFK</span></span>
-<span id="cb9-10"><a href="i-j-by-使用.html#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 2014     6  15         5      AA    JFK</span></span></code></pre></div>
-</div>
-<div id="j-常规计算" class="section level3" number="2.2.5">
-<h3><span class="header-section-number">2.2.5</span> j 常规计算</h3>
-<p>根据最开始的Excel透视表截图，我们想要获得如截图一样的结果该怎么实现呢？代码如下：</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="i-j-by-使用.html#cb10-1" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance),平均距离<span class="ot">=</span><span class="fu">mean</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
-<p>在i的位置做筛选，j的位置做计算，by指定分组字段。在j的位置可以做各种各样的计算，R中自带的函数，或者是自己定义的函数。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="i-j-by-使用.html#cb11-1" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb11-2"><a href="i-j-by-使用.html#cb11-2" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb11-3"><a href="i-j-by-使用.html#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-4"><a href="i-j-by-使用.html#cb11-4" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(<span class="fu">myfun</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span>
-<span id="cb11-5"><a href="i-j-by-使用.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        origin dest      V1</span></span>
-<span id="cb11-6"><a href="i-j-by-使用.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     1:    JFK  LAX 3062813</span></span>
-<span id="cb11-7"><a href="i-j-by-使用.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     2:    JFK  LAX 3062813</span></span>
-<span id="cb11-8"><a href="i-j-by-使用.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     3:    JFK  LAX 3062813</span></span>
-<span id="cb11-9"><a href="i-j-by-使用.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     4:    JFK  LAX 3062813</span></span>
-<span id="cb11-10"><a href="i-j-by-使用.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5:    JFK  LAX 3062813</span></span>
-<span id="cb11-11"><a href="i-j-by-使用.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ---                    </span></span>
-<span id="cb11-12"><a href="i-j-by-使用.html#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26484:    JFK  HYA   19208</span></span>
-<span id="cb11-13"><a href="i-j-by-使用.html#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26485:    JFK  HYA   19208</span></span>
-<span id="cb11-14"><a href="i-j-by-使用.html#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26486:    JFK  HYA   19208</span></span>
-<span id="cb11-15"><a href="i-j-by-使用.html#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26487:    JFK  HYA   19208</span></span>
-<span id="cb11-16"><a href="i-j-by-使用.html#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26488:    JFK  HYA   19208</span></span></code></pre></div>
-</div>
-<div id="by-分组" class="section level3" number="2.2.6">
-<h3><span class="header-section-number">2.2.6</span> by 分组</h3>
-<p>分组是按照某种分组实现一定条件下某种聚合方式的计算。分组可以是单字段，多字段以及条件字段等。</p>
-<p>1.按月分组</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="i-j-by-使用.html#cb12-1" aria-hidden="true" tabindex="-1"></a>flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month)]</span>
-<span id="cb12-2"><a href="i-j-by-使用.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     month       V1</span></span>
-<span id="cb12-3"><a href="i-j-by-使用.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:     1 25112563</span></span>
-<span id="cb12-4"><a href="i-j-by-使用.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:     2 22840391</span></span>
-<span id="cb12-5"><a href="i-j-by-使用.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:     3 28716598</span></span>
-<span id="cb12-6"><a href="i-j-by-使用.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:     4 27816797</span></span>
-<span id="cb12-7"><a href="i-j-by-使用.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:     5 28030020</span></span>
-<span id="cb12-8"><a href="i-j-by-使用.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:     6 29093557</span></span>
-<span id="cb12-9"><a href="i-j-by-使用.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:     7 30059175</span></span>
-<span id="cb12-10"><a href="i-j-by-使用.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:     8 30322047</span></span>
-<span id="cb12-11"><a href="i-j-by-使用.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:     9 27615097</span></span>
-<span id="cb12-12"><a href="i-j-by-使用.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    10 28900834</span></span></code></pre></div>
-<p>2.多条件分组</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="i-j-by-使用.html#cb13-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(carrier,origin)]</span>
-<span id="cb13-2"><a href="i-j-by-使用.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb13-3"><a href="i-j-by-使用.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    carrier origin       V1</span></span>
-<span id="cb13-4"><a href="i-j-by-使用.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      AA    JFK 20492213</span></span>
-<span id="cb13-5"><a href="i-j-by-使用.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:      AA    LGA 12365282</span></span>
-<span id="cb13-6"><a href="i-j-by-使用.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      AA    EWR  3550217</span></span>
-<span id="cb13-7"><a href="i-j-by-使用.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      AS    EWR  1378748</span></span>
-<span id="cb13-8"><a href="i-j-by-使用.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      B6    JFK 38117662</span></span>
-<span id="cb13-9"><a href="i-j-by-使用.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:      B6    EWR  4508574</span></span>
-<span id="cb13-10"><a href="i-j-by-使用.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#可直接重新命名</span></span>
-<span id="cb13-11"><a href="i-j-by-使用.html#cb13-11" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(<span class="at">newcol1 =</span> carrier,<span class="at">newcol2 =</span> origin)]</span>
-<span id="cb13-12"><a href="i-j-by-使用.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb13-13"><a href="i-j-by-使用.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    newcol1 newcol2       V1</span></span>
-<span id="cb13-14"><a href="i-j-by-使用.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      AA     JFK 20492213</span></span>
-<span id="cb13-15"><a href="i-j-by-使用.html#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:      AA     LGA 12365282</span></span>
-<span id="cb13-16"><a href="i-j-by-使用.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      AA     EWR  3550217</span></span>
-<span id="cb13-17"><a href="i-j-by-使用.html#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      AS     EWR  1378748</span></span>
-<span id="cb13-18"><a href="i-j-by-使用.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      B6     JFK 38117662</span></span>
-<span id="cb13-19"><a href="i-j-by-使用.html#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:      B6     EWR  4508574</span></span></code></pre></div>
-<p>3.按月份是否大于6分组</p>
-<p>即得到是否大于6的两类分组</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="i-j-by-使用.html#cb14-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month<span class="sc">&gt;</span><span class="dv">6</span>)] <span class="co">#by里面可以做计算</span></span>
-<span id="cb14-2"><a href="i-j-by-使用.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb14-3"><a href="i-j-by-使用.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    month        V1</span></span>
-<span id="cb14-4"><a href="i-j-by-使用.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: FALSE 161609926</span></span>
-<span id="cb14-5"><a href="i-j-by-使用.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:  TRUE 116897153</span></span></code></pre></div>
-</div>
+<div id="安装" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 安装</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="安装.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb2-2"><a href="安装.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># latest development version:</span></span>
+<span id="cb2-3"><a href="安装.html#cb2-3" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">update.dev.pkg</span>()</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="基础介绍.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="常规操作.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-table.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="基础介绍.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -574,6 +421,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

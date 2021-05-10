@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.2 常用函数 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.2 常用函数 | R学习笔记" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,12 +51,15 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,24 +140,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
 <li class="chapter" data-level="2" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>2</b> data.table</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.1</b> 基础介绍</a>
+<li class="chapter" data-level="2.1" data-path="安装.html"><a href="安装.html"><i class="fa fa-check"></i><b>2.1</b> 安装</a></li>
+<li class="chapter" data-level="2.2" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.2</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.1.1</b> 基本格式</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html"><i class="fa fa-check"></i><b>2.2</b> i j by 使用</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
-<li class="chapter" data-level="2.2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行筛选"><i class="fa fa-check"></i><b>2.2.2</b> 行筛选</a></li>
-<li class="chapter" data-level="2.2.3" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#列筛选"><i class="fa fa-check"></i><b>2.2.3</b> 列筛选</a></li>
-<li class="chapter" data-level="2.2.4" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
-<li class="chapter" data-level="2.2.5" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#j-常规计算"><i class="fa fa-check"></i><b>2.2.5</b> j 常规计算</a></li>
-<li class="chapter" data-level="2.2.6" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#by-分组"><i class="fa fa-check"></i><b>2.2.6</b> by 分组</a></li>
+<li class="chapter" data-level="2.2.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
+<li class="chapter" data-level="2.2.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.2.2</b> 基本格式</a></li>
+<li class="chapter" data-level="2.2.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>2.2.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="2.2.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>2.3</b> 常规操作</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>2.3.1</b> 新增更新列</a></li>
 <li class="chapter" data-level="2.3.2" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>2.3.2</b> 排序</a></li>
-<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选-1"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
+<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常规操作.html"><a href="常规操作.html#特殊符号"><i class="fa fa-check"></i><b>2.3.4</b> 特殊符号</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>2.4</b> 常用函数</a>
@@ -179,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>3.1</b> 安装数据库</a></li>
 <li class="chapter" data-level="3.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>3.2</b> DBI</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装-1"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>3.2.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>3.2.3</b> 执行sql任务</a></li>
 <li class="chapter" data-level="3.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>3.2.4</b> 函数介绍</a></li>
@@ -189,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>3.5</b> ROracle包</a></li>
 <li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-1"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
+<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-2"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
 <li class="chapter" data-level="3.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>3.6.2</b> 连接使用</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>3.7</b> 常见问题</a>
@@ -224,7 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="常用函数-1.html"><a href="常用函数-1.html#分割字符"><i class="fa fa-check"></i><b>4.2.5</b> 分割字符</a></li>
 <li class="chapter" data-level="4.2.6" data-path="常用函数-1.html"><a href="常用函数-1.html#替换字符"><i class="fa fa-check"></i><b>4.2.6</b> 替换字符</a></li>
 <li class="chapter" data-level="4.2.7" data-path="常用函数-1.html"><a href="常用函数-1.html#移除字符"><i class="fa fa-check"></i><b>4.2.7</b> 移除字符</a></li>
-<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.8</b> 其他函数</a></li>
+<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#字符排序"><i class="fa fa-check"></i><b>4.2.8</b> 字符排序</a></li>
+<li class="chapter" data-level="4.2.9" data-path="常用函数-1.html"><a href="常用函数-1.html#提取单词"><i class="fa fa-check"></i><b>4.2.9</b> 提取单词</a></li>
+<li class="chapter" data-level="4.2.10" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.10</b> 其他函数</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="r实现excel字符函数.html"><a href="r实现excel字符函数.html"><i class="fa fa-check"></i><b>4.3</b> R实现Excel字符函数</a></li>
 </ul></li>
@@ -255,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
+<li class="chapter" data-level="7.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
 <li class="chapter" data-level="7.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>7.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>7.2.1</b> 宽转长</a></li>
@@ -270,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
-<li class="chapter" data-level="8.2" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
+<li class="chapter" data-level="8.2" data-path="安装-4.html"><a href="安装-4.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
 <li class="chapter" data-level="8.3" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.3</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="基础用法-2.html"><a href="基础用法-2.html#filter"><i class="fa fa-check"></i><b>8.3.1</b> filter</a></li>
@@ -394,125 +395,159 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>string:需要被截取的字符串</p>
 <p>start: 默认1L,即从最开始截取</p>
 <p>end:默认-1L,即截取到最后</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="常用函数-1.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co">#注意end 3 和 -3的区别</span></span>
-<span id="cb97-2"><a href="常用函数-1.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> <span class="st">&#39;我是R语言学习者&#39;</span>,<span class="at">start =</span> <span class="dv">2</span>,<span class="at">end =</span> <span class="dv">3</span>)</span>
-<span id="cb97-3"><a href="常用函数-1.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> <span class="st">&#39;我是R语言学习者&#39;</span>,<span class="at">start =</span> <span class="dv">2</span>,<span class="at">end =</span> <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="常用函数-1.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co">#注意end 3 和 -3的区别</span></span>
+<span id="cb98-2"><a href="常用函数-1.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> <span class="st">&#39;我是R语言学习者&#39;</span>,<span class="at">start =</span> <span class="dv">2</span>,<span class="at">end =</span> <span class="dv">3</span>)</span>
+<span id="cb98-3"><a href="常用函数-1.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(<span class="at">string =</span> <span class="st">&#39;我是R语言学习者&#39;</span>,<span class="at">start =</span> <span class="dv">2</span>,<span class="at">end =</span> <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
 </div>
 <div id="匹配" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> 匹配</h3>
 <p>查看函数帮助文档,str_match()按照指定pattern(正则表达式)查找字符.重点困难点正则表达式的编写.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="常用函数-1.html#cb98-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">str_match</span>()</span>
-<span id="cb98-2"><a href="常用函数-1.html#cb98-2" aria-hidden="true" tabindex="-1"></a>?<span class="fu">str_match_all</span>()</span>
-<span id="cb98-3"><a href="常用函数-1.html#cb98-3" aria-hidden="true" tabindex="-1"></a>?<span class="fu">str_extract</span>()</span>
-<span id="cb98-4"><a href="常用函数-1.html#cb98-4" aria-hidden="true" tabindex="-1"></a>?<span class="fu">str_extract_all</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="常用函数-1.html#cb99-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">str_match</span>()</span>
+<span id="cb99-2"><a href="常用函数-1.html#cb99-2" aria-hidden="true" tabindex="-1"></a>?<span class="fu">str_match_all</span>()</span>
+<span id="cb99-3"><a href="常用函数-1.html#cb99-3" aria-hidden="true" tabindex="-1"></a>?<span class="fu">str_extract</span>()</span>
+<span id="cb99-4"><a href="常用函数-1.html#cb99-4" aria-hidden="true" tabindex="-1"></a>?<span class="fu">str_extract_all</span>()</span></code></pre></div>
 <p>str_extract()函数返回向量,str_match()函数返回矩阵.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="常用函数-1.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co">#原文来源烽火戏诸侯的&lt;剑来&gt;</span></span>
-<span id="cb99-2"><a href="常用函数-1.html#cb99-2" aria-hidden="true" tabindex="-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;陈平安放下新折的那根桃枝,吹灭蜡烛,走出屋子后,坐在台阶上,仰头望去,星空璀璨.&#39;</span>) </span>
-<span id="cb99-3"><a href="常用函数-1.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(strings,<span class="st">&#39;陈平安&#39;</span>)</span>
-<span id="cb99-4"><a href="常用函数-1.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(strings,<span class="st">&#39;陈平安&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="常用函数-1.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co">#原文来源烽火戏诸侯的&lt;剑来&gt;</span></span>
+<span id="cb100-2"><a href="常用函数-1.html#cb100-2" aria-hidden="true" tabindex="-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;陈平安放下新折的那根桃枝,吹灭蜡烛,走出屋子后,坐在台阶上,仰头望去,星空璀璨.&#39;</span>) </span>
+<span id="cb100-3"><a href="常用函数-1.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(strings,<span class="st">&#39;陈平安&#39;</span>)</span>
+<span id="cb100-4"><a href="常用函数-1.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(strings,<span class="st">&#39;陈平安&#39;</span>)</span></code></pre></div>
 <ul>
 <li>匹配中文</li>
 </ul>
 <p>匹配中文的正则表达式<span class="math display">\[\u4e00-\u9fa5\]</span></p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="常用函数-1.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(strings,<span class="st">&#39;[\u4e00-\u9fa5]&#39;</span>) <span class="co">#返回list</span></span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="常用函数-1.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(strings,<span class="st">&#39;[\u4e00-\u9fa5]&#39;</span>) <span class="co">#返回list</span></span></code></pre></div>
 <ul>
 <li>匹配数字或英文</li>
 </ul>
 <p>查找数字的正则表达式[0-9];查找英文的正则表达式:[a-zA-Z]</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="常用函数-1.html#cb101-1" aria-hidden="true" tabindex="-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;00123545&#39;</span>,<span class="st">&#39;LOL league of legends&#39;</span>)</span>
-<span id="cb101-2"><a href="常用函数-1.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(strings,<span class="st">&#39;[0-9]&#39;</span>)</span>
-<span id="cb101-3"><a href="常用函数-1.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(strings,<span class="st">&#39;[a-zA-Z]&#39;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="常用函数-1.html#cb102-1" aria-hidden="true" tabindex="-1"></a>strings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;00123545&#39;</span>,<span class="st">&#39;LOL league of legends&#39;</span>)</span>
+<span id="cb102-2"><a href="常用函数-1.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(strings,<span class="st">&#39;[0-9]&#39;</span>)</span>
+<span id="cb102-3"><a href="常用函数-1.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract_all</span>(strings,<span class="st">&#39;[a-zA-Z]&#39;</span>) </span></code></pre></div>
 </div>
 <div id="添加字符" class="section level3" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> 添加字符</h3>
 <p>str_pad() 函数向字符串添加字符</p>
 <p>像工作中处理月份的时候,1,2,3,4,5,6,7,8,9,10,11,12变成01,02,03,04,05,06,07,08,09,10,11,12.按照日期时间输出文件名称,如下所示:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="常用函数-1.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_pad</span>(<span class="at">string =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="at">width =</span> <span class="dv">2</span>,<span class="at">side =</span> <span class="st">&#39;left&#39;</span>,<span class="at">pad =</span> <span class="st">&#39;0&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="常用函数-1.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_pad</span>(<span class="at">string =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="at">width =</span> <span class="dv">2</span>,<span class="at">side =</span> <span class="st">&#39;left&#39;</span>,<span class="at">pad =</span> <span class="st">&#39;0&#39;</span>)</span></code></pre></div>
 </div>
 <div id="去除空格" class="section level3" number="4.2.4">
 <h3><span class="header-section-number">4.2.4</span> 去除空格</h3>
 <p>与<code>excel</code>中<code>trim</code>函数功能类似，剔除字符中的空格，但是不可以剔除字符中的空格</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="常用函数-1.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># side 可选 both  left right</span></span>
-<span id="cb103-2"><a href="常用函数-1.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_trim</span>(<span class="st">&#39; ab af &#39;</span>,<span class="at">side =</span> <span class="st">&#39;both&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="常用函数-1.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># side 可选 both  left right</span></span>
+<span id="cb104-2"><a href="常用函数-1.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_trim</span>(<span class="st">&#39; ab af &#39;</span>,<span class="at">side =</span> <span class="st">&#39;both&#39;</span>)</span></code></pre></div>
 </div>
 <div id="分割字符" class="section level3" number="4.2.5">
 <h3><span class="header-section-number">4.2.5</span> 分割字符</h3>
 <p><code>str_split()</code>处理后的结果是列表</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="常用函数-1.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 得到列表,需要向量化</span></span>
-<span id="cb104-2"><a href="常用函数-1.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="st">&quot;a,b,d,e&quot;</span>,<span class="at">pattern =</span> <span class="st">&#39;,&#39;</span>)</span>
-<span id="cb104-3"><a href="常用函数-1.html#cb104-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-4"><a href="常用函数-1.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="st">&#39;ab||cd&#39;</span>,<span class="st">&#39;</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
-<span id="cb104-5"><a href="常用函数-1.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb104-6"><a href="常用函数-1.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="co">#str_split(&#39;ab||cd&#39;,&#39;\\|\\|&#39;) %&gt;% purrr::as_vector()</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="常用函数-1.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 得到列表,需要向量化</span></span>
+<span id="cb105-2"><a href="常用函数-1.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="st">&quot;a,b,d,e&quot;</span>,<span class="at">pattern =</span> <span class="st">&#39;,&#39;</span>)</span>
+<span id="cb105-3"><a href="常用函数-1.html#cb105-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-4"><a href="常用函数-1.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(<span class="st">&#39;ab||cd&#39;</span>,<span class="st">&#39;</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
+<span id="cb105-5"><a href="常用函数-1.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb105-6"><a href="常用函数-1.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="co">#str_split(&#39;ab||cd&#39;,&#39;\\|\\|&#39;) %&gt;% purrr::as_vector()</span></span></code></pre></div>
 <p>当待处理的字符串是字符串向量时，得到的列表长度与向量长度一致</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="常用函数-1.html#cb105-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb105-2"><a href="常用函数-1.html#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;apples and oranges and pears and bananas&quot;</span>,</span>
-<span id="cb105-3"><a href="常用函数-1.html#cb105-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;pineapples and mangos and guavas&quot;</span></span>
-<span id="cb105-4"><a href="常用函数-1.html#cb105-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb105-5"><a href="常用函数-1.html#cb105-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-6"><a href="常用函数-1.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(fruits, <span class="st">&quot; and &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="常用函数-1.html#cb106-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb106-2"><a href="常用函数-1.html#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;apples and oranges and pears and bananas&quot;</span>,</span>
+<span id="cb106-3"><a href="常用函数-1.html#cb106-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;pineapples and mangos and guavas&quot;</span></span>
+<span id="cb106-4"><a href="常用函数-1.html#cb106-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb106-5"><a href="常用函数-1.html#cb106-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-6"><a href="常用函数-1.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(fruits, <span class="st">&quot; and &quot;</span>)</span></code></pre></div>
 </div>
 <div id="替换字符" class="section level3" number="4.2.6">
 <h3><span class="header-section-number">4.2.6</span> 替换字符</h3>
 <p><code>str_replace()</code>，<code>str_replace_all()</code>函数用来替换字符</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="常用函数-1.html#cb106-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;one apple&quot;</span>, <span class="st">&quot;two pears&quot;</span>, <span class="st">&quot;three bananas&quot;</span>)</span>
-<span id="cb106-2"><a href="常用函数-1.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(fruits, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb106-3"><a href="常用函数-1.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(fruits, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="常用函数-1.html#cb107-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;one apple&quot;</span>, <span class="st">&quot;two pears&quot;</span>, <span class="st">&quot;three bananas&quot;</span>)</span>
+<span id="cb107-2"><a href="常用函数-1.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(fruits, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb107-3"><a href="常用函数-1.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(fruits, <span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;-&quot;</span>)</span></code></pre></div>
 </div>
 <div id="移除字符" class="section level3" number="4.2.7">
 <h3><span class="header-section-number">4.2.7</span> 移除字符</h3>
 <p><code>str_remove()</code>,<code>str_remove_all()</code>移除字符。本人常用该函数剔除文本中的空格。</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="常用函数-1.html#cb107-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;one apple&quot;</span>, <span class="st">&quot;two pears&quot;</span>, <span class="st">&quot;three bananas&quot;</span>)</span>
-<span id="cb107-2"><a href="常用函数-1.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(fruits, <span class="st">&quot;[aeiou]&quot;</span>)</span>
-<span id="cb107-3"><a href="常用函数-1.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove_all</span>(fruits, <span class="st">&quot;[aeiou]&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="常用函数-1.html#cb108-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;one apple&quot;</span>, <span class="st">&quot;two pears&quot;</span>, <span class="st">&quot;three bananas&quot;</span>)</span>
+<span id="cb108-2"><a href="常用函数-1.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(fruits, <span class="st">&quot;[aeiou]&quot;</span>)</span>
+<span id="cb108-3"><a href="常用函数-1.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove_all</span>(fruits, <span class="st">&quot;[aeiou]&quot;</span>)</span></code></pre></div>
 <p>移除文本中空格</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="常用函数-1.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(<span class="at">string =</span> <span class="st">&#39; d a  b &#39;</span>,<span class="at">pattern =</span> <span class="st">&#39; &#39;</span>,<span class="at">replacement =</span> <span class="st">&#39;&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="常用函数-1.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(<span class="at">string =</span> <span class="st">&#39; d a  b &#39;</span>,<span class="at">pattern =</span> <span class="st">&#39; &#39;</span>,<span class="at">replacement =</span> <span class="st">&#39;&#39;</span>)</span></code></pre></div>
 </div>
-<div id="其他函数" class="section level3" number="4.2.8">
-<h3><span class="header-section-number">4.2.8</span> 其他函数</h3>
+<div id="字符排序" class="section level3" number="4.2.8">
+<h3><span class="header-section-number">4.2.8</span> 字符排序</h3>
+<p>numeric参数决定是否按照数字排序。</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="常用函数-1.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_order</span>(x, <span class="at">decreasing =</span> <span class="cn">FALSE</span>, <span class="at">na_last =</span> <span class="cn">TRUE</span>, <span class="at">locale =</span> <span class="st">&quot;en&quot;</span>,</span>
+<span id="cb110-2"><a href="常用函数-1.html#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">numeric =</span> <span class="cn">FALSE</span>, ...)</span>
+<span id="cb110-3"><a href="常用函数-1.html#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-4"><a href="常用函数-1.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sort</span>(x, <span class="at">decreasing =</span> <span class="cn">FALSE</span>, <span class="at">na_last =</span> <span class="cn">TRUE</span>, <span class="at">locale =</span> <span class="st">&quot;en&quot;</span>,</span>
+<span id="cb110-5"><a href="常用函数-1.html#cb110-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">numeric =</span> <span class="cn">FALSE</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="常用函数-1.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_order</span>(letters)</span>
+<span id="cb111-2"><a href="常用函数-1.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sort</span>(letters)</span></code></pre></div>
+<p>numeric参数</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="常用函数-1.html#cb112-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;100a10&quot;</span>, <span class="st">&quot;100a5&quot;</span>, <span class="st">&quot;2b&quot;</span>, <span class="st">&quot;2a&quot;</span>)</span>
+<span id="cb112-2"><a href="常用函数-1.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sort</span>(x)</span>
+<span id="cb112-3"><a href="常用函数-1.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sort</span>(x, <span class="at">numeric =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="提取单词" class="section level3" number="4.2.9">
+<h3><span class="header-section-number">4.2.9</span> 提取单词</h3>
+<p>从句子中提取单词。</p>
+<ul>
+<li>参数</li>
+</ul>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="常用函数-1.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">word</span>(string, <span class="at">start =</span> 1L, <span class="at">end =</span> start, <span class="at">sep =</span> <span class="fu">fixed</span>(<span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<ul>
+<li>案例</li>
+</ul>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="常用函数-1.html#cb114-1" aria-hidden="true" tabindex="-1"></a>sentences <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Jane saw a cat&quot;</span>, <span class="st">&quot;Jane sat down&quot;</span>)</span>
+<span id="cb114-2"><a href="常用函数-1.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">word</span>(sentences, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb114-3"><a href="常用函数-1.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">word</span>(sentences[<span class="dv">1</span>], <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<p>指定分隔符</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="常用函数-1.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Can define words by other separators</span></span>
+<span id="cb115-2"><a href="常用函数-1.html#cb115-2" aria-hidden="true" tabindex="-1"></a>str <span class="ot">&lt;-</span> <span class="st">&#39;abc.def..123.4568.999&#39;</span></span>
+<span id="cb115-3"><a href="常用函数-1.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="fu">word</span>(str, <span class="dv">1</span>, <span class="at">sep =</span> <span class="fu">fixed</span>(<span class="st">&#39;..&#39;</span>))</span>
+<span id="cb115-4"><a href="常用函数-1.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">word</span>(str, <span class="dv">2</span>, <span class="at">sep =</span> <span class="fu">fixed</span>(<span class="st">&#39;..&#39;</span>))</span></code></pre></div>
+</div>
+<div id="其他函数" class="section level3" number="4.2.10">
+<h3><span class="header-section-number">4.2.10</span> 其他函数</h3>
 <ul>
 <li>str_subset() str_which()</li>
 </ul>
 <p>匹配字符串本身行筛选时候能用</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="常用函数-1.html#cb109-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-2"><a href="常用函数-1.html#cb109-2" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;pinapple&quot;</span>)</span>
-<span id="cb109-3"><a href="常用函数-1.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_subset</span>(fruit, <span class="st">&quot;a&quot;</span>)</span>
-<span id="cb109-4"><a href="常用函数-1.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_which</span>(fruit, <span class="st">&quot;a&quot;</span>) <span class="co"># 匹配字符首次出现的位置</span></span></code></pre></div>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="常用函数-1.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co">#str_which 是which(str_detect(x,pattern))的包装</span></span>
-<span id="cb110-2"><a href="常用函数-1.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co">#str_which()</span></span>
-<span id="cb110-3"><a href="常用函数-1.html#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-4"><a href="常用函数-1.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="co">#str_subset是对x[str_detect(x,pattern)]的包装</span></span>
-<span id="cb110-5"><a href="常用函数-1.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="co">#str_subset()</span></span>
-<span id="cb110-6"><a href="常用函数-1.html#cb110-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-7"><a href="常用函数-1.html#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="co">#筛选出字母行</span></span>
-<span id="cb110-8"><a href="常用函数-1.html#cb110-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">24</span>)</span>
-<span id="cb110-9"><a href="常用函数-1.html#cb110-9" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">sample</span>(<span class="fu">c</span>(letters,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),<span class="dv">100</span>,<span class="at">replace =</span> T))</span>
-<span id="cb110-10"><a href="常用函数-1.html#cb110-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt[<span class="fu">str_which</span>(col,<span class="at">pattern =</span> <span class="st">&#39;[a-z]&#39;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="常用函数-1.html#cb116-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-2"><a href="常用函数-1.html#cb116-2" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;pinapple&quot;</span>)</span>
+<span id="cb116-3"><a href="常用函数-1.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_subset</span>(fruit, <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb116-4"><a href="常用函数-1.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_which</span>(fruit, <span class="st">&quot;a&quot;</span>) <span class="co"># 匹配字符首次出现的位置</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="常用函数-1.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co">#str_which 是which(str_detect(x,pattern))的包装</span></span>
+<span id="cb117-2"><a href="常用函数-1.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co">#str_which()</span></span>
+<span id="cb117-3"><a href="常用函数-1.html#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-4"><a href="常用函数-1.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co">#str_subset是对x[str_detect(x,pattern)]的包装</span></span>
+<span id="cb117-5"><a href="常用函数-1.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co">#str_subset()</span></span>
+<span id="cb117-6"><a href="常用函数-1.html#cb117-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-7"><a href="常用函数-1.html#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="co">#筛选出字母行</span></span>
+<span id="cb117-8"><a href="常用函数-1.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">24</span>)</span>
+<span id="cb117-9"><a href="常用函数-1.html#cb117-9" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">sample</span>(<span class="fu">c</span>(letters,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),<span class="dv">100</span>,<span class="at">replace =</span> T))</span>
+<span id="cb117-10"><a href="常用函数-1.html#cb117-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt[<span class="fu">str_which</span>(col,<span class="at">pattern =</span> <span class="st">&#39;[a-z]&#39;</span>)])</span></code></pre></div>
 <ul>
 <li>str_dup()</li>
 </ul>
 <p>复制字符串</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="常用函数-1.html#cb111-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;banana&quot;</span>)</span>
-<span id="cb111-2"><a href="常用函数-1.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_dup</span>(fruit, <span class="dv">2</span>)</span>
-<span id="cb111-3"><a href="常用函数-1.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_dup</span>(fruit, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb111-4"><a href="常用函数-1.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">&quot;ba&quot;</span>, <span class="fu">str_dup</span>(<span class="st">&quot;na&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="常用函数-1.html#cb118-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;banana&quot;</span>)</span>
+<span id="cb118-2"><a href="常用函数-1.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_dup</span>(fruit, <span class="dv">2</span>)</span>
+<span id="cb118-3"><a href="常用函数-1.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_dup</span>(fruit, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb118-4"><a href="常用函数-1.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">&quot;ba&quot;</span>, <span class="fu">str_dup</span>(<span class="st">&quot;na&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>))</span></code></pre></div>
 <ul>
 <li>str_starts() str_ends()</li>
 </ul>
 <p>从str_detect()包装得到.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="常用函数-1.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_starts</span>(<span class="st">&#39;abd&#39;</span>,<span class="st">&#39;a&#39;</span>)</span>
-<span id="cb112-2"><a href="常用函数-1.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&#39;abd&#39;</span>,<span class="st">&#39;^a&#39;</span>)</span>
-<span id="cb112-3"><a href="常用函数-1.html#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-4"><a href="常用函数-1.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_ends</span>(<span class="st">&#39;abd&#39;</span>,<span class="st">&#39;d&#39;</span>)</span>
-<span id="cb112-5"><a href="常用函数-1.html#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&#39;abd&#39;</span>,<span class="st">&#39;a$&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="常用函数-1.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_starts</span>(<span class="st">&#39;abd&#39;</span>,<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb119-2"><a href="常用函数-1.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&#39;abd&#39;</span>,<span class="st">&#39;^a&#39;</span>)</span>
+<span id="cb119-3"><a href="常用函数-1.html#cb119-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-4"><a href="常用函数-1.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_ends</span>(<span class="st">&#39;abd&#39;</span>,<span class="st">&#39;d&#39;</span>)</span>
+<span id="cb119-5"><a href="常用函数-1.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&#39;abd&#39;</span>,<span class="st">&#39;a$&#39;</span>)</span></code></pre></div>
 <ul>
 <li>大小写转换</li>
 </ul>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="常用函数-1.html#cb113-1" aria-hidden="true" tabindex="-1"></a>dog <span class="ot">&lt;-</span> <span class="st">&quot;The quick brown dog&quot;</span></span>
-<span id="cb113-2"><a href="常用函数-1.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_upper</span>(dog)</span>
-<span id="cb113-3"><a href="常用函数-1.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_lower</span>(dog)</span>
-<span id="cb113-4"><a href="常用函数-1.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_title</span>(dog)</span>
-<span id="cb113-5"><a href="常用函数-1.html#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_sentence</span>(<span class="st">&quot;the quick brown dog&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="常用函数-1.html#cb120-1" aria-hidden="true" tabindex="-1"></a>dog <span class="ot">&lt;-</span> <span class="st">&quot;The quick brown dog&quot;</span></span>
+<span id="cb120-2"><a href="常用函数-1.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_upper</span>(dog)</span>
+<span id="cb120-3"><a href="常用函数-1.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_lower</span>(dog)</span>
+<span id="cb120-4"><a href="常用函数-1.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_title</span>(dog)</span>
+<span id="cb120-5"><a href="常用函数-1.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_sentence</span>(<span class="st">&quot;the quick brown dog&quot;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -544,6 +579,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

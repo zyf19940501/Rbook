@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.4 表操作 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.4 表操作 | R学习笔记" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,12 +51,15 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,24 +140,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
 <li class="chapter" data-level="2" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>2</b> data.table</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.1</b> 基础介绍</a>
+<li class="chapter" data-level="2.1" data-path="安装.html"><a href="安装.html"><i class="fa fa-check"></i><b>2.1</b> 安装</a></li>
+<li class="chapter" data-level="2.2" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>2.2</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.1.1</b> 基本格式</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html"><i class="fa fa-check"></i><b>2.2</b> i j by 使用</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
-<li class="chapter" data-level="2.2.2" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行筛选"><i class="fa fa-check"></i><b>2.2.2</b> 行筛选</a></li>
-<li class="chapter" data-level="2.2.3" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#列筛选"><i class="fa fa-check"></i><b>2.2.3</b> 列筛选</a></li>
-<li class="chapter" data-level="2.2.4" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
-<li class="chapter" data-level="2.2.5" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#j-常规计算"><i class="fa fa-check"></i><b>2.2.5</b> j 常规计算</a></li>
-<li class="chapter" data-level="2.2.6" data-path="i-j-by-使用.html"><a href="i-j-by-使用.html#by-分组"><i class="fa fa-check"></i><b>2.2.6</b> by 分组</a></li>
+<li class="chapter" data-level="2.2.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>2.2.1</b> 读取数据</a></li>
+<li class="chapter" data-level="2.2.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>2.2.2</b> 基本格式</a></li>
+<li class="chapter" data-level="2.2.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>2.2.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="2.2.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>2.2.4</b> 行列筛选总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>2.3</b> 常规操作</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>2.3.1</b> 新增更新列</a></li>
 <li class="chapter" data-level="2.3.2" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>2.3.2</b> 排序</a></li>
-<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选-1"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
+<li class="chapter" data-level="2.3.3" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>2.3.3</b> 行筛选</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常规操作.html"><a href="常规操作.html#特殊符号"><i class="fa fa-check"></i><b>2.3.4</b> 特殊符号</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>2.4</b> 常用函数</a>
@@ -179,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>3.1</b> 安装数据库</a></li>
 <li class="chapter" data-level="3.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>3.2</b> DBI</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2.1" data-path="dbi.html"><a href="dbi.html#安装-1"><i class="fa fa-check"></i><b>3.2.1</b> 安装</a></li>
 <li class="chapter" data-level="3.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>3.2.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="3.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>3.2.3</b> 执行sql任务</a></li>
 <li class="chapter" data-level="3.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>3.2.4</b> 函数介绍</a></li>
@@ -189,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>3.5</b> ROracle包</a></li>
 <li class="chapter" data-level="3.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>3.6</b> RMySQL包</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-1"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
+<li class="chapter" data-level="3.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-2"><i class="fa fa-check"></i><b>3.6.1</b> 安装</a></li>
 <li class="chapter" data-level="3.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>3.6.2</b> 连接使用</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>3.7</b> 常见问题</a>
@@ -224,7 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="常用函数-1.html"><a href="常用函数-1.html#分割字符"><i class="fa fa-check"></i><b>4.2.5</b> 分割字符</a></li>
 <li class="chapter" data-level="4.2.6" data-path="常用函数-1.html"><a href="常用函数-1.html#替换字符"><i class="fa fa-check"></i><b>4.2.6</b> 替换字符</a></li>
 <li class="chapter" data-level="4.2.7" data-path="常用函数-1.html"><a href="常用函数-1.html#移除字符"><i class="fa fa-check"></i><b>4.2.7</b> 移除字符</a></li>
-<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.8</b> 其他函数</a></li>
+<li class="chapter" data-level="4.2.8" data-path="常用函数-1.html"><a href="常用函数-1.html#字符排序"><i class="fa fa-check"></i><b>4.2.8</b> 字符排序</a></li>
+<li class="chapter" data-level="4.2.9" data-path="常用函数-1.html"><a href="常用函数-1.html#提取单词"><i class="fa fa-check"></i><b>4.2.9</b> 提取单词</a></li>
+<li class="chapter" data-level="4.2.10" data-path="常用函数-1.html"><a href="常用函数-1.html#其他函数"><i class="fa fa-check"></i><b>4.2.10</b> 其他函数</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="r实现excel字符函数.html"><a href="r实现excel字符函数.html"><i class="fa fa-check"></i><b>4.3</b> R实现Excel字符函数</a></li>
 </ul></li>
@@ -255,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>7</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="安装-2.html"><a href="安装-2.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
+<li class="chapter" data-level="7.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>7.1</b> 安装</a></li>
 <li class="chapter" data-level="7.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>7.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>7.2.1</b> 宽转长</a></li>
@@ -270,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
-<li class="chapter" data-level="8.2" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
+<li class="chapter" data-level="8.2" data-path="安装-4.html"><a href="安装-4.html"><i class="fa fa-check"></i><b>8.2</b> 安装</a></li>
 <li class="chapter" data-level="8.3" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.3</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="基础用法-2.html"><a href="基础用法-2.html#filter"><i class="fa fa-check"></i><b>8.3.1</b> filter</a></li>
@@ -401,32 +402,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>left_join()</code>,<code>right_join()</code>,<code>full_join()</code>,<code>inner_join</code>()，第一个以左表为主，第二个右表为主，第三个全连接，第四个内连接(只返回两表中都有的记录)，和数据库中连接方式一致。</p>
 <p>默认会自动寻找两表中相同的字段名作为关联的条件</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="表操作.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;nycflights13&quot;</span>)</span>
-<span id="cb213-2"><a href="表操作.html#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop unimportant variables so it&#39;s easier to understand the join results.</span></span>
-<span id="cb213-3"><a href="表操作.html#cb213-3" aria-hidden="true" tabindex="-1"></a>flights2 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(year<span class="sc">:</span>day, hour, origin, dest, tailnum, carrier)</span>
-<span id="cb213-4"><a href="表操作.html#cb213-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb213-5"><a href="表操作.html#cb213-5" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> </span>
-<span id="cb213-6"><a href="表操作.html#cb213-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airlines)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="表操作.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;nycflights13&quot;</span>)</span>
+<span id="cb220-2"><a href="表操作.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop unimportant variables so it&#39;s easier to understand the join results.</span></span>
+<span id="cb220-3"><a href="表操作.html#cb220-3" aria-hidden="true" tabindex="-1"></a>flights2 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(year<span class="sc">:</span>day, hour, origin, dest, tailnum, carrier)</span>
+<span id="cb220-4"><a href="表操作.html#cb220-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-5"><a href="表操作.html#cb220-5" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> </span>
+<span id="cb220-6"><a href="表操作.html#cb220-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airlines)</span></code></pre></div>
 <p>指定关联条件列，类似数据库中<code>on a.column = b.column</code></p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="表操作.html#cb214-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(planes, <span class="at">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="表操作.html#cb221-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(planes, <span class="at">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span></code></pre></div>
 <ul>
 <li>不同名称列关联</li>
 </ul>
 <p><code>left_join(x,y,by = c("a" = "b", "c" = "d"))</code> 将会匹配 x<span class="math inline">\(a to y\)</span>b 和 x<span class="math inline">\(c to y\)</span>d 作为关联条件</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="表操作.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co">#出发机场和目的机场信息</span></span>
-<span id="cb215-2"><a href="表操作.html#cb215-2" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;dest&quot;</span> <span class="ot">=</span> <span class="st">&quot;faa&quot;</span>))</span>
-<span id="cb215-3"><a href="表操作.html#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="co">#flights2 %&gt;% left_join(airports, c(&quot;origin&quot; = &quot;faa&quot;))</span></span>
-<span id="cb215-4"><a href="表操作.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 组合条件 多条件时用向量包裹即可c(&quot;dest&quot; = &quot;faa&quot;,&quot;cola&quot; = &quot;colb&quot;))</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="表操作.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co">#出发机场和目的机场信息</span></span>
+<span id="cb222-2"><a href="表操作.html#cb222-2" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;dest&quot;</span> <span class="ot">=</span> <span class="st">&quot;faa&quot;</span>))</span>
+<span id="cb222-3"><a href="表操作.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="co">#flights2 %&gt;% left_join(airports, c(&quot;origin&quot; = &quot;faa&quot;))</span></span>
+<span id="cb222-4"><a href="表操作.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 组合条件 多条件时用向量包裹即可c(&quot;dest&quot; = &quot;faa&quot;,&quot;cola&quot; = &quot;colb&quot;))</span></span></code></pre></div>
 <ul>
 <li>筛选连接</li>
 </ul>
 <p><code>anti_join()</code> 删除所有左表中在右表中匹配到的行</p>
 <p><code>semi_join()</code>保留所有左表在右表中匹配到的行</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="表操作.html#cb216-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>],<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb216-2"><a href="表操作.html#cb216-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb216-3"><a href="表操作.html#cb216-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-4"><a href="表操作.html#cb216-4" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2)</span>
-<span id="cb216-5"><a href="表操作.html#cb216-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df1)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="表操作.html#cb223-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>],<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb223-2"><a href="表操作.html#cb223-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb223-3"><a href="表操作.html#cb223-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-4"><a href="表操作.html#cb223-4" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2)</span>
+<span id="cb223-5"><a href="表操作.html#cb223-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df1)</span></code></pre></div>
 <ul>
 <li>集合操作</li>
 </ul>
@@ -435,24 +436,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>union(x,y)</code>返回x,y中唯一的值</p></li>
 <li><p><code>setdiff(x,y)</code>返回存在x中但是不存在y中的记录</p></li>
 </ol>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="表操作.html#cb217-1" aria-hidden="true" tabindex="-1"></a>(df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">c</span>(1L, 1L)))</span>
-<span id="cb217-2"><a href="表操作.html#cb217-2" aria-hidden="true" tabindex="-1"></a>(df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span>
-<span id="cb217-3"><a href="表操作.html#cb217-3" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(df1, df2)</span>
-<span id="cb217-4"><a href="表操作.html#cb217-4" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(df1, df2)</span>
-<span id="cb217-5"><a href="表操作.html#cb217-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df1, df2)</span>
-<span id="cb217-6"><a href="表操作.html#cb217-6" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df2, df1)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="表操作.html#cb224-1" aria-hidden="true" tabindex="-1"></a>(df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">c</span>(1L, 1L)))</span>
+<span id="cb224-2"><a href="表操作.html#cb224-2" aria-hidden="true" tabindex="-1"></a>(df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span>
+<span id="cb224-3"><a href="表操作.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(df1, df2)</span>
+<span id="cb224-4"><a href="表操作.html#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(df1, df2)</span>
+<span id="cb224-5"><a href="表操作.html#cb224-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df1, df2)</span>
+<span id="cb224-6"><a href="表操作.html#cb224-6" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df2, df1)</span></code></pre></div>
 </div>
 <div id="多表操作" class="section level3" number="8.4.2">
 <h3><span class="header-section-number">8.4.2</span> 多表操作</h3>
 <p>多表操作请使用<code>purrr::reduce()</code>,当需要合并多个表格时，可用以下方式减少合并代码量。</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="表操作.html#cb218-1" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters)</span>
-<span id="cb218-2"><a href="表操作.html#cb218-2" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb218-3"><a href="表操作.html#cb218-3" aria-hidden="true" tabindex="-1"></a>dt3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">colb =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb218-4"><a href="表操作.html#cb218-4" aria-hidden="true" tabindex="-1"></a>dt4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cold =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb218-5"><a href="表操作.html#cb218-5" aria-hidden="true" tabindex="-1"></a>dt5 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cole =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb218-6"><a href="表操作.html#cb218-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-7"><a href="表操作.html#cb218-7" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">list</span>(dt1,dt2,dt3,dt4,dt5)</span>
-<span id="cb218-8"><a href="表操作.html#cb218-8" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">reduce</span>(dtlist,left_join,<span class="at">by=</span><span class="st">&#39;x&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="表操作.html#cb225-1" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters)</span>
+<span id="cb225-2"><a href="表操作.html#cb225-2" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb225-3"><a href="表操作.html#cb225-3" aria-hidden="true" tabindex="-1"></a>dt3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">colb =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb225-4"><a href="表操作.html#cb225-4" aria-hidden="true" tabindex="-1"></a>dt4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cold =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb225-5"><a href="表操作.html#cb225-5" aria-hidden="true" tabindex="-1"></a>dt5 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cole =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb225-6"><a href="表操作.html#cb225-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-7"><a href="表操作.html#cb225-7" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">list</span>(dt1,dt2,dt3,dt4,dt5)</span>
+<span id="cb225-8"><a href="表操作.html#cb225-8" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">reduce</span>(dtlist,left_join,<span class="at">by=</span><span class="st">&#39;x&#39;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -484,6 +485,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
