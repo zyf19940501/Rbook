@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -389,15 +394,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.5</span> 环境</h2>
 <p>环境是复杂的,建议阅读原文.</p>
 <p>The last component of a function is its environment. This is not something you need to understand deeply when you first start writing functions. However, it’s important to know a little bit about environments because they are crucial to how functions work. The environment of a function controls how R finds the value associated with a name. For example, take this function:</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="环境.html#cb311-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb311-2"><a href="环境.html#cb311-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb311-3"><a href="环境.html#cb311-3" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="环境.html#cb317-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb317-2"><a href="环境.html#cb317-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb317-3"><a href="环境.html#cb317-3" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
 <p>在很多其他的编程语言中这样定义函数是错误的，因为没有定义<code>y</code>.在R中,这是有效的代码,因为R使用称为<code>lexical scoping</code>的方式寻找关联值.在函数内部没有定义<code>y</code>,将在上一层环境中查看<code>y</code>:</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="环境.html#cb312-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb312-2"><a href="环境.html#cb312-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
-<span id="cb312-3"><a href="环境.html#cb312-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb312-4"><a href="环境.html#cb312-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb312-5"><a href="环境.html#cb312-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="环境.html#cb318-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb318-2"><a href="环境.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
+<span id="cb318-3"><a href="环境.html#cb318-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb318-4"><a href="环境.html#cb318-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb318-5"><a href="环境.html#cb318-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span></code></pre></div>
 <p>具体详细的资料请查阅：</p>
 <p><a href="https://r4ds.had.co.nz/functions.html#environment" class="uri">https://r4ds.had.co.nz/functions.html#environment</a></p>
 <p><a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a></p>

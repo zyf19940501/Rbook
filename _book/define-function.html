@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -390,52 +395,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>函数功能使我们尽可能避免复制粘贴代码,而且需要更改的时候不需要大面积修改代码仅需要调整函数参数,使代码整体更加模块化.</p>
 <p>假设有工作任务需要给商品SKU排名,在代码中需要重复以下代码5次,当区间需要修改的时候就是灾难.</p>
 <p>原始代码示例如下:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="define-function.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb294-2"><a href="define-function.html#cb294-2" aria-hidden="true" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="dv">1000</span>)</span>
-<span id="cb294-3"><a href="define-function.html#cb294-3" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">50</span>,<span class="st">&quot;1-50&quot;</span>,</span>
-<span id="cb294-4"><a href="define-function.html#cb294-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">100</span>,<span class="st">&quot;51-100&quot;</span>,</span>
-<span id="cb294-5"><a href="define-function.html#cb294-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">150</span>,<span class="st">&quot;101-150&quot;</span>,</span>
-<span id="cb294-6"><a href="define-function.html#cb294-6" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">200</span> ,<span class="st">&quot;151-200&quot;</span>,</span>
-<span id="cb294-7"><a href="define-function.html#cb294-7" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">if_else</span>(num <span class="sc">&gt;</span><span class="dv">200</span>,<span class="st">&quot;200以上&quot;</span>,<span class="st">&#39;其他&#39;</span>)))))</span>
-<span id="cb294-8"><a href="define-function.html#cb294-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-9"><a href="define-function.html#cb294-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-10"><a href="define-function.html#cb294-10" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb294-11"><a href="define-function.html#cb294-11" aria-hidden="true" tabindex="-1"></a><span class="co"># case_when(num &lt;= 50 ~ &#39;1-50&#39;,</span></span>
-<span id="cb294-12"><a href="define-function.html#cb294-12" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 100 ~ &#39;51-100&#39;,</span></span>
-<span id="cb294-13"><a href="define-function.html#cb294-13" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 150 ~ &#39;101-150&#39;,</span></span>
-<span id="cb294-14"><a href="define-function.html#cb294-14" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 200 ~ &#39;151-200&#39;,</span></span>
-<span id="cb294-15"><a href="define-function.html#cb294-15" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &gt; 100 ~ &#39;200以上&#39;</span></span>
-<span id="cb294-16"><a href="define-function.html#cb294-16" aria-hidden="true" tabindex="-1"></a><span class="co">#           )</span></span>
-<span id="cb294-17"><a href="define-function.html#cb294-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-18"><a href="define-function.html#cb294-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 个人倾向data.table </span></span>
-<span id="cb294-19"><a href="define-function.html#cb294-19" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::fifelse()</span></span>
-<span id="cb294-20"><a href="define-function.html#cb294-20" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::fcase() 是sql中case when的实现</span></span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="define-function.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb300-2"><a href="define-function.html#cb300-2" aria-hidden="true" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="dv">1000</span>)</span>
+<span id="cb300-3"><a href="define-function.html#cb300-3" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">50</span>,<span class="st">&quot;1-50&quot;</span>,</span>
+<span id="cb300-4"><a href="define-function.html#cb300-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">100</span>,<span class="st">&quot;51-100&quot;</span>,</span>
+<span id="cb300-5"><a href="define-function.html#cb300-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">150</span>,<span class="st">&quot;101-150&quot;</span>,</span>
+<span id="cb300-6"><a href="define-function.html#cb300-6" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">200</span> ,<span class="st">&quot;151-200&quot;</span>,</span>
+<span id="cb300-7"><a href="define-function.html#cb300-7" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">if_else</span>(num <span class="sc">&gt;</span><span class="dv">200</span>,<span class="st">&quot;200以上&quot;</span>,<span class="st">&#39;其他&#39;</span>)))))</span>
+<span id="cb300-8"><a href="define-function.html#cb300-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-9"><a href="define-function.html#cb300-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-10"><a href="define-function.html#cb300-10" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb300-11"><a href="define-function.html#cb300-11" aria-hidden="true" tabindex="-1"></a><span class="co"># case_when(num &lt;= 50 ~ &#39;1-50&#39;,</span></span>
+<span id="cb300-12"><a href="define-function.html#cb300-12" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 100 ~ &#39;51-100&#39;,</span></span>
+<span id="cb300-13"><a href="define-function.html#cb300-13" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 150 ~ &#39;101-150&#39;,</span></span>
+<span id="cb300-14"><a href="define-function.html#cb300-14" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 200 ~ &#39;151-200&#39;,</span></span>
+<span id="cb300-15"><a href="define-function.html#cb300-15" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &gt; 100 ~ &#39;200以上&#39;</span></span>
+<span id="cb300-16"><a href="define-function.html#cb300-16" aria-hidden="true" tabindex="-1"></a><span class="co">#           )</span></span>
+<span id="cb300-17"><a href="define-function.html#cb300-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-18"><a href="define-function.html#cb300-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 个人倾向data.table </span></span>
+<span id="cb300-19"><a href="define-function.html#cb300-19" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::fifelse()</span></span>
+<span id="cb300-20"><a href="define-function.html#cb300-20" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::fcase() 是sql中case when的实现</span></span></code></pre></div>
 <p>函数化后代码示例如下:</p>
 <p>当需要修改区间时候仅仅只需要调整参数,而不必大量修改代码,当在脚本中需要调用多次时,能简洁代码.</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="define-function.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 排名区间函数</span></span>
-<span id="cb295-2"><a href="define-function.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tidyverse)</span></span>
-<span id="cb295-3"><a href="define-function.html#cb295-3" aria-hidden="true" tabindex="-1"></a>cut_function <span class="ot">&lt;-</span> <span class="cf">function</span>(vecto,x,n){</span>
-<span id="cb295-4"><a href="define-function.html#cb295-4" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>)</span>
-<span id="cb295-5"><a href="define-function.html#cb295-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb295-6"><a href="define-function.html#cb295-6" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span>  i<span class="sc">*</span>x</span>
-<span id="cb295-7"><a href="define-function.html#cb295-7" aria-hidden="true" tabindex="-1"></a>    vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,kong)</span>
-<span id="cb295-8"><a href="define-function.html#cb295-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb295-9"><a href="define-function.html#cb295-9" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,<span class="cn">Inf</span>)</span>
-<span id="cb295-10"><a href="define-function.html#cb295-10" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb295-11"><a href="define-function.html#cb295-11" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb295-12"><a href="define-function.html#cb295-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb295-13"><a href="define-function.html#cb295-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (j<span class="sc">&lt;=</span>n) {</span>
-<span id="cb295-14"><a href="define-function.html#cb295-14" aria-hidden="true" tabindex="-1"></a>    labels[j] <span class="ot">&lt;-</span> <span class="fu">str_c</span>(vec[j]<span class="sc">+</span><span class="dv">1</span>,<span class="st">&quot;-&quot;</span>,vec[j<span class="sc">+</span><span class="dv">1</span>])</span>
-<span id="cb295-15"><a href="define-function.html#cb295-15" aria-hidden="true" tabindex="-1"></a>    j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb295-16"><a href="define-function.html#cb295-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb295-17"><a href="define-function.html#cb295-17" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>(labels,<span class="fu">paste0</span>(vec[j],<span class="st">&#39;以上&#39;</span>))</span>
-<span id="cb295-18"><a href="define-function.html#cb295-18" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">cut</span>(<span class="at">x =</span> vecto,<span class="at">breaks =</span> vec,<span class="at">labels =</span> labels) <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()</span>
-<span id="cb295-19"><a href="define-function.html#cb295-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb295-20"><a href="define-function.html#cb295-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb295-21"><a href="define-function.html#cb295-21" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cut_function</span>(num,<span class="dv">50</span>,<span class="dv">4</span>)</span>
-<span id="cb295-22"><a href="define-function.html#cb295-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb295-23"><a href="define-function.html#cb295-23" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(res1,res2)</span></span>
-<span id="cb295-24"><a href="define-function.html#cb295-24" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt; TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="define-function.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 排名区间函数</span></span>
+<span id="cb301-2"><a href="define-function.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tidyverse)</span></span>
+<span id="cb301-3"><a href="define-function.html#cb301-3" aria-hidden="true" tabindex="-1"></a>cut_function <span class="ot">&lt;-</span> <span class="cf">function</span>(vecto,x,n){</span>
+<span id="cb301-4"><a href="define-function.html#cb301-4" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>)</span>
+<span id="cb301-5"><a href="define-function.html#cb301-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb301-6"><a href="define-function.html#cb301-6" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span>  i<span class="sc">*</span>x</span>
+<span id="cb301-7"><a href="define-function.html#cb301-7" aria-hidden="true" tabindex="-1"></a>    vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,kong)</span>
+<span id="cb301-8"><a href="define-function.html#cb301-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb301-9"><a href="define-function.html#cb301-9" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,<span class="cn">Inf</span>)</span>
+<span id="cb301-10"><a href="define-function.html#cb301-10" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb301-11"><a href="define-function.html#cb301-11" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb301-12"><a href="define-function.html#cb301-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb301-13"><a href="define-function.html#cb301-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (j<span class="sc">&lt;=</span>n) {</span>
+<span id="cb301-14"><a href="define-function.html#cb301-14" aria-hidden="true" tabindex="-1"></a>    labels[j] <span class="ot">&lt;-</span> <span class="fu">str_c</span>(vec[j]<span class="sc">+</span><span class="dv">1</span>,<span class="st">&quot;-&quot;</span>,vec[j<span class="sc">+</span><span class="dv">1</span>])</span>
+<span id="cb301-15"><a href="define-function.html#cb301-15" aria-hidden="true" tabindex="-1"></a>    j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb301-16"><a href="define-function.html#cb301-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb301-17"><a href="define-function.html#cb301-17" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>(labels,<span class="fu">paste0</span>(vec[j],<span class="st">&#39;以上&#39;</span>))</span>
+<span id="cb301-18"><a href="define-function.html#cb301-18" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">cut</span>(<span class="at">x =</span> vecto,<span class="at">breaks =</span> vec,<span class="at">labels =</span> labels) <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()</span>
+<span id="cb301-19"><a href="define-function.html#cb301-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb301-20"><a href="define-function.html#cb301-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-21"><a href="define-function.html#cb301-21" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cut_function</span>(num,<span class="dv">50</span>,<span class="dv">4</span>)</span>
+<span id="cb301-22"><a href="define-function.html#cb301-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-23"><a href="define-function.html#cb301-23" aria-hidden="true" tabindex="-1"></a><span class="co"># identical(res1,res2)</span></span>
+<span id="cb301-24"><a href="define-function.html#cb301-24" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt; TRUE</span></span></code></pre></div>
 <p><a href="https://r4ds.had.co.nz/functions.html">参考资料</a></p>
 </div>
             </section>

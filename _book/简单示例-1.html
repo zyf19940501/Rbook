@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -388,19 +393,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="简单示例-1" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> 简单示例</h2>
 <p>给函数取一个合适名字是很难的事情,徐尽可能从函数名称看出你实现的功能.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="简单示例-1.html#cb296-1" aria-hidden="true" tabindex="-1"></a>add_ten <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb296-2"><a href="简单示例-1.html#cb296-2" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">10</span></span>
-<span id="cb296-3"><a href="简单示例-1.html#cb296-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(res) <span class="co">#可以不用显示返回</span></span>
-<span id="cb296-4"><a href="简单示例-1.html#cb296-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb296-5"><a href="简单示例-1.html#cb296-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_ten</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="简单示例-1.html#cb302-1" aria-hidden="true" tabindex="-1"></a>add_ten <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb302-2"><a href="简单示例-1.html#cb302-2" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">10</span></span>
+<span id="cb302-3"><a href="简单示例-1.html#cb302-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(res) <span class="co">#可以不用显示返回</span></span>
+<span id="cb302-4"><a href="简单示例-1.html#cb302-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb302-5"><a href="简单示例-1.html#cb302-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_ten</span>(<span class="dv">1</span>)</span></code></pre></div>
 <p>写函数时需要考虑函数使用情况,尽可能考虑容错情况,当输入不符合预期时能友好提示错误.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="简单示例-1.html#cb297-1" aria-hidden="true" tabindex="-1"></a>add_ten <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb297-2"><a href="简单示例-1.html#cb297-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.numeric</span>(x)<span class="sc">==</span><span class="cn">TRUE</span>){</span>
-<span id="cb297-3"><a href="简单示例-1.html#cb297-3" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">+</span><span class="dv">10</span></span>
-<span id="cb297-4"><a href="简单示例-1.html#cb297-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb297-5"><a href="简单示例-1.html#cb297-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&#39;Error,请输入数字&#39;</span>)</span>
-<span id="cb297-6"><a href="简单示例-1.html#cb297-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb297-7"><a href="简单示例-1.html#cb297-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="简单示例-1.html#cb303-1" aria-hidden="true" tabindex="-1"></a>add_ten <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb303-2"><a href="简单示例-1.html#cb303-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.numeric</span>(x)<span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb303-3"><a href="简单示例-1.html#cb303-3" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">+</span><span class="dv">10</span></span>
+<span id="cb303-4"><a href="简单示例-1.html#cb303-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb303-5"><a href="简单示例-1.html#cb303-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&#39;Error,请输入数字&#39;</span>)</span>
+<span id="cb303-6"><a href="简单示例-1.html#cb303-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb303-7"><a href="简单示例-1.html#cb303-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
             </section>
 

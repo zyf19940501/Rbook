@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -393,67 +398,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Repeat</li>
 </ul>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="循环基础.html#cb270-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb270-2"><a href="循环基础.html#cb270-2" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb270-3"><a href="循环基础.html#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span>{</span>
-<span id="cb270-4"><a href="循环基础.html#cb270-4" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> total<span class="sc">+</span>i</span>
-<span id="cb270-5"><a href="循环基础.html#cb270-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb270-6"><a href="循环基础.html#cb270-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">&gt;</span> <span class="dv">100</span>){</span>
-<span id="cb270-7"><a href="循环基础.html#cb270-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&#39;连续相加求和等于:&#39;</span>,total))</span>
-<span id="cb270-8"><a href="循环基础.html#cb270-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb270-9"><a href="循环基础.html#cb270-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb270-10"><a href="循环基础.html#cb270-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="循环基础.html#cb276-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb276-2"><a href="循环基础.html#cb276-2" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb276-3"><a href="循环基础.html#cb276-3" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span>{</span>
+<span id="cb276-4"><a href="循环基础.html#cb276-4" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> total<span class="sc">+</span>i</span>
+<span id="cb276-5"><a href="循环基础.html#cb276-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb276-6"><a href="循环基础.html#cb276-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">&gt;</span> <span class="dv">100</span>){</span>
+<span id="cb276-7"><a href="循环基础.html#cb276-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&#39;连续相加求和等于:&#39;</span>,total))</span>
+<span id="cb276-8"><a href="循环基础.html#cb276-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb276-9"><a href="循环基础.html#cb276-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb276-10"><a href="循环基础.html#cb276-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>while</li>
 </ul>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="循环基础.html#cb271-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb271-2"><a href="循环基础.html#cb271-2" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb271-3"><a href="循环基础.html#cb271-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;=</span> <span class="dv">1000</span>){</span>
-<span id="cb271-4"><a href="循环基础.html#cb271-4" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> total<span class="sc">+</span>i</span>
-<span id="cb271-5"><a href="循环基础.html#cb271-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb271-6"><a href="循环基础.html#cb271-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb271-7"><a href="循环基础.html#cb271-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&#39;1到1000连续相加求和等于:&#39;</span>,total))</span>
-<span id="cb271-8"><a href="循环基础.html#cb271-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb271-9"><a href="循环基础.html#cb271-9" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(1:1000)</span></span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="循环基础.html#cb277-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb277-2"><a href="循环基础.html#cb277-2" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb277-3"><a href="循环基础.html#cb277-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;=</span> <span class="dv">1000</span>){</span>
+<span id="cb277-4"><a href="循环基础.html#cb277-4" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> total<span class="sc">+</span>i</span>
+<span id="cb277-5"><a href="循环基础.html#cb277-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb277-6"><a href="循环基础.html#cb277-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb277-7"><a href="循环基础.html#cb277-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&#39;1到1000连续相加求和等于:&#39;</span>,total))</span>
+<span id="cb277-8"><a href="循环基础.html#cb277-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb277-9"><a href="循环基础.html#cb277-9" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(1:1000)</span></span></code></pre></div>
 <ul>
 <li>for</li>
 </ul>
 <p>代码如示例所示</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="循环基础.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb272-2"><a href="循环基础.html#cb272-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb272-3"><a href="循环基础.html#cb272-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb272-4"><a href="循环基础.html#cb272-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb272-5"><a href="循环基础.html#cb272-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb272-6"><a href="循环基础.html#cb272-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb272-7"><a href="循环基础.html#cb272-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb272-8"><a href="循环基础.html#cb272-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb272-9"><a href="循环基础.html#cb272-9" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1. output</span></span>
-<span id="cb272-10"><a href="循环基础.html#cb272-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2. sequence</span></span>
-<span id="cb272-11"><a href="循环基础.html#cb272-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3. body</span></span>
-<span id="cb272-12"><a href="循环基础.html#cb272-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb272-13"><a href="循环基础.html#cb272-13" aria-hidden="true" tabindex="-1"></a>output</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="循环基础.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb278-2"><a href="循环基础.html#cb278-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb278-3"><a href="循环基础.html#cb278-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb278-4"><a href="循环基础.html#cb278-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb278-5"><a href="循环基础.html#cb278-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb278-6"><a href="循环基础.html#cb278-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb278-7"><a href="循环基础.html#cb278-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb278-8"><a href="循环基础.html#cb278-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb278-9"><a href="循环基础.html#cb278-9" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1. output</span></span>
+<span id="cb278-10"><a href="循环基础.html#cb278-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2. sequence</span></span>
+<span id="cb278-11"><a href="循环基础.html#cb278-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3. body</span></span>
+<span id="cb278-12"><a href="循环基础.html#cb278-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb278-13"><a href="循环基础.html#cb278-13" aria-hidden="true" tabindex="-1"></a>output</span></code></pre></div>
 <p>循环中尽可能利用R中的向量化,比如指定output的长度,当数据量大的时候效率提升将比较明显,养成向量化的意识对提高代码效率有显著效果.</p>
 <p>上面代码中 <code>vector</code>函数创建一个空向量带指定长度，有两个参数，第一个时向量类型(‘逻辑,’‘整数,’‘双精度,’’字符’等)，第二个是向量长度 <code>vector(length=5)</code>,类型默认是逻辑型.</p>
 <p><code>seq_along</code>可以<code>?seq</code>查看用法.</p>
 <p>hadely 解释如下:</p>
 <p>You might not have seen seq_along() before. It’s a safe version of the familiar 1:length(l), with an important difference: if you have a zero-length vector, seq_along() does the right thing:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="循环基础.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wrong</span></span>
-<span id="cb273-2"><a href="循环基础.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(<span class="fu">c</span>())</span>
-<span id="cb273-3"><a href="循环基础.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">c</span>())</span>
-<span id="cb273-4"><a href="循环基础.html#cb273-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb273-5"><a href="循环基础.html#cb273-5" aria-hidden="true" tabindex="-1"></a><span class="co"># generates the integer sequence 1, 2, ..., length(along.with). (along.with is usually abbreviated to along, and  seq_along is much faster.)</span></span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="循环基础.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wrong</span></span>
+<span id="cb279-2"><a href="循环基础.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(<span class="fu">c</span>())</span>
+<span id="cb279-3"><a href="循环基础.html#cb279-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">c</span>())</span>
+<span id="cb279-4"><a href="循环基础.html#cb279-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb279-5"><a href="循环基础.html#cb279-5" aria-hidden="true" tabindex="-1"></a><span class="co"># generates the integer sequence 1, 2, ..., length(along.with). (along.with is usually abbreviated to along, and  seq_along is much faster.)</span></span></code></pre></div>
 </div>
 <div id="next-break-用法" class="section level3" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> next break 用法</h3>
 <ul>
 <li>next 用法</li>
 </ul>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="循环基础.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] ){</span>
-<span id="cb274-2"><a href="循环基础.html#cb274-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">==</span> <span class="st">&quot;d&quot;</span>){</span>
-<span id="cb274-3"><a href="循环基础.html#cb274-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">next</span></span>
-<span id="cb274-4"><a href="循环基础.html#cb274-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb274-5"><a href="循环基础.html#cb274-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb274-6"><a href="循环基础.html#cb274-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="循环基础.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] ){</span>
+<span id="cb280-2"><a href="循环基础.html#cb280-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">==</span> <span class="st">&quot;d&quot;</span>){</span>
+<span id="cb280-3"><a href="循环基础.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">next</span></span>
+<span id="cb280-4"><a href="循环基础.html#cb280-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb280-5"><a href="循环基础.html#cb280-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb280-6"><a href="循环基础.html#cb280-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>break 用法</li>
 </ul>
@@ -461,13 +466,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="嵌套循环" class="section level3" number="9.2.3">
 <h3><span class="header-section-number">9.2.3</span> 嵌套循环</h3>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="循环基础.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb275-2"><a href="循环基础.html#cb275-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">100</span>)</span>
-<span id="cb275-3"><a href="循环基础.html#cb275-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb275-4"><a href="循环基础.html#cb275-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb275-5"><a href="循环基础.html#cb275-5" aria-hidden="true" tabindex="-1"></a>    v[i<span class="sc">*</span>j] <span class="ot">=</span> i <span class="sc">*</span> j </span>
-<span id="cb275-6"><a href="循环基础.html#cb275-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb275-7"><a href="循环基础.html#cb275-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="循环基础.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb281-2"><a href="循环基础.html#cb281-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb281-3"><a href="循环基础.html#cb281-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb281-4"><a href="循环基础.html#cb281-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb281-5"><a href="循环基础.html#cb281-5" aria-hidden="true" tabindex="-1"></a>    v[i<span class="sc">*</span>j] <span class="ot">=</span> i <span class="sc">*</span> j </span>
+<span id="cb281-6"><a href="循环基础.html#cb281-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb281-7"><a href="循环基础.html#cb281-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
             </section>

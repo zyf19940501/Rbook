@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,13 +160,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.1</b> rleid</a></li>
-<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.2</b> shift</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
 <ul>
@@ -390,7 +392,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="基础介绍" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> 基础介绍</h2>
-<p>本部分简单介绍data.table句式语法，实现基础行列筛选和聚合计算。</p>
+<p>本部分从data.table安装，内置的案例查看，到data.table的句式语法，实现基础行列筛选和聚合计算。</p>
+<p>1.安装</p>
+<p>安装详细信息请参考<a href="https://github.com/Rdatatable/data.table/wiki/Installation">the Installation wiki</a>，有关于不同系统安装首次以及相关说明。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="基础介绍.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb1-2"><a href="基础介绍.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># latest development version:</span></span>
+<span id="cb1-3"><a href="基础介绍.html#cb1-3" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">update.dev.pkg</span>()</span></code></pre></div>
+<p>2.使用说明</p>
+<p>通过以下代码查看内置的使用案例。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="基础介绍.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb2-2"><a href="基础介绍.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(data.table)</span></code></pre></div>
 <div id="读取数据" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> 读取数据</h3>
 <p>在我实际工作中接触的数据大部分以数据库,csv,Excel等形式存在，并且CSV格式数据较少。但是data.table包读取数据的<code>fread</code>函数仅接受CSV格式。如果是Excel格式文件，需要通过如<code>readxl</code>，<code>openxlsx</code>等包读入后转换为<code>data.table</code>格式数据。</p>
@@ -437,7 +448,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>data.table个人理解主要有三大类参数,i参数做筛选,j参数做计算,by参数做分组.</p>
 <p>拿Excel透视表类别,i位置参数当作『筛选』,by位置用来做汇总字段『行』,j位置当作『值』,如下所示:</p>
 <div class="figure">
-<img src="picture/chap1/01picture.png" alt="" />
+<img src="picture/data-table/01picture.png" alt="" />
 <p class="caption">透视表截图</p>
 </div>
 <p>1.代码实例</p>

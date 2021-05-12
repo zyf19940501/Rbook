@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -388,26 +393,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="解析日期和时间" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> 解析日期和时间</h2>
 <p>从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="解析日期和时间.html#cb131-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-2"><a href="解析日期和时间.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 整数和字符都可以</span></span>
-<span id="cb131-3"><a href="解析日期和时间.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200604</span>) </span>
-<span id="cb131-4"><a href="解析日期和时间.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;20200604&#39;</span>)</span>
-<span id="cb131-5"><a href="解析日期和时间.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="dv">06042020</span>)</span>
-<span id="cb131-6"><a href="解析日期和时间.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="dv">04062020</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="解析日期和时间.html#cb137-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-2"><a href="解析日期和时间.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 整数和字符都可以</span></span>
+<span id="cb137-3"><a href="解析日期和时间.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200604</span>) </span>
+<span id="cb137-4"><a href="解析日期和时间.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;20200604&#39;</span>)</span>
+<span id="cb137-5"><a href="解析日期和时间.html#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="dv">06042020</span>)</span>
+<span id="cb137-6"><a href="解析日期和时间.html#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="dv">04062020</span>)</span></code></pre></div>
 <p>遇到unix 时间戳 可以用 .POSIXct()函数转化.</p>
 <p><a href="https://unixtime.51240.com/">unix在线转换</a></p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="解析日期和时间.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>)</span>
-<span id="cb132-2"><a href="解析日期和时间.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="解析日期和时间.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>)</span>
+<span id="cb138-2"><a href="解析日期和时间.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>))</span></code></pre></div>
 <p>unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="解析日期和时间.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="解析日期和时间.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
 <p>从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。</p>
 <p>如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.</p>
 <ul>
 <li><a href="https://home.kpn.nl/vanadovv/time/TZworld.html#asi" class="uri">https://home.kpn.nl/vanadovv/time/TZworld.html#asi</a></li>
 </ul>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="解析日期和时间.html#cb134-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span>
-<span id="cb134-2"><a href="解析日期和时间.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>()) <span class="co">#默认是UTC</span></span>
-<span id="cb134-3"><a href="解析日期和时间.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>(),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="解析日期和时间.html#cb140-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span>
+<span id="cb140-2"><a href="解析日期和时间.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>()) <span class="co">#默认是UTC</span></span>
+<span id="cb140-3"><a href="解析日期和时间.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>(),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
 </div>
             </section>
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -388,22 +393,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="构造日期或时间" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> 构造日期或时间</h2>
 <p>使用数值直接创建日期时间<code>make_date</code>和<code>make_datetime</code>函数默认时区为“UTC”</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="构造日期或时间.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_date</span>(<span class="at">year =</span> <span class="fu">year</span>(<span class="fu">today</span>()), <span class="at">month =</span> <span class="fu">month</span>(<span class="fu">today</span>()), <span class="at">day =</span> <span class="fu">day</span>(<span class="fu">today</span>()), <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
-<span id="cb135-2"><a href="构造日期或时间.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_datetime</span>(</span>
-<span id="cb135-3"><a href="构造日期或时间.html#cb135-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">year</span>(<span class="fu">today</span>()),</span>
-<span id="cb135-4"><a href="构造日期或时间.html#cb135-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">month =</span> <span class="fu">month</span>(<span class="fu">today</span>()),</span>
-<span id="cb135-5"><a href="构造日期或时间.html#cb135-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">day =</span> <span class="fu">day</span>(<span class="fu">today</span>()),</span>
-<span id="cb135-6"><a href="构造日期或时间.html#cb135-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">now</span>()),</span>
-<span id="cb135-7"><a href="构造日期或时间.html#cb135-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">min =</span> <span class="fu">minute</span>(<span class="fu">now</span>()),</span>
-<span id="cb135-8"><a href="构造日期或时间.html#cb135-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">sec =</span> <span class="fu">second</span>(<span class="fu">now</span>()),</span>
-<span id="cb135-9"><a href="构造日期或时间.html#cb135-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span></span>
-<span id="cb135-10"><a href="构造日期或时间.html#cb135-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="构造日期或时间.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_date</span>(<span class="at">year =</span> <span class="fu">year</span>(<span class="fu">today</span>()), <span class="at">month =</span> <span class="fu">month</span>(<span class="fu">today</span>()), <span class="at">day =</span> <span class="fu">day</span>(<span class="fu">today</span>()), <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
+<span id="cb141-2"><a href="构造日期或时间.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_datetime</span>(</span>
+<span id="cb141-3"><a href="构造日期或时间.html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">year</span>(<span class="fu">today</span>()),</span>
+<span id="cb141-4"><a href="构造日期或时间.html#cb141-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">month =</span> <span class="fu">month</span>(<span class="fu">today</span>()),</span>
+<span id="cb141-5"><a href="构造日期或时间.html#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">day =</span> <span class="fu">day</span>(<span class="fu">today</span>()),</span>
+<span id="cb141-6"><a href="构造日期或时间.html#cb141-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">now</span>()),</span>
+<span id="cb141-7"><a href="构造日期或时间.html#cb141-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">min =</span> <span class="fu">minute</span>(<span class="fu">now</span>()),</span>
+<span id="cb141-8"><a href="构造日期或时间.html#cb141-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">sec =</span> <span class="fu">second</span>(<span class="fu">now</span>()),</span>
+<span id="cb141-9"><a href="构造日期或时间.html#cb141-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span></span>
+<span id="cb141-10"><a href="构造日期或时间.html#cb141-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>使用数值或字符直接创建日期时间</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="构造日期或时间.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="st">&#39;2020-01-09 09:15:40&#39;</span>,<span class="at">tz=</span><span class="st">&#39;asia/shanghai&#39;</span>)</span>
-<span id="cb136-2"><a href="构造日期或时间.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="st">&#39;2020-01-09&#39;</span>) <span class="co">#ymd格式</span></span>
-<span id="cb136-3"><a href="构造日期或时间.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb136-4"><a href="构造日期或时间.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="co">#as_date(&#39;2020/01/09&#39;)</span></span>
-<span id="cb136-5"><a href="构造日期或时间.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co">#as_date(&#39;20200109&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="构造日期或时间.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="st">&#39;2020-01-09 09:15:40&#39;</span>,<span class="at">tz=</span><span class="st">&#39;asia/shanghai&#39;</span>)</span>
+<span id="cb142-2"><a href="构造日期或时间.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="st">&#39;2020-01-09&#39;</span>) <span class="co">#ymd格式</span></span>
+<span id="cb142-3"><a href="构造日期或时间.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb142-4"><a href="构造日期或时间.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="co">#as_date(&#39;2020/01/09&#39;)</span></span>
+<span id="cb142-5"><a href="构造日期或时间.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="co">#as_date(&#39;20200109&#39;)</span></span></code></pre></div>
 </div>
             </section>
 

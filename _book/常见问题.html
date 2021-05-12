@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -395,25 +400,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>MS SQL SERVER 乱码</li>
 </ul>
 <p>修改encoding参数，在win系统下，可以考虑使用RODBC包连接查询数据库，因为该包将自动转换编码，不会存在乱码问题。但是上传效率奇慢，为了减少包依赖保持代码一致性使用odbc连接数据库时遇到乱码，在连接数据库时设定encoding即可。</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="常见问题.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># win</span></span>
-<span id="cb78-2"><a href="常见问题.html#cb78-2" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb78-3"><a href="常见问题.html#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.connection_string =</span></span>
-<span id="cb78-4"><a href="常见问题.html#cb78-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;driver={ SQLServer};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
-<span id="cb78-5"><a href="常见问题.html#cb78-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;gbk&quot;</span></span>
-<span id="cb78-6"><a href="常见问题.html#cb78-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb78-7"><a href="常见问题.html#cb78-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-8"><a href="常见问题.html#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="co"># linux </span></span>
-<span id="cb78-9"><a href="常见问题.html#cb78-9" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb78-10"><a href="常见问题.html#cb78-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.connection_string =</span></span>
-<span id="cb78-11"><a href="常见问题.html#cb78-11" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
-<span id="cb78-12"><a href="常见问题.html#cb78-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf8&quot;</span></span>
-<span id="cb78-13"><a href="常见问题.html#cb78-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="常见问题.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># win</span></span>
+<span id="cb84-2"><a href="常见问题.html#cb84-2" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb84-3"><a href="常见问题.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.connection_string =</span></span>
+<span id="cb84-4"><a href="常见问题.html#cb84-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;driver={ SQLServer};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
+<span id="cb84-5"><a href="常见问题.html#cb84-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;gbk&quot;</span></span>
+<span id="cb84-6"><a href="常见问题.html#cb84-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb84-7"><a href="常见问题.html#cb84-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-8"><a href="常见问题.html#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="co"># linux </span></span>
+<span id="cb84-9"><a href="常见问题.html#cb84-9" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb84-10"><a href="常见问题.html#cb84-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.connection_string =</span></span>
+<span id="cb84-11"><a href="常见问题.html#cb84-11" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
+<span id="cb84-12"><a href="常见问题.html#cb84-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf8&quot;</span></span>
+<span id="cb84-13"><a href="常见问题.html#cb84-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ul>
 <li>MySQL乱码</li>
 </ul>
 <p>1.代码修改</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="常见问题.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co">#执行查询语句前执行</span></span>
-<span id="cb79-2"><a href="常见问题.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,<span class="st">&#39;SET NAMES gbk&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="常见问题.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co">#执行查询语句前执行</span></span>
+<span id="cb85-2"><a href="常见问题.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,<span class="st">&#39;SET NAMES gbk&#39;</span>)</span></code></pre></div>
 <p>2.ODBC配置</p>
 <p>如果是通过ODBC数据源连接,可通过配置需改,如下所示：</p>
 <div class="figure">
@@ -425,17 +430,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.7.2</span> 无法连接问题</h3>
 <p>首先需要装mysql的驱动,确保<code>RMySQL</code>成功安装 如果是测试自己安装的mysql,可以先用Navicat连接,如果出现Authentication plugin ‘caching_sha2_password’ cannot be loaded的错误。</p>
 <p>可能是由于 mysql8 之前的版本中加密规则是mysql_native_password,而在mysql8之后,加密规则是caching_sha2_password,通过修改加密规则可解决无法连接问题。</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb80-1"><a href="常见问题.html#cb80-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-2"><a href="常见问题.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="co">--cmd 登录本地数据</span></span>
-<span id="cb80-3"><a href="常见问题.html#cb80-3" aria-hidden="true" tabindex="-1"></a>mysql <span class="op">-</span>u root <span class="op">-</span>p</span>
-<span id="cb80-4"><a href="常见问题.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="co">--输入密码</span></span>
-<span id="cb80-5"><a href="常见问题.html#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="kw">password</span>: </span>
-<span id="cb80-6"><a href="常见问题.html#cb80-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-7"><a href="常见问题.html#cb80-7" aria-hidden="true" tabindex="-1"></a><span class="co">--执行命令</span></span>
-<span id="cb80-8"><a href="常见问题.html#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;password&#39;</span> <span class="kw">PASSWORD</span> <span class="kw">EXPIRE</span> <span class="kw">NEVER</span>;   #修改加密规则 </span>
-<span id="cb80-9"><a href="常见问题.html#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="co">---ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; PASSWORD EXPIRE NEVER; 看账号权限注意与上面的区别</span></span>
-<span id="cb80-10"><a href="常见问题.html#cb80-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-11"><a href="常见问题.html#cb80-11" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">WITH</span> mysql_native_password <span class="kw">BY</span> <span class="st">&#39;password&#39;</span>; #更新一下用户的密码 </span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb86-1"><a href="常见问题.html#cb86-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-2"><a href="常见问题.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="co">--cmd 登录本地数据</span></span>
+<span id="cb86-3"><a href="常见问题.html#cb86-3" aria-hidden="true" tabindex="-1"></a>mysql <span class="op">-</span>u root <span class="op">-</span>p</span>
+<span id="cb86-4"><a href="常见问题.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="co">--输入密码</span></span>
+<span id="cb86-5"><a href="常见问题.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="kw">password</span>: </span>
+<span id="cb86-6"><a href="常见问题.html#cb86-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-7"><a href="常见问题.html#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="co">--执行命令</span></span>
+<span id="cb86-8"><a href="常见问题.html#cb86-8" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;password&#39;</span> <span class="kw">PASSWORD</span> <span class="kw">EXPIRE</span> <span class="kw">NEVER</span>;   #修改加密规则 </span>
+<span id="cb86-9"><a href="常见问题.html#cb86-9" aria-hidden="true" tabindex="-1"></a><span class="co">---ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; PASSWORD EXPIRE NEVER; 看账号权限注意与上面的区别</span></span>
+<span id="cb86-10"><a href="常见问题.html#cb86-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-11"><a href="常见问题.html#cb86-11" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">WITH</span> mysql_native_password <span class="kw">BY</span> <span class="st">&#39;password&#39;</span>; #更新一下用户的密码 </span></code></pre></div>
 </div>
 <div id="远程连接" class="section level3" number="3.7.3">
 <h3><span class="header-section-number">3.7.3</span> 远程连接</h3>

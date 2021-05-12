@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -391,45 +396,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>group_by()</code>最重要的分组动词,需要一个数据框和一个或多个变量进行分组：</p>
 <div id="添加分组" class="section level3" number="8.7.1">
 <h3><span class="header-section-number">8.7.1</span> 添加分组</h3>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="分组操作.html#cb241-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(species)</span>
-<span id="cb241-2"><a href="分组操作.html#cb241-2" aria-hidden="true" tabindex="-1"></a>by_sex_gender <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex, gender)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="分组操作.html#cb247-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(species)</span>
+<span id="cb247-2"><a href="分组操作.html#cb247-2" aria-hidden="true" tabindex="-1"></a>by_sex_gender <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex, gender)</span></code></pre></div>
 <p>除了按照现有变量分组外，还可以按照函数处理后的变量分组，等效在<code>mutate()</code>之后执行<code>group_by</code>:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="分组操作.html#cb242-1" aria-hidden="true" tabindex="-1"></a>bmi_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="cn">Inf</span>)</span>
-<span id="cb242-2"><a href="分组操作.html#cb242-2" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
-<span id="cb242-3"><a href="分组操作.html#cb242-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">bmi_cat =</span> <span class="fu">cut</span>(mass<span class="sc">/</span>(height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="at">breaks=</span>bmi_breaks)) <span class="sc">%&gt;%</span></span>
-<span id="cb242-4"><a href="分组操作.html#cb242-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="分组操作.html#cb248-1" aria-hidden="true" tabindex="-1"></a>bmi_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="cn">Inf</span>)</span>
+<span id="cb248-2"><a href="分组操作.html#cb248-2" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb248-3"><a href="分组操作.html#cb248-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">bmi_cat =</span> <span class="fu">cut</span>(mass<span class="sc">/</span>(height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="at">breaks=</span>bmi_breaks)) <span class="sc">%&gt;%</span></span>
+<span id="cb248-4"><a href="分组操作.html#cb248-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div>
 </div>
 <div id="删除分组变量" class="section level3" number="8.7.2">
 <h3><span class="header-section-number">8.7.2</span> 删除分组变量</h3>
 <p>要删除所有分组变量，使用<code>ungroup()</code>:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="分组操作.html#cb243-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="sc">%&gt;%</span></span>
-<span id="cb243-2"><a href="分组操作.html#cb243-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb243-3"><a href="分组操作.html#cb243-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="分组操作.html#cb249-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="sc">%&gt;%</span></span>
+<span id="cb249-2"><a href="分组操作.html#cb249-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb249-3"><a href="分组操作.html#cb249-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div>
 </div>
 <div id="动词" class="section level3" number="8.7.3">
 <h3><span class="header-section-number">8.7.3</span> 动词</h3>
 <p><code>summarise()</code> 计算每个组的汇总，表示从<code>group_keys</code>开始右侧添加汇总变量</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="分组操作.html#cb244-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="sc">%&gt;%</span></span>
-<span id="cb244-2"><a href="分组操作.html#cb244-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb244-3"><a href="分组操作.html#cb244-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb244-4"><a href="分组操作.html#cb244-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb244-5"><a href="分组操作.html#cb244-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="分组操作.html#cb250-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="sc">%&gt;%</span></span>
+<span id="cb250-2"><a href="分组操作.html#cb250-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb250-3"><a href="分组操作.html#cb250-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb250-4"><a href="分组操作.html#cb250-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb250-5"><a href="分组操作.html#cb250-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>该<code>.groups=</code>参数控制输出的分组结构。删除右侧分组变量的历史行为对应于<code>.groups =</code> “drop_last”没有消息或.groups = NULL有消息（默认值）。</p>
 <p>从1.0.0版开始，分组信息可以保留<code>(.groups = "keep")</code>或删除 <code>(.groups = 'drop)</code></p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="分组操作.html#cb245-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> by_species <span class="sc">%&gt;%</span></span>
-<span id="cb245-2"><a href="分组操作.html#cb245-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb245-3"><a href="分组操作.html#cb245-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb245-4"><a href="分组操作.html#cb245-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="at">.groups=</span><span class="st">&#39;drop&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb245-5"><a href="分组操作.html#cb245-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span>
-<span id="cb245-6"><a href="分组操作.html#cb245-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb245-7"><a href="分组操作.html#cb245-7" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> by_species <span class="sc">%&gt;%</span></span>
-<span id="cb245-8"><a href="分组操作.html#cb245-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb245-9"><a href="分组操作.html#cb245-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb245-10"><a href="分组操作.html#cb245-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="at">.groups=</span><span class="st">&#39;keep&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb245-11"><a href="分组操作.html#cb245-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span>
-<span id="cb245-12"><a href="分组操作.html#cb245-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb245-13"><a href="分组操作.html#cb245-13" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(a)</span>
-<span id="cb245-14"><a href="分组操作.html#cb245-14" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(b)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="分组操作.html#cb251-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> by_species <span class="sc">%&gt;%</span></span>
+<span id="cb251-2"><a href="分组操作.html#cb251-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb251-3"><a href="分组操作.html#cb251-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb251-4"><a href="分组操作.html#cb251-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="at">.groups=</span><span class="st">&#39;drop&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb251-5"><a href="分组操作.html#cb251-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span>
+<span id="cb251-6"><a href="分组操作.html#cb251-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-7"><a href="分组操作.html#cb251-7" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> by_species <span class="sc">%&gt;%</span></span>
+<span id="cb251-8"><a href="分组操作.html#cb251-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb251-9"><a href="分组操作.html#cb251-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb251-10"><a href="分组操作.html#cb251-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="at">.groups=</span><span class="st">&#39;keep&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb251-11"><a href="分组操作.html#cb251-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span>
+<span id="cb251-12"><a href="分组操作.html#cb251-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-13"><a href="分组操作.html#cb251-13" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(a)</span>
+<span id="cb251-14"><a href="分组操作.html#cb251-14" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(b)</span></code></pre></div>
 <p>在实际使用中，当数据较大时需要删掉分组信息。以上可以看到保留分组信息的比没保留的大了两倍多。</p>
 </div>
 </div>

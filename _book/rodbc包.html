@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -389,17 +394,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.4</span> RODBC包</h2>
 <p>RODBC包是R语言对ODBC数据库接口,可以连接所有的ODBC数据库.</p>
 <p>1.安装包</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="rodbc包.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RODBC&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="rodbc包.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RODBC&#39;</span>)</span></code></pre></div>
 <p>2.SQL SERVER 数据库举例</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="rodbc包.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RODBC)</span>
-<span id="cb67-2"><a href="rodbc包.html#cb67-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;driver={SQL Server};server=192.168.2.62;database=dbname;uid=zhongyf;pwd=Zyf123456&quot;</span>)</span>
-<span id="cb67-3"><a href="rodbc包.html#cb67-3" aria-hidden="true" tabindex="-1"></a>con</span>
-<span id="cb67-4"><a href="rodbc包.html#cb67-4" aria-hidden="true" tabindex="-1"></a>RODBC<span class="sc">::</span><span class="fu">sqlQuery</span>(con,<span class="st">&#39;select * from test&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="rodbc包.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RODBC)</span>
+<span id="cb73-2"><a href="rodbc包.html#cb73-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;driver={SQL Server};server=192.168.2.62;database=dbname;uid=zhongyf;pwd=Zyf123456&quot;</span>)</span>
+<span id="cb73-3"><a href="rodbc包.html#cb73-3" aria-hidden="true" tabindex="-1"></a>con</span>
+<span id="cb73-4"><a href="rodbc包.html#cb73-4" aria-hidden="true" tabindex="-1"></a>RODBC<span class="sc">::</span><span class="fu">sqlQuery</span>(con,<span class="st">&#39;select * from test&#39;</span>)</span></code></pre></div>
 <p>在WINDOWS机器上,需要知道本机是否有相应数据库的驱动程序.</p>
 <ul>
 <li>查看本机上可用驱动</li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="rodbc包.html#cb68-1" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">odbcListDrivers</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="rodbc包.html#cb74-1" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">odbcListDrivers</span>()</span></code></pre></div>
 <ul>
 <li>怎样安装驱动</li>
 </ul>
@@ -407,8 +412,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ODBC for sql server driver 下载地址<a href="https://docs.microsoft.com/zh-cn/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">地址</a></p>
 <p>3.数据库字符串</p>
 <p>请参照<a href="https://www.connectionstrings.com/">数据库连接字符串</a></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="rodbc包.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ODBC Driver 17 for SQL Server</span></span>
-<span id="cb69-2"><a href="rodbc包.html#cb69-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=name;UID=username;PWD=123456;&quot;</span>) <span class="co">#server 数据库 UID 数据库账户 PWD 数据库账户密码</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="rodbc包.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ODBC Driver 17 for SQL Server</span></span>
+<span id="cb75-2"><a href="rodbc包.html#cb75-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=name;UID=username;PWD=123456;&quot;</span>) <span class="co">#server 数据库 UID 数据库账户 PWD 数据库账户密码</span></span></code></pre></div>
 <p>sql server 请参照<a href="https://www.connectionstrings.com/microsoft-odbc-driver-17-for-sql-server/">sql server连接字符串</a></p>
 </div>
             </section>

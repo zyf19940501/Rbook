@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -388,13 +393,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="列操作" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> 列操作</h2>
 <p>在多列上执行相同的操作是常用的操作，但是通过复制和粘贴代码，麻烦不说还容易错：</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="列操作.html#cb226-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb226-2"><a href="列操作.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(g1, g2) <span class="sc">%&gt;%</span> </span>
-<span id="cb226-3"><a href="列操作.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">a =</span> <span class="fu">mean</span>(a), <span class="at">b =</span> <span class="fu">mean</span>(b), <span class="at">c =</span> <span class="fu">mean</span>(c), <span class="at">d =</span> <span class="fu">mean</span>(d))</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="列操作.html#cb232-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb232-2"><a href="列操作.html#cb232-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(g1, g2) <span class="sc">%&gt;%</span> </span>
+<span id="cb232-3"><a href="列操作.html#cb232-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">a =</span> <span class="fu">mean</span>(a), <span class="at">b =</span> <span class="fu">mean</span>(b), <span class="at">c =</span> <span class="fu">mean</span>(c), <span class="at">d =</span> <span class="fu">mean</span>(d))</span></code></pre></div>
 <p>通过<code>across()</code>函数可以更简洁地重写上面代码：</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="列操作.html#cb227-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb227-2"><a href="列操作.html#cb227-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(g1, g2) <span class="sc">%&gt;%</span> </span>
-<span id="cb227-3"><a href="列操作.html#cb227-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(a<span class="sc">:</span>d, mean))</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="列操作.html#cb233-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb233-2"><a href="列操作.html#cb233-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(g1, g2) <span class="sc">%&gt;%</span> </span>
+<span id="cb233-3"><a href="列操作.html#cb233-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(a<span class="sc">:</span>d, mean))</span></code></pre></div>
 <div id="基本操作" class="section level3" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> 基本操作</h3>
 <p>across() 有两个主要参数：</p>
@@ -402,56 +407,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>第一个参数，.cols选择要操作的列。它使用<code>tidyr</code>的方式选择（例如select()），因此您可以按位置，名称和类型选择变量。</p></li>
 <li><p>第二个参数，.fns是要应用于每一列的一个函数或函数列表。这也可以是purrr样式的公式（或公式列表），例如~ .x / 2。</p></li>
 </ul>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="列操作.html#cb228-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb228-2"><a href="列操作.html#cb228-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x))))</span>
-<span id="cb228-3"><a href="列操作.html#cb228-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-4"><a href="列操作.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 列属性是字符的列求唯一值数</span></span>
-<span id="cb228-5"><a href="列操作.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co"># starwars %&gt;% </span></span>
-<span id="cb228-6"><a href="列操作.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   summarise(length(unique(name)))</span></span>
-<span id="cb228-7"><a href="列操作.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="co"># starwars %&gt;% </span></span>
-<span id="cb228-8"><a href="列操作.html#cb228-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   summarise(length(unique(hair_color)))</span></span>
-<span id="cb228-9"><a href="列操作.html#cb228-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-10"><a href="列操作.html#cb228-10" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb228-11"><a href="列操作.html#cb228-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-12"><a href="列操作.html#cb228-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-13"><a href="列操作.html#cb228-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(sex, gender, homeworld), <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x))))</span>
-<span id="cb228-14"><a href="列操作.html#cb228-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-15"><a href="列操作.html#cb228-15" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb228-16"><a href="列操作.html#cb228-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(homeworld) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-17"><a href="列操作.html#cb228-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-18"><a href="列操作.html#cb228-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="列操作.html#cb234-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb234-2"><a href="列操作.html#cb234-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x))))</span>
+<span id="cb234-3"><a href="列操作.html#cb234-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-4"><a href="列操作.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 列属性是字符的列求唯一值数</span></span>
+<span id="cb234-5"><a href="列操作.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="co"># starwars %&gt;% </span></span>
+<span id="cb234-6"><a href="列操作.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   summarise(length(unique(name)))</span></span>
+<span id="cb234-7"><a href="列操作.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="co"># starwars %&gt;% </span></span>
+<span id="cb234-8"><a href="列操作.html#cb234-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   summarise(length(unique(hair_color)))</span></span>
+<span id="cb234-9"><a href="列操作.html#cb234-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-10"><a href="列操作.html#cb234-10" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb234-11"><a href="列操作.html#cb234-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb234-12"><a href="列操作.html#cb234-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb234-13"><a href="列操作.html#cb234-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(sex, gender, homeworld), <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x))))</span>
+<span id="cb234-14"><a href="列操作.html#cb234-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-15"><a href="列操作.html#cb234-15" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb234-16"><a href="列操作.html#cb234-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(homeworld) <span class="sc">%&gt;%</span> </span>
+<span id="cb234-17"><a href="列操作.html#cb234-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb234-18"><a href="列操作.html#cb234-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code></pre></div>
 <p><code>across()</code> 不会选择分组变量：</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="列操作.html#cb229-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">g =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">9</span>))</span>
-<span id="cb229-2"><a href="列操作.html#cb229-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb229-3"><a href="列操作.html#cb229-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(g) <span class="sc">%&gt;%</span> </span>
-<span id="cb229-4"><a href="列操作.html#cb229-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), sum))</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="列操作.html#cb235-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">g =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">9</span>))</span>
+<span id="cb235-2"><a href="列操作.html#cb235-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb235-3"><a href="列操作.html#cb235-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(g) <span class="sc">%&gt;%</span> </span>
+<span id="cb235-4"><a href="列操作.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), sum))</span></code></pre></div>
 </div>
 <div id="多种函数功能" class="section level3" number="8.5.2">
 <h3><span class="header-section-number">8.5.2</span> 多种函数功能</h3>
 <p>通过在第二个参数提供函数或lambda函数的命名列表，可是使用多个函数转换每个变量：</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="列操作.html#cb230-1" aria-hidden="true" tabindex="-1"></a>min_max <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb230-2"><a href="列操作.html#cb230-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">min =</span> <span class="sc">~</span><span class="fu">min</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb230-3"><a href="列操作.html#cb230-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">max =</span> <span class="sc">~</span><span class="fu">max</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb230-4"><a href="列操作.html#cb230-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb230-5"><a href="列操作.html#cb230-5" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), min_max))</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="列操作.html#cb236-1" aria-hidden="true" tabindex="-1"></a>min_max <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb236-2"><a href="列操作.html#cb236-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">min =</span> <span class="sc">~</span><span class="fu">min</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb236-3"><a href="列操作.html#cb236-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">max =</span> <span class="sc">~</span><span class="fu">max</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb236-4"><a href="列操作.html#cb236-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb236-5"><a href="列操作.html#cb236-5" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), min_max))</span></code></pre></div>
 <p>通过<code>.names</code>参数控制名称：</p>
 <p>NB:该参数的机制没有特别理解，需多练习体会。主要是运用到匿名函数时</p>
 <p>以下是官方图册中的案例，但是报错：</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="列操作.html#cb231-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), min_max, <span class="at">.names =</span> <span class="st">&quot;{.fn}.{.col}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="列操作.html#cb237-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), min_max, <span class="at">.names =</span> <span class="st">&quot;{.fn}.{.col}&quot;</span>))</span></code></pre></div>
 <p>修改后正常运行：</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="列操作.html#cb232-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), min_max, <span class="at">.names =</span> <span class="st">&quot;{fn}.{col}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="列操作.html#cb238-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), min_max, <span class="at">.names =</span> <span class="st">&quot;{fn}.{col}&quot;</span>))</span></code></pre></div>
 <p>区别主要是<code>.names</code>参数的使用方式问题，<code>.</code>加不加的问题。</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="列操作.html#cb233-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb233-2"><a href="列操作.html#cb233-2" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), min_max, <span class="at">.names =</span> <span class="st">&quot;{fn}——{col}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="列操作.html#cb239-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb239-2"><a href="列操作.html#cb239-2" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), min_max, <span class="at">.names =</span> <span class="st">&quot;{fn}——{col}&quot;</span>))</span></code></pre></div>
 </div>
 <div id="当前列" class="section level3" number="8.5.3">
 <h3><span class="header-section-number">8.5.3</span> 当前列</h3>
 <p>如果需要，可以通过调用访问内部的“当前”列的名称<code>cur_column()</code>。</p>
 <p>该函数不是特别容易理解，需要多尝试使用加深认识。</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="列操作.html#cb234-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>)</span>
-<span id="cb234-2"><a href="列操作.html#cb234-2" aria-hidden="true" tabindex="-1"></a>mult <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">10</span>, <span class="at">z =</span> <span class="dv">100</span>)</span>
-<span id="cb234-3"><a href="列操作.html#cb234-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb234-4"><a href="列操作.html#cb234-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(<span class="fu">names</span>(mult)), <span class="sc">~</span> .x <span class="sc">*</span> mult[[<span class="fu">cur_column</span>()]]))</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="列操作.html#cb240-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb240-2"><a href="列操作.html#cb240-2" aria-hidden="true" tabindex="-1"></a>mult <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">10</span>, <span class="at">z =</span> <span class="dv">100</span>)</span>
+<span id="cb240-3"><a href="列操作.html#cb240-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-4"><a href="列操作.html#cb240-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(<span class="fu">names</span>(mult)), <span class="sc">~</span> .x <span class="sc">*</span> mult[[<span class="fu">cur_column</span>()]]))</span></code></pre></div>
 </div>
 </div>
             </section>

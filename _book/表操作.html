@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -401,32 +406,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>left_join()</code>,<code>right_join()</code>,<code>full_join()</code>,<code>inner_join</code>()，第一个以左表为主，第二个右表为主，第三个全连接，第四个内连接(只返回两表中都有的记录)，和数据库中连接方式一致。</p>
 <p>默认会自动寻找两表中相同的字段名作为关联的条件</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="表操作.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;nycflights13&quot;</span>)</span>
-<span id="cb220-2"><a href="表操作.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop unimportant variables so it&#39;s easier to understand the join results.</span></span>
-<span id="cb220-3"><a href="表操作.html#cb220-3" aria-hidden="true" tabindex="-1"></a>flights2 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(year<span class="sc">:</span>day, hour, origin, dest, tailnum, carrier)</span>
-<span id="cb220-4"><a href="表操作.html#cb220-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-5"><a href="表操作.html#cb220-5" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> </span>
-<span id="cb220-6"><a href="表操作.html#cb220-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airlines)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="表操作.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;nycflights13&quot;</span>)</span>
+<span id="cb226-2"><a href="表操作.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop unimportant variables so it&#39;s easier to understand the join results.</span></span>
+<span id="cb226-3"><a href="表操作.html#cb226-3" aria-hidden="true" tabindex="-1"></a>flights2 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(year<span class="sc">:</span>day, hour, origin, dest, tailnum, carrier)</span>
+<span id="cb226-4"><a href="表操作.html#cb226-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-5"><a href="表操作.html#cb226-5" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> </span>
+<span id="cb226-6"><a href="表操作.html#cb226-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airlines)</span></code></pre></div>
 <p>指定关联条件列，类似数据库中<code>on a.column = b.column</code></p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="表操作.html#cb221-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(planes, <span class="at">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="表操作.html#cb227-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(planes, <span class="at">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span></code></pre></div>
 <ul>
 <li>不同名称列关联</li>
 </ul>
 <p><code>left_join(x,y,by = c("a" = "b", "c" = "d"))</code> 将会匹配 x<span class="math inline">\(a to y\)</span>b 和 x<span class="math inline">\(c to y\)</span>d 作为关联条件</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="表操作.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co">#出发机场和目的机场信息</span></span>
-<span id="cb222-2"><a href="表操作.html#cb222-2" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;dest&quot;</span> <span class="ot">=</span> <span class="st">&quot;faa&quot;</span>))</span>
-<span id="cb222-3"><a href="表操作.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="co">#flights2 %&gt;% left_join(airports, c(&quot;origin&quot; = &quot;faa&quot;))</span></span>
-<span id="cb222-4"><a href="表操作.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 组合条件 多条件时用向量包裹即可c(&quot;dest&quot; = &quot;faa&quot;,&quot;cola&quot; = &quot;colb&quot;))</span></span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="表操作.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co">#出发机场和目的机场信息</span></span>
+<span id="cb228-2"><a href="表操作.html#cb228-2" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;dest&quot;</span> <span class="ot">=</span> <span class="st">&quot;faa&quot;</span>))</span>
+<span id="cb228-3"><a href="表操作.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co">#flights2 %&gt;% left_join(airports, c(&quot;origin&quot; = &quot;faa&quot;))</span></span>
+<span id="cb228-4"><a href="表操作.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 组合条件 多条件时用向量包裹即可c(&quot;dest&quot; = &quot;faa&quot;,&quot;cola&quot; = &quot;colb&quot;))</span></span></code></pre></div>
 <ul>
 <li>筛选连接</li>
 </ul>
 <p><code>anti_join()</code> 删除所有左表中在右表中匹配到的行</p>
 <p><code>semi_join()</code>保留所有左表在右表中匹配到的行</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="表操作.html#cb223-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>],<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb223-2"><a href="表操作.html#cb223-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb223-3"><a href="表操作.html#cb223-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-4"><a href="表操作.html#cb223-4" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2)</span>
-<span id="cb223-5"><a href="表操作.html#cb223-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df1)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="表操作.html#cb229-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>],<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb229-2"><a href="表操作.html#cb229-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb229-3"><a href="表操作.html#cb229-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-4"><a href="表操作.html#cb229-4" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2)</span>
+<span id="cb229-5"><a href="表操作.html#cb229-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df1)</span></code></pre></div>
 <ul>
 <li>集合操作</li>
 </ul>
@@ -435,24 +440,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>union(x,y)</code>返回x,y中唯一的值</p></li>
 <li><p><code>setdiff(x,y)</code>返回存在x中但是不存在y中的记录</p></li>
 </ol>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="表操作.html#cb224-1" aria-hidden="true" tabindex="-1"></a>(df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">c</span>(1L, 1L)))</span>
-<span id="cb224-2"><a href="表操作.html#cb224-2" aria-hidden="true" tabindex="-1"></a>(df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span>
-<span id="cb224-3"><a href="表操作.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(df1, df2)</span>
-<span id="cb224-4"><a href="表操作.html#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(df1, df2)</span>
-<span id="cb224-5"><a href="表操作.html#cb224-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df1, df2)</span>
-<span id="cb224-6"><a href="表操作.html#cb224-6" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df2, df1)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="表操作.html#cb230-1" aria-hidden="true" tabindex="-1"></a>(df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">c</span>(1L, 1L)))</span>
+<span id="cb230-2"><a href="表操作.html#cb230-2" aria-hidden="true" tabindex="-1"></a>(df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span>
+<span id="cb230-3"><a href="表操作.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(df1, df2)</span>
+<span id="cb230-4"><a href="表操作.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(df1, df2)</span>
+<span id="cb230-5"><a href="表操作.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df1, df2)</span>
+<span id="cb230-6"><a href="表操作.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df2, df1)</span></code></pre></div>
 </div>
 <div id="多表操作" class="section level3" number="8.4.2">
 <h3><span class="header-section-number">8.4.2</span> 多表操作</h3>
 <p>多表操作请使用<code>purrr::reduce()</code>,当需要合并多个表格时，可用以下方式减少合并代码量。</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="表操作.html#cb225-1" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters)</span>
-<span id="cb225-2"><a href="表操作.html#cb225-2" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb225-3"><a href="表操作.html#cb225-3" aria-hidden="true" tabindex="-1"></a>dt3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">colb =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb225-4"><a href="表操作.html#cb225-4" aria-hidden="true" tabindex="-1"></a>dt4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cold =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb225-5"><a href="表操作.html#cb225-5" aria-hidden="true" tabindex="-1"></a>dt5 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cole =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
-<span id="cb225-6"><a href="表操作.html#cb225-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb225-7"><a href="表操作.html#cb225-7" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">list</span>(dt1,dt2,dt3,dt4,dt5)</span>
-<span id="cb225-8"><a href="表操作.html#cb225-8" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">reduce</span>(dtlist,left_join,<span class="at">by=</span><span class="st">&#39;x&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="表操作.html#cb231-1" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters)</span>
+<span id="cb231-2"><a href="表操作.html#cb231-2" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb231-3"><a href="表操作.html#cb231-3" aria-hidden="true" tabindex="-1"></a>dt3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">colb =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb231-4"><a href="表操作.html#cb231-4" aria-hidden="true" tabindex="-1"></a>dt4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cold =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb231-5"><a href="表操作.html#cb231-5" aria-hidden="true" tabindex="-1"></a>dt5 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cole =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb231-6"><a href="表操作.html#cb231-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb231-7"><a href="表操作.html#cb231-7" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">list</span>(dt1,dt2,dt3,dt4,dt5)</span>
+<span id="cb231-8"><a href="表操作.html#cb231-8" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">reduce</span>(dtlist,left_join,<span class="at">by=</span><span class="st">&#39;x&#39;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>

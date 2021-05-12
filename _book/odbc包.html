@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -391,33 +396,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>记录到此时，并不时特别清晰<code>odbc</code>与<code>DBI</code>之间的关系。</p>
 <p>odbc可以运用于包括(SQL Server, Oracle, MySQL,PostgreSQL,SQLite)等odbc驱动程序于<code>DBI</code>兼容的接口，相比起来<code>DBI</code>包适用范围更广。</p>
 <p>1.安装包</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="odbc包.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#安装包</span></span>
-<span id="cb62-2"><a href="odbc包.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;odbc&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="odbc包.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">#安装包</span></span>
+<span id="cb68-2"><a href="odbc包.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;odbc&#39;</span>)</span></code></pre></div>
 <p>2.连接数据库</p>
 <p>连接数据库需要注意时区、编码，尤其是涉及到时间时时区如果设置有误，可能导致上传数据错误。</p>
 <p>当你在Win系统上连接Sql Server时，如果你使用的数据库是中文环境时，最好设置<code>encoding</code>参数。</p>
 <p>如果是linux上通过odbc连接SqlServer,一般情况下可以不用设置编码。如果还是乱码，在连接字符中设置字符编码charset=zh_CN.GBK，设置为gbk会报错。</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="odbc包.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(odbc)</span>
-<span id="cb63-2"><a href="odbc包.html#cb63-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb63-3"><a href="odbc包.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">Server =</span> <span class="st">&quot;Vega&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;ghzy&quot;</span>,</span>
-<span id="cb63-4"><a href="odbc包.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Trusted_Connection =</span> <span class="st">&quot;True&quot;</span></span>
-<span id="cb63-5"><a href="odbc包.html#cb63-5" aria-hidden="true" tabindex="-1"></a>) <span class="co"># windows身份认证连接</span></span>
-<span id="cb63-6"><a href="odbc包.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co"># con &lt;- dbConnect(odbc::odbc(), .connection_string = &quot;Driver={SQL Server};</span></span>
-<span id="cb63-7"><a href="odbc包.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                                 server=Vega;database=ghzy;uid=zhongyf;pwd=Zyf123456;&quot;, timeout = 10)</span></span>
-<span id="cb63-8"><a href="odbc包.html#cb63-8" aria-hidden="true" tabindex="-1"></a>con</span>
-<span id="cb63-9"><a href="odbc包.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run</span></span>
-<span id="cb63-10"><a href="odbc包.html#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Win</span></span>
-<span id="cb63-11"><a href="odbc包.html#cb63-11" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
-<span id="cb63-12"><a href="odbc包.html#cb63-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>,<span class="at">encoding =</span> <span class="st">&#39;gbk&#39;</span>)</span>
-<span id="cb63-13"><a href="odbc包.html#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Linux</span></span>
-<span id="cb63-14"><a href="odbc包.html#cb63-14" aria-hidden="true" tabindex="-1"></a>con_dd <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;</span></span>
-<span id="cb63-15"><a href="odbc包.html#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="st">                 database=aojo_dd;uid=wj;pwd=12qw#$ER;charset=zh_CN.GBK&quot;</span>, <span class="at">timeout =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="odbc包.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(odbc)</span>
+<span id="cb69-2"><a href="odbc包.html#cb69-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb69-3"><a href="odbc包.html#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">Server =</span> <span class="st">&quot;Vega&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;ghzy&quot;</span>,</span>
+<span id="cb69-4"><a href="odbc包.html#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Trusted_Connection =</span> <span class="st">&quot;True&quot;</span></span>
+<span id="cb69-5"><a href="odbc包.html#cb69-5" aria-hidden="true" tabindex="-1"></a>) <span class="co"># windows身份认证连接</span></span>
+<span id="cb69-6"><a href="odbc包.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="co"># con &lt;- dbConnect(odbc::odbc(), .connection_string = &quot;Driver={SQL Server};</span></span>
+<span id="cb69-7"><a href="odbc包.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                                 server=Vega;database=ghzy;uid=zhongyf;pwd=Zyf123456;&quot;, timeout = 10)</span></span>
+<span id="cb69-8"><a href="odbc包.html#cb69-8" aria-hidden="true" tabindex="-1"></a>con</span>
+<span id="cb69-9"><a href="odbc包.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run</span></span>
+<span id="cb69-10"><a href="odbc包.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Win</span></span>
+<span id="cb69-11"><a href="odbc包.html#cb69-11" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
+<span id="cb69-12"><a href="odbc包.html#cb69-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>,<span class="at">encoding =</span> <span class="st">&#39;gbk&#39;</span>)</span>
+<span id="cb69-13"><a href="odbc包.html#cb69-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Linux</span></span>
+<span id="cb69-14"><a href="odbc包.html#cb69-14" aria-hidden="true" tabindex="-1"></a>con_dd <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;</span></span>
+<span id="cb69-15"><a href="odbc包.html#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="st">                 database=aojo_dd;uid=wj;pwd=12qw#$ER;charset=zh_CN.GBK&quot;</span>, <span class="at">timeout =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p>3.查询</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="odbc包.html#cb64-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from DT&#39;</span>)</span>
-<span id="cb64-2"><a href="odbc包.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="odbc包.html#cb70-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from DT&#39;</span>)</span>
+<span id="cb70-2"><a href="odbc包.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
 <p>4.写入数据库</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="odbc包.html#cb65-1" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">overwrite =</span> T ) <span class="co"># 是否覆盖</span></span>
-<span id="cb65-2"><a href="odbc包.html#cb65-2" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">append =</span> T ) <span class="co"># 是否追加</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="odbc包.html#cb71-1" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">overwrite =</span> T ) <span class="co"># 是否覆盖</span></span>
+<span id="cb71-2"><a href="odbc包.html#cb71-2" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">append =</span> T ) <span class="co"># 是否追加</span></span></code></pre></div>
 </div>
             </section>
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,16 +160,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="常用函数.html"><a href="常用函数.html#判断函数"><i class="fa fa-check"></i><b>2.3.2</b> 判断函数</a></li>
 <li class="chapter" data-level="2.3.3" data-path="常用函数.html"><a href="常用函数.html#交集-差集-合并"><i class="fa fa-check"></i><b>2.3.3</b> 交集 差集 合并</a></li>
 <li class="chapter" data-level="2.3.4" data-path="常用函数.html"><a href="常用函数.html#连接"><i class="fa fa-check"></i><b>2.3.4</b> 连接</a></li>
-<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#透视表功能"><i class="fa fa-check"></i><b>2.3.5</b> 透视表功能</a></li>
+<li class="chapter" data-level="2.3.5" data-path="常用函数.html"><a href="常用函数.html#长宽转换"><i class="fa fa-check"></i><b>2.3.5</b> 长宽转换</a></li>
 <li class="chapter" data-level="2.3.6" data-path="常用函数.html"><a href="常用函数.html#非重复计数"><i class="fa fa-check"></i><b>2.3.6</b> 非重复计数</a></li>
-<li class="chapter" data-level="2.3.7" data-path="常用函数.html"><a href="常用函数.html#rleid"><i class="fa fa-check"></i><b>2.3.7</b> rleid</a></li>
-<li class="chapter" data-level="2.3.8" data-path="常用函数.html"><a href="常用函数.html#shift"><i class="fa fa-check"></i><b>2.3.8</b> shift</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.4</b> 运用</a>
+<li class="chapter" data-level="2.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>2.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.4.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="2.4.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.4.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="2.4.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.4.3</b> 行列转变</a></li>
+<li class="chapter" data-level="2.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>2.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>2.4.2</b> rleid</a></li>
+<li class="chapter" data-level="2.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>2.4.3</b> shift</a></li>
+<li class="chapter" data-level="2.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>2.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.5</b> 运用</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>2.5.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="2.5.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>2.5.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="2.5.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>2.5.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>3</b> database</a>
@@ -391,24 +396,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>left</li>
 </ul>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="r实现excel字符函数.html#cb121-1" aria-hidden="true" tabindex="-1"></a>r_left <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
-<span id="cb121-2"><a href="r实现excel字符函数.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">end =</span> num)</span>
-<span id="cb121-3"><a href="r实现excel字符函数.html#cb121-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb121-4"><a href="r实现excel字符函数.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="r实现excel字符函数.html#cb127-1" aria-hidden="true" tabindex="-1"></a>r_left <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
+<span id="cb127-2"><a href="r实现excel字符函数.html#cb127-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">end =</span> num)</span>
+<span id="cb127-3"><a href="r实现excel字符函数.html#cb127-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb127-4"><a href="r实现excel字符函数.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span></code></pre></div>
 <ul>
 <li>right</li>
 </ul>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="r实现excel字符函数.html#cb122-1" aria-hidden="true" tabindex="-1"></a>r_right <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
-<span id="cb122-2"><a href="r实现excel字符函数.html#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="fu">str_length</span>(str) <span class="sc">-</span> num <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb122-3"><a href="r实现excel字符函数.html#cb122-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb122-4"><a href="r实现excel字符函数.html#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="r实现excel字符函数.html#cb128-1" aria-hidden="true" tabindex="-1"></a>r_right <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
+<span id="cb128-2"><a href="r实现excel字符函数.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="fu">str_length</span>(str) <span class="sc">-</span> num <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb128-3"><a href="r实现excel字符函数.html#cb128-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb128-4"><a href="r实现excel字符函数.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span></code></pre></div>
 <ul>
 <li>mid</li>
 </ul>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="r实现excel字符函数.html#cb123-1" aria-hidden="true" tabindex="-1"></a>r_mid <span class="ot">&lt;-</span> <span class="cf">function</span>(str,start,num){</span>
-<span id="cb123-2"><a href="r实现excel字符函数.html#cb123-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> start,<span class="at">end =</span> start <span class="sc">+</span> num <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb123-3"><a href="r实现excel字符函数.html#cb123-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb123-4"><a href="r实现excel字符函数.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="r实现excel字符函数.html#cb129-1" aria-hidden="true" tabindex="-1"></a>r_mid <span class="ot">&lt;-</span> <span class="cf">function</span>(str,start,num){</span>
+<span id="cb129-2"><a href="r实现excel字符函数.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> start,<span class="at">end =</span> start <span class="sc">+</span> num <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb129-3"><a href="r实现excel字符函数.html#cb129-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb129-4"><a href="r实现excel字符函数.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span></code></pre></div>
 <p>其余函数可以自行实现</p>
 
 </div>
