@@ -173,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="小技巧.html"><a href="小技巧.html"><i class="fa fa-check"></i><b>2.5</b> 小技巧</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="小技巧.html"><a href="小技巧.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>2.5.1</b> 用{}抑制中间过程输出</a></li>
+<li class="chapter" data-level="2.5.2" data-path="小技巧.html"><a href="小技巧.html#使用打印data.table"><i class="fa fa-check"></i><b>2.5.2</b> 使用[]打印data.table</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.6</b> 运用</a>
 <ul>
@@ -429,6 +430,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb57-7"><a href="小技巧.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19 1.19</span></span>
 <span id="cb57-8"><a href="小技巧.html#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83 3.83</span></span>
 <span id="cb57-9"><a href="小技巧.html#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79 1.79</span></span></code></pre></div>
+</div>
+<div id="使用打印data.table" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> 使用[]打印data.table</h3>
+<p>在测试代码查看结果时很有用。</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="小技巧.html#cb58-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars) <span class="co"># doesn&#39;t print</span></span>
+<span id="cb58-2"><a href="小技巧.html#cb58-2" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars)) <span class="co"># does print</span></span>
+<span id="cb58-3"><a href="小技巧.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    mpg cyl disp  hp drat   wt qsec vs am gear carb</span></span>
+<span id="cb58-4"><a href="小技巧.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4</span></span>
+<span id="cb58-5"><a href="小技巧.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4</span></span>
+<span id="cb58-6"><a href="小技巧.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Datsun 710        22.8   4  108  93 3.85 2.32 18.6  1  1    4    1</span></span>
+<span id="cb58-7"><a href="小技巧.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1</span></span>
+<span id="cb58-8"><a href="小技巧.html#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2</span></span>
+<span id="cb58-9"><a href="小技巧.html#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Valiant           18.1   6  225 105 2.76 3.46 20.2  1  0    3    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="小技巧.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table way of printing after an assignment</span></span>
+<span id="cb59-2"><a href="小技巧.html#cb59-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="fu">head</span>(mtcars)) <span class="co"># doesn&#39;t print</span></span>
+<span id="cb59-3"><a href="小技巧.html#cb59-3" aria-hidden="true" tabindex="-1"></a>dt[,hp2wt<span class="sc">:</span><span class="er">=</span>hp<span class="sc">/</span>wt][] <span class="co"># does print</span></span>
+<span id="cb59-4"><a href="小技巧.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg cyl disp  hp drat   wt qsec vs am gear carb hp2wt</span></span>
+<span id="cb59-5"><a href="小技巧.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4  42.0</span></span>
+<span id="cb59-6"><a href="小技巧.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4  38.3</span></span>
+<span id="cb59-7"><a href="小技巧.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 22.8   4  108  93 3.85 2.32 18.6  1  1    4    1  40.1</span></span>
+<span id="cb59-8"><a href="小技巧.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1  34.2</span></span>
+<span id="cb59-9"><a href="小技巧.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2  50.9</span></span>
+<span id="cb59-10"><a href="小技巧.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1  30.3</span></span></code></pre></div>
 </div>
 </div>
             </section>

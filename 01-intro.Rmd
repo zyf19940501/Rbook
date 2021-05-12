@@ -853,6 +853,22 @@ dt[,{tmp1=mean(mpg)
 ```
 
 
+### 使用[]打印data.table
+
+在测试代码查看结果时很有用。
+
+```{r}
+df <- head(mtcars) # doesn't print
+(df <- head(mtcars)) # does print
+```
+
+```{r}
+# data.table way of printing after an assignment
+dt <- data.table(head(mtcars)) # doesn't print
+dt[,hp2wt:=hp/wt][] # does print
+```
+
+
 ## 运用
 
 ### 自定义函数计算

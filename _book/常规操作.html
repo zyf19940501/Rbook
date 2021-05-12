@@ -173,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="小技巧.html"><a href="小技巧.html"><i class="fa fa-check"></i><b>2.5</b> 小技巧</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="小技巧.html"><a href="小技巧.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>2.5.1</b> 用{}抑制中间过程输出</a></li>
+<li class="chapter" data-level="2.5.2" data-path="小技巧.html"><a href="小技巧.html#使用打印data.table"><i class="fa fa-check"></i><b>2.5.2</b> 使用[]打印data.table</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>2.6</b> 运用</a>
 <ul>
@@ -562,7 +563,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb23-15"><a href="常规操作.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 两列间计算 也可以理解为更新</span></span>
 <span id="cb23-16"><a href="常规操作.html#cb23-16" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span>col1<span class="sc">/</span>col4]</span></code></pre></div>
 <blockquote>
-<p>T[a &gt; 4, b := c] is different from DT[a &gt; 4][, b := c]</p>
+<p>Note: DT[a &gt; 4, b := c] is different from DT[a &gt; 4][, b := c]</p>
 </blockquote>
 </div>
 <div id="排序" class="section level3" number="2.2.3">
