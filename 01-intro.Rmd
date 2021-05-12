@@ -240,69 +240,6 @@ head(dt)
 
 ## 常规操作
 
-### 新增更新列
-
-
-新增或删除或更新列是我们数据清洗过程中的常规操作，`data.table中`实现该类功能是通过`:=`符号实现。
-
-- 新增
-
-如下所示:新增addcol列，最后的[]是为了显示新增列的数据框,可不增加。
-
-```{r}
-#data.table()函数创建data.table数据框
-dt <- data.table(col1=1:10,col2=letters[1:10],col3=LETTERS[1:10],col4=1:10)
-# 新增列 :=
-dt[,addcol:=rep('新列',10)][] #最后的[]是为了显示新增列的数据框,可不增加
-#dt[,addcol:=rep('新列',10)] 不会显示返回结果,加上[]会显示返回
-# 新增多列
-dt[,`:=`(newcol1=rep('newcol1',10),newcol2=rep('newcol2',10))][]
-```
-
-- 删除
-
-删除列即将列赋值NULL即可
-
-```{r}
-# 删除列
-dt[,col1:=NULL][]
-# 删除多列
-dt[,c('newcol1','newcol2'):=NULL][]
-```
-
-
-- 更新
-
-更新即重新赋值，将现有列参与计算等于是重新赋值，可以看成是更新列。
-
-```{r}
-# 更新列
-dt[,col1:=11:20][]
-# not run 
-# 两列间计算 也可以理解为更新
-dt[,newcol:=col1/col4]
-```
-
-
-### 排序
-
-当我们清洗数据时，我们需要将数据框排序，我们可以使用`setorder`或`setorderv`函数实现排序。函数是`data.table`包的函数，比base R 中的`order`函数要节省内存。
-注意：按照函数文档说法：Note that queries like x[order(.)] are optimised internally to use data.table's fast order。即x[order(.)]这样的用法会被优化为data.table的排序方法。
-
-
-```{r}
-set.seed(45L)
-DT = data.table(A=sample(3, 10, TRUE),
-         B=sample(letters[1:3], 10, TRUE), C=sample(10))
-
-setorder(DT, A, -B) #将DT按照A、B排序 A 升序,-B降序
-
-# 和上面同样的效果 但是函数变成 setorderv
-setorderv(DT, c("A", "B"), c(1, -1))
-```
-
-
-
 
 ### 行筛选
 
@@ -353,9 +290,99 @@ DT = data.table(Name=c("Mary","George","Martha"), Salary=c(2,3,4))
 DT[Name %like% "^Mar"]
 ```
 
+### 新增更新列
+
+
+新增或删除或更新列是我们数据清洗过程中的常规操作，`data.table中`实现该类功能是通过`:=`符号实现。
+
+- 选择列
+
+```{r}
+dt <- data.table(col1=1:10,col2=letters[1:10],col3=LETTERS[1:10],col4=1:10)
+dt[,.(col1,col2)]
+# same above
+dt[,list(col1,col2)]
+```
+
+
+- 新增列
+
+如下所示:新增addcol列，最后的[]是为了显示新增列的数据框,可不增加。
+
+```{r}
+#data.table()函数创建data.table数据框
+dt <- data.table(col1=1:10,col2=letters[1:10],col3=LETTERS[1:10],col4=1:10)
+# 新增列 :=
+dt[,addcol:=rep('新列',10)][] #最后的[]是为了显示新增列的数据框,可不增加
+#dt[,addcol:=rep('新列',10)] 不会显示返回结果,加上[]会显示返回
+# 新增多列
+dt[,`:=`(newcol1=rep('newcol1',10),newcol2=rep('newcol2',10))][]
+```
+
+
+
+- 删除列
+
+删除列即将列赋值NULL即可
+
+```{r}
+# 删除列
+dt[,col1:=NULL][]
+# 删除多列
+dt[,c('newcol1','newcol2'):=NULL][]
+```
+
+
+- 更新
+
+更新即重新赋值，将现有列参与计算等于是重新赋值，可以看成是更新列。
+
+```{r}
+# 更新列
+dt[,col1:=11:20][]
+# not run 
+# 两列间计算 也可以理解为更新
+dt[,newcol:=col1/col4]
+```
+
+> Note: DT[a > 4, b := c] is different from DT[a > 4][, b := c]
+
+
+
+### 排序
+
+当我们清洗数据时，我们需要将数据框排序，我们可以使用`setorder`或`setorderv`函数实现排序。函数是`data.table`包的函数，比base R 中的`order`函数要节省内存。
+注意：按照函数文档说法：Note that queries like x[order(.)] are optimised internally to use data.table's fast order。即x[order(.)]这样的用法会被优化为data.table的排序方法。
+
+
+```{r}
+set.seed(45L)
+DT = data.table(A=sample(3, 10, TRUE),
+         B=sample(letters[1:3], 10, TRUE), C=sample(10))
+
+setorder(DT, A, -B) #将DT按照A、B排序 A 升序,-B降序
+
+# 和上面同样的效果 但是函数变成 setorderv
+setorderv(DT, c("A", "B"), c(1, -1))
+```
+
+
+
+
+
+
+
+
+## 常用函数
+
+常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。
+
+
 ### 特殊符号
 
-.SD,.BY,.N,.I,.NGRP和.GRP,.SDcols等,只能用在 j 的位置,.N 可以用在 i 的位置.
+.SD,.BY,.N,.I,.NGRP和.GRP,.SDcols等,只能用在 j 的位置,.N 可以用在 i 的位置。
+
+如果想要记住用法需要自己多尝试练习，对于我来说.N使用较多。
 
 ```{r}
 DT = data.table(x=rep(c("b","a","c"),each=3), v=c(1,1,1,2,2,1,1,2,2), y=c(1,3,6), a=1:9, b=9:1)
@@ -376,11 +403,7 @@ DT[, c(.N, lapply(.SD, sum)), by=x] #按照x分组后 行数计数和每列求�
 ```
 
 
-## 常用函数
-
-常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。
-
-### 排序函数 frank
+### 排序函数
 
 `frank`和`frankv`函数参数如下：
 
@@ -462,6 +485,24 @@ frankv(c(NA,NA,1,2,3), na.last = 'keep',ties.method = 'first')
 ```
 
 
+### 非重复计数
+
+`uniqueN`相当于`length(unique(x))`,但是计算更快，内存效率更高。
+
+```{r}
+x <-sample(1:10,50,replace = TRUE)
+uniqueN(x)
+
+DT <- data.table(A = rep(1:3, each=4), B = rep(1:4, each=3),
+                 C = rep(1:2, 6), key = "A,B")
+
+uniqueN(DT, by = key(DT))
+uniqueN(DT)
+```
+
+
+
+
 ### 判断函数
 
 - fifelse
@@ -523,21 +564,6 @@ fsetequal(x, x2, all=FALSE) # setequal
 fsetequal(x, x2)            # setequal all
 ```
 
-### 连接
-
-两个数据框之间左连,右连等操作,类似数据库中的left_join right_join,inner_join 等函数.
-
-键入?merge()查看函数帮助,data.table 包中和base R 中都有merge 函数,当第一个数据框是data.table格式时启用data.table::merge(). 
-
-```{r eval=FALSE}
-?merge()
-merge(x, y, by = NULL, by.x = NULL, by.y = NULL, all = FALSE,
-all.x = all, all.y = all, sort = TRUE, suffixes = c(".x", ".y"), no.dups = TRUE,
-allow.cartesian=getOption("datatable.allow.cartesian"),  # default FALSE
-...)
-```
-
-x.y为连个数据框,当两个数据框连接字段相同时,用by=c('','')连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.
 
 
 ### 长宽转换
@@ -599,21 +625,22 @@ DT
 
 
 
-### 非重复计数
 
-`uniqueN`相当于`length(unique(x))`,但是计算更快，内存效率更高。
+### 表连接
 
-```{r}
-x <-sample(1:10,50,replace = TRUE)
-uniqueN(x)
+两个数据框之间左连,右连等操作,类似数据库中的left_join right_join,inner_join 等函数.
 
-DT <- data.table(A = rep(1:3, each=4), B = rep(1:4, each=3),
-                 C = rep(1:2, 6), key = "A,B")
+键入?merge()查看函数帮助,data.table 包中和base R 中都有merge 函数,当第一个数据框是data.table格式时启用data.table::merge(). 
 
-uniqueN(DT, by = key(DT))
-uniqueN(DT)
+```{r eval=FALSE}
+?merge()
+merge(x, y, by = NULL, by.x = NULL, by.y = NULL, all = FALSE,
+all.x = all, all.y = all, sort = TRUE, suffixes = c(".x", ".y"), no.dups = TRUE,
+allow.cartesian=getOption("datatable.allow.cartesian"),  # default FALSE
+...)
 ```
 
+x.y为连个数据框,当两个数据框连接字段相同时,用by=c('','')连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.
 
 
 ## 高级函数
@@ -772,6 +799,58 @@ CJ(c(5, NA, 1), c(1, 3, 2))                 # sorted and keyed data.table
 
 SJ : Sorted Join. The same value as J() but additionally setkey() is called on all columns in the order they were passed to SJ. For efficiency, to invoke a binary merge rather than a repeated binary full search for each row of i.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 小技巧
+
+### 用{}抑制中间过程输出
+
+默认只返回未命名花括号中定义的最后一个对象。
+
+```{r}
+dt <- data.table(mtcars)
+dt[,{tmp1=mean(mpg); tmp2=mean(abs(mpg-tmp1)); tmp3=round(tmp2, 2)}, by=cyl]
+```
+
+在我不知道上述技巧之前，我可能的操作是
+
+```{r}
+dt <- data.table(mtcars)
+res <- dt[,tmp1:=mean(mpg), by=cyl][,.(tmp2=mean(abs(mpg-tmp1))), by=.(cyl)]
+res[,.(round(tmp2,2)),by=.(cyl)][]
+```
+
+
+保留中间变量
+
+```{r}
+dt[,{tmp1=mean(mpg); tmp2=mean(abs(mpg-tmp1)); tmp3=round(tmp2, 2); list(tmp2=tmp2, tmp3=tmp3)}, by=cyl][]
+```
+
+不写分号的方式
+
+```{r}
+dt[,{tmp1=mean(mpg)
+     tmp2=mean(abs(mpg-tmp1))
+     tmp3=round(tmp2, 2)
+     list(tmp2=tmp2, tmp3=tmp3)},
+   by=cyl][]
+```
 
 
 ## 运用
