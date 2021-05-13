@@ -1,11 +1,12 @@
 
 ```{r setup2, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 #  dplyr
 
-利用`R`语言完成与`Excel透视表`或`sql`语句的功能，将从条件筛选、排序、分组聚合等几个方面记录`R`的实现方式。
+`dplyr`包是`tidyverse`系列中的核心包之一,dplyr是**A Grammar of Data Manipulation **，即dplyr是数据处理的语法。
+
 
 与`sql`相比，用R实现相同功能的好处：
 
@@ -15,12 +16,17 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 
 - 该包就是从数据库相关操作中抽象而来，迁移成本低
 
-- 配合`dbplyr`包使用，大部分情况下可以扔掉`sql`语法，从而实现不同数据库间语法并不完全一致时，代码的重复使用性
+- 配合`dbplyr`包使用，大部分情况下可以扔掉`sql`语法，从而实现不同数据库间语法并不完全一致时，代码可重复使用
+
+
+本章节利用`R`语言完成与`Excel透视表`或`sql`语句的功能，将从行条件筛选、排序、分组聚合、表关联等方面记录`R`的实现方式。
 
 
 ## 前言
 
-`dplyr`包是`tidyverse`系列中的核心包之一,`dplyr`包提供了一组一致的动词来解决最常见的数据处理难题：
+- 介绍
+
+`dplyr`包提供一组动词来解决最常见的数据处理问题：
 
 - `mutate()` 添加新变量,现有变量的函数
 
@@ -32,8 +38,10 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 
 - `arrange()` 行排序
 
+以上动词都可以和`group_by()`结合，使我们可以按组执行以上任何操作。除了以上单个表操作的动词，dplyr中还有操作两表(表关联)的动词，可以通过`vignette("two-table")`查看学习。   
 
-## 安装
+
+- 安装
 
 ```{r eval=FALSE}
 ## 最简单是的方式就是安装tidyverse
@@ -45,22 +53,35 @@ install.packages('dplyr')
 ## 或者从github 安装开发版本
 ## install.packages("devtools")
 devtools::install_github("tidyverse/dplyr")
-
-# CTEST CODE
 ```
+
+- Cheat Sheet
+
+![dplyr-sheet](./picture/dplyr/data-transformation.pdf){width=100% height=400}
+
 
 
 ## 基础用法
 
+基础用法部分，我们将从行筛选，重命名、列位置调整、新增计算列、排序、分组聚合几个方面阐述`dplyr`功能。
+
+### 加载包
+
 ```{r}
-library(dplyr)
+#library(dplyr)
+# 禁掉提示
+library(dplyr,warn.conflicts = FALSE)
 ```
 
 ### filter
 
-- 单条件筛选
+`filter`动词顾名思义即筛选功能，按照一定条件筛选data.frame；与Excel中的筛选功能和`SQL`中`where`条件一致。
 
-类似Excel表格中筛选功能，筛选条件为` species == "Droid" `
+filter条件筛选中可以分为单条件筛选和多条件筛选，多条件中间用`,`分隔。
+
+- 单条件
+
+条件为` species == "Droid" `时，如下所示：
 
 ```{r}
 starwars %>% 
@@ -69,7 +90,7 @@ starwars %>%
 
 - 多条件
 
-多条件筛选时，用逗号隔开条件
+多条件筛选时，用英文逗号隔开多个条件。用“and”连接多个条件与用逗号隔开效果相同,“and”在R中用&表示。
 
 ```{r}
 starwars %>% 
@@ -90,29 +111,37 @@ starwars %>%
   filter(species %in%  c("Droid",'Clawdite'))
 ```
 
-- 逻辑值筛选
 
-注意`|` ,`&`,`!`等逻辑判断符号 , `|`为 或, `&` 为并、且条件，`!`为非,灵活运用可以方便做条件筛选
+- 逻辑关系筛选
+
+条件运算分为逻辑运算、关系运算。
+关系运算符 >、<、==、!=、>=、<=分别代表大于、小于、等于、不等于、大于等于、小于等于。
+
+逻辑运算符 &、|、！。 `|`为 或, `&` 为并、且条件，`!`为非。
 
 ```{r}
 library(nycflights13)
 filter(flights, !(arr_delay > 120 | dep_delay > 120))
 filter(flights, arr_delay <= 120, dep_delay <= 120)
+
 # same above
 filter(flights, arr_delay <= 120 & dep_delay <= 120)
+
 # %in% 的反面
 starwars %>% 
   filter(!species %in%  c("Droid",'Clawdite'))
 ```
 
+> !的运算级别相比 %in% 更高
+
 
 ### select 
 
-当数据集较大列数较多时，我们可能并不需要那么多列，可以通过`select()`筛选：
+当完整数据集列数较多时，我们某次分析可能并不需要那么多列，通过动词`select()`筛选列
 
 - 基础用法
 
-通过指定列名称筛选，顺便指定列之间顺序
+通过指定列名称筛选，并指定列之间顺序
 
 ```{r}
 starwars %>% 
@@ -121,7 +150,7 @@ starwars %>%
 
 - 列索引
 
-通过列名或数字向量索引，但是不建议用列索引，避免原始数据列顺序变化后导致报错。
+通过列名或数字向量索引，但是不建议用数字索引，避免原始数据列顺序变化后导致报错。
 
 ```{r}
 starwars %>% 
@@ -146,7 +175,7 @@ starwars %>% rename(home_world = homeworld,skincolor = skin_color)
 
 ### relocate
 
-更改列顺序，与使用`select()`指定列顺序相似
+更改列顺序，与使用`select()`动词指定列顺序相似
 
 ```{r}
 # sex:homeworld列在height列前面
@@ -155,6 +184,8 @@ starwars %>% relocate(sex:homeworld, .before = height)
 
 
 ### mutate
+
+动词`mutate`
 
 - 新增计算列
 
