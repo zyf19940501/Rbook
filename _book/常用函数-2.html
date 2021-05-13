@@ -400,26 +400,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="条件判断" class="section level3" number="8.7.1">
 <h3><span class="header-section-number">8.7.1</span> 条件判断</h3>
 <p>相比于<code>base::ifelse</code>,<code>if_else</code>更为严格，无论<code>TRUE</code>或<code>FALSE</code>输出类型一致，这样速度更快。与<code>data.table::fifelse()</code>功能相似。</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="常用函数-2.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(condition, true, false, <span class="at">missing =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="常用函数-2.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(condition, true, false, <span class="at">missing =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <p>与<code>ifelse</code>不同的是，<code>if_else</code>保留类型</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="常用函数-2.html#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb44-2"><a href="常用函数-2.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), x, <span class="fu">factor</span>(<span class="cn">NA</span>))</span>
-<span id="cb44-3"><a href="常用函数-2.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] NA NA NA NA  1 NA NA NA  2  3</span></span>
-<span id="cb44-4"><a href="常用函数-2.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), x, <span class="fu">factor</span>(<span class="cn">NA</span>))</span>
-<span id="cb44-5"><a href="常用函数-2.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; a    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; b    c   </span></span>
-<span id="cb44-6"><a href="常用函数-2.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: a b c d e</span></span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="常用函数-2.html#cb262-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb262-2"><a href="常用函数-2.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), x, <span class="fu">factor</span>(<span class="cn">NA</span>))</span>
+<span id="cb262-3"><a href="常用函数-2.html#cb262-3" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), x, <span class="fu">factor</span>(<span class="cn">NA</span>))</span></code></pre></div>
 </div>
 <div id="case_when" class="section level3" number="8.7.2">
 <h3><span class="header-section-number">8.7.2</span> case_when</h3>
 <p>当条件嵌套条件较多时，使用<code>case_when</code>,使代码可读并且不易出错。与sql 中的case when 等价。</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="常用函数-2.html#cb45-1" aria-hidden="true" tabindex="-1"></a>Dates <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-02&#39;</span>, <span class="st">&#39;2018-10-03&#39;</span>))</span>
-<span id="cb45-2"><a href="常用函数-2.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">case_when</span>(</span>
-<span id="cb45-3"><a href="常用函数-2.html#cb45-3" aria-hidden="true" tabindex="-1"></a>  Dates <span class="sc">==</span> <span class="st">&#39;2018-10-01&#39;</span> <span class="sc">~</span> Dates <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb45-4"><a href="常用函数-2.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  Dates <span class="sc">==</span> <span class="st">&#39;2018-10-02&#39;</span> <span class="sc">~</span> Dates <span class="sc">+</span> <span class="dv">1</span>,</span>
-<span id="cb45-5"><a href="常用函数-2.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  Dates <span class="sc">==</span> <span class="st">&#39;2018-10-03&#39;</span> <span class="sc">~</span> Dates <span class="sc">+</span> <span class="dv">2</span>,</span>
-<span id="cb45-6"><a href="常用函数-2.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> Dates</span>
-<span id="cb45-7"><a href="常用函数-2.html#cb45-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb45-8"><a href="常用函数-2.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2018-09-30&quot; &quot;2018-10-03&quot; &quot;2018-10-05&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="常用函数-2.html#cb263-1" aria-hidden="true" tabindex="-1"></a>Dates <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&#39;2018-10-01&#39;</span>, <span class="st">&#39;2018-10-02&#39;</span>, <span class="st">&#39;2018-10-03&#39;</span>))</span>
+<span id="cb263-2"><a href="常用函数-2.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">case_when</span>(</span>
+<span id="cb263-3"><a href="常用函数-2.html#cb263-3" aria-hidden="true" tabindex="-1"></a>  Dates <span class="sc">==</span> <span class="st">&#39;2018-10-01&#39;</span> <span class="sc">~</span> Dates <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb263-4"><a href="常用函数-2.html#cb263-4" aria-hidden="true" tabindex="-1"></a>  Dates <span class="sc">==</span> <span class="st">&#39;2018-10-02&#39;</span> <span class="sc">~</span> Dates <span class="sc">+</span> <span class="dv">1</span>,</span>
+<span id="cb263-5"><a href="常用函数-2.html#cb263-5" aria-hidden="true" tabindex="-1"></a>  Dates <span class="sc">==</span> <span class="st">&#39;2018-10-03&#39;</span> <span class="sc">~</span> Dates <span class="sc">+</span> <span class="dv">2</span>,</span>
+<span id="cb263-6"><a href="常用函数-2.html#cb263-6" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> Dates</span>
+<span id="cb263-7"><a href="常用函数-2.html#cb263-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="计数函数" class="section level3" number="8.7.3">
 <h3><span class="header-section-number">8.7.3</span> 计数函数</h3>
@@ -427,41 +423,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>计数</li>
 </ul>
 <p><code>count()</code>函数用来计数。下面两种表达方式等价。</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="常用函数-2.html#cb46-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(a, b)</span>
-<span id="cb46-2"><a href="常用函数-2.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb46-3"><a href="常用函数-2.html#cb46-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(a, b) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="常用函数-2.html#cb47-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">count</span>(species)</span>
-<span id="cb47-2"><a href="常用函数-2.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 38 x 2</span></span>
-<span id="cb47-3"><a href="常用函数-2.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   species      n</span></span>
-<span id="cb47-4"><a href="常用函数-2.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span></span>
-<span id="cb47-5"><a href="常用函数-2.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Aleena       1</span></span>
-<span id="cb47-6"><a href="常用函数-2.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Besalisk     1</span></span>
-<span id="cb47-7"><a href="常用函数-2.html#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Cerean       1</span></span>
-<span id="cb47-8"><a href="常用函数-2.html#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Chagrian     1</span></span>
-<span id="cb47-9"><a href="常用函数-2.html#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Clawdite     1</span></span>
-<span id="cb47-10"><a href="常用函数-2.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Droid        6</span></span>
-<span id="cb47-11"><a href="常用函数-2.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 32 more rows</span></span>
-<span id="cb47-12"><a href="常用函数-2.html#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co"># same above 等价</span></span>
-<span id="cb47-13"><a href="常用函数-2.html#cb47-13" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb47-14"><a href="常用函数-2.html#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 38 x 2</span></span>
-<span id="cb47-15"><a href="常用函数-2.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   species      n</span></span>
-<span id="cb47-16"><a href="常用函数-2.html#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span></span>
-<span id="cb47-17"><a href="常用函数-2.html#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Aleena       1</span></span>
-<span id="cb47-18"><a href="常用函数-2.html#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Besalisk     1</span></span>
-<span id="cb47-19"><a href="常用函数-2.html#cb47-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Cerean       1</span></span>
-<span id="cb47-20"><a href="常用函数-2.html#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Chagrian     1</span></span>
-<span id="cb47-21"><a href="常用函数-2.html#cb47-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Clawdite     1</span></span>
-<span id="cb47-22"><a href="常用函数-2.html#cb47-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Droid        6</span></span>
-<span id="cb47-23"><a href="常用函数-2.html#cb47-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 32 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="常用函数-2.html#cb264-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(a, b)</span>
+<span id="cb264-2"><a href="常用函数-2.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb264-3"><a href="常用函数-2.html#cb264-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(a, b) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="常用函数-2.html#cb265-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">count</span>(species)</span>
+<span id="cb265-2"><a href="常用函数-2.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same above 等价</span></span>
+<span id="cb265-3"><a href="常用函数-2.html#cb265-3" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
 <ul>
 <li>非重复计数</li>
 </ul>
 <p><code>n_distinct()</code>与<code>length(unique(x))</code>等价，但是更快更简洁。当我们需要给门店或订单之类数据需要去重计算时采用该函数。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="常用函数-2.html#cb48-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="fl">1e5</span>, <span class="at">rep =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb48-2"><a href="常用函数-2.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(x))</span>
-<span id="cb48-3"><a href="常用函数-2.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
-<span id="cb48-4"><a href="常用函数-2.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(x)</span>
-<span id="cb48-5"><a href="常用函数-2.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="常用函数-2.html#cb266-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="fl">1e5</span>, <span class="at">rep =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb266-2"><a href="常用函数-2.html#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(x))</span>
+<span id="cb266-3"><a href="常用函数-2.html#cb266-3" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(x)</span></code></pre></div>
 </div>
 <div id="排序函数-1" class="section level3" number="8.7.4">
 <h3><span class="header-section-number">8.7.4</span> 排序函数</h3>
@@ -472,34 +446,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>dense_rank(): 与min_rank()相似,但是没有间隔</li>
 <li>percent_rank():返回0，1之间，通过min_rank()返回值缩放至[0,1]</li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="常用函数-2.html#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="cn">NA</span>)</span>
-<span id="cb49-2"><a href="常用函数-2.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">row_number</span>(x)</span>
-<span id="cb49-3"><a href="常用函数-2.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  5  1  4  2  3 NA</span></span>
-<span id="cb49-4"><a href="常用函数-2.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">min_rank</span>(x)</span>
-<span id="cb49-5"><a href="常用函数-2.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  5  1  4  2  2 NA</span></span>
-<span id="cb49-6"><a href="常用函数-2.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dense_rank</span>(x)</span>
-<span id="cb49-7"><a href="常用函数-2.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  4  1  3  2  2 NA</span></span>
-<span id="cb49-8"><a href="常用函数-2.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="fu">percent_rank</span>(x)</span>
-<span id="cb49-9"><a href="常用函数-2.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 0.00 0.75 0.25 0.25   NA</span></span>
-<span id="cb49-10"><a href="常用函数-2.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cume_dist</span>(x)</span>
-<span id="cb49-11"><a href="常用函数-2.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.0 0.2 0.8 0.6 0.6  NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="常用函数-2.html#cb267-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="cn">NA</span>)</span>
+<span id="cb267-2"><a href="常用函数-2.html#cb267-2" aria-hidden="true" tabindex="-1"></a><span class="fu">row_number</span>(x)</span>
+<span id="cb267-3"><a href="常用函数-2.html#cb267-3" aria-hidden="true" tabindex="-1"></a><span class="fu">min_rank</span>(x)</span>
+<span id="cb267-4"><a href="常用函数-2.html#cb267-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dense_rank</span>(x)</span>
+<span id="cb267-5"><a href="常用函数-2.html#cb267-5" aria-hidden="true" tabindex="-1"></a><span class="fu">percent_rank</span>(x)</span>
+<span id="cb267-6"><a href="常用函数-2.html#cb267-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cume_dist</span>(x)</span></code></pre></div>
 </div>
 <div id="提取向量" class="section level3" number="8.7.5">
 <h3><span class="header-section-number">8.7.5</span> 提取向量</h3>
 <p>该系列函数是对<code>[[</code>的包装。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="常用函数-2.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, n, <span class="at">order_by =</span> <span class="cn">NULL</span>, <span class="at">default =</span> <span class="fu">default_missing</span>(x))</span>
-<span id="cb50-2"><a href="常用函数-2.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">first</span>(x, <span class="at">order_by =</span> <span class="cn">NULL</span>, <span class="at">default =</span> <span class="fu">default_missing</span>(x))</span>
-<span id="cb50-3"><a href="常用函数-2.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">last</span>(x, <span class="at">order_by =</span> <span class="cn">NULL</span>, <span class="at">default =</span> <span class="fu">default_missing</span>(x))</span></code></pre></div>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="常用函数-2.html#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb51-2"><a href="常用函数-2.html#cb51-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">1</span></span>
-<span id="cb51-3"><a href="常用函数-2.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">first</span>(x)</span>
-<span id="cb51-4"><a href="常用函数-2.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb51-5"><a href="常用函数-2.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">last</span>(y)</span>
-<span id="cb51-6"><a href="常用函数-2.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb51-7"><a href="常用函数-2.html#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, <span class="dv">1</span>)</span>
-<span id="cb51-8"><a href="常用函数-2.html#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb51-9"><a href="常用函数-2.html#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, <span class="dv">5</span>)</span>
-<span id="cb51-10"><a href="常用函数-2.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="常用函数-2.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, n, <span class="at">order_by =</span> <span class="cn">NULL</span>, <span class="at">default =</span> <span class="fu">default_missing</span>(x))</span>
+<span id="cb268-2"><a href="常用函数-2.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="fu">first</span>(x, <span class="at">order_by =</span> <span class="cn">NULL</span>, <span class="at">default =</span> <span class="fu">default_missing</span>(x))</span>
+<span id="cb268-3"><a href="常用函数-2.html#cb268-3" aria-hidden="true" tabindex="-1"></a><span class="fu">last</span>(x, <span class="at">order_by =</span> <span class="cn">NULL</span>, <span class="at">default =</span> <span class="fu">default_missing</span>(x))</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="常用函数-2.html#cb269-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb269-2"><a href="常用函数-2.html#cb269-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">1</span></span>
+<span id="cb269-3"><a href="常用函数-2.html#cb269-3" aria-hidden="true" tabindex="-1"></a><span class="fu">first</span>(x)</span>
+<span id="cb269-4"><a href="常用函数-2.html#cb269-4" aria-hidden="true" tabindex="-1"></a><span class="fu">last</span>(y)</span>
+<span id="cb269-5"><a href="常用函数-2.html#cb269-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, <span class="dv">1</span>)</span>
+<span id="cb269-6"><a href="常用函数-2.html#cb269-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, <span class="dv">5</span>)</span></code></pre></div>
 </div>
 <div id="group-系列" class="section level3" number="8.7.6">
 <h3><span class="header-section-number">8.7.6</span> group 系列</h3>
@@ -508,107 +473,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>group_by()</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="常用函数-2.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#group_by()不会改变数据框</span></span>
-<span id="cb52-2"><a href="常用函数-2.html#cb52-2" aria-hidden="true" tabindex="-1"></a>by_cyl <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl)</span>
-<span id="cb52-3"><a href="常用函数-2.html#cb52-3" aria-hidden="true" tabindex="-1"></a>by_cyl</span>
-<span id="cb52-4"><a href="常用函数-2.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 32 x 11</span></span>
-<span id="cb52-5"><a href="常用函数-2.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   cyl [3]</span></span>
-<span id="cb52-6"><a href="常用函数-2.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
-<span id="cb52-7"><a href="常用函数-2.html#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb52-8"><a href="常用函数-2.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  21       6   160   110  3.9   2.62  16.5     0     1     4     4</span></span>
-<span id="cb52-9"><a href="常用函数-2.html#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span></span>
-<span id="cb52-10"><a href="常用函数-2.html#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span></span>
-<span id="cb52-11"><a href="常用函数-2.html#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span></span>
-<span id="cb52-12"><a href="常用函数-2.html#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
-<span id="cb52-13"><a href="常用函数-2.html#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span></span>
-<span id="cb52-14"><a href="常用函数-2.html#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 26 more rows</span></span>
-<span id="cb52-15"><a href="常用函数-2.html#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="co"># It changes how it acts with the other dplyr verbs:</span></span>
-<span id="cb52-16"><a href="常用函数-2.html#cb52-16" aria-hidden="true" tabindex="-1"></a>by_cyl <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
-<span id="cb52-17"><a href="常用函数-2.html#cb52-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">disp =</span> <span class="fu">mean</span>(disp),</span>
-<span id="cb52-18"><a href="常用函数-2.html#cb52-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">hp =</span> <span class="fu">mean</span>(hp)</span>
-<span id="cb52-19"><a href="常用函数-2.html#cb52-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb52-20"><a href="常用函数-2.html#cb52-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
-<span id="cb52-21"><a href="常用函数-2.html#cb52-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     cyl  disp    hp</span></span>
-<span id="cb52-22"><a href="常用函数-2.html#cb52-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb52-23"><a href="常用函数-2.html#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     4  105.  82.6</span></span>
-<span id="cb52-24"><a href="常用函数-2.html#cb52-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     6  183. 122. </span></span>
-<span id="cb52-25"><a href="常用函数-2.html#cb52-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     8  353. 209.</span></span>
-<span id="cb52-26"><a href="常用函数-2.html#cb52-26" aria-hidden="true" tabindex="-1"></a><span class="co"># group_by中可以添加计算字段 即mutate操作</span></span>
-<span id="cb52-27"><a href="常用函数-2.html#cb52-27" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(<span class="at">vsam =</span> vs <span class="sc">+</span> am) <span class="sc">%&gt;%</span></span>
-<span id="cb52-28"><a href="常用函数-2.html#cb52-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span>
-<span id="cb52-29"><a href="常用函数-2.html#cb52-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;vsam&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="常用函数-2.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co">#group_by()不会改变数据框</span></span>
+<span id="cb270-2"><a href="常用函数-2.html#cb270-2" aria-hidden="true" tabindex="-1"></a>by_cyl <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl)</span>
+<span id="cb270-3"><a href="常用函数-2.html#cb270-3" aria-hidden="true" tabindex="-1"></a>by_cyl</span>
+<span id="cb270-4"><a href="常用函数-2.html#cb270-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It changes how it acts with the other dplyr verbs:</span></span>
+<span id="cb270-5"><a href="常用函数-2.html#cb270-5" aria-hidden="true" tabindex="-1"></a>by_cyl <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb270-6"><a href="常用函数-2.html#cb270-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">disp =</span> <span class="fu">mean</span>(disp),</span>
+<span id="cb270-7"><a href="常用函数-2.html#cb270-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hp =</span> <span class="fu">mean</span>(hp)</span>
+<span id="cb270-8"><a href="常用函数-2.html#cb270-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb270-9"><a href="常用函数-2.html#cb270-9" aria-hidden="true" tabindex="-1"></a><span class="co"># group_by中可以添加计算字段 即mutate操作</span></span>
+<span id="cb270-10"><a href="常用函数-2.html#cb270-10" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(<span class="at">vsam =</span> vs <span class="sc">+</span> am) <span class="sc">%&gt;%</span></span>
+<span id="cb270-11"><a href="常用函数-2.html#cb270-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span></code></pre></div>
 <ul>
 <li>group_map()</li>
 </ul>
 <p>group_map，group_modify,group_walk等三个函数是purrr类具有迭代风格的函数。简单关系数据库的数据清洗一般不涉及，常用在建模等方面。</p>
 <p>但是目前三个函数是实验性的，未来可能会发生变化。</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="常用函数-2.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return a list</span></span>
-<span id="cb53-2"><a href="常用函数-2.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 返回列表</span></span>
-<span id="cb53-3"><a href="常用函数-2.html#cb53-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb53-4"><a href="常用函数-2.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb53-5"><a href="常用函数-2.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">head</span>(.x, 2L))</span>
-<span id="cb53-6"><a href="常用函数-2.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb53-7"><a href="常用函数-2.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 10</span></span>
-<span id="cb53-8"><a href="常用函数-2.html#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
-<span id="cb53-9"><a href="常用函数-2.html#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb53-10"><a href="常用函数-2.html#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  22.8  108     93  3.85  2.32  18.6     1     1     4     1</span></span>
-<span id="cb53-11"><a href="常用函数-2.html#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  24.4  147.    62  3.69  3.19  20       1     0     4     2</span></span>
-<span id="cb53-12"><a href="常用函数-2.html#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb53-13"><a href="常用函数-2.html#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb53-14"><a href="常用函数-2.html#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 10</span></span>
-<span id="cb53-15"><a href="常用函数-2.html#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
-<span id="cb53-16"><a href="常用函数-2.html#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb53-17"><a href="常用函数-2.html#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    21   160   110   3.9  2.62  16.5     0     1     4     4</span></span>
-<span id="cb53-18"><a href="常用函数-2.html#cb53-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    21   160   110   3.9  2.88  17.0     0     1     4     4</span></span>
-<span id="cb53-19"><a href="常用函数-2.html#cb53-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb53-20"><a href="常用函数-2.html#cb53-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb53-21"><a href="常用函数-2.html#cb53-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 10</span></span>
-<span id="cb53-22"><a href="常用函数-2.html#cb53-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
-<span id="cb53-23"><a href="常用函数-2.html#cb53-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb53-24"><a href="常用函数-2.html#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  18.7   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
-<span id="cb53-25"><a href="常用函数-2.html#cb53-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  14.3   360   245  3.21  3.57  15.8     0     0     3     4</span></span></code></pre></div>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="常用函数-2.html#cb54-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb54-2"><a href="常用函数-2.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb54-3"><a href="常用函数-2.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_modify</span>(<span class="sc">~</span> {</span>
-<span id="cb54-4"><a href="常用函数-2.html#cb54-4" aria-hidden="true" tabindex="-1"></a>    .x <span class="sc">%&gt;%</span></span>
-<span id="cb54-5"><a href="常用函数-2.html#cb54-5" aria-hidden="true" tabindex="-1"></a>      purrr<span class="sc">::</span><span class="fu">map_dfc</span>(fivenum) <span class="sc">%&gt;%</span></span>
-<span id="cb54-6"><a href="常用函数-2.html#cb54-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">nms =</span> <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;median&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;max&quot;</span>))</span>
-<span id="cb54-7"><a href="常用函数-2.html#cb54-7" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb54-8"><a href="常用函数-2.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 x 6</span></span>
-<span id="cb54-9"><a href="常用函数-2.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   Species [3]</span></span>
-<span id="cb54-10"><a href="常用函数-2.html#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width nms   </span></span>
-<span id="cb54-11"><a href="常用函数-2.html#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt; </span></span>
-<span id="cb54-12"><a href="常用函数-2.html#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 setosa              4.3         2.3          1           0.1 min   </span></span>
-<span id="cb54-13"><a href="常用函数-2.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 setosa              4.8         3.2          1.4         0.2 Q1    </span></span>
-<span id="cb54-14"><a href="常用函数-2.html#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 setosa              5           3.4          1.5         0.2 median</span></span>
-<span id="cb54-15"><a href="常用函数-2.html#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 setosa              5.2         3.7          1.6         0.3 Q3    </span></span>
-<span id="cb54-16"><a href="常用函数-2.html#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 setosa              5.8         4.4          1.9         0.6 max   </span></span>
-<span id="cb54-17"><a href="常用函数-2.html#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 versicolor          4.9         2            3           1   min   </span></span>
-<span id="cb54-18"><a href="常用函数-2.html#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="常用函数-2.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group_walk</span></span>
-<span id="cb55-2"><a href="常用函数-2.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
-<span id="cb55-3"><a href="常用函数-2.html#cb55-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb55-4"><a href="常用函数-2.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb55-5"><a href="常用函数-2.html#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_walk</span>(<span class="sc">~</span> <span class="fu">write.csv</span>(.x, <span class="at">file =</span> <span class="fu">file.path</span>(temp, <span class="fu">paste0</span>(.y<span class="sc">$</span>Species, <span class="st">&quot;.csv&quot;</span>))))</span>
-<span id="cb55-6"><a href="常用函数-2.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(temp, <span class="at">pattern =</span> <span class="st">&quot;csv$&quot;</span>)</span>
-<span id="cb55-7"><a href="常用函数-2.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(temp, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="常用函数-2.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return a list</span></span>
+<span id="cb271-2"><a href="常用函数-2.html#cb271-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 返回列表</span></span>
+<span id="cb271-3"><a href="常用函数-2.html#cb271-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb271-4"><a href="常用函数-2.html#cb271-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb271-5"><a href="常用函数-2.html#cb271-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">head</span>(.x, 2L))</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="常用函数-2.html#cb272-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb272-2"><a href="常用函数-2.html#cb272-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb272-3"><a href="常用函数-2.html#cb272-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_modify</span>(<span class="sc">~</span> {</span>
+<span id="cb272-4"><a href="常用函数-2.html#cb272-4" aria-hidden="true" tabindex="-1"></a>    .x <span class="sc">%&gt;%</span></span>
+<span id="cb272-5"><a href="常用函数-2.html#cb272-5" aria-hidden="true" tabindex="-1"></a>      purrr<span class="sc">::</span><span class="fu">map_dfc</span>(fivenum) <span class="sc">%&gt;%</span></span>
+<span id="cb272-6"><a href="常用函数-2.html#cb272-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">nms =</span> <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;median&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;max&quot;</span>))</span>
+<span id="cb272-7"><a href="常用函数-2.html#cb272-7" aria-hidden="true" tabindex="-1"></a>  })</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="常用函数-2.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group_walk</span></span>
+<span id="cb273-2"><a href="常用函数-2.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
+<span id="cb273-3"><a href="常用函数-2.html#cb273-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb273-4"><a href="常用函数-2.html#cb273-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb273-5"><a href="常用函数-2.html#cb273-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_walk</span>(<span class="sc">~</span> <span class="fu">write.csv</span>(.x, <span class="at">file =</span> <span class="fu">file.path</span>(temp, <span class="fu">paste0</span>(.y<span class="sc">$</span>Species, <span class="st">&quot;.csv&quot;</span>))))</span>
+<span id="cb273-6"><a href="常用函数-2.html#cb273-6" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(temp, <span class="at">pattern =</span> <span class="st">&quot;csv$&quot;</span>)</span>
+<span id="cb273-7"><a href="常用函数-2.html#cb273-7" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(temp, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ul>
 <li>group_cols()</li>
 </ul>
 <p>选择分组变量</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="常用函数-2.html#cb56-1" aria-hidden="true" tabindex="-1"></a>gdf <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species)</span>
-<span id="cb56-2"><a href="常用函数-2.html#cb56-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">group_cols</span>())</span>
-<span id="cb56-3"><a href="常用函数-2.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 150 x 1</span></span>
-<span id="cb56-4"><a href="常用函数-2.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   Species [3]</span></span>
-<span id="cb56-5"><a href="常用函数-2.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Species</span></span>
-<span id="cb56-6"><a href="常用函数-2.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;  </span></span>
-<span id="cb56-7"><a href="常用函数-2.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 setosa </span></span>
-<span id="cb56-8"><a href="常用函数-2.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 setosa </span></span>
-<span id="cb56-9"><a href="常用函数-2.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 setosa </span></span>
-<span id="cb56-10"><a href="常用函数-2.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 setosa </span></span>
-<span id="cb56-11"><a href="常用函数-2.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 setosa </span></span>
-<span id="cb56-12"><a href="常用函数-2.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 setosa </span></span>
-<span id="cb56-13"><a href="常用函数-2.html#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 144 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="常用函数-2.html#cb274-1" aria-hidden="true" tabindex="-1"></a>gdf <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species)</span>
+<span id="cb274-2"><a href="常用函数-2.html#cb274-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">group_cols</span>())</span></code></pre></div>
 </div>
 <div id="其它函数" class="section level3" number="8.7.7">
 <h3><span class="header-section-number">8.7.7</span> 其它函数</h3>
@@ -617,27 +522,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>cummean cumsum cumall cumany</p></li>
 </ul>
 <p>累计系列函数</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="常用函数-2.html#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb57-2"><a href="常用函数-2.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cummean</span>(x)</span>
-<span id="cb57-3"><a href="常用函数-2.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 2.00 3.00 2.75 2.60</span></span>
-<span id="cb57-4"><a href="常用函数-2.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x) <span class="sc">/</span> <span class="fu">seq_along</span>(x)</span>
-<span id="cb57-5"><a href="常用函数-2.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 2.00 3.00 2.75 2.60</span></span>
-<span id="cb57-6"><a href="常用函数-2.html#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-7"><a href="常用函数-2.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cumall</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>)</span>
-<span id="cb57-8"><a href="常用函数-2.html#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE FALSE</span></span>
-<span id="cb57-9"><a href="常用函数-2.html#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cumany</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span>
-<span id="cb57-10"><a href="常用函数-2.html#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="常用函数-2.html#cb275-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb275-2"><a href="常用函数-2.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cummean</span>(x)</span>
+<span id="cb275-3"><a href="常用函数-2.html#cb275-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x) <span class="sc">/</span> <span class="fu">seq_along</span>(x)</span>
+<span id="cb275-4"><a href="常用函数-2.html#cb275-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb275-5"><a href="常用函数-2.html#cb275-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cumall</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>)</span>
+<span id="cb275-6"><a href="常用函数-2.html#cb275-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cumany</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span></code></pre></div>
 <ul>
 <li>distinct</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="常用函数-2.html#cb58-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb58-2"><a href="常用函数-2.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">sample</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">rep =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb58-3"><a href="常用函数-2.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">sample</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">rep =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-4"><a href="常用函数-2.html#cb58-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb58-5"><a href="常用函数-2.html#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-6"><a href="常用函数-2.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, x)</span>
-<span id="cb58-7"><a href="常用函数-2.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, x, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-8"><a href="常用函数-2.html#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, <span class="at">diff =</span> <span class="fu">abs</span>(x <span class="sc">-</span> y))</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="常用函数-2.html#cb276-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb276-2"><a href="常用函数-2.html#cb276-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">sample</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">rep =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb276-3"><a href="常用函数-2.html#cb276-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">sample</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">rep =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb276-4"><a href="常用函数-2.html#cb276-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb276-5"><a href="常用函数-2.html#cb276-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb276-6"><a href="常用函数-2.html#cb276-6" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, x)</span>
+<span id="cb276-7"><a href="常用函数-2.html#cb276-7" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, x, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb276-8"><a href="常用函数-2.html#cb276-8" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, <span class="at">diff =</span> <span class="fu">abs</span>(x <span class="sc">-</span> y))</span></code></pre></div>
 </div>
 </div>
             </section>

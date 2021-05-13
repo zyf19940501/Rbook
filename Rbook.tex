@@ -117,7 +117,7 @@
 
 \title{R学习笔记}
 \author{Yufei Zhong}
-\date{2021-05-12}
+\date{2021-05-13}
 
 \begin{document}
 \maketitle
@@ -145,7 +145,7 @@ Email: \href{mailto:598253220@qq.com}{\nolinkurl{598253220@qq.com}}
 \begin{Highlighting}[]
 \CommentTok{\#查看版本信息}
 \FunctionTok{sessionInfo}\NormalTok{()}
-\CommentTok{\#\textgreater{} R version 4.0.3 (2020{-}10{-}10)}
+\CommentTok{\#\textgreater{} R version 4.0.5 (2021{-}03{-}31)}
 \CommentTok{\#\textgreater{} Platform: x86\_64{-}w64{-}mingw32/x64 (64{-}bit)}
 \CommentTok{\#\textgreater{} Running under: Windows 10 x64 (build 19041)}
 \CommentTok{\#\textgreater{} }
@@ -162,10 +162,10 @@ Email: \href{mailto:598253220@qq.com}{\nolinkurl{598253220@qq.com}}
 \CommentTok{\#\textgreater{} [1] stats     graphics  grDevices utils     datasets  methods   base     }
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} loaded via a namespace (and not attached):}
-\CommentTok{\#\textgreater{}  [1] compiler\_4.0.3    magrittr\_2.0.1    bookdown\_0.22     htmltools\_0.5.1.1}
-\CommentTok{\#\textgreater{}  [5] tools\_4.0.3       rstudioapi\_0.13   yaml\_2.2.1        stringi\_1.5.3    }
-\CommentTok{\#\textgreater{}  [9] rmarkdown\_2.7     knitr\_1.32        stringr\_1.4.0     digest\_0.6.27    }
-\CommentTok{\#\textgreater{} [13] xfun\_0.22         rlang\_0.4.10      evaluate\_0.14}
+\CommentTok{\#\textgreater{}  [1] compiler\_4.0.5    magrittr\_2.0.1    bookdown\_0.22     htmltools\_0.5.1.1}
+\CommentTok{\#\textgreater{}  [5] tools\_4.0.5       rstudioapi\_0.13   yaml\_2.2.1        stringi\_1.6.1    }
+\CommentTok{\#\textgreater{}  [9] rmarkdown\_2.8     knitr\_1.33        stringr\_1.4.0     digest\_0.6.27    }
+\CommentTok{\#\textgreater{} [13] xfun\_0.22         rlang\_0.4.11      evaluate\_0.14}
 \end{Highlighting}
 \end{Shaded}
 
@@ -532,140 +532,6 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 \hypertarget{ux5e38ux89c4ux64cdux4f5c}{%
 \section{常规操作}\label{ux5e38ux89c4ux64cdux4f5c}}
 
-\hypertarget{ux65b0ux589eux66f4ux65b0ux5217}{%
-\subsection{新增更新列}\label{ux65b0ux589eux66f4ux65b0ux5217}}
-
-新增或删除或更新列是我们数据清洗过程中的常规操作，\texttt{data.table中}实现该类功能是通过\texttt{:=}符号实现。
-
-\begin{itemize}
-\tightlist
-\item
-  新增
-\end{itemize}
-
-如下所示:新增addcol列，最后的{[}{]}是为了显示新增列的数据框,可不增加。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#data.table()函数创建data.table数据框}
-\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{col1=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\AttributeTok{col2=}\NormalTok{letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{],}\AttributeTok{col3=}\NormalTok{LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{],}\AttributeTok{col4=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
-\CommentTok{\# 新增列 :=}
-\NormalTok{dt[,addcol}\SpecialCharTok{:}\ErrorTok{=}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}新列\textquotesingle{}}\NormalTok{,}\DecValTok{10}\NormalTok{)][] }\CommentTok{\#最后的[]是为了显示新增列的数据框,可不增加}
-\CommentTok{\#\textgreater{}     col1 col2 col3 col4 addcol}
-\CommentTok{\#\textgreater{}  1:    1    a    A    1   新列}
-\CommentTok{\#\textgreater{}  2:    2    b    B    2   新列}
-\CommentTok{\#\textgreater{}  3:    3    c    C    3   新列}
-\CommentTok{\#\textgreater{}  4:    4    d    D    4   新列}
-\CommentTok{\#\textgreater{}  5:    5    e    E    5   新列}
-\CommentTok{\#\textgreater{}  6:    6    f    F    6   新列}
-\CommentTok{\#\textgreater{}  7:    7    g    G    7   新列}
-\CommentTok{\#\textgreater{}  8:    8    h    H    8   新列}
-\CommentTok{\#\textgreater{}  9:    9    i    I    9   新列}
-\CommentTok{\#\textgreater{} 10:   10    j    J   10   新列}
-\CommentTok{\#dt[,addcol:=rep(\textquotesingle{}新列\textquotesingle{},10)] 不会显示返回结果,加上[]会显示返回}
-\CommentTok{\# 新增多列}
-\NormalTok{dt[,}\StringTok{\textasciigrave{}}\AttributeTok{:=}\StringTok{\textasciigrave{}}\NormalTok{(}\AttributeTok{newcol1=}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}newcol1\textquotesingle{}}\NormalTok{,}\DecValTok{10}\NormalTok{),}\AttributeTok{newcol2=}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}newcol2\textquotesingle{}}\NormalTok{,}\DecValTok{10}\NormalTok{))][]}
-\CommentTok{\#\textgreater{}     col1 col2 col3 col4 addcol newcol1 newcol2}
-\CommentTok{\#\textgreater{}  1:    1    a    A    1   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  2:    2    b    B    2   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  3:    3    c    C    3   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  4:    4    d    D    4   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  5:    5    e    E    5   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  6:    6    f    F    6   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  7:    7    g    G    7   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  8:    8    h    H    8   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  9:    9    i    I    9   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{} 10:   10    j    J   10   新列 newcol1 newcol2}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
-\tightlist
-\item
-  删除
-\end{itemize}
-
-删除列即将列赋值NULL即可
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# 删除列}
-\NormalTok{dt[,col1}\SpecialCharTok{:}\ErrorTok{=}\ConstantTok{NULL}\NormalTok{][]}
-\CommentTok{\#\textgreater{}     col2 col3 col4 addcol newcol1 newcol2}
-\CommentTok{\#\textgreater{}  1:    a    A    1   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  2:    b    B    2   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  3:    c    C    3   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  4:    d    D    4   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  5:    e    E    5   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  6:    f    F    6   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  7:    g    G    7   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  8:    h    H    8   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{}  9:    i    I    9   新列 newcol1 newcol2}
-\CommentTok{\#\textgreater{} 10:    j    J   10   新列 newcol1 newcol2}
-\CommentTok{\# 删除多列}
-\NormalTok{dt[,}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}newcol1\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}newcol2\textquotesingle{}}\NormalTok{)}\SpecialCharTok{:}\ErrorTok{=}\ConstantTok{NULL}\NormalTok{][]}
-\CommentTok{\#\textgreater{}     col2 col3 col4 addcol}
-\CommentTok{\#\textgreater{}  1:    a    A    1   新列}
-\CommentTok{\#\textgreater{}  2:    b    B    2   新列}
-\CommentTok{\#\textgreater{}  3:    c    C    3   新列}
-\CommentTok{\#\textgreater{}  4:    d    D    4   新列}
-\CommentTok{\#\textgreater{}  5:    e    E    5   新列}
-\CommentTok{\#\textgreater{}  6:    f    F    6   新列}
-\CommentTok{\#\textgreater{}  7:    g    G    7   新列}
-\CommentTok{\#\textgreater{}  8:    h    H    8   新列}
-\CommentTok{\#\textgreater{}  9:    i    I    9   新列}
-\CommentTok{\#\textgreater{} 10:    j    J   10   新列}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
-\tightlist
-\item
-  更新
-\end{itemize}
-
-更新即重新赋值，将现有列参与计算等于是重新赋值，可以看成是更新列。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# 更新列}
-\NormalTok{dt[,col1}\SpecialCharTok{:}\ErrorTok{=}\DecValTok{11}\SpecialCharTok{:}\DecValTok{20}\NormalTok{][]}
-\CommentTok{\#\textgreater{}     col2 col3 col4 addcol col1}
-\CommentTok{\#\textgreater{}  1:    a    A    1   新列   11}
-\CommentTok{\#\textgreater{}  2:    b    B    2   新列   12}
-\CommentTok{\#\textgreater{}  3:    c    C    3   新列   13}
-\CommentTok{\#\textgreater{}  4:    d    D    4   新列   14}
-\CommentTok{\#\textgreater{}  5:    e    E    5   新列   15}
-\CommentTok{\#\textgreater{}  6:    f    F    6   新列   16}
-\CommentTok{\#\textgreater{}  7:    g    G    7   新列   17}
-\CommentTok{\#\textgreater{}  8:    h    H    8   新列   18}
-\CommentTok{\#\textgreater{}  9:    i    I    9   新列   19}
-\CommentTok{\#\textgreater{} 10:    j    J   10   新列   20}
-\CommentTok{\# not run }
-\CommentTok{\# 两列间计算 也可以理解为更新}
-\NormalTok{dt[,newcol}\SpecialCharTok{:}\ErrorTok{=}\NormalTok{col1}\SpecialCharTok{/}\NormalTok{col4]}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{ux6392ux5e8f}{%
-\subsection{排序}\label{ux6392ux5e8f}}
-
-当我们清洗数据时，我们需要将数据框排序，我们可以使用\texttt{setorder}或\texttt{setorderv}函数实现排序。函数是\texttt{data.table}包的函数，比base R 中的\texttt{order}函数要节省内存。
-注意：按照函数文档说法：Note that queries like x{[}order(.){]} are optimised internally to use data.table's fast order。即x{[}order(.){]}这样的用法会被优化为data.table的排序方法。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(45L)}
-\NormalTok{DT }\OtherTok{=} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{A=}\FunctionTok{sample}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{10}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{),}
-         \AttributeTok{B=}\FunctionTok{sample}\NormalTok{(letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{], }\DecValTok{10}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{), }\AttributeTok{C=}\FunctionTok{sample}\NormalTok{(}\DecValTok{10}\NormalTok{))}
-
-\FunctionTok{setorder}\NormalTok{(DT, A, }\SpecialCharTok{{-}}\NormalTok{B) }\CommentTok{\#将DT按照A、B排序 A 升序,{-}B降序}
-
-\CommentTok{\# 和上面同样的效果 但是函数变成 setorderv}
-\FunctionTok{setorderv}\NormalTok{(DT, }\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
 \hypertarget{ux884cux7b5bux9009}{%
 \subsection{行筛选}\label{ux884cux7b5bux9009}}
 
@@ -753,10 +619,192 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{ux65b0ux589eux66f4ux65b0ux5217}{%
+\subsection{新增更新列}\label{ux65b0ux589eux66f4ux65b0ux5217}}
+
+新增或删除或更新列是我们数据清洗过程中的常规操作，\texttt{data.table中}实现该类功能是通过\texttt{:=}符号实现。
+
+\begin{itemize}
+\tightlist
+\item
+  选择列
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{col1=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\AttributeTok{col2=}\NormalTok{letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{],}\AttributeTok{col3=}\NormalTok{LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{],}\AttributeTok{col4=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\NormalTok{dt[,.(col1,col2)]}
+\CommentTok{\#\textgreater{}     col1 col2}
+\CommentTok{\#\textgreater{}  1:    1    a}
+\CommentTok{\#\textgreater{}  2:    2    b}
+\CommentTok{\#\textgreater{}  3:    3    c}
+\CommentTok{\#\textgreater{}  4:    4    d}
+\CommentTok{\#\textgreater{}  5:    5    e}
+\CommentTok{\#\textgreater{}  6:    6    f}
+\CommentTok{\#\textgreater{}  7:    7    g}
+\CommentTok{\#\textgreater{}  8:    8    h}
+\CommentTok{\#\textgreater{}  9:    9    i}
+\CommentTok{\#\textgreater{} 10:   10    j}
+\CommentTok{\# same above}
+\NormalTok{dt[,}\FunctionTok{list}\NormalTok{(col1,col2)]}
+\CommentTok{\#\textgreater{}     col1 col2}
+\CommentTok{\#\textgreater{}  1:    1    a}
+\CommentTok{\#\textgreater{}  2:    2    b}
+\CommentTok{\#\textgreater{}  3:    3    c}
+\CommentTok{\#\textgreater{}  4:    4    d}
+\CommentTok{\#\textgreater{}  5:    5    e}
+\CommentTok{\#\textgreater{}  6:    6    f}
+\CommentTok{\#\textgreater{}  7:    7    g}
+\CommentTok{\#\textgreater{}  8:    8    h}
+\CommentTok{\#\textgreater{}  9:    9    i}
+\CommentTok{\#\textgreater{} 10:   10    j}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  新增列
+\end{itemize}
+
+如下所示:新增addcol列，最后的{[}{]}是为了显示新增列的数据框,可不增加。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#data.table()函数创建data.table数据框}
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{col1=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\AttributeTok{col2=}\NormalTok{letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{],}\AttributeTok{col3=}\NormalTok{LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{],}\AttributeTok{col4=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{\# 新增列 :=}
+\NormalTok{dt[,addcol}\SpecialCharTok{:}\ErrorTok{=}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}新列\textquotesingle{}}\NormalTok{,}\DecValTok{10}\NormalTok{)][] }\CommentTok{\#最后的[]是为了显示新增列的数据框,可不增加}
+\CommentTok{\#\textgreater{}     col1 col2 col3 col4 addcol}
+\CommentTok{\#\textgreater{}  1:    1    a    A    1   新列}
+\CommentTok{\#\textgreater{}  2:    2    b    B    2   新列}
+\CommentTok{\#\textgreater{}  3:    3    c    C    3   新列}
+\CommentTok{\#\textgreater{}  4:    4    d    D    4   新列}
+\CommentTok{\#\textgreater{}  5:    5    e    E    5   新列}
+\CommentTok{\#\textgreater{}  6:    6    f    F    6   新列}
+\CommentTok{\#\textgreater{}  7:    7    g    G    7   新列}
+\CommentTok{\#\textgreater{}  8:    8    h    H    8   新列}
+\CommentTok{\#\textgreater{}  9:    9    i    I    9   新列}
+\CommentTok{\#\textgreater{} 10:   10    j    J   10   新列}
+\CommentTok{\#dt[,addcol:=rep(\textquotesingle{}新列\textquotesingle{},10)] 不会显示返回结果,加上[]会显示返回}
+\CommentTok{\# 新增多列}
+\NormalTok{dt[,}\StringTok{\textasciigrave{}}\AttributeTok{:=}\StringTok{\textasciigrave{}}\NormalTok{(}\AttributeTok{newcol1=}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}newcol1\textquotesingle{}}\NormalTok{,}\DecValTok{10}\NormalTok{),}\AttributeTok{newcol2=}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}newcol2\textquotesingle{}}\NormalTok{,}\DecValTok{10}\NormalTok{))][]}
+\CommentTok{\#\textgreater{}     col1 col2 col3 col4 addcol newcol1 newcol2}
+\CommentTok{\#\textgreater{}  1:    1    a    A    1   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  2:    2    b    B    2   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  3:    3    c    C    3   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  4:    4    d    D    4   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  5:    5    e    E    5   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  6:    6    f    F    6   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  7:    7    g    G    7   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  8:    8    h    H    8   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  9:    9    i    I    9   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{} 10:   10    j    J   10   新列 newcol1 newcol2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  删除列
+\end{itemize}
+
+删除列即将列赋值NULL即可
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 删除列}
+\NormalTok{dt[,col1}\SpecialCharTok{:}\ErrorTok{=}\ConstantTok{NULL}\NormalTok{][]}
+\CommentTok{\#\textgreater{}     col2 col3 col4 addcol newcol1 newcol2}
+\CommentTok{\#\textgreater{}  1:    a    A    1   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  2:    b    B    2   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  3:    c    C    3   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  4:    d    D    4   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  5:    e    E    5   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  6:    f    F    6   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  7:    g    G    7   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  8:    h    H    8   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{}  9:    i    I    9   新列 newcol1 newcol2}
+\CommentTok{\#\textgreater{} 10:    j    J   10   新列 newcol1 newcol2}
+\CommentTok{\# 删除多列}
+\NormalTok{dt[,}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}newcol1\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}newcol2\textquotesingle{}}\NormalTok{)}\SpecialCharTok{:}\ErrorTok{=}\ConstantTok{NULL}\NormalTok{][]}
+\CommentTok{\#\textgreater{}     col2 col3 col4 addcol}
+\CommentTok{\#\textgreater{}  1:    a    A    1   新列}
+\CommentTok{\#\textgreater{}  2:    b    B    2   新列}
+\CommentTok{\#\textgreater{}  3:    c    C    3   新列}
+\CommentTok{\#\textgreater{}  4:    d    D    4   新列}
+\CommentTok{\#\textgreater{}  5:    e    E    5   新列}
+\CommentTok{\#\textgreater{}  6:    f    F    6   新列}
+\CommentTok{\#\textgreater{}  7:    g    G    7   新列}
+\CommentTok{\#\textgreater{}  8:    h    H    8   新列}
+\CommentTok{\#\textgreater{}  9:    i    I    9   新列}
+\CommentTok{\#\textgreater{} 10:    j    J   10   新列}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  更新
+\end{itemize}
+
+更新即重新赋值，将现有列参与计算等于是重新赋值，可以看成是更新列。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 更新列}
+\NormalTok{dt[,col1}\SpecialCharTok{:}\ErrorTok{=}\DecValTok{11}\SpecialCharTok{:}\DecValTok{20}\NormalTok{][]}
+\CommentTok{\#\textgreater{}     col2 col3 col4 addcol col1}
+\CommentTok{\#\textgreater{}  1:    a    A    1   新列   11}
+\CommentTok{\#\textgreater{}  2:    b    B    2   新列   12}
+\CommentTok{\#\textgreater{}  3:    c    C    3   新列   13}
+\CommentTok{\#\textgreater{}  4:    d    D    4   新列   14}
+\CommentTok{\#\textgreater{}  5:    e    E    5   新列   15}
+\CommentTok{\#\textgreater{}  6:    f    F    6   新列   16}
+\CommentTok{\#\textgreater{}  7:    g    G    7   新列   17}
+\CommentTok{\#\textgreater{}  8:    h    H    8   新列   18}
+\CommentTok{\#\textgreater{}  9:    i    I    9   新列   19}
+\CommentTok{\#\textgreater{} 10:    j    J   10   新列   20}
+\CommentTok{\# not run }
+\CommentTok{\# 两列间计算 也可以理解为更新}
+\NormalTok{dt[,newcol}\SpecialCharTok{:}\ErrorTok{=}\NormalTok{col1}\SpecialCharTok{/}\NormalTok{col4]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Note: DT{[}a \textgreater{} 4, b := c{]} is different from DT{[}a \textgreater{} 4{]}{[}, b := c{]}
+\end{quote}
+
+\hypertarget{ux6392ux5e8f}{%
+\subsection{排序}\label{ux6392ux5e8f}}
+
+当我们清洗数据时，我们需要将数据框排序，我们可以使用\texttt{setorder}或\texttt{setorderv}函数实现排序。函数是\texttt{data.table}包的函数，比base R 中的\texttt{order}函数要节省内存。
+注意：按照函数文档说法：Note that queries like x{[}order(.){]} are optimised internally to use data.table's fast order。即x{[}order(.){]}这样的用法会被优化为data.table的排序方法。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(45L)}
+\NormalTok{DT }\OtherTok{=} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{A=}\FunctionTok{sample}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{10}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{),}
+         \AttributeTok{B=}\FunctionTok{sample}\NormalTok{(letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{], }\DecValTok{10}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{), }\AttributeTok{C=}\FunctionTok{sample}\NormalTok{(}\DecValTok{10}\NormalTok{))}
+
+\FunctionTok{setorder}\NormalTok{(DT, A, }\SpecialCharTok{{-}}\NormalTok{B) }\CommentTok{\#将DT按照A、B排序 A 升序,{-}B降序}
+
+\CommentTok{\# 和上面同样的效果 但是函数变成 setorderv}
+\FunctionTok{setorderv}\NormalTok{(DT, }\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5e38ux7528ux51fdux6570}{%
+\section{常用函数}\label{ux5e38ux7528ux51fdux6570}}
+
+常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。
+
 \hypertarget{ux7279ux6b8aux7b26ux53f7}{%
 \subsection{特殊符号}\label{ux7279ux6b8aux7b26ux53f7}}
 
-.SD,.BY,.N,.I,.NGRP和.GRP,.SDcols等,只能用在 j 的位置,.N 可以用在 i 的位置.
+.SD,.BY,.N,.I,.NGRP和.GRP,.SDcols等,只能用在 j 的位置,.N 可以用在 i 的位置。
+
+如果想要记住用法需要自己多尝试练习，对于我来说.N使用较多。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -818,13 +866,8 @@ setcolorder函数可以调整列的顺序，将常用的字段信息排在前面
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux5e38ux7528ux51fdux6570}{%
-\section{常用函数}\label{ux5e38ux7528ux51fdux6570}}
-
-常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。
-
-\hypertarget{ux6392ux5e8fux51fdux6570-frank}{%
-\subsection{排序函数 frank}\label{ux6392ux5e8fux51fdux6570-frank}}
+\hypertarget{ux6392ux5e8fux51fdux6570}{%
+\subsection{排序函数}\label{ux6392ux5e8fux51fdux6570}}
 
 \texttt{frank}和\texttt{frankv}函数参数如下：
 
@@ -941,6 +984,27 @@ na.last参数等于TRUE时，缺失值被排最后；如果等于FALSE,放在前
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{ux975eux91cdux590dux8ba1ux6570}{%
+\subsection{非重复计数}\label{ux975eux91cdux590dux8ba1ux6570}}
+
+\texttt{uniqueN}相当于\texttt{length(unique(x))},但是计算更快，内存效率更高。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{50}\NormalTok{,}\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{uniqueN}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] 10}
+
+\NormalTok{DT }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{A =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{each=}\DecValTok{4}\NormalTok{), }\AttributeTok{B =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{each=}\DecValTok{3}\NormalTok{),}
+                 \AttributeTok{C =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{key =} \StringTok{"A,B"}\NormalTok{)}
+
+\FunctionTok{uniqueN}\NormalTok{(DT, }\AttributeTok{by =} \FunctionTok{key}\NormalTok{(DT))}
+\CommentTok{\#\textgreater{} [1] 6}
+\FunctionTok{uniqueN}\NormalTok{(DT)}
+\CommentTok{\#\textgreater{} [1] 10}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{ux5224ux65adux51fdux6570}{%
 \subsection{判断函数}\label{ux5224ux65adux51fdux6570}}
 
@@ -1021,25 +1085,6 @@ fifelse()类似\texttt{dplyr::if\_else()}函数,相比base::ifelse() 更快。
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux8fdeux63a5}{%
-\subsection{连接}\label{ux8fdeux63a5}}
-
-两个数据框之间左连,右连等操作,类似数据库中的left\_join right\_join,inner\_join 等函数.
-
-键入?merge()查看函数帮助,data.table 包中和base R 中都有merge 函数,当第一个数据框是data.table格式时启用data.table::merge().
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{?}\FunctionTok{merge}\NormalTok{()}
-\FunctionTok{merge}\NormalTok{(x, y, }\AttributeTok{by =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{by.x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{by.y =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{all =} \ConstantTok{FALSE}\NormalTok{,}
-\AttributeTok{all.x =}\NormalTok{ all, }\AttributeTok{all.y =}\NormalTok{ all, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{suffixes =} \FunctionTok{c}\NormalTok{(}\StringTok{".x"}\NormalTok{, }\StringTok{".y"}\NormalTok{), }\AttributeTok{no.dups =} \ConstantTok{TRUE}\NormalTok{,}
-\AttributeTok{allow.cartesian=}\FunctionTok{getOption}\NormalTok{(}\StringTok{"datatable.allow.cartesian"}\NormalTok{),  }\CommentTok{\# default FALSE}
-\NormalTok{...)}
-\end{Highlighting}
-\end{Shaded}
-
-x.y为连个数据框,当两个数据框连接字段相同时,用by=c('`,'')连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.
-
 \hypertarget{ux957fux5bbdux8f6cux6362}{%
 \subsection{长宽转换}\label{ux957fux5bbdux8f6cux6362}}
 
@@ -1071,10 +1116,10 @@ x.y为连个数据框,当两个数据框连接字段相同时,用by=c('`,'')连�
 \NormalTok{              销售额}\OtherTok{=}\FunctionTok{sample}\NormalTok{(}\DecValTok{100}\SpecialCharTok{:}\DecValTok{200}\NormalTok{,}\DecValTok{4000}\NormalTok{,}\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{))}
 \FunctionTok{dcast}\NormalTok{(dt,分公司}\SpecialCharTok{\textasciitilde{}}\NormalTok{季度,}\AttributeTok{value.var =} \StringTok{"销售额"}\NormalTok{,}\AttributeTok{fun.aggregate =}\NormalTok{ sum)}
 \CommentTok{\#\textgreater{}    分公司 一季度 三季度 二季度 四季度}
-\CommentTok{\#\textgreater{} 1:   华东 149135      0      0      0}
-\CommentTok{\#\textgreater{} 2:   华北      0      0      0 150585}
-\CommentTok{\#\textgreater{} 3:   华南      0      0 149451      0}
-\CommentTok{\#\textgreater{} 4:   华西      0 150649      0      0}
+\CommentTok{\#\textgreater{} 1:   华东 149470      0      0      0}
+\CommentTok{\#\textgreater{} 2:   华北      0      0      0 149343}
+\CommentTok{\#\textgreater{} 3:   华南      0      0 150489      0}
+\CommentTok{\#\textgreater{} 4:   华西      0 150698      0      0}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1087,34 +1132,40 @@ fun参数即 fun.aggregate的简写，可以是自定义的函数。
 \NormalTok{dt }\OtherTok{\textless{}{-}}  \FunctionTok{data.table}\NormalTok{(}\AttributeTok{x=}\FunctionTok{sample}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{20}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{), }\AttributeTok{y=}\FunctionTok{sample}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{20}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{),}
                 \AttributeTok{z=}\FunctionTok{sample}\NormalTok{(letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{], }\DecValTok{20}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{), }\AttributeTok{d1 =} \FunctionTok{runif}\NormalTok{(}\DecValTok{20}\NormalTok{), }\AttributeTok{d2=}\NormalTok{1L)}
 \FunctionTok{dcast}\NormalTok{(dt, x }\SpecialCharTok{+}\NormalTok{ y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ z, }\AttributeTok{fun=}\FunctionTok{list}\NormalTok{(sum,mean), }\AttributeTok{value.var=}\FunctionTok{c}\NormalTok{(}\StringTok{"d1"}\NormalTok{,}\StringTok{"d2"}\NormalTok{))}
-\CommentTok{\#\textgreater{}    x y d1\_sum\_a d1\_sum\_b d2\_sum\_a d2\_sum\_b d1\_mean\_a d1\_mean\_b d2\_mean\_a}
-\CommentTok{\#\textgreater{} 1: 1 1    0.000   0.3141        0        1       NaN    0.3141       NaN}
-\CommentTok{\#\textgreater{} 2: 1 2    0.675   0.7524        1        1     0.675    0.7524         1}
-\CommentTok{\#\textgreater{} 3: 2 1    0.722   1.9725        1        3     0.722    0.6575         1}
-\CommentTok{\#\textgreater{} 4: 2 2    1.062   0.0657        2        1     0.531    0.0657         1}
-\CommentTok{\#\textgreater{} 5: 3 2    0.329   0.0000        1        0     0.329       NaN         1}
-\CommentTok{\#\textgreater{} 6: 4 1    1.934   0.3536        3        1     0.645    0.3536         1}
-\CommentTok{\#\textgreater{} 7: 4 2    1.968   0.0000        3        0     0.656       NaN         1}
-\CommentTok{\#\textgreater{} 8: 5 2    0.404   0.8995        1        1     0.404    0.8995         1}
-\CommentTok{\#\textgreater{}    d2\_mean\_b}
-\CommentTok{\#\textgreater{} 1:         1}
-\CommentTok{\#\textgreater{} 2:         1}
-\CommentTok{\#\textgreater{} 3:         1}
-\CommentTok{\#\textgreater{} 4:         1}
-\CommentTok{\#\textgreater{} 5:       NaN}
-\CommentTok{\#\textgreater{} 6:         1}
-\CommentTok{\#\textgreater{} 7:       NaN}
-\CommentTok{\#\textgreater{} 8:         1}
+\CommentTok{\#\textgreater{}     x y d1\_sum\_a d1\_sum\_b d2\_sum\_a d2\_sum\_b d1\_mean\_a d1\_mean\_b d2\_mean\_a}
+\CommentTok{\#\textgreater{}  1: 1 1   0.8454   0.3717        1        2    0.8454    0.1858         1}
+\CommentTok{\#\textgreater{}  2: 1 2   0.3769   0.0000        1        0    0.3769       NaN         1}
+\CommentTok{\#\textgreater{}  3: 2 1   1.3419   0.4810        2        1    0.6709    0.4810         1}
+\CommentTok{\#\textgreater{}  4: 2 2   0.0000   0.6666        0        1       NaN    0.6666       NaN}
+\CommentTok{\#\textgreater{}  5: 3 1   0.8703   0.1866        1        1    0.8703    0.1866         1}
+\CommentTok{\#\textgreater{}  6: 3 2   0.0000   0.9074        0        2       NaN    0.4537       NaN}
+\CommentTok{\#\textgreater{}  7: 4 1   0.0957   0.0000        1        0    0.0957       NaN         1}
+\CommentTok{\#\textgreater{}  8: 4 2   0.1103   0.1867        1        1    0.1103    0.1867         1}
+\CommentTok{\#\textgreater{}  9: 5 1   1.1344   0.0000        2        0    0.5672       NaN         1}
+\CommentTok{\#\textgreater{} 10: 5 2   1.0839   0.0707        2        1    0.5419    0.0707         1}
+\CommentTok{\#\textgreater{}     d2\_mean\_b}
+\CommentTok{\#\textgreater{}  1:         1}
+\CommentTok{\#\textgreater{}  2:       NaN}
+\CommentTok{\#\textgreater{}  3:         1}
+\CommentTok{\#\textgreater{}  4:         1}
+\CommentTok{\#\textgreater{}  5:         1}
+\CommentTok{\#\textgreater{}  6:         1}
+\CommentTok{\#\textgreater{}  7:       NaN}
+\CommentTok{\#\textgreater{}  8:         1}
+\CommentTok{\#\textgreater{}  9:       NaN}
+\CommentTok{\#\textgreater{} 10:         1}
 \FunctionTok{dcast}\NormalTok{(dt, x }\SpecialCharTok{+}\NormalTok{ y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ z, }\AttributeTok{fun=}\FunctionTok{list}\NormalTok{(sum,mean), }\AttributeTok{value.var=}\FunctionTok{list}\NormalTok{(}\StringTok{"d1"}\NormalTok{,}\StringTok{"d2"}\NormalTok{)) }\CommentTok{\#注意value.var是向量和列表时的区别}
-\CommentTok{\#\textgreater{}    x y d1\_sum\_a d1\_sum\_b d2\_mean\_a d2\_mean\_b}
-\CommentTok{\#\textgreater{} 1: 1 1    0.000   0.3141       NaN         1}
-\CommentTok{\#\textgreater{} 2: 1 2    0.675   0.7524         1         1}
-\CommentTok{\#\textgreater{} 3: 2 1    0.722   1.9725         1         1}
-\CommentTok{\#\textgreater{} 4: 2 2    1.062   0.0657         1         1}
-\CommentTok{\#\textgreater{} 5: 3 2    0.329   0.0000         1       NaN}
-\CommentTok{\#\textgreater{} 6: 4 1    1.934   0.3536         1         1}
-\CommentTok{\#\textgreater{} 7: 4 2    1.968   0.0000         1       NaN}
-\CommentTok{\#\textgreater{} 8: 5 2    0.404   0.8995         1         1}
+\CommentTok{\#\textgreater{}     x y d1\_sum\_a d1\_sum\_b d2\_mean\_a d2\_mean\_b}
+\CommentTok{\#\textgreater{}  1: 1 1   0.8454   0.3717         1         1}
+\CommentTok{\#\textgreater{}  2: 1 2   0.3769   0.0000         1       NaN}
+\CommentTok{\#\textgreater{}  3: 2 1   1.3419   0.4810         1         1}
+\CommentTok{\#\textgreater{}  4: 2 2   0.0000   0.6666       NaN         1}
+\CommentTok{\#\textgreater{}  5: 3 1   0.8703   0.1866         1         1}
+\CommentTok{\#\textgreater{}  6: 3 2   0.0000   0.9074       NaN         1}
+\CommentTok{\#\textgreater{}  7: 4 1   0.0957   0.0000         1       NaN}
+\CommentTok{\#\textgreater{}  8: 4 2   0.1103   0.1867         1         1}
+\CommentTok{\#\textgreater{}  9: 5 1   1.1344   0.0000         1       NaN}
+\CommentTok{\#\textgreater{} 10: 5 2   1.0839   0.0707         1         1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1157,31 +1208,31 @@ fun参数即 fun.aggregate的简写，可以是自定义的函数。
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux975eux91cdux590dux8ba1ux6570}{%
-\subsection{非重复计数}\label{ux975eux91cdux590dux8ba1ux6570}}
+\hypertarget{ux8868ux8fdeux63a5}{%
+\subsection{表连接}\label{ux8868ux8fdeux63a5}}
 
-\texttt{uniqueN}相当于\texttt{length(unique(x))},但是计算更快，内存效率更高。
+两个数据框之间左连,右连等操作,类似数据库中的left\_join right\_join,inner\_join 等函数.
+
+键入?merge()查看函数帮助,data.table 包中和base R 中都有merge 函数,当第一个数据框是data.table格式时启用data.table::merge().
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{50}\NormalTok{,}\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
-\FunctionTok{uniqueN}\NormalTok{(x)}
-\CommentTok{\#\textgreater{} [1] 10}
-
-\NormalTok{DT }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{A =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{each=}\DecValTok{4}\NormalTok{), }\AttributeTok{B =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{each=}\DecValTok{3}\NormalTok{),}
-                 \AttributeTok{C =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{key =} \StringTok{"A,B"}\NormalTok{)}
-
-\FunctionTok{uniqueN}\NormalTok{(DT, }\AttributeTok{by =} \FunctionTok{key}\NormalTok{(DT))}
-\CommentTok{\#\textgreater{} [1] 6}
-\FunctionTok{uniqueN}\NormalTok{(DT)}
-\CommentTok{\#\textgreater{} [1] 10}
+\NormalTok{?}\FunctionTok{merge}\NormalTok{()}
+\FunctionTok{merge}\NormalTok{(x, y, }\AttributeTok{by =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{by.x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{by.y =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{all =} \ConstantTok{FALSE}\NormalTok{,}
+\AttributeTok{all.x =}\NormalTok{ all, }\AttributeTok{all.y =}\NormalTok{ all, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{suffixes =} \FunctionTok{c}\NormalTok{(}\StringTok{".x"}\NormalTok{, }\StringTok{".y"}\NormalTok{), }\AttributeTok{no.dups =} \ConstantTok{TRUE}\NormalTok{,}
+\AttributeTok{allow.cartesian=}\FunctionTok{getOption}\NormalTok{(}\StringTok{"datatable.allow.cartesian"}\NormalTok{),  }\CommentTok{\# default FALSE}
+\NormalTok{...)}
 \end{Highlighting}
 \end{Shaded}
+
+x.y为连个数据框,当两个数据框连接字段相同时,用by=c('`,'')连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.
 
 \hypertarget{ux9ad8ux7ea7ux51fdux6570}{%
 \section{高级函数}\label{ux9ad8ux7ea7ux51fdux6570}}
 
-使用频率不高，但在实现某些功能时特别好用的函数。
+高级函数并不是指使用难度，而是使用频率可能不高，但在实现某些功能时特别便利的函数。
+
+如分组聚合的\texttt{groupingsets},前后移动的\texttt{shift}等函数。
 
 \hypertarget{groupingsets}{%
 \subsection{groupingsets}\label{groupingsets}}
@@ -1194,6 +1245,10 @@ fun参数即 fun.aggregate的简写，可以是自定义的函数。
 \begin{Highlighting}[]
 \FunctionTok{rollup}\NormalTok{(x, j, by, .SDcols, }\AttributeTok{id =} \ConstantTok{FALSE}\NormalTok{, ...)}
 \FunctionTok{groupingsets}\NormalTok{(x, j, by, sets, .SDcols, }\AttributeTok{id =} \ConstantTok{FALSE}\NormalTok{, jj, ...)}
+
+\CommentTok{\# rollup}
+\FunctionTok{rollup}\NormalTok{(DT, }\AttributeTok{j =} \FunctionTok{lapply}\NormalTok{(.SD, sum), }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"color"}\NormalTok{,}\StringTok{"year"}\NormalTok{,}\StringTok{"status"}\NormalTok{), }\AttributeTok{id=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{.SDcols=}\StringTok{"value"}\NormalTok{)}
+\FunctionTok{rollup}\NormalTok{(DT, }\AttributeTok{j =} \FunctionTok{c}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{count=}\NormalTok{.N), }\FunctionTok{lapply}\NormalTok{(.SD, sum)), }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"color"}\NormalTok{,}\StringTok{"year"}\NormalTok{,}\StringTok{"status"}\NormalTok{), }\AttributeTok{id=}\ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1215,11 +1270,111 @@ fun参数即 fun.aggregate的简写，可以是自定义的函数。
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(magrittr)}
 \NormalTok{DT }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{\textquotesingle{}./data/data{-}table{-}groupingsets.csv\textquotesingle{}}\NormalTok{,}\AttributeTok{encoding =} \StringTok{\textquotesingle{}UTF{-}8\textquotesingle{}}\NormalTok{)}
-\FunctionTok{rollup}\NormalTok{(DT,}\AttributeTok{j =}\FunctionTok{list}\NormalTok{(以下项目的总和 }\OtherTok{=}\FunctionTok{sum}\NormalTok{(value)),}\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"area"}\NormalTok{,}\StringTok{"store\_type"}\NormalTok{),}\AttributeTok{id =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{setorderv}\NormalTok{(}\AttributeTok{cols=}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}area\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}grouping\textquotesingle{}}\NormalTok{),}\AttributeTok{na.last =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{(}\FunctionTok{rollup}\NormalTok{(DT,}\AttributeTok{j =}\FunctionTok{list}\NormalTok{(以下项目的总和 }\OtherTok{=}\FunctionTok{sum}\NormalTok{(value)),}\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"area"}\NormalTok{,}\StringTok{"store\_type"}\NormalTok{),}\AttributeTok{id =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{setorderv}\NormalTok{(}\AttributeTok{cols=}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}area\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}grouping\textquotesingle{}}\NormalTok{),}\AttributeTok{na.last =} \ConstantTok{TRUE}\NormalTok{))}
+\CommentTok{\#\textgreater{}     grouping area store\_type 以下项目的总和}
+\CommentTok{\#\textgreater{}  1:        0 华东     不可比              9}
+\CommentTok{\#\textgreater{}  2:        0 华东       可比            309}
+\CommentTok{\#\textgreater{}  3:        1 华东       \textless{}NA\textgreater{}            318}
+\CommentTok{\#\textgreater{}  4:        0 华北     不可比             72}
+\CommentTok{\#\textgreater{}  5:        0 华北       可比            173}
+\CommentTok{\#\textgreater{}  6:        1 华北       \textless{}NA\textgreater{}            245}
+\CommentTok{\#\textgreater{}  7:        0 华南       可比             86}
+\CommentTok{\#\textgreater{}  8:        0 华南     不可比             79}
+\CommentTok{\#\textgreater{}  9:        1 华南       \textless{}NA\textgreater{}            165}
+\CommentTok{\#\textgreater{} 10:        0 华西       可比              2}
+\CommentTok{\#\textgreater{} 11:        0 华西     不可比            198}
+\CommentTok{\#\textgreater{} 12:        1 华西       \textless{}NA\textgreater{}            200}
+\CommentTok{\#\textgreater{} 13:        3 \textless{}NA\textgreater{}       \textless{}NA\textgreater{}            928}
 \end{Highlighting}
 \end{Shaded}
 
-通过上述计算结果与Excel的透视表结果一样。
+通过上述计算,发现计算结果与Excel透视表一样。
+
+\begin{itemize}
+\tightlist
+\item
+  cube
+\end{itemize}
+
+观察\texttt{cube()}计算结果与\texttt{rollup()}差异，发现\texttt{cube()}聚合层次更多。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cube}\NormalTok{(DT,}\AttributeTok{j =} \FunctionTok{sum}\NormalTok{(value),}\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"area"}\NormalTok{,}\StringTok{"store\_type"}\NormalTok{),}\AttributeTok{id =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{}     grouping area store\_type  V1}
+\CommentTok{\#\textgreater{}  1:        0 华东     不可比   9}
+\CommentTok{\#\textgreater{}  2:        0 华东       可比 309}
+\CommentTok{\#\textgreater{}  3:        0 华西       可比   2}
+\CommentTok{\#\textgreater{}  4:        0 华西     不可比 198}
+\CommentTok{\#\textgreater{}  5:        0 华南       可比  86}
+\CommentTok{\#\textgreater{}  6:        0 华北     不可比  72}
+\CommentTok{\#\textgreater{}  7:        0 华南     不可比  79}
+\CommentTok{\#\textgreater{}  8:        0 华北       可比 173}
+\CommentTok{\#\textgreater{}  9:        1 华东       \textless{}NA\textgreater{} 318}
+\CommentTok{\#\textgreater{} 10:        1 华西       \textless{}NA\textgreater{} 200}
+\CommentTok{\#\textgreater{} 11:        1 华南       \textless{}NA\textgreater{} 165}
+\CommentTok{\#\textgreater{} 12:        1 华北       \textless{}NA\textgreater{} 245}
+\CommentTok{\#\textgreater{} 13:        2 \textless{}NA\textgreater{}     不可比 358}
+\CommentTok{\#\textgreater{} 14:        2 \textless{}NA\textgreater{}       可比 570}
+\CommentTok{\#\textgreater{} 15:        3 \textless{}NA\textgreater{}       \textless{}NA\textgreater{} 928}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  groupingsets
+\end{itemize}
+
+根据需要指定指定聚合的层次。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 与本例中rollup 结果一致}
+\FunctionTok{groupingsets}\NormalTok{(DT,}\AttributeTok{j =} \FunctionTok{sum}\NormalTok{(value),}\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"area"}\NormalTok{,}\StringTok{"store\_type"}\NormalTok{),}\AttributeTok{sets =} \FunctionTok{list}\NormalTok{(}\StringTok{\textquotesingle{}area\textquotesingle{}}\NormalTok{,}\FunctionTok{c}\NormalTok{(}\StringTok{"area"}\NormalTok{,}\StringTok{"store\_type"}\NormalTok{), }\FunctionTok{character}\NormalTok{()),}\AttributeTok{id =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{}     grouping area store\_type  V1}
+\CommentTok{\#\textgreater{}  1:        1 华东       \textless{}NA\textgreater{} 318}
+\CommentTok{\#\textgreater{}  2:        1 华西       \textless{}NA\textgreater{} 200}
+\CommentTok{\#\textgreater{}  3:        1 华南       \textless{}NA\textgreater{} 165}
+\CommentTok{\#\textgreater{}  4:        1 华北       \textless{}NA\textgreater{} 245}
+\CommentTok{\#\textgreater{}  5:        0 华东     不可比   9}
+\CommentTok{\#\textgreater{}  6:        0 华东       可比 309}
+\CommentTok{\#\textgreater{}  7:        0 华西       可比   2}
+\CommentTok{\#\textgreater{}  8:        0 华西     不可比 198}
+\CommentTok{\#\textgreater{}  9:        0 华南       可比  86}
+\CommentTok{\#\textgreater{} 10:        0 华北     不可比  72}
+\CommentTok{\#\textgreater{} 11:        0 华南     不可比  79}
+\CommentTok{\#\textgreater{} 12:        0 华北       可比 173}
+\CommentTok{\#\textgreater{} 13:        3 \textless{}NA\textgreater{}       \textless{}NA\textgreater{} 928}
+
+\CommentTok{\# 与本例中cube 结果一致}
+\FunctionTok{groupingsets}\NormalTok{(DT,}\AttributeTok{j =} \FunctionTok{sum}\NormalTok{(value),}\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"area"}\NormalTok{,}\StringTok{"store\_type"}\NormalTok{),}\AttributeTok{sets =} \FunctionTok{list}\NormalTok{(}\StringTok{\textquotesingle{}area\textquotesingle{}}\NormalTok{,}\FunctionTok{c}\NormalTok{(}\StringTok{"area"}\NormalTok{,}\StringTok{"store\_type"}\NormalTok{),}\StringTok{"store\_type"}\NormalTok{, }\FunctionTok{character}\NormalTok{()),}\AttributeTok{id =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{}     grouping area store\_type  V1}
+\CommentTok{\#\textgreater{}  1:        1 华东       \textless{}NA\textgreater{} 318}
+\CommentTok{\#\textgreater{}  2:        1 华西       \textless{}NA\textgreater{} 200}
+\CommentTok{\#\textgreater{}  3:        1 华南       \textless{}NA\textgreater{} 165}
+\CommentTok{\#\textgreater{}  4:        1 华北       \textless{}NA\textgreater{} 245}
+\CommentTok{\#\textgreater{}  5:        0 华东     不可比   9}
+\CommentTok{\#\textgreater{}  6:        0 华东       可比 309}
+\CommentTok{\#\textgreater{}  7:        0 华西       可比   2}
+\CommentTok{\#\textgreater{}  8:        0 华西     不可比 198}
+\CommentTok{\#\textgreater{}  9:        0 华南       可比  86}
+\CommentTok{\#\textgreater{} 10:        0 华北     不可比  72}
+\CommentTok{\#\textgreater{} 11:        0 华南     不可比  79}
+\CommentTok{\#\textgreater{} 12:        0 华北       可比 173}
+\CommentTok{\#\textgreater{} 13:        2 \textless{}NA\textgreater{}     不可比 358}
+\CommentTok{\#\textgreater{} 14:        2 \textless{}NA\textgreater{}       可比 570}
+\CommentTok{\#\textgreater{} 15:        3 \textless{}NA\textgreater{}       \textless{}NA\textgreater{} 928}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+groupingsets: sets参数,用list()包裹想要聚合的字段组合,最后character(),加上该部分相当于不区分层级全部聚合,用法类似sql中``()''.
+\end{quote}
+
+\begin{quote}
+SELECT brand, size, sum(sales) FROM items\_sold GROUP BY GROUPING SETS ((brand), (size), ());
+\end{quote}
 
 \hypertarget{rleid}{%
 \subsection{rleid}\label{rleid}}
@@ -1342,28 +1497,8 @@ J 是\texttt{.()},\texttt{list()}等的别名。\texttt{SJ}是排序连接，\te
 \CommentTok{\#\textgreater{} 7:  5  1}
 \CommentTok{\#\textgreater{} 8:  5  2}
 \CommentTok{\#\textgreater{} 9:  5  3}
-\FunctionTok{do.call}\NormalTok{(CJ, }\FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{1}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)))  }\CommentTok{\# same as above}
-\CommentTok{\#\textgreater{}    V1 V2}
-\CommentTok{\#\textgreater{} 1: NA  1}
-\CommentTok{\#\textgreater{} 2: NA  2}
-\CommentTok{\#\textgreater{} 3: NA  3}
-\CommentTok{\#\textgreater{} 4:  1  1}
-\CommentTok{\#\textgreater{} 5:  1  2}
-\CommentTok{\#\textgreater{} 6:  1  3}
-\CommentTok{\#\textgreater{} 7:  5  1}
-\CommentTok{\#\textgreater{} 8:  5  2}
-\CommentTok{\#\textgreater{} 9:  5  3}
-\FunctionTok{CJ}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{1}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{), }\AttributeTok{sorted=}\ConstantTok{FALSE}\NormalTok{)   }\CommentTok{\# same order as input, unkeyed}
-\CommentTok{\#\textgreater{}    V1 V2}
-\CommentTok{\#\textgreater{} 1:  5  1}
-\CommentTok{\#\textgreater{} 2:  5  3}
-\CommentTok{\#\textgreater{} 3:  5  2}
-\CommentTok{\#\textgreater{} 4: NA  1}
-\CommentTok{\#\textgreater{} 5: NA  3}
-\CommentTok{\#\textgreater{} 6: NA  2}
-\CommentTok{\#\textgreater{} 7:  1  1}
-\CommentTok{\#\textgreater{} 8:  1  3}
-\CommentTok{\#\textgreater{} 9:  1  2}
+\CommentTok{\# do.call(CJ, list(c(5, NA, 1), c(1, 3, 2)))  \# same as above}
+\CommentTok{\# CJ(c(5, NA, 1), c(1, 3, 2), sorted=FALSE)   \# same order as input, unkeyed}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1374,6 +1509,101 @@ J 是\texttt{.()},\texttt{list()}等的别名。\texttt{SJ}是排序连接，\te
 \end{itemize}
 
 SJ : Sorted Join. The same value as J() but additionally setkey() is called on all columns in the order they were passed to SJ. For efficiency, to invoke a binary merge rather than a repeated binary full search for each row of i.
+
+\hypertarget{ux5c0fux6280ux5de7}{%
+\section{小技巧}\label{ux5c0fux6280ux5de7}}
+
+\hypertarget{ux7528ux6291ux5236ux4e2dux95f4ux8fc7ux7a0bux8f93ux51fa}{%
+\subsection{用\{\}抑制中间过程输出}\label{ux7528ux6291ux5236ux4e2dux95f4ux8fc7ux7a0bux8f93ux51fa}}
+
+默认只返回未命名花括号中定义的最后一个对象。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(mtcars)}
+\NormalTok{dt[,\{tmp1}\OtherTok{=}\FunctionTok{mean}\NormalTok{(mpg); tmp2}\OtherTok{=}\FunctionTok{mean}\NormalTok{(}\FunctionTok{abs}\NormalTok{(mpg}\SpecialCharTok{{-}}\NormalTok{tmp1)); tmp3}\OtherTok{=}\FunctionTok{round}\NormalTok{(tmp2, }\DecValTok{2}\NormalTok{)\}, by}\OtherTok{=}\NormalTok{cyl]}
+\CommentTok{\#\textgreater{}    cyl   V1}
+\CommentTok{\#\textgreater{} 1:   6 1.19}
+\CommentTok{\#\textgreater{} 2:   4 3.83}
+\CommentTok{\#\textgreater{} 3:   8 1.79}
+\end{Highlighting}
+\end{Shaded}
+
+在我不知道上述技巧之前，我可能的操作是
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(mtcars)}
+\NormalTok{res }\OtherTok{\textless{}{-}}\NormalTok{ dt[,tmp1}\SpecialCharTok{:}\ErrorTok{=}\FunctionTok{mean}\NormalTok{(mpg), by}\OtherTok{=}\NormalTok{cyl][,.(}\AttributeTok{tmp2=}\FunctionTok{mean}\NormalTok{(}\FunctionTok{abs}\NormalTok{(mpg}\SpecialCharTok{{-}}\NormalTok{tmp1))), by}\OtherTok{=}\NormalTok{.(cyl)]}
+\NormalTok{res[,.(}\FunctionTok{round}\NormalTok{(tmp2,}\DecValTok{2}\NormalTok{)),by}\OtherTok{=}\NormalTok{.(cyl)][]}
+\CommentTok{\#\textgreater{}    cyl   V1}
+\CommentTok{\#\textgreater{} 1:   6 1.19}
+\CommentTok{\#\textgreater{} 2:   4 3.83}
+\CommentTok{\#\textgreater{} 3:   8 1.79}
+\end{Highlighting}
+\end{Shaded}
+
+保留中间变量
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dt[,\{tmp1}\OtherTok{=}\FunctionTok{mean}\NormalTok{(mpg); tmp2}\OtherTok{=}\FunctionTok{mean}\NormalTok{(}\FunctionTok{abs}\NormalTok{(mpg}\SpecialCharTok{{-}}\NormalTok{tmp1)); tmp3}\OtherTok{=}\FunctionTok{round}\NormalTok{(tmp2, }\DecValTok{2}\NormalTok{); }\FunctionTok{list}\NormalTok{(}\AttributeTok{tmp2=}\NormalTok{tmp2, }\AttributeTok{tmp3=}\NormalTok{tmp3)\}, by}\OtherTok{=}\NormalTok{cyl][]}
+\CommentTok{\#\textgreater{}    cyl tmp2 tmp3}
+\CommentTok{\#\textgreater{} 1:   6 1.19 1.19}
+\CommentTok{\#\textgreater{} 2:   4 3.83 3.83}
+\CommentTok{\#\textgreater{} 3:   8 1.79 1.79}
+\end{Highlighting}
+\end{Shaded}
+
+不写分号的方式
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dt[,\{tmp1}\OtherTok{=}\FunctionTok{mean}\NormalTok{(mpg)}
+\NormalTok{     tmp2}\OtherTok{=}\FunctionTok{mean}\NormalTok{(}\FunctionTok{abs}\NormalTok{(mpg}\SpecialCharTok{{-}}\NormalTok{tmp1))}
+\NormalTok{     tmp3}\OtherTok{=}\FunctionTok{round}\NormalTok{(tmp2, }\DecValTok{2}\NormalTok{)}
+     \FunctionTok{list}\NormalTok{(}\AttributeTok{tmp2=}\NormalTok{tmp2, }\AttributeTok{tmp3=}\NormalTok{tmp3)\},}
+\NormalTok{   by}\OtherTok{=}\NormalTok{cyl][]}
+\CommentTok{\#\textgreater{}    cyl tmp2 tmp3}
+\CommentTok{\#\textgreater{} 1:   6 1.19 1.19}
+\CommentTok{\#\textgreater{} 2:   4 3.83 3.83}
+\CommentTok{\#\textgreater{} 3:   8 1.79 1.79}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux4f7fux7528ux6253ux5370data.table}{%
+\subsection{使用{[}{]}打印data.table}\label{ux4f7fux7528ux6253ux5370data.table}}
+
+在测试代码查看结果时很有用。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{head}\NormalTok{(mtcars) }\CommentTok{\# doesn\textquotesingle{}t print}
+\NormalTok{(df }\OtherTok{\textless{}{-}} \FunctionTok{head}\NormalTok{(mtcars)) }\CommentTok{\# does print}
+\CommentTok{\#\textgreater{}                    mpg cyl disp  hp drat   wt qsec vs am gear carb}
+\CommentTok{\#\textgreater{} Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4}
+\CommentTok{\#\textgreater{} Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4}
+\CommentTok{\#\textgreater{} Datsun 710        22.8   4  108  93 3.85 2.32 18.6  1  1    4    1}
+\CommentTok{\#\textgreater{} Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1}
+\CommentTok{\#\textgreater{} Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2}
+\CommentTok{\#\textgreater{} Valiant           18.1   6  225 105 2.76 3.46 20.2  1  0    3    1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# data.table way of printing after an assignment}
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\FunctionTok{head}\NormalTok{(mtcars)) }\CommentTok{\# doesn\textquotesingle{}t print}
+\NormalTok{dt[,hp2wt}\SpecialCharTok{:}\ErrorTok{=}\NormalTok{hp}\SpecialCharTok{/}\NormalTok{wt][] }\CommentTok{\# does print}
+\CommentTok{\#\textgreater{}     mpg cyl disp  hp drat   wt qsec vs am gear carb hp2wt}
+\CommentTok{\#\textgreater{} 1: 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4  42.0}
+\CommentTok{\#\textgreater{} 2: 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4  38.3}
+\CommentTok{\#\textgreater{} 3: 22.8   4  108  93 3.85 2.32 18.6  1  1    4    1  40.1}
+\CommentTok{\#\textgreater{} 4: 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1  34.2}
+\CommentTok{\#\textgreater{} 5: 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2  50.9}
+\CommentTok{\#\textgreater{} 6: 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1  30.3}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{ux8fd0ux7528}{%
 \section{运用}\label{ux8fd0ux7528}}
@@ -3015,8 +3245,8 @@ numeric参数
 
 \texttt{R}中日期起始时间是\texttt{1970-01-01},Excel中是\texttt{1900-01-01},转化成数字两者相差25568。在用R读取Excel文件时，设计到日期数字转化成日期时需要注意其中差异。
 
-R中日期 : 2021-05-12 转化成数字: 18759,
-Excel 中 2021-05-12转化成数字:44327,两者相差25568.
+R中日期 : 2021-05-13 转化成数字: 18760,
+Excel 中 2021-05-13转化成数字:44328,两者相差25568.
 
 \hypertarget{ux57faux7840ux7528ux6cd5-1}{%
 \section{基础用法}\label{ux57faux7840ux7528ux6cd5-1}}
@@ -3632,22 +3862,20 @@ unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注�
 \hypertarget{tidyr}{%
 \chapter{tidyr}\label{tidyr}}
 
-\texttt{tidyr}包是\texttt{tidyverse}系列中的核心包,\texttt{tidyr}包的核心目的是整洁数据，有以下特征：
+在实际工作中，我们数据分析工作者80\%的时间可能贡献在数据准备和数据清晰上。另外发现新问题时，可能又要重复数据准备、数据清晰的过程。如果采用不能完全复现的方式做数据准备清洗的工作，那将是一场灾难。
 
-\begin{itemize}
-\tightlist
-\item
-  每列都是一个变量
-\item
-  每行都是一个记录
-\item
-  每个单元格都是一个值
-\end{itemize}
+数据工作者最常用的工具可能是Excel,但是Excel并不具备很强的数据清洗能力，即使Excel有POwer query 、Dax等两大利器。工作中，实际面临原始的数据是脏乱无须的，业务系统仅仅只是记录了历史过程数据。当我们需要分析某一现象时，需要按照自己的需求重新采集数据，清洗为``标准''的数据格式。
 
-在日常使用数据过程中，这种数据存储方式是一种标准的数据存储方式，像关系型数据中数据的存储。
+\begin{quote}
+标准数据：达到工作需求的数据，可以直接用Excel,power bi ，tableau等BI工具直接使用的程度。
+\end{quote}
+
+\texttt{R}中的tidyverse系列构建了一种一致的数据结构，当我们用tidyverse软件包提供的``数据整洁工具''整洁数据时，我们将花费更少的时间将数据从一种形式迁移到另外一种形式。从而，我们拥有更多的时间专注在具体的业务问题上。
 
 \hypertarget{ux5b89ux88c5-2}{%
 \section{安装}\label{ux5b89ux88c5-2}}
+
+本章节，我们重点关注\texttt{tidyr}包，这个软件包提供了许多的功能函数整理混乱的数据。tidyr是tidyverse的核心成员包
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3667,6 +3895,21 @@ unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注�
 
 \hypertarget{ux4e3bux8981ux529fux80fd}{%
 \section{主要功能}\label{ux4e3bux8981ux529fux80fd}}
+
+整洁的数据表现为：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  每个变量是单独的一列
+\item
+  每一个观察的值都在自己的行
+\item
+  每一个值都是独立的单元格
+\end{enumerate}
+
+大部分的数据集都是用行和列构成的\texttt{data.frame}。用Excel的单元格来表示，即每列代表不同意义的字段，每行是某个情形下的一系列字段；单元格则是独立的值,属于某个变量的观察值，这样构建的二维数据结构则是``整洁数据''。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4255,7 +4498,7 @@ nest的反面 unnest
 \hypertarget{dplyr}{%
 \chapter{dplyr}\label{dplyr}}
 
-利用\texttt{R}语言完成与\texttt{Excel透视表}或\texttt{sql}语句的功能，将从条件筛选、排序、分组聚合等几个方面记录\texttt{R}的实现方式。
+\texttt{dplyr}包是\texttt{tidyverse}系列中的核心包之一,dplyr是\textbf{A Grammar of Data Manipulation }，即dplyr是数据处理的语法。
 
 与\texttt{sql}相比，用R实现相同功能的好处：
 
@@ -4267,13 +4510,21 @@ nest的反面 unnest
 \item
   该包就是从数据库相关操作中抽象而来，迁移成本低
 \item
-  配合\texttt{dbplyr}包使用，大部分情况下可以扔掉\texttt{sql}语法，从而实现不同数据库间语法并不完全一致时，代码的重复使用性
+  配合\texttt{dbplyr}包使用，大部分情况下可以扔掉\texttt{sql}语法，从而实现不同数据库间语法并不完全一致时，代码可重复使用
 \end{itemize}
+
+本章节利用\texttt{R}语言完成与\texttt{Excel透视表}或\texttt{sql}语句的功能，将从行条件筛选、排序、分组聚合、表关联等方面记录\texttt{R}的实现方式。
 
 \hypertarget{ux524dux8a00}{%
 \section{前言}\label{ux524dux8a00}}
 
-\texttt{dplyr}包是\texttt{tidyverse}系列中的核心包之一,\texttt{dplyr}包提供了一组一致的动词来解决最常见的数据处理难题：
+\begin{itemize}
+\tightlist
+\item
+  介绍
+\end{itemize}
+
+\texttt{dplyr}包提供一组动词来解决最常见的数据处理问题：
 
 \begin{itemize}
 \item
@@ -4288,8 +4539,13 @@ nest的反面 unnest
   \texttt{arrange()} 行排序
 \end{itemize}
 
-\hypertarget{ux5b89ux88c5-3}{%
-\section{安装}\label{ux5b89ux88c5-3}}
+以上动词都可以和\texttt{group\_by()}结合，使我们可以按组执行以上任何操作。除了以上单个表操作的动词，dplyr中还有操作两表(表关联)的动词，可以通过\texttt{vignette("two-table")}查看学习。
+
+\begin{itemize}
+\tightlist
+\item
+  安装
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4302,30 +4558,51 @@ nest的反面 unnest
 \DocumentationTok{\#\# 或者从github 安装开发版本}
 \DocumentationTok{\#\# install.packages("devtools")}
 \NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"tidyverse/dplyr"}\NormalTok{)}
-
-\CommentTok{\# CTEST CODE}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Cheat Sheet
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=4.16667in]{./picture/dplyr/data-transformation.pdf}
+\caption{dplyr-sheet}
+\end{figure}
 
 \hypertarget{ux57faux7840ux7528ux6cd5-2}{%
 \section{基础用法}\label{ux57faux7840ux7528ux6cd5-2}}
 
+基础用法部分，我们将从行筛选，重命名、列位置调整、新增计算列、排序、分组聚合几个方面阐述\texttt{dplyr}功能。
+
+\hypertarget{ux52a0ux8f7dux5305}{%
+\subsection{加载包}\label{ux52a0ux8f7dux5305}}
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(dplyr)}
+\CommentTok{\#library(dplyr)}
+\CommentTok{\# 禁掉提示}
+\FunctionTok{library}\NormalTok{(dplyr,}\AttributeTok{warn.conflicts =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{filter}{%
 \subsection{filter}\label{filter}}
 
+\texttt{filter}动词顾名思义即筛选功能，按照一定条件筛选data.frame；与Excel中的筛选功能和\texttt{SQL}中\texttt{where}条件一致。
+
+filter条件筛选中可以分为单条件筛选和多条件筛选，多条件中间用\texttt{,}分隔。
+
 \begin{itemize}
 \tightlist
 \item
-  单条件筛选
+  单条件
 \end{itemize}
 
-类似Excel表格中筛选功能，筛选条件为\texttt{species\ ==\ "Droid"}
+条件为\texttt{species\ ==\ "Droid"}时，如下所示：
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4340,7 +4617,7 @@ nest的反面 unnest
   多条件
 \end{itemize}
 
-多条件筛选时，用逗号隔开条件
+多条件筛选时，用英文逗号隔开多个条件。用``and''连接多个条件与用逗号隔开效果相同,``and''在R中用\&表示。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4371,28 +4648,37 @@ nest的反面 unnest
 \begin{itemize}
 \tightlist
 \item
-  逻辑值筛选
+  逻辑关系筛选
 \end{itemize}
 
-注意\texttt{\textbar{}} ,\texttt{\&},\texttt{!}等逻辑判断符号 , \texttt{\textbar{}}为 或, \texttt{\&} 为并、且条件，\texttt{!}为非,灵活运用可以方便做条件筛选
+条件运算分为逻辑运算、关系运算。
+关系运算符 \textgreater、\textless、==、!=、\textgreater=、\textless=分别代表大于、小于、等于、不等于、大于等于、小于等于。
+
+逻辑运算符 \&、\textbar、！。 \texttt{\textbar{}}为 或, \texttt{\&} 为并、且条件，\texttt{!}为非。
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(nycflights13)}
 \FunctionTok{filter}\NormalTok{(flights, }\SpecialCharTok{!}\NormalTok{(arr\_delay }\SpecialCharTok{\textgreater{}} \DecValTok{120} \SpecialCharTok{|}\NormalTok{ dep\_delay }\SpecialCharTok{\textgreater{}} \DecValTok{120}\NormalTok{))}
 \FunctionTok{filter}\NormalTok{(flights, arr\_delay }\SpecialCharTok{\textless{}=} \DecValTok{120}\NormalTok{, dep\_delay }\SpecialCharTok{\textless{}=} \DecValTok{120}\NormalTok{)}
+
 \CommentTok{\# same above}
 \FunctionTok{filter}\NormalTok{(flights, arr\_delay }\SpecialCharTok{\textless{}=} \DecValTok{120} \SpecialCharTok{\&}\NormalTok{ dep\_delay }\SpecialCharTok{\textless{}=} \DecValTok{120}\NormalTok{)}
+
 \CommentTok{\# \%in\% 的反面}
 \NormalTok{starwars }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{species }\SpecialCharTok{\%in\%}  \FunctionTok{c}\NormalTok{(}\StringTok{"Droid"}\NormalTok{,}\StringTok{\textquotesingle{}Clawdite\textquotesingle{}}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
+\begin{quote}
+!的运算级别相比 \%in\% 更高
+\end{quote}
+
 \hypertarget{select}{%
 \subsection{select}\label{select}}
 
-当数据集较大列数较多时，我们可能并不需要那么多列，可以通过\texttt{select()}筛选：
+当完整数据集列数较多时，我们某次分析可能并不需要那么多列，通过动词\texttt{select()}筛选列
 
 \begin{itemize}
 \tightlist
@@ -4400,7 +4686,7 @@ nest的反面 unnest
   基础用法
 \end{itemize}
 
-通过指定列名称筛选，顺便指定列之间顺序
+通过指定列名称筛选，并指定列之间顺序
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4415,7 +4701,7 @@ nest的反面 unnest
   列索引
 \end{itemize}
 
-通过列名或数字向量索引，但是不建议用列索引，避免原始数据列顺序变化后导致报错。
+通过列名或数字向量索引，但是不建议用数字索引，避免原始数据列顺序变化后导致报错。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4445,7 +4731,7 @@ nest的反面 unnest
 \hypertarget{relocate}{%
 \subsection{relocate}\label{relocate}}
 
-更改列顺序，与使用\texttt{select()}指定列顺序相似
+更改列顺序，与使用\texttt{select()}动词指定列顺序相似
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4456,6 +4742,8 @@ nest的反面 unnest
 
 \hypertarget{mutate}{%
 \subsection{mutate}\label{mutate}}
+
+动词\texttt{mutate}
 
 \begin{itemize}
 \tightlist
@@ -5053,8 +5341,8 @@ NB:该参数的机制没有特别理解，需多练习体会。主要是运用�
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux6392ux5e8fux51fdux6570}{%
-\subsection{排序函数}\label{ux6392ux5e8fux51fdux6570}}
+\hypertarget{ux6392ux5e8fux51fdux6570-1}{%
+\subsection{排序函数}\label{ux6392ux5e8fux51fdux6570-1}}
 
 \texttt{dplyr}共六种排序函数，模仿SQL2003中的排名函数。
 
