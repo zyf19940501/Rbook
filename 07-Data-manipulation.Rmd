@@ -21,10 +21,33 @@ knitr::opts_chunk$set(echo = TRUE)
 
 本章节利用`R`语言完成与`Excel透视表`或`sql`语句的功能，将从行条件筛选、排序、分组聚合、表关联等方面记录`R`的实现方式。
 
+> 本章节会照搬dplyr包中的部分案例
 
 ## 前言
 
-- 介绍
+
+数据操作在数据库中往往被增、改、删、查四字描述，加上表连接查询基本涵盖了大部分的数据库数据操作。在tidyverse系列中的dplyr包通过一组动词来解决相似数据操作动作。
+
+在本章介绍部分，我们将拿R与Excel中的数据操作做类比，以达到Excel中透视表等功能。
+
+###  安装
+
+dplyr包可以直接安装。
+
+```{r eval=FALSE}
+## 最简单是的方式就是安装tidyverse
+install.packages('tidyverse')
+
+## 或者仅仅安装 tidyr:
+install.packages('dplyr')
+
+## 或者从github 安装开发版本
+## install.packages("devtools")
+devtools::install_github("tidyverse/dplyr")
+```
+
+
+### 介绍
 
 `dplyr`包提供一组动词来解决最常见的数据处理问题：
 
@@ -41,29 +64,39 @@ knitr::opts_chunk$set(echo = TRUE)
 以上动词都可以和`group_by()`结合，使我们可以按组执行以上任何操作。除了以上单个表操作的动词，dplyr中还有操作两表(表关联)的动词，可以通过`vignette("two-table")`查看学习。   
 
 
-- 安装
+**Excel类比**
+
+类比Excel数据操作功能,`filter`实现筛选，`mutate`实现列计算，`summarise`配合`group_by`实现数据透视表，`arrange`实现排序功能。
+另外配合`dplyr::left_join()`等表连接功能，实现Excel中的`vlookup`,`xlookup`等函数效果。
+
+dplyr包中的动词可实现Excel中的大部分数据操作功能。
+如下所示：筛选订单表中的1-5月订单数据，按照城市汇总，求每个城市的销售额和门店数(去重)。
+
 
 ```{r eval=FALSE}
-## 最简单是的方式就是安装tidyverse
-install.packages('tidyverse')
-
-## 或者仅仅安装 tidyr:
-install.packages('dplyr')
-
-## 或者从github 安装开发版本
-## install.packages("devtools")
-devtools::install_github("tidyverse/dplyr")
+data %>% 
+  filter(between(月,1,5)) %>% 
+  group_by(城市) %>% 
+  summarise(金额 = sum(金额),门店数 = n_distinct(门店编码))
 ```
 
-- Cheat Sheet
+
+
+**Cheat Sheet**
+
+手册搬运于dplyr[官方介绍](https://dplyr.tidyverse.org/)
 
 ![dplyr-sheet](./picture/dplyr/data-transformation.pdf){width=100% height=400}
+
+Rstudio其它手册:<https://www.rstudio.com/resources/cheatsheets/>
+
+
 
 
 
 ## 基础用法
 
-基础用法部分，我们将从行筛选，重命名、列位置调整、新增计算列、排序、分组聚合几个方面阐述`dplyr`功能。
+基础用法部分，我们将从行筛选，重命名、列位置调整、新增计算列、排序、分组聚合几个方面阐述`dplyr`动词功能。
 
 ### 加载包
 
@@ -77,7 +110,7 @@ library(dplyr,warn.conflicts = FALSE)
 
 `filter`动词顾名思义即筛选功能，按照一定条件筛选data.frame；与Excel中的筛选功能和`SQL`中`where`条件一致。
 
-filter条件筛选中可以分为单条件筛选和多条件筛选，多条件中间用`,`分隔。
+filter条件筛选中可以分为单条件筛选和多条件筛选；多条件中间用`,`分隔。
 
 - 单条件
 
@@ -87,6 +120,11 @@ filter条件筛选中可以分为单条件筛选和多条件筛选，多条件�
 starwars %>% 
   filter(species == "Droid")
 ```
+
+```{sql eval = FALSE}
+select * from starwars where species = "Droid" -- 注意=与==的区别
+```
+
 
 - 多条件
 
@@ -98,17 +136,30 @@ starwars %>%
 
 # same above
 # starwars %>% 
-#   filter(species == "Droid" & skin_color == "white")
+#   filter(species == "Droid" & skin_color == "gold")
 
 ```
+
+
+
+```{sql eval =FALSE}
+select * from starwars where species = "Droid" and skin_color = "gold" 
+```
+
 
 - 多情况筛选
 
 类似`SQL`中 `in` 的用法，或Excel中筛选条件时"或"条件
 
+
 ```{r}
 starwars %>% 
   filter(species %in%  c("Droid",'Clawdite'))
+```
+
+
+```{sql eval = FALSE}
+select * from starwars where species in ("Droid","Clawdite") --sql查询
 ```
 
 
@@ -167,15 +218,30 @@ starwars %>%
 
 列重命名使用`rename()`函数，新名称写前面，如下所示：
 
-```{r}
+```{r rename}
 starwars %>% rename(home_world = homeworld)
 # 多列同换
 starwars %>% rename(home_world = homeworld,skincolor = skin_color)
 ```
 
+```{sql eval = FALSE}
+select * ,homeworld as home_word from starwars 
+select * ,homeworld  home_word from starwars 
+```
+
+> as 可以省略，但中间有一个以上空格。与R的差异是新增home_word列，原始列继续存在，R中是替换列名。
+
+
 ### relocate
 
-更改列顺序，与使用`select()`动词指定列顺序相似
+更改列顺序，与使用`select()`动词指定列顺序功能相似。
+
+参数
+
+```{r eval=FALSE}
+relocate(.data, ..., .before = NULL, .after = NULL)
+```
+
 
 ```{r}
 # sex:homeworld列在height列前面
@@ -195,7 +261,7 @@ starwars %>%
   select(name:mass,bmi)
 ```
 
-- 新增计算列基础上新增列，
+- 新增计算列基础上新增列
 
 ```{r}
 starwars %>% 
@@ -227,13 +293,27 @@ starwars %>%
   arrange(height,desc(mass))
 ```
 
-### group_by
 
-在汇总前一般都需要分组聚合，`group_by()`函数实现该功能，与`SQL`中`group by ···`类似
+```{sql eval=FALSE}
+select * from starwars order by height,mass desc
+```
+
+
 
 ### summarise
 
-按照分组聚合汇总
+`summarise`常与`group_by`结合使用。
+
+```{r}
+mtcars %>%
+  summarise(mean = mean(disp), n = n())
+```
+
+> n()是dplyr包中的计算当前组的大小，用在summarise()和mutate()中。通常可用来组计算。
+
+### group_by
+
+聚合前一般都需要分组，`group_by()`动词实现该功能，与`SQL`中`group by ···`类似。
 
 ```{r}
 starwars %>%
@@ -243,6 +323,15 @@ starwars %>%
     mass = mean(mass, na.rm = TRUE)
   )
 ```
+
+```{sql eval=FALSE}
+SELECT species,
+  count(species) n,
+  AVG(mass) mass
+FROM [spb].[dbo].[starwars]
+GROUP BY  species
+```
+
 
 ## 表操作
 

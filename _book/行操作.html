@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-13" />
+<meta name="date" content="2021-05-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -279,7 +279,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
+<li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="前言.html"><a href="前言.html#安装-3"><i class="fa fa-check"></i><b>8.1.1</b> 安装</a></li>
+<li class="chapter" data-level="8.1.2" data-path="前言.html"><a href="前言.html#介绍"><i class="fa fa-check"></i><b>8.1.2</b> 介绍</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.2</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="基础用法-2.html"><a href="基础用法-2.html#加载包"><i class="fa fa-check"></i><b>8.2.1</b> 加载包</a></li>
@@ -289,8 +293,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.5" data-path="基础用法-2.html"><a href="基础用法-2.html#relocate"><i class="fa fa-check"></i><b>8.2.5</b> relocate</a></li>
 <li class="chapter" data-level="8.2.6" data-path="基础用法-2.html"><a href="基础用法-2.html#mutate"><i class="fa fa-check"></i><b>8.2.6</b> mutate</a></li>
 <li class="chapter" data-level="8.2.7" data-path="基础用法-2.html"><a href="基础用法-2.html#arrange"><i class="fa fa-check"></i><b>8.2.7</b> arrange</a></li>
-<li class="chapter" data-level="8.2.8" data-path="基础用法-2.html"><a href="基础用法-2.html#group_by"><i class="fa fa-check"></i><b>8.2.8</b> group_by</a></li>
-<li class="chapter" data-level="8.2.9" data-path="基础用法-2.html"><a href="基础用法-2.html#summarise"><i class="fa fa-check"></i><b>8.2.9</b> summarise</a></li>
+<li class="chapter" data-level="8.2.8" data-path="基础用法-2.html"><a href="基础用法-2.html#summarise"><i class="fa fa-check"></i><b>8.2.8</b> summarise</a></li>
+<li class="chapter" data-level="8.2.9" data-path="基础用法-2.html"><a href="基础用法-2.html#group_by"><i class="fa fa-check"></i><b>8.2.9</b> group_by</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="表操作.html"><a href="表操作.html"><i class="fa fa-check"></i><b>8.3</b> 表操作</a>
 <ul>
@@ -400,44 +404,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>在操纵数据框中，<code>dplyr</code>等工具让我们对列操作相对简单，但是对行操作则困难些。</p>
 <div id="构造数据集" class="section level3" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> 构造数据集</h3>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="行操作.html#cb250-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb250-2"><a href="行操作.html#cb250-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="行操作.html#cb41-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb41-2"><a href="行操作.html#cb41-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>()</span>
+<span id="cb41-3"><a href="行操作.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 3</span></span>
+<span id="cb41-4"><a href="行操作.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb41-5"><a href="行操作.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z</span></span>
+<span id="cb41-6"><a href="行操作.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb41-7"><a href="行操作.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5</span></span>
+<span id="cb41-8"><a href="行操作.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6</span></span></code></pre></div>
 <p>像<code>group_by()</code>,<code>rowwise()</code>并没有做任何事情，它的作用是改变其他动词的工作方式：
 比较以下代码中不的不同</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="行操作.html#cb251-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb251-2"><a href="行操作.html#cb251-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="行操作.html#cb42-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb42-2"><a href="行操作.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
+<span id="cb42-3"><a href="行操作.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb42-4"><a href="行操作.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb42-5"><a href="行操作.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5   3.5</span></span>
+<span id="cb42-6"><a href="行操作.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6   3.5</span></span>
+<span id="cb42-7"><a href="行操作.html#cb42-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb42-8"><a href="行操作.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
+<span id="cb42-9"><a href="行操作.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb42-10"><a href="行操作.html#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb42-11"><a href="行操作.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb42-12"><a href="行操作.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5     3</span></span>
+<span id="cb42-13"><a href="行操作.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6     4</span></span></code></pre></div>
 <p><code>data.table</code>中的操作:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="行操作.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb252-2"><a href="行操作.html#cb252-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb252-3"><a href="行操作.html#cb252-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb252-4"><a href="行操作.html#cb252-4" aria-hidden="true" tabindex="-1"></a>dt[,m<span class="sc">:</span><span class="er">=</span><span class="fu">mean</span>(<span class="fu">c</span>(x,y,z))][]</span>
-<span id="cb252-5"><a href="行操作.html#cb252-5" aria-hidden="true" tabindex="-1"></a>dt[,m<span class="sc">:</span><span class="er">=</span><span class="fu">mean</span>(<span class="fu">c</span>(x,y,z)),by<span class="ot">=</span>.(x)][]</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="行操作.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb43-2"><a href="行操作.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="行操作.html#cb43-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb43-4"><a href="行操作.html#cb43-4" aria-hidden="true" tabindex="-1"></a>dt[,m<span class="sc">:</span><span class="er">=</span><span class="fu">mean</span>(<span class="fu">c</span>(x,y,z))][]</span>
+<span id="cb43-5"><a href="行操作.html#cb43-5" aria-hidden="true" tabindex="-1"></a>dt[,m<span class="sc">:</span><span class="er">=</span><span class="fu">mean</span>(<span class="fu">c</span>(x,y,z)),by<span class="ot">=</span>.(x)][]</span></code></pre></div>
 <p>您可以选择在调用中提供“标识符”变量<code>rowwise()</code>。这些变量在您调用时被保留<code>summarise()</code>，因此它们的行为与传递给的分组变量有些相似<code>group_by()</code>：</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="行操作.html#cb253-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mara&quot;</span>, <span class="st">&quot;Hadley&quot;</span>), <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb253-2"><a href="行操作.html#cb253-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-3"><a href="行操作.html#cb253-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb253-4"><a href="行操作.html#cb253-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb253-5"><a href="行操作.html#cb253-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb253-6"><a href="行操作.html#cb253-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-7"><a href="行操作.html#cb253-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb253-8"><a href="行操作.html#cb253-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>(name) <span class="sc">%&gt;%</span> </span>
-<span id="cb253-9"><a href="行操作.html#cb253-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="行操作.html#cb44-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mara&quot;</span>, <span class="st">&quot;Hadley&quot;</span>), <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb44-2"><a href="行操作.html#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="行操作.html#cb44-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb44-4"><a href="行操作.html#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb44-5"><a href="行操作.html#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb44-6"><a href="行操作.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has ungrouped output. You can override using the `.groups` argument.</span></span>
+<span id="cb44-7"><a href="行操作.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 1</span></span>
+<span id="cb44-8"><a href="行操作.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       m</span></span>
+<span id="cb44-9"><a href="行操作.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt;</span></span>
+<span id="cb44-10"><a href="行操作.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     3</span></span>
+<span id="cb44-11"><a href="行操作.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4</span></span>
+<span id="cb44-12"><a href="行操作.html#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="行操作.html#cb44-13" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb44-14"><a href="行操作.html#cb44-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-15"><a href="行操作.html#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb44-16"><a href="行操作.html#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;name&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb44-17"><a href="行操作.html#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb44-18"><a href="行操作.html#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   name [2]</span></span>
+<span id="cb44-19"><a href="行操作.html#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name       m</span></span>
+<span id="cb44-20"><a href="行操作.html#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span id="cb44-21"><a href="行操作.html#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Mara       3</span></span>
+<span id="cb44-22"><a href="行操作.html#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Hadley     4</span></span></code></pre></div>
 </div>
 <div id="行汇总统计" class="section level3" number="8.5.2">
 <h3><span class="header-section-number">8.5.2</span> 行汇总统计</h3>
 <p><code>dplyr::summarise()</code>使得汇总一列中各行的值非常容易。当与之结合使用时<code>rowwise()</code>，还可以轻松汇总一行中各列的值：</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="行操作.html#cb254-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">w =</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">x =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">y =</span> <span class="dv">30</span><span class="sc">:</span><span class="dv">35</span>, <span class="at">z =</span> <span class="dv">40</span><span class="sc">:</span><span class="dv">45</span>)</span>
-<span id="cb254-2"><a href="行操作.html#cb254-2" aria-hidden="true" tabindex="-1"></a>rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>(id)</span>
-<span id="cb254-3"><a href="行操作.html#cb254-3" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(w, x, y, z)))</span>
-<span id="cb254-4"><a href="行操作.html#cb254-4" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(w, x, y, z)))</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="行操作.html#cb45-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">w =</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">x =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">y =</span> <span class="dv">30</span><span class="sc">:</span><span class="dv">35</span>, <span class="at">z =</span> <span class="dv">40</span><span class="sc">:</span><span class="dv">45</span>)</span>
+<span id="cb45-2"><a href="行操作.html#cb45-2" aria-hidden="true" tabindex="-1"></a>rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>(id)</span>
+<span id="cb45-3"><a href="行操作.html#cb45-3" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(w, x, y, z)))</span>
+<span id="cb45-4"><a href="行操作.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 6</span></span>
+<span id="cb45-5"><a href="行操作.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise:  id</span></span>
+<span id="cb45-6"><a href="行操作.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id     w     x     y     z total</span></span>
+<span id="cb45-7"><a href="行操作.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb45-8"><a href="行操作.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1    10    20    30    40   100</span></span>
+<span id="cb45-9"><a href="行操作.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2    11    21    31    41   104</span></span>
+<span id="cb45-10"><a href="行操作.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3    12    22    32    42   108</span></span>
+<span id="cb45-11"><a href="行操作.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4    13    23    33    43   112</span></span>
+<span id="cb45-12"><a href="行操作.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5    14    24    34    44   116</span></span>
+<span id="cb45-13"><a href="行操作.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6    15    25    35    45   120</span></span>
+<span id="cb45-14"><a href="行操作.html#cb45-14" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(w, x, y, z)))</span>
+<span id="cb45-15"><a href="行操作.html#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;id&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb45-16"><a href="行操作.html#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 2</span></span>
+<span id="cb45-17"><a href="行操作.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   id [6]</span></span>
+<span id="cb45-18"><a href="行操作.html#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id total</span></span>
+<span id="cb45-19"><a href="行操作.html#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb45-20"><a href="行操作.html#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1   100</span></span>
+<span id="cb45-21"><a href="行操作.html#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2   104</span></span>
+<span id="cb45-22"><a href="行操作.html#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3   108</span></span>
+<span id="cb45-23"><a href="行操作.html#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4   112</span></span>
+<span id="cb45-24"><a href="行操作.html#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5   116</span></span>
+<span id="cb45-25"><a href="行操作.html#cb45-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6   120</span></span></code></pre></div>
 <p>键入每个变量名称很繁琐，通过<code>c_across()</code>使更简单</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="行操作.html#cb255-1" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z)))</span>
-<span id="cb255-2"><a href="行操作.html#cb255-2" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="fu">where</span>(is.numeric))))</span>
-<span id="cb255-3"><a href="行操作.html#cb255-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb255-4"><a href="行操作.html#cb255-4" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> </span>
-<span id="cb255-5"><a href="行操作.html#cb255-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z))) <span class="sc">%&gt;%</span> </span>
-<span id="cb255-6"><a href="行操作.html#cb255-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb255-7"><a href="行操作.html#cb255-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(w<span class="sc">:</span>z, <span class="sc">~</span> . <span class="sc">/</span> total))</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="行操作.html#cb46-1" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z)))</span>
+<span id="cb46-2"><a href="行操作.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 6</span></span>
+<span id="cb46-3"><a href="行操作.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise:  id</span></span>
+<span id="cb46-4"><a href="行操作.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id     w     x     y     z total</span></span>
+<span id="cb46-5"><a href="行操作.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb46-6"><a href="行操作.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1    10    20    30    40   100</span></span>
+<span id="cb46-7"><a href="行操作.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2    11    21    31    41   104</span></span>
+<span id="cb46-8"><a href="行操作.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3    12    22    32    42   108</span></span>
+<span id="cb46-9"><a href="行操作.html#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4    13    23    33    43   112</span></span>
+<span id="cb46-10"><a href="行操作.html#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5    14    24    34    44   116</span></span>
+<span id="cb46-11"><a href="行操作.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6    15    25    35    45   120</span></span>
+<span id="cb46-12"><a href="行操作.html#cb46-12" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="fu">where</span>(is.numeric))))</span>
+<span id="cb46-13"><a href="行操作.html#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 6</span></span>
+<span id="cb46-14"><a href="行操作.html#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise:  id</span></span>
+<span id="cb46-15"><a href="行操作.html#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id     w     x     y     z total</span></span>
+<span id="cb46-16"><a href="行操作.html#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb46-17"><a href="行操作.html#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1    10    20    30    40   100</span></span>
+<span id="cb46-18"><a href="行操作.html#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2    11    21    31    41   104</span></span>
+<span id="cb46-19"><a href="行操作.html#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3    12    22    32    42   108</span></span>
+<span id="cb46-20"><a href="行操作.html#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4    13    23    33    43   112</span></span>
+<span id="cb46-21"><a href="行操作.html#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5    14    24    34    44   116</span></span>
+<span id="cb46-22"><a href="行操作.html#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6    15    25    35    45   120</span></span>
+<span id="cb46-23"><a href="行操作.html#cb46-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-24"><a href="行操作.html#cb46-24" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> </span>
+<span id="cb46-25"><a href="行操作.html#cb46-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z))) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-26"><a href="行操作.html#cb46-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb46-27"><a href="行操作.html#cb46-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(w<span class="sc">:</span>z, <span class="sc">~</span> . <span class="sc">/</span> total))</span>
+<span id="cb46-28"><a href="行操作.html#cb46-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 6</span></span>
+<span id="cb46-29"><a href="行操作.html#cb46-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id     w     x     y     z total</span></span>
+<span id="cb46-30"><a href="行操作.html#cb46-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb46-31"><a href="行操作.html#cb46-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 0.1   0.2   0.3   0.4     100</span></span>
+<span id="cb46-32"><a href="行操作.html#cb46-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 0.106 0.202 0.298 0.394   104</span></span>
+<span id="cb46-33"><a href="行操作.html#cb46-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 0.111 0.204 0.296 0.389   108</span></span>
+<span id="cb46-34"><a href="行操作.html#cb46-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 0.116 0.205 0.295 0.384   112</span></span>
+<span id="cb46-35"><a href="行操作.html#cb46-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 0.121 0.207 0.293 0.379   116</span></span>
+<span id="cb46-36"><a href="行操作.html#cb46-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6 0.125 0.208 0.292 0.375   120</span></span></code></pre></div>
 </div>
 </div>
             </section>

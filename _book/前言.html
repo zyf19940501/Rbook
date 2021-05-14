@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-13" />
+<meta name="date" content="2021-05-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -279,7 +279,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
+<li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="前言.html"><a href="前言.html#安装-3"><i class="fa fa-check"></i><b>8.1.1</b> 安装</a></li>
+<li class="chapter" data-level="8.1.2" data-path="前言.html"><a href="前言.html#介绍"><i class="fa fa-check"></i><b>8.1.2</b> 介绍</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.2</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="基础用法-2.html"><a href="基础用法-2.html#加载包"><i class="fa fa-check"></i><b>8.2.1</b> 加载包</a></li>
@@ -289,8 +293,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.5" data-path="基础用法-2.html"><a href="基础用法-2.html#relocate"><i class="fa fa-check"></i><b>8.2.5</b> relocate</a></li>
 <li class="chapter" data-level="8.2.6" data-path="基础用法-2.html"><a href="基础用法-2.html#mutate"><i class="fa fa-check"></i><b>8.2.6</b> mutate</a></li>
 <li class="chapter" data-level="8.2.7" data-path="基础用法-2.html"><a href="基础用法-2.html#arrange"><i class="fa fa-check"></i><b>8.2.7</b> arrange</a></li>
-<li class="chapter" data-level="8.2.8" data-path="基础用法-2.html"><a href="基础用法-2.html#group_by"><i class="fa fa-check"></i><b>8.2.8</b> group_by</a></li>
-<li class="chapter" data-level="8.2.9" data-path="基础用法-2.html"><a href="基础用法-2.html#summarise"><i class="fa fa-check"></i><b>8.2.9</b> summarise</a></li>
+<li class="chapter" data-level="8.2.8" data-path="基础用法-2.html"><a href="基础用法-2.html#summarise"><i class="fa fa-check"></i><b>8.2.8</b> summarise</a></li>
+<li class="chapter" data-level="8.2.9" data-path="基础用法-2.html"><a href="基础用法-2.html#group_by"><i class="fa fa-check"></i><b>8.2.9</b> group_by</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="表操作.html"><a href="表操作.html"><i class="fa fa-check"></i><b>8.3</b> 表操作</a>
 <ul>
@@ -397,9 +401,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="前言" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> 前言</h2>
-<ul>
-<li>介绍</li>
-</ul>
+<p>数据操作在数据库中往往被增、改、删、查四字描述，加上表连接查询基本涵盖了大部分的数据库数据操作。在tidyverse系列中的dplyr包通过一组动词来解决相似数据操作动作。</p>
+<p>在本章介绍部分，我们将拿R与Excel中的数据操作做类比，以达到Excel中透视表等功能。</p>
+<div id="安装-3" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> 安装</h3>
+<p>dplyr包可以直接安装。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="前言.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 最简单是的方式就是安装tidyverse</span></span>
+<span id="cb1-2"><a href="前言.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
+<span id="cb1-3"><a href="前言.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="前言.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者仅仅安装 tidyr:</span></span>
+<span id="cb1-5"><a href="前言.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;dplyr&#39;</span>)</span>
+<span id="cb1-6"><a href="前言.html#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="前言.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者从github 安装开发版本</span></span>
+<span id="cb1-8"><a href="前言.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb1-9"><a href="前言.html#cb1-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/dplyr&quot;</span>)</span></code></pre></div>
+</div>
+<div id="介绍" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> 介绍</h3>
 <p><code>dplyr</code>包提供一组动词来解决最常见的数据处理问题：</p>
 <ul>
 <li><p><code>mutate()</code> 添加新变量,现有变量的函数</p></li>
@@ -409,24 +427,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>arrange()</code> 行排序</p></li>
 </ul>
 <p>以上动词都可以和<code>group_by()</code>结合，使我们可以按组执行以上任何操作。除了以上单个表操作的动词，dplyr中还有操作两表(表关联)的动词，可以通过<code>vignette("two-table")</code>查看学习。</p>
-<ul>
-<li>安装</li>
-</ul>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="前言.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 最简单是的方式就是安装tidyverse</span></span>
-<span id="cb219-2"><a href="前言.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
-<span id="cb219-3"><a href="前言.html#cb219-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-4"><a href="前言.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者仅仅安装 tidyr:</span></span>
-<span id="cb219-5"><a href="前言.html#cb219-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;dplyr&#39;</span>)</span>
-<span id="cb219-6"><a href="前言.html#cb219-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-7"><a href="前言.html#cb219-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者从github 安装开发版本</span></span>
-<span id="cb219-8"><a href="前言.html#cb219-8" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb219-9"><a href="前言.html#cb219-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/dplyr&quot;</span>)</span></code></pre></div>
-<ul>
-<li>Cheat Sheet</li>
-</ul>
+<p><strong>Excel类比</strong></p>
+<p>类比Excel数据操作功能,<code>filter</code>实现筛选，<code>mutate</code>实现列计算，<code>summarise</code>配合<code>group_by</code>实现数据透视表，<code>arrange</code>实现排序功能。
+另外配合<code>dplyr::left_join()</code>等表连接功能，实现Excel中的<code>vlookup</code>,<code>xlookup</code>等函数效果。</p>
+<p>dplyr包中的动词可实现Excel中的大部分数据操作功能。
+如下所示：筛选订单表中的1-5月订单数据，按照城市汇总，求每个城市的销售额和门店数(去重)。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="前言.html#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="前言.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(月,<span class="dv">1</span>,<span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="前言.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(城市) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="前言.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(金额 <span class="ot">=</span> <span class="fu">sum</span>(金额),门店数 <span class="ot">=</span> <span class="fu">n_distinct</span>(门店编码))</span></code></pre></div>
+<p><strong>Cheat Sheet</strong></p>
+<p>手册搬运于dplyr<a href="https://dplyr.tidyverse.org/">官方介绍</a></p>
 <div class="figure">
 <embed src="./picture/dplyr/data-transformation.pdf" style="width:100.0%" height="400" />
 <p class="caption">dplyr-sheet</p>
+</div>
+<p>Rstudio其它手册:<a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a></p>
 </div>
 </div>
             </section>

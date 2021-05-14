@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-13" />
+<meta name="date" content="2021-05-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -279,7 +279,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> dplyr</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a></li>
+<li class="chapter" data-level="8.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>8.1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="前言.html"><a href="前言.html#安装-3"><i class="fa fa-check"></i><b>8.1.1</b> 安装</a></li>
+<li class="chapter" data-level="8.1.2" data-path="前言.html"><a href="前言.html#介绍"><i class="fa fa-check"></i><b>8.1.2</b> 介绍</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="基础用法-2.html"><a href="基础用法-2.html"><i class="fa fa-check"></i><b>8.2</b> 基础用法</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="基础用法-2.html"><a href="基础用法-2.html#加载包"><i class="fa fa-check"></i><b>8.2.1</b> 加载包</a></li>
@@ -289,8 +293,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.5" data-path="基础用法-2.html"><a href="基础用法-2.html#relocate"><i class="fa fa-check"></i><b>8.2.5</b> relocate</a></li>
 <li class="chapter" data-level="8.2.6" data-path="基础用法-2.html"><a href="基础用法-2.html#mutate"><i class="fa fa-check"></i><b>8.2.6</b> mutate</a></li>
 <li class="chapter" data-level="8.2.7" data-path="基础用法-2.html"><a href="基础用法-2.html#arrange"><i class="fa fa-check"></i><b>8.2.7</b> arrange</a></li>
-<li class="chapter" data-level="8.2.8" data-path="基础用法-2.html"><a href="基础用法-2.html#group_by"><i class="fa fa-check"></i><b>8.2.8</b> group_by</a></li>
-<li class="chapter" data-level="8.2.9" data-path="基础用法-2.html"><a href="基础用法-2.html#summarise"><i class="fa fa-check"></i><b>8.2.9</b> summarise</a></li>
+<li class="chapter" data-level="8.2.8" data-path="基础用法-2.html"><a href="基础用法-2.html#summarise"><i class="fa fa-check"></i><b>8.2.8</b> summarise</a></li>
+<li class="chapter" data-level="8.2.9" data-path="基础用法-2.html"><a href="基础用法-2.html#group_by"><i class="fa fa-check"></i><b>8.2.9</b> group_by</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="表操作.html"><a href="表操作.html"><i class="fa fa-check"></i><b>8.3</b> 表操作</a>
 <ul>
@@ -407,66 +411,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>When you have the data-variable in a function argument (i.e. an env-variable that holds a promise2), you need to ** embrace ** the argument by surrounding it in doubled braces, like <code>filter(df, {{ var }})</code>.</li>
 </ul>
 <p>The following function uses embracing to create a wrapper around <code>summarise()</code> that computes the minimum and maximum values of a variable, as well as the number of observations that were summarised:</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="用dplyr编程.html#cb277-1" aria-hidden="true" tabindex="-1"></a>var_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(data, var) {</span>
-<span id="cb277-2"><a href="用dplyr编程.html#cb277-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
-<span id="cb277-3"><a href="用dplyr编程.html#cb277-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">min =</span> <span class="fu">min</span>({{ var }}), <span class="at">max =</span> <span class="fu">max</span>({{ var }}))</span>
-<span id="cb277-4"><a href="用dplyr编程.html#cb277-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb277-5"><a href="用dplyr编程.html#cb277-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb277-6"><a href="用dplyr编程.html#cb277-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb277-7"><a href="用dplyr编程.html#cb277-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var_summary</span>(mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="用dplyr编程.html#cb68-1" aria-hidden="true" tabindex="-1"></a>var_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(data, var) {</span>
+<span id="cb68-2"><a href="用dplyr编程.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="用dplyr编程.html#cb68-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">min =</span> <span class="fu">min</span>({{ var }}), <span class="at">max =</span> <span class="fu">max</span>({{ var }}))</span>
+<span id="cb68-4"><a href="用dplyr编程.html#cb68-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb68-5"><a href="用dplyr编程.html#cb68-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb68-6"><a href="用dplyr编程.html#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb68-7"><a href="用dplyr编程.html#cb68-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var_summary</span>(mpg)</span></code></pre></div>
 <ul>
 <li>When you have an env-variable that is a character vector, you need to index into the .data pronoun with [[, like summarise(df, mean = mean(.data[[var]])).</li>
 </ul>
 <p>The following example uses .data to count the number of unique values in each variable of mtcars:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="用dplyr编程.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(mtcars)) {</span>
-<span id="cb278-2"><a href="用dplyr编程.html#cb278-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> <span class="fu">count</span>(.data[[var]]) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span>
-<span id="cb278-3"><a href="用dplyr编程.html#cb278-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="用dplyr编程.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(mtcars)) {</span>
+<span id="cb69-2"><a href="用dplyr编程.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> <span class="fu">count</span>(.data[[var]]) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span>
+<span id="cb69-3"><a href="用dplyr编程.html#cb69-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Note that .data is not a data frame; it’s a special construct, a pronoun, that allows you to access the current variables either directly, with <code>.data$x</code> or indirectly with <code>.data[[var]]</code>. Don’t expect other functions to work with it.</p>
 <div id="案例-1" class="section level3" number="8.8.1">
 <h3><span class="header-section-number">8.8.1</span> 案例</h3>
 <p>当我们不知道接下来会用哪个变量汇总时：</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="用dplyr编程.html#cb279-1" aria-hidden="true" tabindex="-1"></a>my_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group_var) {</span>
-<span id="cb279-2"><a href="用dplyr编程.html#cb279-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
-<span id="cb279-3"><a href="用dplyr编程.html#cb279-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>({{ group_var }}) <span class="sc">%&gt;%</span></span>
-<span id="cb279-4"><a href="用dplyr编程.html#cb279-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(mass))</span>
-<span id="cb279-5"><a href="用dplyr编程.html#cb279-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="用dplyr编程.html#cb70-1" aria-hidden="true" tabindex="-1"></a>my_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group_var) {</span>
+<span id="cb70-2"><a href="用dplyr编程.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="用dplyr编程.html#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>({{ group_var }}) <span class="sc">%&gt;%</span></span>
+<span id="cb70-4"><a href="用dplyr编程.html#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(mass))</span>
+<span id="cb70-5"><a href="用dplyr编程.html#cb70-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>如果在多个位置使用：</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="用dplyr编程.html#cb280-1" aria-hidden="true" tabindex="-1"></a>my_summarise2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, expr) {</span>
-<span id="cb280-2"><a href="用dplyr编程.html#cb280-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
-<span id="cb280-3"><a href="用dplyr编程.html#cb280-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>({{ expr }}),</span>
-<span id="cb280-4"><a href="用dplyr编程.html#cb280-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sum =</span> <span class="fu">sum</span>({{ expr }}),</span>
-<span id="cb280-5"><a href="用dplyr编程.html#cb280-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb280-6"><a href="用dplyr编程.html#cb280-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb280-7"><a href="用dplyr编程.html#cb280-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="用dplyr编程.html#cb71-1" aria-hidden="true" tabindex="-1"></a>my_summarise2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, expr) {</span>
+<span id="cb71-2"><a href="用dplyr编程.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb71-3"><a href="用dplyr编程.html#cb71-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>({{ expr }}),</span>
+<span id="cb71-4"><a href="用dplyr编程.html#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sum =</span> <span class="fu">sum</span>({{ expr }}),</span>
+<span id="cb71-5"><a href="用dplyr编程.html#cb71-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb71-6"><a href="用dplyr编程.html#cb71-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb71-7"><a href="用dplyr编程.html#cb71-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>当多个表达式时：</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="用dplyr编程.html#cb281-1" aria-hidden="true" tabindex="-1"></a>my_summarise3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mean_var, sd_var) {</span>
-<span id="cb281-2"><a href="用dplyr编程.html#cb281-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb281-3"><a href="用dplyr编程.html#cb281-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>({{ mean_var }}), <span class="at">sd =</span> <span class="fu">mean</span>({{ sd_var }}))</span>
-<span id="cb281-4"><a href="用dplyr编程.html#cb281-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="用dplyr编程.html#cb72-1" aria-hidden="true" tabindex="-1"></a>my_summarise3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mean_var, sd_var) {</span>
+<span id="cb72-2"><a href="用dplyr编程.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb72-3"><a href="用dplyr编程.html#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>({{ mean_var }}), <span class="at">sd =</span> <span class="fu">mean</span>({{ sd_var }}))</span>
+<span id="cb72-4"><a href="用dplyr编程.html#cb72-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>如果要输出变量名时：</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="用dplyr编程.html#cb282-1" aria-hidden="true" tabindex="-1"></a>my_summarise4 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, expr) {</span>
-<span id="cb282-2"><a href="用dplyr编程.html#cb282-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
-<span id="cb282-3"><a href="用dplyr编程.html#cb282-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ expr }}),</span>
-<span id="cb282-4"><a href="用dplyr编程.html#cb282-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sum_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">sum</span>({{ expr }}),</span>
-<span id="cb282-5"><a href="用dplyr编程.html#cb282-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;n_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">n</span>()</span>
-<span id="cb282-6"><a href="用dplyr编程.html#cb282-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb282-7"><a href="用dplyr编程.html#cb282-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb282-8"><a href="用dplyr编程.html#cb282-8" aria-hidden="true" tabindex="-1"></a>my_summarise5 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mean_var, sd_var) {</span>
-<span id="cb282-9"><a href="用dplyr编程.html#cb282-9" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb282-10"><a href="用dplyr编程.html#cb282-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb282-11"><a href="用dplyr编程.html#cb282-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;mean_{{mean_var}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ mean_var }}), </span>
-<span id="cb282-12"><a href="用dplyr编程.html#cb282-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;sd_{{sd_var}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ sd_var }})</span>
-<span id="cb282-13"><a href="用dplyr编程.html#cb282-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb282-14"><a href="用dplyr编程.html#cb282-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="用dplyr编程.html#cb73-1" aria-hidden="true" tabindex="-1"></a>my_summarise4 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, expr) {</span>
+<span id="cb73-2"><a href="用dplyr编程.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb73-3"><a href="用dplyr编程.html#cb73-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ expr }}),</span>
+<span id="cb73-4"><a href="用dplyr编程.html#cb73-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sum_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">sum</span>({{ expr }}),</span>
+<span id="cb73-5"><a href="用dplyr编程.html#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;n_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">n</span>()</span>
+<span id="cb73-6"><a href="用dplyr编程.html#cb73-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb73-7"><a href="用dplyr编程.html#cb73-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb73-8"><a href="用dplyr编程.html#cb73-8" aria-hidden="true" tabindex="-1"></a>my_summarise5 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mean_var, sd_var) {</span>
+<span id="cb73-9"><a href="用dplyr编程.html#cb73-9" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb73-10"><a href="用dplyr编程.html#cb73-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb73-11"><a href="用dplyr编程.html#cb73-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;mean_{{mean_var}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ mean_var }}), </span>
+<span id="cb73-12"><a href="用dplyr编程.html#cb73-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;sd_{{sd_var}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ sd_var }})</span>
+<span id="cb73-13"><a href="用dplyr编程.html#cb73-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb73-14"><a href="用dplyr编程.html#cb73-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>任意个表达式：</p>
 <p>这种使用场景更多</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="用dplyr编程.html#cb283-1" aria-hidden="true" tabindex="-1"></a>my_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>
-<span id="cb283-2"><a href="用dplyr编程.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  .data <span class="sc">%&gt;%</span></span>
-<span id="cb283-3"><a href="用dplyr编程.html#cb283-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span></span>
-<span id="cb283-4"><a href="用dplyr编程.html#cb283-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb283-5"><a href="用dplyr编程.html#cb283-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb283-6"><a href="用dplyr编程.html#cb283-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(homeworld)</span>
-<span id="cb283-7"><a href="用dplyr编程.html#cb283-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(sex, gender)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="用dplyr编程.html#cb74-1" aria-hidden="true" tabindex="-1"></a>my_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>
+<span id="cb74-2"><a href="用dplyr编程.html#cb74-2" aria-hidden="true" tabindex="-1"></a>  .data <span class="sc">%&gt;%</span></span>
+<span id="cb74-3"><a href="用dplyr编程.html#cb74-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span></span>
+<span id="cb74-4"><a href="用dplyr编程.html#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb74-5"><a href="用dplyr编程.html#cb74-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb74-6"><a href="用dplyr编程.html#cb74-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(homeworld)</span>
+<span id="cb74-7"><a href="用dplyr编程.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 49 x 3</span></span>
+<span id="cb74-8"><a href="用dplyr编程.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   homeworld       mass height</span></span>
+<span id="cb74-9"><a href="用dplyr编程.html#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb74-10"><a href="用dplyr编程.html#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Alderaan          64   176.</span></span>
+<span id="cb74-11"><a href="用dplyr编程.html#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Aleen Minor       15    79 </span></span>
+<span id="cb74-12"><a href="用dplyr编程.html#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Bespin            79   175 </span></span>
+<span id="cb74-13"><a href="用dplyr编程.html#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Bestine IV       110   180 </span></span>
+<span id="cb74-14"><a href="用dplyr编程.html#cb74-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Cato Neimoidia    90   191 </span></span>
+<span id="cb74-15"><a href="用dplyr编程.html#cb74-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Cerea             82   198 </span></span>
+<span id="cb74-16"><a href="用dplyr编程.html#cb74-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 43 more rows</span></span>
+<span id="cb74-17"><a href="用dplyr编程.html#cb74-17" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(sex, gender)</span>
+<span id="cb74-18"><a href="用dplyr编程.html#cb74-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;sex&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb74-19"><a href="用dplyr编程.html#cb74-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
+<span id="cb74-20"><a href="用dplyr编程.html#cb74-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   sex [5]</span></span>
+<span id="cb74-21"><a href="用dplyr编程.html#cb74-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sex            gender      mass height</span></span>
+<span id="cb74-22"><a href="用dplyr编程.html#cb74-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb74-23"><a href="用dplyr编程.html#cb74-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 female         feminine    54.7   169.</span></span>
+<span id="cb74-24"><a href="用dplyr编程.html#cb74-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 hermaphroditic masculine 1358     175 </span></span>
+<span id="cb74-25"><a href="用dplyr编程.html#cb74-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 male           masculine   81.0   179.</span></span>
+<span id="cb74-26"><a href="用dplyr编程.html#cb74-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 none           feminine   NaN      96 </span></span>
+<span id="cb74-27"><a href="用dplyr编程.html#cb74-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 none           masculine   69.8   140 </span></span>
+<span id="cb74-28"><a href="用dplyr编程.html#cb74-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 &lt;NA&gt;           &lt;NA&gt;        48     181.</span></span></code></pre></div>
 
 </div>
 </div>
