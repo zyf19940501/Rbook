@@ -1,4 +1,460 @@
+```{r setup3, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
+```
+
 
 # 读写数据
 
 在我们使用R做数据处理前，我们首先需要将数据从外界导入R中。但是现实生活中数据类型复杂，存在各种各样的数据文件。我们从连接方式简单区分为文本数据、数据库数据，也就是用文件存放的数据或在数据库中的数据。
+
+关于和数据库的连接交互，请查看数据库章节。本章主要记录常用的Excel、csv、txt等文本文件的读写方式。
+
+
+## readxl
+
+readxl软件包使R获取Excel数据变得简洁。与现有的软件包(例如：xlsx)相比，readxl没有外部依赖性。容易在所有的操作系统安装使用。
+
+readxl[项目地址](https://readxl.tidyverse.org/)。本节大部分代码来源项目官网介绍，可自行查阅官网。
+
+### 安装
+
+从CRAN安装最新发行版本的最简单方法是安装整个tidyverse。
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+```
+
+> 由于readxl不是tidyverse核心加载包，使用时任需要加载library(readxl)
+
+或者是从CRAN仅安装readxl;
+
+```{r eval = FALSE}
+install.packages("readxl")
+```
+
+从github安装开发版：
+
+```{r eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("tidyverse/readxl")
+```
+
+
+### 用法
+
+1.读取
+
+readxl包中包含了几个示例文件，我们在接下来的案例中使用。
+
+- 查看readxl包中自带xlsx文件
+
+```{r}
+library(readxl)
+readxl_example()
+readxl_example("clippy.xls")
+```
+
+`read_excel()`可读取xls和xlsx文件。
+
+```{r}
+xlsx_example <- readxl_example("datasets.xlsx")
+read_excel(xlsx_example)
+```
+
+通过函数`excel_sheets()`查看Excel的sheet名称
+
+```{r}
+excel_sheets(xlsx_example)
+```
+
+指定worksheet的名字读取，可以是sheet的名字或序号。
+
+当我们要读取的本地xlsx文件有多个sheets时，通过值定sheet参数读取指定的sheet。
+
+```{r}
+read_excel(xlsx_example, sheet = "chickwts")
+```
+
+读取xlsx文件的指定位置，有多种方法控制。本处提供几个案例，请`?read_excel()`查看帮助。
+
+```{r eval=FALSE}
+read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
+  col_types = NULL, na = "", trim_ws = TRUE, skip = 0,
+  n_max = Inf, guess_max = min(1000, n_max),
+  progress = readxl_progress(), .name_repair = "unique")
+```
+
+range接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如as range = "D12:F15" or range = "R1C12:R6C15".
+
+其余参数中，个人觉得col_types比较重要，可以指定列的类型。可用选项:"skip", "guess", "logical", "numeric", "date", "text" or "list"。
+
+## writexl
+
+
+writexl包目前的功能比较简单，仅有读写Excel功能，但优势是速度较快，尤其是写入Excel时。[项目地址](https://docs.ropensci.org/writexl/)
+
+### 用法
+
+安装 
+
+```{r eval = FALSE}
+install.packages("writexl")
+```
+
+参数
+
+```{r eval=FALSE}
+write_xlsx(
+  x,
+  path = tempfile(fileext = ".xlsx"),
+  col_names = TRUE,
+  format_headers = TRUE,
+  use_zip64 = FALSE
+)
+```
+
+
+输出Excel
+
+```{r eval=FALSE}
+library(writexl)
+writexl::write_xlsx(iris,path = 'iris.xlsx')
+write_xlsx(list(mysheet1 = iris,mysheet2 = iris),path = 'iris.xlsx')
+
+```
+
+
+效率比较
+
+```{r}
+library(microbenchmark)
+library(nycflights13)
+microbenchmark(
+  writexl = writexl::write_xlsx(flights, tempfile()),
+  openxlsx = openxlsx::write.xlsx(flights, tempfile()),
+  times = 2
+)
+```
+
+其它功能
+
+```{r eval=FALSE}
+df <- data.frame(
+  name = c("UCLA", "Berkeley", "Jeroen"),
+  founded = c(1919, 1868, 2030),
+  website = xl_hyperlink(c("http://www.ucla.edu", "http://www.berkeley.edu", NA), "homepage")
+)
+df$age <- xl_formula('=(YEAR(TODAY()) - INDIRECT("B" & ROW()))')
+write_xlsx(df, 'universities.xlsx')
+
+# cleanup
+unlink('universities.xlsx')
+```
+
+## openxlsx
+
+openxlsx是当我需要定制输出Excel表格或报表时常用R包。目前该包的版本4.2.3，通过使用Rcpp加速，包的读写速度在Excel的百万级下是可接受状态，包的相关函数功能完善且简易好用，并且正在积极开发中，相信它以后功能会越来越强大。
+
+项目官方地址:<https://ycphs.github.io/openxlsx/index.html>
+
+个人感觉主要优势：
+
+- 不依赖java环境
+- 读写速度可接受
+- 可设置条件格式，与Excel中『开始』选项卡的条件格式功能接近
+- 可批量插入ggplot2图
+- 可插入公式
+- 可渲染大部分Excel格式，并且效率相比部分python包高效
+- 可添加页眉页脚以及其他格式，方便直接打印
+- 功能稳定可用并且在积极开发中
+
+版本信息查看
+
+```{r}
+packageVersion("openxlsx")
+```
+
+
+本人公众号:宇飞的世界中有更加详细的阐述:<https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ>
+
+### 安装
+
+稳定版
+
+```{r eval=FALSE}
+# 稳定版
+install.packages("openxlsx", dependencies = TRUE, repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")
+```
+
+开发版
+
+```{r eval = FALSE}
+install.packages(c("Rcpp", "devtools"), dependencies = TRUE)
+library(devtools)
+install_github("ycphs/openxlsx")
+```
+
+
+### 基础功能
+
+本文仅呈现基础功能部分，即读写EXCEL文件。其它功能，请查阅项目官方地址或微信公众号文章[R包-openxlsx-学习笔记](https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ)
+
+#### 读取Excel
+
+read.xlsx()是读取函数，主要参数如下：
+
+```{r eval=FALSE}
+library(openxlsx)
+read.xlsx(
+  xlsxFile,
+  sheet = 1,
+  startRow = 1,
+  colNames = TRUE,
+  rowNames = FALSE,
+  detectDates = FALSE,
+  skipEmptyRows = TRUE,
+  skipEmptyCols = TRUE,
+  rows = NULL,
+  cols = NULL,
+  check.names = FALSE,
+  sep.names = ".",
+  namedRegion = NULL,
+  na.strings = "NA",
+  fillMergedCells = FALSE
+)
+```
+
+以上参数中需要注意 ：
+
+detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。
+
+
+fillMergedCells参数，当你读取的表格中存在合并单元格，将用值填充其他全部单元格,如下所示：
+
+![](https://gitee.com/zhongyufei/photo-bed/raw/pic/img/merge-cell-xlsx.png)
+
+```{r eval=FALSE}
+read.xlsx('./test.xlsx',detectDates = TRUE,fillMergedCells = TRUE)
+```
+
+读取后如下所示：
+
+![openxlsx-merge-xlsx](https://gitee.com/zhongyufei/photo-bed/raw/pic/img/R-read-merge-xlsx.png)
+
+
+readWorkbook()也可以读取Excel表格数据，参数与read.xlsx基本一致。
+
+```{r eval=FALSE}
+xlsxFile <- system.file("extdata", "readTest.xlsx", package = "openxlsx")
+df1 <- readWorkbook(xlsxFile = xlsxFile, sheet = 1)
+```
+
+#### 写入Excel
+
+我们将R中的数据有时候需要导出到Excle中，这时就利用函数将data.frame写入Excle。
+
+write.xlsx()函数写入
+
+```{r eval=FALSE}
+write.xlsx(iris, file = "writeXLSX1.xlsx", colNames = TRUE, borders = "columns")
+```
+
+
+带格式输出
+
+```{r eval=FALSE}
+hs <- createStyle(
+  textDecoration = "BOLD", fontColour = "#FFFFFF", fontSize = 12,
+  fontName = "Arial Narrow", fgFill = "#4F80BD"
+)
+## Not run: 
+write.xlsx(iris,
+  file = "writeXLSX3.xlsx",
+  colNames = TRUE, borders = "rows", headerStyle = hs
+)
+```
+
+或者是用如下方式写入：
+
+不带任何格式写入，共计四步。第一步创建workbook,第二步添加sheet,第三步写入数据，第四步保存workbook。
+
+```{r eval=FALSE}
+df <- data.frame(a=1:10,b=1:10,d=1:10)
+wb <- createWorkbook(creator = 'zhongyf',title = 'test')
+addWorksheet(wb,sheetName = 'test')
+writeData(wb,sheet = 'test',x = df)
+saveWorkbook(wb, "test.xlsx", overwrite = TRUE)
+```
+
+
+### 带格式输出
+
+我们以上面四步输出的方式举例，拆解其中四个函数的参数。
+
+- createWorkbook()
+
+- addWorksheet()
+
+- writeData()
+
+- saveWorkbook()
+
+首先看看包中自带的例子，我们分解其中的参数。
+
+```{r eval=FALSE}
+wb <- createWorkbook("Fred")
+
+## Add 3 worksheets
+addWorksheet(wb, "Sheet 1")
+addWorksheet(wb, "Sheet 2", gridLines = FALSE)
+addWorksheet(wb, "Sheet 3", tabColour = "red")
+addWorksheet(wb, "Sheet 4", gridLines = FALSE, tabColour = "#4F81BD")
+
+## Headers and Footers
+addWorksheet(wb, "Sheet 5",
+  header = c("ODD HEAD LEFT", "ODD HEAD CENTER", "ODD HEAD RIGHT"),
+  footer = c("ODD FOOT RIGHT", "ODD FOOT CENTER", "ODD FOOT RIGHT"),
+  evenHeader = c("EVEN HEAD LEFT", "EVEN HEAD CENTER", "EVEN HEAD RIGHT"),
+  evenFooter = c("EVEN FOOT RIGHT", "EVEN FOOT CENTER", "EVEN FOOT RIGHT"),
+  firstHeader = c("TOP", "OF FIRST", "PAGE"),
+  firstFooter = c("BOTTOM", "OF FIRST", "PAGE")
+)
+
+addWorksheet(wb, "Sheet 6",
+  header = c("&[Date]", "ALL HEAD CENTER 2", "&[Page] / &[Pages]"),
+  footer = c("&[Path]&[File]", NA, "&[Tab]"),
+  firstHeader = c(NA, "Center Header of First Page", NA),
+  firstFooter = c(NA, "Center Footer of First Page", NA)
+)
+
+addWorksheet(wb, "Sheet 7",
+  header = c("ALL HEAD LEFT 2", "ALL HEAD CENTER 2", "ALL HEAD RIGHT 2"),
+  footer = c("ALL FOOT RIGHT 2", "ALL FOOT CENTER 2", "ALL FOOT RIGHT 2")
+)
+
+addWorksheet(wb, "Sheet 8",
+  firstHeader = c("FIRST ONLY L", NA, "FIRST ONLY R"),
+  firstFooter = c("FIRST ONLY L", NA, "FIRST ONLY R")
+)
+
+## Need data on worksheet to see all headers and footers
+writeData(wb, sheet = 5, 1:400)
+writeData(wb, sheet = 6, 1:400)
+writeData(wb, sheet = 7, 1:400)
+writeData(wb, sheet = 8, 1:400)
+
+## Save workbook
+## Not run: 
+saveWorkbook(wb, "addWorksheetExample.xlsx", overwrite = TRUE)
+```
+
+### 基础函数
+
+
+输出Excel的四步。`createWorkbook`，` addWorksheet`,`writeDataTable`,`saveWorkbook`四个函数的参数解释。
+
+- createWorkbook
+
+```{r eval=FALSE }
+createWorkbook(
+  creator = ifelse(.Platform$OS.type == "windows", Sys.getenv("USERNAME"),
+    Sys.getenv("USER")),
+  title = NULL,
+  subject = NULL,
+  category = NULL
+)
+```
+
+```{r eval=FALSE}
+wb <- createWorkbook(
+  creator = "宇飞的世界",
+  title = "标题",
+  subject = "主题",
+  category = "类别目录"
+)
+
+```
+
+
+
+- addWorksheet
+
+
+```{r eval=FALSE}
+addWorksheet(
+  wb,
+  sheetName,
+  gridLines = TRUE,
+  tabColour = NULL,
+  zoom = 100,
+  header = NULL,
+  footer = NULL,
+  evenHeader = NULL,
+  evenFooter = NULL,
+  firstHeader = NULL,
+  firstFooter = NULL,
+  visible = TRUE,
+  paperSize = getOption("openxlsx.paperSize", default = 9),
+  orientation = getOption("openxlsx.orientation", default = "portrait"),
+  vdpi = getOption("openxlsx.vdpi", default = getOption("openxlsx.dpi", default = 300)),
+  hdpi = getOption("openxlsx.hdpi", default = getOption("openxlsx.dpi", default = 300))
+)
+```
+
+
+```{r eval=FALSE}
+gridLines参数：表格中是否有网格线，在Excle『视图』选项卡下面的网格线去除打勾的效果一致
+
+tabColour参数：输出表格sheet标签颜色
+
+zoom：发大缩小，默认是100，可选范围10-400
+
+header:页眉 长度为3的字符向量，左、中、右三个位置，用Na可跳过一位置，以下页眉页脚相同。
+
+footer: 页脚
+
+evenHeader: 每页页眉
+
+evenFooter: 每页页脚
+
+firstHeader: 第一页页眉
+
+firstFooter: 第一页页脚
+
+visible:sheet是否隐藏，如果为否sheet将被隐藏
+
+paperSize:页面大小,详见 ?pageSetup 
+
+orientation:One of "portrait" or "landscape" 不清楚干嘛用
+
+vdpi: 屏幕分辨率 默认值即可，不用调整
+
+hdpi: 屏幕分辨率 默认值即可，不用调整
+```
+
+
+
+
+- writeDataTable
+
+
+writeDataTable()函数将data.frame写入Excel。
+
+wb:即createWorkbook()函数创建
+
+
+
+- saveWorkbook
+
+```{r eval=FALSE}
+saveWorkbook(wb, file, overwrite = FALSE, returnValue = FALSE)
+```
+
+参数较为简单，wb即上文中的workbook对象，file即输出的文件名，overwrite即如果存在是否覆盖，returnValue如果设置为TRUE，返回TRUE代表保存成功
+
+
+
+
+## readr
+
+## vroom

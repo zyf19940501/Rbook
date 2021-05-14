@@ -53,6 +53,14 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -138,12 +146,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
-<li class="chapter" data-level="2" data-path="读写数据.html"><a href="读写数据.html"><i class="fa fa-check"></i><b>2</b> 读写数据</a></li>
+<li class="chapter" data-level="2" data-path="读写数据.html"><a href="读写数据.html"><i class="fa fa-check"></i><b>2</b> 读写数据</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>2.1</b> readxl</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="readxl.html"><a href="readxl.html#安装"><i class="fa fa-check"></i><b>2.1.1</b> 安装</a></li>
+<li class="chapter" data-level="2.1.2" data-path="readxl.html"><a href="readxl.html#用法"><i class="fa fa-check"></i><b>2.1.2</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>2.2</b> writexl</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="writexl.html"><a href="writexl.html#用法-1"><i class="fa fa-check"></i><b>2.2.1</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="openxlsx.html"><a href="openxlsx.html"><i class="fa fa-check"></i><b>2.3</b> openxlsx</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="openxlsx.html"><a href="openxlsx.html#安装-1"><i class="fa fa-check"></i><b>2.3.1</b> 安装</a></li>
+<li class="chapter" data-level="2.3.2" data-path="openxlsx.html"><a href="openxlsx.html#基础功能"><i class="fa fa-check"></i><b>2.3.2</b> 基础功能</a></li>
+<li class="chapter" data-level="2.3.3" data-path="openxlsx.html"><a href="openxlsx.html#带格式输出"><i class="fa fa-check"></i><b>2.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="2.3.4" data-path="openxlsx.html"><a href="openxlsx.html#基础函数"><i class="fa fa-check"></i><b>2.3.4</b> 基础函数</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>2.4</b> readr</a></li>
+<li class="chapter" data-level="2.5" data-path="vroom.html"><a href="vroom.html"><i class="fa fa-check"></i><b>2.5</b> vroom</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>3.1</b> 前言</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="前言.html"><a href="前言.html#安装"><i class="fa fa-check"></i><b>3.1.1</b> 安装</a></li>
+<li class="chapter" data-level="3.1.1" data-path="前言.html"><a href="前言.html#安装-2"><i class="fa fa-check"></i><b>3.1.1</b> 安装</a></li>
 <li class="chapter" data-level="3.1.2" data-path="前言.html"><a href="前言.html#介绍"><i class="fa fa-check"></i><b>3.1.2</b> 介绍</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="基础用法.html"><a href="基础用法.html"><i class="fa fa-check"></i><b>3.2</b> 基础用法</a>
@@ -197,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>4</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="安装-1.html"><a href="安装-1.html"><i class="fa fa-check"></i><b>4.1</b> 安装</a></li>
+<li class="chapter" data-level="4.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>4.1</b> 安装</a></li>
 <li class="chapter" data-level="4.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>4.2</b> 主要功能</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>4.2.1</b> 宽转长</a></li>
@@ -308,7 +336,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>9.1</b> 安装数据库</a></li>
 <li class="chapter" data-level="9.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>9.2</b> DBI</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="dbi.html"><a href="dbi.html#安装-2"><i class="fa fa-check"></i><b>9.2.1</b> 安装</a></li>
+<li class="chapter" data-level="9.2.1" data-path="dbi.html"><a href="dbi.html#安装-4"><i class="fa fa-check"></i><b>9.2.1</b> 安装</a></li>
 <li class="chapter" data-level="9.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>9.2.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="9.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>9.2.3</b> 执行sql任务</a></li>
 <li class="chapter" data-level="9.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>9.2.4</b> 函数介绍</a></li>
@@ -318,7 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>9.5</b> ROracle包</a></li>
 <li class="chapter" data-level="9.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>9.6</b> RMySQL包</a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-3"><i class="fa fa-check"></i><b>9.6.1</b> 安装</a></li>
+<li class="chapter" data-level="9.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-5"><i class="fa fa-check"></i><b>9.6.1</b> 安装</a></li>
 <li class="chapter" data-level="9.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>9.6.2</b> 连接使用</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>9.7</b> 常见问题</a>
