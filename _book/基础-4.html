@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.3 R实现Excel字符函数 | R学习笔记</title>
+  <title>5.1 基础 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.3 R实现Excel字符函数 | R学习笔记" />
+  <meta property="og:title" content="5.1 基础 | R学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.3 R实现Excel字符函数 | R学习笔记" />
+  <meta name="twitter:title" content="5.1 基础 | R学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="常用函数-1.html"/>
-<link rel="next" href="lubridate.html"/>
+<link rel="prev" href="stringr.html"/>
+<link rel="next" href="常用函数-1.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -400,44 +400,137 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r实现excel字符函数" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> R实现Excel字符函数</h2>
-<p>以下函数实现，仅仅只是从<code>stringr</code>包的函数上修改，并且没有完善，没有报错提示等的简陋版本，如果感兴趣的可以尝试利用<code>Rcpp</code>写出高性能版本的同功能函数。</p>
+<div id="基础-4" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> 基础</h2>
+<p>字符串处理的难点，个人觉得在于【正则表达式】的掌握程度，但是需要用到正则表达式时都是比较复杂的字符处理工作，在实际商业文本数据中</p>
+<p>运用较多。对大部分常规商业数据分析工作者的面对的表格数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作。</p>
+<div id="单双引号" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> 单双引号</h3>
+<p><code>R</code>语言中字符串输入时，可以使用单引号，也可以使用双引号。</p>
 <ul>
-<li>left</li>
+<li><p>单双引号用法和意义没有差别</p></li>
+<li><p>R中推荐使用双引号分隔符，打印、显示时都是用双引号</p></li>
+<li><p>单引号字符串通常用在字符串内包含双引号时，如用R执行sql字符串代码时</p></li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="r实现excel字符函数.html#cb35-1" aria-hidden="true" tabindex="-1"></a>r_left <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
-<span id="cb35-2"><a href="r实现excel字符函数.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">end =</span> num)</span>
-<span id="cb35-3"><a href="r实现excel字符函数.html#cb35-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-4"><a href="r实现excel字符函数.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
-<span id="cb35-5"><a href="r实现excel字符函数.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;我是R&quot;</span></span></code></pre></div>
-<ul>
-<li>right</li>
-</ul>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="r实现excel字符函数.html#cb36-1" aria-hidden="true" tabindex="-1"></a>r_right <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
-<span id="cb36-2"><a href="r实现excel字符函数.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="fu">str_length</span>(str) <span class="sc">-</span> num <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb36-3"><a href="r实现excel字符函数.html#cb36-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb36-4"><a href="r实现excel字符函数.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
-<span id="cb36-5"><a href="r实现excel字符函数.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;学习者&quot;</span></span></code></pre></div>
-<ul>
-<li>mid</li>
-</ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="r实现excel字符函数.html#cb37-1" aria-hidden="true" tabindex="-1"></a>r_mid <span class="ot">&lt;-</span> <span class="cf">function</span>(str,start,num){</span>
-<span id="cb37-2"><a href="r实现excel字符函数.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> start,<span class="at">end =</span> start <span class="sc">+</span> num <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb37-3"><a href="r实现excel字符函数.html#cb37-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb37-4"><a href="r实现excel字符函数.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb37-5"><a href="r实现excel字符函数.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span></code></pre></div>
-<p>其余函数可以自行实现</p>
-
 </div>
-<!-- </div> -->
+<div id="转义" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> 转义</h3>
+<p>要在字符串中包含单引号或双引号，可以使用 转义它，即遇到特殊符号时需要转义。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="基础-4.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&#39;stringr&#39;)</span></span>
+<span id="cb1-2"><a href="基础-4.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-3"><a href="基础-4.html#cb1-3" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;我是一名</span><span class="sc">\&#39;</span><span class="st">小学生</span><span class="sc">\&#39;</span><span class="st">&quot;</span>   <span class="co">#字符串建议用双引号包裹,单引号也可以</span></span>
+<span id="cb1-4"><a href="基础-4.html#cb1-4" aria-hidden="true" tabindex="-1"></a>char</span>
+<span id="cb1-5"><a href="基础-4.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;我是一名&#39;小学生&#39;&quot;</span></span></code></pre></div>
+<p>打印会显示转义符。要查看字符串的原始内容,可使用writeLines()或cat()</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="基础-4.html#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span>)</span>
+<span id="cb2-2"><a href="基础-4.html#cb2-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb2-3"><a href="基础-4.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;\&quot;&quot; &quot;\\&quot;</span></span>
+<span id="cb2-4"><a href="基础-4.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(x)</span>
+<span id="cb2-5"><a href="基础-4.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
+<span id="cb2-6"><a href="基础-4.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &quot;</span></span>
+<span id="cb2-7"><a href="基础-4.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \</span></span></code></pre></div>
+<p>在正则表达式中 有特殊含义,有时需要两个 ，多体会下面这段，代码实现移除“||”的功能。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="基础-4.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(<span class="at">string =</span> <span class="st">&#39;a||b&#39;</span>,<span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|&quot;</span>)</span>
+<span id="cb3-2"><a href="基础-4.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ab&quot;</span></span></code></pre></div>
+<p>另外常见的\n, \t需要被转义处理,在字符清洗,如小说语义分析,网页爬虫后整理等数据清洗过程中经常用到.</p>
+</div>
+<div id="字符串长度" class="section level3" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> 字符串长度</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="基础-4.html#cb4-1" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;我是R语言学习者&quot;</span></span>
+<span id="cb4-2"><a href="基础-4.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(char)</span>
+<span id="cb4-3"><a href="基础-4.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 8</span></span>
+<span id="cb4-4"><a href="基础-4.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 向量化</span></span>
+<span id="cb4-5"><a href="基础-4.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;R for data science&quot;</span>, <span class="cn">NA</span>))</span>
+<span id="cb4-6"><a href="基础-4.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  1 18 NA</span></span></code></pre></div>
+</div>
+<div id="连接字符串" class="section level3" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> 连接字符串</h3>
+<p>R中字符串不像python中可以用加号连接字符串,如下所示:</p>
+<p>R 版本</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="基础-4.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#base R</span></span>
+<span id="cb5-2"><a href="基础-4.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>)</span>
+<span id="cb5-3"><a href="基础-4.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ab&quot;</span></span>
+<span id="cb5-4"><a href="基础-4.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="基础-4.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#stringr</span></span>
+<span id="cb5-6"><a href="基础-4.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>)</span>
+<span id="cb5-7"><a href="基础-4.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ab&quot;</span></span>
+<span id="cb5-8"><a href="基础-4.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;, &quot;</span>) <span class="co">#sep 参数控制分隔符</span></span>
+<span id="cb5-9"><a href="基础-4.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a, b&quot;</span></span></code></pre></div>
+<p>Python 版本</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="基础-4.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;a&#39;</span> <span class="op">+</span> <span class="st">&#39;b&#39;</span></span>
+<span id="cb6-2"><a href="基础-4.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;ab&#39;</span></span></code></pre></div>
+<p>多个字符串合并为一个字符,<code>stringr</code>中的函数都是向量化的，合并一个和多个字符都是同样道理。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="基础-4.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#base R</span></span>
+<span id="cb7-2"><a href="基础-4.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="st">&#39;e&#39;</span>),<span class="at">collapse =</span> <span class="st">&#39;,&#39;</span>)</span>
+<span id="cb7-3"><a href="基础-4.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a,b,d,e&quot;</span></span>
+<span id="cb7-4"><a href="基础-4.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#stringr</span></span>
+<span id="cb7-5"><a href="基础-4.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="st">&#39;e&#39;</span>),<span class="at">collapse =</span> <span class="st">&#39;,&#39;</span>)  <span class="co">#collapse 参数控制</span></span>
+<span id="cb7-6"><a href="基础-4.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a,b,d,e&quot;</span></span></code></pre></div>
+<p>实际运用案例</p>
+<ul>
+<li>合并</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="基础-4.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb8-2"><a href="基础-4.html#cb8-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">rep</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">10</span>),<span class="at">letters=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb8-3"><a href="基础-4.html#cb8-3" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span><span class="fu">str_c</span>(letters,<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>),by<span class="ot">=</span>.(col)][]</span>
+<span id="cb8-4"><a href="基础-4.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col letters              newcol</span></span>
+<span id="cb8-5"><a href="基础-4.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a       a a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-6"><a href="基础-4.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a       b a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-7"><a href="基础-4.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a       c a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-8"><a href="基础-4.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a       d a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-9"><a href="基础-4.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a       e a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-10"><a href="基础-4.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a       f a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-11"><a href="基础-4.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a       g a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-12"><a href="基础-4.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a       h a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-13"><a href="基础-4.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a       i a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb8-14"><a href="基础-4.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a       j a|b|c|d|e|f|g|h|i|j</span></span></code></pre></div>
+<ul>
+<li>拆解</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="基础-4.html#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="基础-4.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等</span></span>
+<span id="cb9-3"><a href="基础-4.html#cb9-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="st">&#39;a&#39;</span>,<span class="at">letters=</span><span class="fu">str_c</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>))</span>
+<span id="cb9-4"><a href="基础-4.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="基础-4.html#cb9-5" aria-hidden="true" tabindex="-1"></a>my_str_split <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb9-6"><a href="基础-4.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-7"><a href="基础-4.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(x,<span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">|&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()  <span class="co">#str_split 拆解出来是列表 需要向量化</span></span>
+<span id="cb9-8"><a href="基础-4.html#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-9"><a href="基础-4.html#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="基础-4.html#cb9-10" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(<span class="at">newcol=</span><span class="fu">my_str_split</span>(letters)),by<span class="ot">=</span>.(col)]</span>
+<span id="cb9-11"><a href="基础-4.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col newcol</span></span>
+<span id="cb9-12"><a href="基础-4.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a      a</span></span>
+<span id="cb9-13"><a href="基础-4.html#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a      b</span></span>
+<span id="cb9-14"><a href="基础-4.html#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a      c</span></span>
+<span id="cb9-15"><a href="基础-4.html#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a      d</span></span>
+<span id="cb9-16"><a href="基础-4.html#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a      e</span></span>
+<span id="cb9-17"><a href="基础-4.html#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a      f</span></span>
+<span id="cb9-18"><a href="基础-4.html#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a      g</span></span>
+<span id="cb9-19"><a href="基础-4.html#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a      h</span></span>
+<span id="cb9-20"><a href="基础-4.html#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a      i</span></span>
+<span id="cb9-21"><a href="基础-4.html#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a      j</span></span></code></pre></div>
+</div>
+<div id="r4.0后新特性" class="section level3" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> R4.0后新特性</h3>
+<p><a href="https://www.r-bloggers.com/4-for-4-0-0-four-useful-new-features-in-r-4-0-0/">新特性</a></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="基础-4.html#cb10-1" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">a</span><span class="sc">\a</span><span class="st">b\d</span><span class="sc">\e\f</span><span class="st">)&quot;</span> <span class="co">#windows下路径好用,不用转义路径复制和直接可用</span></span>
+<span id="cb10-2"><a href="基础-4.html#cb10-2" aria-hidden="true" tabindex="-1"></a>char</span>
+<span id="cb10-3"><a href="基础-4.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;\\\\a\\ab\\d\\e\\f&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="基础-4.html#cb11-1" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;我是一名</span><span class="sc">\&#39;</span><span class="st">小学生</span><span class="sc">\&#39;</span><span class="st">&quot;</span> </span>
+<span id="cb11-2"><a href="基础-4.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
+<span id="cb11-3"><a href="基础-4.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;小学生&#39;</span></span>
+<span id="cb11-4"><a href="基础-4.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="基础-4.html#cb11-5" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> r<span class="st">&quot;(我是一名&#39;R语言&#39;学习者)&quot;</span></span>
+<span id="cb11-6"><a href="基础-4.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
+<span id="cb11-7"><a href="基础-4.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;R语言&#39;学习者</span></span></code></pre></div>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="常用函数-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lubridate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="stringr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="常用函数-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

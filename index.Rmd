@@ -18,12 +18,48 @@ description: "个人学习R语言笔记"
 a <- version
 ```
 
-作为商业数据分析师，我学习使用`R`以及有一段时间，主要用`R`来处理数据，自动化报表，ETL，可视化等，另外用`shiny`做看板。
-
-`R`极大的拓展了数据处理能力,让我很轻松方便处理数据，有更多精力时间聚焦在具体问题上。
+作为商业数据分析师，我学习使用`R`已经有较长一段时间，主要用`R`来处理数据，自动化报表，ETL，可视化等；另外用R包`shiny`做web看板。
 
 
-本文主要记录个人学习过程中的经验，因个人能力有限，难免出现错误，如阅读中发现错误，欢迎联系本人更正。
+本文主要记录个人学习数据处理相关R包的过程，主要从`tidyverse`系列以及`data.table`两套语法做数据处理。co
+
+
+
+```{r echo=FALSE,fig.align='center'}
+library(DiagrammeR)
+mermaid(diagram = "
+graph LR
+A[R数据处理] --> B[tidyverse]
+A-->C[data.table]
+A-->D[Database]
+A-->E[read and write data]
+A-->F[loop and iteration]
+
+B-->B1[tidyr]
+B-->B2[dplyr]
+B-->B3[lubridate]
+B-->B4[stringr]
+
+C-->C1[read and write]
+C-->C2[f系列函数]
+C-->C3[set系列函数]
+C-->C4[misc]
+
+D-->D1[DBI]
+D-->D2[ROralce]
+
+E-->E1[readxl]
+E-->E2[readr]
+E-->E3[vroom]
+        
+",width =500,height = 1250)
+```
+
+
+`R`极大的拓展了数据处理能力,让我很轻松方便处理数据，有更多精力时间聚焦在具体问题上。但因个人能力有限，难免出现错误，如阅读中发现错误，欢迎联系本人更正。
+
+
+
 
 
 Email: <598253220@qq.com> 
@@ -31,6 +67,8 @@ Email: <598253220@qq.com>
 微信公众号: 宇飞的世界 
 
 语雀: https://www.yuque.com/zyufei
+
+
 
 
 ```{r}
