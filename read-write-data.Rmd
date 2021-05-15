@@ -3,9 +3,17 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 ```
 
 
-# 读写数据
+# 数据导入导出
 
-在我们使用R做数据处理前，我们首先需要将数据从外界导入R中。但是现实生活中数据类型复杂，存在各种各样的数据文件。我们从连接方式简单区分为文本数据、数据库数据，也就是用文件存放的数据或在数据库中的数据。
+在我们使用R做数据处理前，我们首先需要将数据从外界导入R中。本章主要简述针对数据导入导出R的相关R包，并且仅仅局限在Excel，csv,txt等常见的文本文件。
+
+>当有其它需求的时候，那时候的你肯定已经会自行查找相关R包了。
+
+想最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有现实感。作为普通一名普通的数据分析师，我日常接触最多的数据结构是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表。在开始操作数据前，我们首先学会将数据导入R中。
+
+建议大家学习将数据导入R中的时候，将手上的数据加载到R中。
+
+但是现实生活中数据类型复杂，存在各种各样的数据文件。我们从连接方式简单区分为文本数据、数据库数据，也就是用文件存放在磁盘上的文本数据或存放在数据库中的数据。
 
 关于和数据库的连接交互，请查看数据库章节。本章主要记录常用的Excel、csv、txt等文本文件的读写方式。
 
@@ -457,4 +465,227 @@ saveWorkbook(wb, file, overwrite = FALSE, returnValue = FALSE)
 
 ## readr
 
+
+readr提供了一种快速友好的方式读取"矩形数据"(如：csv,tsv,fwf)，且当读取大型数据集时默认有进度条显示。
+
+矩形数据，关系数据库中的单表就是矩形数据的一种。
+
+> csv Comma-Separated Values，逗号分隔值，分隔符也可是不是逗号。
+csv文件是一种以纯文本形式存储的表格数据,可以通过记事本打开。与Excel不同的是，CSV是一种文本格式，不受Excel最大行数(1048576)限制。
+
+如果对readr包不熟悉，可以直接阅读包作者大神Hadley Wickham的书R for data science 中[data import chapter](https://r4ds.had.co.nz/data-import.html)章节。
+
+
+
+### 安装
+
+直接通过安装tidyvese获取或单独安装readr。
+
+```{r eval= FALSE}
+# The easiest way to get readr is to install the whole tidyverse:
+install.packages("tidyverse")
+
+# Alternatively, install just readr:
+install.packages("readr")
+
+# Or the the development version from GitHub:
+# install.packages("devtools")
+devtools::install_github("tidyverse/readr")
+```
+
+
+### 用法
+
+
+readr包是tidyverse系列的核心包，可以加载tidyverse使用。
+
+```{r}
+library(tidyverse)
+```
+
+#### 主要函数
+
+readr支持七种`read_`功能的文件格式。
+
+
+— `read_csv()`:逗号分隔符文件
+- `read_tsv()`:制表符分割文件
+- `read_delim()`:规定分隔符文件
+- `read_fwf()`:固定宽度文件
+- `read_table()`:表格文件，列间用空格隔开
+- `read_log()`:Web日志文件
+
+
+在大多数情况下，我们常使用`read_csv()`，提供文件路径，将得到数据表。示例如下:
+
+```{r}
+mtcars <- read_csv(readr_example("mtcars.csv"))
+```
+
+通过上述输出反馈，我们可以知道读进去的数据集每列类型。如果发现不对可以通过`col_types`参数修改。大多数情况下，我们并不需要指定列的类型，readr会自动猜。
+
+```{r}
+mtcars <- read_csv(readr_example("mtcars.csv"), col_types = 
+  cols(
+    mpg = col_double(),
+    cyl = col_integer(),
+    disp = col_double(),
+    hp = col_integer(),
+    drat = col_double(),
+    vs = col_integer(),
+    wt = col_double(),
+    qsec = col_double(),
+    am = col_integer(),
+    gear = col_integer(),
+    carb = col_integer()
+  )
+)
+```
+
+#### 参数
+
+`read_csv()`的参数如下：
+
+```{r eval =FALSE}
+read_csv(
+  file,
+  col_names = TRUE,
+  col_types = NULL,
+  locale = default_locale(),
+  na = c("", "NA"),
+  quoted_na = TRUE,
+  quote = "\"",
+  comment = "",
+  trim_ws = TRUE,
+  skip = 0,
+  n_max = Inf,
+  guess_max = min(1000, n_max),
+  progress = show_progress(),
+  skip_empty_rows = TRUE
+)
+```
+
+col_types :指定列类型，可用项如下所示(含简写):
+  c = character，i = integer，n = number，d = double，l = logical，f = factor，D = date，T = date time，t = time，默认值为guess.
+  
+local:local参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。
+
+
+
+`locale()`的第一个参数是date_names，控制月份和日期的名称，指定最简单的方式[ ISO 639 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+
+```{r}
+locale('zh') # 中文
+locale('ja') #日本
+locale('ko') #韩国
+```
+
+编码和时区问题是我们常面临的问题。
+
+```{r eval=FALSE}
+read_csv(readr_example("mtcars.csv"),locale = locale(encoding = 'UTF-8',tz = 'Asia/Shanghai'))
+```
+
+详细信息查看手册`vignette("locales")`。
+
+### 导出功能
+
+由于系统不同的缘故，在win系统下可能面临编码问题。我用readr导出数据时一般采用`write_excel_csv()`功能导出。
+
+需要说明的是`write_`系列函数可以将输出文件压缩。
+
+```{r eval=FALSE}
+data(storms, package = "dplyr")
+write_csv(storms, "storms.csv")
+write_csv(storms, "storms.csv.gz")
+```
+
+### 总结
+
+大部分情况下，当数据整洁时且不涉及时间(日期不影响)时，采用默认参数读取数据即可。
+
+当数据集前面行缺失值较多，readr自动猜数据列类型错误时，需要我们人为指定列类型；当编码时区等错误时，需指定`locale()`；以上是可能遇到的问题以及解决办法。
+
+
 ## vroom
+
+vroom实现读取"矩形数据"到R中,如 comma separated(csv),tab separated(tsv), fixed width files(fwf)。该包的功能类似`readr::read_csv()`,`data.table::fread()`和`read.csv()`,但是对于许多数据集来说，`vroom::vroom()`读取速度会快得多。
+
+[vroom项目地址](https://vroom.r-lib.org/index.html)
+
+### 安装
+
+
+```{r eval=FALSE}
+# 从cran安装
+install.packages("vroom")
+# install.packages("devtools")
+devtools::install_dev("vroom")
+```
+
+### 用法
+
+1. 读取文件
+
+```{r}
+library(vroom)
+file <- vroom_example("mtcars.csv")
+file
+
+vroom(file)
+vroom(file, delim = ",")
+```
+
+2. 读取多文件
+
+即`vroom::vroom()`具备迭代效果,具体情况如下：
+
+```{r eval=FALSE}
+mt <- tibble::rownames_to_column(mtcars, "model")
+purrr::iwalk(
+  split(mt, mt$cyl),
+  ~ vroom_write(.x, glue::glue("mtcars_{.y}.csv"), "\t")
+)
+
+files <- fs::dir_ls(glob = "mtcars*csv")
+files
+
+# read_csv
+
+purrr::map_dfr(files,readr::read_delim,delim="\t")
+
+# vroom same above
+vroom(files) 
+```
+
+3. 读取压缩文件
+
+vroom支持zip,gz,bz2,xz等压缩文件，只需要将压缩文件名称传递给vroom即可。
+
+```{r eval=FALSE}
+file <- vroom_example("mtcars.csv.gz")
+
+vroom(file)
+```
+
+4. 读取网络文件
+
+```{r}
+file <- "https://raw.githubusercontent.com/r-lib/vroom/master/inst/extdata/mtcars.csv"
+vroom(file)
+```
+
+5. 选择列读取
+
+room提供了与`dplyr::select()`相同的列选择和重命名接口
+
+```{r}
+file <- vroom_example("mtcars.csv.gz")
+
+vroom(file, col_select = c(model, cyl, gear))
+
+# vroom(file, col_select = c(1, 3, 11))
+
+# vroom(file, col_select = list(car = model, everything()))
+```
+

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 writexl | R学习笔记</title>
+  <title>2 数据导入导出 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 writexl | R学习笔记" />
+  <meta property="og:title" content="2 数据导入导出 | R学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 writexl | R学习笔记" />
+  <meta name="twitter:title" content="2 数据导入导出 | R学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="readxl.html"/>
-<link rel="next" href="openxlsx.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="readxl.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -430,53 +430,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="writexl" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> writexl</h2>
-<p>writexl包目前的功能比较简单，仅有读写Excel功能，但优势是速度较快，尤其是写入Excel时。<a href="https://docs.ropensci.org/writexl/">项目地址</a></p>
-<div id="用法-1" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> 用法</h3>
-<p>安装</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="writexl.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;writexl&quot;</span>)</span></code></pre></div>
-<p>参数</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="writexl.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(</span>
-<span id="cb10-2"><a href="writexl.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  x,</span>
-<span id="cb10-3"><a href="writexl.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">&quot;.xlsx&quot;</span>),</span>
-<span id="cb10-4"><a href="writexl.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-5"><a href="writexl.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">format_headers =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-6"><a href="writexl.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">use_zip64 =</span> <span class="cn">FALSE</span></span>
-<span id="cb10-7"><a href="writexl.html#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>输出Excel</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="writexl.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
-<span id="cb11-2"><a href="writexl.html#cb11-2" aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(iris,<span class="at">path =</span> <span class="st">&#39;iris.xlsx&#39;</span>)</span>
-<span id="cb11-3"><a href="writexl.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(<span class="fu">list</span>(<span class="at">mysheet1 =</span> iris,<span class="at">mysheet2 =</span> iris),<span class="at">path =</span> <span class="st">&#39;iris.xlsx&#39;</span>)</span></code></pre></div>
-<p>效率比较</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="writexl.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
-<span id="cb12-2"><a href="writexl.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb12-3"><a href="writexl.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb12-4"><a href="writexl.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">writexl =</span> writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(flights, <span class="fu">tempfile</span>()),</span>
-<span id="cb12-5"><a href="writexl.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">openxlsx =</span> openxlsx<span class="sc">::</span><span class="fu">write.xlsx</span>(flights, <span class="fu">tempfile</span>()),</span>
-<span id="cb12-6"><a href="writexl.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">2</span></span>
-<span id="cb12-7"><a href="writexl.html#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>其它功能</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="writexl.html#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb13-2"><a href="writexl.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;UCLA&quot;</span>, <span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;Jeroen&quot;</span>),</span>
-<span id="cb13-3"><a href="writexl.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">founded =</span> <span class="fu">c</span>(<span class="dv">1919</span>, <span class="dv">1868</span>, <span class="dv">2030</span>),</span>
-<span id="cb13-4"><a href="writexl.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">website =</span> <span class="fu">xl_hyperlink</span>(<span class="fu">c</span>(<span class="st">&quot;http://www.ucla.edu&quot;</span>, <span class="st">&quot;http://www.berkeley.edu&quot;</span>, <span class="cn">NA</span>), <span class="st">&quot;homepage&quot;</span>)</span>
-<span id="cb13-5"><a href="writexl.html#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-6"><a href="writexl.html#cb13-6" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="fu">xl_formula</span>(<span class="st">&#39;=(YEAR(TODAY()) - INDIRECT(&quot;B&quot; &amp; ROW()))&#39;</span>)</span>
-<span id="cb13-7"><a href="writexl.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(df, <span class="st">&#39;universities.xlsx&#39;</span>)</span>
-<span id="cb13-8"><a href="writexl.html#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="writexl.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># cleanup</span></span>
-<span id="cb13-10"><a href="writexl.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">&#39;universities.xlsx&#39;</span>)</span></code></pre></div>
-</div>
+<div id="数据导入导出" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 数据导入导出</h1>
+<p>在我们使用R做数据处理前，我们首先需要将数据从外界导入R中。本章主要简述针对数据导入导出R的相关R包，并且仅仅局限在Excel，csv,txt等常见的文本文件。</p>
+<blockquote>
+<p>当有其它需求的时候，那时候的你肯定已经会自行查找相关R包了。</p>
+</blockquote>
+<p>想最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有现实感。作为普通一名普通的数据分析师，我日常接触最多的数据结构是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表。在开始操作数据前，我们首先学会将数据导入R中。</p>
+<p>建议大家学习将数据导入R中的时候，将手上的数据加载到R中。</p>
+<p>但是现实生活中数据类型复杂，存在各种各样的数据文件。我们从连接方式简单区分为文本数据、数据库数据，也就是用文件存放在磁盘上的文本数据或存放在数据库中的数据。</p>
+<p>关于和数据库的连接交互，请查看数据库章节。本章主要记录常用的Excel、csv、txt等文本文件的读写方式。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="readxl.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="openxlsx.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="readxl.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
