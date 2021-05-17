@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.6 文件路径 | R学习笔记</title>
+  <title>2.8 文件路径 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.6 文件路径 | R学习笔记" />
+  <meta property="og:title" content="2.8 文件路径 | R学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.6 文件路径 | R学习笔记" />
+  <meta name="twitter:title" content="2.8 文件路径 | R学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="vroom.html"/>
+<link rel="prev" href="插件导入.html"/>
 <link rel="next" href="dplyr.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -170,10 +170,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.1" data-path="vroom.html"><a href="vroom.html#安装-3"><i class="fa fa-check"></i><b>2.5.1</b> 安装</a></li>
 <li class="chapter" data-level="2.5.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.5.2</b> 用法</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.6</b> 文件路径</a>
+<li class="chapter" data-level="2.6" data-path="rstudio导入.html"><a href="rstudio导入.html"><i class="fa fa-check"></i><b>2.6</b> Rstudio导入</a></li>
+<li class="chapter" data-level="2.7" data-path="插件导入.html"><a href="插件导入.html"><i class="fa fa-check"></i><b>2.7</b> 插件导入</a></li>
+<li class="chapter" data-level="2.8" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.8</b> 文件路径</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.6.1</b> 指定路径</a></li>
-<li class="chapter" data-level="2.6.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.6.2</b> 默认路径</a></li>
+<li class="chapter" data-level="2.8.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.8.1</b> 指定路径</a></li>
+<li class="chapter" data-level="2.8.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.8.2</b> 默认路径</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
@@ -437,11 +439,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="文件路径" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> 文件路径</h2>
+<div id="文件路径" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> 文件路径</h2>
 <p>我们读取数据时都是读取某路径下的某文件，但是由于系统等原因，路径在不同系统下的表示方式不一致。</p>
-<div id="指定路径" class="section level3" number="2.6.1">
-<h3><span class="header-section-number">2.6.1</span> 指定路径</h3>
+<div id="指定路径" class="section level3" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> 指定路径</h3>
 <ul>
 <li>win 路径</li>
 </ul>
@@ -451,16 +453,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">win-path</p>
 </div>
 <p>在R中读取时需要用一个正斜杠或两个反斜杠。</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="文件路径.html#cb45-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data/flights.csv&#39;</span>)</span>
-<span id="cb45-2"><a href="文件路径.html#cb45-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zhongyf</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">Rbook</span><span class="sc">\\</span><span class="st">data</span><span class="sc">\f</span><span class="st">lights.csv&#39;</span>) <span class="co"># same above</span></span>
-<span id="cb45-3"><a href="文件路径.html#cb45-3" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">:::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(C:\Users\zhongyf\Desktop\Rbook\data</span><span class="sc">\f</span><span class="st">lights.csv)&quot;</span>) <span class="co"># same above</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="文件路径.html#cb46-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data/flights.csv&#39;</span>)</span>
+<span id="cb46-2"><a href="文件路径.html#cb46-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zhongyf</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">Rbook</span><span class="sc">\\</span><span class="st">data</span><span class="sc">\f</span><span class="st">lights.csv&#39;</span>) <span class="co"># same above</span></span>
+<span id="cb46-3"><a href="文件路径.html#cb46-3" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">:::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(C:\Users\zhongyf\Desktop\Rbook\data</span><span class="sc">\f</span><span class="st">lights.csv)&quot;</span>) <span class="co"># same above</span></span></code></pre></div>
 <p>工作中，当需要读取或写入共享盘<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>中文件时，路径表示方式为：</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="文件路径.html#cb46-1" aria-hidden="true" tabindex="-1"></a>the_shared_disk <span class="ot">&lt;-</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部\)&quot;</span></span>
-<span id="cb46-2"><a href="文件路径.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="文件路径.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data into R</span></span>
-<span id="cb46-4"><a href="文件路径.html#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-5"><a href="文件路径.html#cb46-5" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">192.168.2.117</span><span class="sc">\\</span><span class="st">公司A-新</span><span class="sc">\\</span><span class="st">01事业部</span><span class="sc">\\</span><span class="st">flights.csv&quot;</span>)</span>
-<span id="cb46-6"><a href="文件路径.html#cb46-6" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部\)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="文件路径.html#cb47-1" aria-hidden="true" tabindex="-1"></a>the_shared_disk <span class="ot">&lt;-</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部\)&quot;</span></span>
+<span id="cb47-2"><a href="文件路径.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="文件路径.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data into R</span></span>
+<span id="cb47-4"><a href="文件路径.html#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="文件路径.html#cb47-5" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">192.168.2.117</span><span class="sc">\\</span><span class="st">公司A-新</span><span class="sc">\\</span><span class="st">01事业部</span><span class="sc">\\</span><span class="st">flights.csv&quot;</span>)</span>
+<span id="cb47-6"><a href="文件路径.html#cb47-6" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部\)&quot;</span>)</span></code></pre></div>
 <blockquote>
 <p>r“()”用法是R-4.0-之后的特性。在win系统下表示路径特别有用</p>
 </blockquote>
@@ -472,15 +474,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="picture/read-write/mac-path.png" alt="" />
 <p class="caption">mac-path</p>
 </div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="文件路径.html#cb47-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;/User/vega_mac/Desktop/r/Rbook/data/flights.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="文件路径.html#cb48-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;/User/vega_mac/Desktop/r/Rbook/data/flights.csv&#39;</span>)</span></code></pre></div>
 </div>
-<div id="默认路径" class="section level3" number="2.6.2">
-<h3><span class="header-section-number">2.6.2</span> 默认路径</h3>
+<div id="默认路径" class="section level3" number="2.8.2">
+<h3><span class="header-section-number">2.8.2</span> 默认路径</h3>
 <p><code>getwd()</code>是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，读取导出的默认路径是<code>getwd()</code>。想要改变工作目录，通过设定<code>setwd()</code>即可。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="文件路径.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="文件路径.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb49-2"><a href="文件路径.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data&#39;</span>)</span>
-<span id="cb49-3"><a href="文件路径.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="文件路径.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="文件路径.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb50-2"><a href="文件路径.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data&#39;</span>)</span>
+<span id="cb50-3"><a href="文件路径.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
 
 </div>
 </div>
@@ -488,7 +490,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="footnotes">
 <hr />
 <ol start="3">
-<li id="fn3"><p>共享盘的地址即某电脑上的地址，知道共享盘在局域网中的ip地址后在 开始-&gt;运行中输入\192.168.1.247即可打开共享盘<a href="文件路径.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>共享盘的地址即某电脑(服务器)的地址，知道共享盘在局域网中的ip地址后在 开始-&gt;运行中输入\192.168.1.247即可打开共享盘。<a href="文件路径.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -496,7 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="vroom.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="插件导入.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

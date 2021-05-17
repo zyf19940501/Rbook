@@ -741,8 +741,30 @@ vroom(file, col_select = c(model, cyl, gear))
 ```
 
 
-## 文件路径
+## Rstudio导入
 
+利用rstudio导入数据，本质也是调用`readr`和`readxl`包，如下所示：
+
+![rstudio-load-data](picture/read-write/Rstudio-load-data.png)
+
+
+插件导入
+
+[项目地址](https://github.com/milesmcbain/datapasta)
+
+datapasta是一个addins插件，方便将数据复制到R。
+
+1.安装
+
+```{r}
+install.packages("datapasta")
+```
+
+2.使用
+
+![datapasta](picture/read-write/datapasta-copy.gif)
+
+## 文件路径
 
 
 我们读取数据时都是读取某路径下的某文件，但是由于系统等原因，路径在不同系统下的表示方式不一致。
