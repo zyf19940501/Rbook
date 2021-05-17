@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.8 文件路径 | R学习笔记</title>
+  <title>2.7 文件路径 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.8 文件路径 | R学习笔记" />
+  <meta property="og:title" content="2.7 文件路径 | R学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.8 文件路径 | R学习笔记" />
+  <meta name="twitter:title" content="2.7 文件路径 | R学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="插件导入.html"/>
+<link rel="prev" href="rstudio导入.html"/>
 <link rel="next" href="dplyr.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -171,11 +171,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.5.2</b> 用法</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="rstudio导入.html"><a href="rstudio导入.html"><i class="fa fa-check"></i><b>2.6</b> Rstudio导入</a></li>
-<li class="chapter" data-level="2.7" data-path="插件导入.html"><a href="插件导入.html"><i class="fa fa-check"></i><b>2.7</b> 插件导入</a></li>
-<li class="chapter" data-level="2.8" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.8</b> 文件路径</a>
+<li class="chapter" data-level="2.7" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.7</b> 文件路径</a>
 <ul>
-<li class="chapter" data-level="2.8.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.8.1</b> 指定路径</a></li>
-<li class="chapter" data-level="2.8.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.8.2</b> 默认路径</a></li>
+<li class="chapter" data-level="2.7.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.7.1</b> 指定路径</a></li>
+<li class="chapter" data-level="2.7.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.7.2</b> 默认路径</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
@@ -439,11 +438,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="文件路径" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> 文件路径</h2>
+<div id="文件路径" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> 文件路径</h2>
 <p>我们读取数据时都是读取某路径下的某文件，但是由于系统等原因，路径在不同系统下的表示方式不一致。</p>
-<div id="指定路径" class="section level3" number="2.8.1">
-<h3><span class="header-section-number">2.8.1</span> 指定路径</h3>
+<div id="指定路径" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> 指定路径</h3>
 <ul>
 <li>win 路径</li>
 </ul>
@@ -476,8 +475,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="文件路径.html#cb48-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;/User/vega_mac/Desktop/r/Rbook/data/flights.csv&#39;</span>)</span></code></pre></div>
 </div>
-<div id="默认路径" class="section level3" number="2.8.2">
-<h3><span class="header-section-number">2.8.2</span> 默认路径</h3>
+<div id="默认路径" class="section level3" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> 默认路径</h3>
 <p><code>getwd()</code>是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，读取导出的默认路径是<code>getwd()</code>。想要改变工作目录，通过设定<code>setwd()</code>即可。</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="文件路径.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="文件路径.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
@@ -498,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="插件导入.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rstudio导入.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
