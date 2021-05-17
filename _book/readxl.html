@@ -156,14 +156,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.1" data-path="openxlsx.html"><a href="openxlsx.html#安装-1"><i class="fa fa-check"></i><b>2.3.1</b> 安装</a></li>
 <li class="chapter" data-level="2.3.2" data-path="openxlsx.html"><a href="openxlsx.html#基础功能"><i class="fa fa-check"></i><b>2.3.2</b> 基础功能</a></li>
 <li class="chapter" data-level="2.3.3" data-path="openxlsx.html"><a href="openxlsx.html#带格式输出"><i class="fa fa-check"></i><b>2.3.3</b> 带格式输出</a></li>
-<li class="chapter" data-level="2.3.4" data-path="openxlsx.html"><a href="openxlsx.html#基础函数"><i class="fa fa-check"></i><b>2.3.4</b> 基础函数</a></li>
+<li class="chapter" data-level="2.3.4" data-path="openxlsx.html"><a href="openxlsx.html#函数参数"><i class="fa fa-check"></i><b>2.3.4</b> 函数参数</a></li>
+<li class="chapter" data-level="2.3.5" data-path="openxlsx.html"><a href="openxlsx.html#总结"><i class="fa fa-check"></i><b>2.3.5</b> 总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>2.4</b> readr</a>
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="readr.html"><a href="readr.html#安装-2"><i class="fa fa-check"></i><b>2.4.1</b> 安装</a></li>
 <li class="chapter" data-level="2.4.2" data-path="readr.html"><a href="readr.html#用法-2"><i class="fa fa-check"></i><b>2.4.2</b> 用法</a></li>
 <li class="chapter" data-level="2.4.3" data-path="readr.html"><a href="readr.html#导出功能"><i class="fa fa-check"></i><b>2.4.3</b> 导出功能</a></li>
-<li class="chapter" data-level="2.4.4" data-path="readr.html"><a href="readr.html#总结"><i class="fa fa-check"></i><b>2.4.4</b> 总结</a></li>
+<li class="chapter" data-level="2.4.4" data-path="readr.html"><a href="readr.html#总结-1"><i class="fa fa-check"></i><b>2.4.4</b> 总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="vroom.html"><a href="vroom.html"><i class="fa fa-check"></i><b>2.5</b> vroom</a>
 <ul>
@@ -404,11 +405,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="条件执行.html"><a href="条件执行.html#多条件执行"><i class="fa fa-check"></i><b>12.2.1</b> 多条件执行</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="函数参数.html"><a href="函数参数.html"><i class="fa fa-check"></i><b>12.3</b> 函数参数</a>
+<li class="chapter" data-level="12.3" data-path="函数参数-1.html"><a href="函数参数-1.html"><i class="fa fa-check"></i><b>12.3</b> 函数参数</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="函数参数.html"><a href="函数参数.html#参数名称"><i class="fa fa-check"></i><b>12.3.1</b> 参数名称</a></li>
-<li class="chapter" data-level="12.3.2" data-path="函数参数.html"><a href="函数参数.html#检查参数值"><i class="fa fa-check"></i><b>12.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="12.3.3" data-path="函数参数.html"><a href="函数参数.html#参数-1"><i class="fa fa-check"></i><b>12.3.3</b> …参数</a></li>
+<li class="chapter" data-level="12.3.1" data-path="函数参数-1.html"><a href="函数参数-1.html#参数名称"><i class="fa fa-check"></i><b>12.3.1</b> 参数名称</a></li>
+<li class="chapter" data-level="12.3.2" data-path="函数参数-1.html"><a href="函数参数-1.html#检查参数值"><i class="fa fa-check"></i><b>12.3.2</b> 检查参数值</a></li>
+<li class="chapter" data-level="12.3.3" data-path="函数参数-1.html"><a href="函数参数-1.html#参数-1"><i class="fa fa-check"></i><b>12.3.3</b> …参数</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="返回值.html"><a href="返回值.html"><i class="fa fa-check"></i><b>12.4</b> 返回值</a>
 <ul>
@@ -440,14 +441,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="readxl" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> readxl</h2>
-<p>readxl软件包使R获取Excel数据变得简洁。与现有的软件包(例如：xlsx)相比，readxl没有外部依赖性。容易在所有的操作系统安装使用。</p>
-<p>readxl<a href="https://readxl.tidyverse.org/">项目地址</a>。本节大部分代码来源项目官网介绍，可自行查阅官网。</p>
+<p>readxl软件包使R获取Excel数据变得方便简洁。与现有的软件包(例如：xlsx)相比，readxl没有外部依赖性，xlsx等包依赖java环境。readxl包容易在所有的操作系统安装使用。</p>
+<p>readxl<a href="https://readxl.tidyverse.org/">项目地址</a>，本节大部分代码来源项目官网介绍，可自行查阅官网。</p>
 <div id="安装" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> 安装</h3>
 <p>从CRAN安装最新发行版本的最简单方法是安装整个tidyverse。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="readxl.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <blockquote>
-<p>由于readxl不是tidyverse核心加载包，使用时任需要加载library(readxl)</p>
+<p>由于readxl不是tidyverse核心加载包，使用时仅需加载library(readxl)</p>
 </blockquote>
 <p>或者是从CRAN仅安装readxl;</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="readxl.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
@@ -467,13 +468,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-3"><a href="readxl.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">readxl_example</span>(<span class="st">&quot;clippy.xls&quot;</span>)</span></code></pre></div>
 <p><code>read_excel()</code>可读取xls和xlsx文件。</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="readxl.html#cb5-1" aria-hidden="true" tabindex="-1"></a>xlsx_example <span class="ot">&lt;-</span> <span class="fu">readxl_example</span>(<span class="st">&quot;datasets.xlsx&quot;</span>)</span>
-<span id="cb5-2"><a href="readxl.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(xlsx_example)</span></code></pre></div>
+<span id="cb5-2"><a href="readxl.html#cb5-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(xlsx_example)</span>
+<span id="cb5-3"><a href="readxl.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="readxl.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看数据</span></span>
+<span id="cb5-5"><a href="readxl.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb5-6"><a href="readxl.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="readxl.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看数据类型</span></span>
+<span id="cb5-8"><a href="readxl.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dt)</span></code></pre></div>
 <p>通过函数<code>excel_sheets()</code>查看Excel的sheet名称</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="readxl.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(xlsx_example)</span></code></pre></div>
 <p>指定worksheet的名字读取，可以是sheet的名字或序号。</p>
-<p>当我们要读取的本地xlsx文件有多个sheets时，通过值定sheet参数读取指定的sheet。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="readxl.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(xlsx_example, <span class="at">sheet =</span> <span class="st">&quot;chickwts&quot;</span>)</span></code></pre></div>
-<p>读取xlsx文件的指定位置，有多种方法控制。本处提供几个案例，请<code>?read_excel()</code>查看帮助。</p>
+<p>当我们要读取的本地xlsx文件有多个sheets时，通过指定sheet参数读取指定的sheet。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="readxl.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(xlsx_example, <span class="at">sheet =</span> <span class="st">&quot;chickwts&quot;</span>)</span>
+<span id="cb7-2"><a href="readxl.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb7-3"><a href="readxl.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#read_excel(xlsx_example, sheet = 1)</span></span>
+<span id="cb7-4"><a href="readxl.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#read_excel(xlsx_example, sheet = 3)</span></span></code></pre></div>
+<p>读取xlsx文件的指定范围，有多种方法控制。</p>
+<p>本处提供几个案例，详情请<code>?read_excel()</code>查看帮助。</p>
+<p>readxl::read_excel参数如下：</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="readxl.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(path, <span class="at">sheet =</span> <span class="cn">NULL</span>, <span class="at">range =</span> <span class="cn">NULL</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb8-2"><a href="readxl.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>, <span class="at">na =</span> <span class="st">&quot;&quot;</span>, <span class="at">trim_ws =</span> <span class="cn">TRUE</span>, <span class="at">skip =</span> <span class="dv">0</span>,</span>
 <span id="cb8-3"><a href="readxl.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>, <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>

@@ -156,14 +156,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.1" data-path="openxlsx.html"><a href="openxlsx.html#安装-1"><i class="fa fa-check"></i><b>2.3.1</b> 安装</a></li>
 <li class="chapter" data-level="2.3.2" data-path="openxlsx.html"><a href="openxlsx.html#基础功能"><i class="fa fa-check"></i><b>2.3.2</b> 基础功能</a></li>
 <li class="chapter" data-level="2.3.3" data-path="openxlsx.html"><a href="openxlsx.html#带格式输出"><i class="fa fa-check"></i><b>2.3.3</b> 带格式输出</a></li>
-<li class="chapter" data-level="2.3.4" data-path="openxlsx.html"><a href="openxlsx.html#基础函数"><i class="fa fa-check"></i><b>2.3.4</b> 基础函数</a></li>
+<li class="chapter" data-level="2.3.4" data-path="openxlsx.html"><a href="openxlsx.html#函数参数"><i class="fa fa-check"></i><b>2.3.4</b> 函数参数</a></li>
+<li class="chapter" data-level="2.3.5" data-path="openxlsx.html"><a href="openxlsx.html#总结"><i class="fa fa-check"></i><b>2.3.5</b> 总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>2.4</b> readr</a>
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="readr.html"><a href="readr.html#安装-2"><i class="fa fa-check"></i><b>2.4.1</b> 安装</a></li>
 <li class="chapter" data-level="2.4.2" data-path="readr.html"><a href="readr.html#用法-2"><i class="fa fa-check"></i><b>2.4.2</b> 用法</a></li>
 <li class="chapter" data-level="2.4.3" data-path="readr.html"><a href="readr.html#导出功能"><i class="fa fa-check"></i><b>2.4.3</b> 导出功能</a></li>
-<li class="chapter" data-level="2.4.4" data-path="readr.html"><a href="readr.html#总结"><i class="fa fa-check"></i><b>2.4.4</b> 总结</a></li>
+<li class="chapter" data-level="2.4.4" data-path="readr.html"><a href="readr.html#总结-1"><i class="fa fa-check"></i><b>2.4.4</b> 总结</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="vroom.html"><a href="vroom.html"><i class="fa fa-check"></i><b>2.5</b> vroom</a>
 <ul>
@@ -404,11 +405,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="12.2.1" data-path="条件执行.html"><a href="条件执行.html#多条件执行"><i class="fa fa-check"></i><b>12.2.1</b> 多条件执行</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="函数参数.html"><a href="函数参数.html"><i class="fa fa-check"></i><b>12.3</b> 函数参数</a>
+<li class="chapter" data-level="12.3" data-path="函数参数-1.html"><a href="函数参数-1.html"><i class="fa fa-check"></i><b>12.3</b> 函数参数</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="函数参数.html"><a href="函数参数.html#参数名称"><i class="fa fa-check"></i><b>12.3.1</b> 参数名称</a></li>
-<li class="chapter" data-level="12.3.2" data-path="函数参数.html"><a href="函数参数.html#检查参数值"><i class="fa fa-check"></i><b>12.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="12.3.3" data-path="函数参数.html"><a href="函数参数.html#参数-1"><i class="fa fa-check"></i><b>12.3.3</b> …参数</a></li>
+<li class="chapter" data-level="12.3.1" data-path="函数参数-1.html"><a href="函数参数-1.html#参数名称"><i class="fa fa-check"></i><b>12.3.1</b> 参数名称</a></li>
+<li class="chapter" data-level="12.3.2" data-path="函数参数-1.html"><a href="函数参数-1.html#检查参数值"><i class="fa fa-check"></i><b>12.3.2</b> 检查参数值</a></li>
+<li class="chapter" data-level="12.3.3" data-path="函数参数-1.html"><a href="函数参数-1.html#参数-1"><i class="fa fa-check"></i><b>12.3.3</b> …参数</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="返回值.html"><a href="返回值.html"><i class="fa fa-check"></i><b>12.4</b> 返回值</a>
 <ul>
@@ -453,7 +454,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <ol start="1">
 <li id="fn1"><p>由于R是将数据加载至内存中，故数据集大小超过内存大小将导入失败。<a href="数据导入导出.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>csv文件是也被称作平面文件，结构简单，平面文件比结构文件占用更少的空间；平面文件在数据仓库项目中广泛用于导入数据。<a href="数据导入导出.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>csv即Comma-Separated Values，逗号分隔值，分隔符也可是不是逗号。
+csv文件是一种以纯文本形式存储的表格数据,可以通过记事本打开。与Excel不同的是，CSV是一种文本格式，也不受Excel最大行数(1048576)限制。
+csv文件也被称作平面文件，结构简单，平面文件比结构文件占用更少的空间；平面文件在数据仓库项目中广泛用于导入数据。<a href="数据导入导出.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
