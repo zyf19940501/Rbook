@@ -53,6 +53,14 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -455,17 +463,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>功能稳定可用并且在积极开发中</li>
 </ul>
 <p>版本信息查看</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="openxlsx.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;openxlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="openxlsx.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;openxlsx&quot;</span>)</span></code></pre></div>
 <p>本人公众号:宇飞的世界中有更加详细的阐述:<a href="https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ" class="uri">https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ</a></p>
 <div id="安装-1" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> 安装</h3>
 <p>稳定版</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="openxlsx.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 稳定版</span></span>
-<span id="cb19-2"><a href="openxlsx.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>, <span class="at">repos =</span> <span class="st">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="openxlsx.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 稳定版</span></span>
+<span id="cb20-2"><a href="openxlsx.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>, <span class="at">repos =</span> <span class="st">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span>)</span></code></pre></div>
 <p>开发版</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="openxlsx.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;Rcpp&quot;</span>, <span class="st">&quot;devtools&quot;</span>), <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-2"><a href="openxlsx.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb20-3"><a href="openxlsx.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;ycphs/openxlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="openxlsx.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;Rcpp&quot;</span>, <span class="st">&quot;devtools&quot;</span>), <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-2"><a href="openxlsx.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb21-3"><a href="openxlsx.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;ycphs/openxlsx&quot;</span>)</span></code></pre></div>
 </div>
 <div id="基础功能" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> 基础功能</h3>
@@ -473,63 +481,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="读取excel" class="section level4" number="2.3.2.1">
 <h4><span class="header-section-number">2.3.2.1</span> 读取Excel</h4>
 <p>read.xlsx()是读取函数，主要参数如下：</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="openxlsx.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb21-2"><a href="openxlsx.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(</span>
-<span id="cb21-3"><a href="openxlsx.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  xlsxFile,</span>
-<span id="cb21-4"><a href="openxlsx.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span>,</span>
-<span id="cb21-5"><a href="openxlsx.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="dv">1</span>,</span>
-<span id="cb21-6"><a href="openxlsx.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb21-7"><a href="openxlsx.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rowNames =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb21-8"><a href="openxlsx.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">detectDates =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb21-9"><a href="openxlsx.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">skipEmptyRows =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb21-10"><a href="openxlsx.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">skipEmptyCols =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb21-11"><a href="openxlsx.html#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="cn">NULL</span>,</span>
-<span id="cb21-12"><a href="openxlsx.html#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="cn">NULL</span>,</span>
-<span id="cb21-13"><a href="openxlsx.html#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb21-14"><a href="openxlsx.html#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep.names =</span> <span class="st">&quot;.&quot;</span>,</span>
-<span id="cb21-15"><a href="openxlsx.html#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">namedRegion =</span> <span class="cn">NULL</span>,</span>
-<span id="cb21-16"><a href="openxlsx.html#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>,</span>
-<span id="cb21-17"><a href="openxlsx.html#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">fillMergedCells =</span> <span class="cn">FALSE</span></span>
-<span id="cb21-18"><a href="openxlsx.html#cb21-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="openxlsx.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb22-2"><a href="openxlsx.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(</span>
+<span id="cb22-3"><a href="openxlsx.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  xlsxFile,</span>
+<span id="cb22-4"><a href="openxlsx.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span>,</span>
+<span id="cb22-5"><a href="openxlsx.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="dv">1</span>,</span>
+<span id="cb22-6"><a href="openxlsx.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-7"><a href="openxlsx.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rowNames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-8"><a href="openxlsx.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">detectDates =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-9"><a href="openxlsx.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">skipEmptyRows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-10"><a href="openxlsx.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">skipEmptyCols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-11"><a href="openxlsx.html#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-12"><a href="openxlsx.html#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-13"><a href="openxlsx.html#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-14"><a href="openxlsx.html#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep.names =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb22-15"><a href="openxlsx.html#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">namedRegion =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-16"><a href="openxlsx.html#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>,</span>
+<span id="cb22-17"><a href="openxlsx.html#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">fillMergedCells =</span> <span class="cn">FALSE</span></span>
+<span id="cb22-18"><a href="openxlsx.html#cb22-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>以上参数中需要注意 ：</p>
 <p>detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。</p>
 <p>fillMergedCells参数，当你读取的表格中存在合并单元格，将用值填充其他全部单元格,如下所示：</p>
 <p><img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/merge-cell-xlsx.png" /></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="openxlsx.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(<span class="st">&#39;./test.xlsx&#39;</span>,<span class="at">detectDates =</span> <span class="cn">TRUE</span>,<span class="at">fillMergedCells =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="openxlsx.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(<span class="st">&#39;./test.xlsx&#39;</span>,<span class="at">detectDates =</span> <span class="cn">TRUE</span>,<span class="at">fillMergedCells =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>读取后如下所示：</p>
 <div class="figure">
 <img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/R-read-merge-xlsx.png" alt="" />
 <p class="caption">openxlsx-merge-xlsx</p>
 </div>
 <p>readWorkbook()也可以读取Excel表格数据，参数与read.xlsx基本一致。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="openxlsx.html#cb23-1" aria-hidden="true" tabindex="-1"></a>xlsxFile <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;readTest.xlsx&quot;</span>, <span class="at">package =</span> <span class="st">&quot;openxlsx&quot;</span>)</span>
-<span id="cb23-2"><a href="openxlsx.html#cb23-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">readWorkbook</span>(<span class="at">xlsxFile =</span> xlsxFile, <span class="at">sheet =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="openxlsx.html#cb24-1" aria-hidden="true" tabindex="-1"></a>xlsxFile <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;readTest.xlsx&quot;</span>, <span class="at">package =</span> <span class="st">&quot;openxlsx&quot;</span>)</span>
+<span id="cb24-2"><a href="openxlsx.html#cb24-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">readWorkbook</span>(<span class="at">xlsxFile =</span> xlsxFile, <span class="at">sheet =</span> <span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="写入excel" class="section level4" number="2.3.2.2">
 <h4><span class="header-section-number">2.3.2.2</span> 写入Excel</h4>
 <p>数据清洗完之后，或者是透视表已经完成，需要将结果从R导出到Excle，这时就利用函数将结果数据集data.frame写入Excle中。</p>
 <p>write.xlsx()函数写入</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="openxlsx.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(iris, <span class="at">file =</span> <span class="st">&quot;writeXLSX1.xlsx&quot;</span>, <span class="at">colNames =</span> <span class="cn">TRUE</span>, <span class="at">borders =</span> <span class="st">&quot;columns&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="openxlsx.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(iris, <span class="at">file =</span> <span class="st">&quot;writeXLSX1.xlsx&quot;</span>, <span class="at">colNames =</span> <span class="cn">TRUE</span>, <span class="at">borders =</span> <span class="st">&quot;columns&quot;</span>)</span></code></pre></div>
 <p>带格式输出</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="openxlsx.html#cb25-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">&lt;-</span> <span class="fu">createStyle</span>(</span>
-<span id="cb25-2"><a href="openxlsx.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">textDecoration =</span> <span class="st">&quot;BOLD&quot;</span>, <span class="at">fontColour =</span> <span class="st">&quot;#FFFFFF&quot;</span>, <span class="at">fontSize =</span> <span class="dv">12</span>,</span>
-<span id="cb25-3"><a href="openxlsx.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fontName =</span> <span class="st">&quot;Arial Narrow&quot;</span>, <span class="at">fgFill =</span> <span class="st">&quot;#4F80BD&quot;</span></span>
-<span id="cb25-4"><a href="openxlsx.html#cb25-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-5"><a href="openxlsx.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run: </span></span>
-<span id="cb25-6"><a href="openxlsx.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(iris,</span>
-<span id="cb25-7"><a href="openxlsx.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;writeXLSX3.xlsx&quot;</span>,</span>
-<span id="cb25-8"><a href="openxlsx.html#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>, <span class="at">borders =</span> <span class="st">&quot;rows&quot;</span>, <span class="at">headerStyle =</span> hs</span>
-<span id="cb25-9"><a href="openxlsx.html#cb25-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="openxlsx.html#cb26-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">&lt;-</span> <span class="fu">createStyle</span>(</span>
+<span id="cb26-2"><a href="openxlsx.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">textDecoration =</span> <span class="st">&quot;BOLD&quot;</span>, <span class="at">fontColour =</span> <span class="st">&quot;#FFFFFF&quot;</span>, <span class="at">fontSize =</span> <span class="dv">12</span>,</span>
+<span id="cb26-3"><a href="openxlsx.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fontName =</span> <span class="st">&quot;Arial Narrow&quot;</span>, <span class="at">fgFill =</span> <span class="st">&quot;#4F80BD&quot;</span></span>
+<span id="cb26-4"><a href="openxlsx.html#cb26-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-5"><a href="openxlsx.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run: </span></span>
+<span id="cb26-6"><a href="openxlsx.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(iris,</span>
+<span id="cb26-7"><a href="openxlsx.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;writeXLSX3.xlsx&quot;</span>,</span>
+<span id="cb26-8"><a href="openxlsx.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>, <span class="at">borders =</span> <span class="st">&quot;rows&quot;</span>, <span class="at">headerStyle =</span> hs</span>
+<span id="cb26-9"><a href="openxlsx.html#cb26-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 </div>
 <div id="带格式输出" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> 带格式输出</h3>
 <p>输出过程共四步，第一步创建workbook,第二步添加sheet,第三步写入数据，第四步保存workbook。在输出的过程中可以通过<code>addStyle()</code>、<code>createStyle()</code>或<code>conditionalFormatting</code>添加格式或条件格式。</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="openxlsx.html#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">d=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb26-2"><a href="openxlsx.html#cb26-2" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(<span class="at">creator =</span> <span class="st">&#39;zhongyf&#39;</span>,<span class="at">title =</span> <span class="st">&#39;test&#39;</span>)</span>
-<span id="cb26-3"><a href="openxlsx.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb,<span class="at">sheetName =</span> <span class="st">&#39;test&#39;</span>)</span>
-<span id="cb26-4"><a href="openxlsx.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb,<span class="at">sheet =</span> <span class="st">&#39;test&#39;</span>,<span class="at">x =</span> df)</span>
-<span id="cb26-5"><a href="openxlsx.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;test.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="openxlsx.html#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">d=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb27-2"><a href="openxlsx.html#cb27-2" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(<span class="at">creator =</span> <span class="st">&#39;zhongyf&#39;</span>,<span class="at">title =</span> <span class="st">&#39;test&#39;</span>)</span>
+<span id="cb27-3"><a href="openxlsx.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb,<span class="at">sheetName =</span> <span class="st">&#39;test&#39;</span>)</span>
+<span id="cb27-4"><a href="openxlsx.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb,<span class="at">sheet =</span> <span class="st">&#39;test&#39;</span>,<span class="at">x =</span> df)</span>
+<span id="cb27-5"><a href="openxlsx.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;test.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>我们以上面四步输出的方式，查看包自带的例子。</p>
 <ul>
 <li><p>createWorkbook()</p></li>
@@ -537,50 +545,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>writeData()</p></li>
 <li><p>saveWorkbook()</p></li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="openxlsx.html#cb27-1" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(<span class="st">&quot;Fred&quot;</span>)</span>
-<span id="cb27-2"><a href="openxlsx.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="openxlsx.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Add 3 worksheets</span></span>
-<span id="cb27-4"><a href="openxlsx.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 1&quot;</span>)</span>
-<span id="cb27-5"><a href="openxlsx.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 2&quot;</span>, <span class="at">gridLines =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb27-6"><a href="openxlsx.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 3&quot;</span>, <span class="at">tabColour =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb27-7"><a href="openxlsx.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 4&quot;</span>, <span class="at">gridLines =</span> <span class="cn">FALSE</span>, <span class="at">tabColour =</span> <span class="st">&quot;#4F81BD&quot;</span>)</span>
-<span id="cb27-8"><a href="openxlsx.html#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="openxlsx.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Headers and Footers</span></span>
-<span id="cb27-10"><a href="openxlsx.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 5&quot;</span>,</span>
-<span id="cb27-11"><a href="openxlsx.html#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;ODD HEAD LEFT&quot;</span>, <span class="st">&quot;ODD HEAD CENTER&quot;</span>, <span class="st">&quot;ODD HEAD RIGHT&quot;</span>),</span>
-<span id="cb27-12"><a href="openxlsx.html#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;ODD FOOT RIGHT&quot;</span>, <span class="st">&quot;ODD FOOT CENTER&quot;</span>, <span class="st">&quot;ODD FOOT RIGHT&quot;</span>),</span>
-<span id="cb27-13"><a href="openxlsx.html#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenHeader =</span> <span class="fu">c</span>(<span class="st">&quot;EVEN HEAD LEFT&quot;</span>, <span class="st">&quot;EVEN HEAD CENTER&quot;</span>, <span class="st">&quot;EVEN HEAD RIGHT&quot;</span>),</span>
-<span id="cb27-14"><a href="openxlsx.html#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenFooter =</span> <span class="fu">c</span>(<span class="st">&quot;EVEN FOOT RIGHT&quot;</span>, <span class="st">&quot;EVEN FOOT CENTER&quot;</span>, <span class="st">&quot;EVEN FOOT RIGHT&quot;</span>),</span>
-<span id="cb27-15"><a href="openxlsx.html#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="st">&quot;TOP&quot;</span>, <span class="st">&quot;OF FIRST&quot;</span>, <span class="st">&quot;PAGE&quot;</span>),</span>
-<span id="cb27-16"><a href="openxlsx.html#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="st">&quot;BOTTOM&quot;</span>, <span class="st">&quot;OF FIRST&quot;</span>, <span class="st">&quot;PAGE&quot;</span>)</span>
-<span id="cb27-17"><a href="openxlsx.html#cb27-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-18"><a href="openxlsx.html#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-19"><a href="openxlsx.html#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 6&quot;</span>,</span>
-<span id="cb27-20"><a href="openxlsx.html#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;&amp;[Date]&quot;</span>, <span class="st">&quot;ALL HEAD CENTER 2&quot;</span>, <span class="st">&quot;&amp;[Page] / &amp;[Pages]&quot;</span>),</span>
-<span id="cb27-21"><a href="openxlsx.html#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;&amp;[Path]&amp;[File]&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;&amp;[Tab]&quot;</span>),</span>
-<span id="cb27-22"><a href="openxlsx.html#cb27-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;Center Header of First Page&quot;</span>, <span class="cn">NA</span>),</span>
-<span id="cb27-23"><a href="openxlsx.html#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;Center Footer of First Page&quot;</span>, <span class="cn">NA</span>)</span>
-<span id="cb27-24"><a href="openxlsx.html#cb27-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-25"><a href="openxlsx.html#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-26"><a href="openxlsx.html#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 7&quot;</span>,</span>
-<span id="cb27-27"><a href="openxlsx.html#cb27-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;ALL HEAD LEFT 2&quot;</span>, <span class="st">&quot;ALL HEAD CENTER 2&quot;</span>, <span class="st">&quot;ALL HEAD RIGHT 2&quot;</span>),</span>
-<span id="cb27-28"><a href="openxlsx.html#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;ALL FOOT RIGHT 2&quot;</span>, <span class="st">&quot;ALL FOOT CENTER 2&quot;</span>, <span class="st">&quot;ALL FOOT RIGHT 2&quot;</span>)</span>
-<span id="cb27-29"><a href="openxlsx.html#cb27-29" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-30"><a href="openxlsx.html#cb27-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-31"><a href="openxlsx.html#cb27-31" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 8&quot;</span>,</span>
-<span id="cb27-32"><a href="openxlsx.html#cb27-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="st">&quot;FIRST ONLY L&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;FIRST ONLY R&quot;</span>),</span>
-<span id="cb27-33"><a href="openxlsx.html#cb27-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="st">&quot;FIRST ONLY L&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;FIRST ONLY R&quot;</span>)</span>
-<span id="cb27-34"><a href="openxlsx.html#cb27-34" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-35"><a href="openxlsx.html#cb27-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-36"><a href="openxlsx.html#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Need data on worksheet to see all headers and footers</span></span>
-<span id="cb27-37"><a href="openxlsx.html#cb27-37" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
-<span id="cb27-38"><a href="openxlsx.html#cb27-38" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
-<span id="cb27-39"><a href="openxlsx.html#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">7</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
-<span id="cb27-40"><a href="openxlsx.html#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">8</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
-<span id="cb27-41"><a href="openxlsx.html#cb27-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-42"><a href="openxlsx.html#cb27-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Save workbook</span></span>
-<span id="cb27-43"><a href="openxlsx.html#cb27-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run: </span></span>
-<span id="cb27-44"><a href="openxlsx.html#cb27-44" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;addWorksheetExample.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="openxlsx.html#cb28-1" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(<span class="st">&quot;Fred&quot;</span>)</span>
+<span id="cb28-2"><a href="openxlsx.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="openxlsx.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Add 3 worksheets</span></span>
+<span id="cb28-4"><a href="openxlsx.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 1&quot;</span>)</span>
+<span id="cb28-5"><a href="openxlsx.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 2&quot;</span>, <span class="at">gridLines =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb28-6"><a href="openxlsx.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 3&quot;</span>, <span class="at">tabColour =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb28-7"><a href="openxlsx.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 4&quot;</span>, <span class="at">gridLines =</span> <span class="cn">FALSE</span>, <span class="at">tabColour =</span> <span class="st">&quot;#4F81BD&quot;</span>)</span>
+<span id="cb28-8"><a href="openxlsx.html#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="openxlsx.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Headers and Footers</span></span>
+<span id="cb28-10"><a href="openxlsx.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 5&quot;</span>,</span>
+<span id="cb28-11"><a href="openxlsx.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;ODD HEAD LEFT&quot;</span>, <span class="st">&quot;ODD HEAD CENTER&quot;</span>, <span class="st">&quot;ODD HEAD RIGHT&quot;</span>),</span>
+<span id="cb28-12"><a href="openxlsx.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;ODD FOOT RIGHT&quot;</span>, <span class="st">&quot;ODD FOOT CENTER&quot;</span>, <span class="st">&quot;ODD FOOT RIGHT&quot;</span>),</span>
+<span id="cb28-13"><a href="openxlsx.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenHeader =</span> <span class="fu">c</span>(<span class="st">&quot;EVEN HEAD LEFT&quot;</span>, <span class="st">&quot;EVEN HEAD CENTER&quot;</span>, <span class="st">&quot;EVEN HEAD RIGHT&quot;</span>),</span>
+<span id="cb28-14"><a href="openxlsx.html#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenFooter =</span> <span class="fu">c</span>(<span class="st">&quot;EVEN FOOT RIGHT&quot;</span>, <span class="st">&quot;EVEN FOOT CENTER&quot;</span>, <span class="st">&quot;EVEN FOOT RIGHT&quot;</span>),</span>
+<span id="cb28-15"><a href="openxlsx.html#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="st">&quot;TOP&quot;</span>, <span class="st">&quot;OF FIRST&quot;</span>, <span class="st">&quot;PAGE&quot;</span>),</span>
+<span id="cb28-16"><a href="openxlsx.html#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="st">&quot;BOTTOM&quot;</span>, <span class="st">&quot;OF FIRST&quot;</span>, <span class="st">&quot;PAGE&quot;</span>)</span>
+<span id="cb28-17"><a href="openxlsx.html#cb28-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-18"><a href="openxlsx.html#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="openxlsx.html#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 6&quot;</span>,</span>
+<span id="cb28-20"><a href="openxlsx.html#cb28-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;&amp;[Date]&quot;</span>, <span class="st">&quot;ALL HEAD CENTER 2&quot;</span>, <span class="st">&quot;&amp;[Page] / &amp;[Pages]&quot;</span>),</span>
+<span id="cb28-21"><a href="openxlsx.html#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;&amp;[Path]&amp;[File]&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;&amp;[Tab]&quot;</span>),</span>
+<span id="cb28-22"><a href="openxlsx.html#cb28-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;Center Header of First Page&quot;</span>, <span class="cn">NA</span>),</span>
+<span id="cb28-23"><a href="openxlsx.html#cb28-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;Center Footer of First Page&quot;</span>, <span class="cn">NA</span>)</span>
+<span id="cb28-24"><a href="openxlsx.html#cb28-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-25"><a href="openxlsx.html#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-26"><a href="openxlsx.html#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 7&quot;</span>,</span>
+<span id="cb28-27"><a href="openxlsx.html#cb28-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;ALL HEAD LEFT 2&quot;</span>, <span class="st">&quot;ALL HEAD CENTER 2&quot;</span>, <span class="st">&quot;ALL HEAD RIGHT 2&quot;</span>),</span>
+<span id="cb28-28"><a href="openxlsx.html#cb28-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;ALL FOOT RIGHT 2&quot;</span>, <span class="st">&quot;ALL FOOT CENTER 2&quot;</span>, <span class="st">&quot;ALL FOOT RIGHT 2&quot;</span>)</span>
+<span id="cb28-29"><a href="openxlsx.html#cb28-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-30"><a href="openxlsx.html#cb28-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-31"><a href="openxlsx.html#cb28-31" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 8&quot;</span>,</span>
+<span id="cb28-32"><a href="openxlsx.html#cb28-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="st">&quot;FIRST ONLY L&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;FIRST ONLY R&quot;</span>),</span>
+<span id="cb28-33"><a href="openxlsx.html#cb28-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="st">&quot;FIRST ONLY L&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;FIRST ONLY R&quot;</span>)</span>
+<span id="cb28-34"><a href="openxlsx.html#cb28-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-35"><a href="openxlsx.html#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-36"><a href="openxlsx.html#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Need data on worksheet to see all headers and footers</span></span>
+<span id="cb28-37"><a href="openxlsx.html#cb28-37" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb28-38"><a href="openxlsx.html#cb28-38" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb28-39"><a href="openxlsx.html#cb28-39" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">7</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb28-40"><a href="openxlsx.html#cb28-40" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">8</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb28-41"><a href="openxlsx.html#cb28-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-42"><a href="openxlsx.html#cb28-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Save workbook</span></span>
+<span id="cb28-43"><a href="openxlsx.html#cb28-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run: </span></span>
+<span id="cb28-44"><a href="openxlsx.html#cb28-44" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;addWorksheetExample.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="函数参数" class="section level3" number="2.3.4">
 <h3><span class="header-section-number">2.3.4</span> 函数参数</h3>
@@ -588,67 +596,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>createWorkbook</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="openxlsx.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">createWorkbook</span>(</span>
-<span id="cb28-2"><a href="openxlsx.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">creator =</span> <span class="fu">ifelse</span>(.Platform<span class="sc">$</span>OS.type <span class="sc">==</span> <span class="st">&quot;windows&quot;</span>, <span class="fu">Sys.getenv</span>(<span class="st">&quot;USERNAME&quot;</span>),</span>
-<span id="cb28-3"><a href="openxlsx.html#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.getenv</span>(<span class="st">&quot;USER&quot;</span>)),</span>
-<span id="cb28-4"><a href="openxlsx.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="cn">NULL</span>,</span>
-<span id="cb28-5"><a href="openxlsx.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="cn">NULL</span>,</span>
-<span id="cb28-6"><a href="openxlsx.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">category =</span> <span class="cn">NULL</span></span>
-<span id="cb28-7"><a href="openxlsx.html#cb28-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="openxlsx.html#cb29-1" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(</span>
-<span id="cb29-2"><a href="openxlsx.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">creator =</span> <span class="st">&quot;宇飞的世界&quot;</span>,</span>
-<span id="cb29-3"><a href="openxlsx.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;标题&quot;</span>,</span>
-<span id="cb29-4"><a href="openxlsx.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">&quot;主题&quot;</span>,</span>
-<span id="cb29-5"><a href="openxlsx.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">category =</span> <span class="st">&quot;类别目录&quot;</span></span>
-<span id="cb29-6"><a href="openxlsx.html#cb29-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="openxlsx.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">createWorkbook</span>(</span>
+<span id="cb29-2"><a href="openxlsx.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">creator =</span> <span class="fu">ifelse</span>(.Platform<span class="sc">$</span>OS.type <span class="sc">==</span> <span class="st">&quot;windows&quot;</span>, <span class="fu">Sys.getenv</span>(<span class="st">&quot;USERNAME&quot;</span>),</span>
+<span id="cb29-3"><a href="openxlsx.html#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.getenv</span>(<span class="st">&quot;USER&quot;</span>)),</span>
+<span id="cb29-4"><a href="openxlsx.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="cn">NULL</span>,</span>
+<span id="cb29-5"><a href="openxlsx.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="cn">NULL</span>,</span>
+<span id="cb29-6"><a href="openxlsx.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">category =</span> <span class="cn">NULL</span></span>
+<span id="cb29-7"><a href="openxlsx.html#cb29-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="openxlsx.html#cb30-1" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(</span>
+<span id="cb30-2"><a href="openxlsx.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">creator =</span> <span class="st">&quot;宇飞的世界&quot;</span>,</span>
+<span id="cb30-3"><a href="openxlsx.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;标题&quot;</span>,</span>
+<span id="cb30-4"><a href="openxlsx.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">&quot;主题&quot;</span>,</span>
+<span id="cb30-5"><a href="openxlsx.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">category =</span> <span class="st">&quot;类别目录&quot;</span></span>
+<span id="cb30-6"><a href="openxlsx.html#cb30-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ul>
 <li>addWorksheet</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="openxlsx.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(</span>
-<span id="cb30-2"><a href="openxlsx.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  wb,</span>
-<span id="cb30-3"><a href="openxlsx.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  sheetName,</span>
-<span id="cb30-4"><a href="openxlsx.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gridLines =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb30-5"><a href="openxlsx.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">tabColour =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-6"><a href="openxlsx.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">zoom =</span> <span class="dv">100</span>,</span>
-<span id="cb30-7"><a href="openxlsx.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-8"><a href="openxlsx.html#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-9"><a href="openxlsx.html#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenHeader =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-10"><a href="openxlsx.html#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenFooter =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-11"><a href="openxlsx.html#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-12"><a href="openxlsx.html#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="cn">NULL</span>,</span>
-<span id="cb30-13"><a href="openxlsx.html#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">visible =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb30-14"><a href="openxlsx.html#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">paperSize =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.paperSize&quot;</span>, <span class="at">default =</span> <span class="dv">9</span>),</span>
-<span id="cb30-15"><a href="openxlsx.html#cb30-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">orientation =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.orientation&quot;</span>, <span class="at">default =</span> <span class="st">&quot;portrait&quot;</span>),</span>
-<span id="cb30-16"><a href="openxlsx.html#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">vdpi =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.vdpi&quot;</span>, <span class="at">default =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.dpi&quot;</span>, <span class="at">default =</span> <span class="dv">300</span>)),</span>
-<span id="cb30-17"><a href="openxlsx.html#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">hdpi =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.hdpi&quot;</span>, <span class="at">default =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.dpi&quot;</span>, <span class="at">default =</span> <span class="dv">300</span>))</span>
-<span id="cb30-18"><a href="openxlsx.html#cb30-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="openxlsx.html#cb31-1" aria-hidden="true" tabindex="-1"></a>gridLines参数：表格中是否有网格线，在Excle『视图』选项卡下面的网格线去除打勾的效果一致</span>
-<span id="cb31-2"><a href="openxlsx.html#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="openxlsx.html#cb31-3" aria-hidden="true" tabindex="-1"></a>tabColour参数：输出表格sheet标签颜色</span>
-<span id="cb31-4"><a href="openxlsx.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="openxlsx.html#cb31-5" aria-hidden="true" tabindex="-1"></a>zoom：发大缩小，默认是100，可选范围10<span class="dv">-400</span></span>
-<span id="cb31-6"><a href="openxlsx.html#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="openxlsx.html#cb31-7" aria-hidden="true" tabindex="-1"></a>header<span class="sc">:</span>页眉 长度为3的字符向量，左、中、右三个位置，用Na可跳过一位置，以下页眉页脚相同。</span>
-<span id="cb31-8"><a href="openxlsx.html#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="openxlsx.html#cb31-9" aria-hidden="true" tabindex="-1"></a>footer<span class="sc">:</span> 页脚</span>
-<span id="cb31-10"><a href="openxlsx.html#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-11"><a href="openxlsx.html#cb31-11" aria-hidden="true" tabindex="-1"></a>evenHeader<span class="sc">:</span> 每页页眉</span>
-<span id="cb31-12"><a href="openxlsx.html#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-13"><a href="openxlsx.html#cb31-13" aria-hidden="true" tabindex="-1"></a>evenFooter<span class="sc">:</span> 每页页脚</span>
-<span id="cb31-14"><a href="openxlsx.html#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-15"><a href="openxlsx.html#cb31-15" aria-hidden="true" tabindex="-1"></a>firstHeader<span class="sc">:</span> 第一页页眉</span>
-<span id="cb31-16"><a href="openxlsx.html#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-17"><a href="openxlsx.html#cb31-17" aria-hidden="true" tabindex="-1"></a>firstFooter<span class="sc">:</span> 第一页页脚</span>
-<span id="cb31-18"><a href="openxlsx.html#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-19"><a href="openxlsx.html#cb31-19" aria-hidden="true" tabindex="-1"></a>visible<span class="sc">:</span>sheet是否隐藏，如果为否sheet将被隐藏</span>
-<span id="cb31-20"><a href="openxlsx.html#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-21"><a href="openxlsx.html#cb31-21" aria-hidden="true" tabindex="-1"></a>paperSize<span class="sc">:</span>页面大小,详见 ?pageSetup </span>
-<span id="cb31-22"><a href="openxlsx.html#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-23"><a href="openxlsx.html#cb31-23" aria-hidden="true" tabindex="-1"></a>orientation<span class="sc">:</span>One of <span class="st">&quot;portrait&quot;</span> or <span class="st">&quot;landscape&quot;</span> 不清楚干嘛用</span>
-<span id="cb31-24"><a href="openxlsx.html#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-25"><a href="openxlsx.html#cb31-25" aria-hidden="true" tabindex="-1"></a>vdpi<span class="sc">:</span> 屏幕分辨率 默认值即可，不用调整</span>
-<span id="cb31-26"><a href="openxlsx.html#cb31-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-27"><a href="openxlsx.html#cb31-27" aria-hidden="true" tabindex="-1"></a>hdpi<span class="sc">:</span> 屏幕分辨率 默认值即可，不用调整</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="openxlsx.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(</span>
+<span id="cb31-2"><a href="openxlsx.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  wb,</span>
+<span id="cb31-3"><a href="openxlsx.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  sheetName,</span>
+<span id="cb31-4"><a href="openxlsx.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gridLines =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-5"><a href="openxlsx.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">tabColour =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-6"><a href="openxlsx.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">zoom =</span> <span class="dv">100</span>,</span>
+<span id="cb31-7"><a href="openxlsx.html#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-8"><a href="openxlsx.html#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-9"><a href="openxlsx.html#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenHeader =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-10"><a href="openxlsx.html#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenFooter =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-11"><a href="openxlsx.html#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-12"><a href="openxlsx.html#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-13"><a href="openxlsx.html#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">visible =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-14"><a href="openxlsx.html#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">paperSize =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.paperSize&quot;</span>, <span class="at">default =</span> <span class="dv">9</span>),</span>
+<span id="cb31-15"><a href="openxlsx.html#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">orientation =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.orientation&quot;</span>, <span class="at">default =</span> <span class="st">&quot;portrait&quot;</span>),</span>
+<span id="cb31-16"><a href="openxlsx.html#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">vdpi =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.vdpi&quot;</span>, <span class="at">default =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.dpi&quot;</span>, <span class="at">default =</span> <span class="dv">300</span>)),</span>
+<span id="cb31-17"><a href="openxlsx.html#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">hdpi =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.hdpi&quot;</span>, <span class="at">default =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.dpi&quot;</span>, <span class="at">default =</span> <span class="dv">300</span>))</span>
+<span id="cb31-18"><a href="openxlsx.html#cb31-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="openxlsx.html#cb32-1" aria-hidden="true" tabindex="-1"></a>gridLines参数：表格中是否有网格线，在Excle『视图』选项卡下面的网格线去除打勾的效果一致</span>
+<span id="cb32-2"><a href="openxlsx.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="openxlsx.html#cb32-3" aria-hidden="true" tabindex="-1"></a>tabColour参数：输出表格sheet标签颜色</span>
+<span id="cb32-4"><a href="openxlsx.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="openxlsx.html#cb32-5" aria-hidden="true" tabindex="-1"></a>zoom：发大缩小，默认是100，可选范围10<span class="dv">-400</span></span>
+<span id="cb32-6"><a href="openxlsx.html#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="openxlsx.html#cb32-7" aria-hidden="true" tabindex="-1"></a>header<span class="sc">:</span>页眉 长度为3的字符向量，左、中、右三个位置，用Na可跳过一位置，以下页眉页脚相同。</span>
+<span id="cb32-8"><a href="openxlsx.html#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="openxlsx.html#cb32-9" aria-hidden="true" tabindex="-1"></a>footer<span class="sc">:</span> 页脚</span>
+<span id="cb32-10"><a href="openxlsx.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="openxlsx.html#cb32-11" aria-hidden="true" tabindex="-1"></a>evenHeader<span class="sc">:</span> 每页页眉</span>
+<span id="cb32-12"><a href="openxlsx.html#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="openxlsx.html#cb32-13" aria-hidden="true" tabindex="-1"></a>evenFooter<span class="sc">:</span> 每页页脚</span>
+<span id="cb32-14"><a href="openxlsx.html#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="openxlsx.html#cb32-15" aria-hidden="true" tabindex="-1"></a>firstHeader<span class="sc">:</span> 第一页页眉</span>
+<span id="cb32-16"><a href="openxlsx.html#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="openxlsx.html#cb32-17" aria-hidden="true" tabindex="-1"></a>firstFooter<span class="sc">:</span> 第一页页脚</span>
+<span id="cb32-18"><a href="openxlsx.html#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="openxlsx.html#cb32-19" aria-hidden="true" tabindex="-1"></a>visible<span class="sc">:</span>sheet是否隐藏，如果为否sheet将被隐藏</span>
+<span id="cb32-20"><a href="openxlsx.html#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="openxlsx.html#cb32-21" aria-hidden="true" tabindex="-1"></a>paperSize<span class="sc">:</span>页面大小,详见 ?pageSetup </span>
+<span id="cb32-22"><a href="openxlsx.html#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-23"><a href="openxlsx.html#cb32-23" aria-hidden="true" tabindex="-1"></a>orientation<span class="sc">:</span>One of <span class="st">&quot;portrait&quot;</span> or <span class="st">&quot;landscape&quot;</span> 不清楚干嘛用</span>
+<span id="cb32-24"><a href="openxlsx.html#cb32-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-25"><a href="openxlsx.html#cb32-25" aria-hidden="true" tabindex="-1"></a>vdpi<span class="sc">:</span> 屏幕分辨率 默认值即可，不用调整</span>
+<span id="cb32-26"><a href="openxlsx.html#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-27"><a href="openxlsx.html#cb32-27" aria-hidden="true" tabindex="-1"></a>hdpi<span class="sc">:</span> 屏幕分辨率 默认值即可，不用调整</span></code></pre></div>
 <ul>
 <li>writeDataTable</li>
 </ul>
@@ -657,7 +665,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>saveWorkbook</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="openxlsx.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, file, <span class="at">overwrite =</span> <span class="cn">FALSE</span>, <span class="at">returnValue =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="openxlsx.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, file, <span class="at">overwrite =</span> <span class="cn">FALSE</span>, <span class="at">returnValue =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>参数较为简单，wb即上文中的workbook对象，file即输出的文件名，overwrite即如果存在是否覆盖，returnValue如果设置为TRUE，返回TRUE代表保存成功</p>
 </div>
 <div id="总结" class="section level3" number="2.3.5">
@@ -724,6 +732,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

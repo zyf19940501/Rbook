@@ -117,7 +117,7 @@
 
 \title{R学习笔记}
 \author{Yufei Zhong}
-\date{2021-05-14}
+\date{2021-05-17}
 
 \begin{document}
 \maketitle
@@ -131,7 +131,7 @@
 
 作为商业数据分析师，我学习使用\texttt{R}已经有较长一段时间，主要用\texttt{R}来处理数据，自动化报表，ETL，可视化等；另外用R包\texttt{shiny}做web看板。
 
-本文主要记录个人学习数据处理相关R包的过程，主要从\texttt{tidyverse}系列以及\texttt{data.table}两套语法做数据处理。co
+本文主要记录个人学习数据处理相关R包的过程，主要从\texttt{tidyverse}系列以及\texttt{data.table}两套语法做数据处理笔记。关于字符以及时间用\texttt{stringr}以及\texttt{lubridate}两个包处理。
 
 \textbackslash begin\{center\}\includegraphics[width=0.7\linewidth]{Rbook_files/figure-latex/unnamed-chunk-3-1}
 
@@ -177,19 +177,31 @@ Email: \href{mailto:598253220@qq.com}{\nolinkurl{598253220@qq.com}}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux8bfbux5199ux6570ux636e}{%
-\chapter{读写数据}\label{ux8bfbux5199ux6570ux636e}}
+\hypertarget{ux6570ux636eux5bfcux5165ux5bfcux51fa}{%
+\chapter{数据导入导出}\label{ux6570ux636eux5bfcux5165ux5bfcux51fa}}
 
-在我们使用R做数据处理前，我们首先需要将数据从外界导入R中。但是现实生活中数据类型复杂，存在各种各样的数据文件。我们从连接方式简单区分为文本数据、数据库数据，也就是用文件存放的数据或在数据库中的数据。
+作为一名普通的数据分析师，我日常接触最多的数据是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表，但最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有很明确操作数据的意义，没有代入感。在刚开始学习使用R做数据处理后，我就想使用自己的数据集来操作数据，用R去实现Excel的透视表或sql功能。这时就首先需要将原始数据导入\footnote{由于R是将数据加载至内存中，故数据集大小超过内存大小将导入失败。}R中。
 
-关于和数据库的连接交互，请查看数据库章节。本章主要记录常用的Excel、csv、txt等文本文件的读写方式。
+现实生活中数据来源复杂，商业环境中数据源同样具有多样性，如SAP,不同的数据库、OA系统、EXCEL手工文件等;我们想要统一数据做分析，就需要将不同的数据源整合导入R中。
+
+我们从读取方式简单区分为本地文件数据、数据库数据，本章主要说明常用的Excel文件和csv\footnote{csv即Comma-Separated Values，逗号分隔值，分隔符也可是不是逗号。
+  csv文件是一种以纯文本形式存储的表格数据,可以通过记事本打开。与Excel不同的是，CSV是一种文本格式，也不受Excel最大行数(1048576)限制。
+  csv文件也被称作平面文件，结构简单，平面文件比结构文件占用更少的空间；平面文件在数据仓库项目中广泛用于导入数据。}、txt等文本文件的读写方式。关于数据库的数据的读取，可以参照后续database章节。
+
+相信大家随便使用搜索引擎搜索诸如``将Excel导入R''的关键词都能得到一些行之有效的方法，但是不够系统全面。本章主要简述R中数据导入导出的相关R包，如\texttt{readxl},\texttt{writexl},\texttt{openxlsx},\texttt{readr}, \texttt{vroom}等主要处理csv或Excel的R包。
+
+\begin{quote}
+当有其它数据格式需求的时候，那时候的你肯定已经会自行查找相关R包使用了。
+\end{quote}
+
+在本章开始前，假定已经有一些R相关基础。如使用Rstudio查看导入的数据，R的数据结构等有一定认识。
 
 \hypertarget{readxl}{%
 \section{readxl}\label{readxl}}
 
-readxl软件包使R获取Excel数据变得简洁。与现有的软件包(例如：xlsx)相比，readxl没有外部依赖性。容易在所有的操作系统安装使用。
+readxl软件包使R获取Excel数据变得方便简洁。与现有的软件包(例如：xlsx)相比，readxl没有外部依赖性，xlsx等包依赖java环境。readxl包容易在所有的操作系统安装使用。
 
-readxl\href{https://readxl.tidyverse.org/}{项目地址}。本节大部分代码来源项目官网介绍，可自行查阅官网。
+readxl\href{https://readxl.tidyverse.org/}{项目地址}，本节大部分代码来源项目官网介绍，可自行查阅官网。
 
 \hypertarget{ux5b89ux88c5}{%
 \subsection{安装}\label{ux5b89ux88c5}}
@@ -203,7 +215,7 @@ readxl\href{https://readxl.tidyverse.org/}{项目地址}。本节大部分代码
 \end{Shaded}
 
 \begin{quote}
-由于readxl不是tidyverse核心加载包，使用时任需要加载library(readxl)
+由于readxl不是tidyverse核心加载包，使用时仅需加载library(readxl)
 \end{quote}
 
 或者是从CRAN仅安装readxl;
@@ -249,7 +261,13 @@ readxl包中包含了几个示例文件，我们在接下来的案例中使用�
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{xlsx\_example }\OtherTok{\textless{}{-}} \FunctionTok{readxl\_example}\NormalTok{(}\StringTok{"datasets.xlsx"}\NormalTok{)}
-\FunctionTok{read\_excel}\NormalTok{(xlsx\_example)}
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(xlsx\_example)}
+
+\CommentTok{\# 查看数据}
+\FunctionTok{head}\NormalTok{(dt)}
+
+\CommentTok{\# 查看数据类型}
+\FunctionTok{str}\NormalTok{(dt)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -263,15 +281,22 @@ readxl包中包含了几个示例文件，我们在接下来的案例中使用�
 
 指定worksheet的名字读取，可以是sheet的名字或序号。
 
-当我们要读取的本地xlsx文件有多个sheets时，通过值定sheet参数读取指定的sheet。
+当我们要读取的本地xlsx文件有多个sheets时，通过指定sheet参数读取指定的sheet。
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{read\_excel}\NormalTok{(xlsx\_example, }\AttributeTok{sheet =} \StringTok{"chickwts"}\NormalTok{)}
+\CommentTok{\# not run}
+\CommentTok{\#read\_excel(xlsx\_example, sheet = 1)}
+\CommentTok{\#read\_excel(xlsx\_example, sheet = 3)}
 \end{Highlighting}
 \end{Shaded}
 
-读取xlsx文件的指定位置，有多种方法控制。本处提供几个案例，请\texttt{?read\_excel()}查看帮助。
+读取xlsx文件的指定范围，有多种方法控制。
+
+本处提供几个案例，详情请\texttt{?read\_excel()}查看帮助。
+
+readxl::read\_excel参数如下：
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -282,14 +307,51 @@ readxl包中包含了几个示例文件，我们在接下来的案例中使用�
 \end{Highlighting}
 \end{Shaded}
 
-range接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如as range = ``D12:F15'' or range = ``R1C12:R6C15''.
+range接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如as range = ``D12:F15'' or range = ``R1C12:R6C15''。
 
 其余参数中，个人觉得col\_types比较重要，可以指定列的类型。可用选项:``skip'', ``guess'', ``logical'', ``numeric'', ``date'', ``text'' or ``list''。
+.name\_repair 参数能自动避免重复字段，可避免手工Excle出现的字段名不唯一的情况。
+
+\hypertarget{ux6279ux91cfux8bfbux53d6}{%
+\subsection{批量读取}\label{ux6279ux91cfux8bfbux53d6}}
+
+某文件夹下有大量相同的Excel文件(sheet名称以及列字段相同)，要合并全部Excel数据,代码如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{allfiles }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\AttributeTok{path =} \StringTok{\textquotesingle{}./data/\textquotesingle{}}\NormalTok{,}\AttributeTok{pattern =} \StringTok{\textquotesingle{}.xlsx$\textquotesingle{}}\NormalTok{,}\AttributeTok{full.names =}\NormalTok{ T)}
+\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map\_dfr}\NormalTok{(allfiles,read\_excel)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6279ux91cfux8f93ux51fa}{%
+\subsection{批量输出}\label{ux6279ux91cfux8f93ux51fa}}
+
+我们按照一定条件拆解数据集，分别输出，代码如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\AttributeTok{path =} \StringTok{\textquotesingle{}./data/read{-}write/批量读写.xlsx\textquotesingle{}}\NormalTok{)}
+
+
+\NormalTok{dt }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(name) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_walk}\NormalTok{(}\SpecialCharTok{\textasciitilde{}} \FunctionTok{write.csv}\NormalTok{(.x,}\AttributeTok{file =} \FunctionTok{file.path}\NormalTok{(}\StringTok{\textquotesingle{}data/read{-}write\textquotesingle{}}\NormalTok{,}\FunctionTok{paste0}\NormalTok{(.y}\SpecialCharTok{$}\NormalTok{name,}\StringTok{\textquotesingle{}.csv\textquotesingle{}}\NormalTok{))))}
+\FunctionTok{list.files}\NormalTok{(}\AttributeTok{path =} \StringTok{\textquotesingle{}data/read{-}write/\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+暂时不用理解批量读取和输出的代码具体含义，可以先记住用法。
+\end{quote}
 
 \hypertarget{writexl}{%
 \section{writexl}\label{writexl}}
 
-writexl包目前的功能比较简单，仅有读写Excel功能，但优势是速度较快，尤其是写入Excel时。\href{https://docs.ropensci.org/writexl/}{项目地址}
+截止到2021年5月17日，writexl包功能比较简单，仅有输出Excel功能。快速、不依赖java和Excle是它绝对的优势，并且输出文件相比\texttt{openxlsx}包较小。
+
+\href{https://docs.ropensci.org/writexl/}{项目地址}
 
 \hypertarget{ux7528ux6cd5-1}{%
 \subsection{用法}\label{ux7528ux6cd5-1}}
@@ -337,6 +399,22 @@ writexl包目前的功能比较简单，仅有读写Excel功能，但优势是�
   \AttributeTok{openxlsx =}\NormalTok{ openxlsx}\SpecialCharTok{::}\FunctionTok{write.xlsx}\NormalTok{(flights, }\FunctionTok{tempfile}\NormalTok{()),}
   \AttributeTok{times =} \DecValTok{2}
 \NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+文件大小比较
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{writexl}\SpecialCharTok{::}\FunctionTok{write\_xlsx}\NormalTok{(flights, tmp1 }\OtherTok{\textless{}{-}} \FunctionTok{tempfile}\NormalTok{())}
+\FunctionTok{file.info}\NormalTok{(tmp1)}\SpecialCharTok{$}\NormalTok{size}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{openxlsx}\SpecialCharTok{::}\FunctionTok{write.xlsx}\NormalTok{(flights, tmp2 }\OtherTok{\textless{}{-}} \FunctionTok{tempfile}\NormalTok{())}
+\FunctionTok{file.info}\NormalTok{(tmp2)}\SpecialCharTok{$}\NormalTok{size}
 \end{Highlighting}
 \end{Shaded}
 
@@ -485,7 +563,7 @@ readWorkbook()也可以读取Excel表格数据，参数与read.xlsx基本一致�
 \hypertarget{ux5199ux5165excel}{%
 \subsubsection{写入Excel}\label{ux5199ux5165excel}}
 
-我们将R中的数据有时候需要导出到Excle中，这时就利用函数将data.frame写入Excle。
+数据清洗完之后，或者是透视表已经完成，需要将结果从R导出到Excle，这时就利用函数将结果数据集data.frame写入Excle中。
 
 write.xlsx()函数写入
 
@@ -511,9 +589,10 @@ write.xlsx()函数写入
 \end{Highlighting}
 \end{Shaded}
 
-或者是用如下方式写入：
+\hypertarget{ux5e26ux683cux5f0fux8f93ux51fa}{%
+\subsection{带格式输出}\label{ux5e26ux683cux5f0fux8f93ux51fa}}
 
-不带任何格式写入，共计四步。第一步创建workbook,第二步添加sheet,第三步写入数据，第四步保存workbook。
+输出过程共四步，第一步创建workbook,第二步添加sheet,第三步写入数据，第四步保存workbook。在输出的过程中可以通过\texttt{addStyle()}、\texttt{createStyle()}或\texttt{conditionalFormatting}添加格式或条件格式。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -525,10 +604,7 @@ write.xlsx()函数写入
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux5e26ux683cux5f0fux8f93ux51fa}{%
-\subsection{带格式输出}\label{ux5e26ux683cux5f0fux8f93ux51fa}}
-
-我们以上面四步输出的方式举例，拆解其中四个函数的参数。
+我们以上面四步输出的方式，查看包自带的例子。
 
 \begin{itemize}
 \item
@@ -540,8 +616,6 @@ write.xlsx()函数写入
 \item
   saveWorkbook()
 \end{itemize}
-
-首先看看包中自带的例子，我们分解其中的参数。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -592,10 +666,10 @@ write.xlsx()函数写入
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux57faux7840ux51fdux6570}{%
-\subsection{基础函数}\label{ux57faux7840ux51fdux6570}}
+\hypertarget{ux51fdux6570ux53c2ux6570}{%
+\subsection{函数参数}\label{ux51fdux6570ux53c2ux6570}}
 
-输出Excel的四步。\texttt{createWorkbook}，\texttt{addWorksheet},\texttt{writeDataTable},\texttt{saveWorkbook}四个函数的参数解释。
+输出Excel的过程分为四步，本小节主要拆解\texttt{createWorkbook}，\texttt{addWorksheet},\texttt{writeDataTable},\texttt{saveWorkbook}四个函数的参数以及用法。
 
 \begin{itemize}
 \tightlist
@@ -711,11 +785,412 @@ wb:即createWorkbook()函数创建
 
 参数较为简单，wb即上文中的workbook对象，file即输出的文件名，overwrite即如果存在是否覆盖，returnValue如果设置为TRUE，返回TRUE代表保存成功
 
+\hypertarget{ux603bux7ed3}{%
+\subsection{总结}\label{ux603bux7ed3}}
+
+openxlsx包功能较为强大，更多详细用法大家可自行探索，或关注我的语雀笔记，笔记会不定期持续更新。
+
+R包openxlsx学习笔记:\url{https://www.yuque.com/docs/share/7a768e6f-95e0-417c-a9b5-dfc8862dc6be?\#}
+
+个人主页:\url{https://www.yuque.com/zyufei}
+
 \hypertarget{readr}{%
 \section{readr}\label{readr}}
 
+readr提供了一种快速友好的方式读取矩形数据\footnote{矩形数据英文中表示为 rectangular data，矩形数据每一列都是变量(特征)，而每一行都是案例或记录,关系数据库中的单表就是矩形数据的一种。}(如：csv,tsv,fwf)，且当读取大型数据集时默认有进度条显示。
+
+如果对readr包不熟悉，可以直接阅读包作者大神Hadley Wickham的书R for data science 中\href{https://r4ds.had.co.nz/data-import.html}{data import chapter}章节。
+
+\hypertarget{ux5b89ux88c5-2}{%
+\subsection{安装}\label{ux5b89ux88c5-2}}
+
+直接安装tidyvese获取或单独安装readr。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The easiest way to get readr is to install the whole tidyverse:}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+
+\CommentTok{\# Alternatively, install just readr:}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"readr"}\NormalTok{)}
+
+\CommentTok{\# Or the the development version from GitHub:}
+\CommentTok{\# install.packages("devtools")}
+\NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"tidyverse/readr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux7528ux6cd5-2}{%
+\subsection{用法}\label{ux7528ux6cd5-2}}
+
+readr包是tidyverse系列的核心包，可以加载tidyverse使用。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux4e3bux8981ux51fdux6570}{%
+\subsubsection{主要函数}\label{ux4e3bux8981ux51fdux6570}}
+
+readr支持七种\texttt{read\_}功能的文件格式。
+
+--- \texttt{read\_csv()}:逗号分隔符文件
+- \texttt{read\_tsv()}:制表符分割文件
+- \texttt{read\_delim()}:规定分隔符文件
+- \texttt{read\_fwf()}:固定宽度文件
+- \texttt{read\_table()}:表格文件，列间用空格隔开
+- \texttt{read\_log()}:Web日志文件
+
+在大多数情况下，我们常使用\texttt{read\_csv()}，提供文件路径，将得到数据表。示例如下:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\FunctionTok{readr\_example}\NormalTok{(}\StringTok{"mtcars.csv"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+通过上述输出反馈，我们可以知道读进去的数据集每列类型。如果发现不对可以通过\texttt{col\_types}参数修改。大多数情况下，我们并不需要指定列的类型，readr会自动猜测列类型。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\FunctionTok{readr\_example}\NormalTok{(}\StringTok{"mtcars.csv"}\NormalTok{), }\AttributeTok{col\_types =} 
+  \FunctionTok{cols}\NormalTok{(}
+    \AttributeTok{mpg =} \FunctionTok{col\_double}\NormalTok{(),}
+    \AttributeTok{cyl =} \FunctionTok{col\_integer}\NormalTok{(),}
+    \AttributeTok{disp =} \FunctionTok{col\_double}\NormalTok{(),}
+    \AttributeTok{hp =} \FunctionTok{col\_integer}\NormalTok{(),}
+    \AttributeTok{drat =} \FunctionTok{col\_double}\NormalTok{(),}
+    \AttributeTok{vs =} \FunctionTok{col\_integer}\NormalTok{(),}
+    \AttributeTok{wt =} \FunctionTok{col\_double}\NormalTok{(),}
+    \AttributeTok{qsec =} \FunctionTok{col\_double}\NormalTok{(),}
+    \AttributeTok{am =} \FunctionTok{col\_integer}\NormalTok{(),}
+    \AttributeTok{gear =} \FunctionTok{col\_integer}\NormalTok{(),}
+    \AttributeTok{carb =} \FunctionTok{col\_integer}\NormalTok{()}
+\NormalTok{  )}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux53c2ux6570}{%
+\subsubsection{参数}\label{ux53c2ux6570}}
+
+\texttt{read\_csv()}的参数如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{read\_csv}\NormalTok{(}
+\NormalTok{  file,}
+  \AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{col\_types =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{locale =} \FunctionTok{default\_locale}\NormalTok{(),}
+  \AttributeTok{na =} \FunctionTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"NA"}\NormalTok{),}
+  \AttributeTok{quoted\_na =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{quote =} \StringTok{"}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{,}
+  \AttributeTok{comment =} \StringTok{""}\NormalTok{,}
+  \AttributeTok{trim\_ws =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{skip =} \DecValTok{0}\NormalTok{,}
+  \AttributeTok{n\_max =} \ConstantTok{Inf}\NormalTok{,}
+  \AttributeTok{guess\_max =} \FunctionTok{min}\NormalTok{(}\DecValTok{1000}\NormalTok{, n\_max),}
+  \AttributeTok{progress =} \FunctionTok{show\_progress}\NormalTok{(),}
+  \AttributeTok{skip\_empty\_rows =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+col\_types :指定列类型，可用项如下所示(含简写):
+c = character，i = integer，n = number，d = double，l = logical，f = factor，D = date，T = date time，t = time，默认值为guess.
+
+local:local参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。
+
+\texttt{locale()}的第一个参数是date\_names，控制月份和日期的名称，指定最简单的方式\href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO 639 language code}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{locale}\NormalTok{(}\StringTok{\textquotesingle{}zh\textquotesingle{}}\NormalTok{) }\CommentTok{\# 中文}
+\FunctionTok{locale}\NormalTok{(}\StringTok{\textquotesingle{}ja\textquotesingle{}}\NormalTok{) }\CommentTok{\#日本}
+\FunctionTok{locale}\NormalTok{(}\StringTok{\textquotesingle{}ko\textquotesingle{}}\NormalTok{) }\CommentTok{\#韩国}
+\end{Highlighting}
+\end{Shaded}
+
+编码和时区问题是我们常面临的问题。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{read\_csv}\NormalTok{(}\FunctionTok{readr\_example}\NormalTok{(}\StringTok{"mtcars.csv"}\NormalTok{),}\AttributeTok{locale =} \FunctionTok{locale}\NormalTok{(}\AttributeTok{encoding =} \StringTok{\textquotesingle{}UTF{-}8\textquotesingle{}}\NormalTok{,}\AttributeTok{tz =} \StringTok{\textquotesingle{}Asia/Shanghai\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+详细信息查看手册\texttt{vignette("locales")}。
+
+\hypertarget{ux5bfcux51faux529fux80fd}{%
+\subsection{导出功能}\label{ux5bfcux51faux529fux80fd}}
+
+由于系统不同的缘故，在win系统下可能面临编码问题。我用readr导出数据时一般采用\texttt{write\_excel\_csv()}功能导出。
+
+需要说明的是\texttt{write\_}系列函数可以将输出文件压缩。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(storms, }\AttributeTok{package =} \StringTok{"dplyr"}\NormalTok{)}
+\FunctionTok{write\_csv}\NormalTok{(storms, }\StringTok{"storms.csv"}\NormalTok{)}
+\FunctionTok{write\_csv}\NormalTok{(storms, }\StringTok{"storms.csv.gz"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux603bux7ed3-1}{%
+\subsection{总结}\label{ux603bux7ed3-1}}
+
+大部分情况下，当数据整洁时且不涉及时间(日期不影响)时，采用默认参数读取数据即可。
+
+当数据集前面行缺失值较多，readr自动猜数据列类型错误时，需要我们人为指定列类型；当编码时区等错误时，需指定\texttt{locale()}；以上是可能遇到的问题以及解决办法。
+
 \hypertarget{vroom}{%
 \section{vroom}\label{vroom}}
+
+vroom实现读取矩形数据到R中,如 comma separated(csv),tab separated(tsv), fixed width files(fwf)。该包的功能类似\texttt{readr::read\_csv()},\texttt{data.table::fread()}和\texttt{read.csv()},但是对于许多数据集来说，\texttt{vroom::vroom()}读取速度会快得多。
+
+\href{https://vroom.r-lib.org/index.html}{vroom项目地址}
+
+\hypertarget{ux5b89ux88c5-3}{%
+\subsection{安装}\label{ux5b89ux88c5-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 从cran安装}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"vroom"}\NormalTok{)}
+\CommentTok{\# install.packages("devtools")}
+\NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_dev}\NormalTok{(}\StringTok{"vroom"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux7528ux6cd5-3}{%
+\subsection{用法}\label{ux7528ux6cd5-3}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  读取文件
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(vroom)}
+\NormalTok{file }\OtherTok{\textless{}{-}} \FunctionTok{vroom\_example}\NormalTok{(}\StringTok{"mtcars.csv"}\NormalTok{)}
+\NormalTok{file}
+
+\FunctionTok{vroom}\NormalTok{(file)}
+\FunctionTok{vroom}\NormalTok{(file, }\AttributeTok{delim =} \StringTok{","}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  读取多文件
+\end{enumerate}
+
+即\texttt{vroom::vroom()}具备迭代效果,具体情况如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mt }\OtherTok{\textless{}{-}}\NormalTok{ tibble}\SpecialCharTok{::}\FunctionTok{rownames\_to\_column}\NormalTok{(mtcars, }\StringTok{"model"}\NormalTok{)}
+\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{iwalk}\NormalTok{(}
+  \FunctionTok{split}\NormalTok{(mt, mt}\SpecialCharTok{$}\NormalTok{cyl),}
+  \SpecialCharTok{\textasciitilde{}} \FunctionTok{vroom\_write}\NormalTok{(.x, glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(}\StringTok{"mtcars\_\{.y\}.csv"}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{files }\OtherTok{\textless{}{-}}\NormalTok{ fs}\SpecialCharTok{::}\FunctionTok{dir\_ls}\NormalTok{(}\AttributeTok{glob =} \StringTok{"mtcars*csv"}\NormalTok{)}
+\NormalTok{files}
+
+\CommentTok{\# read\_csv}
+
+\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map\_dfr}\NormalTok{(files,readr}\SpecialCharTok{::}\NormalTok{read\_delim,}\AttributeTok{delim=}\StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)}
+
+\CommentTok{\# vroom same above}
+\FunctionTok{vroom}\NormalTok{(files) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  读取压缩文件
+\end{enumerate}
+
+vroom支持zip,gz,bz2,xz等压缩文件，只需要将压缩文件名称传递给vroom即可。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{file }\OtherTok{\textless{}{-}} \FunctionTok{vroom\_example}\NormalTok{(}\StringTok{"mtcars.csv.gz"}\NormalTok{)}
+
+\FunctionTok{vroom}\NormalTok{(file)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  读取网络文件
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{file }\OtherTok{\textless{}{-}} \StringTok{"https://raw.githubusercontent.com/r{-}lib/vroom/master/inst/extdata/mtcars.csv"}
+\FunctionTok{vroom}\NormalTok{(file)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  选择列读取
+\end{enumerate}
+
+room提供了与\texttt{dplyr::select()}相同的列选择和重命名接口
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{file }\OtherTok{\textless{}{-}} \FunctionTok{vroom\_example}\NormalTok{(}\StringTok{"mtcars.csv.gz"}\NormalTok{)}
+
+\FunctionTok{vroom}\NormalTok{(file, }\AttributeTok{col\_select =} \FunctionTok{c}\NormalTok{(model, cyl, gear))}
+
+\CommentTok{\# vroom(file, col\_select = c(1, 3, 11))}
+
+\CommentTok{\# vroom(file, col\_select = list(car = model, everything()))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{rstudioux5bfcux5165}{%
+\section{Rstudio导入}\label{rstudioux5bfcux5165}}
+
+利用rstudio导入数据，本质也是调用\texttt{readr}和\texttt{readxl}包，如下所示：
+
+\begin{figure}
+\centering
+\includegraphics{picture/read-write/Rstudio-load-data.png}
+\caption{rstudio-load-data}
+\end{figure}
+
+插件导入
+
+\href{https://github.com/milesmcbain/datapasta}{项目地址}
+
+datapasta是一个addins插件，方便将数据复制到R。
+
+1.安装
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"datapasta"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+2.使用
+
+\begin{figure}
+\centering
+\includegraphics{picture/read-write/datapasta-copy.gif}
+\caption{datapasta}
+\end{figure}
+
+\hypertarget{ux6587ux4ef6ux8defux5f84}{%
+\section{文件路径}\label{ux6587ux4ef6ux8defux5f84}}
+
+我们读取数据时都是读取某路径下的某文件，但是由于系统等原因，路径在不同系统下的表示方式不一致。
+
+\hypertarget{ux6307ux5b9aux8defux5f84}{%
+\subsection{指定路径}\label{ux6307ux5b9aux8defux5f84}}
+
+\begin{itemize}
+\tightlist
+\item
+  win 路径
+\end{itemize}
+
+winOS系统：\texttt{C:\textbackslash{}Users\textbackslash{}zhongyf\textbackslash{}Desktop\textbackslash{}Rbook}，注意路径中是一个反斜杠()。
+
+\begin{figure}
+\centering
+\includegraphics{picture/read-write/win-path.png}
+\caption{win-path}
+\end{figure}
+
+在R中读取时需要用一个正斜杠或两个反斜杠。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(}\StringTok{\textquotesingle{}C:/Users/zhongyf/Desktop/Rbook/data/flights.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(}\StringTok{\textquotesingle{}C:}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Users}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{zhongyf}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Desktop}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Rbook}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{data}\SpecialCharTok{\textbackslash{}f}\StringTok{lights.csv\textquotesingle{}}\NormalTok{) }\CommentTok{\# same above}
+\NormalTok{readr}\SpecialCharTok{:::}\FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =}\NormalTok{ r}\StringTok{"(C:\textbackslash{}Users\textbackslash{}zhongyf\textbackslash{}Desktop\textbackslash{}Rbook\textbackslash{}data}\SpecialCharTok{\textbackslash{}f}\StringTok{lights.csv)"}\NormalTok{) }\CommentTok{\# same above}
+\end{Highlighting}
+\end{Shaded}
+
+工作中，当需要读取或写入共享盘\footnote{共享盘的地址即某电脑(服务器)的地址，知道共享盘在局域网中的ip地址后在 开始-\textgreater 运行中输入\textbackslash192.168.1.247即可打开共享盘。}中文件时，路径表示方式为：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{the\_shared\_disk }\OtherTok{\textless{}{-}}\NormalTok{ r}\StringTok{"(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{192.168.2.117\textbackslash{}公司A{-}新}\SpecialCharTok{\textbackslash{}01}\StringTok{事业部\textbackslash{})"}
+
+\CommentTok{\# load data into R}
+
+\NormalTok{readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}\textbackslash{}\textbackslash{}}\StringTok{192.168.2.117}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{公司A{-}新}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{01事业部}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{flights.csv"}\NormalTok{)}
+\NormalTok{readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =}\NormalTok{ r}\StringTok{"(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{192.168.2.117\textbackslash{}公司A{-}新}\SpecialCharTok{\textbackslash{}01}\StringTok{事业部\textbackslash{})"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+r``()''用法是R-4.0-之后的特性。在win系统下表示路径特别有用
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  mac 路径
+\end{itemize}
+
+macOS系统: \texttt{/User/vega\_mac/Desktop/r},路径中是一个正斜杠。
+
+\begin{figure}
+\centering
+\includegraphics{picture/read-write/mac-path.png}
+\caption{mac-path}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(}\StringTok{\textquotesingle{}/User/vega\_mac/Desktop/r/Rbook/data/flights.csv\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux9ed8ux8ba4ux8defux5f84}{%
+\subsection{默认路径}\label{ux9ed8ux8ba4ux8defux5f84}}
+
+\texttt{getwd()}是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，读取导出的默认路径是\texttt{getwd()}。想要改变工作目录，通过设定\texttt{setwd()}即可。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# not run}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{\textquotesingle{}C:/Users/zhongyf/Desktop/Rbook/data\textquotesingle{}}\NormalTok{)}
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{dplyr}{%
 \chapter{dplyr}\label{dplyr}}
@@ -748,8 +1223,8 @@ wb:即createWorkbook()函数创建
 
 在本章介绍部分，我们将拿R与Excel中的数据操作做类比，以达到Excel中透视表等功能。
 
-\hypertarget{ux5b89ux88c5-2}{%
-\subsection{安装}\label{ux5b89ux88c5-2}}
+\hypertarget{ux5b89ux88c5-4}{%
+\subsection{安装}\label{ux5b89ux88c5-4}}
 
 dplyr包可以直接安装。
 
@@ -1973,8 +2448,8 @@ Note that .data is not a data frame; it's a special construct, a pronoun, that a
 
 \texttt{R}中的tidyverse系列构建了一种一致的数据结构，当我们用tidyverse软件包提供的``数据整洁工具''整洁数据时，我们将花费更少的时间将数据从一种形式迁移到另外一种形式。从而，我们拥有更多的时间专注在具体的业务问题上。
 
-\hypertarget{ux5b89ux88c5-3}{%
-\section{安装}\label{ux5b89ux88c5-3}}
+\hypertarget{ux5b89ux88c5-5}{%
+\section{安装}\label{ux5b89ux88c5-5}}
 
 本章节，我们重点关注\texttt{tidyr}包，这个软件包提供了许多的功能函数整理混乱的数据。tidyr是tidyverse的核心成员包
 
@@ -3196,8 +3671,8 @@ numeric参数
 
 \texttt{R}中日期起始时间是\texttt{1970-01-01},Excel中是\texttt{1900-01-01},转化成数字两者相差25568。在用R读取Excel文件时，设计到日期数字转化成日期时需要注意其中差异。
 
-R中日期 : 2021-05-14 转化成数字: 18761,
-Excel 中 2021-05-14转化成数字:44329,两者相差25568.
+R中日期 : 2021-05-17 转化成数字: 18764,
+Excel 中 2021-05-17转化成数字:44332,两者相差25568.
 
 \hypertarget{ux57faux7840ux7528ux6cd5-1}{%
 \section{基础用法}\label{ux57faux7840ux7528ux6cd5-1}}
@@ -5080,8 +5555,8 @@ MS\href{https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads}{下载}
 \hypertarget{dbi}{%
 \section{DBI}\label{dbi}}
 
-\hypertarget{ux5b89ux88c5-4}{%
-\subsection{安装}\label{ux5b89ux88c5-4}}
+\hypertarget{ux5b89ux88c5-6}{%
+\subsection{安装}\label{ux5b89ux88c5-6}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5462,8 +5937,8 @@ linux下可以在文件Renviron中添加，记得引号，路径为{[}/opt/R/4.0
 
 RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下.该包正在逐渐被淘汰，可以使用RMariaDB包替换。
 
-\hypertarget{ux5b89ux88c5-5}{%
-\subsection{安装}\label{ux5b89ux88c5-5}}
+\hypertarget{ux5b89ux88c5-7}{%
+\subsection{安装}\label{ux5b89ux88c5-7}}
 
 Win系统下直接安装即可，其它平台下需提前安装依赖环境。
 
@@ -6460,8 +6935,8 @@ sample(10),没有names(),只有长度信息。转化成map2表达如下:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux51fdux6570ux53c2ux6570}{%
-\section{函数参数}\label{ux51fdux6570ux53c2ux6570}}
+\hypertarget{ux51fdux6570ux53c2ux6570-1}{%
+\section{函数参数}\label{ux51fdux6570ux53c2ux6570-1}}
 
 函数的参数通常分为两大类,一组是提供要计算的参数,另外一组提供计算时的细节参数.
 
@@ -6515,8 +6990,8 @@ sample(10),没有names(),只有长度信息。转化成map2表达如下:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux53c2ux6570}{%
-\subsection{\ldots 参数}\label{ux53c2ux6570}}
+\hypertarget{ux53c2ux6570-1}{%
+\subsection{\ldots 参数}\label{ux53c2ux6570-1}}
 
 R中的许多函数都能接受任意数量的输入：
 
