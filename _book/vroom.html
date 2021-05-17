@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-15" />
+<meta name="date" content="2021-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="readr.html"/>
-<link rel="next" href="dplyr.html"/>
+<link rel="next" href="文件路径.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,6 +144,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="readxl.html"><a href="readxl.html#安装"><i class="fa fa-check"></i><b>2.1.1</b> 安装</a></li>
 <li class="chapter" data-level="2.1.2" data-path="readxl.html"><a href="readxl.html#用法"><i class="fa fa-check"></i><b>2.1.2</b> 用法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="readxl.html"><a href="readxl.html#批量读取"><i class="fa fa-check"></i><b>2.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="2.1.4" data-path="readxl.html"><a href="readxl.html#批量输出"><i class="fa fa-check"></i><b>2.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>2.2</b> writexl</a>
 <ul>
@@ -167,6 +169,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="vroom.html"><a href="vroom.html#安装-3"><i class="fa fa-check"></i><b>2.5.1</b> 安装</a></li>
 <li class="chapter" data-level="2.5.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.5.2</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.6</b> 文件路径</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.6.1</b> 指定路径</a></li>
+<li class="chapter" data-level="2.6.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.6.2</b> 默认路径</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
@@ -436,75 +443,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://vroom.r-lib.org/index.html">vroom项目地址</a></p>
 <div id="安装-3" class="section level3" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> 安装</h3>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="vroom.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 从cran安装</span></span>
-<span id="cb37-2"><a href="vroom.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;vroom&quot;</span>)</span>
-<span id="cb37-3"><a href="vroom.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb37-4"><a href="vroom.html#cb37-4" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_dev</span>(<span class="st">&quot;vroom&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="vroom.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 从cran安装</span></span>
+<span id="cb39-2"><a href="vroom.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;vroom&quot;</span>)</span>
+<span id="cb39-3"><a href="vroom.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb39-4"><a href="vroom.html#cb39-4" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_dev</span>(<span class="st">&quot;vroom&quot;</span>)</span></code></pre></div>
 </div>
 <div id="用法-3" class="section level3" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> 用法</h3>
 <ol style="list-style-type: decimal">
 <li>读取文件</li>
 </ol>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="vroom.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vroom)</span>
-<span id="cb38-2"><a href="vroom.html#cb38-2" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">vroom_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span>
-<span id="cb38-3"><a href="vroom.html#cb38-3" aria-hidden="true" tabindex="-1"></a>file</span>
-<span id="cb38-4"><a href="vroom.html#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="vroom.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span>
-<span id="cb38-6"><a href="vroom.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file, <span class="at">delim =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="vroom.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vroom)</span>
+<span id="cb40-2"><a href="vroom.html#cb40-2" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">vroom_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span>
+<span id="cb40-3"><a href="vroom.html#cb40-3" aria-hidden="true" tabindex="-1"></a>file</span>
+<span id="cb40-4"><a href="vroom.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="vroom.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span>
+<span id="cb40-6"><a href="vroom.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file, <span class="at">delim =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>读取多文件</li>
 </ol>
 <p>即<code>vroom::vroom()</code>具备迭代效果,具体情况如下：</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="vroom.html#cb39-1" aria-hidden="true" tabindex="-1"></a>mt <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(mtcars, <span class="st">&quot;model&quot;</span>)</span>
-<span id="cb39-2"><a href="vroom.html#cb39-2" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">iwalk</span>(</span>
-<span id="cb39-3"><a href="vroom.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(mt, mt<span class="sc">$</span>cyl),</span>
-<span id="cb39-4"><a href="vroom.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> <span class="fu">vroom_write</span>(.x, glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;mtcars_{.y}.csv&quot;</span>), <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
-<span id="cb39-5"><a href="vroom.html#cb39-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb39-6"><a href="vroom.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="vroom.html#cb39-7" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(<span class="at">glob =</span> <span class="st">&quot;mtcars*csv&quot;</span>)</span>
-<span id="cb39-8"><a href="vroom.html#cb39-8" aria-hidden="true" tabindex="-1"></a>files</span>
-<span id="cb39-9"><a href="vroom.html#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-10"><a href="vroom.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv</span></span>
-<span id="cb39-11"><a href="vroom.html#cb39-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-12"><a href="vroom.html#cb39-12" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(files,readr<span class="sc">::</span>read_delim,<span class="at">delim=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
-<span id="cb39-13"><a href="vroom.html#cb39-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-14"><a href="vroom.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom same above</span></span>
-<span id="cb39-15"><a href="vroom.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(files) </span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="vroom.html#cb41-1" aria-hidden="true" tabindex="-1"></a>mt <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(mtcars, <span class="st">&quot;model&quot;</span>)</span>
+<span id="cb41-2"><a href="vroom.html#cb41-2" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">iwalk</span>(</span>
+<span id="cb41-3"><a href="vroom.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(mt, mt<span class="sc">$</span>cyl),</span>
+<span id="cb41-4"><a href="vroom.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> <span class="fu">vroom_write</span>(.x, glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;mtcars_{.y}.csv&quot;</span>), <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb41-5"><a href="vroom.html#cb41-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb41-6"><a href="vroom.html#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="vroom.html#cb41-7" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(<span class="at">glob =</span> <span class="st">&quot;mtcars*csv&quot;</span>)</span>
+<span id="cb41-8"><a href="vroom.html#cb41-8" aria-hidden="true" tabindex="-1"></a>files</span>
+<span id="cb41-9"><a href="vroom.html#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="vroom.html#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv</span></span>
+<span id="cb41-11"><a href="vroom.html#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="vroom.html#cb41-12" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(files,readr<span class="sc">::</span>read_delim,<span class="at">delim=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb41-13"><a href="vroom.html#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="vroom.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom same above</span></span>
+<span id="cb41-15"><a href="vroom.html#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(files) </span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>读取压缩文件</li>
 </ol>
 <p>vroom支持zip,gz,bz2,xz等压缩文件，只需要将压缩文件名称传递给vroom即可。</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="vroom.html#cb40-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">vroom_example</span>(<span class="st">&quot;mtcars.csv.gz&quot;</span>)</span>
-<span id="cb40-2"><a href="vroom.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="vroom.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="vroom.html#cb42-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">vroom_example</span>(<span class="st">&quot;mtcars.csv.gz&quot;</span>)</span>
+<span id="cb42-2"><a href="vroom.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="vroom.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>读取网络文件</li>
 </ol>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="vroom.html#cb41-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/r-lib/vroom/master/inst/extdata/mtcars.csv&quot;</span></span>
-<span id="cb41-2"><a href="vroom.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="vroom.html#cb43-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/r-lib/vroom/master/inst/extdata/mtcars.csv&quot;</span></span>
+<span id="cb43-2"><a href="vroom.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>选择列读取</li>
 </ol>
 <p>room提供了与<code>dplyr::select()</code>相同的列选择和重命名接口</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="vroom.html#cb42-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">vroom_example</span>(<span class="st">&quot;mtcars.csv.gz&quot;</span>)</span>
-<span id="cb42-2"><a href="vroom.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="vroom.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file, <span class="at">col_select =</span> <span class="fu">c</span>(model, cyl, gear))</span>
-<span id="cb42-4"><a href="vroom.html#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-5"><a href="vroom.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom(file, col_select = c(1, 3, 11))</span></span>
-<span id="cb42-6"><a href="vroom.html#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-7"><a href="vroom.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom(file, col_select = list(car = model, everything()))</span></span></code></pre></div>
-
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="vroom.html#cb44-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">vroom_example</span>(<span class="st">&quot;mtcars.csv.gz&quot;</span>)</span>
+<span id="cb44-2"><a href="vroom.html#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="vroom.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file, <span class="at">col_select =</span> <span class="fu">c</span>(model, cyl, gear))</span>
+<span id="cb44-4"><a href="vroom.html#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="vroom.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom(file, col_select = c(1, 3, 11))</span></span>
+<span id="cb44-6"><a href="vroom.html#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="vroom.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom(file, col_select = list(car = model, everything()))</span></span></code></pre></div>
 </div>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
 <a href="readr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="文件路径.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

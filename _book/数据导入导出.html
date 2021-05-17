@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-15" />
+<meta name="date" content="2021-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,6 +144,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="readxl.html"><a href="readxl.html#安装"><i class="fa fa-check"></i><b>2.1.1</b> 安装</a></li>
 <li class="chapter" data-level="2.1.2" data-path="readxl.html"><a href="readxl.html#用法"><i class="fa fa-check"></i><b>2.1.2</b> 用法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="readxl.html"><a href="readxl.html#批量读取"><i class="fa fa-check"></i><b>2.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="2.1.4" data-path="readxl.html"><a href="readxl.html#批量输出"><i class="fa fa-check"></i><b>2.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>2.2</b> writexl</a>
 <ul>
@@ -167,6 +169,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="vroom.html"><a href="vroom.html#安装-3"><i class="fa fa-check"></i><b>2.5.1</b> 安装</a></li>
 <li class="chapter" data-level="2.5.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.5.2</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.6</b> 文件路径</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.6.1</b> 指定路径</a></li>
+<li class="chapter" data-level="2.6.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.6.2</b> 默认路径</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
@@ -432,14 +439,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="数据导入导出" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> 数据导入导出</h1>
-<p>在我们使用R做数据处理前，我们首先需要将数据从外界导入R中。本章主要简述针对数据导入导出R的相关R包，并且仅仅局限在Excel，csv,txt等常见的文本文件。</p>
+<p>作为一名普通的数据分析师，我日常接触最多的数据是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表，但最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有很明确操作数据的意义，没有代入感。在刚开始学习使用R做数据处理后，我就想使用自己的数据集来操作数据，用R去实现Excel的透视表或sql功能。这时就首先需要将原始数据导入<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>R中。</p>
+<p>现实生活中数据来源复杂，商业环境中数据源同样具有多样性，如SAP,不同的数据库、OA系统、EXCEL手工文件等;我们想要统一数据做分析，就需要将不同的数据源整合导入R中。</p>
+<p>我们从读取方式简单区分为本地文件数据、数据库数据，本章主要说明常用的Excel文件和csv<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>、txt等文本文件的读写方式。关于数据库的数据的读取，可以参照后续database章节。</p>
+<p>相信大家随便使用搜索引擎搜索诸如“将Excel导入R”的关键词都能得到一些行之有效的方法，但是不够系统全面。本章主要简述R中数据导入导出的相关R包，如<code>readxl</code>,<code>writexl</code>,<code>openxlsx</code>,<code>readr</code>, <code>vroom</code>等主要处理csv或Excel的R包。</p>
 <blockquote>
-<p>当有其它需求的时候，那时候的你肯定已经会自行查找相关R包了。</p>
+<p>当有其它数据格式需求的时候，那时候的你肯定已经会自行查找相关R包使用了。</p>
 </blockquote>
-<p>想最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有现实感。作为普通一名普通的数据分析师，我日常接触最多的数据结构是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表。在开始操作数据前，我们首先学会将数据导入R中。</p>
-<p>建议大家学习将数据导入R中的时候，将手上的数据加载到R中。</p>
-<p>但是现实生活中数据类型复杂，存在各种各样的数据文件。我们从连接方式简单区分为文本数据、数据库数据，也就是用文件存放在磁盘上的文本数据或存放在数据库中的数据。</p>
-<p>关于和数据库的连接交互，请查看数据库章节。本章主要记录常用的Excel、csv、txt等文本文件的读写方式。</p>
+<p>在本章开始前，假定已经有一些R相关基础。如使用Rstudio查看导入的数据，R的数据结构等有一定认识。</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>由于R是将数据加载至内存中，故数据集大小超过内存大小将导入失败。<a href="数据导入导出.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>csv文件是也被称作平面文件，结构简单，平面文件比结构文件占用更少的空间；平面文件在数据仓库项目中广泛用于导入数据。<a href="数据导入导出.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

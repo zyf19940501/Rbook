@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-15" />
+<meta name="date" content="2021-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,6 +144,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="readxl.html"><a href="readxl.html#安装"><i class="fa fa-check"></i><b>2.1.1</b> 安装</a></li>
 <li class="chapter" data-level="2.1.2" data-path="readxl.html"><a href="readxl.html#用法"><i class="fa fa-check"></i><b>2.1.2</b> 用法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="readxl.html"><a href="readxl.html#批量读取"><i class="fa fa-check"></i><b>2.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="2.1.4" data-path="readxl.html"><a href="readxl.html#批量输出"><i class="fa fa-check"></i><b>2.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>2.2</b> writexl</a>
 <ul>
@@ -167,6 +169,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="vroom.html"><a href="vroom.html#安装-3"><i class="fa fa-check"></i><b>2.5.1</b> 安装</a></li>
 <li class="chapter" data-level="2.5.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.5.2</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.6</b> 文件路径</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.6.1</b> 指定路径</a></li>
+<li class="chapter" data-level="2.6.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.6.2</b> 默认路径</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
@@ -470,8 +477,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-2"><a href="readxl.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>, <span class="at">na =</span> <span class="st">&quot;&quot;</span>, <span class="at">trim_ws =</span> <span class="cn">TRUE</span>, <span class="at">skip =</span> <span class="dv">0</span>,</span>
 <span id="cb8-3"><a href="readxl.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>, <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
 <span id="cb8-4"><a href="readxl.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">progress =</span> <span class="fu">readxl_progress</span>(), <span class="at">.name_repair =</span> <span class="st">&quot;unique&quot;</span>)</span></code></pre></div>
-<p>range接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如as range = “D12:F15” or range = “R1C12:R6C15.”</p>
-<p>其余参数中，个人觉得col_types比较重要，可以指定列的类型。可用选项:“skip,” “guess,” “logical,” “numeric,” “date,” “text” or “list”。</p>
+<p>range接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如as range = “D12:F15” or range = “R1C12:R6C15”。</p>
+<p>其余参数中，个人觉得col_types比较重要，可以指定列的类型。可用选项:“skip,” “guess,” “logical,” “numeric,” “date,” “text” or “list”。
+.name_repair 参数能自动避免重复字段，可避免手工Excle出现的字段名不唯一的情况。</p>
+</div>
+<div id="批量读取" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> 批量读取</h3>
+<p>某文件夹下有大量相同的Excel文件(sheet名称以及列字段相同)，要合并全部Excel数据,代码如下：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="readxl.html#cb9-1" aria-hidden="true" tabindex="-1"></a>allfiles <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&#39;./data/&#39;</span>,<span class="at">pattern =</span> <span class="st">&#39;.xlsx$&#39;</span>,<span class="at">full.names =</span> T)</span>
+<span id="cb9-2"><a href="readxl.html#cb9-2" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(allfiles,read_excel)</span></code></pre></div>
+</div>
+<div id="批量输出" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> 批量输出</h3>
+<p>我们按照一定条件拆解数据集，分别输出，代码如下：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="readxl.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-2"><a href="readxl.html#cb10-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="at">path =</span> <span class="st">&#39;./data/read-write/批量读写.xlsx&#39;</span>)</span>
+<span id="cb10-3"><a href="readxl.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="readxl.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="readxl.html#cb10-5" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span> </span>
+<span id="cb10-6"><a href="readxl.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-7"><a href="readxl.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_walk</span>(<span class="sc">~</span> <span class="fu">write.csv</span>(.x,<span class="at">file =</span> <span class="fu">file.path</span>(<span class="st">&#39;data/read-write&#39;</span>,<span class="fu">paste0</span>(.y<span class="sc">$</span>name,<span class="st">&#39;.csv&#39;</span>))))</span>
+<span id="cb10-8"><a href="readxl.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&#39;data/read-write/&#39;</span>)</span></code></pre></div>
+<blockquote>
+<p>暂时不用理解批量读取和输出的代码具体含义，可以先记住用法。</p>
+</blockquote>
 </div>
 </div>
             </section>

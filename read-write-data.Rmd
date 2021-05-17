@@ -5,17 +5,30 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 
 # 数据导入导出
 
-在我们使用R做数据处理前，我们首先需要将数据从外界导入R中。本章主要简述针对数据导入导出R的相关R包，并且仅仅局限在Excel，csv,txt等常见的文本文件。
 
->当有其它需求的时候，那时候的你肯定已经会自行查找相关R包了。
+作为一名普通的数据分析师，我日常接触最多的数据是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表，但最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有很明确操作数据的意义，没有代入感。在刚开始学习使用R做数据处理后，我就想使用自己的数据集来操作数据，用R去实现Excel的透视表或sql功能。这时就首先需要将原始数据导入[^loaddata]R中。
 
-想最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有现实感。作为普通一名普通的数据分析师，我日常接触最多的数据结构是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表。在开始操作数据前，我们首先学会将数据导入R中。
+现实生活中数据来源复杂，商业环境中数据源同样具有多样性，如SAP,不同的数据库、OA系统、EXCEL手工文件等;我们想要统一数据做分析，就需要将不同的数据源整合导入R中。
 
-建议大家学习将数据导入R中的时候，将手上的数据加载到R中。
+我们从读取方式简单区分为本地文件数据、数据库数据，本章主要说明常用的Excel文件和csv[^csv]、txt等文本文件的读写方式。关于数据库的数据的读取，可以参照后续database章节。
 
-但是现实生活中数据类型复杂，存在各种各样的数据文件。我们从连接方式简单区分为文本数据、数据库数据，也就是用文件存放在磁盘上的文本数据或存放在数据库中的数据。
+相信大家随便使用搜索引擎搜索诸如"将Excel导入R"的关键词都能得到一些行之有效的方法，但是不够系统全面。本章主要简述R中数据导入导出的相关R包，如`readxl`,`writexl`,`openxlsx`,`readr`, `vroom`等主要处理csv或Excel的R包。
 
-关于和数据库的连接交互，请查看数据库章节。本章主要记录常用的Excel、csv、txt等文本文件的读写方式。
+
+
+
+[^loaddata]:由于R是将数据加载至内存中，故数据集大小超过内存大小将导入失败。
+
+[^csv]:csv文件是也被称作平面文件，结构简单，平面文件比结构文件占用更少的空间；平面文件在数据仓库项目中广泛用于导入数据。 
+
+>当有其它数据格式需求的时候，那时候的你肯定已经会自行查找相关R包使用了。
+
+
+在本章开始前，假定已经有一些R相关基础。如使用Rstudio查看导入的数据，R的数据结构等有一定认识。
+
+
+
+
 
 
 ## readxl
@@ -92,9 +105,46 @@ read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
   progress = readxl_progress(), .name_repair = "unique")
 ```
 
-range接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如as range = "D12:F15" or range = "R1C12:R6C15".
+range接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如as range = "D12:F15" or range = "R1C12:R6C15"。
 
 其余参数中，个人觉得col_types比较重要，可以指定列的类型。可用选项:"skip", "guess", "logical", "numeric", "date", "text" or "list"。
+.name_repair 参数能自动避免重复字段，可避免手工Excle出现的字段名不唯一的情况。
+
+
+
+### 批量读取
+
+某文件夹下有大量相同的Excel文件(sheet名称以及列字段相同)，要合并全部Excel数据,代码如下：
+
+```{r eval=FALSE}
+allfiles <- list.files(path = './data/',pattern = '.xlsx$',full.names = T)
+purrr::map_dfr(allfiles,read_excel)
+```
+
+
+
+### 批量输出
+
+我们按照一定条件拆解数据集，分别输出，代码如下：
+
+```{r}
+library(tidyverse)
+dt <- read_xlsx(path = './data/read-write/批量读写.xlsx')
+
+
+dt %>% 
+  group_by(name) %>% 
+  group_walk(~ write.csv(.x,file = file.path('data/read-write',paste0(.y$name,'.csv'))))
+list.files(path = 'data/read-write/')
+
+```
+
+
+> 暂时不用理解批量读取和输出的代码具体含义，可以先记住用法。
+
+
+
+
 
 ## writexl
 
@@ -463,6 +513,7 @@ saveWorkbook(wb, file, overwrite = FALSE, returnValue = FALSE)
 
 
 
+
 ## readr
 
 
@@ -687,5 +738,70 @@ vroom(file, col_select = c(model, cyl, gear))
 # vroom(file, col_select = c(1, 3, 11))
 
 # vroom(file, col_select = list(car = model, everything()))
+```
+
+
+## 文件路径
+
+
+
+我们读取数据时都是读取某路径下的某文件，但是由于系统等原因，路径在不同系统下的表示方式不一致。
+
+### 指定路径
+
+- win 路径
+
+winOS系统：`C:\Users\zhongyf\Desktop\Rbook`，注意路径中是一个反斜杠(\)。
+
+![win-path](picture/read-write/win-path.png)
+
+在R中读取时需要用一个正斜杠或两个反斜杠。
+
+```{r eval=FALSE}
+readr::read_csv('C:/Users/zhongyf/Desktop/Rbook/data/flights.csv')
+readr::read_csv('C:\\Users\\zhongyf\\Desktop\\Rbook\\data\flights.csv') # same above
+readr:::read_csv(file = r"(C:\Users\zhongyf\Desktop\Rbook\data\flights.csv)") # same above
+```
+
+工作中，当需要读取或写入共享盘[^共享盘]中文件时，路径表示方式为：
+
+[^共享盘]:共享盘的地址即某电脑(服务器)的地址，知道共享盘在局域网中的ip地址后在 开始->运行中输入\\192.168.1.247即可打开共享盘。
+
+```{r eval=FALSE}
+the_shared_disk <- r"(\\192.168.2.117\公司A-新\01事业部\)"
+
+# load data into R
+
+readr::read_csv(file = "\\\\192.168.2.117\\公司A-新\\01事业部\\flights.csv")
+readr::read_csv(file = r"(\\192.168.2.117\公司A-新\01事业部\)")
+
+```
+
+> r"()"用法是R-4.0-之后的特性。在win系统下表示路径特别有用
+
+
+- mac 路径
+
+macOS系统: `/User/vega_mac/Desktop/r`,路径中是一个正斜杠。
+
+![mac-path](picture/read-write/mac-path.png)
+
+```{r eval=FALSE}
+readr::read_csv('/User/vega_mac/Desktop/r/Rbook/data/flights.csv')
+```
+
+### 默认路径
+
+`getwd()`是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，读取导出的默认路径是`getwd()`。想要改变工作目录，通过设定`setwd()`即可。
+
+
+```{r}
+getwd()
+```
+
+```{r eval=FALSE}
+# not run
+setwd('C:/Users/zhongyf/Desktop/Rbook/data')
+getwd()
 ```
 

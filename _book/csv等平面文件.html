@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 writexl | R学习笔记</title>
+  <title>2.5 csv等平面文件 | R学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 writexl | R学习笔记" />
+  <meta property="og:title" content="2.5 csv等平面文件 | R学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 writexl | R学习笔记" />
+  <meta name="twitter:title" content="2.5 csv等平面文件 | R学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="readxl.html"/>
-<link rel="next" href="openxlsx.html"/>
+<link rel="prev" href="openxlsx.html"/>
+<link rel="next" href="readr.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -140,40 +140,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
 <li class="chapter" data-level="2" data-path="数据导入导出.html"><a href="数据导入导出.html"><i class="fa fa-check"></i><b>2</b> 数据导入导出</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>2.1</b> readxl</a>
+<li class="chapter" data-level="2.1" data-path="excel-文件.html"><a href="excel-文件.html"><i class="fa fa-check"></i><b>2.1</b> Excel 文件</a></li>
+<li class="chapter" data-level="2.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>2.2</b> readxl</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="readxl.html"><a href="readxl.html#安装"><i class="fa fa-check"></i><b>2.1.1</b> 安装</a></li>
-<li class="chapter" data-level="2.1.2" data-path="readxl.html"><a href="readxl.html#用法"><i class="fa fa-check"></i><b>2.1.2</b> 用法</a></li>
-<li class="chapter" data-level="2.1.3" data-path="readxl.html"><a href="readxl.html#批量读取"><i class="fa fa-check"></i><b>2.1.3</b> 批量读取</a></li>
-<li class="chapter" data-level="2.1.4" data-path="readxl.html"><a href="readxl.html#批量输出"><i class="fa fa-check"></i><b>2.1.4</b> 批量输出</a></li>
+<li class="chapter" data-level="2.2.1" data-path="readxl.html"><a href="readxl.html#安装"><i class="fa fa-check"></i><b>2.2.1</b> 安装</a></li>
+<li class="chapter" data-level="2.2.2" data-path="readxl.html"><a href="readxl.html#用法"><i class="fa fa-check"></i><b>2.2.2</b> 用法</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>2.2</b> writexl</a>
+<li class="chapter" data-level="2.3" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>2.3</b> writexl</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="writexl.html"><a href="writexl.html#用法-1"><i class="fa fa-check"></i><b>2.2.1</b> 用法</a></li>
+<li class="chapter" data-level="2.3.1" data-path="writexl.html"><a href="writexl.html#用法-1"><i class="fa fa-check"></i><b>2.3.1</b> 用法</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="openxlsx.html"><a href="openxlsx.html"><i class="fa fa-check"></i><b>2.3</b> openxlsx</a>
+<li class="chapter" data-level="2.4" data-path="openxlsx.html"><a href="openxlsx.html"><i class="fa fa-check"></i><b>2.4</b> openxlsx</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="openxlsx.html"><a href="openxlsx.html#安装-1"><i class="fa fa-check"></i><b>2.3.1</b> 安装</a></li>
-<li class="chapter" data-level="2.3.2" data-path="openxlsx.html"><a href="openxlsx.html#基础功能"><i class="fa fa-check"></i><b>2.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="2.3.3" data-path="openxlsx.html"><a href="openxlsx.html#带格式输出"><i class="fa fa-check"></i><b>2.3.3</b> 带格式输出</a></li>
-<li class="chapter" data-level="2.3.4" data-path="openxlsx.html"><a href="openxlsx.html#基础函数"><i class="fa fa-check"></i><b>2.3.4</b> 基础函数</a></li>
+<li class="chapter" data-level="2.4.1" data-path="openxlsx.html"><a href="openxlsx.html#安装-1"><i class="fa fa-check"></i><b>2.4.1</b> 安装</a></li>
+<li class="chapter" data-level="2.4.2" data-path="openxlsx.html"><a href="openxlsx.html#基础功能"><i class="fa fa-check"></i><b>2.4.2</b> 基础功能</a></li>
+<li class="chapter" data-level="2.4.3" data-path="openxlsx.html"><a href="openxlsx.html#带格式输出"><i class="fa fa-check"></i><b>2.4.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="2.4.4" data-path="openxlsx.html"><a href="openxlsx.html#基础函数"><i class="fa fa-check"></i><b>2.4.4</b> 基础函数</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>2.4</b> readr</a>
+<li class="chapter" data-level="2.5" data-path="csv等平面文件.html"><a href="csv等平面文件.html"><i class="fa fa-check"></i><b>2.5</b> csv等平面文件</a></li>
+<li class="chapter" data-level="2.6" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>2.6</b> readr</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="readr.html"><a href="readr.html#安装-2"><i class="fa fa-check"></i><b>2.4.1</b> 安装</a></li>
-<li class="chapter" data-level="2.4.2" data-path="readr.html"><a href="readr.html#用法-2"><i class="fa fa-check"></i><b>2.4.2</b> 用法</a></li>
-<li class="chapter" data-level="2.4.3" data-path="readr.html"><a href="readr.html#导出功能"><i class="fa fa-check"></i><b>2.4.3</b> 导出功能</a></li>
-<li class="chapter" data-level="2.4.4" data-path="readr.html"><a href="readr.html#总结"><i class="fa fa-check"></i><b>2.4.4</b> 总结</a></li>
+<li class="chapter" data-level="2.6.1" data-path="readr.html"><a href="readr.html#安装-2"><i class="fa fa-check"></i><b>2.6.1</b> 安装</a></li>
+<li class="chapter" data-level="2.6.2" data-path="readr.html"><a href="readr.html#用法-2"><i class="fa fa-check"></i><b>2.6.2</b> 用法</a></li>
+<li class="chapter" data-level="2.6.3" data-path="readr.html"><a href="readr.html#导出功能"><i class="fa fa-check"></i><b>2.6.3</b> 导出功能</a></li>
+<li class="chapter" data-level="2.6.4" data-path="readr.html"><a href="readr.html#总结"><i class="fa fa-check"></i><b>2.6.4</b> 总结</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="vroom.html"><a href="vroom.html"><i class="fa fa-check"></i><b>2.5</b> vroom</a>
+<li class="chapter" data-level="2.7" data-path="vroom.html"><a href="vroom.html"><i class="fa fa-check"></i><b>2.7</b> vroom</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="vroom.html"><a href="vroom.html#安装-3"><i class="fa fa-check"></i><b>2.5.1</b> 安装</a></li>
-<li class="chapter" data-level="2.5.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.5.2</b> 用法</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.6</b> 文件路径</a>
-<ul>
-<li class="chapter" data-level="2.6.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.6.1</b> 指定路径</a></li>
-<li class="chapter" data-level="2.6.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.6.2</b> 默认路径</a></li>
+<li class="chapter" data-level="2.7.1" data-path="vroom.html"><a href="vroom.html#安装-3"><i class="fa fa-check"></i><b>2.7.1</b> 安装</a></li>
+<li class="chapter" data-level="2.7.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.7.2</b> 用法</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
@@ -437,53 +432,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="writexl" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> writexl</h2>
-<p>writexl包目前的功能比较简单，仅有读写Excel功能，但优势是速度较快，尤其是写入Excel时。<a href="https://docs.ropensci.org/writexl/">项目地址</a></p>
-<div id="用法-1" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> 用法</h3>
-<p>安装</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="writexl.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;writexl&quot;</span>)</span></code></pre></div>
-<p>参数</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="writexl.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(</span>
-<span id="cb12-2"><a href="writexl.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  x,</span>
-<span id="cb12-3"><a href="writexl.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">&quot;.xlsx&quot;</span>),</span>
-<span id="cb12-4"><a href="writexl.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-5"><a href="writexl.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">format_headers =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-6"><a href="writexl.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">use_zip64 =</span> <span class="cn">FALSE</span></span>
-<span id="cb12-7"><a href="writexl.html#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>输出Excel</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="writexl.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
-<span id="cb13-2"><a href="writexl.html#cb13-2" aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(iris,<span class="at">path =</span> <span class="st">&#39;iris.xlsx&#39;</span>)</span>
-<span id="cb13-3"><a href="writexl.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(<span class="fu">list</span>(<span class="at">mysheet1 =</span> iris,<span class="at">mysheet2 =</span> iris),<span class="at">path =</span> <span class="st">&#39;iris.xlsx&#39;</span>)</span></code></pre></div>
-<p>效率比较</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="writexl.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
-<span id="cb14-2"><a href="writexl.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb14-3"><a href="writexl.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb14-4"><a href="writexl.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">writexl =</span> writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(flights, <span class="fu">tempfile</span>()),</span>
-<span id="cb14-5"><a href="writexl.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">openxlsx =</span> openxlsx<span class="sc">::</span><span class="fu">write.xlsx</span>(flights, <span class="fu">tempfile</span>()),</span>
-<span id="cb14-6"><a href="writexl.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">2</span></span>
-<span id="cb14-7"><a href="writexl.html#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>其它功能</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="writexl.html#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb15-2"><a href="writexl.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;UCLA&quot;</span>, <span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;Jeroen&quot;</span>),</span>
-<span id="cb15-3"><a href="writexl.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">founded =</span> <span class="fu">c</span>(<span class="dv">1919</span>, <span class="dv">1868</span>, <span class="dv">2030</span>),</span>
-<span id="cb15-4"><a href="writexl.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">website =</span> <span class="fu">xl_hyperlink</span>(<span class="fu">c</span>(<span class="st">&quot;http://www.ucla.edu&quot;</span>, <span class="st">&quot;http://www.berkeley.edu&quot;</span>, <span class="cn">NA</span>), <span class="st">&quot;homepage&quot;</span>)</span>
-<span id="cb15-5"><a href="writexl.html#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-6"><a href="writexl.html#cb15-6" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="fu">xl_formula</span>(<span class="st">&#39;=(YEAR(TODAY()) - INDIRECT(&quot;B&quot; &amp; ROW()))&#39;</span>)</span>
-<span id="cb15-7"><a href="writexl.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(df, <span class="st">&#39;universities.xlsx&#39;</span>)</span>
-<span id="cb15-8"><a href="writexl.html#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="writexl.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># cleanup</span></span>
-<span id="cb15-10"><a href="writexl.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">&#39;universities.xlsx&#39;</span>)</span></code></pre></div>
-</div>
+<div id="csv等平面文件" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> csv等平面文件</h2>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="readxl.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="openxlsx.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="openxlsx.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="readr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

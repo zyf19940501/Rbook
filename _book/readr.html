@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-15" />
+<meta name="date" content="2021-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,6 +144,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="readxl.html"><a href="readxl.html#安装"><i class="fa fa-check"></i><b>2.1.1</b> 安装</a></li>
 <li class="chapter" data-level="2.1.2" data-path="readxl.html"><a href="readxl.html#用法"><i class="fa fa-check"></i><b>2.1.2</b> 用法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="readxl.html"><a href="readxl.html#批量读取"><i class="fa fa-check"></i><b>2.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="2.1.4" data-path="readxl.html"><a href="readxl.html#批量输出"><i class="fa fa-check"></i><b>2.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>2.2</b> writexl</a>
 <ul>
@@ -167,6 +169,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="vroom.html"><a href="vroom.html#安装-3"><i class="fa fa-check"></i><b>2.5.1</b> 安装</a></li>
 <li class="chapter" data-level="2.5.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.5.2</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.6</b> 文件路径</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.6.1</b> 指定路径</a></li>
+<li class="chapter" data-level="2.6.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.6.2</b> 默认路径</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
@@ -442,20 +449,20 @@ csv文件是一种以纯文本形式存储的表格数据,可以通过记事本�
 <div id="安装-2" class="section level3" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> 安装</h3>
 <p>直接通过安装tidyvese获取或单独安装readr。</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="readr.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The easiest way to get readr is to install the whole tidyverse:</span></span>
-<span id="cb29-2"><a href="readr.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb29-3"><a href="readr.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="readr.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, install just readr:</span></span>
-<span id="cb29-5"><a href="readr.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span>
-<span id="cb29-6"><a href="readr.html#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="readr.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Or the the development version from GitHub:</span></span>
-<span id="cb29-8"><a href="readr.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb29-9"><a href="readr.html#cb29-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="readr.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The easiest way to get readr is to install the whole tidyverse:</span></span>
+<span id="cb31-2"><a href="readr.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb31-3"><a href="readr.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="readr.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, install just readr:</span></span>
+<span id="cb31-5"><a href="readr.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span>
+<span id="cb31-6"><a href="readr.html#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="readr.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Or the the development version from GitHub:</span></span>
+<span id="cb31-8"><a href="readr.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb31-9"><a href="readr.html#cb31-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/readr&quot;</span>)</span></code></pre></div>
 </div>
 <div id="用法-2" class="section level3" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> 用法</h3>
 <p>readr包是tidyverse系列的核心包，可以加载tidyverse使用。</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="readr.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="readr.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div id="主要函数" class="section level4" number="2.4.2.1">
 <h4><span class="header-section-number">2.4.2.1</span> 主要函数</h4>
 <p>readr支持七种<code>read_</code>功能的文件格式。</p>
@@ -466,52 +473,52 @@ csv文件是一种以纯文本形式存储的表格数据,可以通过记事本�
 - <code>read_table()</code>:表格文件，列间用空格隔开
 - <code>read_log()</code>:Web日志文件</p>
 <p>在大多数情况下，我们常使用<code>read_csv()</code>，提供文件路径，将得到数据表。示例如下:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="readr.html#cb31-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="readr.html#cb33-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>))</span></code></pre></div>
 <p>通过上述输出反馈，我们可以知道读进去的数据集每列类型。如果发现不对可以通过<code>col_types</code>参数修改。大多数情况下，我们并不需要指定列的类型，readr会自动猜。</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="readr.html#cb32-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>), <span class="at">col_types =</span> </span>
-<span id="cb32-2"><a href="readr.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols</span>(</span>
-<span id="cb32-3"><a href="readr.html#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mpg =</span> <span class="fu">col_double</span>(),</span>
-<span id="cb32-4"><a href="readr.html#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cyl =</span> <span class="fu">col_integer</span>(),</span>
-<span id="cb32-5"><a href="readr.html#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">disp =</span> <span class="fu">col_double</span>(),</span>
-<span id="cb32-6"><a href="readr.html#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">hp =</span> <span class="fu">col_integer</span>(),</span>
-<span id="cb32-7"><a href="readr.html#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">drat =</span> <span class="fu">col_double</span>(),</span>
-<span id="cb32-8"><a href="readr.html#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">vs =</span> <span class="fu">col_integer</span>(),</span>
-<span id="cb32-9"><a href="readr.html#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">wt =</span> <span class="fu">col_double</span>(),</span>
-<span id="cb32-10"><a href="readr.html#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">qsec =</span> <span class="fu">col_double</span>(),</span>
-<span id="cb32-11"><a href="readr.html#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">am =</span> <span class="fu">col_integer</span>(),</span>
-<span id="cb32-12"><a href="readr.html#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">gear =</span> <span class="fu">col_integer</span>(),</span>
-<span id="cb32-13"><a href="readr.html#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">carb =</span> <span class="fu">col_integer</span>()</span>
-<span id="cb32-14"><a href="readr.html#cb32-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb32-15"><a href="readr.html#cb32-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="readr.html#cb34-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>), <span class="at">col_types =</span> </span>
+<span id="cb34-2"><a href="readr.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols</span>(</span>
+<span id="cb34-3"><a href="readr.html#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mpg =</span> <span class="fu">col_double</span>(),</span>
+<span id="cb34-4"><a href="readr.html#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cyl =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb34-5"><a href="readr.html#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">disp =</span> <span class="fu">col_double</span>(),</span>
+<span id="cb34-6"><a href="readr.html#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">hp =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb34-7"><a href="readr.html#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">drat =</span> <span class="fu">col_double</span>(),</span>
+<span id="cb34-8"><a href="readr.html#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">vs =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb34-9"><a href="readr.html#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">wt =</span> <span class="fu">col_double</span>(),</span>
+<span id="cb34-10"><a href="readr.html#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">qsec =</span> <span class="fu">col_double</span>(),</span>
+<span id="cb34-11"><a href="readr.html#cb34-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">am =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb34-12"><a href="readr.html#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">gear =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb34-13"><a href="readr.html#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">carb =</span> <span class="fu">col_integer</span>()</span>
+<span id="cb34-14"><a href="readr.html#cb34-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-15"><a href="readr.html#cb34-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="参数" class="section level4" number="2.4.2.2">
 <h4><span class="header-section-number">2.4.2.2</span> 参数</h4>
 <p><code>read_csv()</code>的参数如下：</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="readr.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(</span>
-<span id="cb33-2"><a href="readr.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  file,</span>
-<span id="cb33-3"><a href="readr.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb33-4"><a href="readr.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
-<span id="cb33-5"><a href="readr.html#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">locale =</span> <span class="fu">default_locale</span>(),</span>
-<span id="cb33-6"><a href="readr.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
-<span id="cb33-7"><a href="readr.html#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">quoted_na =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb33-8"><a href="readr.html#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">quote =</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>,</span>
-<span id="cb33-9"><a href="readr.html#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">comment =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb33-10"><a href="readr.html#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb33-11"><a href="readr.html#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb33-12"><a href="readr.html#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
-<span id="cb33-13"><a href="readr.html#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
-<span id="cb33-14"><a href="readr.html#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">progress =</span> <span class="fu">show_progress</span>(),</span>
-<span id="cb33-15"><a href="readr.html#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip_empty_rows =</span> <span class="cn">TRUE</span></span>
-<span id="cb33-16"><a href="readr.html#cb33-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="readr.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(</span>
+<span id="cb35-2"><a href="readr.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  file,</span>
+<span id="cb35-3"><a href="readr.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb35-4"><a href="readr.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
+<span id="cb35-5"><a href="readr.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">locale =</span> <span class="fu">default_locale</span>(),</span>
+<span id="cb35-6"><a href="readr.html#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb35-7"><a href="readr.html#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">quoted_na =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb35-8"><a href="readr.html#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">quote =</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>,</span>
+<span id="cb35-9"><a href="readr.html#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">comment =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb35-10"><a href="readr.html#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb35-11"><a href="readr.html#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
+<span id="cb35-12"><a href="readr.html#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
+<span id="cb35-13"><a href="readr.html#cb35-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
+<span id="cb35-14"><a href="readr.html#cb35-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">progress =</span> <span class="fu">show_progress</span>(),</span>
+<span id="cb35-15"><a href="readr.html#cb35-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip_empty_rows =</span> <span class="cn">TRUE</span></span>
+<span id="cb35-16"><a href="readr.html#cb35-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>col_types :指定列类型，可用项如下所示(含简写):
 c = character，i = integer，n = number，d = double，l = logical，f = factor，D = date，T = date time，t = time，默认值为guess.</p>
 <p>local:local参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。</p>
 <p><code>locale()</code>的第一个参数是date_names，控制月份和日期的名称，指定最简单的方式<a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639 language code</a></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="readr.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;zh&#39;</span>) <span class="co"># 中文</span></span>
-<span id="cb34-2"><a href="readr.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;ja&#39;</span>) <span class="co">#日本</span></span>
-<span id="cb34-3"><a href="readr.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;ko&#39;</span>) <span class="co">#韩国</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="readr.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;zh&#39;</span>) <span class="co"># 中文</span></span>
+<span id="cb36-2"><a href="readr.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;ja&#39;</span>) <span class="co">#日本</span></span>
+<span id="cb36-3"><a href="readr.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;ko&#39;</span>) <span class="co">#韩国</span></span></code></pre></div>
 <p>编码和时区问题是我们常面临的问题。</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="readr.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>),<span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>,<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="readr.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>),<span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>,<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>))</span></code></pre></div>
 <p>详细信息查看手册<code>vignette("locales")</code>。</p>
 </div>
 </div>
@@ -519,9 +526,9 @@ c = character，i = integer，n = number，d = double，l = logical，f = factor
 <h3><span class="header-section-number">2.4.3</span> 导出功能</h3>
 <p>由于系统不同的缘故，在win系统下可能面临编码问题。我用readr导出数据时一般采用<code>write_excel_csv()</code>功能导出。</p>
 <p>需要说明的是<code>write_</code>系列函数可以将输出文件压缩。</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="readr.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(storms, <span class="at">package =</span> <span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb36-2"><a href="readr.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(storms, <span class="st">&quot;storms.csv&quot;</span>)</span>
-<span id="cb36-3"><a href="readr.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(storms, <span class="st">&quot;storms.csv.gz&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="readr.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(storms, <span class="at">package =</span> <span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb38-2"><a href="readr.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(storms, <span class="st">&quot;storms.csv&quot;</span>)</span>
+<span id="cb38-3"><a href="readr.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(storms, <span class="st">&quot;storms.csv.gz&quot;</span>)</span></code></pre></div>
 </div>
 <div id="总结" class="section level3" number="2.4.4">
 <h3><span class="header-section-number">2.4.4</span> 总结</h3>
