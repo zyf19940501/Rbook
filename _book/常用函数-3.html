@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8.3 常用函数 | 宇飞的R语言学习笔记</title>
+  <meta name="description" content="个人学习R语言笔记" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8.3 常用函数 | 宇飞的R语言学习笔记" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="个人学习R语言笔记" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8.3 常用函数 | 宇飞的R语言学习笔记" />
+  
+  <meta name="twitter:description" content="个人学习R语言笔记" />
+  
+
+<meta name="author" content="Yufei Zhong" />
+
+
+<meta name="date" content="2021-05-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="常规操作.html"/>
+<link rel="next" href="高级函数.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R学习笔记</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 说明</a></li>
+<li class="chapter" data-level="2" data-path="数据导入导出.html"><a href="数据导入导出.html"><i class="fa fa-check"></i><b>2</b> 数据导入导出</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>2.1</b> readxl</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="readxl.html"><a href="readxl.html#安装"><i class="fa fa-check"></i><b>2.1.1</b> 安装</a></li>
+<li class="chapter" data-level="2.1.2" data-path="readxl.html"><a href="readxl.html#用法"><i class="fa fa-check"></i><b>2.1.2</b> 用法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="readxl.html"><a href="readxl.html#批量读取"><i class="fa fa-check"></i><b>2.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="2.1.4" data-path="readxl.html"><a href="readxl.html#批量输出"><i class="fa fa-check"></i><b>2.1.4</b> 批量输出</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>2.2</b> writexl</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="writexl.html"><a href="writexl.html#用法-1"><i class="fa fa-check"></i><b>2.2.1</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="openxlsx.html"><a href="openxlsx.html"><i class="fa fa-check"></i><b>2.3</b> openxlsx</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="openxlsx.html"><a href="openxlsx.html#安装-1"><i class="fa fa-check"></i><b>2.3.1</b> 安装</a></li>
+<li class="chapter" data-level="2.3.2" data-path="openxlsx.html"><a href="openxlsx.html#基础功能"><i class="fa fa-check"></i><b>2.3.2</b> 基础功能</a></li>
+<li class="chapter" data-level="2.3.3" data-path="openxlsx.html"><a href="openxlsx.html#带格式输出"><i class="fa fa-check"></i><b>2.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="2.3.4" data-path="openxlsx.html"><a href="openxlsx.html#函数参数"><i class="fa fa-check"></i><b>2.3.4</b> 函数参数</a></li>
+<li class="chapter" data-level="2.3.5" data-path="openxlsx.html"><a href="openxlsx.html#总结"><i class="fa fa-check"></i><b>2.3.5</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>2.4</b> readr</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="readr.html"><a href="readr.html#安装-2"><i class="fa fa-check"></i><b>2.4.1</b> 安装</a></li>
+<li class="chapter" data-level="2.4.2" data-path="readr.html"><a href="readr.html#用法-2"><i class="fa fa-check"></i><b>2.4.2</b> 用法</a></li>
+<li class="chapter" data-level="2.4.3" data-path="readr.html"><a href="readr.html#导出功能"><i class="fa fa-check"></i><b>2.4.3</b> 导出功能</a></li>
+<li class="chapter" data-level="2.4.4" data-path="readr.html"><a href="readr.html#总结-1"><i class="fa fa-check"></i><b>2.4.4</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="vroom.html"><a href="vroom.html"><i class="fa fa-check"></i><b>2.5</b> vroom</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="vroom.html"><a href="vroom.html#安装-3"><i class="fa fa-check"></i><b>2.5.1</b> 安装</a></li>
+<li class="chapter" data-level="2.5.2" data-path="vroom.html"><a href="vroom.html#用法-3"><i class="fa fa-check"></i><b>2.5.2</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="rstudio导入.html"><a href="rstudio导入.html"><i class="fa fa-check"></i><b>2.6</b> Rstudio导入</a></li>
+<li class="chapter" data-level="2.7" data-path="文件路径.html"><a href="文件路径.html"><i class="fa fa-check"></i><b>2.7</b> 文件路径</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="文件路径.html"><a href="文件路径.html#指定路径"><i class="fa fa-check"></i><b>2.7.1</b> 指定路径</a></li>
+<li class="chapter" data-level="2.7.2" data-path="文件路径.html"><a href="文件路径.html#默认路径"><i class="fa fa-check"></i><b>2.7.2</b> 默认路径</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="拓展.html"><a href="拓展.html"><i class="fa fa-check"></i><b>2.8</b> 拓展</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>3</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>3.1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="前言.html"><a href="前言.html#安装-4"><i class="fa fa-check"></i><b>3.1.1</b> 安装</a></li>
+<li class="chapter" data-level="3.1.2" data-path="前言.html"><a href="前言.html#介绍"><i class="fa fa-check"></i><b>3.1.2</b> 介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="基础用法.html"><a href="基础用法.html"><i class="fa fa-check"></i><b>3.2</b> 基础用法</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="基础用法.html"><a href="基础用法.html#加载包"><i class="fa fa-check"></i><b>3.2.1</b> 加载包</a></li>
+<li class="chapter" data-level="3.2.2" data-path="基础用法.html"><a href="基础用法.html#filter"><i class="fa fa-check"></i><b>3.2.2</b> filter</a></li>
+<li class="chapter" data-level="3.2.3" data-path="基础用法.html"><a href="基础用法.html#select"><i class="fa fa-check"></i><b>3.2.3</b> select</a></li>
+<li class="chapter" data-level="3.2.4" data-path="基础用法.html"><a href="基础用法.html#rename"><i class="fa fa-check"></i><b>3.2.4</b> rename</a></li>
+<li class="chapter" data-level="3.2.5" data-path="基础用法.html"><a href="基础用法.html#relocate"><i class="fa fa-check"></i><b>3.2.5</b> relocate</a></li>
+<li class="chapter" data-level="3.2.6" data-path="基础用法.html"><a href="基础用法.html#mutate"><i class="fa fa-check"></i><b>3.2.6</b> mutate</a></li>
+<li class="chapter" data-level="3.2.7" data-path="基础用法.html"><a href="基础用法.html#arrange"><i class="fa fa-check"></i><b>3.2.7</b> arrange</a></li>
+<li class="chapter" data-level="3.2.8" data-path="基础用法.html"><a href="基础用法.html#summarise"><i class="fa fa-check"></i><b>3.2.8</b> summarise</a></li>
+<li class="chapter" data-level="3.2.9" data-path="基础用法.html"><a href="基础用法.html#group_by"><i class="fa fa-check"></i><b>3.2.9</b> group_by</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="表操作.html"><a href="表操作.html"><i class="fa fa-check"></i><b>3.3</b> 表操作</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="表操作.html"><a href="表操作.html#基础"><i class="fa fa-check"></i><b>3.3.1</b> 基础</a></li>
+<li class="chapter" data-level="3.3.2" data-path="表操作.html"><a href="表操作.html#多表操作"><i class="fa fa-check"></i><b>3.3.2</b> 多表操作</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="列操作.html"><a href="列操作.html"><i class="fa fa-check"></i><b>3.4</b> 列操作</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="列操作.html"><a href="列操作.html#基本操作"><i class="fa fa-check"></i><b>3.4.1</b> 基本操作</a></li>
+<li class="chapter" data-level="3.4.2" data-path="列操作.html"><a href="列操作.html#多种函数功能"><i class="fa fa-check"></i><b>3.4.2</b> 多种函数功能</a></li>
+<li class="chapter" data-level="3.4.3" data-path="列操作.html"><a href="列操作.html#当前列"><i class="fa fa-check"></i><b>3.4.3</b> 当前列</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="行操作.html"><a href="行操作.html"><i class="fa fa-check"></i><b>3.5</b> 行操作</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="行操作.html"><a href="行操作.html#构造数据集"><i class="fa fa-check"></i><b>3.5.1</b> 构造数据集</a></li>
+<li class="chapter" data-level="3.5.2" data-path="行操作.html"><a href="行操作.html#行汇总统计"><i class="fa fa-check"></i><b>3.5.2</b> 行汇总统计</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="分组操作.html"><a href="分组操作.html"><i class="fa fa-check"></i><b>3.6</b> 分组操作</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="分组操作.html"><a href="分组操作.html#添加分组"><i class="fa fa-check"></i><b>3.6.1</b> 添加分组</a></li>
+<li class="chapter" data-level="3.6.2" data-path="分组操作.html"><a href="分组操作.html#删除分组变量"><i class="fa fa-check"></i><b>3.6.2</b> 删除分组变量</a></li>
+<li class="chapter" data-level="3.6.3" data-path="分组操作.html"><a href="分组操作.html#动词"><i class="fa fa-check"></i><b>3.6.3</b> 动词</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>3.7</b> 常用函数</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="常用函数.html"><a href="常用函数.html#条件判断"><i class="fa fa-check"></i><b>3.7.1</b> 条件判断</a></li>
+<li class="chapter" data-level="3.7.2" data-path="常用函数.html"><a href="常用函数.html#case_when"><i class="fa fa-check"></i><b>3.7.2</b> case_when</a></li>
+<li class="chapter" data-level="3.7.3" data-path="常用函数.html"><a href="常用函数.html#计数函数"><i class="fa fa-check"></i><b>3.7.3</b> 计数函数</a></li>
+<li class="chapter" data-level="3.7.4" data-path="常用函数.html"><a href="常用函数.html#排序函数"><i class="fa fa-check"></i><b>3.7.4</b> 排序函数</a></li>
+<li class="chapter" data-level="3.7.5" data-path="常用函数.html"><a href="常用函数.html#提取向量"><i class="fa fa-check"></i><b>3.7.5</b> 提取向量</a></li>
+<li class="chapter" data-level="3.7.6" data-path="常用函数.html"><a href="常用函数.html#group-系列"><i class="fa fa-check"></i><b>3.7.6</b> group 系列</a></li>
+<li class="chapter" data-level="3.7.7" data-path="常用函数.html"><a href="常用函数.html#其它函数"><i class="fa fa-check"></i><b>3.7.7</b> 其它函数</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="用dplyr编程.html"><a href="用dplyr编程.html"><i class="fa fa-check"></i><b>3.8</b> 用<code>dplyr</code>编程</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="用dplyr编程.html"><a href="用dplyr编程.html#案例"><i class="fa fa-check"></i><b>3.8.1</b> 案例</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>4</b> tidyr</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="安装-5.html"><a href="安装-5.html"><i class="fa fa-check"></i><b>4.1</b> 安装</a></li>
+<li class="chapter" data-level="4.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>4.2</b> 主要功能</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>4.2.1</b> 宽转长</a></li>
+<li class="chapter" data-level="4.2.2" data-path="主要功能.html"><a href="主要功能.html#长转宽"><i class="fa fa-check"></i><b>4.2.2</b> 长转宽</a></li>
+<li class="chapter" data-level="4.2.3" data-path="主要功能.html"><a href="主要功能.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>4.2.3</b> 处理json,html的数据</a></li>
+<li class="chapter" data-level="4.2.4" data-path="主要功能.html"><a href="主要功能.html#嵌套数据"><i class="fa fa-check"></i><b>4.2.4</b> 嵌套数据</a></li>
+<li class="chapter" data-level="4.2.5" data-path="主要功能.html"><a href="主要功能.html#嵌套数据和模型"><i class="fa fa-check"></i><b>4.2.5</b> 嵌套数据和模型</a></li>
+<li class="chapter" data-level="4.2.6" data-path="主要功能.html"><a href="主要功能.html#拆分和合并"><i class="fa fa-check"></i><b>4.2.6</b> 拆分和合并</a></li>
+<li class="chapter" data-level="4.2.7" data-path="主要功能.html"><a href="主要功能.html#缺失值处理"><i class="fa fa-check"></i><b>4.2.7</b> 缺失值处理</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="字符处理.html"><a href="字符处理.html"><i class="fa fa-check"></i><b>5</b> 字符处理</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>5.1</b> base R</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="base-r.html"><a href="base-r.html#单双引号"><i class="fa fa-check"></i><b>5.1.1</b> 单双引号</a></li>
+<li class="chapter" data-level="5.1.2" data-path="base-r.html"><a href="base-r.html#转义"><i class="fa fa-check"></i><b>5.1.2</b> 转义</a></li>
+<li class="chapter" data-level="5.1.3" data-path="base-r.html"><a href="base-r.html#常用函数-1"><i class="fa fa-check"></i><b>5.1.3</b> 常用函数</a></li>
+<li class="chapter" data-level="5.1.4" data-path="base-r.html"><a href="base-r.html#新特性"><i class="fa fa-check"></i><b>5.1.4</b> 新特性</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>5.2</b> stringr</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="stringr.html"><a href="stringr.html#安装-6"><i class="fa fa-check"></i><b>5.2.1</b> 安装</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stringr.html"><a href="stringr.html#基本使用"><i class="fa fa-check"></i><b>5.2.2</b> 基本使用</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stringr.html"><a href="stringr.html#常用函数-2"><i class="fa fa-check"></i><b>5.2.3</b> 常用函数</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="综合运用.html"><a href="综合运用.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="综合运用.html"><a href="综合运用.html#实现excel函数"><i class="fa fa-check"></i><b>5.3.1</b> 实现excel函数</a></li>
+<li class="chapter" data-level="5.3.2" data-path="综合运用.html"><a href="综合运用.html#使用案例"><i class="fa fa-check"></i><b>5.3.2</b> 使用案例</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="base和stringr.html"><a href="base和stringr.html"><i class="fa fa-check"></i><b>5.4</b> base和stringr</a></li>
+<li class="chapter" data-level="5.5" data-path="参考资料.html"><a href="参考资料.html"><i class="fa fa-check"></i><b>5.5</b> 参考资料</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>6</b> lubridate</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="基础用法-1.html"><a href="基础用法-1.html"><i class="fa fa-check"></i><b>6.1</b> 基础用法</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="基础用法-1.html"><a href="基础用法-1.html#安装包"><i class="fa fa-check"></i><b>6.1.1</b> 安装包</a></li>
+<li class="chapter" data-level="6.1.2" data-path="基础用法-1.html"><a href="基础用法-1.html#获取当前时间日期"><i class="fa fa-check"></i><b>6.1.2</b> 获取当前时间日期</a></li>
+<li class="chapter" data-level="6.1.3" data-path="基础用法-1.html"><a href="基础用法-1.html#获取日期时间中的组成部分"><i class="fa fa-check"></i><b>6.1.3</b> 获取日期时间中的组成部分</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="处理时区.html"><a href="处理时区.html"><i class="fa fa-check"></i><b>6.2</b> 处理时区</a></li>
+<li class="chapter" data-level="6.3" data-path="解析日期和时间.html"><a href="解析日期和时间.html"><i class="fa fa-check"></i><b>6.3</b> 解析日期和时间</a></li>
+<li class="chapter" data-level="6.4" data-path="构造日期或时间.html"><a href="构造日期或时间.html"><i class="fa fa-check"></i><b>6.4</b> 构造日期或时间</a></li>
+<li class="chapter" data-level="6.5" data-path="时间间隔.html"><a href="时间间隔.html"><i class="fa fa-check"></i><b>6.5</b> 时间间隔</a></li>
+<li class="chapter" data-level="6.6" data-path="时间日期计算.html"><a href="时间日期计算.html"><i class="fa fa-check"></i><b>6.6</b> 时间日期计算</a></li>
+<li class="chapter" data-level="6.7" data-path="案例-1.html"><a href="案例-1.html"><i class="fa fa-check"></i><b>6.7</b> 案例</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="案例-1.html"><a href="案例-1.html#年同环比"><i class="fa fa-check"></i><b>6.7.1</b> 年同环比</a></li>
+<li class="chapter" data-level="6.7.2" data-path="案例-1.html"><a href="案例-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>6.7.2</b> 清洗不同类型日期格式</a></li>
+<li class="chapter" data-level="6.7.3" data-path="案例-1.html"><a href="案例-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>6.7.3</b> 扫码后中奖时间匹配</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="资料.html"><a href="资料.html"><i class="fa fa-check"></i><b>6.8</b> 资料</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>7</b> forcats</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="创建因子.html"><a href="创建因子.html"><i class="fa fa-check"></i><b>7.1</b> 创建因子</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>8</b> data.table</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>8.1</b> 基础介绍</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>8.1.1</b> 读取数据</a></li>
+<li class="chapter" data-level="8.1.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>8.1.2</b> 基本格式</a></li>
+<li class="chapter" data-level="8.1.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>8.1.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="8.1.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>8.1.4</b> 行列筛选总结</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>8.2</b> 常规操作</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>8.2.1</b> 行筛选</a></li>
+<li class="chapter" data-level="8.2.2" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>8.2.2</b> 新增更新列</a></li>
+<li class="chapter" data-level="8.2.3" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>8.2.3</b> 排序</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="常用函数-3.html"><a href="常用函数-3.html"><i class="fa fa-check"></i><b>8.3</b> 常用函数</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="常用函数-3.html"><a href="常用函数-3.html#特殊符号"><i class="fa fa-check"></i><b>8.3.1</b> 特殊符号</a></li>
+<li class="chapter" data-level="8.3.2" data-path="常用函数-3.html"><a href="常用函数-3.html#排序函数-1"><i class="fa fa-check"></i><b>8.3.2</b> 排序函数</a></li>
+<li class="chapter" data-level="8.3.3" data-path="常用函数-3.html"><a href="常用函数-3.html#非重复计数"><i class="fa fa-check"></i><b>8.3.3</b> 非重复计数</a></li>
+<li class="chapter" data-level="8.3.4" data-path="常用函数-3.html"><a href="常用函数-3.html#判断函数"><i class="fa fa-check"></i><b>8.3.4</b> 判断函数</a></li>
+<li class="chapter" data-level="8.3.5" data-path="常用函数-3.html"><a href="常用函数-3.html#交集-差集-合并"><i class="fa fa-check"></i><b>8.3.5</b> 交集 差集 合并</a></li>
+<li class="chapter" data-level="8.3.6" data-path="常用函数-3.html"><a href="常用函数-3.html#长宽转换"><i class="fa fa-check"></i><b>8.3.6</b> 长宽转换</a></li>
+<li class="chapter" data-level="8.3.7" data-path="常用函数-3.html"><a href="常用函数-3.html#表连接"><i class="fa fa-check"></i><b>8.3.7</b> 表连接</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>8.4</b> 高级函数</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>8.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="8.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>8.4.2</b> rleid</a></li>
+<li class="chapter" data-level="8.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>8.4.3</b> shift</a></li>
+<li class="chapter" data-level="8.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>8.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="小技巧.html"><a href="小技巧.html"><i class="fa fa-check"></i><b>8.5</b> 小技巧</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="小技巧.html"><a href="小技巧.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>8.5.1</b> 用{}抑制中间过程输出</a></li>
+<li class="chapter" data-level="8.5.2" data-path="小技巧.html"><a href="小技巧.html#使用打印data.table"><i class="fa fa-check"></i><b>8.5.2</b> 使用[]打印data.table</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>8.6</b> 运用</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>8.6.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="8.6.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>8.6.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="8.6.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>8.6.3</b> 行列转变</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>9</b> database</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>9.1</b> 安装数据库</a></li>
+<li class="chapter" data-level="9.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>9.2</b> DBI</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="dbi.html"><a href="dbi.html#安装-7"><i class="fa fa-check"></i><b>9.2.1</b> 安装</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>9.2.2</b> 连接数据库</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>9.2.3</b> 执行sql任务</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>9.2.4</b> 函数介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="odbc包.html"><a href="odbc包.html"><i class="fa fa-check"></i><b>9.3</b> odbc包</a></li>
+<li class="chapter" data-level="9.4" data-path="rodbc包.html"><a href="rodbc包.html"><i class="fa fa-check"></i><b>9.4</b> RODBC包</a></li>
+<li class="chapter" data-level="9.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>9.5</b> ROracle包</a></li>
+<li class="chapter" data-level="9.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>9.6</b> RMySQL包</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-8"><i class="fa fa-check"></i><b>9.6.1</b> 安装</a></li>
+<li class="chapter" data-level="9.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>9.6.2</b> 连接使用</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>9.7</b> 常见问题</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="常见问题.html"><a href="常见问题.html#乱码问题"><i class="fa fa-check"></i><b>9.7.1</b> 乱码问题</a></li>
+<li class="chapter" data-level="9.7.2" data-path="常见问题.html"><a href="常见问题.html#无法连接问题"><i class="fa fa-check"></i><b>9.7.2</b> 无法连接问题</a></li>
+<li class="chapter" data-level="9.7.3" data-path="常见问题.html"><a href="常见问题.html#远程连接"><i class="fa fa-check"></i><b>9.7.3</b> 远程连接</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="dbplyr.html"><a href="dbplyr.html"><i class="fa fa-check"></i><b>9.8</b> dbplyr</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="dbplyr.html"><a href="dbplyr.html#基础用法-2"><i class="fa fa-check"></i><b>9.8.1</b> 基础用法</a></li>
+<li class="chapter" data-level="9.8.2" data-path="dbplyr.html"><a href="dbplyr.html#无法正确转化"><i class="fa fa-check"></i><b>9.8.2</b> 无法正确转化</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="参考资料-1.html"><a href="参考资料-1.html"><i class="fa fa-check"></i><b>9.9</b> 参考资料</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="loop-structure.html"><a href="loop-structure.html"><i class="fa fa-check"></i><b>10</b> Loop structure</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="简单示例.html"><a href="简单示例.html"><i class="fa fa-check"></i><b>10.1</b> 简单示例</a></li>
+<li class="chapter" data-level="10.2" data-path="循环基础.html"><a href="循环基础.html"><i class="fa fa-check"></i><b>10.2</b> 循环基础</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="循环基础.html"><a href="循环基础.html#循环结构"><i class="fa fa-check"></i><b>10.2.1</b> 循环结构</a></li>
+<li class="chapter" data-level="10.2.2" data-path="循环基础.html"><a href="循环基础.html#next-break-用法"><i class="fa fa-check"></i><b>10.2.2</b> next break 用法</a></li>
+<li class="chapter" data-level="10.2.3" data-path="循环基础.html"><a href="循环基础.html#嵌套循环"><i class="fa fa-check"></i><b>10.2.3</b> 嵌套循环</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="循环变化.html"><a href="循环变化.html"><i class="fa fa-check"></i><b>10.3</b> 循环变化</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="循环变化.html"><a href="循环变化.html#修改已有对象"><i class="fa fa-check"></i><b>10.3.1</b> 修改已有对象</a></li>
+<li class="chapter" data-level="10.3.2" data-path="循环变化.html"><a href="循环变化.html#循环模式"><i class="fa fa-check"></i><b>10.3.2</b> 循环模式</a></li>
+<li class="chapter" data-level="10.3.3" data-path="循环变化.html"><a href="循环变化.html#未知长度输出"><i class="fa fa-check"></i><b>10.3.3</b> 未知长度输出</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>11</b> Iteration</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="简单用法.html"><a href="简单用法.html"><i class="fa fa-check"></i><b>11.1</b> 简单用法</a></li>
+<li class="chapter" data-level="11.2" data-path="map系列常用函数.html"><a href="map系列常用函数.html"><i class="fa fa-check"></i><b>11.2</b> map系列常用函数</a></li>
+<li class="chapter" data-level="11.3" data-path="归约累计函数.html"><a href="归约累计函数.html"><i class="fa fa-check"></i><b>11.3</b> 归约累计函数</a></li>
+<li class="chapter" data-level="11.4" data-path="安全函数.html"><a href="安全函数.html"><i class="fa fa-check"></i><b>11.4</b> 安全函数</a></li>
+<li class="chapter" data-level="11.5" data-path="映射多个参数.html"><a href="映射多个参数.html"><i class="fa fa-check"></i><b>11.5</b> 映射多个参数</a></li>
+<li class="chapter" data-level="11.6" data-path="其他函数介绍.html"><a href="其他函数介绍.html"><i class="fa fa-check"></i><b>11.6</b> 其他函数介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="define-function.html"><a href="define-function.html"><i class="fa fa-check"></i><b>12</b> define function</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="简单示例-1.html"><a href="简单示例-1.html"><i class="fa fa-check"></i><b>12.1</b> 简单示例</a></li>
+<li class="chapter" data-level="12.2" data-path="条件执行.html"><a href="条件执行.html"><i class="fa fa-check"></i><b>12.2</b> 条件执行</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="条件执行.html"><a href="条件执行.html#多条件执行"><i class="fa fa-check"></i><b>12.2.1</b> 多条件执行</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="函数参数-1.html"><a href="函数参数-1.html"><i class="fa fa-check"></i><b>12.3</b> 函数参数</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="函数参数-1.html"><a href="函数参数-1.html#参数名称"><i class="fa fa-check"></i><b>12.3.1</b> 参数名称</a></li>
+<li class="chapter" data-level="12.3.2" data-path="函数参数-1.html"><a href="函数参数-1.html#检查参数值"><i class="fa fa-check"></i><b>12.3.2</b> 检查参数值</a></li>
+<li class="chapter" data-level="12.3.3" data-path="函数参数-1.html"><a href="函数参数-1.html#参数-1"><i class="fa fa-check"></i><b>12.3.3</b> …参数</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="返回值.html"><a href="返回值.html"><i class="fa fa-check"></i><b>12.4</b> 返回值</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="返回值.html"><a href="返回值.html#显式返回"><i class="fa fa-check"></i><b>12.4.1</b> 显式返回</a></li>
+<li class="chapter" data-level="12.4.2" data-path="返回值.html"><a href="返回值.html#编写管道函数"><i class="fa fa-check"></i><b>12.4.2</b> 编写管道函数</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="环境.html"><a href="环境.html"><i class="fa fa-check"></i><b>12.5</b> 环境</a></li>
+<li class="chapter" data-level="12.6" data-path="拓展部分.html"><a href="拓展部分.html"><i class="fa fa-check"></i><b>12.6</b> 拓展部分</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://gitee.com/zhongyufei/Rbook" target="blank">gitee地址</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">宇飞的R语言学习笔记</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="常用函数-3" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> 常用函数</h2>
+<p>常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。</p>
+<div id="特殊符号" class="section level3" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> 特殊符号</h3>
+<p>.SD,.BY,.N,.I,.NGRP和.GRP,.SDcols等,只能用在 j 的位置,.N 可以用在 i 的位置。</p>
+<p>如果想要记住用法需要自己多尝试练习，对于我来说.N使用较多。</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="常用函数-3.html#cb280-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="at">each=</span><span class="dv">3</span>), <span class="at">v=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>), <span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">b=</span><span class="dv">9</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb280-2"><a href="常用函数-3.html#cb280-2" aria-hidden="true" tabindex="-1"></a>DT</span>
+<span id="cb280-3"><a href="常用函数-3.html#cb280-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>), <span class="at">v=</span><span class="dv">8</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">foo=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb280-4"><a href="常用函数-3.html#cb280-4" aria-hidden="true" tabindex="-1"></a>X</span>
+<span id="cb280-5"><a href="常用函数-3.html#cb280-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb280-6"><a href="常用函数-3.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 用在i的位置</span></span>
+<span id="cb280-7"><a href="常用函数-3.html#cb280-7" aria-hidden="true" tabindex="-1"></a>DT[.N] <span class="co">#取DT最后一行,.N 计数函数</span></span>
+<span id="cb280-8"><a href="常用函数-3.html#cb280-8" aria-hidden="true" tabindex="-1"></a>DT[,.N] <span class="co">#DT 共有多少行记录 返回一个整数</span></span>
+<span id="cb280-9"><a href="常用函数-3.html#cb280-9" aria-hidden="true" tabindex="-1"></a>DT[, .N, by<span class="ot">=</span>x]  <span class="co">#分组计数</span></span>
+<span id="cb280-10"><a href="常用函数-3.html#cb280-10" aria-hidden="true" tabindex="-1"></a>DT[, .SD, .SDcols<span class="ot">=</span>x<span class="sc">:</span>y]  <span class="co"># 选择x 到y 列</span></span>
+<span id="cb280-11"><a href="常用函数-3.html#cb280-11" aria-hidden="true" tabindex="-1"></a><span class="co">#DT[, .SD, .SDcols=c(&quot;x&quot;,&quot;y&quot;)] 与上面不一样</span></span>
+<span id="cb280-12"><a href="常用函数-3.html#cb280-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb280-13"><a href="常用函数-3.html#cb280-13" aria-hidden="true" tabindex="-1"></a>DT[, .SD[<span class="dv">1</span>]] <span class="co">#取第一行</span></span>
+<span id="cb280-14"><a href="常用函数-3.html#cb280-14" aria-hidden="true" tabindex="-1"></a>DT[, .SD[<span class="dv">1</span>], by<span class="ot">=</span>x] <span class="co">#按x列分组后</span></span>
+<span id="cb280-15"><a href="常用函数-3.html#cb280-15" aria-hidden="true" tabindex="-1"></a>DT[, <span class="fu">c</span>(.N, <span class="fu">lapply</span>(.SD, sum)), by<span class="ot">=</span>x] <span class="co">#按照x分组后 行数计数和每列求和</span></span></code></pre></div>
+</div>
+<div id="排序函数-1" class="section level3" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> 排序函数</h3>
+<p><code>frank</code>和<code>frankv</code>函数参数如下：</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="常用函数-3.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(x, ..., <span class="at">na.last=</span><span class="cn">TRUE</span>, <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>,</span>
+<span id="cb281-2"><a href="常用函数-3.html#cb281-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span>
+<span id="cb281-3"><a href="常用函数-3.html#cb281-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-4"><a href="常用函数-3.html#cb281-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">order=</span>1L, <span class="at">na.last=</span><span class="cn">TRUE</span>,</span>
+<span id="cb281-5"><a href="常用函数-3.html#cb281-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;random&quot;</span>,</span>
+<span id="cb281-6"><a href="常用函数-3.html#cb281-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span></code></pre></div>
+<p>官方案例,如下所示:</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="常用函数-3.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on vectors</span></span>
+<span id="cb282-2"><a href="常用函数-3.html#cb282-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb282-3"><a href="常用函数-3.html#cb282-3" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs are considered identical (unlike base R)</span></span>
+<span id="cb282-4"><a href="常用函数-3.html#cb282-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default is average</span></span>
+<span id="cb282-5"><a href="常用函数-3.html#cb282-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x) <span class="co"># na.last=TRUE</span></span>
+<span id="cb282-6"><a href="常用函数-3.html#cb282-6" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">na.last=</span><span class="cn">FALSE</span>)</span>
+<span id="cb282-7"><a href="常用函数-3.html#cb282-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb282-8"><a href="常用函数-3.html#cb282-8" aria-hidden="true" tabindex="-1"></a><span class="co"># on data.table</span></span>
+<span id="cb282-9"><a href="常用函数-3.html#cb282-9" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(x, <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="cn">NA</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb282-10"><a href="常用函数-3.html#cb282-10" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>) <span class="co"># same as frankv(x) from before</span></span>
+<span id="cb282-11"><a href="常用函数-3.html#cb282-11" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">na.last=</span><span class="st">&quot;keep&quot;</span>)</span>
+<span id="cb282-12"><a href="常用函数-3.html#cb282-12" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>)</span>
+<span id="cb282-13"><a href="常用函数-3.html#cb282-13" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(DT, x, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>) <span class="co"># equivalent of above using frank</span></span></code></pre></div>
+<ul>
+<li>frankv在排序时,NA被认为是一样的,基础base R 中认为不一样.</li>
+</ul>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="常用函数-3.html#cb283-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>) </span>
+<span id="cb283-2"><a href="常用函数-3.html#cb283-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)</span>
+<span id="cb283-3"><a href="常用函数-3.html#cb283-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(x)</span></code></pre></div>
+<ul>
+<li>升序降序选择</li>
+</ul>
+<p>order参数只能为1或者-1.默认为1代表升序</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="常用函数-3.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> 1L)</span>
+<span id="cb284-2"><a href="常用函数-3.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> <span class="sc">-</span>1L)</span></code></pre></div>
+<ul>
+<li>排序方式选择</li>
+</ul>
+<p>默认 average,还有dense,random,first,last,max,min等方式。其中dense是紧凑排名，random是随机让相同的随机排列后排名</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="常用函数-3.html#cb285-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb285-2"><a href="常用函数-3.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)  <span class="co">#大小相同 排名相同,下一位排名除以2</span></span>
+<span id="cb285-3"><a href="常用函数-3.html#cb285-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;min&#39;</span>)  <span class="co">#大小相同 排名相同,取最小排名</span></span>
+<span id="cb285-4"><a href="常用函数-3.html#cb285-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;max&#39;</span>)  <span class="co">#大小相同 排名相同,取最大排名</span></span>
+<span id="cb285-5"><a href="常用函数-3.html#cb285-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>) <span class="co">#相同大小排名以后往后递增 根据实际情况决定</span></span>
+<span id="cb285-6"><a href="常用函数-3.html#cb285-6" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;dense&#39;</span>)</span>
+<span id="cb285-7"><a href="常用函数-3.html#cb285-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;random&#39;</span>)</span></code></pre></div>
+<ul>
+<li>NA处理</li>
+</ul>
+<p>默认是将NA排在最后,NAs是相同的，与base R 不一样。</p>
+<p>na.last参数等于TRUE时，缺失值被排最后；如果等于FALSE,放在前面；如果等于NA，将被移除；如果等于“keep,”将会保留NA.</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="常用函数-3.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">TRUE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb286-2"><a href="常用函数-3.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">FALSE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb286-3"><a href="常用函数-3.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">NA</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb286-4"><a href="常用函数-3.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="st">&#39;keep&#39;</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span></code></pre></div>
+</div>
+<div id="非重复计数" class="section level3" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> 非重复计数</h3>
+<p><code>uniqueN</code>相当于<code>length(unique(x))</code>,但是计算更快，内存效率更高。</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="常用函数-3.html#cb287-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">50</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb287-2"><a href="常用函数-3.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(x)</span>
+<span id="cb287-3"><a href="常用函数-3.html#cb287-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb287-4"><a href="常用函数-3.html#cb287-4" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">A =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each=</span><span class="dv">4</span>), <span class="at">B =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">each=</span><span class="dv">3</span>),</span>
+<span id="cb287-5"><a href="常用函数-3.html#cb287-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">C =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">6</span>), <span class="at">key =</span> <span class="st">&quot;A,B&quot;</span>)</span>
+<span id="cb287-6"><a href="常用函数-3.html#cb287-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb287-7"><a href="常用函数-3.html#cb287-7" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT, <span class="at">by =</span> <span class="fu">key</span>(DT))</span>
+<span id="cb287-8"><a href="常用函数-3.html#cb287-8" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT)</span></code></pre></div>
+</div>
+<div id="判断函数" class="section level3" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> 判断函数</h3>
+<ul>
+<li>fifelse</li>
+</ul>
+<p>fifelse()类似<code>dplyr::if_else()</code>函数,相比base::ifelse() 更快。</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="常用函数-3.html#cb288-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb288-2"><a href="常用函数-3.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L, x, x <span class="sc">-</span> 1L)</span>
+<span id="cb288-3"><a href="常用函数-3.html#cb288-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb288-4"><a href="常用函数-3.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L,<span class="fu">fifelse</span>(x <span class="sc">&gt;=</span> 4L,x <span class="sc">+</span> 1L,x),x<span class="sc">-</span>1L)</span></code></pre></div>
+<ul>
+<li>fcase</li>
+</ul>
+<p>与sql中的case when，与dplyr中的<code>case_when()</code>函数用法相似。相比fifelse相比，嵌套更加方便。</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="常用函数-3.html#cb289-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb289-2"><a href="常用函数-3.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
+<span id="cb289-3"><a href="常用函数-3.html#cb289-3" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&lt;</span> 5L, 1L,</span>
+<span id="cb289-4"><a href="常用函数-3.html#cb289-4" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&gt;</span> 5L, 3L</span>
+<span id="cb289-5"><a href="常用函数-3.html#cb289-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb289-6"><a href="常用函数-3.html#cb289-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb289-7"><a href="常用函数-3.html#cb289-7" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 两种函数实现方式</span></span>
+<span id="cb289-8"><a href="常用函数-3.html#cb289-8" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="fu">fifelse</span>(x <span class="sc">&gt;</span><span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dv">0</span>)</span>
+<span id="cb289-9"><a href="常用函数-3.html#cb289-9" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
+<span id="cb289-10"><a href="常用函数-3.html#cb289-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">8</span>,<span class="dv">2</span>,</span>
+<span id="cb289-11"><a href="常用函数-3.html#cb289-11" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="dv">1</span>,</span>
+<span id="cb289-12"><a href="常用函数-3.html#cb289-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">default =</span> <span class="dv">0</span></span>
+<span id="cb289-13"><a href="常用函数-3.html#cb289-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="交集-差集-合并" class="section level3" number="8.3.5">
+<h3><span class="header-section-number">8.3.5</span> 交集 差集 合并</h3>
+<p>相当于base R 中 union(),intersect(),setdiff() 和setequal() 功能.all参数控制如何处理重复的行,和SQL中不同的是,data.table将保留行顺序.</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="常用函数-3.html#cb290-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-2"><a href="常用函数-3.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb290-3"><a href="常用函数-3.html#cb290-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb290-4"><a href="常用函数-3.html#cb290-4" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb290-5"><a href="常用函数-3.html#cb290-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, y, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb290-6"><a href="常用函数-3.html#cb290-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-7"><a href="常用函数-3.html#cb290-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb290-8"><a href="常用函数-3.html#cb290-8" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># same set of rows as x</span></span>
+<span id="cb290-9"><a href="常用函数-3.html#cb290-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span>
+<span id="cb290-10"><a href="常用函数-3.html#cb290-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-11"><a href="常用函数-3.html#cb290-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y)            <span class="co"># intersect</span></span>
+<span id="cb290-12"><a href="常用函数-3.html#cb290-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)  <span class="co"># intersect all</span></span>
+<span id="cb290-13"><a href="常用函数-3.html#cb290-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-14"><a href="常用函数-3.html#cb290-14" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y)              <span class="co"># except</span></span>
+<span id="cb290-15"><a href="常用函数-3.html#cb290-15" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)    <span class="co"># except all</span></span>
+<span id="cb290-16"><a href="常用函数-3.html#cb290-16" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y)                <span class="co"># union</span></span>
+<span id="cb290-17"><a href="常用函数-3.html#cb290-17" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)      <span class="co"># union all</span></span>
+<span id="cb290-18"><a href="常用函数-3.html#cb290-18" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2, <span class="at">all=</span><span class="cn">FALSE</span>) <span class="co"># setequal</span></span>
+<span id="cb290-19"><a href="常用函数-3.html#cb290-19" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2)            <span class="co"># setequal all</span></span></code></pre></div>
+</div>
+<div id="长宽转换" class="section level3" number="8.3.6">
+<h3><span class="header-section-number">8.3.6</span> 长宽转换</h3>
+<p>主要是两个函数<code>dcast</code>以及<code>melt</code>实现长宽转换，实现Excel中部分透视表功能。具体的函数参数请自行查阅文档。</p>
+<ul>
+<li>dcast函数能实现长转宽</li>
+</ul>
+<p>参数如下：fun.aggregate函数指定聚合函数，value.var参数指定参与聚合的字段。formula指定聚合维度，格式用x+y~z，其中x,y在行的位置，z在列的位置。</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="常用函数-3.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(data, formula, <span class="at">fun.aggregate =</span> <span class="cn">NULL</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>,</span>
+<span id="cb291-2"><a href="常用函数-3.html#cb291-2" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">margins =</span> <span class="cn">NULL</span>, <span class="at">subset =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb291-3"><a href="常用函数-3.html#cb291-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">value.var =</span> <span class="fu">guess</span>(data),</span>
+<span id="cb291-4"><a href="常用函数-3.html#cb291-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
+<p>示例如下：</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="常用函数-3.html#cb292-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(分公司<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="dv">1000</span>),</span>
+<span id="cb292-2"><a href="常用函数-3.html#cb292-2" aria-hidden="true" tabindex="-1"></a>              季度<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;一季度&#39;</span>,<span class="st">&#39;二季度&#39;</span>,<span class="st">&#39;三季度&#39;</span>,<span class="st">&#39;四季度&#39;</span>),<span class="dv">1000</span>),</span>
+<span id="cb292-3"><a href="常用函数-3.html#cb292-3" aria-hidden="true" tabindex="-1"></a>              销售额<span class="ot">=</span><span class="fu">sample</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">4000</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb292-4"><a href="常用函数-3.html#cb292-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt,分公司<span class="sc">~</span>季度,<span class="at">value.var =</span> <span class="st">&quot;销售额&quot;</span>,<span class="at">fun.aggregate =</span> sum)</span></code></pre></div>
+<p>从版本V1.9.6起可以同时对多个值实现不同聚合后的长转宽。</p>
+<p>fun参数即 fun.aggregate的简写，可以是自定义的函数。</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="常用函数-3.html#cb293-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">sample</span>(<span class="dv">5</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">y=</span><span class="fu">sample</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>),</span>
+<span id="cb293-2"><a href="常用函数-3.html#cb293-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">z=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">d1 =</span> <span class="fu">runif</span>(<span class="dv">20</span>), <span class="at">d2=</span>1L)</span>
+<span id="cb293-3"><a href="常用函数-3.html#cb293-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>))</span>
+<span id="cb293-4"><a href="常用函数-3.html#cb293-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">list</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>)) <span class="co">#注意value.var是向量和列表时的区别</span></span></code></pre></div>
+<ul>
+<li>melt函数实现宽转长</li>
+</ul>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="常用函数-3.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">melt</span>(data, id.vars, measure.vars,</span>
+<span id="cb294-2"><a href="常用函数-3.html#cb294-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable.name =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">value.name =</span> <span class="st">&quot;value&quot;</span>,</span>
+<span id="cb294-3"><a href="常用函数-3.html#cb294-3" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">variable.factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb294-4"><a href="常用函数-3.html#cb294-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">value.factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb294-5"><a href="常用函数-3.html#cb294-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
+<p>示例如下:</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="常用函数-3.html#cb295-1" aria-hidden="true" tabindex="-1"></a>ChickWeight <span class="ot">=</span> <span class="fu">as.data.table</span>(ChickWeight)</span>
+<span id="cb295-2"><a href="常用函数-3.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setnames</span>(ChickWeight, <span class="fu">tolower</span>(<span class="fu">names</span>(ChickWeight)))</span>
+<span id="cb295-3"><a href="常用函数-3.html#cb295-3" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">as.data.table</span>(ChickWeight), <span class="at">id=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># calls melt.data.table</span></span>
+<span id="cb295-4"><a href="常用函数-3.html#cb295-4" aria-hidden="true" tabindex="-1"></a>DT</span></code></pre></div>
+</div>
+<div id="表连接" class="section level3" number="8.3.7">
+<h3><span class="header-section-number">8.3.7</span> 表连接</h3>
+<p>两个数据框之间左连,右连等操作,类似数据库中的left_join right_join,inner_join 等函数.</p>
+<p>键入?merge()查看函数帮助,data.table 包中和base R 中都有merge 函数,当第一个数据框是data.table格式时启用data.table::merge().</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="常用函数-3.html#cb296-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">merge</span>()</span>
+<span id="cb296-2"><a href="常用函数-3.html#cb296-2" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(x, y, <span class="at">by =</span> <span class="cn">NULL</span>, <span class="at">by.x =</span> <span class="cn">NULL</span>, <span class="at">by.y =</span> <span class="cn">NULL</span>, <span class="at">all =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb296-3"><a href="常用函数-3.html#cb296-3" aria-hidden="true" tabindex="-1"></a><span class="at">all.x =</span> all, <span class="at">all.y =</span> all, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">suffixes =</span> <span class="fu">c</span>(<span class="st">&quot;.x&quot;</span>, <span class="st">&quot;.y&quot;</span>), <span class="at">no.dups =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb296-4"><a href="常用函数-3.html#cb296-4" aria-hidden="true" tabindex="-1"></a><span class="at">allow.cartesian=</span><span class="fu">getOption</span>(<span class="st">&quot;datatable.allow.cartesian&quot;</span>),  <span class="co"># default FALSE</span></span>
+<span id="cb296-5"><a href="常用函数-3.html#cb296-5" aria-hidden="true" tabindex="-1"></a>...)</span></code></pre></div>
+<p>x.y为连个数据框,当两个数据框连接字段相同时,用by=c(’‘,’’)连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="常规操作.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="高级函数.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Rbook.pdf", "Rbook.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

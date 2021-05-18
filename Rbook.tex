@@ -36,7 +36,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={R学习笔记},
+  pdftitle={宇飞的R语言学习笔记},
   pdfauthor={Yufei Zhong},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -115,9 +115,9 @@
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
-\title{R学习笔记}
+\title{宇飞的R语言学习笔记}
 \author{Yufei Zhong}
-\date{2021-05-17}
+\date{2021-05-18}
 
 \begin{document}
 \maketitle
@@ -131,7 +131,7 @@
 
 作为商业数据分析师，我学习使用\texttt{R}已经有较长一段时间，主要用\texttt{R}来处理数据，自动化报表，ETL，可视化等；另外用R包\texttt{shiny}做web看板。
 
-本文主要记录个人学习数据处理相关R包的过程，主要从\texttt{tidyverse}系列以及\texttt{data.table}两套语法做数据处理笔记。关于字符以及时间用\texttt{stringr}以及\texttt{lubridate}两个包处理。
+本文是个人学习数据处理相关R包的笔记，主要从\texttt{tidyverse}系列以及\texttt{data.table}两套语法做数据处理的笔记。我在R中字符处理使用\texttt{stringr}包，日期时间计算用\texttt{lubridate}包。
 
 \textbackslash begin\{center\}\includegraphics[width=0.7\linewidth]{Rbook_files/figure-latex/unnamed-chunk-3-1}
 
@@ -194,7 +194,17 @@ Email: \href{mailto:598253220@qq.com}{\nolinkurl{598253220@qq.com}}
 当有其它数据格式需求的时候，那时候的你肯定已经会自行查找相关R包使用了。
 \end{quote}
 
-在本章开始前，假定已经有一些R相关基础。如使用Rstudio查看导入的数据，R的数据结构等有一定认识。
+在本章开始前，假定已经有一些R相关基础。如使用Rstudio查看导入的数据，R的数据结构等有一定认识。本章节主要分为:
+
+\begin{itemize}
+\tightlist
+\item
+  excel读写
+\item
+  csv等平面文件读写
+\item
+  文件路径
+\end{itemize}
 
 \hypertarget{readxl}{%
 \section{readxl}\label{readxl}}
@@ -804,7 +814,7 @@ readr提供了一种快速友好的方式读取矩形数据\footnote{矩形数�
 \hypertarget{ux5b89ux88c5-2}{%
 \subsection{安装}\label{ux5b89ux88c5-2}}
 
-直接安装tidyvese获取或单独安装readr。
+直接安装tidyverse获取或单独安装readr。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -902,7 +912,7 @@ readr支持七种\texttt{read\_}功能的文件格式。
 col\_types :指定列类型，可用项如下所示(含简写):
 c = character，i = integer，n = number，d = double，l = logical，f = factor，D = date，T = date time，t = time，默认值为guess.
 
-local:local参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。
+locale:locale参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。
 
 \texttt{locale()}的第一个参数是date\_names，控制月份和日期的名称，指定最简单的方式\href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO 639 language code}
 
@@ -1191,6 +1201,21 @@ macOS系统: \texttt{/User/vega\_mac/Desktop/r},路径中是一个正斜杠。
 \FunctionTok{getwd}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{ux62d3ux5c55}{%
+\section{拓展}\label{ux62d3ux5c55}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  feather项目地址\url{https://github.com/wesm/feather}
+\item
+  qs提供接口，用于快速将R对象保存到磁盘以及从磁盘读取。该包的目标是替换R中的\texttt{saveRDS}和\texttt{readRDS}。项目地址\url{https://github.com/traversc/qs}
+\item
+  arrow是feather的接替项目，地址\url{https://arrow.apache.org/docs/r/}
+\item
+  其它统计学软件数据如spss，stata,SAs等可用\texttt{foreign}包读取
+\end{enumerate}
 
 \hypertarget{dplyr}{%
 \chapter{dplyr}\label{dplyr}}
@@ -3071,34 +3096,28 @@ nest的反面 unnest
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{stringr}{%
-\chapter{stringr}\label{stringr}}
+\hypertarget{ux5b57ux7b26ux5904ux7406}{%
+\chapter{字符处理}\label{ux5b57ux7b26ux5904ux7406}}
 
-实际工作中,经常需要处理字符串.R包stringr处理字符相对简单,本章记录工作中常用的字符处理方式方法。
+实际数据分析工作中,经常需要处理字符串以便让数据整洁，符合分析需求。在我们常用的Excel或sql中也有处理字符串的经验，大部分时候截断、替换等基础实现就能满足我们的大部分字符处理需求。
 
-本文部分案例照搬\href{https://r4ds.had.co.nz/strings.html}{R for Data Science}的字符部分。
+Excel中自带的字符串函数\footnote{Excel中支持的{[}TEXT functions{]} (\url{https://support.microsoft.com/zh-cn/office/\%e6\%96\%87\%e6\%9c\%ac\%e5\%87\%bd\%e6\%95\%b0\%ef\%bc\%88\%e5\%8f\%82\%e8\%80\%83\%ef\%bc\%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN\&rs=zh-CN\&ad=CN})}，如:\texttt{left},\texttt{len},\texttt{mid},\texttt{find},\texttt{Proper},\texttt{rept},\texttt{trim},\texttt{upper},\texttt{substitute},\texttt{concatenate},以及\texttt{Excle}2019新出的\texttt{concat},\texttt{TEXTJOIN}等字符函数，\texttt{TEXTJOIN}函数我个人比较喜欢用。在学习R的字符处理时候可以自行尝试实现以上相对应功能。
 
-Excle中自带的字符函数如: \texttt{left},\texttt{len},\texttt{mid},\texttt{find},\texttt{Proper},\texttt{rept},\texttt{trim},\texttt{upper},\texttt{substitute},\texttt{concatenate},以及\texttt{Excle}2019新出的\texttt{concat},\texttt{TEXTJOIN}等函数，新出的\texttt{textjoin}函数我个人比较喜欢用。
+但是Excel中字符处理功能存在一定局限性,没有直接可用的正则表达式\footnote{正则表达式(regular expression)描述了一种字符串匹配的模式(pattern),查看帮助\texttt{?regex}。}函数,在正则表达式本身就很困难的情况下，在VBA中实现较复杂的函数将会难上加难。
 
-学习的时候可以先用\texttt{stringr}包实现以上相对应功能。
+字符处理本人觉得本质上就是将字符定位后去实现不同的操作。所以觉得难点在于字符串中字符的定位，而实现这个功能就需要用到正则表达式，所以字符处理真正的难点在于正则表达式的编写，但是在我看来正则表达式想要掌握，难度过高，我们秉着随用随查的态度对待即可。
 
-\begin{itemize}
-\tightlist
-\item
-  \url{https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html}
-\end{itemize}
+因为大部分的数据分析工作者并不会面临太多复杂的字符处理工作，对大部分常规商业数据分析工作者面对的数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作。面对舆情监控，购物评价等纯文本情感分析工作，个人觉得对普通数据分析岗位有点超纲，所以本章节的字符处理仅仅是常规的字符处理。
 
-\hypertarget{ux57faux7840-4}{%
-\section{基础}\label{ux57faux7840-4}}
+\hypertarget{base-r}{%
+\section{base R}\label{base-r}}
 
-字符串处理的难点，个人觉得在于【正则表达式】的掌握程度，但是需要用到正则表达式时都是比较复杂的字符处理工作，在实际商业文本数据中
-
-运用较多。对大部分常规商业数据分析工作者的面对的表格数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作。
+本部分简述base R中关于字符处理的常用函数。
 
 \hypertarget{ux5355ux53ccux5f15ux53f7}{%
 \subsection{单双引号}\label{ux5355ux53ccux5f15ux53f7}}
 
-\texttt{R}语言中字符串输入时，可以使用单引号，也可以使用双引号。
+\texttt{R}语言中字符串输入时，可以使用单引号，也可以使用双引号，详情请看\texttt{?Quotes}。
 
 \begin{itemize}
 \item
@@ -3107,51 +3126,219 @@ Excle中自带的字符函数如: \texttt{left},\texttt{len},\texttt{mid},\textt
   R中推荐使用双引号分隔符，打印、显示时都是用双引号
 \item
   单引号字符串通常用在字符串内包含双引号时，如用R执行sql字符串代码时
+\item
+  R-4.0之后引入的R字符\protect\hyperlink{ux65b0ux7279ux6027}{新特性}，让单双引号基本没区别
 \end{itemize}
+
+R中的字符用单双引号都可创建，如下所示:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"R语言"}
+\NormalTok{x}
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}R语言\textquotesingle{}}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{ux8f6cux4e49}{%
 \subsection{转义}\label{ux8f6cux4e49}}
 
-要在字符串中包含单引号或双引号，可以使用~转义它，即遇到特殊符号时需要转义。
+要在字符串中包含单引号或双引号，需用~转义它，即遇到特殊符号时需要转义,如果不正确使用转义，可能会报错，如下所示：
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#install.packages(\textquotesingle{}stringr\textquotesingle{})}
-\FunctionTok{library}\NormalTok{(stringr)}
-\NormalTok{char }\OtherTok{\textless{}{-}} \StringTok{"我是一名}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{小学生}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{"}   \CommentTok{\#字符串建议用双引号包裹,单引号也可以}
+\FunctionTok{paste}\NormalTok{(}\StringTok{""","}\NormalTok{abc}\StringTok{",sep="")}
+\StringTok{\#\textgreater{} 错误: unexpected string constant in "}\FunctionTok{paste}\NormalTok{(}\StringTok{""",""}
+\end{Highlighting}
+\end{Shaded}
+
+R语言中使用``"把特定的字符转义为特殊字符，例如``\t”是制表符，``\n''是换行符，或者是``\r\n''(系统差异)。想要正确显示``'''，需使用转义，如下所示：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{char }\OtherTok{\textless{}{-}} \StringTok{"我是一名}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{小学生}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{"} 
 \NormalTok{char}
 \end{Highlighting}
 \end{Shaded}
 
-打印会显示转义符。要查看字符串的原始内容,可使用writeLines()或cat()
+打印会显示转义符,主要是因为R语言内数据存储和打印是不一样的，运行结果为存储的数据形式，不是打印形式。
+
+要查看字符串的原始内容,可使用writeLines()或cat()
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{"}\NormalTok{)}
 \NormalTok{x}
-\CommentTok{\#\textgreater{} [1] "\textbackslash{}"" "\textbackslash{}\textbackslash{}"}
+
 \FunctionTok{writeLines}\NormalTok{(x)}
+\FunctionTok{writeLines}\NormalTok{(char)}
 \FunctionTok{cat}\NormalTok{(char)}
-\CommentTok{\#\textgreater{} "}
-\CommentTok{\#\textgreater{} \textbackslash{}}
 \end{Highlighting}
 \end{Shaded}
 
-在正则表达式中~有特殊含义,有时需要两个~，多体会下面这段，代码实现移除``\textbar\textbar{}''的功能。
+\hypertarget{ux5e38ux7528ux51fdux6570-1}{%
+\subsection{常用函数}\label{ux5e38ux7528ux51fdux6570-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  字符数量
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{str\_remove}\NormalTok{(}\AttributeTok{string =} \StringTok{\textquotesingle{}a||b\textquotesingle{}}\NormalTok{,}\AttributeTok{pattern =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|"}\NormalTok{)}
+\NormalTok{s }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}abcdefg\textquotesingle{}}
+\FunctionTok{nchar}\NormalTok{(s)}
 \end{Highlighting}
 \end{Shaded}
 
-另外常见的\textbackslash n, \textbackslash t需要被转义处理,在字符清洗,如小说语义分析,网页爬虫后整理等数据清洗过程中经常用到.
-
-\hypertarget{ux5b57ux7b26ux4e32ux957fux5ea6}{%
-\subsection{字符串长度}\label{ux5b57ux7b26ux4e32ux957fux5ea6}}
+\begin{itemize}
+\tightlist
+\item
+  大小写
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{toupper}\NormalTok{(}\StringTok{\textquotesingle{}abc\textquotesingle{}}\NormalTok{)}
+\FunctionTok{tolower}\NormalTok{(}\StringTok{\textquotesingle{}ABC\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  拼接
+\end{itemize}
+
+函数\texttt{paste()}将不同的字符向量拼接组合起来，返回的数据类型是字符向量。其中分割参数sep默认值是" "(空格)。collapse参数是使用指定的字符把各元素拼接在一次成一个单独的字符串。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}d\textquotesingle{}}\NormalTok{)}
+\FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}d\textquotesingle{}}\NormalTok{,}\AttributeTok{sep =} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}d\textquotesingle{}}\NormalTok{,}\AttributeTok{sep =} \StringTok{\textquotesingle{}\_\textquotesingle{}}\NormalTok{)}
+\FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{),}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}d\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}e\textquotesingle{}}\NormalTok{),}\AttributeTok{collapse =} \StringTok{\textquotesingle{}\_\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+大家可以自行了解\texttt{paste}和\texttt{paste0}两个函数的差异。
+
+\begin{itemize}
+\tightlist
+\item
+  截取
+\end{itemize}
+
+\texttt{substr}函数用于字符串截取子字符串,start,stop参数是整数。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 空格占据一个长度}
+\FunctionTok{substr}\NormalTok{(}\StringTok{"R is free software"}\NormalTok{ ,}\AttributeTok{start =} \DecValTok{1}\NormalTok{,}\AttributeTok{stop =} \DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  分割
+\end{itemize}
+
+函数\texttt{strsplit}按照指定的字符把字符分割成子字符。参数x被分割的字符，split是用于分割的字符标准，fixed是否完全匹配分隔符，默认是TRUE,完全匹配模式，当fixed参数为FALSE时，表名split参数是正则表达式，使用正则匹配。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{strsplit}\NormalTok{(x,split,fixed,perl,useBytes)}
+\end{Highlighting}
+\end{Shaded}
+
+strsplit函数返回的结果是列表，大部分时候需要向量化后使用。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{strsplit}\NormalTok{(}\StringTok{\textquotesingle{}广东省{-}深圳市{-}宝安区\textquotesingle{}}\NormalTok{,}\AttributeTok{split=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# 向量化}
+\CommentTok{\# unlist(strsplit(\textquotesingle{}广东省{-}深圳市{-}宝安区\textquotesingle{},split=\textquotesingle{}{-}\textquotesingle{}))}
+\end{Highlighting}
+\end{Shaded}
+
+官方手册中提供一个字符倒叙的自定义编写的函数：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{strReverse }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sapply}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(}\FunctionTok{strsplit}\NormalTok{(x, }\ConstantTok{NULL}\NormalTok{), rev), paste, }\AttributeTok{collapse =} \StringTok{""}\NormalTok{)}
+\FunctionTok{strReverse}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"abc"}\NormalTok{, }\StringTok{"Statistics"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux65b0ux7279ux6027}{%
+\subsection{新特性}\label{ux65b0ux7279ux6027}}
+
+该特性让反斜杠或单引号和双引号书写变得容易。用法r``(\ldots)''，括号中可以是任意字符，详情请看\texttt{?Quotes}。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# windows下路径 ,不用转义路径复制直接可用}
+\NormalTok{char }\OtherTok{\textless{}{-}}\NormalTok{ r}\StringTok{"(C:\textbackslash{}Users\textbackslash{}zhongyf\textbackslash{}Desktop\textbackslash{}Rbook)"} 
+\NormalTok{char}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{char }\OtherTok{\textless{}{-}} \StringTok{"我是一名}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{小学生}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{"} 
+\FunctionTok{cat}\NormalTok{(char)}
+
+\NormalTok{char }\OtherTok{\textless{}{-}}\NormalTok{ r}\StringTok{"(我是一名\textquotesingle{}R语言\textquotesingle{}学习者)"}
+\FunctionTok{cat}\NormalTok{(char)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{注意该特性需要在R-4.0.0之后的版本中使用}
+
+\hypertarget{stringr}{%
+\section{stringr}\label{stringr}}
+
+本小节介绍R包\texttt{stringr}，stringr处理字符相对简单，并且是tidyverse系列的一部分，是很成熟的R包，API功能稳定。stringr是基于\texttt{stringi}之上构建的,stringr包集合了常见字符功能函数，如果发现stringr缺少某些功能可以查看\texttt{stringi}包。
+
+如上文所说，字符串处理的难点，个人觉得在于正则表达式的掌握程度。对大部分常规商业数据分析工作者的面对的表格数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作，所以stringr包基本满足字符处理需求。
+
+\texttt{stringr}项目地址:\url{https://github.com/tidyverse/stringr/}
+
+如果不熟悉R中的字符串，可以从\href{https://r4ds.had.co.nz/strings.html}{R for Data Science}的字符串部分开始学习，
+
+本小节的部分案例照搬\href{https://r4ds.had.co.nz/strings.html}{R for Data Science}。
+
+\hypertarget{ux5b89ux88c5-6}{%
+\subsection{安装}\label{ux5b89ux88c5-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Install the released version from CRAN:}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"stringr"}\NormalTok{)}
+
+\CommentTok{\# Install the cutting edge development version from GitHub:}
+\CommentTok{\# install.packages("devtools")}
+\NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"tidyverse/stringr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux57faux672cux4f7fux7528}{%
+\subsection{基本使用}\label{ux57faux672cux4f7fux7528}}
+
+stringr包中所有的函数都已\texttt{str\_}开头，让字符做第一个参数。
+
+\begin{itemize}
+\tightlist
+\item
+  字符串长度
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stringr)}
 \NormalTok{char }\OtherTok{\textless{}{-}} \StringTok{"我是R语言学习者"}
 \FunctionTok{str\_length}\NormalTok{(char)}
 \CommentTok{\# 向量化}
@@ -3159,8 +3346,11 @@ Excle中自带的字符函数如: \texttt{left},\texttt{len},\texttt{mid},\textt
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux8fdeux63a5ux5b57ux7b26ux4e32}{%
-\subsection{连接字符串}\label{ux8fdeux63a5ux5b57ux7b26ux4e32}}
+\begin{itemize}
+\tightlist
+\item
+  连接字符串
+\end{itemize}
 
 R中字符串不像python中可以用加号连接字符串,如下所示:
 
@@ -3196,70 +3386,28 @@ Python 版本
 \end{Highlighting}
 \end{Shaded}
 
-实际运用案例
-
 \begin{itemize}
 \tightlist
 \item
-  合并
+  移除
 \end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(data.table)}
-\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{col=}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\DecValTok{10}\NormalTok{),}\AttributeTok{letters=}\NormalTok{letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{])}
-\NormalTok{dt[,newcol}\SpecialCharTok{:}\ErrorTok{=}\FunctionTok{str\_c}\NormalTok{(letters,}\AttributeTok{collapse =} \StringTok{\textquotesingle{}|\textquotesingle{}}\NormalTok{),by}\OtherTok{=}\NormalTok{.(col)][]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
-\tightlist
-\item
-  拆解
-\end{itemize}
+在正则表达式中~有特殊含义,有时需要两个~，多体会下面这段，代码实现移除``\textbar\textbar{}''的功能。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
-\CommentTok{\#工作中路径需要拆解 类似商品品类路径 进口水果{-}热带水果{-}生鲜,用户行为路径等}
-\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{col=}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\AttributeTok{letters=}\FunctionTok{str\_c}\NormalTok{(letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{],}\AttributeTok{collapse =} \StringTok{\textquotesingle{}|\textquotesingle{}}\NormalTok{))}
-
-\NormalTok{my\_str\_split }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
-  
-  \FunctionTok{str\_split}\NormalTok{(x,}\AttributeTok{pattern =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{unlist}\NormalTok{()  }\CommentTok{\#str\_split 拆解出来是列表 需要向量化}
-\NormalTok{\}}
-
-\NormalTok{dt[,}\FunctionTok{list}\NormalTok{(}\AttributeTok{newcol=}\FunctionTok{my\_str\_split}\NormalTok{(letters)),by}\OtherTok{=}\NormalTok{.(col)]}
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{str\_remove}\NormalTok{(}\AttributeTok{string =} \StringTok{\textquotesingle{}a||b\textquotesingle{}}\NormalTok{,}\AttributeTok{pattern =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{r4.0ux540eux65b0ux7279ux6027}{%
-\subsection{R4.0后新特性}\label{r4.0ux540eux65b0ux7279ux6027}}
+另外常见的\textbackslash n, \textbackslash t需要被转义处理,在字符清洗,如小说语义分析,网页爬虫后整理等数据清洗过程中经常用到.
 
-\href{https://www.r-bloggers.com/4-for-4-0-0-four-useful-new-features-in-r-4-0-0/}{新特性}
+\hypertarget{ux5e38ux7528ux51fdux6570-2}{%
+\subsection{常用函数}\label{ux5e38ux7528ux51fdux6570-2}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{char }\OtherTok{\textless{}{-}}\NormalTok{ r}\StringTok{"(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{a}\SpecialCharTok{\textbackslash{}a}\StringTok{b\textbackslash{}d}\SpecialCharTok{\textbackslash{}e\textbackslash{}f}\StringTok{)"} \CommentTok{\#windows下路径好用,不用转义路径复制和直接可用}
-\NormalTok{char}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{char }\OtherTok{\textless{}{-}} \StringTok{"我是一名}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{小学生}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{"} 
-\FunctionTok{cat}\NormalTok{(char)}
-
-\NormalTok{char }\OtherTok{\textless{}{-}}\NormalTok{ r}\StringTok{"(我是一名\textquotesingle{}R语言\textquotesingle{}学习者)"}
-\FunctionTok{cat}\NormalTok{(char)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{ux5e38ux7528ux51fdux6570-1}{%
-\section{常用函数}\label{ux5e38ux7528ux51fdux6570-1}}
-
-\hypertarget{ux622aux53d6}{%
-\subsection{截取}\label{ux622aux53d6}}
+\hypertarget{ux622aux53d6ux5b57ux7b26}{%
+\subsubsection{截取字符}\label{ux622aux53d6ux5b57ux7b26}}
 
 与\texttt{Excle}中\texttt{left},\texttt{mid},\texttt{right}函数功能类似
 
@@ -3279,10 +3427,10 @@ end:默认-1L,即截取到最后
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux5339ux914d}{%
-\subsection{匹配}\label{ux5339ux914d}}
+\hypertarget{ux5339ux914dux5b57ux7b26}{%
+\subsubsection{匹配字符}\label{ux5339ux914dux5b57ux7b26}}
 
-查看函数帮助文档,str\_match()按照指定pattern(正则表达式)查找字符.重点困难点正则表达式的编写.
+查看函数帮助文档,str\_match()按照指定pattern(正则表达式)查找字符。困难点在于正则表达式的编写。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3335,7 +3483,7 @@ str\_extract()函数返回向量,str\_match()函数返回矩阵.
 \end{Shaded}
 
 \hypertarget{ux6dfbux52a0ux5b57ux7b26}{%
-\subsection{添加字符}\label{ux6dfbux52a0ux5b57ux7b26}}
+\subsubsection{添加字符}\label{ux6dfbux52a0ux5b57ux7b26}}
 
 str\_pad() 函数向字符串添加字符
 
@@ -3348,7 +3496,7 @@ str\_pad() 函数向字符串添加字符
 \end{Shaded}
 
 \hypertarget{ux53bbux9664ux7a7aux683c}{%
-\subsection{去除空格}\label{ux53bbux9664ux7a7aux683c}}
+\subsubsection{去除空格}\label{ux53bbux9664ux7a7aux683c}}
 
 与\texttt{excel}中\texttt{trim}函数功能类似，剔除字符中的空格，但是不可以剔除字符中的空格
 
@@ -3360,7 +3508,7 @@ str\_pad() 函数向字符串添加字符
 \end{Shaded}
 
 \hypertarget{ux5206ux5272ux5b57ux7b26}{%
-\subsection{分割字符}\label{ux5206ux5272ux5b57ux7b26}}
+\subsubsection{分割字符}\label{ux5206ux5272ux5b57ux7b26}}
 
 \texttt{str\_split()}处理后的结果是列表
 
@@ -3389,7 +3537,7 @@ str\_pad() 函数向字符串添加字符
 \end{Shaded}
 
 \hypertarget{ux66ffux6362ux5b57ux7b26}{%
-\subsection{替换字符}\label{ux66ffux6362ux5b57ux7b26}}
+\subsubsection{替换字符}\label{ux66ffux6362ux5b57ux7b26}}
 
 \texttt{str\_replace()}，\texttt{str\_replace\_all()}函数用来替换字符
 
@@ -3402,7 +3550,7 @@ str\_pad() 函数向字符串添加字符
 \end{Shaded}
 
 \hypertarget{ux79fbux9664ux5b57ux7b26}{%
-\subsection{移除字符}\label{ux79fbux9664ux5b57ux7b26}}
+\subsubsection{移除字符}\label{ux79fbux9664ux5b57ux7b26}}
 
 \texttt{str\_remove()},\texttt{str\_remove\_all()}移除字符。本人常用该函数剔除文本中的空格。
 
@@ -3423,7 +3571,7 @@ str\_pad() 函数向字符串添加字符
 \end{Shaded}
 
 \hypertarget{ux5b57ux7b26ux6392ux5e8f}{%
-\subsection{字符排序}\label{ux5b57ux7b26ux6392ux5e8f}}
+\subsubsection{字符排序}\label{ux5b57ux7b26ux6392ux5e8f}}
 
 numeric参数决定是否按照数字排序。
 
@@ -3455,7 +3603,7 @@ numeric参数
 \end{Shaded}
 
 \hypertarget{ux63d0ux53d6ux5355ux8bcd}{%
-\subsection{提取单词}\label{ux63d0ux53d6ux5355ux8bcd}}
+\subsubsection{提取单词}\label{ux63d0ux53d6ux5355ux8bcd}}
 
 从句子中提取单词。
 
@@ -3497,7 +3645,7 @@ numeric参数
 \end{Shaded}
 
 \hypertarget{ux5176ux4ed6ux51fdux6570}{%
-\subsection{其他函数}\label{ux5176ux4ed6ux51fdux6570}}
+\subsubsection{其他函数}\label{ux5176ux4ed6ux51fdux6570}}
 
 \begin{itemize}
 \tightlist
@@ -3582,8 +3730,11 @@ numeric参数
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{rux5b9eux73b0excelux5b57ux7b26ux51fdux6570}{%
-\section{R实现Excel字符函数}\label{rux5b9eux73b0excelux5b57ux7b26ux51fdux6570}}
+\hypertarget{ux7efcux5408ux8fd0ux7528}{%
+\section{综合运用}\label{ux7efcux5408ux8fd0ux7528}}
+
+\hypertarget{ux5b9eux73b0excelux51fdux6570}{%
+\subsection{实现excel函数}\label{ux5b9eux73b0excelux51fdux6570}}
 
 以下函数实现，仅仅只是从\texttt{stringr}包的函数上修改，并且没有完善，没有报错提示等的简陋版本，如果感兴趣的可以尝试利用\texttt{Rcpp}写出高性能版本的同功能函数。
 
@@ -3632,7 +3783,109 @@ numeric参数
 \end{Highlighting}
 \end{Shaded}
 
-其余函数可以自行实现
+其余函数可以尝试自行实现。
+
+\hypertarget{ux4f7fux7528ux6848ux4f8b}{%
+\subsection{使用案例}\label{ux4f7fux7528ux6848ux4f8b}}
+
+实际运用案例
+
+\begin{itemize}
+\tightlist
+\item
+  合并
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(data.table)}
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{col=}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\DecValTok{10}\NormalTok{),}\AttributeTok{letters=}\NormalTok{letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{])}
+\NormalTok{dt[,newcol}\SpecialCharTok{:}\ErrorTok{=}\FunctionTok{str\_c}\NormalTok{(letters,}\AttributeTok{collapse =} \StringTok{\textquotesingle{}|\textquotesingle{}}\NormalTok{),by}\OtherTok{=}\NormalTok{.(col)][]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  拆解
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\#工作中路径需要拆解 类似商品品类路径 进口水果{-}热带水果{-}生鲜,用户行为路径等}
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{data.table}\NormalTok{(}\AttributeTok{col=}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\AttributeTok{letters=}\FunctionTok{str\_c}\NormalTok{(letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{],}\AttributeTok{collapse =} \StringTok{\textquotesingle{}|\textquotesingle{}}\NormalTok{))}
+
+\NormalTok{my\_str\_split }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+  
+  \FunctionTok{str\_split}\NormalTok{(x,}\AttributeTok{pattern =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{|"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{unlist}\NormalTok{()  }\CommentTok{\#str\_split 拆解出来是列表 需要向量化}
+\NormalTok{\}}
+
+\NormalTok{dt[,}\FunctionTok{list}\NormalTok{(}\AttributeTok{newcol=}\FunctionTok{my\_str\_split}\NormalTok{(letters)),by}\OtherTok{=}\NormalTok{.(col)]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{baseux548cstringr}{%
+\section{base和stringr}\label{baseux548cstringr}}
+
+以下表格数据对比，主要是base R 和 stringr中的相应字符处理功能函数对比。
+
+表格数据来源\href{https://stringr.tidyverse.org/articles/from-base.html}{stringr and base differences}。表格数据可用以下代码获取(注意网络):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(rvest)}
+\NormalTok{dt }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\StringTok{\textquotesingle{}https://stringr.tidyverse.org/articles/from{-}base.html\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+   \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \StringTok{\textasciigrave{}}\AttributeTok{[[}\StringTok{\textasciigrave{}}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+base & stringr \\
+\midrule
+\endhead
+gregexpr(pattern, x) & str\_locate\_all(x, pattern) \\
+grep(pattern, x, value = TRUE) & str\_subset(x, pattern) \\
+grep(pattern, x) & str\_which(x, pattern) \\
+grepl(pattern, x) & str\_detect(x, pattern) \\
+gsub(pattern, replacement, x) & str\_replace\_all(x, pattern, replacement) \\
+nchar(x) & str\_length(x) \\
+order(x) & str\_order(x) \\
+regexec(pattern, x) + regmatches() & str\_match(x, pattern) \\
+regexpr(pattern, x) + regmatches() & str\_extract(x, pattern) \\
+regexpr(pattern, x) & str\_locate(x, pattern) \\
+sort(x) & str\_sort(x) \\
+strrep(x, n) & str\_dup(x, n) \\
+strsplit(x, pattern) & str\_split(x, pattern) \\
+strwrap(x) & str\_wrap(x) \\
+sub(pattern, replacement, x) & str\_replace(x, pattern, replacement) \\
+substr(x, start, end) & str\_sub(x, start, end) \\
+tolower(x) & str\_to\_lower(x) \\
+tools::toTitleCase(x) & str\_to\_title(x) \\
+toupper(x) & str\_to\_upper(x) \\
+trimws(x) & str\_trim(x) \\
+\bottomrule
+\end{longtable}
+
+通过以上对比，方便我们从Base R 切换到stringr包的使用。
+
+\hypertarget{ux53c2ux8003ux8d44ux6599}{%
+\section{参考资料}\label{ux53c2ux8003ux8d44ux6599}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  tidyverse-stringr:\url{https://stringr.tidyverse.org/articles/from-base.html}
+\item
+  stringr vignettes:\url{https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html}
+\item
+  R new feature:\url{https://www.r-bloggers.com/4-for-4-0-0-four-useful-new-features-in-r-4-0-0/}
+\item
+  R-4.0.0 NEW features:\url{https://cran.r-project.org/doc/manuals/r-devel/NEWS.html}
+\end{enumerate}
 
 \hypertarget{lubridate}{%
 \chapter{lubridate}\label{lubridate}}
@@ -3671,8 +3924,8 @@ numeric参数
 
 \texttt{R}中日期起始时间是\texttt{1970-01-01},Excel中是\texttt{1900-01-01},转化成数字两者相差25568。在用R读取Excel文件时，设计到日期数字转化成日期时需要注意其中差异。
 
-R中日期 : 2021-05-17 转化成数字: 18764,
-Excel 中 2021-05-17转化成数字:44332,两者相差25568.
+R中日期 : 2021-05-18 转化成数字: 18765,
+Excel 中 2021-05-18转化成数字:44333,两者相差25568.
 
 \hypertarget{ux57faux7840ux7528ux6cd5-1}{%
 \section{基础用法}\label{ux57faux7840ux7528ux6cd5-1}}
@@ -4733,8 +4986,8 @@ Note: DT{[}a \textgreater{} 4, b := c{]} is different from DT{[}a \textgreater{}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux5e38ux7528ux51fdux6570-2}{%
-\section{常用函数}\label{ux5e38ux7528ux51fdux6570-2}}
+\hypertarget{ux5e38ux7528ux51fdux6570-3}{%
+\section{常用函数}\label{ux5e38ux7528ux51fdux6570-3}}
 
 常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。
 
@@ -5555,8 +5808,8 @@ MS\href{https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads}{下载}
 \hypertarget{dbi}{%
 \section{DBI}\label{dbi}}
 
-\hypertarget{ux5b89ux88c5-6}{%
-\subsection{安装}\label{ux5b89ux88c5-6}}
+\hypertarget{ux5b89ux88c5-7}{%
+\subsection{安装}\label{ux5b89ux88c5-7}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5937,8 +6190,8 @@ linux下可以在文件Renviron中添加，记得引号，路径为{[}/opt/R/4.0
 
 RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下.该包正在逐渐被淘汰，可以使用RMariaDB包替换。
 
-\hypertarget{ux5b89ux88c5-7}{%
-\subsection{安装}\label{ux5b89ux88c5-7}}
+\hypertarget{ux5b89ux88c5-8}{%
+\subsection{安装}\label{ux5b89ux88c5-8}}
 
 Win系统下直接安装即可，其它平台下需提前安装依赖环境。
 
@@ -6241,8 +6494,8 @@ R中中文乱码问题一直都很麻烦，并且常常遇见，尤其是使用w
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux53c2ux8003ux8d44ux6599}{%
-\section{参考资料}\label{ux53c2ux8003ux8d44ux6599}}
+\hypertarget{ux53c2ux8003ux8d44ux6599-1}{%
+\section{参考资料}\label{ux53c2ux8003ux8d44ux6599-1}}
 
 \texttt{DBI}包资料\url{https://dbi.r-dbi.org/reference/}
 

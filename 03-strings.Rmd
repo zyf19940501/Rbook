@@ -1,70 +1,201 @@
 
-# stringr 
+# 字符处理 
 
 
-实际工作中,经常需要处理字符串.R包stringr处理字符相对简单,本章记录工作中常用的字符处理方式方法。
+实际数据分析工作中,经常需要处理字符串以便让数据整洁，符合分析需求。在我们常用的Excel或sql中也有处理字符串的经验，大部分时候截断、替换等基础实现就能满足我们的大部分字符处理需求。
 
-本文部分案例照搬[R for Data Science](https://r4ds.had.co.nz/strings.html)的字符部分。
 
-Excle中自带的字符函数如: `left`,`len`,`mid`,`find`,`Proper`,`rept`,`trim`,`upper`,`substitute`,`concatenate`,以及`Excle`2019新出的`concat`,`TEXTJOIN`等函数，新出的`textjoin`函数我个人比较喜欢用。 
+Excel中自带的字符串函数[^text]，如:`left`,`len`,`mid`,`find`,`Proper`,`rept`,`trim`,`upper`,`substitute`,`concatenate`,以及`Excle`2019新出的`concat`,`TEXTJOIN`等字符函数，`TEXTJOIN`函数我个人比较喜欢用。在学习R的字符处理时候可以自行尝试实现以上相对应功能。
 
-学习的时候可以先用`stringr`包实现以上相对应功能。
+但是Excel中字符处理功能存在一定局限性,没有直接可用的正则表达式[^Regularexpression]函数,在正则表达式本身就很困难的情况下，在VBA中实现较复杂的函数将会难上加难。
 
-* <https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html>
 
-## 基础
 
-字符串处理的难点，个人觉得在于【正则表达式】的掌握程度，但是需要用到正则表达式时都是比较复杂的字符处理工作，在实际商业文本数据中
+字符处理本人觉得本质上就是将字符定位后去实现不同的操作。所以觉得难点在于字符串中字符的定位，而实现这个功能就需要用到正则表达式，所以字符处理真正的难点在于正则表达式的编写，但是在我看来正则表达式想要掌握，难度过高，我们秉着随用随查的态度对待即可。
 
-运用较多。对大部分常规商业数据分析工作者的面对的表格数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作。
+因为大部分的数据分析工作者并不会面临太多复杂的字符处理工作，对大部分常规商业数据分析工作者面对的数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作。面对舆情监控，购物评价等纯文本情感分析工作，个人觉得对普通数据分析岗位有点超纲，所以本章节的字符处理仅仅是常规的字符处理。
 
+
+[^text]:Excel中支持的[TEXT functions] (https://support.microsoft.com/zh-cn/office/%e6%96%87%e6%9c%ac%e5%87%bd%e6%95%b0%ef%bc%88%e5%8f%82%e8%80%83%ef%bc%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN&rs=zh-CN&ad=CN)
+
+[^Regularexpression]:正则表达式(regular expression)描述了一种字符串匹配的模式(pattern),查看帮助`?regex`。
+
+
+## base R 
+
+本部分简述base R中关于字符处理的常用函数。
 
 ### 单双引号
 
-`R`语言中字符串输入时，可以使用单引号，也可以使用双引号。
+`R`语言中字符串输入时，可以使用单引号，也可以使用双引号，详情请看`?Quotes`。
 
  - 单双引号用法和意义没有差别
  
  - R中推荐使用双引号分隔符，打印、显示时都是用双引号
  
  - 单引号字符串通常用在字符串内包含双引号时，如用R执行sql字符串代码时
+ 
+ - R-4.0之后引入的R字符[新特性]，让单双引号基本没区别
+
+
+R中的字符用单双引号都可创建，如下所示:
+
+```{r}
+x <- "R语言"
+x
+x <- 'R语言'
+x
+```
+
 
 ### 转义 
 
-要在字符串中包含单引号或双引号，可以使用\ 转义它，即遇到特殊符号时需要转义。
+要在字符串中包含单引号或双引号，需用\ 转义它，即遇到特殊符号时需要转义,如果不正确使用转义，可能会报错，如下所示：
+
+```{r eval=FALSE}
+paste(""","abc",sep="")
+#> 错误: unexpected string constant in "paste(""",""
+```
+
+R语言中使用"\"把特定的字符转义为特殊字符，例如“\t”是制表符，“\n”是换行符，或者是“\r\n”(系统差异)。想要正确显示"'"，需使用转义，如下所示：
 
 ```{r}
-#install.packages('stringr')
-library(stringr)
-char <- "我是一名\'小学生\'"   #字符串建议用双引号包裹,单引号也可以
+char <- "我是一名\'小学生\'" 
 char
 ```
 
-打印会显示转义符。要查看字符串的原始内容,可使用writeLines()或cat()
+打印会显示转义符,主要是因为R语言内数据存储和打印是不一样的，运行结果为存储的数据形式，不是打印形式。
 
-```{r eval=FALSE}
+要查看字符串的原始内容,可使用writeLines()或cat()
+
+```{r }
 x <- c("\"", "\\")
 x
-#> [1] "\"" "\\"
+
 writeLines(x)
+writeLines(char)
 cat(char)
-#> "
-#> \
 ```
 
-在正则表达式中\ 有特殊含义,有时需要两个\ ，多体会下面这段，代码实现移除"||"的功能。
+### 常用函数
+
+- 字符数量
 
 ```{r}
-str_remove(string = 'a||b',pattern = "\\|\\|")
+s <- 'abcdefg'
+nchar(s)
+```
+
+- 大小写
+
+```{r}
+toupper('abc')
+tolower('ABC')
+```
+
+- 拼接
+
+函数`paste()`将不同的字符向量拼接组合起来，返回的数据类型是字符向量。其中分割参数sep默认值是" "(空格)。collapse参数是使用指定的字符把各元素拼接在一次成一个单独的字符串。
+
+```{r}
+paste('a','b','d')
+paste('a','b','d',sep = '')
+paste('a','b','d',sep = '_')
+paste(c('a','b'),c('d','e'),collapse = '_')
+```
+
+大家可以自行了解`paste`和`paste0`两个函数的差异。
+
+- 截取
+
+`substr`函数用于字符串截取子字符串,start,stop参数是整数。
+
+```{r }
+# 空格占据一个长度
+substr("R is free software" ,start = 1,stop = 6)
+```
+
+- 分割
+
+函数`strsplit`按照指定的字符把字符分割成子字符。参数x被分割的字符，split是用于分割的字符标准，fixed是否完全匹配分隔符，默认是TRUE,完全匹配模式，当fixed参数为FALSE时，表名split参数是正则表达式，使用正则匹配。
+
+```{r eval=FALSE}
+strsplit(x,split,fixed,perl,useBytes)
+```
+
+strsplit函数返回的结果是列表，大部分时候需要向量化后使用。
+
+```{r}
+strsplit('广东省-深圳市-宝安区',split='-')
+# 向量化
+# unlist(strsplit('广东省-深圳市-宝安区',split='-'))
+```
+
+官方手册中提供一个字符倒叙的自定义编写的函数：
+
+```{r}
+strReverse <- function(x) sapply(lapply(strsplit(x, NULL), rev), paste, collapse = "")
+strReverse(c("abc", "Statistics"))
 ```
 
 
-另外常见的\\n, \\t需要被转义处理,在字符清洗,如小说语义分析,网页爬虫后整理等数据清洗过程中经常用到.
+### 新特性{#新特性}
 
-
-### 字符串长度
+该特性让反斜杠或单引号和双引号书写变得容易。用法r"(...)"，括号中可以是任意字符，详情请看`?Quotes`。
 
 ```{r}
+# windows下路径 ,不用转义路径复制直接可用
+char <- r"(C:\Users\zhongyf\Desktop\Rbook)" 
+char
+```
+
+```{r}
+char <- "我是一名\'小学生\'" 
+cat(char)
+
+char <- r"(我是一名'R语言'学习者)"
+cat(char)
+```
+
+**注意该特性需要在R-4.0.0之后的版本中使用**
+
+
+
+
+## stringr
+
+
+本小节介绍R包`stringr`，stringr处理字符相对简单，并且是tidyverse系列的一部分，是很成熟的R包，API功能稳定。stringr是基于`stringi`之上构建的,stringr包集合了常见字符功能函数，如果发现stringr缺少某些功能可以查看`stringi`包。
+
+如上文所说，字符串处理的难点，个人觉得在于正则表达式的掌握程度。对大部分常规商业数据分析工作者的面对的表格数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作，所以stringr包基本满足字符处理需求。
+
+
+`stringr`项目地址:<https://github.com/tidyverse/stringr/>
+
+
+如果不熟悉R中的字符串，可以从[R for Data Science](https://r4ds.had.co.nz/strings.html)的字符串部分开始学习，
+
+本小节的部分案例照搬[R for Data Science](https://r4ds.had.co.nz/strings.html)。
+
+### 安装
+
+```{r eval=FALSE}
+# Install the released version from CRAN:
+install.packages("stringr")
+
+# Install the cutting edge development version from GitHub:
+# install.packages("devtools")
+devtools::install_github("tidyverse/stringr")
+```
+
+### 基本使用
+
+stringr包中所有的函数都已`str_`开头，让字符做第一个参数。
+
+- 字符串长度
+
+```{r}
+library(stringr)
 char <- "我是R语言学习者"
 str_length(char)
 # 向量化
@@ -72,7 +203,7 @@ str_length(c("a", "R for data science", NA))
 
 ```
 
-### 连接字符串
+- 连接字符串
 
 R中字符串不像python中可以用加号连接字符串,如下所示:
 
@@ -103,57 +234,28 @@ paste0(c('a','b','d','e'),collapse = ',')
 str_c(c('a','b','d','e'),collapse = ',')  #collapse 参数控制
 ```
 
+- 移除
 
-实际运用案例
-
- * 合并
-
-```{r}
-library(data.table)
-dt <- data.table(col=rep('a',10),letters=letters[1:10])
-dt[,newcol:=str_c(letters,collapse = '|'),by=.(col)][]
-```
-
-* 拆解
+在正则表达式中\ 有特殊含义,有时需要两个\ ，多体会下面这段，代码实现移除"||"的功能。
 
 ```{r}
-
-#工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等
-dt <- data.table(col='a',letters=str_c(letters[1:10],collapse = '|'))
-
-my_str_split <- function(x){
-  
-  str_split(x,pattern = "\\|") %>% unlist()  #str_split 拆解出来是列表 需要向量化
-}
-
-dt[,list(newcol=my_str_split(letters)),by=.(col)]
+library(stringr)
+str_remove(string = 'a||b',pattern = "\\|\\|")
 ```
 
 
-### R4.0后新特性
-
-[新特性](https://www.r-bloggers.com/4-for-4-0-0-four-useful-new-features-in-r-4-0-0/)
-
-
-```{r}
-char <- r"(\\a\ab\d\e\f)" #windows下路径好用,不用转义路径复制和直接可用
-char
-```
-
-```{r}
-char <- "我是一名\'小学生\'" 
-cat(char)
-
-char <- r"(我是一名'R语言'学习者)"
-cat(char)
-```
+另外常见的\\n, \\t需要被转义处理,在字符清洗,如小说语义分析,网页爬虫后整理等数据清洗过程中经常用到.
 
 
 
-## 常用函数
 
 
-### 截取
+
+
+### 常用函数
+
+
+#### 截取字符
 
 与`Excle`中`left`,`mid`,`right`函数功能类似
 
@@ -174,9 +276,9 @@ str_sub(string = '我是R语言学习者',start = 2,end = -3)
 
 
 
-### 匹配
+#### 匹配字符
 
-查看函数帮助文档,str_match()按照指定pattern(正则表达式)查找字符.重点困难点正则表达式的编写.
+查看函数帮助文档,str_match()按照指定pattern(正则表达式)查找字符。困难点在于正则表达式的编写。
 
 ```{r eval=FALSE}
 ?str_match()
@@ -215,7 +317,7 @@ str_extract_all(strings,'[a-zA-Z]')
 ```
 
 
-### 添加字符
+#### 添加字符
 
 str_pad() 函数向字符串添加字符
 
@@ -226,7 +328,7 @@ str_pad() 函数向字符串添加字符
 str_pad(string = 1:12,width = 2,side = 'left',pad = '0')
 ```
 
-### 去除空格
+#### 去除空格
 
 与`excel`中`trim`函数功能类似，剔除字符中的空格，但是不可以剔除字符中的空格
 
@@ -236,7 +338,7 @@ str_trim(' ab af ',side = 'both')
 ```
 
 
-### 分割字符
+#### 分割字符
 
 `str_split()`处理后的结果是列表
 
@@ -260,7 +362,7 @@ fruits <- c(
 str_split(fruits, " and ")
 ```
 
-### 替换字符
+#### 替换字符
 
 `str_replace()`，`str_replace_all()`函数用来替换字符
 
@@ -270,7 +372,7 @@ str_replace(fruits, "[aeiou]", "-")
 str_replace_all(fruits, "[aeiou]", "-")
 ```
 
-### 移除字符
+#### 移除字符
 
 `str_remove()`,`str_remove_all()`移除字符。本人常用该函数剔除文本中的空格。
 
@@ -287,7 +389,7 @@ str_replace_all(string = ' d a  b ',pattern = ' ',replacement = '')
 ```
 
 
-### 字符排序
+#### 字符排序
 
 numeric参数决定是否按照数字排序。
 
@@ -312,7 +414,7 @@ str_sort(x)
 str_sort(x, numeric = TRUE)
 ```
 
-### 提取单词
+#### 提取单词
 
 从句子中提取单词。
 
@@ -341,7 +443,7 @@ word(str, 2, sep = fixed('..'))
 
 
 
-### 其他函数
+#### 其他函数
 
 * str_subset() str_which()
 
@@ -409,7 +511,9 @@ str_to_sentence("the quick brown dog")
 ```
  
  
-## R实现Excel字符函数
+## 综合运用
+
+### 实现excel函数
 
 以下函数实现，仅仅只是从`stringr`包的函数上修改，并且没有完善，没有报错提示等的简陋版本，如果感兴趣的可以尝试利用`Rcpp`写出高性能版本的同功能函数。
 
@@ -440,4 +544,82 @@ r_mid <- function(str,start,num){
 r_mid('我是R语言学习者',3,3)
 ```
 
-其余函数可以自行实现
+其余函数可以尝试自行实现。
+
+
+### 使用案例
+
+
+实际运用案例
+
+ * 合并
+
+```{r}
+library(data.table)
+dt <- data.table(col=rep('a',10),letters=letters[1:10])
+dt[,newcol:=str_c(letters,collapse = '|'),by=.(col)][]
+```
+
+* 拆解
+
+```{r}
+
+#工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等
+dt <- data.table(col='a',letters=str_c(letters[1:10],collapse = '|'))
+
+my_str_split <- function(x){
+  
+  str_split(x,pattern = "\\|") %>% unlist()  #str_split 拆解出来是列表 需要向量化
+}
+
+dt[,list(newcol=my_str_split(letters)),by=.(col)]
+```
+
+
+
+## base和stringr
+
+以下表格数据对比，主要是base R 和 stringr中的相应字符处理功能函数对比。
+
+表格数据来源[stringr and base differences](https://stringr.tidyverse.org/articles/from-base.html)。表格数据可用以下代码获取(注意网络):
+
+```{r eval=FALSE}
+library(tidyverse)
+library(rvest)
+dt <- read_html('https://stringr.tidyverse.org/articles/from-base.html') %>% 
+   html_table() %>% `[[`(1)
+```
+
+| base                               | stringr                                  |
+| ---------------------------------- | ---------------------------------------- |
+| gregexpr(pattern, x)               | str_locate_all(x, pattern)               |
+| grep(pattern, x, value = TRUE)     | str_subset(x, pattern)                   |
+| grep(pattern, x)                   | str_which(x, pattern)                    |
+| grepl(pattern, x)                  | str_detect(x, pattern)                   |
+| gsub(pattern, replacement, x)      | str_replace_all(x, pattern, replacement) |
+| nchar(x)                           | str_length(x)                            |
+| order(x)                           | str_order(x)                             |
+| regexec(pattern, x) + regmatches() | str_match(x, pattern)                    |
+| regexpr(pattern, x) + regmatches() | str_extract(x, pattern)                  |
+| regexpr(pattern, x)                | str_locate(x, pattern)                   |
+| sort(x)                            | str_sort(x)                              |
+| strrep(x, n)                       | str_dup(x, n)                            |
+| strsplit(x, pattern)               | str_split(x, pattern)                    |
+| strwrap(x)                         | str_wrap(x)                              |
+| sub(pattern, replacement, x)       | str_replace(x, pattern, replacement)     |
+| substr(x, start, end)              | str_sub(x, start, end)                   |
+| tolower(x)                         | str_to_lower(x)                          |
+| tools::toTitleCase(x)              | str_to_title(x)                          |
+| toupper(x)                         | str_to_upper(x)                          |
+| trimws(x)                          | str_trim(x)                              |
+
+
+通过以上对比，方便我们从Base R 切换到stringr包的使用。
+
+
+## 参考资料
+
+1. tidyverse-stringr:<https://stringr.tidyverse.org/articles/from-base.html>
+2. stringr vignettes:<https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html>
+3. R new feature:<https://www.r-bloggers.com/4-for-4-0-0-four-useful-new-features-in-r-4-0-0/>
+4. R-4.0.0 NEW features:<https://cran.r-project.org/doc/manuals/r-devel/NEWS.html>

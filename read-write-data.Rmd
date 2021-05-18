@@ -26,7 +26,11 @@ csv文件也被称作平面文件，结构简单，平面文件比结构文件�
 >当有其它数据格式需求的时候，那时候的你肯定已经会自行查找相关R包使用了。
 
 
-在本章开始前，假定已经有一些R相关基础。如使用Rstudio查看导入的数据，R的数据结构等有一定认识。
+在本章开始前，假定已经有一些R相关基础。如使用Rstudio查看导入的数据，R的数据结构等有一定认识。本章节主要分为:
+
+- excel读写
+- csv等平面文件读写 
+- 文件路径
 
 
 
@@ -565,7 +569,7 @@ readr提供了一种快速友好的方式读取矩形数据[^矩形数据](如�
 
 ### 安装
 
-直接安装tidyvese获取或单独安装readr。
+直接安装tidyverse获取或单独安装readr。
 
 ```{r eval= FALSE}
 # The easiest way to get readr is to install the whole tidyverse:
@@ -654,7 +658,7 @@ read_csv(
 col_types :指定列类型，可用项如下所示(含简写):
   c = character，i = integer，n = number，d = double，l = logical，f = factor，D = date，T = date time，t = time，默认值为guess.
   
-local:local参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。
+locale:locale参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。
 
 
 
@@ -863,3 +867,12 @@ setwd('C:/Users/zhongyf/Desktop/Rbook/data')
 getwd()
 ```
 
+## 拓展
+
+1. feather项目地址<https://github.com/wesm/feather>
+
+2. qs提供接口，用于快速将R对象保存到磁盘以及从磁盘读取。该包的目标是替换R中的`saveRDS`和`readRDS`。项目地址<https://github.com/traversc/qs>
+
+3. arrow是feather的接替项目，地址<https://arrow.apache.org/docs/r/>
+
+4. 其它统计学软件数据如spss，stata,SAs等可用`foreign`包读取
