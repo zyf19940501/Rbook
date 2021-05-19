@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.8 dbplyr | 宇飞的R语言学习笔记</title>
+  <title>6.2 lubridate介绍 | 宇飞的R语言学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.8 dbplyr | 宇飞的R语言学习笔记" />
+  <meta property="og:title" content="6.2 lubridate介绍 | 宇飞的R语言学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.8 dbplyr | 宇飞的R语言学习笔记" />
+  <meta name="twitter:title" content="6.2 lubridate介绍 | 宇飞的R语言学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="常见问题.html"/>
-<link rel="next" href="参考资料-2.html"/>
+<link rel="prev" href="base-r-1.html"/>
+<link rel="next" href="时间间隔.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -456,119 +456,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dbplyr" class="section level2" number="9.8">
-<h2><span class="header-section-number">9.8</span> dbplyr</h2>
-<p><code>dbplyr</code>将<code>dplyr</code>包的函数转化为<code>SQL</code>语句去服务器获取数据；在数据量较大、计算较多时，可以将远程连接数据库中的表当作内存中的数据框使用，当本机内存不够大时，这样做的好处不言而喻。</p>
-<p>至于为什么使用<code>dbplyr</code>而不是直接编写<code>SQL</code>,因为：</p>
-<ul>
-<li><p><code>dbplyr</code>写起来简洁高效，基本跟用<code>dplyr</code>没有差别</p></li>
-<li><p>能利用数据库所在服务器的算力，配合上并行计算，在处理大量数据时，大大加快速度。</p></li>
-<li><p>不同数据库的语法存在差异，当源数据存在不同数据库时，用R的<code>dbplyr</code>包清洗数据时能加快效率</p></li>
-<li><p>通过<code>dplyr</code>动词方便实现复杂的逻辑，当过程越多越复杂时<code>dbplyr</code>的优势越明显，不用一层层嵌套语句。</p></li>
-</ul>
-<div id="基础用法-1" class="section level3" number="9.8.1">
-<h3><span class="header-section-number">9.8.1</span> 基础用法</h3>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="dbplyr.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb373-2"><a href="dbplyr.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
-<span id="cb373-3"><a href="dbplyr.html#cb373-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-4"><a href="dbplyr.html#cb373-4" aria-hidden="true" tabindex="-1"></a>mf <span class="ot">&lt;-</span> <span class="fu">memdb_frame</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">2</span>)</span>
-<span id="cb373-5"><a href="dbplyr.html#cb373-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-6"><a href="dbplyr.html#cb373-6" aria-hidden="true" tabindex="-1"></a>mf <span class="sc">%&gt;%</span> </span>
-<span id="cb373-7"><a href="dbplyr.html#cb373-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb373-8"><a href="dbplyr.html#cb373-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> y <span class="sc">*</span> x, </span>
-<span id="cb373-9"><a href="dbplyr.html#cb373-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> a <span class="sc">^</span> <span class="dv">2</span>,</span>
-<span id="cb373-10"><a href="dbplyr.html#cb373-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb373-11"><a href="dbplyr.html#cb373-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="dbplyr.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb374-2"><a href="dbplyr.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="co">#connect database</span></span>
-<span id="cb374-3"><a href="dbplyr.html#cb374-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="at">path =</span> <span class="st">&quot;:memory:&quot;</span>)</span>
-<span id="cb374-4"><a href="dbplyr.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传数据</span></span>
-<span id="cb374-5"><a href="dbplyr.html#cb374-5" aria-hidden="true" tabindex="-1"></a><span class="fu">copy_to</span>(con, nycflights13<span class="sc">::</span>flights, <span class="st">&quot;flights&quot;</span>,</span>
-<span id="cb374-6"><a href="dbplyr.html#cb374-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">temporary =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb374-7"><a href="dbplyr.html#cb374-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">indexes =</span> <span class="fu">list</span>(</span>
-<span id="cb374-8"><a href="dbplyr.html#cb374-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>), </span>
-<span id="cb374-9"><a href="dbplyr.html#cb374-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;carrier&quot;</span>, </span>
-<span id="cb374-10"><a href="dbplyr.html#cb374-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tailnum&quot;</span>,</span>
-<span id="cb374-11"><a href="dbplyr.html#cb374-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;dest&quot;</span></span>
-<span id="cb374-12"><a href="dbplyr.html#cb374-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb374-13"><a href="dbplyr.html#cb374-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb374-14"><a href="dbplyr.html#cb374-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-15"><a href="dbplyr.html#cb374-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看库中全部表名</span></span>
-<span id="cb374-16"><a href="dbplyr.html#cb374-16" aria-hidden="true" tabindex="-1"></a><span class="co">#dbListTables(con)</span></span>
-<span id="cb374-17"><a href="dbplyr.html#cb374-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-18"><a href="dbplyr.html#cb374-18" aria-hidden="true" tabindex="-1"></a><span class="co">#tbl()引用表flights</span></span>
-<span id="cb374-19"><a href="dbplyr.html#cb374-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-20"><a href="dbplyr.html#cb374-20" aria-hidden="true" tabindex="-1"></a>flights_db <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">&quot;flights&quot;</span>)</span>
-<span id="cb374-21"><a href="dbplyr.html#cb374-21" aria-hidden="true" tabindex="-1"></a>flights_db</span>
-<span id="cb374-22"><a href="dbplyr.html#cb374-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-23"><a href="dbplyr.html#cb374-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 开始查询</span></span>
-<span id="cb374-24"><a href="dbplyr.html#cb374-24" aria-hidden="true" tabindex="-1"></a>flights_db <span class="sc">%&gt;%</span> <span class="fu">select</span>(year<span class="sc">:</span>day, dep_delay, arr_delay)</span>
-<span id="cb374-25"><a href="dbplyr.html#cb374-25" aria-hidden="true" tabindex="-1"></a>flights_db <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">240</span>)</span>
-<span id="cb374-26"><a href="dbplyr.html#cb374-26" aria-hidden="true" tabindex="-1"></a>flights_db <span class="sc">%&gt;%</span> </span>
-<span id="cb374-27"><a href="dbplyr.html#cb374-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb374-28"><a href="dbplyr.html#cb374-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">delay =</span> <span class="fu">mean</span>(dep_time))</span></code></pre></div>
-<p>部分简单不复杂的sql语句可以用dplyr的语法代替.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="dbplyr.html#cb375-1" aria-hidden="true" tabindex="-1"></a>tailnum_delay_db <span class="ot">&lt;-</span> flights_db <span class="sc">%&gt;%</span> </span>
-<span id="cb375-2"><a href="dbplyr.html#cb375-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tailnum) <span class="sc">%&gt;%</span></span>
-<span id="cb375-3"><a href="dbplyr.html#cb375-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb375-4"><a href="dbplyr.html#cb375-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay,<span class="at">na.rm =</span> T),</span>
-<span id="cb375-5"><a href="dbplyr.html#cb375-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb375-6"><a href="dbplyr.html#cb375-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb375-7"><a href="dbplyr.html#cb375-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(delay)) <span class="sc">%&gt;%</span></span>
-<span id="cb375-8"><a href="dbplyr.html#cb375-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">100</span>)</span>
-<span id="cb375-9"><a href="dbplyr.html#cb375-9" aria-hidden="true" tabindex="-1"></a>tailnum_delay_db</span>
-<span id="cb375-10"><a href="dbplyr.html#cb375-10" aria-hidden="true" tabindex="-1"></a>tailnum_delay_db <span class="sc">%&gt;%</span> <span class="fu">show_query</span>()</span>
-<span id="cb375-11"><a href="dbplyr.html#cb375-11" aria-hidden="true" tabindex="-1"></a>tailnum_delay <span class="ot">&lt;-</span> tailnum_delay_db <span class="sc">%&gt;%</span> <span class="fu">collect</span>() <span class="co">#把数据从数据库加载到R内存中</span></span></code></pre></div>
+<div id="lubridate介绍" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> lubridate介绍</h2>
+<p><code>lubridate</code>包是对Base R中POSIXct类的封装。所以无论从函数名还是功能等方面，lubridate包中的函数功能更加清晰明了。获取当前日期、时间；拆解时间日期中的年、月、日、星期、计算年月天数，记录时刻等常用的时间日期功能，<code>lubridate</code>包中都有相对应的功能函数。</p>
+<p>本人在处理时间时常用R包<code>lubridate</code>，本节将介绍包中部分函数用法。</p>
+<p><strong>Note:lubridate默认使用UTC时区</strong></p>
+<hr />
+<div id="安装包" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> 安装包</h3>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="lubridate介绍.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb241-2"><a href="lubridate介绍.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 仅仅只安装lubridate</span></span>
+<span id="cb241-3"><a href="lubridate介绍.html#cb241-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;lubridate&#39;</span>)</span>
+<span id="cb241-4"><a href="lubridate介绍.html#cb241-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 开发版</span></span>
+<span id="cb241-5"><a href="lubridate介绍.html#cb241-5" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/lubridate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="lubridate介绍.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载包</span></span>
+<span id="cb242-2"><a href="lubridate介绍.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate,<span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
-<div id="无法正确转化" class="section level3" number="9.8.2">
-<h3><span class="header-section-number">9.8.2</span> 无法正确转化</h3>
-<p>在使用过程中发现无法识别<code>lubridate</code>包的函数，但是<code>dbplyr</code>对于不认识的函数都将保留。</p>
-<p>利用这个特性，可以使用数据库中原生的相关函数：如下所示，在Oracle中<code>to_date</code>函数</p>
-<p>以下的自定义函数可以实现按照想要<code>group_by</code>的字段汇总金额、数量、吊牌额、折扣率等,其中关于时间周期的筛选就利用了该特性。</p>
+<div id="当前时间日期" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> 当前时间日期</h3>
 <ul>
-<li>date</li>
+<li><code>now</code>函数</li>
 </ul>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="dbplyr.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co">#个人写的争对目前公司数仓写的包中获取销售数据的一段代码</span></span>
-<span id="cb376-2"><a href="dbplyr.html#cb376-2" aria-hidden="true" tabindex="-1"></a>get_sales_data <span class="ot">&lt;-</span> <span class="cf">function</span>(con,...,start_date,end_date,brand_name,<span class="at">channel_type =</span> <span class="cn">NULL</span> ,<span class="at">area_name =</span> <span class="cn">NULL</span>,<span class="at">boss_name =</span> <span class="cn">NULL</span>,<span class="at">category_name =</span> <span class="cn">NULL</span>,<span class="at">shop_no =</span> <span class="cn">NULL</span>){</span>
-<span id="cb376-3"><a href="dbplyr.html#cb376-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-4"><a href="dbplyr.html#cb376-4" aria-hidden="true" tabindex="-1"></a>  store_table <span class="ot">&lt;-</span> <span class="fu">store</span>(con,<span class="at">brand_name =</span> brand_name,<span class="at">channel_type =</span> channel_type ,<span class="at">area_name =</span> area_name,<span class="at">boss_name =</span> boss_name,<span class="at">shop_no =</span> shop_no) <span class="co">#门店信息</span></span>
-<span id="cb376-5"><a href="dbplyr.html#cb376-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb376-6"><a href="dbplyr.html#cb376-6" aria-hidden="true" tabindex="-1"></a>  sku_table <span class="ot">&lt;-</span> <span class="fu">sku</span>(con,<span class="at">category_name =</span>  category_name ) <span class="co">#商品信息</span></span>
-<span id="cb376-7"><a href="dbplyr.html#cb376-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb376-8"><a href="dbplyr.html#cb376-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span>(con, <span class="fu">in_schema</span>(<span class="st">&quot;DW&quot;</span>, <span class="st">&quot;DW_SALE_SHOP_F&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#DW层</span></span>
-<span id="cb376-9"><a href="dbplyr.html#cb376-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY, BILL_MONEY2, PRICE) <span class="sc">%&gt;%</span></span>
-<span id="cb376-10"><a href="dbplyr.html#cb376-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">between</span>(</span>
-<span id="cb376-11"><a href="dbplyr.html#cb376-11" aria-hidden="true" tabindex="-1"></a>      BILL_DATE1, <span class="fu">to_date</span>(start_date, <span class="st">&quot;yyyy-mm-dd&quot;</span>),</span>
-<span id="cb376-12"><a href="dbplyr.html#cb376-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">to_date</span>(end_date, <span class="st">&quot;yyyy-mm-dd&quot;</span>)</span>
-<span id="cb376-13"><a href="dbplyr.html#cb376-13" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span></span>
-<span id="cb376-14"><a href="dbplyr.html#cb376-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(年 <span class="ot">=</span> <span class="fu">year</span>(BILL_DATE1), 月 <span class="ot">=</span> <span class="fu">month</span>(BILL_DATE1)) <span class="sc">%&gt;%</span></span>
-<span id="cb376-15"><a href="dbplyr.html#cb376-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inner_join</span>(store_table) <span class="sc">%&gt;%</span></span>
-<span id="cb376-16"><a href="dbplyr.html#cb376-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inner_join</span>(sku_table) <span class="sc">%&gt;%</span></span>
-<span id="cb376-17"><a href="dbplyr.html#cb376-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span></span>
-<span id="cb376-18"><a href="dbplyr.html#cb376-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb376-19"><a href="dbplyr.html#cb376-19" aria-hidden="true" tabindex="-1"></a>      金额 <span class="ot">=</span> <span class="fu">sum</span>(BILL_MONEY2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb376-20"><a href="dbplyr.html#cb376-20" aria-hidden="true" tabindex="-1"></a>      数量 <span class="ot">=</span> <span class="fu">sum</span>(BILL_QTY, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb376-21"><a href="dbplyr.html#cb376-21" aria-hidden="true" tabindex="-1"></a>      吊牌金额 <span class="ot">=</span> <span class="fu">sum</span>(BILL_QTY <span class="sc">*</span> PRICE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb376-22"><a href="dbplyr.html#cb376-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb376-23"><a href="dbplyr.html#cb376-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(折扣率<span class="sc">:</span><span class="er">=</span> 金额 <span class="sc">/</span> 吊牌金额) <span class="sc">%&gt;%</span> </span>
-<span id="cb376-24"><a href="dbplyr.html#cb376-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(...)</span>
-<span id="cb376-25"><a href="dbplyr.html#cb376-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-26"><a href="dbplyr.html#cb376-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-27"><a href="dbplyr.html#cb376-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># return(res)</span></span>
-<span id="cb376-28"><a href="dbplyr.html#cb376-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>now()函数是当前时间，只有一个参数tzone,默认为系统的timezone。</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="lubridate介绍.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>()</span>
+<span id="cb243-2"><a href="lubridate介绍.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="co"># now(tzone = &#39;Asia/Shanghai&#39;)</span></span>
+<span id="cb243-3"><a href="lubridate介绍.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb243-4"><a href="lubridate介绍.html#cb243-4" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">Sys.time</span>()</span></code></pre></div>
 <ul>
-<li>like</li>
+<li><code>today</code>函数</li>
 </ul>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="dbplyr.html#cb377-1" aria-hidden="true" tabindex="-1"></a>mf <span class="sc">%&gt;%</span> </span>
-<span id="cb377-2"><a href="dbplyr.html#cb377-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x <span class="sc">%LIKE%</span> <span class="st">&quot;%foo%&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb377-3"><a href="dbplyr.html#cb377-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code></pre></div>
+<p>时区同样默认为系统的timezone。</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="lubridate介绍.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>(<span class="at">tzone =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
+<span id="cb244-2"><a href="lubridate介绍.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="co">#base R</span></span>
+<span id="cb244-3"><a href="lubridate介绍.html#cb244-3" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">Sys.Date</span>()</span></code></pre></div>
+</div>
+<div id="构造日期或时间" class="section level3" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> 构造日期或时间</h3>
+<p>使用数值直接创建日期时间<code>make_date</code>和<code>make_datetime</code>函数默认时区为“UTC”</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="lubridate介绍.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_date</span>(<span class="at">year =</span> <span class="fu">year</span>(<span class="fu">today</span>()), <span class="at">month =</span> <span class="fu">month</span>(<span class="fu">today</span>()), <span class="at">day =</span> <span class="fu">day</span>(<span class="fu">today</span>()), <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
+<span id="cb245-2"><a href="lubridate介绍.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_datetime</span>(</span>
+<span id="cb245-3"><a href="lubridate介绍.html#cb245-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">year</span>(<span class="fu">today</span>()),</span>
+<span id="cb245-4"><a href="lubridate介绍.html#cb245-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">month =</span> <span class="fu">month</span>(<span class="fu">today</span>()),</span>
+<span id="cb245-5"><a href="lubridate介绍.html#cb245-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">day =</span> <span class="fu">day</span>(<span class="fu">today</span>()),</span>
+<span id="cb245-6"><a href="lubridate介绍.html#cb245-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">now</span>()),</span>
+<span id="cb245-7"><a href="lubridate介绍.html#cb245-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">min =</span> <span class="fu">minute</span>(<span class="fu">now</span>()),</span>
+<span id="cb245-8"><a href="lubridate介绍.html#cb245-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">sec =</span> <span class="fu">second</span>(<span class="fu">now</span>()),</span>
+<span id="cb245-9"><a href="lubridate介绍.html#cb245-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span></span>
+<span id="cb245-10"><a href="lubridate介绍.html#cb245-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>使用数值或字符直接创建日期时间</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="lubridate介绍.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="st">&#39;2020-01-09 09:15:40&#39;</span>,<span class="at">tz=</span><span class="st">&#39;asia/shanghai&#39;</span>)</span>
+<span id="cb246-2"><a href="lubridate介绍.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="st">&#39;2020-01-09&#39;</span>) <span class="co">#ymd格式</span></span>
+<span id="cb246-3"><a href="lubridate介绍.html#cb246-3" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb246-4"><a href="lubridate介绍.html#cb246-4" aria-hidden="true" tabindex="-1"></a><span class="co">#as_date(&#39;2020/01/09&#39;)</span></span>
+<span id="cb246-5"><a href="lubridate介绍.html#cb246-5" aria-hidden="true" tabindex="-1"></a><span class="co">#as_date(&#39;20200109&#39;)</span></span></code></pre></div>
+</div>
+<div id="日期时间组成部分" class="section level3" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> 日期时间组成部分</h3>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="lubridate介绍.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co">#获取年</span></span>
+<span id="cb247-2"><a href="lubridate介绍.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(<span class="fu">now</span>())  </span>
+<span id="cb247-3"><a href="lubridate介绍.html#cb247-3" aria-hidden="true" tabindex="-1"></a><span class="co">#获取月</span></span>
+<span id="cb247-4"><a href="lubridate介绍.html#cb247-4" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(<span class="fu">now</span>())</span>
+<span id="cb247-5"><a href="lubridate介绍.html#cb247-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 当前时间所在年份天数</span></span>
+<span id="cb247-6"><a href="lubridate介绍.html#cb247-6" aria-hidden="true" tabindex="-1"></a><span class="fu">yday</span>(<span class="fu">now</span>())</span>
+<span id="cb247-7"><a href="lubridate介绍.html#cb247-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 当前时间所在月天数</span></span>
+<span id="cb247-8"><a href="lubridate介绍.html#cb247-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mday</span>(<span class="fu">now</span>())</span>
+<span id="cb247-9"><a href="lubridate介绍.html#cb247-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 周几</span></span>
+<span id="cb247-10"><a href="lubridate介绍.html#cb247-10" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(<span class="fu">now</span>(),<span class="at">label =</span> <span class="cn">TRUE</span>,<span class="at">week_start =</span> <span class="dv">1</span>)</span>
+<span id="cb247-11"><a href="lubridate介绍.html#cb247-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 所在时刻</span></span>
+<span id="cb247-12"><a href="lubridate介绍.html#cb247-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(<span class="fu">now</span>())</span>
+<span id="cb247-13"><a href="lubridate介绍.html#cb247-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 所在时刻</span></span>
+<span id="cb247-14"><a href="lubridate介绍.html#cb247-14" aria-hidden="true" tabindex="-1"></a><span class="fu">minute</span>(<span class="fu">now</span>())</span>
+<span id="cb247-15"><a href="lubridate介绍.html#cb247-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 所在时刻</span></span>
+<span id="cb247-16"><a href="lubridate介绍.html#cb247-16" aria-hidden="true" tabindex="-1"></a><span class="fu">second</span>(<span class="fu">now</span>())</span></code></pre></div>
+</div>
+<div id="处理时区" class="section level3" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> 处理时区</h3>
+<p>数据时区与本地R环境一致时，数据中的时区没必要处理，但是当数据是跨时区的或者不同生产系统的时区不一致，我们需要将数据时区处理一致。</p>
+<p>1.时区查看</p>
+<p>时区和所用系统设置相关</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="lubridate介绍.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span>
+<span id="cb248-2"><a href="lubridate介绍.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="co"># windows 系统默认的时区 中国台北</span></span>
+<span id="cb248-3"><a href="lubridate介绍.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="co"># linux 上是&quot;Asia/Shanghai&quot;</span></span>
+<span id="cb248-4"><a href="lubridate介绍.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mac 上是&quot;Asia/Shanghai&quot;</span></span></code></pre></div>
+<p>这里还有一个奇怪的点，Windows系统下时区设置为<code>(UTC+08:00)北京,重庆,香港特别行政区,乌鲁木齐</code>,但是R返回的时区是<code>Asia/Taipei</code>。</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="lubridate介绍.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>()</span></code></pre></div>
+<p><code>now()</code>输出结果中，CST是时区概念。</p>
+<p>CST可以同时代表四个时间</p>
 <ul>
-<li>特殊用法</li>
+<li>Central Standard Time (USA) UT-6:00</li>
+<li>Central Standard Time (Australia) UT+9:30</li>
+<li>China Standard Time UT+8:00</li>
+<li>Cuba Standard Time UT-4:00</li>
 </ul>
-<p>特殊情况可以使用<code>sql()</code>函数</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="dbplyr.html#cb378-1" aria-hidden="true" tabindex="-1"></a>mf <span class="sc">%&gt;%</span> </span>
-<span id="cb378-2"><a href="dbplyr.html#cb378-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">factorial =</span> <span class="fu">sql</span>(<span class="st">&quot;x!&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb378-3"><a href="dbplyr.html#cb378-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code></pre></div>
+<p>2.时区调整</p>
+<p>lubridate中用<code>with_tz()</code>，<code>force_tz()</code>处理时区问题</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="lubridate介绍.html#cb250-1" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2020-12-13 15:30:30&quot;</span>)</span>
+<span id="cb250-2"><a href="lubridate介绍.html#cb250-2" aria-hidden="true" tabindex="-1"></a>time</span>
+<span id="cb250-3"><a href="lubridate介绍.html#cb250-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb250-4"><a href="lubridate介绍.html#cb250-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Changes printing</span></span>
+<span id="cb250-5"><a href="lubridate介绍.html#cb250-5" aria-hidden="true" tabindex="-1"></a><span class="fu">with_tz</span>(time, <span class="st">&quot;Asia/Shanghai&quot;</span>)</span>
+<span id="cb250-6"><a href="lubridate介绍.html#cb250-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Changes time</span></span>
+<span id="cb250-7"><a href="lubridate介绍.html#cb250-7" aria-hidden="true" tabindex="-1"></a><span class="fu">force_tz</span>(time, <span class="st">&quot;Asia/Shanghai&quot;</span>)</span></code></pre></div>
+</div>
+<div id="解析日期和时间" class="section level3" number="6.2.6">
+<h3><span class="header-section-number">6.2.6</span> 解析日期和时间</h3>
+<p>从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="lubridate介绍.html#cb251-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-2"><a href="lubridate介绍.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 整数和字符都可以</span></span>
+<span id="cb251-3"><a href="lubridate介绍.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200604</span>) </span>
+<span id="cb251-4"><a href="lubridate介绍.html#cb251-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;20200604&#39;</span>)</span>
+<span id="cb251-5"><a href="lubridate介绍.html#cb251-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="dv">06042020</span>)</span>
+<span id="cb251-6"><a href="lubridate介绍.html#cb251-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="dv">04062020</span>)</span></code></pre></div>
+<p>遇到unix 时间戳 可以用 .POSIXct()函数转化.</p>
+<p><a href="https://unixtime.51240.com/">unix在线转换</a></p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="lubridate介绍.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>)</span>
+<span id="cb252-2"><a href="lubridate介绍.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>))</span></code></pre></div>
+<p>unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="lubridate介绍.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
+<p>从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。</p>
+<p>如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.</p>
+<ul>
+<li><a href="https://home.kpn.nl/vanadovv/time/TZworld.html#asi" class="uri">https://home.kpn.nl/vanadovv/time/TZworld.html#asi</a></li>
+</ul>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="lubridate介绍.html#cb254-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span>
+<span id="cb254-2"><a href="lubridate介绍.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>()) <span class="co">#默认是UTC</span></span>
+<span id="cb254-3"><a href="lubridate介绍.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>(),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -576,8 +588,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="常见问题.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="参考资料-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="base-r-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="时间间隔.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

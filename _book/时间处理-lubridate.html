@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.8 dbplyr | 宇飞的R语言学习笔记</title>
+  <title>6 时间处理 lubridate | 宇飞的R语言学习笔记</title>
   <meta name="description" content="个人学习R语言笔记" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.8 dbplyr | 宇飞的R语言学习笔记" />
+  <meta property="og:title" content="6 时间处理 lubridate | 宇飞的R语言学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.8 dbplyr | 宇飞的R语言学习笔记" />
+  <meta name="twitter:title" content="6 时间处理 lubridate | 宇飞的R语言学习笔记" />
   
   <meta name="twitter:description" content="个人学习R语言笔记" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="常见问题.html"/>
-<link rel="next" href="参考资料-2.html"/>
+<link rel="prev" href="参考资料.html"/>
+<link rel="next" href="base-r-1.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -456,128 +456,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dbplyr" class="section level2" number="9.8">
-<h2><span class="header-section-number">9.8</span> dbplyr</h2>
-<p><code>dbplyr</code>将<code>dplyr</code>包的函数转化为<code>SQL</code>语句去服务器获取数据；在数据量较大、计算较多时，可以将远程连接数据库中的表当作内存中的数据框使用，当本机内存不够大时，这样做的好处不言而喻。</p>
-<p>至于为什么使用<code>dbplyr</code>而不是直接编写<code>SQL</code>,因为：</p>
-<ul>
-<li><p><code>dbplyr</code>写起来简洁高效，基本跟用<code>dplyr</code>没有差别</p></li>
-<li><p>能利用数据库所在服务器的算力，配合上并行计算，在处理大量数据时，大大加快速度。</p></li>
-<li><p>不同数据库的语法存在差异，当源数据存在不同数据库时，用R的<code>dbplyr</code>包清洗数据时能加快效率</p></li>
-<li><p>通过<code>dplyr</code>动词方便实现复杂的逻辑，当过程越多越复杂时<code>dbplyr</code>的优势越明显，不用一层层嵌套语句。</p></li>
-</ul>
-<div id="基础用法-1" class="section level3" number="9.8.1">
-<h3><span class="header-section-number">9.8.1</span> 基础用法</h3>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="dbplyr.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb373-2"><a href="dbplyr.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
-<span id="cb373-3"><a href="dbplyr.html#cb373-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-4"><a href="dbplyr.html#cb373-4" aria-hidden="true" tabindex="-1"></a>mf <span class="ot">&lt;-</span> <span class="fu">memdb_frame</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">2</span>)</span>
-<span id="cb373-5"><a href="dbplyr.html#cb373-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-6"><a href="dbplyr.html#cb373-6" aria-hidden="true" tabindex="-1"></a>mf <span class="sc">%&gt;%</span> </span>
-<span id="cb373-7"><a href="dbplyr.html#cb373-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb373-8"><a href="dbplyr.html#cb373-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> y <span class="sc">*</span> x, </span>
-<span id="cb373-9"><a href="dbplyr.html#cb373-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> a <span class="sc">^</span> <span class="dv">2</span>,</span>
-<span id="cb373-10"><a href="dbplyr.html#cb373-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb373-11"><a href="dbplyr.html#cb373-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="dbplyr.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb374-2"><a href="dbplyr.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="co">#connect database</span></span>
-<span id="cb374-3"><a href="dbplyr.html#cb374-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="at">path =</span> <span class="st">&quot;:memory:&quot;</span>)</span>
-<span id="cb374-4"><a href="dbplyr.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传数据</span></span>
-<span id="cb374-5"><a href="dbplyr.html#cb374-5" aria-hidden="true" tabindex="-1"></a><span class="fu">copy_to</span>(con, nycflights13<span class="sc">::</span>flights, <span class="st">&quot;flights&quot;</span>,</span>
-<span id="cb374-6"><a href="dbplyr.html#cb374-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">temporary =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb374-7"><a href="dbplyr.html#cb374-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">indexes =</span> <span class="fu">list</span>(</span>
-<span id="cb374-8"><a href="dbplyr.html#cb374-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>), </span>
-<span id="cb374-9"><a href="dbplyr.html#cb374-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;carrier&quot;</span>, </span>
-<span id="cb374-10"><a href="dbplyr.html#cb374-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tailnum&quot;</span>,</span>
-<span id="cb374-11"><a href="dbplyr.html#cb374-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;dest&quot;</span></span>
-<span id="cb374-12"><a href="dbplyr.html#cb374-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb374-13"><a href="dbplyr.html#cb374-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb374-14"><a href="dbplyr.html#cb374-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-15"><a href="dbplyr.html#cb374-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看库中全部表名</span></span>
-<span id="cb374-16"><a href="dbplyr.html#cb374-16" aria-hidden="true" tabindex="-1"></a><span class="co">#dbListTables(con)</span></span>
-<span id="cb374-17"><a href="dbplyr.html#cb374-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-18"><a href="dbplyr.html#cb374-18" aria-hidden="true" tabindex="-1"></a><span class="co">#tbl()引用表flights</span></span>
-<span id="cb374-19"><a href="dbplyr.html#cb374-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-20"><a href="dbplyr.html#cb374-20" aria-hidden="true" tabindex="-1"></a>flights_db <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">&quot;flights&quot;</span>)</span>
-<span id="cb374-21"><a href="dbplyr.html#cb374-21" aria-hidden="true" tabindex="-1"></a>flights_db</span>
-<span id="cb374-22"><a href="dbplyr.html#cb374-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-23"><a href="dbplyr.html#cb374-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 开始查询</span></span>
-<span id="cb374-24"><a href="dbplyr.html#cb374-24" aria-hidden="true" tabindex="-1"></a>flights_db <span class="sc">%&gt;%</span> <span class="fu">select</span>(year<span class="sc">:</span>day, dep_delay, arr_delay)</span>
-<span id="cb374-25"><a href="dbplyr.html#cb374-25" aria-hidden="true" tabindex="-1"></a>flights_db <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">240</span>)</span>
-<span id="cb374-26"><a href="dbplyr.html#cb374-26" aria-hidden="true" tabindex="-1"></a>flights_db <span class="sc">%&gt;%</span> </span>
-<span id="cb374-27"><a href="dbplyr.html#cb374-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb374-28"><a href="dbplyr.html#cb374-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">delay =</span> <span class="fu">mean</span>(dep_time))</span></code></pre></div>
-<p>部分简单不复杂的sql语句可以用dplyr的语法代替.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="dbplyr.html#cb375-1" aria-hidden="true" tabindex="-1"></a>tailnum_delay_db <span class="ot">&lt;-</span> flights_db <span class="sc">%&gt;%</span> </span>
-<span id="cb375-2"><a href="dbplyr.html#cb375-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tailnum) <span class="sc">%&gt;%</span></span>
-<span id="cb375-3"><a href="dbplyr.html#cb375-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb375-4"><a href="dbplyr.html#cb375-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay,<span class="at">na.rm =</span> T),</span>
-<span id="cb375-5"><a href="dbplyr.html#cb375-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb375-6"><a href="dbplyr.html#cb375-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb375-7"><a href="dbplyr.html#cb375-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(delay)) <span class="sc">%&gt;%</span></span>
-<span id="cb375-8"><a href="dbplyr.html#cb375-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">100</span>)</span>
-<span id="cb375-9"><a href="dbplyr.html#cb375-9" aria-hidden="true" tabindex="-1"></a>tailnum_delay_db</span>
-<span id="cb375-10"><a href="dbplyr.html#cb375-10" aria-hidden="true" tabindex="-1"></a>tailnum_delay_db <span class="sc">%&gt;%</span> <span class="fu">show_query</span>()</span>
-<span id="cb375-11"><a href="dbplyr.html#cb375-11" aria-hidden="true" tabindex="-1"></a>tailnum_delay <span class="ot">&lt;-</span> tailnum_delay_db <span class="sc">%&gt;%</span> <span class="fu">collect</span>() <span class="co">#把数据从数据库加载到R内存中</span></span></code></pre></div>
-</div>
-<div id="无法正确转化" class="section level3" number="9.8.2">
-<h3><span class="header-section-number">9.8.2</span> 无法正确转化</h3>
-<p>在使用过程中发现无法识别<code>lubridate</code>包的函数，但是<code>dbplyr</code>对于不认识的函数都将保留。</p>
-<p>利用这个特性，可以使用数据库中原生的相关函数：如下所示，在Oracle中<code>to_date</code>函数</p>
-<p>以下的自定义函数可以实现按照想要<code>group_by</code>的字段汇总金额、数量、吊牌额、折扣率等,其中关于时间周期的筛选就利用了该特性。</p>
-<ul>
-<li>date</li>
-</ul>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="dbplyr.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co">#个人写的争对目前公司数仓写的包中获取销售数据的一段代码</span></span>
-<span id="cb376-2"><a href="dbplyr.html#cb376-2" aria-hidden="true" tabindex="-1"></a>get_sales_data <span class="ot">&lt;-</span> <span class="cf">function</span>(con,...,start_date,end_date,brand_name,<span class="at">channel_type =</span> <span class="cn">NULL</span> ,<span class="at">area_name =</span> <span class="cn">NULL</span>,<span class="at">boss_name =</span> <span class="cn">NULL</span>,<span class="at">category_name =</span> <span class="cn">NULL</span>,<span class="at">shop_no =</span> <span class="cn">NULL</span>){</span>
-<span id="cb376-3"><a href="dbplyr.html#cb376-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-4"><a href="dbplyr.html#cb376-4" aria-hidden="true" tabindex="-1"></a>  store_table <span class="ot">&lt;-</span> <span class="fu">store</span>(con,<span class="at">brand_name =</span> brand_name,<span class="at">channel_type =</span> channel_type ,<span class="at">area_name =</span> area_name,<span class="at">boss_name =</span> boss_name,<span class="at">shop_no =</span> shop_no) <span class="co">#门店信息</span></span>
-<span id="cb376-5"><a href="dbplyr.html#cb376-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb376-6"><a href="dbplyr.html#cb376-6" aria-hidden="true" tabindex="-1"></a>  sku_table <span class="ot">&lt;-</span> <span class="fu">sku</span>(con,<span class="at">category_name =</span>  category_name ) <span class="co">#商品信息</span></span>
-<span id="cb376-7"><a href="dbplyr.html#cb376-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb376-8"><a href="dbplyr.html#cb376-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span>(con, <span class="fu">in_schema</span>(<span class="st">&quot;DW&quot;</span>, <span class="st">&quot;DW_SALE_SHOP_F&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#DW层</span></span>
-<span id="cb376-9"><a href="dbplyr.html#cb376-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY, BILL_MONEY2, PRICE) <span class="sc">%&gt;%</span></span>
-<span id="cb376-10"><a href="dbplyr.html#cb376-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">between</span>(</span>
-<span id="cb376-11"><a href="dbplyr.html#cb376-11" aria-hidden="true" tabindex="-1"></a>      BILL_DATE1, <span class="fu">to_date</span>(start_date, <span class="st">&quot;yyyy-mm-dd&quot;</span>),</span>
-<span id="cb376-12"><a href="dbplyr.html#cb376-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">to_date</span>(end_date, <span class="st">&quot;yyyy-mm-dd&quot;</span>)</span>
-<span id="cb376-13"><a href="dbplyr.html#cb376-13" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span></span>
-<span id="cb376-14"><a href="dbplyr.html#cb376-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(年 <span class="ot">=</span> <span class="fu">year</span>(BILL_DATE1), 月 <span class="ot">=</span> <span class="fu">month</span>(BILL_DATE1)) <span class="sc">%&gt;%</span></span>
-<span id="cb376-15"><a href="dbplyr.html#cb376-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inner_join</span>(store_table) <span class="sc">%&gt;%</span></span>
-<span id="cb376-16"><a href="dbplyr.html#cb376-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inner_join</span>(sku_table) <span class="sc">%&gt;%</span></span>
-<span id="cb376-17"><a href="dbplyr.html#cb376-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span></span>
-<span id="cb376-18"><a href="dbplyr.html#cb376-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb376-19"><a href="dbplyr.html#cb376-19" aria-hidden="true" tabindex="-1"></a>      金额 <span class="ot">=</span> <span class="fu">sum</span>(BILL_MONEY2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb376-20"><a href="dbplyr.html#cb376-20" aria-hidden="true" tabindex="-1"></a>      数量 <span class="ot">=</span> <span class="fu">sum</span>(BILL_QTY, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb376-21"><a href="dbplyr.html#cb376-21" aria-hidden="true" tabindex="-1"></a>      吊牌金额 <span class="ot">=</span> <span class="fu">sum</span>(BILL_QTY <span class="sc">*</span> PRICE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb376-22"><a href="dbplyr.html#cb376-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb376-23"><a href="dbplyr.html#cb376-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(折扣率<span class="sc">:</span><span class="er">=</span> 金额 <span class="sc">/</span> 吊牌金额) <span class="sc">%&gt;%</span> </span>
-<span id="cb376-24"><a href="dbplyr.html#cb376-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(...)</span>
-<span id="cb376-25"><a href="dbplyr.html#cb376-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-26"><a href="dbplyr.html#cb376-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-27"><a href="dbplyr.html#cb376-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># return(res)</span></span>
-<span id="cb376-28"><a href="dbplyr.html#cb376-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<ul>
-<li>like</li>
-</ul>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="dbplyr.html#cb377-1" aria-hidden="true" tabindex="-1"></a>mf <span class="sc">%&gt;%</span> </span>
-<span id="cb377-2"><a href="dbplyr.html#cb377-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x <span class="sc">%LIKE%</span> <span class="st">&quot;%foo%&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb377-3"><a href="dbplyr.html#cb377-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code></pre></div>
-<ul>
-<li>特殊用法</li>
-</ul>
-<p>特殊情况可以使用<code>sql()</code>函数</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="dbplyr.html#cb378-1" aria-hidden="true" tabindex="-1"></a>mf <span class="sc">%&gt;%</span> </span>
-<span id="cb378-2"><a href="dbplyr.html#cb378-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">factorial =</span> <span class="fu">sql</span>(<span class="st">&quot;x!&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb378-3"><a href="dbplyr.html#cb378-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code></pre></div>
-</div>
+<div id="时间处理-lubridate" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> 时间处理 lubridate</h1>
+<p>时间处理看起来是一件简单的事情，因为我们每天都在使用，但事实上是一件复杂的事情。闰年导致每年的天数并不一致，每天也并不是24小时。可以自行搜索“夏令时”，“为什么一天是24小时”或“Why do we have 24 hours in a day”等问题了解关于时间的概念。</p>
+<p>但是我们做数据分析，可能仅需要简单的计算时间，并不是必须了解“时间”。我们大部分时候能处理同环比，间隔天数等常规问题即可。</p>
+<p>由于能力有限以及处理的日期数据类型有限，本章节仅就常规问题解决提供一种解法。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="常见问题.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="参考资料-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="参考资料.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="base-r-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
