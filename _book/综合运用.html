@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-18" />
+<meta name="date" content="2021-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,14 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -446,27 +454,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>left</li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="综合运用.html#cb43-1" aria-hidden="true" tabindex="-1"></a>r_left <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
-<span id="cb43-2"><a href="综合运用.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">end =</span> num)</span>
-<span id="cb43-3"><a href="综合运用.html#cb43-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb43-4"><a href="综合运用.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
-<span id="cb43-5"><a href="综合运用.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;我是R&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="综合运用.html#cb215-1" aria-hidden="true" tabindex="-1"></a>r_left <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
+<span id="cb215-2"><a href="综合运用.html#cb215-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">end =</span> num)</span>
+<span id="cb215-3"><a href="综合运用.html#cb215-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb215-4"><a href="综合运用.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span></code></pre></div>
 <ul>
 <li>right</li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="综合运用.html#cb44-1" aria-hidden="true" tabindex="-1"></a>r_right <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
-<span id="cb44-2"><a href="综合运用.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="fu">str_length</span>(str) <span class="sc">-</span> num <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb44-3"><a href="综合运用.html#cb44-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-4"><a href="综合运用.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
-<span id="cb44-5"><a href="综合运用.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;学习者&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="综合运用.html#cb216-1" aria-hidden="true" tabindex="-1"></a>r_right <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
+<span id="cb216-2"><a href="综合运用.html#cb216-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="fu">str_length</span>(str) <span class="sc">-</span> num <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb216-3"><a href="综合运用.html#cb216-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb216-4"><a href="综合运用.html#cb216-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span></code></pre></div>
 <ul>
 <li>mid</li>
 </ul>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="综合运用.html#cb45-1" aria-hidden="true" tabindex="-1"></a>r_mid <span class="ot">&lt;-</span> <span class="cf">function</span>(str,start,num){</span>
-<span id="cb45-2"><a href="综合运用.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> start,<span class="at">end =</span> start <span class="sc">+</span> num <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb45-3"><a href="综合运用.html#cb45-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb45-4"><a href="综合运用.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb45-5"><a href="综合运用.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="综合运用.html#cb217-1" aria-hidden="true" tabindex="-1"></a>r_mid <span class="ot">&lt;-</span> <span class="cf">function</span>(str,start,num){</span>
+<span id="cb217-2"><a href="综合运用.html#cb217-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> start,<span class="at">end =</span> start <span class="sc">+</span> num <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb217-3"><a href="综合运用.html#cb217-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb217-4"><a href="综合运用.html#cb217-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span></code></pre></div>
 <p>其余函数可以尝试自行实现。</p>
 </div>
 <div id="使用案例" class="section level3" number="5.3.2">
@@ -475,44 +480,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>合并</li>
 </ul>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="综合运用.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb46-2"><a href="综合运用.html#cb46-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">rep</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">10</span>),<span class="at">letters=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
-<span id="cb46-3"><a href="综合运用.html#cb46-3" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span><span class="fu">str_c</span>(letters,<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>),by<span class="ot">=</span>.(col)][]</span>
-<span id="cb46-4"><a href="综合运用.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col letters              newcol</span></span>
-<span id="cb46-5"><a href="综合运用.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a       a a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-6"><a href="综合运用.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a       b a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-7"><a href="综合运用.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a       c a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-8"><a href="综合运用.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a       d a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-9"><a href="综合运用.html#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a       e a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-10"><a href="综合运用.html#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a       f a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-11"><a href="综合运用.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a       g a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-12"><a href="综合运用.html#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a       h a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-13"><a href="综合运用.html#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a       i a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb46-14"><a href="综合运用.html#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a       j a|b|c|d|e|f|g|h|i|j</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="综合运用.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb218-2"><a href="综合运用.html#cb218-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">rep</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">10</span>),<span class="at">letters=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb218-3"><a href="综合运用.html#cb218-3" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span><span class="fu">str_c</span>(letters,<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>),by<span class="ot">=</span>.(col)][]</span></code></pre></div>
 <ul>
 <li>拆解</li>
 </ul>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="综合运用.html#cb47-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-2"><a href="综合运用.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等</span></span>
-<span id="cb47-3"><a href="综合运用.html#cb47-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="st">&#39;a&#39;</span>,<span class="at">letters=</span><span class="fu">str_c</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>))</span>
-<span id="cb47-4"><a href="综合运用.html#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-5"><a href="综合运用.html#cb47-5" aria-hidden="true" tabindex="-1"></a>my_str_split <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb47-6"><a href="综合运用.html#cb47-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb47-7"><a href="综合运用.html#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(x,<span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">|&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()  <span class="co">#str_split 拆解出来是列表 需要向量化</span></span>
-<span id="cb47-8"><a href="综合运用.html#cb47-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb47-9"><a href="综合运用.html#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-10"><a href="综合运用.html#cb47-10" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(<span class="at">newcol=</span><span class="fu">my_str_split</span>(letters)),by<span class="ot">=</span>.(col)]</span>
-<span id="cb47-11"><a href="综合运用.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col newcol</span></span>
-<span id="cb47-12"><a href="综合运用.html#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a      a</span></span>
-<span id="cb47-13"><a href="综合运用.html#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a      b</span></span>
-<span id="cb47-14"><a href="综合运用.html#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a      c</span></span>
-<span id="cb47-15"><a href="综合运用.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a      d</span></span>
-<span id="cb47-16"><a href="综合运用.html#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a      e</span></span>
-<span id="cb47-17"><a href="综合运用.html#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a      f</span></span>
-<span id="cb47-18"><a href="综合运用.html#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a      g</span></span>
-<span id="cb47-19"><a href="综合运用.html#cb47-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a      h</span></span>
-<span id="cb47-20"><a href="综合运用.html#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a      i</span></span>
-<span id="cb47-21"><a href="综合运用.html#cb47-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a      j</span></span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="综合运用.html#cb219-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-2"><a href="综合运用.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="co">#工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等</span></span>
+<span id="cb219-3"><a href="综合运用.html#cb219-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="st">&#39;a&#39;</span>,<span class="at">letters=</span><span class="fu">str_c</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>))</span>
+<span id="cb219-4"><a href="综合运用.html#cb219-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-5"><a href="综合运用.html#cb219-5" aria-hidden="true" tabindex="-1"></a>my_str_split <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb219-6"><a href="综合运用.html#cb219-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb219-7"><a href="综合运用.html#cb219-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(x,<span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">|&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()  <span class="co">#str_split 拆解出来是列表 需要向量化</span></span>
+<span id="cb219-8"><a href="综合运用.html#cb219-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb219-9"><a href="综合运用.html#cb219-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-10"><a href="综合运用.html#cb219-10" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(<span class="at">newcol=</span><span class="fu">my_str_split</span>(letters)),by<span class="ot">=</span>.(col)]</span></code></pre></div>
 </div>
 </div>
             </section>

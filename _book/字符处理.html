@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-18" />
+<meta name="date" content="2021-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,14 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -441,16 +449,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="字符处理" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> 字符处理</h1>
 <p>实际数据分析工作中,经常需要处理字符串以便让数据整洁，符合分析需求。在我们常用的Excel或sql中也有处理字符串的经验，大部分时候截断、替换等基础实现就能满足我们的大部分字符处理需求。</p>
-<p>Excel中自带的字符串函数<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>，如:<code>left</code>,<code>len</code>,<code>mid</code>,<code>find</code>,<code>Proper</code>,<code>rept</code>,<code>trim</code>,<code>upper</code>,<code>substitute</code>,<code>concatenate</code>,以及<code>Excle</code>2019新出的<code>concat</code>,<code>TEXTJOIN</code>等字符函数，<code>TEXTJOIN</code>函数我个人比较喜欢用。在学习R的字符处理时候可以自行尝试实现以上相对应功能。</p>
-<p>但是Excel中字符处理功能存在一定局限性,没有直接可用的正则表达式<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>函数,在正则表达式本身就很困难的情况下，在VBA中实现较复杂的函数将会难上加难。</p>
+<p>Excel中自带的字符串函数<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>，如:<code>left</code>,<code>len</code>,<code>mid</code>,<code>find</code>,<code>Proper</code>,<code>rept</code>,<code>trim</code>,<code>upper</code>,<code>substitute</code>,<code>concatenate</code>,以及<code>Excle</code>2019新出的<code>concat</code>,<code>TEXTJOIN</code>等字符函数，<code>TEXTJOIN</code>函数我个人比较喜欢用。在学习R的字符处理时候可以自行尝试实现以上相对应功能。</p>
+<p>但是Excel中字符处理功能存在一定局限性,没有直接可用的正则表达式<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>函数,在正则表达式本身就很困难的情况下，在VBA中实现较复杂的函数将会难上加难。</p>
 <p>字符处理本人觉得本质上就是将字符定位后去实现不同的操作。所以觉得难点在于字符串中字符的定位，而实现这个功能就需要用到正则表达式，所以字符处理真正的难点在于正则表达式的编写，但是在我看来正则表达式想要掌握，难度过高，我们秉着随用随查的态度对待即可。</p>
 <p>因为大部分的数据分析工作者并不会面临太多复杂的字符处理工作，对大部分常规商业数据分析工作者面对的数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作。面对舆情监控，购物评价等纯文本情感分析工作，个人觉得对普通数据分析岗位有点超纲，所以本章节的字符处理仅仅是常规的字符处理。</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Excel中支持的[TEXT functions] (<a href="https://support.microsoft.com/zh-cn/office/%e6%96%87%e6%9c%ac%e5%87%bd%e6%95%b0%ef%bc%88%e5%8f%82%e8%80%83%ef%bc%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN&amp;rs=zh-CN&amp;ad=CN" class="uri">https://support.microsoft.com/zh-cn/office/%e6%96%87%e6%9c%ac%e5%87%bd%e6%95%b0%ef%bc%88%e5%8f%82%e8%80%83%ef%bc%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN&amp;rs=zh-CN&amp;ad=CN</a>)<a href="字符处理.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>正则表达式(regular expression)描述了一种字符串匹配的模式(pattern),查看帮助<code>?regex</code>。<a href="字符处理.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<ol start="5">
+<li id="fn5"><p>Excel中支持的[TEXT functions] (<a href="https://support.microsoft.com/zh-cn/office/%e6%96%87%e6%9c%ac%e5%87%bd%e6%95%b0%ef%bc%88%e5%8f%82%e8%80%83%ef%bc%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN&amp;rs=zh-CN&amp;ad=CN" class="uri">https://support.microsoft.com/zh-cn/office/%e6%96%87%e6%9c%ac%e5%87%bd%e6%95%b0%ef%bc%88%e5%8f%82%e8%80%83%ef%bc%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN&amp;rs=zh-CN&amp;ad=CN</a>)<a href="字符处理.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>正则表达式(regular expression)描述了一种字符串匹配的模式(pattern),查看帮助<code>?regex</code>。<a href="字符处理.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
