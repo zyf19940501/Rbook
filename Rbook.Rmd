@@ -1,5 +1,5 @@
 --- 
-title: "宇飞的R语言学习笔记"
+title: "R语言学习笔记"
 knit: "bookdown::render_book"
 author: "Yufei Zhong"
 date: "`r Sys.Date()`"
@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "个人学习R语言笔记"
+description: "宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。"
 ---
 ```{r include=FALSE, cache=FALSE}
 set.seed(1014)
@@ -29,54 +29,89 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
 
 
-# 说明
-
-```{r eval=TRUE,include=FALSE}
-a <- version
-```
-
-作为商业数据分析师，我学习使用`R`已经有较长一段时间，主要用`R`来处理数据，自动化报表，ETL，可视化等；另外用R包`shiny`做web看板。
+# 欢迎 {#welcome .unnumbered}
 
 
-本文是个人学习数据处理相关R包的笔记，主要从`tidyverse`系列以及`data.table`两套语法做数据处理的笔记。我在R中字符处理使用`stringr`包，日期时间计算用`lubridate`包。
+本文主要是我作为商业数据分析师的R语言学习笔记，主要是数据清洗相关包的介绍。
 
 
+使用R语言自动完成如下报表:
 
-```{r echo=FALSE,fig.align='center'}
-library(DiagrammeR)
-mermaid(diagram = "
-graph LR
-A[R数据处理] --> B[tidyverse]
-A-->C[data.table]
-A-->D[Database]
-A-->E[read and write data]
-A-->F[loop and iteration]
+```{r result= 'flextable-tbl-daily-report',echo=FALSE,warning=FALSE,message=FALSE}
+library(flextable)
+library(tidyverse)
+library(formattable)
 
-B-->B1[tidyr]
-B-->B2[dplyr]
-B-->B3[lubridate]
-B-->B4[stringr]
+dt <- openxlsx::read.xlsx('./data/welcome/flextable-data.xlsx')
+dt <- dt %>% mutate(
+across(c(当前销额,同比销额,当前销量,同比销量),formattable::comma,digits=0),
+across(c(`当前%`,`同比%`,`金额增长%`,`销量同比%`,`当前折扣`,`同比折扣`),formattable::percent,digits = 1)
+) %>% dplyr::select(1:12)
 
-C-->C1[read and write]
-C-->C2[f系列函数]
-C-->C3[set系列函数]
-C-->C4[misc]
-
-D-->D1[DBI]
-D-->D2[ROralce]
-
-E-->E1[readxl]
-E-->E2[readr]
-E-->E3[vroom]
-        
-",width =500,height = 1250)
+ft <- flextable(dt) %>% 
+  merge_v(j = ~一级部门) %>% 
+  bg(bg = "#e05297", part = "header") %>% 
+  color(color = "white", part = "header") %>% 
+  add_footer_lines(paste0('数据更新时间:',Sys.Date())) %>% 
+  #valign(valign = "top") %>%
+  theme_box() %>% 
+  align(j = 1:12, align = "center", part = 'body') %>% 
+  autofit()
+    
+ft
 ```
 
 
-`R`极大的拓展了数据处理能力,让我很轻松方便处理数据，有更多精力时间聚焦在具体问题上。但因个人能力有限，难免出现错误，如阅读中发现错误，欢迎联系本人更正。
+
+
+## 内容概要{#abstract .unnumbered}
+
+主要内容是为了将数据报表，数据报告，数据可视化等需求利用R语言自动化。
+
+- 数据导入导出
+- 数据操作 dplyr
+- 数据整洁 tidyr
+- 字符处理
+- 日期时间处理
+- 因子处理
+- 数据处理利器 data.table
+- 数据库使用
+- 循环结构
+- 循环迭代之purrr包介绍
+- 自定义函数功能
 
 
 
+
+
+## 授权说明 {#sec:licenses .unnumbered}
+
+::: {.rmdwarn data-latex="{警告}"}
+本书采用 [知识共享署名-非商业性使用-禁止演绎4.0国际许可协议](https://creativecommons.org/licenses/by-nc-nd/4.0/) 许可，请君自重。
+项目中代码使用 [MIT协议](https://github.com/zyf19940501/Rbook) 开源。
+:::
+
+
+
+
+## 运行信息{#session  .unnumbered}
+
+```{r}
+xfun::session_info(packages = c(
+  "knitr", "rmarkdown", "bookdown","collapse",
+  "data.table", "DT", "reactable","flextable",
+  "patchwork", "plotly", "shiny","formattable",
+  "ggplot2", "dplyr", "tidyverse","DBI","ROracle","dbplyr"
+), dependencies = FALSE)
+```
+
+
+
+## 关于本人{#author  .unnumbered}
+
+一名热爱R语言的商业数据分析师。`R`极大拓展了我数据处理能力,让我很轻松方便处理数据，有更多精力时间聚焦在具体问题上。
+
+因个人能力有限，本书难免出现错误，如发现错误，欢迎联系本人更正。
 
 
 Email: <598253220@qq.com> 
@@ -84,14 +119,6 @@ Email: <598253220@qq.com>
 微信公众号: 宇飞的世界 
 
 语雀: https://www.yuque.com/zyufei
-
-
-
-
-```{r}
-#查看版本信息
-sessionInfo()
-```
 
 
 <!--chapter:end:index.Rmd-->
@@ -118,7 +145,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 ```
 
 
-# 数据导入导出
+# 数据导入导出 {#data:read-write-description}
 
 
 作为一名普通的数据分析师，我日常接触最多的数据是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表，但最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有很明确操作数据的意义，没有代入感。在刚开始学习使用R做数据处理后，我就想使用自己的数据集来操作数据，用R去实现Excel的透视表或sql功能。这时就首先需要将原始数据导入[^loaddata]R中。
@@ -152,7 +179,7 @@ csv文件也被称作平面文件，结构简单，平面文件比结构文件�
 
 
 
-## readxl
+## readxl {#data:readxl}
 
 readxl软件包使R获取Excel数据变得方便简洁。与现有的软件包(例如：xlsx)相比，readxl没有外部依赖性，xlsx等包依赖java环境。readxl包容易在所有的操作系统安装使用。
 
@@ -280,7 +307,7 @@ list.files(path = 'data/read-write/')
 
 
 
-## writexl
+## writexl {#data:writexl}
 
 
 截止到2021年5月17日，writexl包功能比较简单，仅有输出Excel功能。快速、不依赖java和Excle是它绝对的优势，并且输出文件相比`openxlsx`包较小。
@@ -360,7 +387,7 @@ write_xlsx(df, 'universities.xlsx')
 unlink('universities.xlsx')
 ```
 
-## openxlsx
+## openxlsx {#data:openxlsx}
 
 openxlsx是当我需要定制输出Excel表格或报表时常用R包。目前该包的版本4.2.3，通过使用Rcpp加速，包的读写速度在Excel的百万级下是可接受状态，包的相关函数功能完善且简易好用，并且正在积极开发中，相信它以后功能会越来越强大。
 
@@ -670,7 +697,7 @@ R包openxlsx学习笔记:<https://www.yuque.com/docs/share/7a768e6f-95e0-417c-a9
 个人主页:<https://www.yuque.com/zyufei>
 
 
-## readr
+## readr {#data:readr}
 
 
 readr提供了一种快速友好的方式读取矩形数据[^矩形数据](如：csv,tsv,fwf)，且当读取大型数据集时默认有进度条显示。
@@ -812,7 +839,7 @@ write_csv(storms, "storms.csv.gz")
 当数据集前面行缺失值较多，readr自动猜数据列类型错误时，需要我们人为指定列类型；当编码时区等错误时，需指定`locale()`；以上是可能遇到的问题以及解决办法。
 
 
-## vroom
+## vroom {#data:vroom}
 
 vroom实现读取矩形数据到R中,如 comma separated(csv),tab separated(tsv), fixed width files(fwf)。该包的功能类似`readr::read_csv()`,`data.table::fread()`和`read.csv()`,但是对于许多数据集来说，`vroom::vroom()`读取速度会快得多。
 
@@ -895,7 +922,7 @@ vroom(file, col_select = c(model, cyl, gear))
 ```
 
 
-## Rstudio导入
+## Rstudio导入 {#data:rstudio-addins}
 
 
 利用rstudio导入数据，本质也是调用`readr`和`readxl`包，如下所示：
@@ -918,8 +945,8 @@ install.packages("datapasta")
 2.使用
 
 ![datapasta](picture/read-write/datapasta-copy.gif)
-
-## 文件路径
+ 
+## 文件路径 {#data:file-path}
 
 
 我们读取数据时都是读取某路径下的某文件，但是由于系统等原因，路径在不同系统下的表示方式不一致。
@@ -982,7 +1009,7 @@ setwd('C:/Users/zhongyf/Desktop/Rbook/data')
 getwd()
 ```
 
-## 拓展
+## 拓展 {#data:expand}
 
 1. feather项目地址<https://github.com/wesm/feather>
 
@@ -3226,26 +3253,34 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-# 时间处理 lubridate
+# 时间处理 {#datetime }
 
 时间处理看起来是一件简单的事情，因为我们每天都在使用，但事实上是一件复杂的事情。闰年导致每年的天数并不一致，每天也并不是24小时。可以自行搜索“夏令时”，“为什么一天是24小时”或"Why do we have 24 hours in a day"等问题了解关于时间的概念。
 
 但是我们做数据分析，可能仅需要简单的计算时间，并不是必须了解“时间”。我们大部分时候能处理同环比，间隔天数等常规问题即可。
 
-由于能力有限以及处理的日期数据类型有限，本章节仅就常规问题解决提供一种解法。
+由于能力有限以及处理的日期数据类型有限，本章节仅就常规商业数据分析中时间处理提供一种解决办法。
+
+本章主要分为三大部分：
+
+- Base R中时间处理函数
+
+- lubridate包提供的日期时间处理方法
+
+- 常规运用以及和Excel的时间系统对比
 
 
 
 
 
-## base R
+## base R {#datetime:base-R}
 
 R中内置Date,POSIXct和POSIXlt三个关于日期和时间的类[^类]。
 
 
 [^类]:类是面向对象编程的一个术语，一个对象通常有0个1个或多个类。在R中用`class()`函数查看所属对象的类。
 
-### Date
+### Date {#datetime:base-R-date}
 
 如果我们的数据结构中只有日期，没有时间，我们仅需要使用Date类。
 
@@ -3319,7 +3354,7 @@ seq(date3,date4,by="30 days")
 seq(date3,date4,by="8 weeks")
 ```
 
-### POSIXct
+### POSIXct {#datetime:base-R-POSIXct}
 
 如果在数据中有时间，最好使用该类；
 
@@ -3385,7 +3420,7 @@ tm2 - tm1
 
 
 
-### POSIXlt
+### POSIXlt {#datetime:base-R-POSIXlt}
 
 通过此类，我们可以很便捷提取时间中的特定成分。其中"ct"代表日历时间,"it"代表本地时间,该类对象是list(列表)。
 
@@ -3418,22 +3453,16 @@ trunc(t1,'min')
 
 
 
-## lubridate介绍
+## lubridate {#lubridate}
 
-`lubridate`包是对Base R中POSIXct类的封装。所以无论从函数名还是功能等方面，lubridate包中的函数功能更加清晰明了。获取当前日期、时间；拆解时间日期中的年、月、日、星期、计算年月天数，记录时刻等常用的时间日期功能，`lubridate`包中都有相对应的功能函数。
+`lubridate`包是对Base R中POSIXct类的封装。所以无论从函数名还是功能等方面，lubridate包中的函数功能更加清晰明了。从获取当前日期、时间，解析时间日期中的年、月、日、星期，计算年月间隔天数等常用的时间日期功能，`lubridate`包中都有相对应的功能函数。
 
-本人在处理时间时常用R包`lubridate`，本节将介绍包中部分函数用法。
-
-
-
-__Note:lubridate默认使用UTC时区__
-
-
----------------------------------------------------------------------------
+在处理日期时间数据时，我常用`lubridate`解决，本节将介绍包中部分函数用法。
 
 
 
-### 安装包
+
+### 安装包 {#lubridate:install}
 
 ```{r eval=FALSE}
 install.packages("tidyverse")
@@ -3449,7 +3478,7 @@ devtools::install_github("tidyverse/lubridate")
 library(lubridate,warn.conflicts = FALSE)
 ```
 
-### 当前时间日期
+### 当前时间日期 {#lubridate:current-datetime}
 
 - `now`函数
 
@@ -3474,12 +3503,32 @@ base::Sys.Date()
 
 
 
-### 构造日期或时间
+### 构造日期时间 {#lubridate:make-datetime}
 
-使用数值直接创建日期时间`make_date`和`make_datetime`函数默认时区为"UTC"
+使用数值直接创建日期时间。
+
+函数`make_date()`和`make_datetime()`函数默认时区[^lubridate默认时区]为"UTC"。
+
+[^lubridate默认时区]:lubridate包中大部分函数默认时区为“UTC”，在涉及时间处理时需要注意时区。
+
 
 ```{r eval=FALSE}
-make_date(year = year(today()), month = month(today()), day = day(today()), tz = "asia/shanghai")
+make_date(year = 2021, month = 5, day = 1, tz = "Asia/Shanghai")
+
+make_datetime(
+  year = 1970L,
+  month = 1L,
+  day = 1L,
+  hour = 0L,
+  min = 0L,
+  sec = 0,
+  tz = "Asia/Shanghai"
+)
+```
+
+- make_datetime
+
+```{r}
 make_datetime(
   year = year(today()),
   month = month(today()),
@@ -3489,10 +3538,10 @@ make_datetime(
   sec = second(now()),
   tz = "asia/shanghai"
 )
-
 ```
 
-使用数值或字符直接创建日期时间
+
+- as_datetime
 
 ```{r}
 as_datetime('2020-01-09 09:15:40',tz='asia/shanghai')
@@ -3503,7 +3552,50 @@ as_date('2020-01-09') #ymd格式
 ```
 
 
-### 日期时间组成部分
+### 解析日期时间
+
+从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
+
+```{r message=FALSE,warning=FALSE,echo=TRUE}
+
+# 整数和字符都可以
+ymd(20200604) 
+ymd('20200604')
+mdy(06042020)
+dmy(04062020)
+```
+
+遇到unix 时间戳 可以用 .POSIXct()函数转化.
+
+[unix在线转换](https://unixtime.51240.com/)
+
+```{r}
+.POSIXct(1591709615)
+ymd_hms(.POSIXct(1591709615))
+```
+
+unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区
+
+```{r}
+ymd_hms(.POSIXct(1591709615),tz = 'asia/shanghai')
+```
+
+
+从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。
+
+
+如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.
+
+* <https://home.kpn.nl/vanadovv/time/TZworld.html#asi>
+
+```{r}
+lubridate::now()
+as_datetime(now()) #默认是UTC
+as_datetime(now(),tz = 'asia/shanghai')
+```
+
+
+### 提取日期时间部分 {#lubridate:extracting-information}
 
 ```{r}
 #获取年
@@ -3526,7 +3618,7 @@ second(now())
 ```
 
 
-### 处理时区
+### 处理时区 {#lubridate:time-zones}
 
 数据时区与本地R环境一致时，数据中的时区没必要处理，但是当数据是跨时区的或者不同生产系统的时区不一致，我们需要将数据时区处理一致。
 
@@ -3574,52 +3666,9 @@ force_tz(time, "Asia/Shanghai")
 ```
 
 
-### 解析日期和时间
-
-从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
-
-```{r message=FALSE,warning=FALSE,echo=TRUE}
-
-# 整数和字符都可以
-ymd(20200604) 
-ymd('20200604')
-mdy(06042020)
-dmy(04062020)
-```
-
-遇到unix 时间戳 可以用 .POSIXct()函数转化.
-
-[unix在线转换](https://unixtime.51240.com/)
-
-```{r}
-.POSIXct(1591709615)
-ymd_hms(.POSIXct(1591709615))
-```
-
-unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区
-
-```{r}
-ymd_hms(.POSIXct(1591709615),tz = 'asia/shanghai')
-```
 
 
-从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。
-
-
-如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.
-
-* <https://home.kpn.nl/vanadovv/time/TZworld.html#asi>
-
-```{r}
-lubridate::now()
-as_datetime(now()) #默认是UTC
-as_datetime(now(),tz = 'asia/shanghai')
-```
-
-
-
-
-## 时间间隔
+### 时间间隔
 
 我们可以用`lubridate`将时间间隔保存为`interveal`类对象
 
@@ -3675,7 +3724,7 @@ int_aligns(int1, int2)
 int_diff(times)
 ```
 
-## 时间日期计算
+### 时间日期计算
 
 时间日期计算以`number line`为依据计算。原文是`Because the timeline is not as reliable as the number line`。
 
@@ -3740,7 +3789,7 @@ jan31 %m-% months(0:11)
 
 
 
-## 案例
+## 综合运用
 
 
 ### 年同环比

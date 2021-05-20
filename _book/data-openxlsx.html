@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.3 openxlsx | R语言学习笔记</title>
+  <meta name="description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.3 openxlsx | R语言学习笔记" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.3 openxlsx | R语言学习笔记" />
+  
+  <meta name="twitter:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  
+
+<meta name="author" content="Yufei Zhong" />
+
+
+<meta name="date" content="2021-05-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-writexl.html"/>
+<link rel="next" href="data-readr.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R学习笔记</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
+<ul>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>内容概要</a></li>
+<li class="chapter" data-level="" data-path="sec-licenses.html"><a href="sec-licenses.html"><i class="fa fa-check"></i>授权说明</a></li>
+<li class="chapter" data-level="" data-path="session.html"><a href="session.html"><i class="fa fa-check"></i>运行信息</a></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>关于本人</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="data-read-write-description.html"><a href="data-read-write-description.html"><i class="fa fa-check"></i><b>1</b> 数据导入导出</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-readxl.html"><a href="data-readxl.html"><i class="fa fa-check"></i><b>1.1</b> readxl</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="data-readxl.html"><a href="data-readxl.html#安装"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
+<li class="chapter" data-level="1.1.2" data-path="data-readxl.html"><a href="data-readxl.html#用法"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
+<li class="chapter" data-level="1.1.3" data-path="data-readxl.html"><a href="data-readxl.html#批量读取"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="1.1.4" data-path="data-readxl.html"><a href="data-readxl.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="data-writexl.html"><a href="data-writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="data-writexl.html"><a href="data-writexl.html#用法-1"><i class="fa fa-check"></i><b>1.2.1</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-openxlsx.html"><a href="data-openxlsx.html"><i class="fa fa-check"></i><b>1.3</b> openxlsx</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="data-openxlsx.html"><a href="data-openxlsx.html#安装-1"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
+<li class="chapter" data-level="1.3.2" data-path="data-openxlsx.html"><a href="data-openxlsx.html#基础功能"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
+<li class="chapter" data-level="1.3.3" data-path="data-openxlsx.html"><a href="data-openxlsx.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.4" data-path="data-openxlsx.html"><a href="data-openxlsx.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
+<li class="chapter" data-level="1.3.5" data-path="data-openxlsx.html"><a href="data-openxlsx.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="data-readr.html"><a href="data-readr.html"><i class="fa fa-check"></i><b>1.4</b> readr</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="data-readr.html"><a href="data-readr.html#安装-2"><i class="fa fa-check"></i><b>1.4.1</b> 安装</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data-readr.html"><a href="data-readr.html#用法-2"><i class="fa fa-check"></i><b>1.4.2</b> 用法</a></li>
+<li class="chapter" data-level="1.4.3" data-path="data-readr.html"><a href="data-readr.html#导出功能"><i class="fa fa-check"></i><b>1.4.3</b> 导出功能</a></li>
+<li class="chapter" data-level="1.4.4" data-path="data-readr.html"><a href="data-readr.html#总结-1"><i class="fa fa-check"></i><b>1.4.4</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="data-vroom.html"><a href="data-vroom.html"><i class="fa fa-check"></i><b>1.5</b> vroom</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="data-vroom.html"><a href="data-vroom.html#安装-3"><i class="fa fa-check"></i><b>1.5.1</b> 安装</a></li>
+<li class="chapter" data-level="1.5.2" data-path="data-vroom.html"><a href="data-vroom.html#用法-3"><i class="fa fa-check"></i><b>1.5.2</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html"><i class="fa fa-check"></i><b>1.6</b> Rstudio导入</a></li>
+<li class="chapter" data-level="1.7" data-path="data-file-path.html"><a href="data-file-path.html"><i class="fa fa-check"></i><b>1.7</b> 文件路径</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="data-file-path.html"><a href="data-file-path.html#指定路径"><i class="fa fa-check"></i><b>1.7.1</b> 指定路径</a></li>
+<li class="chapter" data-level="1.7.2" data-path="data-file-path.html"><a href="data-file-path.html#默认路径"><i class="fa fa-check"></i><b>1.7.2</b> 默认路径</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="data-expand.html"><a href="data-expand.html"><i class="fa fa-check"></i><b>1.8</b> 拓展</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>2</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="前言.html"><a href="前言.html"><i class="fa fa-check"></i><b>2.1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="前言.html"><a href="前言.html#安装-4"><i class="fa fa-check"></i><b>2.1.1</b> 安装</a></li>
+<li class="chapter" data-level="2.1.2" data-path="前言.html"><a href="前言.html#介绍"><i class="fa fa-check"></i><b>2.1.2</b> 介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="基础用法.html"><a href="基础用法.html"><i class="fa fa-check"></i><b>2.2</b> 基础用法</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="基础用法.html"><a href="基础用法.html#加载包"><i class="fa fa-check"></i><b>2.2.1</b> 加载包</a></li>
+<li class="chapter" data-level="2.2.2" data-path="基础用法.html"><a href="基础用法.html#filter"><i class="fa fa-check"></i><b>2.2.2</b> filter</a></li>
+<li class="chapter" data-level="2.2.3" data-path="基础用法.html"><a href="基础用法.html#select"><i class="fa fa-check"></i><b>2.2.3</b> select</a></li>
+<li class="chapter" data-level="2.2.4" data-path="基础用法.html"><a href="基础用法.html#rename"><i class="fa fa-check"></i><b>2.2.4</b> rename</a></li>
+<li class="chapter" data-level="2.2.5" data-path="基础用法.html"><a href="基础用法.html#relocate"><i class="fa fa-check"></i><b>2.2.5</b> relocate</a></li>
+<li class="chapter" data-level="2.2.6" data-path="基础用法.html"><a href="基础用法.html#mutate"><i class="fa fa-check"></i><b>2.2.6</b> mutate</a></li>
+<li class="chapter" data-level="2.2.7" data-path="基础用法.html"><a href="基础用法.html#arrange"><i class="fa fa-check"></i><b>2.2.7</b> arrange</a></li>
+<li class="chapter" data-level="2.2.8" data-path="基础用法.html"><a href="基础用法.html#summarise"><i class="fa fa-check"></i><b>2.2.8</b> summarise</a></li>
+<li class="chapter" data-level="2.2.9" data-path="基础用法.html"><a href="基础用法.html#group_by"><i class="fa fa-check"></i><b>2.2.9</b> group_by</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="表操作.html"><a href="表操作.html"><i class="fa fa-check"></i><b>2.3</b> 表操作</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="表操作.html"><a href="表操作.html#基础"><i class="fa fa-check"></i><b>2.3.1</b> 基础</a></li>
+<li class="chapter" data-level="2.3.2" data-path="表操作.html"><a href="表操作.html#多表操作"><i class="fa fa-check"></i><b>2.3.2</b> 多表操作</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="列操作.html"><a href="列操作.html"><i class="fa fa-check"></i><b>2.4</b> 列操作</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="列操作.html"><a href="列操作.html#基本操作"><i class="fa fa-check"></i><b>2.4.1</b> 基本操作</a></li>
+<li class="chapter" data-level="2.4.2" data-path="列操作.html"><a href="列操作.html#多种函数功能"><i class="fa fa-check"></i><b>2.4.2</b> 多种函数功能</a></li>
+<li class="chapter" data-level="2.4.3" data-path="列操作.html"><a href="列操作.html#当前列"><i class="fa fa-check"></i><b>2.4.3</b> 当前列</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="行操作.html"><a href="行操作.html"><i class="fa fa-check"></i><b>2.5</b> 行操作</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="行操作.html"><a href="行操作.html#构造数据集"><i class="fa fa-check"></i><b>2.5.1</b> 构造数据集</a></li>
+<li class="chapter" data-level="2.5.2" data-path="行操作.html"><a href="行操作.html#行汇总统计"><i class="fa fa-check"></i><b>2.5.2</b> 行汇总统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="分组操作.html"><a href="分组操作.html"><i class="fa fa-check"></i><b>2.6</b> 分组操作</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="分组操作.html"><a href="分组操作.html#添加分组"><i class="fa fa-check"></i><b>2.6.1</b> 添加分组</a></li>
+<li class="chapter" data-level="2.6.2" data-path="分组操作.html"><a href="分组操作.html#删除分组变量"><i class="fa fa-check"></i><b>2.6.2</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.6.3" data-path="分组操作.html"><a href="分组操作.html#动词"><i class="fa fa-check"></i><b>2.6.3</b> 动词</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="常用函数.html"><a href="常用函数.html"><i class="fa fa-check"></i><b>2.7</b> 常用函数</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="常用函数.html"><a href="常用函数.html#条件判断"><i class="fa fa-check"></i><b>2.7.1</b> 条件判断</a></li>
+<li class="chapter" data-level="2.7.2" data-path="常用函数.html"><a href="常用函数.html#case_when"><i class="fa fa-check"></i><b>2.7.2</b> case_when</a></li>
+<li class="chapter" data-level="2.7.3" data-path="常用函数.html"><a href="常用函数.html#计数函数"><i class="fa fa-check"></i><b>2.7.3</b> 计数函数</a></li>
+<li class="chapter" data-level="2.7.4" data-path="常用函数.html"><a href="常用函数.html#排序函数"><i class="fa fa-check"></i><b>2.7.4</b> 排序函数</a></li>
+<li class="chapter" data-level="2.7.5" data-path="常用函数.html"><a href="常用函数.html#提取向量"><i class="fa fa-check"></i><b>2.7.5</b> 提取向量</a></li>
+<li class="chapter" data-level="2.7.6" data-path="常用函数.html"><a href="常用函数.html#group-系列"><i class="fa fa-check"></i><b>2.7.6</b> group 系列</a></li>
+<li class="chapter" data-level="2.7.7" data-path="常用函数.html"><a href="常用函数.html#其它函数"><i class="fa fa-check"></i><b>2.7.7</b> 其它函数</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="用dplyr编程.html"><a href="用dplyr编程.html"><i class="fa fa-check"></i><b>2.8</b> 用<code>dplyr</code>编程</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="用dplyr编程.html"><a href="用dplyr编程.html#案例"><i class="fa fa-check"></i><b>2.8.1</b> 案例</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="安装-5.html"><a href="安装-5.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
+<li class="chapter" data-level="3.2.2" data-path="主要功能.html"><a href="主要功能.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
+<li class="chapter" data-level="3.2.3" data-path="主要功能.html"><a href="主要功能.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
+<li class="chapter" data-level="3.2.4" data-path="主要功能.html"><a href="主要功能.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
+<li class="chapter" data-level="3.2.5" data-path="主要功能.html"><a href="主要功能.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
+<li class="chapter" data-level="3.2.6" data-path="主要功能.html"><a href="主要功能.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
+<li class="chapter" data-level="3.2.7" data-path="主要功能.html"><a href="主要功能.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="字符处理.html"><a href="字符处理.html"><i class="fa fa-check"></i><b>4</b> 字符处理</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>4.1</b> base R</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="base-r.html"><a href="base-r.html#单双引号"><i class="fa fa-check"></i><b>4.1.1</b> 单双引号</a></li>
+<li class="chapter" data-level="4.1.2" data-path="base-r.html"><a href="base-r.html#转义"><i class="fa fa-check"></i><b>4.1.2</b> 转义</a></li>
+<li class="chapter" data-level="4.1.3" data-path="base-r.html"><a href="base-r.html#常用函数-1"><i class="fa fa-check"></i><b>4.1.3</b> 常用函数</a></li>
+<li class="chapter" data-level="4.1.4" data-path="base-r.html"><a href="base-r.html#新特性"><i class="fa fa-check"></i><b>4.1.4</b> 新特性</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>4.2</b> stringr</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="stringr.html"><a href="stringr.html#安装-6"><i class="fa fa-check"></i><b>4.2.1</b> 安装</a></li>
+<li class="chapter" data-level="4.2.2" data-path="stringr.html"><a href="stringr.html#基本使用"><i class="fa fa-check"></i><b>4.2.2</b> 基本使用</a></li>
+<li class="chapter" data-level="4.2.3" data-path="stringr.html"><a href="stringr.html#常用函数-2"><i class="fa fa-check"></i><b>4.2.3</b> 常用函数</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="综合运用.html"><a href="综合运用.html"><i class="fa fa-check"></i><b>4.3</b> 综合运用</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="综合运用.html"><a href="综合运用.html#实现excel函数"><i class="fa fa-check"></i><b>4.3.1</b> 实现excel函数</a></li>
+<li class="chapter" data-level="4.3.2" data-path="综合运用.html"><a href="综合运用.html#使用案例"><i class="fa fa-check"></i><b>4.3.2</b> 使用案例</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="base和stringr.html"><a href="base和stringr.html"><i class="fa fa-check"></i><b>4.4</b> base和stringr</a></li>
+<li class="chapter" data-level="4.5" data-path="参考资料.html"><a href="参考资料.html"><i class="fa fa-check"></i><b>4.5</b> 参考资料</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="datetime.html"><a href="datetime.html"><i class="fa fa-check"></i><b>5</b> 时间处理</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datetime-base-R.html"><a href="datetime-base-R.html"><i class="fa fa-check"></i><b>5.1</b> base R</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="datetime-base-R.html"><a href="datetime-base-R.html#datetime:base-R-date"><i class="fa fa-check"></i><b>5.1.1</b> Date</a></li>
+<li class="chapter" data-level="5.1.2" data-path="datetime-base-R.html"><a href="datetime-base-R.html#datetime:base-R-POSIXct"><i class="fa fa-check"></i><b>5.1.2</b> POSIXct</a></li>
+<li class="chapter" data-level="5.1.3" data-path="datetime-base-R.html"><a href="datetime-base-R.html#datetime:base-R-POSIXlt"><i class="fa fa-check"></i><b>5.1.3</b> POSIXlt</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>5.2</b> lubridate</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="lubridate.html"><a href="lubridate.html#lubridate:install"><i class="fa fa-check"></i><b>5.2.1</b> 安装包</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
+<li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
+<li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
+<li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
+<li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
+<li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="补充资料.html"><a href="补充资料.html"><i class="fa fa-check"></i><b>5.4</b> 补充资料</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="补充资料.html"><a href="补充资料.html#excel-and-r"><i class="fa fa-check"></i><b>5.4.1</b> Excel and R</a></li>
+<li class="chapter" data-level="5.4.2" data-path="补充资料.html"><a href="补充资料.html#参考资料-1"><i class="fa fa-check"></i><b>5.4.2</b> 参考资料</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> forcats</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="创建因子.html"><a href="创建因子.html"><i class="fa fa-check"></i><b>6.1</b> 创建因子</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>7.1</b> 基础介绍</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>7.1.1</b> 读取数据</a></li>
+<li class="chapter" data-level="7.1.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>7.1.2</b> 基本格式</a></li>
+<li class="chapter" data-level="7.1.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>7.1.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="7.1.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>7.1.4</b> 行列筛选总结</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>7.2</b> 常规操作</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>7.2.1</b> 行筛选</a></li>
+<li class="chapter" data-level="7.2.2" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>7.2.2</b> 新增更新列</a></li>
+<li class="chapter" data-level="7.2.3" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>7.2.3</b> 排序</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="常用函数-3.html"><a href="常用函数-3.html"><i class="fa fa-check"></i><b>7.3</b> 常用函数</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="常用函数-3.html"><a href="常用函数-3.html#特殊符号"><i class="fa fa-check"></i><b>7.3.1</b> 特殊符号</a></li>
+<li class="chapter" data-level="7.3.2" data-path="常用函数-3.html"><a href="常用函数-3.html#排序函数-1"><i class="fa fa-check"></i><b>7.3.2</b> 排序函数</a></li>
+<li class="chapter" data-level="7.3.3" data-path="常用函数-3.html"><a href="常用函数-3.html#非重复计数"><i class="fa fa-check"></i><b>7.3.3</b> 非重复计数</a></li>
+<li class="chapter" data-level="7.3.4" data-path="常用函数-3.html"><a href="常用函数-3.html#判断函数"><i class="fa fa-check"></i><b>7.3.4</b> 判断函数</a></li>
+<li class="chapter" data-level="7.3.5" data-path="常用函数-3.html"><a href="常用函数-3.html#交集-差集-合并"><i class="fa fa-check"></i><b>7.3.5</b> 交集 差集 合并</a></li>
+<li class="chapter" data-level="7.3.6" data-path="常用函数-3.html"><a href="常用函数-3.html#长宽转换"><i class="fa fa-check"></i><b>7.3.6</b> 长宽转换</a></li>
+<li class="chapter" data-level="7.3.7" data-path="常用函数-3.html"><a href="常用函数-3.html#表连接"><i class="fa fa-check"></i><b>7.3.7</b> 表连接</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>7.4</b> 高级函数</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>7.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="7.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>7.4.2</b> rleid</a></li>
+<li class="chapter" data-level="7.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>7.4.3</b> shift</a></li>
+<li class="chapter" data-level="7.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>7.4.4</b> J</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="小技巧.html"><a href="小技巧.html"><i class="fa fa-check"></i><b>7.5</b> 小技巧</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="小技巧.html"><a href="小技巧.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>7.5.1</b> 用{}抑制中间过程输出</a></li>
+<li class="chapter" data-level="7.5.2" data-path="小技巧.html"><a href="小技巧.html#使用打印data.table"><i class="fa fa-check"></i><b>7.5.2</b> 使用[]打印data.table</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>7.6</b> 运用</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>7.6.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="7.6.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>7.6.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="7.6.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>7.6.3</b> 行列转变</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>8</b> database</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>8.1</b> 安装数据库</a></li>
+<li class="chapter" data-level="8.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>8.2</b> DBI</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="dbi.html"><a href="dbi.html#安装-7"><i class="fa fa-check"></i><b>8.2.1</b> 安装</a></li>
+<li class="chapter" data-level="8.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>8.2.2</b> 连接数据库</a></li>
+<li class="chapter" data-level="8.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>8.2.3</b> 执行sql任务</a></li>
+<li class="chapter" data-level="8.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>8.2.4</b> 函数介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="odbc包.html"><a href="odbc包.html"><i class="fa fa-check"></i><b>8.3</b> odbc包</a></li>
+<li class="chapter" data-level="8.4" data-path="rodbc包.html"><a href="rodbc包.html"><i class="fa fa-check"></i><b>8.4</b> RODBC包</a></li>
+<li class="chapter" data-level="8.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>8.5</b> ROracle包</a></li>
+<li class="chapter" data-level="8.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>8.6</b> RMySQL包</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-8"><i class="fa fa-check"></i><b>8.6.1</b> 安装</a></li>
+<li class="chapter" data-level="8.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>8.6.2</b> 连接使用</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="常见问题.html"><a href="常见问题.html"><i class="fa fa-check"></i><b>8.7</b> 常见问题</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="常见问题.html"><a href="常见问题.html#乱码问题"><i class="fa fa-check"></i><b>8.7.1</b> 乱码问题</a></li>
+<li class="chapter" data-level="8.7.2" data-path="常见问题.html"><a href="常见问题.html#无法连接问题"><i class="fa fa-check"></i><b>8.7.2</b> 无法连接问题</a></li>
+<li class="chapter" data-level="8.7.3" data-path="常见问题.html"><a href="常见问题.html#远程连接"><i class="fa fa-check"></i><b>8.7.3</b> 远程连接</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="dbplyr.html"><a href="dbplyr.html"><i class="fa fa-check"></i><b>8.8</b> dbplyr</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="dbplyr.html"><a href="dbplyr.html#基础用法-1"><i class="fa fa-check"></i><b>8.8.1</b> 基础用法</a></li>
+<li class="chapter" data-level="8.8.2" data-path="dbplyr.html"><a href="dbplyr.html#无法正确转化"><i class="fa fa-check"></i><b>8.8.2</b> 无法正确转化</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="参考资料-2.html"><a href="参考资料-2.html"><i class="fa fa-check"></i><b>8.9</b> 参考资料</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="loop-structure.html"><a href="loop-structure.html"><i class="fa fa-check"></i><b>9</b> Loop structure</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="简单示例.html"><a href="简单示例.html"><i class="fa fa-check"></i><b>9.1</b> 简单示例</a></li>
+<li class="chapter" data-level="9.2" data-path="循环基础.html"><a href="循环基础.html"><i class="fa fa-check"></i><b>9.2</b> 循环基础</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="循环基础.html"><a href="循环基础.html#循环结构"><i class="fa fa-check"></i><b>9.2.1</b> 循环结构</a></li>
+<li class="chapter" data-level="9.2.2" data-path="循环基础.html"><a href="循环基础.html#next-break-用法"><i class="fa fa-check"></i><b>9.2.2</b> next break 用法</a></li>
+<li class="chapter" data-level="9.2.3" data-path="循环基础.html"><a href="循环基础.html#嵌套循环"><i class="fa fa-check"></i><b>9.2.3</b> 嵌套循环</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="循环变化.html"><a href="循环变化.html"><i class="fa fa-check"></i><b>9.3</b> 循环变化</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="循环变化.html"><a href="循环变化.html#修改已有对象"><i class="fa fa-check"></i><b>9.3.1</b> 修改已有对象</a></li>
+<li class="chapter" data-level="9.3.2" data-path="循环变化.html"><a href="循环变化.html#循环模式"><i class="fa fa-check"></i><b>9.3.2</b> 循环模式</a></li>
+<li class="chapter" data-level="9.3.3" data-path="循环变化.html"><a href="循环变化.html#未知长度输出"><i class="fa fa-check"></i><b>9.3.3</b> 未知长度输出</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>10</b> Iteration</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="简单用法.html"><a href="简单用法.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
+<li class="chapter" data-level="10.2" data-path="map系列常用函数.html"><a href="map系列常用函数.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
+<li class="chapter" data-level="10.3" data-path="归约累计函数.html"><a href="归约累计函数.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
+<li class="chapter" data-level="10.4" data-path="安全函数.html"><a href="安全函数.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
+<li class="chapter" data-level="10.5" data-path="映射多个参数.html"><a href="映射多个参数.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
+<li class="chapter" data-level="10.6" data-path="其他函数介绍.html"><a href="其他函数介绍.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="define-function.html"><a href="define-function.html"><i class="fa fa-check"></i><b>11</b> define function</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="简单示例-1.html"><a href="简单示例-1.html"><i class="fa fa-check"></i><b>11.1</b> 简单示例</a></li>
+<li class="chapter" data-level="11.2" data-path="条件执行.html"><a href="条件执行.html"><i class="fa fa-check"></i><b>11.2</b> 条件执行</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="条件执行.html"><a href="条件执行.html#多条件执行"><i class="fa fa-check"></i><b>11.2.1</b> 多条件执行</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="函数参数-1.html"><a href="函数参数-1.html"><i class="fa fa-check"></i><b>11.3</b> 函数参数</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="函数参数-1.html"><a href="函数参数-1.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
+<li class="chapter" data-level="11.3.2" data-path="函数参数-1.html"><a href="函数参数-1.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
+<li class="chapter" data-level="11.3.3" data-path="函数参数-1.html"><a href="函数参数-1.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="返回值.html"><a href="返回值.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="返回值.html"><a href="返回值.html#显式返回"><i class="fa fa-check"></i><b>11.4.1</b> 显式返回</a></li>
+<li class="chapter" data-level="11.4.2" data-path="返回值.html"><a href="返回值.html#编写管道函数"><i class="fa fa-check"></i><b>11.4.2</b> 编写管道函数</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="环境.html"><a href="环境.html"><i class="fa fa-check"></i><b>11.5</b> 环境</a></li>
+<li class="chapter" data-level="11.6" data-path="拓展部分.html"><a href="拓展部分.html"><i class="fa fa-check"></i><b>11.6</b> 拓展部分</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://gitee.com/zhongyufei/Rbook" target="blank">gitee地址</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言学习笔记</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data:openxlsx" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> openxlsx</h2>
+<p>openxlsx是当我需要定制输出Excel表格或报表时常用R包。目前该包的版本4.2.3，通过使用Rcpp加速，包的读写速度在Excel的百万级下是可接受状态，包的相关函数功能完善且简易好用，并且正在积极开发中，相信它以后功能会越来越强大。</p>
+<p>项目官方地址:<a href="https://ycphs.github.io/openxlsx/index.html" class="uri">https://ycphs.github.io/openxlsx/index.html</a></p>
+<p>个人感觉主要优势：</p>
+<ul>
+<li>不依赖java环境</li>
+<li>读写速度可接受</li>
+<li>可设置条件格式，与Excel中『开始』选项卡的条件格式功能接近</li>
+<li>可批量插入ggplot2图</li>
+<li>可插入公式</li>
+<li>可渲染大部分Excel格式，并且效率相比部分python包高效</li>
+<li>可添加页眉页脚以及其他格式，方便直接打印</li>
+<li>功能稳定可用并且在积极开发中</li>
+</ul>
+<p>版本信息查看</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data-openxlsx.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;openxlsx&quot;</span>)</span></code></pre></div>
+<p>本人公众号:宇飞的世界中有更加详细的阐述:<a href="https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ" class="uri">https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ</a></p>
+<div id="安装-1" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> 安装</h3>
+<p>稳定版</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-openxlsx.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 稳定版</span></span>
+<span id="cb20-2"><a href="data-openxlsx.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>, <span class="at">repos =</span> <span class="st">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span>)</span></code></pre></div>
+<p>开发版</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-openxlsx.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;Rcpp&quot;</span>, <span class="st">&quot;devtools&quot;</span>), <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-2"><a href="data-openxlsx.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb21-3"><a href="data-openxlsx.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;ycphs/openxlsx&quot;</span>)</span></code></pre></div>
+</div>
+<div id="基础功能" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> 基础功能</h3>
+<p>本文仅呈现基础功能部分，即读写EXCEL文件。其它功能，请查阅项目官方地址或微信公众号文章<a href="https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ">R包-openxlsx-学习笔记</a></p>
+<div id="读取excel" class="section level4" number="1.3.2.1">
+<h4><span class="header-section-number">1.3.2.1</span> 读取Excel</h4>
+<p>read.xlsx()是读取函数，主要参数如下：</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-openxlsx.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb22-2"><a href="data-openxlsx.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(</span>
+<span id="cb22-3"><a href="data-openxlsx.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  xlsxFile,</span>
+<span id="cb22-4"><a href="data-openxlsx.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span>,</span>
+<span id="cb22-5"><a href="data-openxlsx.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="dv">1</span>,</span>
+<span id="cb22-6"><a href="data-openxlsx.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-7"><a href="data-openxlsx.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">rowNames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-8"><a href="data-openxlsx.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">detectDates =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-9"><a href="data-openxlsx.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">skipEmptyRows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-10"><a href="data-openxlsx.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">skipEmptyCols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-11"><a href="data-openxlsx.html#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-12"><a href="data-openxlsx.html#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-13"><a href="data-openxlsx.html#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-14"><a href="data-openxlsx.html#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep.names =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb22-15"><a href="data-openxlsx.html#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">namedRegion =</span> <span class="cn">NULL</span>,</span>
+<span id="cb22-16"><a href="data-openxlsx.html#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>,</span>
+<span id="cb22-17"><a href="data-openxlsx.html#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">fillMergedCells =</span> <span class="cn">FALSE</span></span>
+<span id="cb22-18"><a href="data-openxlsx.html#cb22-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>以上参数中需要注意 ：</p>
+<p>detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。</p>
+<p>fillMergedCells参数，当你读取的表格中存在合并单元格，将用值填充其他全部单元格,如下所示：</p>
+<p><img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/merge-cell-xlsx.png" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-openxlsx.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(<span class="st">&#39;./test.xlsx&#39;</span>,<span class="at">detectDates =</span> <span class="cn">TRUE</span>,<span class="at">fillMergedCells =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>读取后如下所示：</p>
+<div class="figure">
+<img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/R-read-merge-xlsx.png" alt="" />
+<p class="caption">openxlsx-merge-xlsx</p>
+</div>
+<p>readWorkbook()也可以读取Excel表格数据，参数与read.xlsx基本一致。</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-openxlsx.html#cb24-1" aria-hidden="true" tabindex="-1"></a>xlsxFile <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;readTest.xlsx&quot;</span>, <span class="at">package =</span> <span class="st">&quot;openxlsx&quot;</span>)</span>
+<span id="cb24-2"><a href="data-openxlsx.html#cb24-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">readWorkbook</span>(<span class="at">xlsxFile =</span> xlsxFile, <span class="at">sheet =</span> <span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div id="写入excel" class="section level4" number="1.3.2.2">
+<h4><span class="header-section-number">1.3.2.2</span> 写入Excel</h4>
+<p>数据清洗完之后，或者是透视表已经完成，需要将结果从R导出到Excle，这时就利用函数将结果数据集data.frame写入Excle中。</p>
+<p>write.xlsx()函数写入</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-openxlsx.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(iris, <span class="at">file =</span> <span class="st">&quot;writeXLSX1.xlsx&quot;</span>, <span class="at">colNames =</span> <span class="cn">TRUE</span>, <span class="at">borders =</span> <span class="st">&quot;columns&quot;</span>)</span></code></pre></div>
+<p>带格式输出</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-openxlsx.html#cb26-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">&lt;-</span> <span class="fu">createStyle</span>(</span>
+<span id="cb26-2"><a href="data-openxlsx.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">textDecoration =</span> <span class="st">&quot;BOLD&quot;</span>, <span class="at">fontColour =</span> <span class="st">&quot;#FFFFFF&quot;</span>, <span class="at">fontSize =</span> <span class="dv">12</span>,</span>
+<span id="cb26-3"><a href="data-openxlsx.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fontName =</span> <span class="st">&quot;Arial Narrow&quot;</span>, <span class="at">fgFill =</span> <span class="st">&quot;#4F80BD&quot;</span></span>
+<span id="cb26-4"><a href="data-openxlsx.html#cb26-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-5"><a href="data-openxlsx.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run: </span></span>
+<span id="cb26-6"><a href="data-openxlsx.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(iris,</span>
+<span id="cb26-7"><a href="data-openxlsx.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;writeXLSX3.xlsx&quot;</span>,</span>
+<span id="cb26-8"><a href="data-openxlsx.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>, <span class="at">borders =</span> <span class="st">&quot;rows&quot;</span>, <span class="at">headerStyle =</span> hs</span>
+<span id="cb26-9"><a href="data-openxlsx.html#cb26-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+</div>
+<div id="带格式输出" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> 带格式输出</h3>
+<p>输出过程共四步，第一步创建workbook,第二步添加sheet,第三步写入数据，第四步保存workbook。在输出的过程中可以通过<code>addStyle()</code>、<code>createStyle()</code>或<code>conditionalFormatting</code>添加格式或条件格式。</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data-openxlsx.html#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">d=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb27-2"><a href="data-openxlsx.html#cb27-2" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(<span class="at">creator =</span> <span class="st">&#39;zhongyf&#39;</span>,<span class="at">title =</span> <span class="st">&#39;test&#39;</span>)</span>
+<span id="cb27-3"><a href="data-openxlsx.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb,<span class="at">sheetName =</span> <span class="st">&#39;test&#39;</span>)</span>
+<span id="cb27-4"><a href="data-openxlsx.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb,<span class="at">sheet =</span> <span class="st">&#39;test&#39;</span>,<span class="at">x =</span> df)</span>
+<span id="cb27-5"><a href="data-openxlsx.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;test.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>我们以上面四步输出的方式，查看包自带的例子。</p>
+<ul>
+<li><p>createWorkbook()</p></li>
+<li><p>addWorksheet()</p></li>
+<li><p>writeData()</p></li>
+<li><p>saveWorkbook()</p></li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-openxlsx.html#cb28-1" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(<span class="st">&quot;Fred&quot;</span>)</span>
+<span id="cb28-2"><a href="data-openxlsx.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="data-openxlsx.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Add 3 worksheets</span></span>
+<span id="cb28-4"><a href="data-openxlsx.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 1&quot;</span>)</span>
+<span id="cb28-5"><a href="data-openxlsx.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 2&quot;</span>, <span class="at">gridLines =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb28-6"><a href="data-openxlsx.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 3&quot;</span>, <span class="at">tabColour =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb28-7"><a href="data-openxlsx.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 4&quot;</span>, <span class="at">gridLines =</span> <span class="cn">FALSE</span>, <span class="at">tabColour =</span> <span class="st">&quot;#4F81BD&quot;</span>)</span>
+<span id="cb28-8"><a href="data-openxlsx.html#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="data-openxlsx.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Headers and Footers</span></span>
+<span id="cb28-10"><a href="data-openxlsx.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 5&quot;</span>,</span>
+<span id="cb28-11"><a href="data-openxlsx.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;ODD HEAD LEFT&quot;</span>, <span class="st">&quot;ODD HEAD CENTER&quot;</span>, <span class="st">&quot;ODD HEAD RIGHT&quot;</span>),</span>
+<span id="cb28-12"><a href="data-openxlsx.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;ODD FOOT RIGHT&quot;</span>, <span class="st">&quot;ODD FOOT CENTER&quot;</span>, <span class="st">&quot;ODD FOOT RIGHT&quot;</span>),</span>
+<span id="cb28-13"><a href="data-openxlsx.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenHeader =</span> <span class="fu">c</span>(<span class="st">&quot;EVEN HEAD LEFT&quot;</span>, <span class="st">&quot;EVEN HEAD CENTER&quot;</span>, <span class="st">&quot;EVEN HEAD RIGHT&quot;</span>),</span>
+<span id="cb28-14"><a href="data-openxlsx.html#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenFooter =</span> <span class="fu">c</span>(<span class="st">&quot;EVEN FOOT RIGHT&quot;</span>, <span class="st">&quot;EVEN FOOT CENTER&quot;</span>, <span class="st">&quot;EVEN FOOT RIGHT&quot;</span>),</span>
+<span id="cb28-15"><a href="data-openxlsx.html#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="st">&quot;TOP&quot;</span>, <span class="st">&quot;OF FIRST&quot;</span>, <span class="st">&quot;PAGE&quot;</span>),</span>
+<span id="cb28-16"><a href="data-openxlsx.html#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="st">&quot;BOTTOM&quot;</span>, <span class="st">&quot;OF FIRST&quot;</span>, <span class="st">&quot;PAGE&quot;</span>)</span>
+<span id="cb28-17"><a href="data-openxlsx.html#cb28-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-18"><a href="data-openxlsx.html#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="data-openxlsx.html#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 6&quot;</span>,</span>
+<span id="cb28-20"><a href="data-openxlsx.html#cb28-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;&amp;[Date]&quot;</span>, <span class="st">&quot;ALL HEAD CENTER 2&quot;</span>, <span class="st">&quot;&amp;[Page] / &amp;[Pages]&quot;</span>),</span>
+<span id="cb28-21"><a href="data-openxlsx.html#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;&amp;[Path]&amp;[File]&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;&amp;[Tab]&quot;</span>),</span>
+<span id="cb28-22"><a href="data-openxlsx.html#cb28-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;Center Header of First Page&quot;</span>, <span class="cn">NA</span>),</span>
+<span id="cb28-23"><a href="data-openxlsx.html#cb28-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;Center Footer of First Page&quot;</span>, <span class="cn">NA</span>)</span>
+<span id="cb28-24"><a href="data-openxlsx.html#cb28-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-25"><a href="data-openxlsx.html#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-26"><a href="data-openxlsx.html#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 7&quot;</span>,</span>
+<span id="cb28-27"><a href="data-openxlsx.html#cb28-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">c</span>(<span class="st">&quot;ALL HEAD LEFT 2&quot;</span>, <span class="st">&quot;ALL HEAD CENTER 2&quot;</span>, <span class="st">&quot;ALL HEAD RIGHT 2&quot;</span>),</span>
+<span id="cb28-28"><a href="data-openxlsx.html#cb28-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="fu">c</span>(<span class="st">&quot;ALL FOOT RIGHT 2&quot;</span>, <span class="st">&quot;ALL FOOT CENTER 2&quot;</span>, <span class="st">&quot;ALL FOOT RIGHT 2&quot;</span>)</span>
+<span id="cb28-29"><a href="data-openxlsx.html#cb28-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-30"><a href="data-openxlsx.html#cb28-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-31"><a href="data-openxlsx.html#cb28-31" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb, <span class="st">&quot;Sheet 8&quot;</span>,</span>
+<span id="cb28-32"><a href="data-openxlsx.html#cb28-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="fu">c</span>(<span class="st">&quot;FIRST ONLY L&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;FIRST ONLY R&quot;</span>),</span>
+<span id="cb28-33"><a href="data-openxlsx.html#cb28-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="st">&quot;FIRST ONLY L&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;FIRST ONLY R&quot;</span>)</span>
+<span id="cb28-34"><a href="data-openxlsx.html#cb28-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-35"><a href="data-openxlsx.html#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-36"><a href="data-openxlsx.html#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Need data on worksheet to see all headers and footers</span></span>
+<span id="cb28-37"><a href="data-openxlsx.html#cb28-37" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb28-38"><a href="data-openxlsx.html#cb28-38" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb28-39"><a href="data-openxlsx.html#cb28-39" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">7</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb28-40"><a href="data-openxlsx.html#cb28-40" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">8</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb28-41"><a href="data-openxlsx.html#cb28-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-42"><a href="data-openxlsx.html#cb28-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Save workbook</span></span>
+<span id="cb28-43"><a href="data-openxlsx.html#cb28-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run: </span></span>
+<span id="cb28-44"><a href="data-openxlsx.html#cb28-44" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;addWorksheetExample.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="函数参数" class="section level3" number="1.3.4">
+<h3><span class="header-section-number">1.3.4</span> 函数参数</h3>
+<p>输出Excel的过程分为四步，本小节主要拆解<code>createWorkbook</code>，<code>addWorksheet</code>,<code>writeDataTable</code>,<code>saveWorkbook</code>四个函数的参数以及用法。</p>
+<ul>
+<li>createWorkbook</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-openxlsx.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">createWorkbook</span>(</span>
+<span id="cb29-2"><a href="data-openxlsx.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">creator =</span> <span class="fu">ifelse</span>(.Platform<span class="sc">$</span>OS.type <span class="sc">==</span> <span class="st">&quot;windows&quot;</span>, <span class="fu">Sys.getenv</span>(<span class="st">&quot;USERNAME&quot;</span>),</span>
+<span id="cb29-3"><a href="data-openxlsx.html#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.getenv</span>(<span class="st">&quot;USER&quot;</span>)),</span>
+<span id="cb29-4"><a href="data-openxlsx.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="cn">NULL</span>,</span>
+<span id="cb29-5"><a href="data-openxlsx.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="cn">NULL</span>,</span>
+<span id="cb29-6"><a href="data-openxlsx.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">category =</span> <span class="cn">NULL</span></span>
+<span id="cb29-7"><a href="data-openxlsx.html#cb29-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-openxlsx.html#cb30-1" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(</span>
+<span id="cb30-2"><a href="data-openxlsx.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">creator =</span> <span class="st">&quot;宇飞的世界&quot;</span>,</span>
+<span id="cb30-3"><a href="data-openxlsx.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;标题&quot;</span>,</span>
+<span id="cb30-4"><a href="data-openxlsx.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">&quot;主题&quot;</span>,</span>
+<span id="cb30-5"><a href="data-openxlsx.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">category =</span> <span class="st">&quot;类别目录&quot;</span></span>
+<span id="cb30-6"><a href="data-openxlsx.html#cb30-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>addWorksheet</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-openxlsx.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(</span>
+<span id="cb31-2"><a href="data-openxlsx.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  wb,</span>
+<span id="cb31-3"><a href="data-openxlsx.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  sheetName,</span>
+<span id="cb31-4"><a href="data-openxlsx.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gridLines =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-5"><a href="data-openxlsx.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">tabColour =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-6"><a href="data-openxlsx.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">zoom =</span> <span class="dv">100</span>,</span>
+<span id="cb31-7"><a href="data-openxlsx.html#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-8"><a href="data-openxlsx.html#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-9"><a href="data-openxlsx.html#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenHeader =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-10"><a href="data-openxlsx.html#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">evenFooter =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-11"><a href="data-openxlsx.html#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstHeader =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-12"><a href="data-openxlsx.html#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="cn">NULL</span>,</span>
+<span id="cb31-13"><a href="data-openxlsx.html#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">visible =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-14"><a href="data-openxlsx.html#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">paperSize =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.paperSize&quot;</span>, <span class="at">default =</span> <span class="dv">9</span>),</span>
+<span id="cb31-15"><a href="data-openxlsx.html#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">orientation =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.orientation&quot;</span>, <span class="at">default =</span> <span class="st">&quot;portrait&quot;</span>),</span>
+<span id="cb31-16"><a href="data-openxlsx.html#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">vdpi =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.vdpi&quot;</span>, <span class="at">default =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.dpi&quot;</span>, <span class="at">default =</span> <span class="dv">300</span>)),</span>
+<span id="cb31-17"><a href="data-openxlsx.html#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">hdpi =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.hdpi&quot;</span>, <span class="at">default =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.dpi&quot;</span>, <span class="at">default =</span> <span class="dv">300</span>))</span>
+<span id="cb31-18"><a href="data-openxlsx.html#cb31-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data-openxlsx.html#cb32-1" aria-hidden="true" tabindex="-1"></a>gridLines参数：表格中是否有网格线，在Excle『视图』选项卡下面的网格线去除打勾的效果一致</span>
+<span id="cb32-2"><a href="data-openxlsx.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="data-openxlsx.html#cb32-3" aria-hidden="true" tabindex="-1"></a>tabColour参数：输出表格sheet标签颜色</span>
+<span id="cb32-4"><a href="data-openxlsx.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="data-openxlsx.html#cb32-5" aria-hidden="true" tabindex="-1"></a>zoom：发大缩小，默认是100，可选范围10<span class="dv">-400</span></span>
+<span id="cb32-6"><a href="data-openxlsx.html#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="data-openxlsx.html#cb32-7" aria-hidden="true" tabindex="-1"></a>header<span class="sc">:</span>页眉 长度为3的字符向量，左、中、右三个位置，用Na可跳过一位置，以下页眉页脚相同。</span>
+<span id="cb32-8"><a href="data-openxlsx.html#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="data-openxlsx.html#cb32-9" aria-hidden="true" tabindex="-1"></a>footer<span class="sc">:</span> 页脚</span>
+<span id="cb32-10"><a href="data-openxlsx.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="data-openxlsx.html#cb32-11" aria-hidden="true" tabindex="-1"></a>evenHeader<span class="sc">:</span> 每页页眉</span>
+<span id="cb32-12"><a href="data-openxlsx.html#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="data-openxlsx.html#cb32-13" aria-hidden="true" tabindex="-1"></a>evenFooter<span class="sc">:</span> 每页页脚</span>
+<span id="cb32-14"><a href="data-openxlsx.html#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="data-openxlsx.html#cb32-15" aria-hidden="true" tabindex="-1"></a>firstHeader<span class="sc">:</span> 第一页页眉</span>
+<span id="cb32-16"><a href="data-openxlsx.html#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="data-openxlsx.html#cb32-17" aria-hidden="true" tabindex="-1"></a>firstFooter<span class="sc">:</span> 第一页页脚</span>
+<span id="cb32-18"><a href="data-openxlsx.html#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="data-openxlsx.html#cb32-19" aria-hidden="true" tabindex="-1"></a>visible<span class="sc">:</span>sheet是否隐藏，如果为否sheet将被隐藏</span>
+<span id="cb32-20"><a href="data-openxlsx.html#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="data-openxlsx.html#cb32-21" aria-hidden="true" tabindex="-1"></a>paperSize<span class="sc">:</span>页面大小,详见 ?pageSetup </span>
+<span id="cb32-22"><a href="data-openxlsx.html#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-23"><a href="data-openxlsx.html#cb32-23" aria-hidden="true" tabindex="-1"></a>orientation<span class="sc">:</span>One of <span class="st">&quot;portrait&quot;</span> or <span class="st">&quot;landscape&quot;</span> 不清楚干嘛用</span>
+<span id="cb32-24"><a href="data-openxlsx.html#cb32-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-25"><a href="data-openxlsx.html#cb32-25" aria-hidden="true" tabindex="-1"></a>vdpi<span class="sc">:</span> 屏幕分辨率 默认值即可，不用调整</span>
+<span id="cb32-26"><a href="data-openxlsx.html#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-27"><a href="data-openxlsx.html#cb32-27" aria-hidden="true" tabindex="-1"></a>hdpi<span class="sc">:</span> 屏幕分辨率 默认值即可，不用调整</span></code></pre></div>
+<ul>
+<li>writeDataTable</li>
+</ul>
+<p>writeDataTable()函数将data.frame写入Excel。</p>
+<p>wb:即createWorkbook()函数创建</p>
+<ul>
+<li>saveWorkbook</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-openxlsx.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, file, <span class="at">overwrite =</span> <span class="cn">FALSE</span>, <span class="at">returnValue =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>参数较为简单，wb即上文中的workbook对象，file即输出的文件名，overwrite即如果存在是否覆盖，returnValue如果设置为TRUE，返回TRUE代表保存成功</p>
+</div>
+<div id="总结" class="section level3" number="1.3.5">
+<h3><span class="header-section-number">1.3.5</span> 总结</h3>
+<p>openxlsx包功能较为强大，更多详细用法大家可自行探索，或关注我的语雀笔记，笔记会不定期持续更新。</p>
+<p>R包openxlsx学习笔记:<a href="https://www.yuque.com/docs/share/7a768e6f-95e0-417c-a9b5-dfc8862dc6be?#" class="uri">https://www.yuque.com/docs/share/7a768e6f-95e0-417c-a9b5-dfc8862dc6be?#</a></p>
+<p>个人主页:<a href="https://www.yuque.com/zyufei" class="uri">https://www.yuque.com/zyufei</a></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-writexl.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-readr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Rbook.pdf", "Rbook.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
