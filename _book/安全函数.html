@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -458,12 +458,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="安全函数" class="section level2" number="10.4">
 <h2><span class="header-section-number">10.4</span> 安全函数</h2>
 <p>possibly() 和 safely(),当循环时候遇到错误报错导致整个程序停止,这不是我们想要的。</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="安全函数.html#cb398-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">&#39;5&#39;</span>)</span>
-<span id="cb398-2"><a href="安全函数.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l,<span class="cf">function</span>(.x) .x<span class="sc">+</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="安全函数.html#cb403-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">&#39;5&#39;</span>)</span>
+<span id="cb403-2"><a href="安全函数.html#cb403-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l,<span class="cf">function</span>(.x) .x<span class="sc">+</span><span class="dv">1</span>)</span></code></pre></div>
 <p>以上程序将会报错,不能正确得到结果。</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="安全函数.html#cb399-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">&#39;5&#39;</span>)</span>
-<span id="cb399-2"><a href="安全函数.html#cb399-2" aria-hidden="true" tabindex="-1"></a>test_fun <span class="ot">&lt;-</span> <span class="fu">safely</span>(<span class="cf">function</span>(.x) .x<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb399-3"><a href="安全函数.html#cb399-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l,test_fun)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="安全函数.html#cb404-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">&#39;5&#39;</span>)</span>
+<span id="cb404-2"><a href="安全函数.html#cb404-2" aria-hidden="true" tabindex="-1"></a>test_fun <span class="ot">&lt;-</span> <span class="fu">safely</span>(<span class="cf">function</span>(.x) .x<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb404-3"><a href="安全函数.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l,test_fun)</span></code></pre></div>
 <p>用safely()函数将原始function包裹起来,即使执行过程中遇到错误也可以完成整个任务,不会因为中途报错停止,在大型循环过程中,如爬虫过程中比较实用。</p>
 </div>
             </section>

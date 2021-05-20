@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -459,15 +459,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.5</span> 环境</h2>
 <p>环境是复杂的,建议阅读原文.</p>
 <p>The last component of a function is its environment. This is not something you need to understand deeply when you first start writing functions. However, it’s important to know a little bit about environments because they are crucial to how functions work. The environment of a function controls how R finds the value associated with a name. For example, take this function:</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="环境.html#cb422-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb422-2"><a href="环境.html#cb422-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb422-3"><a href="环境.html#cb422-3" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="环境.html#cb427-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb427-2"><a href="环境.html#cb427-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb427-3"><a href="环境.html#cb427-3" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
 <p>在很多其他的编程语言中这样定义函数是错误的，因为没有定义<code>y</code>.在R中,这是有效的代码,因为R使用称为<code>lexical scoping</code>的方式寻找关联值.在函数内部没有定义<code>y</code>,将在上一层环境中查看<code>y</code>:</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="环境.html#cb423-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb423-2"><a href="环境.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
-<span id="cb423-3"><a href="环境.html#cb423-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb423-4"><a href="环境.html#cb423-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb423-5"><a href="环境.html#cb423-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="环境.html#cb428-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb428-2"><a href="环境.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
+<span id="cb428-3"><a href="环境.html#cb428-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-4"><a href="环境.html#cb428-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb428-5"><a href="环境.html#cb428-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span></code></pre></div>
 <p>具体详细的资料请查阅：</p>
 <p><a href="https://r4ds.had.co.nz/functions.html#environment" class="uri">https://r4ds.had.co.nz/functions.html#environment</a></p>
 <p><a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a></p>

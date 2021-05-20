@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -459,32 +459,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.6</span> 拓展部分</h2>
 <p>在我之前工作中遇到需要分组计算时,我想要编写一个函数实现某些功能,但是分组的group_by()字段不一样时,导致代码没办法复用。</p>
 <p>参考资料：<a href="https://dplyr.tidyverse.org/articles/programming.html" class="uri">https://dplyr.tidyverse.org/articles/programming.html</a></p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="拓展部分.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tidyverse)</span></span>
-<span id="cb424-2"><a href="拓展部分.html#cb424-2" aria-hidden="true" tabindex="-1"></a>mean_mpg <span class="ot">=</span> <span class="cf">function</span>(data, group_col) {</span>
-<span id="cb424-3"><a href="拓展部分.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb424-4"><a href="拓展部分.html#cb424-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(group_col) <span class="sc">%&gt;%</span></span>
-<span id="cb424-5"><a href="拓展部分.html#cb424-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_mpg =</span> <span class="fu">mean</span>(mpg))</span>
-<span id="cb424-6"><a href="拓展部分.html#cb424-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb424-7"><a href="拓展部分.html#cb424-7" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mean_mpg</span>(cyl)</span>
-<span id="cb424-8"><a href="拓展部分.html#cb424-8" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mean_mpg</span>(gear)</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="拓展部分.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tidyverse)</span></span>
+<span id="cb429-2"><a href="拓展部分.html#cb429-2" aria-hidden="true" tabindex="-1"></a>mean_mpg <span class="ot">=</span> <span class="cf">function</span>(data, group_col) {</span>
+<span id="cb429-3"><a href="拓展部分.html#cb429-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb429-4"><a href="拓展部分.html#cb429-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(group_col) <span class="sc">%&gt;%</span></span>
+<span id="cb429-5"><a href="拓展部分.html#cb429-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_mpg =</span> <span class="fu">mean</span>(mpg))</span>
+<span id="cb429-6"><a href="拓展部分.html#cb429-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb429-7"><a href="拓展部分.html#cb429-7" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mean_mpg</span>(cyl)</span>
+<span id="cb429-8"><a href="拓展部分.html#cb429-8" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mean_mpg</span>(gear)</span></code></pre></div>
 <p>当编写如下函数时,代码将成功运行</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="拓展部分.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="co">#自定义函数</span></span>
-<span id="cb425-2"><a href="拓展部分.html#cb425-2" aria-hidden="true" tabindex="-1"></a>my_summarise3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group_var,mean_var, sd_var) {</span>
-<span id="cb425-3"><a href="拓展部分.html#cb425-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb425-4"><a href="拓展部分.html#cb425-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>({{ group_var }}) <span class="sc">%&gt;%</span> </span>
-<span id="cb425-5"><a href="拓展部分.html#cb425-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>({{ mean_var }}), <span class="at">sd =</span> <span class="fu">mean</span>({{ sd_var }}))</span>
-<span id="cb425-6"><a href="拓展部分.html#cb425-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb425-7"><a href="拓展部分.html#cb425-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb425-8"><a href="拓展部分.html#cb425-8" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">my_summarise3</span>(<span class="at">data =</span> mtcars,<span class="at">group_var =</span> cyl,<span class="at">mean_var =</span> carb,<span class="at">sd_var =</span> gear)</span>
-<span id="cb425-9"><a href="拓展部分.html#cb425-9" aria-hidden="true" tabindex="-1"></a><span class="fu">my_summarise3</span>(<span class="at">data =</span> mtcars,<span class="at">group_var =</span> am,<span class="at">mean_var =</span> carb,<span class="at">sd_var =</span> gear)</span>
-<span id="cb425-10"><a href="拓展部分.html#cb425-10" aria-hidden="true" tabindex="-1"></a><span class="co">#正常写法</span></span>
-<span id="cb425-11"><a href="拓展部分.html#cb425-11" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb425-12"><a href="拓展部分.html#cb425-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb425-13"><a href="拓展部分.html#cb425-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(carb),<span class="at">sd=</span><span class="fu">mean</span>(gear))</span>
-<span id="cb425-14"><a href="拓展部分.html#cb425-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb425-15"><a href="拓展部分.html#cb425-15" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(res1,res2)</span>
-<span id="cb425-16"><a href="拓展部分.html#cb425-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb425-17"><a href="拓展部分.html#cb425-17" aria-hidden="true" tabindex="-1"></a><span class="co">#res1 和res2 结果完全一致</span></span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="拓展部分.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="co">#自定义函数</span></span>
+<span id="cb430-2"><a href="拓展部分.html#cb430-2" aria-hidden="true" tabindex="-1"></a>my_summarise3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group_var,mean_var, sd_var) {</span>
+<span id="cb430-3"><a href="拓展部分.html#cb430-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb430-4"><a href="拓展部分.html#cb430-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>({{ group_var }}) <span class="sc">%&gt;%</span> </span>
+<span id="cb430-5"><a href="拓展部分.html#cb430-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>({{ mean_var }}), <span class="at">sd =</span> <span class="fu">mean</span>({{ sd_var }}))</span>
+<span id="cb430-6"><a href="拓展部分.html#cb430-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb430-7"><a href="拓展部分.html#cb430-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb430-8"><a href="拓展部分.html#cb430-8" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">my_summarise3</span>(<span class="at">data =</span> mtcars,<span class="at">group_var =</span> cyl,<span class="at">mean_var =</span> carb,<span class="at">sd_var =</span> gear)</span>
+<span id="cb430-9"><a href="拓展部分.html#cb430-9" aria-hidden="true" tabindex="-1"></a><span class="fu">my_summarise3</span>(<span class="at">data =</span> mtcars,<span class="at">group_var =</span> am,<span class="at">mean_var =</span> carb,<span class="at">sd_var =</span> gear)</span>
+<span id="cb430-10"><a href="拓展部分.html#cb430-10" aria-hidden="true" tabindex="-1"></a><span class="co">#正常写法</span></span>
+<span id="cb430-11"><a href="拓展部分.html#cb430-11" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb430-12"><a href="拓展部分.html#cb430-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb430-13"><a href="拓展部分.html#cb430-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(carb),<span class="at">sd=</span><span class="fu">mean</span>(gear))</span>
+<span id="cb430-14"><a href="拓展部分.html#cb430-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb430-15"><a href="拓展部分.html#cb430-15" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(res1,res2)</span>
+<span id="cb430-16"><a href="拓展部分.html#cb430-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb430-17"><a href="拓展部分.html#cb430-17" aria-hidden="true" tabindex="-1"></a><span class="co">#res1 和res2 结果完全一致</span></span></code></pre></div>
 <p>以上my_summarise3()函数可以按照需求任意指定聚合汇总字段。</p>
 
 </div>

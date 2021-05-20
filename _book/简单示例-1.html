@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -458,19 +458,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="简单示例-1" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> 简单示例</h2>
 <p>给函数取一个合适名字是很难的事情,徐尽可能从函数名称看出你实现的功能.</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="简单示例-1.html#cb407-1" aria-hidden="true" tabindex="-1"></a>add_ten <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb407-2"><a href="简单示例-1.html#cb407-2" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">10</span></span>
-<span id="cb407-3"><a href="简单示例-1.html#cb407-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(res) <span class="co">#可以不用显示返回</span></span>
-<span id="cb407-4"><a href="简单示例-1.html#cb407-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb407-5"><a href="简单示例-1.html#cb407-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_ten</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="简单示例-1.html#cb412-1" aria-hidden="true" tabindex="-1"></a>add_ten <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb412-2"><a href="简单示例-1.html#cb412-2" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">10</span></span>
+<span id="cb412-3"><a href="简单示例-1.html#cb412-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(res) <span class="co">#可以不用显示返回</span></span>
+<span id="cb412-4"><a href="简单示例-1.html#cb412-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb412-5"><a href="简单示例-1.html#cb412-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_ten</span>(<span class="dv">1</span>)</span></code></pre></div>
 <p>写函数时需要考虑函数使用情况,尽可能考虑容错情况,当输入不符合预期时能友好提示错误.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="简单示例-1.html#cb408-1" aria-hidden="true" tabindex="-1"></a>add_ten <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb408-2"><a href="简单示例-1.html#cb408-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.numeric</span>(x)<span class="sc">==</span><span class="cn">TRUE</span>){</span>
-<span id="cb408-3"><a href="简单示例-1.html#cb408-3" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">+</span><span class="dv">10</span></span>
-<span id="cb408-4"><a href="简单示例-1.html#cb408-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb408-5"><a href="简单示例-1.html#cb408-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&#39;Error,请输入数字&#39;</span>)</span>
-<span id="cb408-6"><a href="简单示例-1.html#cb408-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb408-7"><a href="简单示例-1.html#cb408-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="简单示例-1.html#cb413-1" aria-hidden="true" tabindex="-1"></a>add_ten <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb413-2"><a href="简单示例-1.html#cb413-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.numeric</span>(x)<span class="sc">==</span><span class="cn">TRUE</span>){</span>
+<span id="cb413-3"><a href="简单示例-1.html#cb413-3" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">+</span><span class="dv">10</span></span>
+<span id="cb413-4"><a href="简单示例-1.html#cb413-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb413-5"><a href="简单示例-1.html#cb413-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&#39;Error,请输入数字&#39;</span>)</span>
+<span id="cb413-6"><a href="简单示例-1.html#cb413-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb413-7"><a href="简单示例-1.html#cb413-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
             </section>
 

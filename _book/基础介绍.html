@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -460,29 +460,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>本部分从data.table安装，内置的案例查看，到data.table的句式语法，实现基础行列筛选和聚合计算。</p>
 <p>1.安装</p>
 <p>安装详细信息请参考<a href="https://github.com/Rdatatable/data.table/wiki/Installation">the Installation wiki</a>，有关于不同系统安装首次以及相关说明。</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="基础介绍.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;data.table&quot;</span>)</span>
-<span id="cb280-2"><a href="基础介绍.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="co"># latest development version:</span></span>
-<span id="cb280-3"><a href="基础介绍.html#cb280-3" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">update.dev.pkg</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="基础介绍.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb285-2"><a href="基础介绍.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="co"># latest development version:</span></span>
+<span id="cb285-3"><a href="基础介绍.html#cb285-3" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">update.dev.pkg</span>()</span></code></pre></div>
 <p>2.使用说明</p>
 <p>通过以下代码查看内置的使用案例。</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="基础介绍.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb281-2"><a href="基础介绍.html#cb281-2" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(data.table)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="基础介绍.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb286-2"><a href="基础介绍.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(data.table)</span></code></pre></div>
 <div id="读取数据" class="section level3" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> 读取数据</h3>
 <p>在我实际工作中接触的数据大部分以数据库,csv,Excel等形式存在，并且CSV格式数据较少。但是data.table包读取数据的<code>fread</code>函数仅接受CSV格式。如果是Excel格式文件，需要通过如<code>readxl</code>，<code>openxlsx</code>等包读入后转换为<code>data.table</code>格式数据。</p>
 <p>fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线文件.</p>
 <p>本文会照搬很多官方关于data.table的demo.</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="基础介绍.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb282-2"><a href="基础介绍.html#cb282-2" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)) {</span>
-<span id="cb282-3"><a href="基础介绍.html#cb282-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;./data/flights.csv&quot;</span> <span class="co">#本地文件</span></span>
-<span id="cb282-4"><a href="基础介绍.html#cb282-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb282-5"><a href="基础介绍.html#cb282-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://raw.githubusercontent.com/Rdatatable/data.table/master/vignettes/flights.csv&quot;</span> <span class="co">#在线文件需翻墙</span></span>
-<span id="cb282-6"><a href="基础介绍.html#cb282-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb282-7"><a href="基础介绍.html#cb282-7" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(input) <span class="co">#具体参数请参照文档  实际工作中可能会用到的encoding参数,编码 encoding=&#39;UTF-8&#39;</span></span>
-<span id="cb282-8"><a href="基础介绍.html#cb282-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb282-9"><a href="基础介绍.html#cb282-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(flights)</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="基础介绍.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb287-2"><a href="基础介绍.html#cb287-2" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)) {</span>
+<span id="cb287-3"><a href="基础介绍.html#cb287-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;./data/flights.csv&quot;</span> <span class="co">#本地文件</span></span>
+<span id="cb287-4"><a href="基础介绍.html#cb287-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb287-5"><a href="基础介绍.html#cb287-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://raw.githubusercontent.com/Rdatatable/data.table/master/vignettes/flights.csv&quot;</span> <span class="co">#在线文件需翻墙</span></span>
+<span id="cb287-6"><a href="基础介绍.html#cb287-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb287-7"><a href="基础介绍.html#cb287-7" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(input) <span class="co">#具体参数请参照文档  实际工作中可能会用到的encoding参数,编码 encoding=&#39;UTF-8&#39;</span></span>
+<span id="cb287-8"><a href="基础介绍.html#cb287-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb287-9"><a href="基础介绍.html#cb287-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(flights)</span></code></pre></div>
 <p>本文读取本地文件,如果该数据集下载失败,可更改地址为(<a href="http://www.zhongyufei.com/datatable/data/flights.csv" class="uri">http://www.zhongyufei.com/datatable/data/flights.csv</a>)</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="基础介绍.html#cb283-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;http://www.zhongyufei.com/Rbook/data/flights.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="基础介绍.html#cb288-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;http://www.zhongyufei.com/Rbook/data/flights.csv&quot;</span>)</span></code></pre></div>
 <p>数据集记录的是 2014 年,纽约市3大机场(分别为:JFK 肯尼迪国际机场、 LGA 拉瓜迪亚机场,和 EWR 纽瓦克自由国际机场)起飞的航班信息。</p>
 <p>具体的记录信息(特征列)，包括起飞时间、到达时间、延误时长、航空公司、始发机场、目的机场、飞行时长，和飞行距离等。</p>
 </div>
@@ -493,9 +493,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/data.table-i-j-by%E4%BB%8B%E7%BB%8D.png" alt="" />
 <p class="caption">i-j-by</p>
 </div>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="基础介绍.html#cb284-1" aria-hidden="true" tabindex="-1"></a>DT[i, j, by]</span>
-<span id="cb284-2"><a href="基础介绍.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   R:                 i                 j        by</span></span>
-<span id="cb284-3"><a href="基础介绍.html#cb284-3" aria-hidden="true" tabindex="-1"></a><span class="do">## SQL:  where | order by   select | update  group by</span></span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="基础介绍.html#cb289-1" aria-hidden="true" tabindex="-1"></a>DT[i, j, by]</span>
+<span id="cb289-2"><a href="基础介绍.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   R:                 i                 j        by</span></span>
+<span id="cb289-3"><a href="基础介绍.html#cb289-3" aria-hidden="true" tabindex="-1"></a><span class="do">## SQL:  where | order by   select | update  group by</span></span></code></pre></div>
 <p>data.table个人理解主要有三大类参数,i参数做筛选,j参数做计算,by参数做分组.</p>
 <p>拿Excel透视表类别,i位置参数当作『筛选』,by位置用来做汇总字段『行』,j位置当作『值』,如下所示:</p>
 <div class="figure">
@@ -504,9 +504,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>1.代码实例</p>
 <p>代码求2014年6月,从各始发机场到各目的机场的飞行距离求和.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="基础介绍.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb285-2"><a href="基础介绍.html#cb285-2" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)</span>
-<span id="cb285-3"><a href="基础介绍.html#cb285-3" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="基础介绍.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb290-2"><a href="基础介绍.html#cb290-2" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)</span>
+<span id="cb290-3"><a href="基础介绍.html#cb290-3" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
 <p>2.代码解释</p>
 <p>i 的部分：条件year==2014 和 month==6 ;</p>
 <p>j 的部分：求和项distance=sum(distance)，写在.()中或者list()中；</p>
@@ -520,68 +520,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">7.1.3.1</span> i行筛选</h4>
 <p>行筛选是一种很常见的数据操作行为，类似我们Excel中的筛选，即按照一定条件筛选符合要求的数据。条件筛选一般分为单条件筛选、多条件筛选；</p>
 <p>在筛选时涉及到条件判断，R语言中常用的条件判断分为逻辑运算、关系运算。常用的关系运算符 &gt;、 &lt;、==、!=、&gt;=、&lt;=分别代表大于、小于、等于、不等于、大于等于、小于等于。常用的逻辑运算符 &amp;、|、！等。</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="基础介绍.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co">#单条件筛选</span></span>
-<span id="cb286-2"><a href="基础介绍.html#cb286-2" aria-hidden="true" tabindex="-1"></a>filghts[year <span class="sc">==</span> <span class="dv">2014</span>] <span class="co">#筛选year==2014</span></span>
-<span id="cb286-3"><a href="基础介绍.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="co">#多条件筛选 用 &amp; 链接</span></span>
-<span id="cb286-4"><a href="基础介绍.html#cb286-4" aria-hidden="true" tabindex="-1"></a>flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
-<span id="cb286-5"><a href="基础介绍.html#cb286-5" aria-hidden="true" tabindex="-1"></a><span class="co"># | 相当于中文条件或 </span></span>
-<span id="cb286-6"><a href="基础介绍.html#cb286-6" aria-hidden="true" tabindex="-1"></a>flights[ month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">|</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
-<span id="cb286-7"><a href="基础介绍.html#cb286-7" aria-hidden="true" tabindex="-1"></a><span class="co"># %in% 类似sql中in用法</span></span>
-<span id="cb286-8"><a href="基础介绍.html#cb286-8" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>)] </span>
-<span id="cb286-9"><a href="基础介绍.html#cb286-9" aria-hidden="true" tabindex="-1"></a><span class="co"># %between% 类似sql中between and 用法</span></span>
-<span id="cb286-10"><a href="基础介绍.html#cb286-10" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="基础介绍.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co">#单条件筛选</span></span>
+<span id="cb291-2"><a href="基础介绍.html#cb291-2" aria-hidden="true" tabindex="-1"></a>filghts[year <span class="sc">==</span> <span class="dv">2014</span>] <span class="co">#筛选year==2014</span></span>
+<span id="cb291-3"><a href="基础介绍.html#cb291-3" aria-hidden="true" tabindex="-1"></a><span class="co">#多条件筛选 用 &amp; 链接</span></span>
+<span id="cb291-4"><a href="基础介绍.html#cb291-4" aria-hidden="true" tabindex="-1"></a>flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
+<span id="cb291-5"><a href="基础介绍.html#cb291-5" aria-hidden="true" tabindex="-1"></a><span class="co"># | 相当于中文条件或 </span></span>
+<span id="cb291-6"><a href="基础介绍.html#cb291-6" aria-hidden="true" tabindex="-1"></a>flights[ month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">|</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
+<span id="cb291-7"><a href="基础介绍.html#cb291-7" aria-hidden="true" tabindex="-1"></a><span class="co"># %in% 类似sql中in用法</span></span>
+<span id="cb291-8"><a href="基础介绍.html#cb291-8" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>)] </span>
+<span id="cb291-9"><a href="基础介绍.html#cb291-9" aria-hidden="true" tabindex="-1"></a><span class="co"># %between% 类似sql中between and 用法</span></span>
+<span id="cb291-10"><a href="基础介绍.html#cb291-10" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)]</span></code></pre></div>
 </div>
 <div id="j列操作" class="section level4" number="7.1.3.2">
 <h4><span class="header-section-number">7.1.3.2</span> j列操作</h4>
 <p>数据集较大、字段较多时，由于无效信息较多可以做适当精选，这时需要我们筛选列。与sql中的select用法一致，即保留想要的字段。</p>
 <p>.()或list()是data.table中的比较特殊的实现列筛选的用法。常规数字索引，字符向量索引同样有效。</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="基础介绍.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="co">#注意前面的. .()</span></span>
-<span id="cb287-2"><a href="基础介绍.html#cb287-2" aria-hidden="true" tabindex="-1"></a>flights[,.(year,month,day,dep_delay,carrier,origin)] </span>
-<span id="cb287-3"><a href="基础介绍.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,list(year,month,day,dep_delay,carrier,origin)]  same above</span></span>
-<span id="cb287-4"><a href="基础介绍.html#cb287-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-5"><a href="基础介绍.html#cb287-5" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb287-6"><a href="基础介绍.html#cb287-6" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,1:3]</span></span>
-<span id="cb287-7"><a href="基础介绍.html#cb287-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-8"><a href="基础介绍.html#cb287-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb287-9"><a href="基础介绍.html#cb287-9" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,c(&#39;year&#39;,&#39;month&#39;,&#39;day&#39;)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="基础介绍.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co">#注意前面的. .()</span></span>
+<span id="cb292-2"><a href="基础介绍.html#cb292-2" aria-hidden="true" tabindex="-1"></a>flights[,.(year,month,day,dep_delay,carrier,origin)] </span>
+<span id="cb292-3"><a href="基础介绍.html#cb292-3" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,list(year,month,day,dep_delay,carrier,origin)]  same above</span></span>
+<span id="cb292-4"><a href="基础介绍.html#cb292-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb292-5"><a href="基础介绍.html#cb292-5" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb292-6"><a href="基础介绍.html#cb292-6" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,1:3]</span></span>
+<span id="cb292-7"><a href="基础介绍.html#cb292-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb292-8"><a href="基础介绍.html#cb292-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb292-9"><a href="基础介绍.html#cb292-9" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,c(&#39;year&#39;,&#39;month&#39;,&#39;day&#39;)]</span></span></code></pre></div>
 <p>setcolorder函数可以调整列的顺序，将常用的字段信息排在前面可以用过该函数实现。</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="基础介绍.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb288-2"><a href="基础介绍.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="co"># setcolorder(x = flights,neworder = c( &quot;month&quot;,&quot;day&quot;,&quot;dep_delay&quot; ,&quot;arr_delay&quot;,&quot;carrier&quot; )) </span></span>
-<span id="cb288-3"><a href="基础介绍.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按照指定列顺序排序 其余字段保持不变,不是建立副本,是直接修改了flights 数据的列顺序</span></span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="基础介绍.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb293-2"><a href="基础介绍.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="co"># setcolorder(x = flights,neworder = c( &quot;month&quot;,&quot;day&quot;,&quot;dep_delay&quot; ,&quot;arr_delay&quot;,&quot;carrier&quot; )) </span></span>
+<span id="cb293-3"><a href="基础介绍.html#cb293-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按照指定列顺序排序 其余字段保持不变,不是建立副本,是直接修改了flights 数据的列顺序</span></span></code></pre></div>
 <ul>
 <li>常规计算</li>
 </ul>
 <p>根据最开始的Excel透视表截图，我们想要获得如截图一样的结果该怎么实现呢？代码如下：</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="基础介绍.html#cb289-1" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance),平均距离<span class="ot">=</span><span class="fu">mean</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="基础介绍.html#cb294-1" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance),平均距离<span class="ot">=</span><span class="fu">mean</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
 <p>在i的位置做筛选，j的位置做计算，by指定分组字段。在j的位置可以做各种各样的计算，R中自带的函数，或者是自己定义的函数。</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="基础介绍.html#cb290-1" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb290-2"><a href="基础介绍.html#cb290-2" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb290-3"><a href="基础介绍.html#cb290-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb290-4"><a href="基础介绍.html#cb290-4" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(<span class="fu">myfun</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="基础介绍.html#cb295-1" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb295-2"><a href="基础介绍.html#cb295-2" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb295-3"><a href="基础介绍.html#cb295-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb295-4"><a href="基础介绍.html#cb295-4" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(<span class="fu">myfun</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
 </div>
 <div id="by-分组" class="section level4" number="7.1.3.3">
 <h4><span class="header-section-number">7.1.3.3</span> by 分组</h4>
 <p>分组是按照某种分组实现一定条件下某种聚合方式的计算。分组可以是单字段，多字段以及条件字段等。</p>
 <p>1.按月分组</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="基础介绍.html#cb291-1" aria-hidden="true" tabindex="-1"></a>flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month)]</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="基础介绍.html#cb296-1" aria-hidden="true" tabindex="-1"></a>flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month)]</span></code></pre></div>
 <p>2.多条件分组</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="基础介绍.html#cb292-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(carrier,origin)]</span>
-<span id="cb292-2"><a href="基础介绍.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb292-3"><a href="基础介绍.html#cb292-3" aria-hidden="true" tabindex="-1"></a><span class="co">#可直接重新命名</span></span>
-<span id="cb292-4"><a href="基础介绍.html#cb292-4" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(<span class="at">newcol1 =</span> carrier,<span class="at">newcol2 =</span> origin)]</span>
-<span id="cb292-5"><a href="基础介绍.html#cb292-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="基础介绍.html#cb297-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(carrier,origin)]</span>
+<span id="cb297-2"><a href="基础介绍.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb297-3"><a href="基础介绍.html#cb297-3" aria-hidden="true" tabindex="-1"></a><span class="co">#可直接重新命名</span></span>
+<span id="cb297-4"><a href="基础介绍.html#cb297-4" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(<span class="at">newcol1 =</span> carrier,<span class="at">newcol2 =</span> origin)]</span>
+<span id="cb297-5"><a href="基础介绍.html#cb297-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
 <p>3.按月份是否大于6分组</p>
 <p>即得到是否大于6的两类分组</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="基础介绍.html#cb293-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month<span class="sc">&gt;</span><span class="dv">6</span>)] <span class="co">#by里面可以做计算</span></span>
-<span id="cb293-2"><a href="基础介绍.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="基础介绍.html#cb298-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month<span class="sc">&gt;</span><span class="dv">6</span>)] <span class="co">#by里面可以做计算</span></span>
+<span id="cb298-2"><a href="基础介绍.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
 </div>
 </div>
 <div id="行列筛选总结" class="section level3" number="7.1.4">
 <h3><span class="header-section-number">7.1.4</span> 行列筛选总结</h3>
 <p>行筛选在 i 的位置上进行, 列筛选在 j 的位置上进行;data.table中j的位置比较灵活多变，但是i的位置大部分时候都是进行条件筛选。我们通过上述的行列筛选已经大概知道data.table中i,j的用法。也就是我们常规数据清洗过程中的数据筛选过程，筛选符合要求的数据记录。</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="基础介绍.html#cb294-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-2"><a href="基础介绍.html#cb294-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span> <span class="sc">&amp;</span> day <span class="sc">&gt;=</span><span class="dv">15</span>,.(year,month,day,dep_delay,carrier,origin)] </span>
-<span id="cb294-3"><a href="基础介绍.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="基础介绍.html#cb299-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb299-2"><a href="基础介绍.html#cb299-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span> <span class="sc">&amp;</span> day <span class="sc">&gt;=</span><span class="dv">15</span>,.(year,month,day,dep_delay,carrier,origin)] </span>
+<span id="cb299-3"><a href="基础介绍.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
 </div>
 </div>
             </section>

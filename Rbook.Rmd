@@ -3554,10 +3554,11 @@ as_date('2020-01-09') #ymd格式
 
 ### 解析日期时间
 
-从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
+数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生产库可能是不同的数据库系统，导致时间日期格式混乱，如果公司没有统一的用户层数据源，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
+
+- 解析日期
 
 ```{r message=FALSE,warning=FALSE,echo=TRUE}
-
 # 整数和字符都可以
 ymd(20200604) 
 ymd('20200604')
@@ -3565,7 +3566,15 @@ mdy(06042020)
 dmy(04062020)
 ```
 
-遇到unix 时间戳 可以用 .POSIXct()函数转化.
+- 解析时间
+
+```{r}
+ymd_hm("20100201 07-01", "20100201 07-1", "20100201 7-01")
+ymd_hms("2013-01-24 19:39:07")
+```
+
+
+当需要处理unix时间戳时应.POSIXct()函数转化.
 
 [unix在线转换](https://unixtime.51240.com/)
 
@@ -3574,28 +3583,18 @@ dmy(04062020)
 ymd_hms(.POSIXct(1591709615))
 ```
 
-unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区
+在使用unix时间戳转换时一定注意R环境和数据系统环境时区是否一直。
+
+>曾经我在使用阿里云的RDS数据库时没注意时区差异，导致我清洗出来的时间数据错误。
 
 ```{r}
-ymd_hms(.POSIXct(1591709615),tz = 'asia/shanghai')
+ymd_hms(.POSIXct(1591709615),tz = 'Asia/Shanghai')
 ```
 
 
-从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。
 
 
-如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.
-
-* <https://home.kpn.nl/vanadovv/time/TZworld.html#asi>
-
-```{r}
-lubridate::now()
-as_datetime(now()) #默认是UTC
-as_datetime(now(),tz = 'asia/shanghai')
-```
-
-
-### 提取日期时间部分 {#lubridate:extracting-information}
+### 提取日期时间成分 {#lubridate:extracting-information}
 
 ```{r}
 #获取年
@@ -3665,12 +3664,25 @@ force_tz(time, "Asia/Shanghai")
 
 ```
 
+3. 时区差异
+
+从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。
+
+如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.
+
+* <https://home.kpn.nl/vanadovv/time/TZworld.html#asi>
+
+```{r}
+lubridate::now() # now函数调用系统默认时区
+as_datetime(now()) #as_datetime默认是UTC
+as_datetime(now(),tz = 'asia/shanghai')
+```
 
 
 
 ### 时间间隔
 
-我们可以用`lubridate`将时间间隔保存为`interveal`类对象
+`lubridate`中将时间间隔保存为`interveal`类对象。
 
 ```{r}
 arrive <- ymd_hms("2020-12-04 12:00:00", tz = "asia/shanghai")
@@ -3683,6 +3695,13 @@ res <- interval(arrive, leave)
 # same above
 res <- arrive %--% leave
 ```
+
+查看类
+
+```{r}
+class(res)
+```
+
 
 两个时间间隔是否重复
  
@@ -3724,9 +3743,11 @@ int_aligns(int1, int2)
 int_diff(times)
 ```
 
+
+
 ### 时间日期计算
 
-时间日期计算以`number line`为依据计算。原文是`Because the timeline is not as reliable as the number line`。
+时间日期计算以`number line`为依据计算。原文是`Because the timeline is not as reliable as the number line`，我没理解这句话。
 
 ```{r}
 minutes(2)
@@ -3791,16 +3812,56 @@ jan31 %m-% months(0:11)
 
 ## 综合运用
 
+### 日报同环比计算
 
-### 年同环比
+零售行业基本都存在日报，作为数据分析师大概率是需要出日报的，但根据所在部门情况会有所不同。很多人都已经在sql或exel中实现了，本案例不完全实现日报，主要是教大家为了实现同环比，怎么利用R做日期范围筛选。
 
-`floor_date()`函数根据要求周期回滚日期，
+首先我们看看R里面怎么做日期的同环比计算：
+
+- 常用函数
+
+`round_date()`函数根据要求周期回滚日期
+
 
 ```{r}
 floor_date(today(),unit = 'year')
-floor_date(today(),unit = 'month') #可与rollback函数达到同样效果
+floor_date(today(),unit = 'month') 
 floor_date(today(),unit = 'week')
 ```
+
+以上同系列函数从名字就能大概看出端倪，其中关键参数是unit，可选想如下:
+1s,second,minute,5 mins,hour,dat,week,months,bimonth,quarter,season,halfyear,year。
+
+
+```{r eval=FALSE}
+round_date(
+  x,
+  unit = "second",
+  week_start = getOption("lubridate.week.start", 7)
+)
+
+floor_date(
+  x,
+  unit = "seconds",
+  week_start = getOption("lubridate.week.start", 7)
+)
+
+ceiling_date(
+  x,
+  unit = "seconds",
+  change_on_boundary = NULL,
+  week_start = getOption("lubridate.week.start", 7)
+)
+
+```
+
+change_on_boundary参数
+
+```{r}
+ceiling_date(ymd_hms('2021-01-1 00:00:00'),'month')
+ceiling_date(ymd_hms('2021-01-1 00:00:00'),'month',change_on_boundary = T)
+```
+
 
 - 计算年同比
 
@@ -3811,6 +3872,7 @@ date <- today()
 current_start_date <-  floor_date(date,unit = 'year')
 current_start_date
 date 
+
 # last year
 last_start_date <- floor_date(date,unit = 'year') %m-% years(n)
 last_start_date
@@ -3818,34 +3880,50 @@ last_end_date <- date %m-% years(n)
 last_end_date
 ```
 
-月同比类似，回滚时间周期调整为"month"即可
+以上,n表示间隔年数，大部分时候都是1。但特殊时候，比如2021年同比2020年2-4月(新冠疫情)基本没有同比意义，所以在此设置为参数。
+
+- 计算月同比
+
+`rollback()`函数返回上个月的最后一天或当前月的第一天
+
+```{r}
+rollback(today())
+rollback(today(),roll_to_first = TRUE)
+```
+
+
 
 - 计算月环比
 
-`%m+%`或`%m-%`可以很好解决月份天数不一的问题
+计算环比时，`%m+%`或`%m-%`可以很好解决月份天数不一的问题
 
 ```{r}
 as_date('2020-03-30') %m-% months(1)
+
+# 环比月截止日
 today()
 today() %m-% months(1)
 ```
 
 
-得到了两对时间周期，然后在订单数据或者其他中筛选即可获得同比维度数据
+经过以上计算，得到一对对时间周期，然后在订单或者其它数据中筛选即可获得同环比维度数据。
 
-模拟计算
+- 模拟计算
 
 ```{r}
 # 构造数据
 bill_date <- as_date((as_date('2019-01-01'):as_date('2020-12-01')))
 area <-  sample(c('华东','华西','华南','华北'),size = length(bill_date),replace = TRUE)
-dt <- tibble::tibble(bill_date = bill_date ,money = sample(80:150,size = length(bill_date),replace = TRUE),area = area)
+category <- sample(c('品类A','品类B','品类C','品类D'),size = length(bill_date),replace = TRUE)
+dt <- tibble::tibble(bill_date = bill_date ,money = sample(80:150,size = length(bill_date),replace = TRUE),area = area,category = category)
 head(dt)
 ```
 
+- 自定义函数
+
 ```{r}
 library(dplyr,warn.conflicts = FALSE)
-
+library(lubridate)
 y_to_y <- function(.dt,date,n = 1,...){
   
   date <- ymd(date)
@@ -3875,8 +3953,16 @@ y_to_y <- function(.dt,date,n = 1,...){
 ```
 
 ```{r}
-y_to_y(dt,date = '20200101',n = 1,area,类型)
+y_to_y(dt,date = '20201001',n = 1,area,类型) %>% 
+  tidyr::pivot_wider(id_cols = 'area',names_from = '类型',values_from = '金额') %>% 
+  mutate(增长率 = 当前 / 同期)
+
+y_to_y(dt,date = '20201001',n = 1,area,类型,category) %>% 
+  tidyr::pivot_wider(id_cols = c('area','category'),names_from = '类型',values_from = '金额') %>% 
+  mutate(增长率 = 当前 / 同期)
 ```
+
+
 
 ### 清洗不同类型日期格式
 

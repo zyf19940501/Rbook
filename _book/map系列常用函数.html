@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -478,19 +478,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>map_int(.x, .f, ...)</code> 返回整数</p>
 <p>map_df()函数示例</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="map系列常用函数.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 采用匿名函数</span></span>
-<span id="cb394-2"><a href="map系列常用函数.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="cf">function</span>(.x) {</span>
-<span id="cb394-3"><a href="map系列常用函数.html#cb394-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">old_number =</span> .x, </span>
-<span id="cb394-4"><a href="map系列常用函数.html#cb394-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">new_number =</span> <span class="fu">addTen</span>(.x)))</span>
-<span id="cb394-5"><a href="map系列常用函数.html#cb394-5" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb394-6"><a href="map系列常用函数.html#cb394-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb394-7"><a href="map系列常用函数.html#cb394-7" aria-hidden="true" tabindex="-1"></a><span class="co">#同上</span></span>
-<span id="cb394-8"><a href="map系列常用函数.html#cb394-8" aria-hidden="true" tabindex="-1"></a><span class="co">#step1 定义函数</span></span>
-<span id="cb394-9"><a href="map系列常用函数.html#cb394-9" aria-hidden="true" tabindex="-1"></a>make_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb394-10"><a href="map系列常用函数.html#cb394-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">old_number =</span> x,<span class="at">new_number =</span> <span class="fu">addTen</span>(x))</span>
-<span id="cb394-11"><a href="map系列常用函数.html#cb394-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb394-12"><a href="map系列常用函数.html#cb394-12" aria-hidden="true" tabindex="-1"></a><span class="co">#step2 计算</span></span>
-<span id="cb394-13"><a href="map系列常用函数.html#cb394-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),make_dataframe)</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="map系列常用函数.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 采用匿名函数</span></span>
+<span id="cb399-2"><a href="map系列常用函数.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="cf">function</span>(.x) {</span>
+<span id="cb399-3"><a href="map系列常用函数.html#cb399-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">old_number =</span> .x, </span>
+<span id="cb399-4"><a href="map系列常用函数.html#cb399-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">new_number =</span> <span class="fu">addTen</span>(.x)))</span>
+<span id="cb399-5"><a href="map系列常用函数.html#cb399-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb399-6"><a href="map系列常用函数.html#cb399-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb399-7"><a href="map系列常用函数.html#cb399-7" aria-hidden="true" tabindex="-1"></a><span class="co">#同上</span></span>
+<span id="cb399-8"><a href="map系列常用函数.html#cb399-8" aria-hidden="true" tabindex="-1"></a><span class="co">#step1 定义函数</span></span>
+<span id="cb399-9"><a href="map系列常用函数.html#cb399-9" aria-hidden="true" tabindex="-1"></a>make_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb399-10"><a href="map系列常用函数.html#cb399-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">old_number =</span> x,<span class="at">new_number =</span> <span class="fu">addTen</span>(x))</span>
+<span id="cb399-11"><a href="map系列常用函数.html#cb399-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb399-12"><a href="map系列常用函数.html#cb399-12" aria-hidden="true" tabindex="-1"></a><span class="co">#step2 计算</span></span>
+<span id="cb399-13"><a href="map系列常用函数.html#cb399-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),make_dataframe)</span></code></pre></div>
 </div>
             </section>
 

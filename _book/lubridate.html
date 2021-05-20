@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -525,30 +525,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="解析日期时间" class="section level3" number="5.2.4">
 <h3><span class="header-section-number">5.2.4</span> 解析日期时间</h3>
-<p>从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="lubridate.html#cb248-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb248-2"><a href="lubridate.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 整数和字符都可以</span></span>
-<span id="cb248-3"><a href="lubridate.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200604</span>) </span>
-<span id="cb248-4"><a href="lubridate.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;20200604&#39;</span>)</span>
-<span id="cb248-5"><a href="lubridate.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="dv">06042020</span>)</span>
-<span id="cb248-6"><a href="lubridate.html#cb248-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="dv">04062020</span>)</span></code></pre></div>
-<p>遇到unix 时间戳 可以用 .POSIXct()函数转化.</p>
-<p><a href="https://unixtime.51240.com/">unix在线转换</a></p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="lubridate.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>)</span>
-<span id="cb249-2"><a href="lubridate.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>))</span></code></pre></div>
-<p>unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="lubridate.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
-<p>从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。</p>
-<p>如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.</p>
+<p>数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生产库可能是不同的数据库系统，导致时间日期格式混乱，如果公司没有统一的用户层数据源，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。</p>
 <ul>
-<li><a href="https://home.kpn.nl/vanadovv/time/TZworld.html#asi" class="uri">https://home.kpn.nl/vanadovv/time/TZworld.html#asi</a></li>
+<li>解析日期</li>
 </ul>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="lubridate.html#cb251-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>()</span>
-<span id="cb251-2"><a href="lubridate.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>()) <span class="co">#默认是UTC</span></span>
-<span id="cb251-3"><a href="lubridate.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>(),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="lubridate.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 整数和字符都可以</span></span>
+<span id="cb248-2"><a href="lubridate.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200604</span>) </span>
+<span id="cb248-3"><a href="lubridate.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&#39;20200604&#39;</span>)</span>
+<span id="cb248-4"><a href="lubridate.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="dv">06042020</span>)</span>
+<span id="cb248-5"><a href="lubridate.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="dv">04062020</span>)</span></code></pre></div>
+<ul>
+<li>解析时间</li>
+</ul>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="lubridate.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hm</span>(<span class="st">&quot;20100201 07-01&quot;</span>, <span class="st">&quot;20100201 07-1&quot;</span>, <span class="st">&quot;20100201 7-01&quot;</span>)</span>
+<span id="cb249-2"><a href="lubridate.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="st">&quot;2013-01-24 19:39:07&quot;</span>)</span></code></pre></div>
+<p>当需要处理unix时间戳时应.POSIXct()函数转化.</p>
+<p><a href="https://unixtime.51240.com/">unix在线转换</a></p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="lubridate.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>)</span>
+<span id="cb250-2"><a href="lubridate.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>))</span></code></pre></div>
+<p>在使用unix时间戳转换时一定注意R环境和数据系统环境时区是否一直。</p>
+<blockquote>
+<p>曾经我在使用阿里云的RDS数据库时没注意时区差异，导致我清洗出来的时间数据错误。</p>
+</blockquote>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="lubridate.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="fu">.POSIXct</span>(<span class="dv">1591709615</span>),<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span></code></pre></div>
 </div>
 <div id="lubridate:extracting-information" class="section level3" number="5.2.5">
-<h3><span class="header-section-number">5.2.5</span> 提取日期时间部分</h3>
+<h3><span class="header-section-number">5.2.5</span> 提取日期时间成分</h3>
 <div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="lubridate.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co">#获取年</span></span>
 <span id="cb252-2"><a href="lubridate.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(<span class="fu">now</span>())  </span>
 <span id="cb252-3"><a href="lubridate.html#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="co">#获取月</span></span>
@@ -594,86 +596,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb255-5"><a href="lubridate.html#cb255-5" aria-hidden="true" tabindex="-1"></a><span class="fu">with_tz</span>(time, <span class="st">&quot;Asia/Shanghai&quot;</span>)</span>
 <span id="cb255-6"><a href="lubridate.html#cb255-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Changes time</span></span>
 <span id="cb255-7"><a href="lubridate.html#cb255-7" aria-hidden="true" tabindex="-1"></a><span class="fu">force_tz</span>(time, <span class="st">&quot;Asia/Shanghai&quot;</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>时区差异</li>
+</ol>
+<p>从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。</p>
+<p>如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.</p>
+<ul>
+<li><a href="https://home.kpn.nl/vanadovv/time/TZworld.html#asi" class="uri">https://home.kpn.nl/vanadovv/time/TZworld.html#asi</a></li>
+</ul>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="lubridate.html#cb256-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">now</span>() <span class="co"># now函数调用系统默认时区</span></span>
+<span id="cb256-2"><a href="lubridate.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>()) <span class="co">#as_datetime默认是UTC</span></span>
+<span id="cb256-3"><a href="lubridate.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_datetime</span>(<span class="fu">now</span>(),<span class="at">tz =</span> <span class="st">&#39;asia/shanghai&#39;</span>)</span></code></pre></div>
 </div>
 <div id="时间间隔" class="section level3" number="5.2.7">
 <h3><span class="header-section-number">5.2.7</span> 时间间隔</h3>
-<p>我们可以用<code>lubridate</code>将时间间隔保存为<code>interveal</code>类对象</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="lubridate.html#cb256-1" aria-hidden="true" tabindex="-1"></a>arrive <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2020-12-04 12:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
-<span id="cb256-2"><a href="lubridate.html#cb256-2" aria-hidden="true" tabindex="-1"></a>arrive</span>
-<span id="cb256-3"><a href="lubridate.html#cb256-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb256-4"><a href="lubridate.html#cb256-4" aria-hidden="true" tabindex="-1"></a>leave <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2020-12-10 14:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
-<span id="cb256-5"><a href="lubridate.html#cb256-5" aria-hidden="true" tabindex="-1"></a>leave</span>
-<span id="cb256-6"><a href="lubridate.html#cb256-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb256-7"><a href="lubridate.html#cb256-7" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">interval</span>(arrive, leave) </span>
-<span id="cb256-8"><a href="lubridate.html#cb256-8" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb256-9"><a href="lubridate.html#cb256-9" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> arrive <span class="sc">%--%</span> leave</span></code></pre></div>
+<p><code>lubridate</code>中将时间间隔保存为<code>interveal</code>类对象。</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="lubridate.html#cb257-1" aria-hidden="true" tabindex="-1"></a>arrive <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2020-12-04 12:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
+<span id="cb257-2"><a href="lubridate.html#cb257-2" aria-hidden="true" tabindex="-1"></a>arrive</span>
+<span id="cb257-3"><a href="lubridate.html#cb257-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb257-4"><a href="lubridate.html#cb257-4" aria-hidden="true" tabindex="-1"></a>leave <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2020-12-10 14:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
+<span id="cb257-5"><a href="lubridate.html#cb257-5" aria-hidden="true" tabindex="-1"></a>leave</span>
+<span id="cb257-6"><a href="lubridate.html#cb257-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb257-7"><a href="lubridate.html#cb257-7" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">interval</span>(arrive, leave) </span>
+<span id="cb257-8"><a href="lubridate.html#cb257-8" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb257-9"><a href="lubridate.html#cb257-9" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> arrive <span class="sc">%--%</span> leave</span></code></pre></div>
+<p>查看类</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="lubridate.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(res)</span></code></pre></div>
 <p>两个时间间隔是否重复</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="lubridate.html#cb257-1" aria-hidden="true" tabindex="-1"></a>jsm <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="fu">ymd</span>(<span class="dv">20201020</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>), <span class="fu">ymd</span>(<span class="dv">20201231</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>))</span>
-<span id="cb257-2"><a href="lubridate.html#cb257-2" aria-hidden="true" tabindex="-1"></a>jsm</span>
-<span id="cb257-3"><a href="lubridate.html#cb257-3" aria-hidden="true" tabindex="-1"></a><span class="fu">int_overlaps</span>(jsm, res)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="lubridate.html#cb259-1" aria-hidden="true" tabindex="-1"></a>jsm <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="fu">ymd</span>(<span class="dv">20201020</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>), <span class="fu">ymd</span>(<span class="dv">20201231</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>))</span>
+<span id="cb259-2"><a href="lubridate.html#cb259-2" aria-hidden="true" tabindex="-1"></a>jsm</span>
+<span id="cb259-3"><a href="lubridate.html#cb259-3" aria-hidden="true" tabindex="-1"></a><span class="fu">int_overlaps</span>(jsm, res)</span></code></pre></div>
 <p>更多详细用法<code>?interveal</code></p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="lubridate.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(<span class="at">start =</span> <span class="cn">NULL</span>, <span class="at">end =</span> <span class="cn">NULL</span>, <span class="at">tzone =</span> <span class="fu">tz</span>(start))</span>
-<span id="cb258-2"><a href="lubridate.html#cb258-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-3"><a href="lubridate.html#cb258-3" aria-hidden="true" tabindex="-1"></a>start <span class="sc">%--%</span> end</span>
-<span id="cb258-4"><a href="lubridate.html#cb258-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-5"><a href="lubridate.html#cb258-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is.interval</span>(x)</span>
-<span id="cb258-6"><a href="lubridate.html#cb258-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-7"><a href="lubridate.html#cb258-7" aria-hidden="true" tabindex="-1"></a><span class="fu">int_start</span>(int)</span>
-<span id="cb258-8"><a href="lubridate.html#cb258-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-9"><a href="lubridate.html#cb258-9" aria-hidden="true" tabindex="-1"></a><span class="fu">int_start</span>(int) <span class="ot">&lt;-</span> value</span>
-<span id="cb258-10"><a href="lubridate.html#cb258-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-11"><a href="lubridate.html#cb258-11" aria-hidden="true" tabindex="-1"></a><span class="fu">int_end</span>(int)</span>
-<span id="cb258-12"><a href="lubridate.html#cb258-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-13"><a href="lubridate.html#cb258-13" aria-hidden="true" tabindex="-1"></a><span class="fu">int_end</span>(int) <span class="ot">&lt;-</span> value</span>
-<span id="cb258-14"><a href="lubridate.html#cb258-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-15"><a href="lubridate.html#cb258-15" aria-hidden="true" tabindex="-1"></a><span class="fu">int_length</span>(int)</span>
-<span id="cb258-16"><a href="lubridate.html#cb258-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-17"><a href="lubridate.html#cb258-17" aria-hidden="true" tabindex="-1"></a><span class="fu">int_flip</span>(int)</span>
-<span id="cb258-18"><a href="lubridate.html#cb258-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-19"><a href="lubridate.html#cb258-19" aria-hidden="true" tabindex="-1"></a><span class="fu">int_shift</span>(int, by)</span>
-<span id="cb258-20"><a href="lubridate.html#cb258-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-21"><a href="lubridate.html#cb258-21" aria-hidden="true" tabindex="-1"></a><span class="fu">int_overlaps</span>(int1, int2)</span>
-<span id="cb258-22"><a href="lubridate.html#cb258-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-23"><a href="lubridate.html#cb258-23" aria-hidden="true" tabindex="-1"></a><span class="fu">int_standardize</span>(int)</span>
-<span id="cb258-24"><a href="lubridate.html#cb258-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-25"><a href="lubridate.html#cb258-25" aria-hidden="true" tabindex="-1"></a><span class="fu">int_aligns</span>(int1, int2)</span>
-<span id="cb258-26"><a href="lubridate.html#cb258-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-27"><a href="lubridate.html#cb258-27" aria-hidden="true" tabindex="-1"></a><span class="fu">int_diff</span>(times)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="lubridate.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(<span class="at">start =</span> <span class="cn">NULL</span>, <span class="at">end =</span> <span class="cn">NULL</span>, <span class="at">tzone =</span> <span class="fu">tz</span>(start))</span>
+<span id="cb260-2"><a href="lubridate.html#cb260-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-3"><a href="lubridate.html#cb260-3" aria-hidden="true" tabindex="-1"></a>start <span class="sc">%--%</span> end</span>
+<span id="cb260-4"><a href="lubridate.html#cb260-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-5"><a href="lubridate.html#cb260-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is.interval</span>(x)</span>
+<span id="cb260-6"><a href="lubridate.html#cb260-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-7"><a href="lubridate.html#cb260-7" aria-hidden="true" tabindex="-1"></a><span class="fu">int_start</span>(int)</span>
+<span id="cb260-8"><a href="lubridate.html#cb260-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-9"><a href="lubridate.html#cb260-9" aria-hidden="true" tabindex="-1"></a><span class="fu">int_start</span>(int) <span class="ot">&lt;-</span> value</span>
+<span id="cb260-10"><a href="lubridate.html#cb260-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-11"><a href="lubridate.html#cb260-11" aria-hidden="true" tabindex="-1"></a><span class="fu">int_end</span>(int)</span>
+<span id="cb260-12"><a href="lubridate.html#cb260-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-13"><a href="lubridate.html#cb260-13" aria-hidden="true" tabindex="-1"></a><span class="fu">int_end</span>(int) <span class="ot">&lt;-</span> value</span>
+<span id="cb260-14"><a href="lubridate.html#cb260-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-15"><a href="lubridate.html#cb260-15" aria-hidden="true" tabindex="-1"></a><span class="fu">int_length</span>(int)</span>
+<span id="cb260-16"><a href="lubridate.html#cb260-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-17"><a href="lubridate.html#cb260-17" aria-hidden="true" tabindex="-1"></a><span class="fu">int_flip</span>(int)</span>
+<span id="cb260-18"><a href="lubridate.html#cb260-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-19"><a href="lubridate.html#cb260-19" aria-hidden="true" tabindex="-1"></a><span class="fu">int_shift</span>(int, by)</span>
+<span id="cb260-20"><a href="lubridate.html#cb260-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-21"><a href="lubridate.html#cb260-21" aria-hidden="true" tabindex="-1"></a><span class="fu">int_overlaps</span>(int1, int2)</span>
+<span id="cb260-22"><a href="lubridate.html#cb260-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-23"><a href="lubridate.html#cb260-23" aria-hidden="true" tabindex="-1"></a><span class="fu">int_standardize</span>(int)</span>
+<span id="cb260-24"><a href="lubridate.html#cb260-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-25"><a href="lubridate.html#cb260-25" aria-hidden="true" tabindex="-1"></a><span class="fu">int_aligns</span>(int1, int2)</span>
+<span id="cb260-26"><a href="lubridate.html#cb260-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-27"><a href="lubridate.html#cb260-27" aria-hidden="true" tabindex="-1"></a><span class="fu">int_diff</span>(times)</span></code></pre></div>
 </div>
 <div id="时间日期计算" class="section level3" number="5.2.8">
 <h3><span class="header-section-number">5.2.8</span> 时间日期计算</h3>
-<p>时间日期计算以<code>number line</code>为依据计算。原文是<code>Because the timeline is not as reliable as the number line</code>。</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="lubridate.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">minutes</span>(<span class="dv">2</span>)</span>
-<span id="cb259-2"><a href="lubridate.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dminutes</span>(<span class="dv">2</span>)</span>
-<span id="cb259-3"><a href="lubridate.html#cb259-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dhours</span>(<span class="dv">2</span>)</span></code></pre></div>
+<p>时间日期计算以<code>number line</code>为依据计算。原文是<code>Because the timeline is not as reliable as the number line</code>，我没理解这句话。</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="lubridate.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">minutes</span>(<span class="dv">2</span>)</span>
+<span id="cb261-2"><a href="lubridate.html#cb261-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dminutes</span>(<span class="dv">2</span>)</span>
+<span id="cb261-3"><a href="lubridate.html#cb261-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dhours</span>(<span class="dv">2</span>)</span></code></pre></div>
 <p>注意闰年时计算年份的差异</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="lubridate.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leap_year</span>(<span class="dv">2019</span>)</span>
-<span id="cb260-2"><a href="lubridate.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20190101</span>) <span class="sc">+</span> <span class="fu">dyears</span>(<span class="dv">1</span>)</span>
-<span id="cb260-3"><a href="lubridate.html#cb260-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20190101</span>) <span class="sc">+</span> <span class="fu">years</span>(<span class="dv">1</span>)</span>
-<span id="cb260-4"><a href="lubridate.html#cb260-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb260-5"><a href="lubridate.html#cb260-5" aria-hidden="true" tabindex="-1"></a><span class="fu">leap_year</span>(<span class="dv">2020</span>)</span>
-<span id="cb260-6"><a href="lubridate.html#cb260-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200101</span>) <span class="sc">+</span> <span class="fu">dyears</span>(<span class="dv">1</span>)  <span class="co"># 注意查看闰年时的差异</span></span>
-<span id="cb260-7"><a href="lubridate.html#cb260-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200101</span>) <span class="sc">+</span> <span class="fu">years</span>(<span class="dv">1</span>)</span></code></pre></div>
-<p><code>lubridate</code>中的函数都已向量化</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="lubridate.html#cb261-1" aria-hidden="true" tabindex="-1"></a>meeting <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2020-12-01 09:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
-<span id="cb261-2"><a href="lubridate.html#cb261-2" aria-hidden="true" tabindex="-1"></a>meeting <span class="ot">&lt;-</span> meeting <span class="sc">+</span> <span class="fu">weeks</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb261-3"><a href="lubridate.html#cb261-3" aria-hidden="true" tabindex="-1"></a>meeting <span class="sc">%within%</span> jsm</span></code></pre></div>
-<p>除法计算</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="lubridate.html#cb262-1" aria-hidden="true" tabindex="-1"></a>res <span class="sc">/</span> <span class="fu">ddays</span>(<span class="dv">1</span>)</span>
-<span id="cb262-2"><a href="lubridate.html#cb262-2" aria-hidden="true" tabindex="-1"></a>res <span class="sc">/</span> <span class="fu">dminutes</span>(<span class="dv">1</span>)</span>
-<span id="cb262-3"><a href="lubridate.html#cb262-3" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="lubridate.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leap_year</span>(<span class="dv">2019</span>)</span>
+<span id="cb262-2"><a href="lubridate.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20190101</span>) <span class="sc">+</span> <span class="fu">dyears</span>(<span class="dv">1</span>)</span>
+<span id="cb262-3"><a href="lubridate.html#cb262-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20190101</span>) <span class="sc">+</span> <span class="fu">years</span>(<span class="dv">1</span>)</span>
 <span id="cb262-4"><a href="lubridate.html#cb262-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb262-5"><a href="lubridate.html#cb262-5" aria-hidden="true" tabindex="-1"></a>res <span class="sc">%/%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
-<span id="cb262-6"><a href="lubridate.html#cb262-6" aria-hidden="true" tabindex="-1"></a>res <span class="sc">%%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span></code></pre></div>
+<span id="cb262-5"><a href="lubridate.html#cb262-5" aria-hidden="true" tabindex="-1"></a><span class="fu">leap_year</span>(<span class="dv">2020</span>)</span>
+<span id="cb262-6"><a href="lubridate.html#cb262-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200101</span>) <span class="sc">+</span> <span class="fu">dyears</span>(<span class="dv">1</span>)  <span class="co"># 注意查看闰年时的差异</span></span>
+<span id="cb262-7"><a href="lubridate.html#cb262-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="dv">20200101</span>) <span class="sc">+</span> <span class="fu">years</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p><code>lubridate</code>中的函数都已向量化</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="lubridate.html#cb263-1" aria-hidden="true" tabindex="-1"></a>meeting <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2020-12-01 09:00:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;asia/shanghai&quot;</span>)</span>
+<span id="cb263-2"><a href="lubridate.html#cb263-2" aria-hidden="true" tabindex="-1"></a>meeting <span class="ot">&lt;-</span> meeting <span class="sc">+</span> <span class="fu">weeks</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb263-3"><a href="lubridate.html#cb263-3" aria-hidden="true" tabindex="-1"></a>meeting <span class="sc">%within%</span> jsm</span></code></pre></div>
+<p>除法计算</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="lubridate.html#cb264-1" aria-hidden="true" tabindex="-1"></a>res <span class="sc">/</span> <span class="fu">ddays</span>(<span class="dv">1</span>)</span>
+<span id="cb264-2"><a href="lubridate.html#cb264-2" aria-hidden="true" tabindex="-1"></a>res <span class="sc">/</span> <span class="fu">dminutes</span>(<span class="dv">1</span>)</span>
+<span id="cb264-3"><a href="lubridate.html#cb264-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-4"><a href="lubridate.html#cb264-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-5"><a href="lubridate.html#cb264-5" aria-hidden="true" tabindex="-1"></a>res <span class="sc">%/%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb264-6"><a href="lubridate.html#cb264-6" aria-hidden="true" tabindex="-1"></a>res <span class="sc">%%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span></code></pre></div>
 <p><code>as.period</code>用法</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="lubridate.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.period</span>(res <span class="sc">%%</span> <span class="fu">months</span>(<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="lubridate.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.period</span>(res <span class="sc">%%</span> <span class="fu">months</span>(<span class="dv">1</span>))</span></code></pre></div>
 <p>对于日期而言，因为月天数、年天数不一致，导致不能直接加减天数，如下：</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="lubridate.html#cb264-1" aria-hidden="true" tabindex="-1"></a>jan31 <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">&quot;2020-01-31&quot;</span>)</span>
-<span id="cb264-2"><a href="lubridate.html#cb264-2" aria-hidden="true" tabindex="-1"></a>jan31 <span class="sc">+</span> <span class="fu">months</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="lubridate.html#cb266-1" aria-hidden="true" tabindex="-1"></a>jan31 <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">&quot;2020-01-31&quot;</span>)</span>
+<span id="cb266-2"><a href="lubridate.html#cb266-2" aria-hidden="true" tabindex="-1"></a>jan31 <span class="sc">+</span> <span class="fu">months</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>)</span></code></pre></div>
 <p><code>lubridate</code>中不存在的日期返回<code>NA</code></p>
 <p>解决方案是：<code>%m+%</code>或<code>%m-%</code></p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="lubridate.html#cb265-1" aria-hidden="true" tabindex="-1"></a>jan31 <span class="sc">%m+%</span> <span class="fu">months</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>)</span>
-<span id="cb265-2"><a href="lubridate.html#cb265-2" aria-hidden="true" tabindex="-1"></a>jan31 <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="lubridate.html#cb267-1" aria-hidden="true" tabindex="-1"></a>jan31 <span class="sc">%m+%</span> <span class="fu">months</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>)</span>
+<span id="cb267-2"><a href="lubridate.html#cb267-2" aria-hidden="true" tabindex="-1"></a>jan31 <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="footnotes">

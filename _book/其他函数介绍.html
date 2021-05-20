@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -461,14 +461,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>flatten</li>
 </ul>
 <p>flatten()系列函数可以将列表输出为稳定类型。purrr package 自带Examples。</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="其他函数介绍.html#cb402-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">2</span>, <span class="fu">sample</span>(<span class="dv">4</span>))</span>
-<span id="cb402-2"><a href="其他函数介绍.html#cb402-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb402-3"><a href="其他函数介绍.html#cb402-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">flatten</span>()</span>
-<span id="cb402-4"><a href="其他函数介绍.html#cb402-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">flatten_int</span>()</span>
-<span id="cb402-5"><a href="其他函数介绍.html#cb402-5" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use flatten in conjunction with map</span></span>
-<span id="cb402-6"><a href="其他函数介绍.html#cb402-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">map</span>(1L) <span class="sc">%&gt;%</span> <span class="fu">flatten_int</span>()</span>
-<span id="cb402-7"><a href="其他函数介绍.html#cb402-7" aria-hidden="true" tabindex="-1"></a><span class="co"># But it&#39;s more efficient to use the typed map instead.</span></span>
-<span id="cb402-8"><a href="其他函数介绍.html#cb402-8" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(1L)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="其他函数介绍.html#cb407-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">2</span>, <span class="fu">sample</span>(<span class="dv">4</span>))</span>
+<span id="cb407-2"><a href="其他函数介绍.html#cb407-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb407-3"><a href="其他函数介绍.html#cb407-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">flatten</span>()</span>
+<span id="cb407-4"><a href="其他函数介绍.html#cb407-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">flatten_int</span>()</span>
+<span id="cb407-5"><a href="其他函数介绍.html#cb407-5" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use flatten in conjunction with map</span></span>
+<span id="cb407-6"><a href="其他函数介绍.html#cb407-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">map</span>(1L) <span class="sc">%&gt;%</span> <span class="fu">flatten_int</span>()</span>
+<span id="cb407-7"><a href="其他函数介绍.html#cb407-7" aria-hidden="true" tabindex="-1"></a><span class="co"># But it&#39;s more efficient to use the typed map instead.</span></span>
+<span id="cb407-8"><a href="其他函数介绍.html#cb407-8" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(1L)</span></code></pre></div>
 <ul>
 <li>imap</li>
 </ul>
@@ -478,11 +478,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>使用公式快捷方式时,第一个参数是值(.x),第二个参数是位置/名称(.y)。</p>
 <p>详情请查看:?imap</p>
 <p>示例1：</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="其他函数介绍.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_chr</span>(<span class="fu">sample</span>(<span class="dv">10</span>), <span class="sc">~</span> <span class="fu">paste0</span>(.y, <span class="st">&quot;: &quot;</span>, .x))</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="其他函数介绍.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_chr</span>(<span class="fu">sample</span>(<span class="dv">10</span>), <span class="sc">~</span> <span class="fu">paste0</span>(.y, <span class="st">&quot;: &quot;</span>, .x))</span></code></pre></div>
 <p>sample(10),没有names(),只有长度信息。转化成map2表达如下:</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="其他函数介绍.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="co">#same above</span></span>
-<span id="cb404-2"><a href="其他函数介绍.html#cb404-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb404-3"><a href="其他函数介绍.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_chr</span>(<span class="fu">sample</span>(<span class="dv">10</span>),<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="sc">~</span><span class="fu">paste0</span>(.y,<span class="st">&quot;: &quot;</span>,.x)) <span class="co"># 第二个list 为位置信息.</span></span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="其他函数介绍.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="co">#same above</span></span>
+<span id="cb409-2"><a href="其他函数介绍.html#cb409-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-3"><a href="其他函数介绍.html#cb409-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_chr</span>(<span class="fu">sample</span>(<span class="dv">10</span>),<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="sc">~</span><span class="fu">paste0</span>(.y,<span class="st">&quot;: &quot;</span>,.x)) <span class="co"># 第二个list 为位置信息.</span></span></code></pre></div>
 
 </div>
 <!-- </div> -->

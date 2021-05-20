@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -459,7 +459,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.2</span> DBI</h2>
 <div id="安装-7" class="section level3" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> 安装</h3>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="dbi.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;DBI&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="dbi.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;DBI&#39;</span>)</span></code></pre></div>
 </div>
 <div id="连接数据库" class="section level3" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> 连接数据库</h3>
@@ -467,95 +467,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>连接MS SQL SERVER</li>
 </ul>
 <p>通过以下代码即可连接到服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="dbi.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb348-2"><a href="dbi.html#cb348-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
-<span id="cb348-3"><a href="dbi.html#cb348-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>,<span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
-<span id="cb348-4"><a href="dbi.html#cb348-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="dbi.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb353-2"><a href="dbi.html#cb353-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb353-3"><a href="dbi.html#cb353-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>,<span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
+<span id="cb353-4"><a href="dbi.html#cb353-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>如果你用windows系统，通过DBI包连接数据库发现乱码时，根据数据库编码指定encoding参数即可，常规在win下连接sqlserver设置encoding = “GBK”。</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="dbi.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb349-2"><a href="dbi.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="co">#根据数据库编码方式指定encoding</span></span>
-<span id="cb349-3"><a href="dbi.html#cb349-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
-<span id="cb349-4"><a href="dbi.html#cb349-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>,</span>
-<span id="cb349-5"><a href="dbi.html#cb349-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;GBK&quot;</span></span>
-<span id="cb349-6"><a href="dbi.html#cb349-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb349-7"><a href="dbi.html#cb349-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看本机可用驱动 如缺少相应驱动则安装，ODBC Driver 17 for SQL Server 就是个人安装的驱动</span></span>
-<span id="cb349-8"><a href="dbi.html#cb349-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-9"><a href="dbi.html#cb349-9" aria-hidden="true" tabindex="-1"></a>Drivers_tbl <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">odbcListDrivers</span>() </span>
-<span id="cb349-10"><a href="dbi.html#cb349-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Drivers_tbl)</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="dbi.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb354-2"><a href="dbi.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="co">#根据数据库编码方式指定encoding</span></span>
+<span id="cb354-3"><a href="dbi.html#cb354-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb354-4"><a href="dbi.html#cb354-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>,</span>
+<span id="cb354-5"><a href="dbi.html#cb354-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;GBK&quot;</span></span>
+<span id="cb354-6"><a href="dbi.html#cb354-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb354-7"><a href="dbi.html#cb354-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看本机可用驱动 如缺少相应驱动则安装，ODBC Driver 17 for SQL Server 就是个人安装的驱动</span></span>
+<span id="cb354-8"><a href="dbi.html#cb354-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-9"><a href="dbi.html#cb354-9" aria-hidden="true" tabindex="-1"></a>Drivers_tbl <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">odbcListDrivers</span>() </span>
+<span id="cb354-10"><a href="dbi.html#cb354-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Drivers_tbl)</span></code></pre></div>
 <p>查询数据库编码方式,从而选择连接数据库时相应的编码方式。</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="dbi.html#cb350-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
-<span id="cb350-2"><a href="dbi.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>,</span>
-<span id="cb350-3"><a href="dbi.html#cb350-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>, <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
-<span id="cb350-4"><a href="dbi.html#cb350-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb350-5"><a href="dbi.html#cb350-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-6"><a href="dbi.html#cb350-6" aria-hidden="true" tabindex="-1"></a><span class="co">#查看编码是否是936 代表中文简体</span></span>
-<span id="cb350-7"><a href="dbi.html#cb350-7" aria-hidden="true" tabindex="-1"></a>sql <span class="ot">&lt;-</span> <span class="st">&quot;SELECT COLLATIONPROPERTY( &#39;chinese_prc_ci_as&#39;, &#39;codepage&#39; )&quot;</span></span>
-<span id="cb350-8"><a href="dbi.html#cb350-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-9"><a href="dbi.html#cb350-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con,sql)</span>
-<span id="cb350-10"><a href="dbi.html#cb350-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-11"><a href="dbi.html#cb350-11" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb350-12"><a href="dbi.html#cb350-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute(con,sql)</span></span>
-<span id="cb350-13"><a href="dbi.html#cb350-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-14"><a href="dbi.html#cb350-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 用完后记得关闭数据库连接</span></span>
-<span id="cb350-15"><a href="dbi.html#cb350-15" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="dbi.html#cb355-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb355-2"><a href="dbi.html#cb355-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>,</span>
+<span id="cb355-3"><a href="dbi.html#cb355-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>, <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
+<span id="cb355-4"><a href="dbi.html#cb355-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb355-5"><a href="dbi.html#cb355-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-6"><a href="dbi.html#cb355-6" aria-hidden="true" tabindex="-1"></a><span class="co">#查看编码是否是936 代表中文简体</span></span>
+<span id="cb355-7"><a href="dbi.html#cb355-7" aria-hidden="true" tabindex="-1"></a>sql <span class="ot">&lt;-</span> <span class="st">&quot;SELECT COLLATIONPROPERTY( &#39;chinese_prc_ci_as&#39;, &#39;codepage&#39; )&quot;</span></span>
+<span id="cb355-8"><a href="dbi.html#cb355-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-9"><a href="dbi.html#cb355-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con,sql)</span>
+<span id="cb355-10"><a href="dbi.html#cb355-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-11"><a href="dbi.html#cb355-11" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb355-12"><a href="dbi.html#cb355-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute(con,sql)</span></span>
+<span id="cb355-13"><a href="dbi.html#cb355-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-14"><a href="dbi.html#cb355-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 用完后记得关闭数据库连接</span></span>
+<span id="cb355-15"><a href="dbi.html#cb355-15" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 <ul>
 <li>连接mysql</li>
 </ul>
 <p><code>MySQL()</code>函数来源<code>RMySQL</code>包，用来创建<code>&lt;MySQLDriver&gt;</code>驱动，以下代码可连接到阿里云的MySQL数据库。</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="dbi.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
-<span id="cb351-2"><a href="dbi.html#cb351-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),</span>
-<span id="cb351-3"><a href="dbi.html#cb351-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">&quot;test&quot;</span>, <span class="at">user =</span> <span class="st">&quot;test_admin&quot;</span>, <span class="at">password =</span> <span class="st">&quot;30HL1234M7#￥lD6gxjB&quot;</span>,</span>
-<span id="cb351-4"><a href="dbi.html#cb351-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">&quot;prd-public-mypersonal.mysql.test.zhangjiabei.rds.aliyuncs.com&quot;</span></span>
-<span id="cb351-5"><a href="dbi.html#cb351-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="dbi.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb356-2"><a href="dbi.html#cb356-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),</span>
+<span id="cb356-3"><a href="dbi.html#cb356-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">&quot;test&quot;</span>, <span class="at">user =</span> <span class="st">&quot;test_admin&quot;</span>, <span class="at">password =</span> <span class="st">&quot;30HL1234M7#￥lD6gxjB&quot;</span>,</span>
+<span id="cb356-4"><a href="dbi.html#cb356-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">&quot;prd-public-mypersonal.mysql.test.zhangjiabei.rds.aliyuncs.com&quot;</span></span>
+<span id="cb356-5"><a href="dbi.html#cb356-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>或者通过本地已安装驱动连接数据库</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="dbi.html#cb352-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
-<span id="cb352-2"><a href="dbi.html#cb352-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;MySQL ODBC 8.0 Unicode Driver&quot;</span>,</span>
-<span id="cb352-3"><a href="dbi.html#cb352-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Server =</span> <span class="st">&quot;localhost&quot;</span>, <span class="at">UID =</span> <span class="st">&quot;root&quot;</span>, <span class="at">PWD =</span> <span class="st">&quot;123456&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;mysql&quot;</span>,</span>
-<span id="cb352-4"><a href="dbi.html#cb352-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Port =</span> <span class="dv">3306</span></span>
-<span id="cb352-5"><a href="dbi.html#cb352-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="dbi.html#cb357-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
+<span id="cb357-2"><a href="dbi.html#cb357-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;MySQL ODBC 8.0 Unicode Driver&quot;</span>,</span>
+<span id="cb357-3"><a href="dbi.html#cb357-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Server =</span> <span class="st">&quot;localhost&quot;</span>, <span class="at">UID =</span> <span class="st">&quot;root&quot;</span>, <span class="at">PWD =</span> <span class="st">&quot;123456&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;mysql&quot;</span>,</span>
+<span id="cb357-4"><a href="dbi.html#cb357-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Port =</span> <span class="dv">3306</span></span>
+<span id="cb357-5"><a href="dbi.html#cb357-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>mysql数据库默认端口是3306,访问不通时记得检查3306端口是否开放。</p>
 </div>
 <div id="执行sql任务" class="section level3" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> 执行sql任务</h3>
 <p>dbGetQuery()函数处理由DBI包创建的con连接查询任务,dbExecute()执行一些数据库任务</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="dbi.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dbGetQuery 直接查询</span></span>
-<span id="cb353-2"><a href="dbi.html#cb353-2" aria-hidden="true" tabindex="-1"></a>res_table <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from table&#39;</span>) <span class="co">#直接获取sql查询结果</span></span>
-<span id="cb353-3"><a href="dbi.html#cb353-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-4"><a href="dbi.html#cb353-4" aria-hidden="true" tabindex="-1"></a><span class="co">#dbReadTable直接读取</span></span>
-<span id="cb353-5"><a href="dbi.html#cb353-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con,<span class="st">&#39;tbl_name&#39;</span>) <span class="co">#直接读取数据库中某表</span></span>
-<span id="cb353-6"><a href="dbi.html#cb353-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-7"><a href="dbi.html#cb353-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dbSendQuery 执行一个查询任务 </span></span>
-<span id="cb353-8"><a href="dbi.html#cb353-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(<span class="at">conn =</span> con,<span class="at">statement =</span> <span class="st">&#39;select * FROM tab&#39;</span>)</span>
-<span id="cb353-9"><a href="dbi.html#cb353-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(res)</span>
-<span id="cb353-10"><a href="dbi.html#cb353-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
-<span id="cb353-11"><a href="dbi.html#cb353-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-12"><a href="dbi.html#cb353-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute</span></span>
-<span id="cb353-13"><a href="dbi.html#cb353-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con,<span class="st">&#39;delete from table where num &lt;=1000&#39;</span>) <span class="co">#类似任务</span></span>
-<span id="cb353-14"><a href="dbi.html#cb353-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-15"><a href="dbi.html#cb353-15" aria-hidden="true" tabindex="-1"></a><span class="co"># dbWriteTable()</span></span>
-<span id="cb353-16"><a href="dbi.html#cb353-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传数据,指定表名,需上传的数据框df,overwrite是否覆盖,append是否可追加</span></span>
-<span id="cb353-17"><a href="dbi.html#cb353-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(<span class="at">conn =</span> con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> df,<span class="at">overwrite=</span>TURE,<span class="at">append=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dbi.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dbGetQuery 直接查询</span></span>
+<span id="cb358-2"><a href="dbi.html#cb358-2" aria-hidden="true" tabindex="-1"></a>res_table <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from table&#39;</span>) <span class="co">#直接获取sql查询结果</span></span>
+<span id="cb358-3"><a href="dbi.html#cb358-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-4"><a href="dbi.html#cb358-4" aria-hidden="true" tabindex="-1"></a><span class="co">#dbReadTable直接读取</span></span>
+<span id="cb358-5"><a href="dbi.html#cb358-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con,<span class="st">&#39;tbl_name&#39;</span>) <span class="co">#直接读取数据库中某表</span></span>
+<span id="cb358-6"><a href="dbi.html#cb358-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-7"><a href="dbi.html#cb358-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dbSendQuery 执行一个查询任务 </span></span>
+<span id="cb358-8"><a href="dbi.html#cb358-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(<span class="at">conn =</span> con,<span class="at">statement =</span> <span class="st">&#39;select * FROM tab&#39;</span>)</span>
+<span id="cb358-9"><a href="dbi.html#cb358-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(res)</span>
+<span id="cb358-10"><a href="dbi.html#cb358-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
+<span id="cb358-11"><a href="dbi.html#cb358-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-12"><a href="dbi.html#cb358-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute</span></span>
+<span id="cb358-13"><a href="dbi.html#cb358-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con,<span class="st">&#39;delete from table where num &lt;=1000&#39;</span>) <span class="co">#类似任务</span></span>
+<span id="cb358-14"><a href="dbi.html#cb358-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-15"><a href="dbi.html#cb358-15" aria-hidden="true" tabindex="-1"></a><span class="co"># dbWriteTable()</span></span>
+<span id="cb358-16"><a href="dbi.html#cb358-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传数据,指定表名,需上传的数据框df,overwrite是否覆盖,append是否可追加</span></span>
+<span id="cb358-17"><a href="dbi.html#cb358-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(<span class="at">conn =</span> con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> df,<span class="at">overwrite=</span>TURE,<span class="at">append=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="函数介绍" class="section level3" number="8.2.4">
 <h3><span class="header-section-number">8.2.4</span> 函数介绍</h3>
 <p>查看数据库信息,查看表名,删除表，关闭连接等常用操作.</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="dbi.html#cb354-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
-<span id="cb354-2"><a href="dbi.html#cb354-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
-<span id="cb354-3"><a href="dbi.html#cb354-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>, <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>, </span>
-<span id="cb354-4"><a href="dbi.html#cb354-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;GBK&quot;</span></span>
-<span id="cb354-5"><a href="dbi.html#cb354-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb354-6"><a href="dbi.html#cb354-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb354-7"><a href="dbi.html#cb354-7" aria-hidden="true" tabindex="-1"></a><span class="co">#查看数据版本连接信息</span></span>
-<span id="cb354-8"><a href="dbi.html#cb354-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetInfo</span>(con)</span>
-<span id="cb354-9"><a href="dbi.html#cb354-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb354-10"><a href="dbi.html#cb354-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据库中的全部表名</span></span>
-<span id="cb354-11"><a href="dbi.html#cb354-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con) <span class="co">#win下中文表名还是会乱码</span></span>
-<span id="cb354-12"><a href="dbi.html#cb354-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb354-13"><a href="dbi.html#cb354-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除表</span></span>
-<span id="cb354-14"><a href="dbi.html#cb354-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dbRemoveTable</span>(con,<span class="st">&#39;tbl_name&#39;</span>)</span>
-<span id="cb354-15"><a href="dbi.html#cb354-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb354-16"><a href="dbi.html#cb354-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 关闭连接</span></span>
-<span id="cb354-17"><a href="dbi.html#cb354-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="dbi.html#cb359-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb359-2"><a href="dbi.html#cb359-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
+<span id="cb359-3"><a href="dbi.html#cb359-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>, <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>, </span>
+<span id="cb359-4"><a href="dbi.html#cb359-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;GBK&quot;</span></span>
+<span id="cb359-5"><a href="dbi.html#cb359-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb359-6"><a href="dbi.html#cb359-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-7"><a href="dbi.html#cb359-7" aria-hidden="true" tabindex="-1"></a><span class="co">#查看数据版本连接信息</span></span>
+<span id="cb359-8"><a href="dbi.html#cb359-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetInfo</span>(con)</span>
+<span id="cb359-9"><a href="dbi.html#cb359-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-10"><a href="dbi.html#cb359-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据库中的全部表名</span></span>
+<span id="cb359-11"><a href="dbi.html#cb359-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con) <span class="co">#win下中文表名还是会乱码</span></span>
+<span id="cb359-12"><a href="dbi.html#cb359-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-13"><a href="dbi.html#cb359-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除表</span></span>
+<span id="cb359-14"><a href="dbi.html#cb359-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dbRemoveTable</span>(con,<span class="st">&#39;tbl_name&#39;</span>)</span>
+<span id="cb359-15"><a href="dbi.html#cb359-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-16"><a href="dbi.html#cb359-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 关闭连接</span></span>
+<span id="cb359-17"><a href="dbi.html#cb359-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 </div>
 </div>
             </section>

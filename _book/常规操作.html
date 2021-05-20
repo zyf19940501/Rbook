@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -464,33 +464,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>数字向量筛选</li>
 </ul>
 <p>%in%用法与 sql 中 in 用法类似。</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="常规操作.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 筛选 %in% </span></span>
-<span id="cb295-2"><a href="常规操作.html#cb295-2" aria-hidden="true" tabindex="-1"></a>flights[ hour <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">24</span>,<span class="dv">2</span>) ]</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="常规操作.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 筛选 %in% </span></span>
+<span id="cb300-2"><a href="常规操作.html#cb300-2" aria-hidden="true" tabindex="-1"></a>flights[ hour <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">24</span>,<span class="dv">2</span>) ]</span></code></pre></div>
 <ul>
 <li>字符向量筛选</li>
 </ul>
 <p>%chin%用法与 %in% 类似，但仅仅针对字符。</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="常规操作.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 字符筛选</span></span>
-<span id="cb296-2"><a href="常规操作.html#cb296-2" aria-hidden="true" tabindex="-1"></a>flights[ origin <span class="sc">%chin%</span> <span class="fu">c</span>(<span class="st">&#39;JFK&#39;</span>,<span class="st">&#39;LGA&#39;</span>)]</span>
-<span id="cb296-3"><a href="常规操作.html#cb296-3" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 同上 %chin% 对字符速度筛选速度更快</span></span>
-<span id="cb296-4"><a href="常规操作.html#cb296-4" aria-hidden="true" tabindex="-1"></a><span class="co">#flights[ origin %in% c(&#39;JFK&#39;,&#39;LGA&#39;)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="常规操作.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 字符筛选</span></span>
+<span id="cb301-2"><a href="常规操作.html#cb301-2" aria-hidden="true" tabindex="-1"></a>flights[ origin <span class="sc">%chin%</span> <span class="fu">c</span>(<span class="st">&#39;JFK&#39;</span>,<span class="st">&#39;LGA&#39;</span>)]</span>
+<span id="cb301-3"><a href="常规操作.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 同上 %chin% 对字符速度筛选速度更快</span></span>
+<span id="cb301-4"><a href="常规操作.html#cb301-4" aria-hidden="true" tabindex="-1"></a><span class="co">#flights[ origin %in% c(&#39;JFK&#39;,&#39;LGA&#39;)]</span></span></code></pre></div>
 <ul>
 <li>between 筛选</li>
 </ul>
 <p>该函数的新特性矢量化挺实用。</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="常规操作.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co">#between 函数参数</span></span>
-<span id="cb297-2"><a href="常规操作.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="co">#between(x, lower, upper, incbounds=TRUE, NAbounds=TRUE, check=FALSE)</span></span>
-<span id="cb297-3"><a href="常规操作.html#cb297-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">c=</span><span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>))</span>
-<span id="cb297-4"><a href="常规操作.html#cb297-4" aria-hidden="true" tabindex="-1"></a>X[b <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>)]</span>
-<span id="cb297-5"><a href="常规操作.html#cb297-5" aria-hidden="true" tabindex="-1"></a>X[<span class="fu">between</span>(b, <span class="dv">7</span>, <span class="dv">9</span>)] <span class="co">#效果同上</span></span>
-<span id="cb297-6"><a href="常规操作.html#cb297-6" aria-hidden="true" tabindex="-1"></a>X[c <span class="sc">%between%</span> <span class="fu">list</span>(a,b)] <span class="co"># 矢量化</span></span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="常规操作.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co">#between 函数参数</span></span>
+<span id="cb302-2"><a href="常规操作.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="co">#between(x, lower, upper, incbounds=TRUE, NAbounds=TRUE, check=FALSE)</span></span>
+<span id="cb302-3"><a href="常规操作.html#cb302-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">c=</span><span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>))</span>
+<span id="cb302-4"><a href="常规操作.html#cb302-4" aria-hidden="true" tabindex="-1"></a>X[b <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>)]</span>
+<span id="cb302-5"><a href="常规操作.html#cb302-5" aria-hidden="true" tabindex="-1"></a>X[<span class="fu">between</span>(b, <span class="dv">7</span>, <span class="dv">9</span>)] <span class="co">#效果同上</span></span>
+<span id="cb302-6"><a href="常规操作.html#cb302-6" aria-hidden="true" tabindex="-1"></a>X[c <span class="sc">%between%</span> <span class="fu">list</span>(a,b)] <span class="co"># 矢量化</span></span></code></pre></div>
 <ul>
 <li>like 筛选</li>
 </ul>
 <p>%like% 用法与SQL中 like 类似。</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="常规操作.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %like% 用法与SQL中 like 类似</span></span>
-<span id="cb298-2"><a href="常规操作.html#cb298-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">Name=</span><span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>,<span class="st">&quot;George&quot;</span>,<span class="st">&quot;Martha&quot;</span>), <span class="at">Salary=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb298-3"><a href="常规操作.html#cb298-3" aria-hidden="true" tabindex="-1"></a>DT[Name <span class="sc">%like%</span> <span class="st">&quot;^Mar&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="常规操作.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %like% 用法与SQL中 like 类似</span></span>
+<span id="cb303-2"><a href="常规操作.html#cb303-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">Name=</span><span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>,<span class="st">&quot;George&quot;</span>,<span class="st">&quot;Martha&quot;</span>), <span class="at">Salary=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb303-3"><a href="常规操作.html#cb303-3" aria-hidden="true" tabindex="-1"></a>DT[Name <span class="sc">%like%</span> <span class="st">&quot;^Mar&quot;</span>]</span></code></pre></div>
 </div>
 <div id="新增更新列" class="section level3" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> 新增更新列</h3>
@@ -498,38 +498,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>选择列</li>
 </ul>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="常规操作.html#cb299-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb299-2"><a href="常规操作.html#cb299-2" aria-hidden="true" tabindex="-1"></a>dt[,.(col1,col2)]</span>
-<span id="cb299-3"><a href="常规操作.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb299-4"><a href="常规操作.html#cb299-4" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(col1,col2)]</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="常规操作.html#cb304-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb304-2"><a href="常规操作.html#cb304-2" aria-hidden="true" tabindex="-1"></a>dt[,.(col1,col2)]</span>
+<span id="cb304-3"><a href="常规操作.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb304-4"><a href="常规操作.html#cb304-4" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(col1,col2)]</span></code></pre></div>
 <ul>
 <li>新增列</li>
 </ul>
 <p>如下所示:新增addcol列，最后的[]是为了显示新增列的数据框,可不增加。</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="常规操作.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data.table()函数创建data.table数据框</span></span>
-<span id="cb300-2"><a href="常规操作.html#cb300-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb300-3"><a href="常规操作.html#cb300-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增列 :=</span></span>
-<span id="cb300-4"><a href="常规操作.html#cb300-4" aria-hidden="true" tabindex="-1"></a>dt[,addcol<span class="sc">:</span><span class="er">=</span><span class="fu">rep</span>(<span class="st">&#39;新列&#39;</span>,<span class="dv">10</span>)][] <span class="co">#最后的[]是为了显示新增列的数据框,可不增加</span></span>
-<span id="cb300-5"><a href="常规操作.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="co">#dt[,addcol:=rep(&#39;新列&#39;,10)] 不会显示返回结果,加上[]会显示返回</span></span>
-<span id="cb300-6"><a href="常规操作.html#cb300-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增多列</span></span>
-<span id="cb300-7"><a href="常规操作.html#cb300-7" aria-hidden="true" tabindex="-1"></a>dt[,<span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">newcol1=</span><span class="fu">rep</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="dv">10</span>),<span class="at">newcol2=</span><span class="fu">rep</span>(<span class="st">&#39;newcol2&#39;</span>,<span class="dv">10</span>))][]</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="常规操作.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data.table()函数创建data.table数据框</span></span>
+<span id="cb305-2"><a href="常规操作.html#cb305-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb305-3"><a href="常规操作.html#cb305-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增列 :=</span></span>
+<span id="cb305-4"><a href="常规操作.html#cb305-4" aria-hidden="true" tabindex="-1"></a>dt[,addcol<span class="sc">:</span><span class="er">=</span><span class="fu">rep</span>(<span class="st">&#39;新列&#39;</span>,<span class="dv">10</span>)][] <span class="co">#最后的[]是为了显示新增列的数据框,可不增加</span></span>
+<span id="cb305-5"><a href="常规操作.html#cb305-5" aria-hidden="true" tabindex="-1"></a><span class="co">#dt[,addcol:=rep(&#39;新列&#39;,10)] 不会显示返回结果,加上[]会显示返回</span></span>
+<span id="cb305-6"><a href="常规操作.html#cb305-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增多列</span></span>
+<span id="cb305-7"><a href="常规操作.html#cb305-7" aria-hidden="true" tabindex="-1"></a>dt[,<span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">newcol1=</span><span class="fu">rep</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="dv">10</span>),<span class="at">newcol2=</span><span class="fu">rep</span>(<span class="st">&#39;newcol2&#39;</span>,<span class="dv">10</span>))][]</span></code></pre></div>
 <ul>
 <li>删除列</li>
 </ul>
 <p>删除列即将列赋值NULL即可</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="常规操作.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除列</span></span>
-<span id="cb301-2"><a href="常规操作.html#cb301-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span>
-<span id="cb301-3"><a href="常规操作.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除多列</span></span>
-<span id="cb301-4"><a href="常规操作.html#cb301-4" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">c</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="st">&#39;newcol2&#39;</span>)<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="常规操作.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除列</span></span>
+<span id="cb306-2"><a href="常规操作.html#cb306-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span>
+<span id="cb306-3"><a href="常规操作.html#cb306-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除多列</span></span>
+<span id="cb306-4"><a href="常规操作.html#cb306-4" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">c</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="st">&#39;newcol2&#39;</span>)<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span></code></pre></div>
 <ul>
 <li>更新</li>
 </ul>
 <p>更新即重新赋值，将现有列参与计算等于是重新赋值，可以看成是更新列。</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="常规操作.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 更新列</span></span>
-<span id="cb302-2"><a href="常规操作.html#cb302-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>][]</span>
-<span id="cb302-3"><a href="常规操作.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="co"># not run </span></span>
-<span id="cb302-4"><a href="常规操作.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 两列间计算 也可以理解为更新</span></span>
-<span id="cb302-5"><a href="常规操作.html#cb302-5" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span>col1<span class="sc">/</span>col4]</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="常规操作.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 更新列</span></span>
+<span id="cb307-2"><a href="常规操作.html#cb307-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>][]</span>
+<span id="cb307-3"><a href="常规操作.html#cb307-3" aria-hidden="true" tabindex="-1"></a><span class="co"># not run </span></span>
+<span id="cb307-4"><a href="常规操作.html#cb307-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 两列间计算 也可以理解为更新</span></span>
+<span id="cb307-5"><a href="常规操作.html#cb307-5" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span>col1<span class="sc">/</span>col4]</span></code></pre></div>
 <blockquote>
 <p>Note: DT[a &gt; 4, b := c] is different from DT[a &gt; 4][, b := c]</p>
 </blockquote>
@@ -538,14 +538,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.2.3</span> 排序</h3>
 <p>当我们清洗数据时，我们需要将数据框排序，我们可以使用<code>setorder</code>或<code>setorderv</code>函数实现排序。函数是<code>data.table</code>包的函数，比base R 中的<code>order</code>函数要节省内存。
 注意：按照函数文档说法：Note that queries like x[order(.)] are optimised internally to use data.table’s fast order。即x[order(.)]这样的用法会被优化为data.table的排序方法。</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="常规操作.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(45L)</span>
-<span id="cb303-2"><a href="常规操作.html#cb303-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">A=</span><span class="fu">sample</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb303-3"><a href="常规操作.html#cb303-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">B=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">10</span>, <span class="cn">TRUE</span>), <span class="at">C=</span><span class="fu">sample</span>(<span class="dv">10</span>))</span>
-<span id="cb303-4"><a href="常规操作.html#cb303-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb303-5"><a href="常规操作.html#cb303-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setorder</span>(DT, A, <span class="sc">-</span>B) <span class="co">#将DT按照A、B排序 A 升序,-B降序</span></span>
-<span id="cb303-6"><a href="常规操作.html#cb303-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb303-7"><a href="常规操作.html#cb303-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 和上面同样的效果 但是函数变成 setorderv</span></span>
-<span id="cb303-8"><a href="常规操作.html#cb303-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setorderv</span>(DT, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="常规操作.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(45L)</span>
+<span id="cb308-2"><a href="常规操作.html#cb308-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">A=</span><span class="fu">sample</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb308-3"><a href="常规操作.html#cb308-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">B=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">10</span>, <span class="cn">TRUE</span>), <span class="at">C=</span><span class="fu">sample</span>(<span class="dv">10</span>))</span>
+<span id="cb308-4"><a href="常规操作.html#cb308-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb308-5"><a href="常规操作.html#cb308-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setorder</span>(DT, A, <span class="sc">-</span>B) <span class="co">#将DT按照A、B排序 A 升序,-B降序</span></span>
+<span id="cb308-6"><a href="常规操作.html#cb308-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb308-7"><a href="常规操作.html#cb308-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 和上面同样的效果 但是函数变成 setorderv</span></span>
+<span id="cb308-8"><a href="常规操作.html#cb308-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setorderv</span>(DT, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>))</span></code></pre></div>
 </div>
 </div>
             </section>

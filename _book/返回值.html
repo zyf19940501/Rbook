@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -464,51 +464,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>A common reason to do this is because the inputs are empty:</li>
 </ul>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="返回值.html#cb416-1" aria-hidden="true" tabindex="-1"></a>complicated_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z) {</span>
-<span id="cb416-2"><a href="返回值.html#cb416-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span> <span class="sc">||</span> <span class="fu">length</span>(y) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb416-3"><a href="返回值.html#cb416-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
-<span id="cb416-4"><a href="返回值.html#cb416-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb416-5"><a href="返回值.html#cb416-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Complicated code here</span></span>
-<span id="cb416-6"><a href="返回值.html#cb416-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="返回值.html#cb421-1" aria-hidden="true" tabindex="-1"></a>complicated_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z) {</span>
+<span id="cb421-2"><a href="返回值.html#cb421-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span> <span class="sc">||</span> <span class="fu">length</span>(y) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb421-3"><a href="返回值.html#cb421-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
+<span id="cb421-4"><a href="返回值.html#cb421-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb421-5"><a href="返回值.html#cb421-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Complicated code here</span></span>
+<span id="cb421-6"><a href="返回值.html#cb421-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Another reason is because you have a if statement with one complex block and one simple block. For example, you might write an if statement like this:</li>
 </ul>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="返回值.html#cb417-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb417-2"><a href="返回值.html#cb417-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x) {</span>
-<span id="cb417-3"><a href="返回值.html#cb417-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Do </span></span>
-<span id="cb417-4"><a href="返回值.html#cb417-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># something</span></span>
-<span id="cb417-5"><a href="返回值.html#cb417-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># that</span></span>
-<span id="cb417-6"><a href="返回值.html#cb417-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># takes</span></span>
-<span id="cb417-7"><a href="返回值.html#cb417-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># many</span></span>
-<span id="cb417-8"><a href="返回值.html#cb417-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># lines</span></span>
-<span id="cb417-9"><a href="返回值.html#cb417-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># to</span></span>
-<span id="cb417-10"><a href="返回值.html#cb417-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># express</span></span>
-<span id="cb417-11"><a href="返回值.html#cb417-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb417-12"><a href="返回值.html#cb417-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return something short</span></span>
-<span id="cb417-13"><a href="返回值.html#cb417-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb417-14"><a href="返回值.html#cb417-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="返回值.html#cb422-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb422-2"><a href="返回值.html#cb422-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x) {</span>
+<span id="cb422-3"><a href="返回值.html#cb422-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Do </span></span>
+<span id="cb422-4"><a href="返回值.html#cb422-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># something</span></span>
+<span id="cb422-5"><a href="返回值.html#cb422-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># that</span></span>
+<span id="cb422-6"><a href="返回值.html#cb422-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># takes</span></span>
+<span id="cb422-7"><a href="返回值.html#cb422-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># many</span></span>
+<span id="cb422-8"><a href="返回值.html#cb422-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># lines</span></span>
+<span id="cb422-9"><a href="返回值.html#cb422-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># to</span></span>
+<span id="cb422-10"><a href="返回值.html#cb422-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># express</span></span>
+<span id="cb422-11"><a href="返回值.html#cb422-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb422-12"><a href="返回值.html#cb422-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return something short</span></span>
+<span id="cb422-13"><a href="返回值.html#cb422-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb422-14"><a href="返回值.html#cb422-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="编写管道函数" class="section level3" number="11.4.2">
 <h3><span class="header-section-number">11.4.2</span> 编写管道函数</h3>
 <p>管道函数有两种基本类型: transformations and side-effects。使用transformations时，会将对象传递到函数的第一个参数，然后返回修改后的对象。使用side-effects时,不会对传递的对象进行转换。相反，该函数对对象执行操作，例如绘制图或保存文件。副作用函数应该“无形地”返回第一个参数，以便在不打印它们时仍可以在管道中使用它们。例如，以下简单函数在数据框中打印缺失值的数量：</p>
 <p>以上从 R for Data Science 中翻译得来。</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="返回值.html#cb418-1" aria-hidden="true" tabindex="-1"></a>show_missings <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb418-2"><a href="返回值.html#cb418-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(df))</span>
-<span id="cb418-3"><a href="返回值.html#cb418-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Missing values: &quot;</span>, n, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb418-4"><a href="返回值.html#cb418-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb418-5"><a href="返回值.html#cb418-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">invisible</span>(df)</span>
-<span id="cb418-6"><a href="返回值.html#cb418-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="返回值.html#cb423-1" aria-hidden="true" tabindex="-1"></a>show_missings <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb423-2"><a href="返回值.html#cb423-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(df))</span>
+<span id="cb423-3"><a href="返回值.html#cb423-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Missing values: &quot;</span>, n, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb423-4"><a href="返回值.html#cb423-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb423-5"><a href="返回值.html#cb423-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">invisible</span>(df)</span>
+<span id="cb423-6"><a href="返回值.html#cb423-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>以交互invisible()方式调用它,则意味着输入df不会被打印出来:</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="返回值.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_missings</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="返回值.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_missings</span>(mtcars)</span></code></pre></div>
 <p>但是结果仍存在，默认情况下只是不打印显示出来:</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="返回值.html#cb420-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">show_missings</span>(mtcars) </span>
-<span id="cb420-2"><a href="返回值.html#cb420-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb420-3"><a href="返回值.html#cb420-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="返回值.html#cb425-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">show_missings</span>(mtcars) </span>
+<span id="cb425-2"><a href="返回值.html#cb425-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb425-3"><a href="返回值.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
 <p>在管道中继续使用</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="返回值.html#cb421-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb421-2"><a href="返回值.html#cb421-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_missings</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb421-3"><a href="返回值.html#cb421-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mpg =</span> <span class="fu">ifelse</span>(mpg <span class="sc">&lt;</span> <span class="dv">20</span>, <span class="cn">NA</span>, mpg)) <span class="sc">%&gt;%</span> </span>
-<span id="cb421-4"><a href="返回值.html#cb421-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_missings</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="返回值.html#cb426-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb426-2"><a href="返回值.html#cb426-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_missings</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb426-3"><a href="返回值.html#cb426-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mpg =</span> <span class="fu">ifelse</span>(mpg <span class="sc">&lt;</span> <span class="dv">20</span>, <span class="cn">NA</span>, mpg)) <span class="sc">%&gt;%</span> </span>
+<span id="cb426-4"><a href="返回值.html#cb426-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_missings</span>() </span></code></pre></div>
 </div>
 </div>
             </section>

@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -461,33 +461,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>记录到此时，并不时特别清晰<code>odbc</code>与<code>DBI</code>之间的关系。</p>
 <p>odbc可以运用于包括(SQL Server, Oracle, MySQL,PostgreSQL,SQLite)等odbc驱动程序于<code>DBI</code>兼容的接口，相比起来<code>DBI</code>包适用范围更广。</p>
 <p>1.安装包</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="odbc包.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="co">#安装包</span></span>
-<span id="cb355-2"><a href="odbc包.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;odbc&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="odbc包.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co">#安装包</span></span>
+<span id="cb360-2"><a href="odbc包.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;odbc&#39;</span>)</span></code></pre></div>
 <p>2.连接数据库</p>
 <p>连接数据库需要注意时区、编码，尤其是涉及到时间时时区如果设置有误，可能导致上传数据错误。</p>
 <p>当你在Win系统上连接Sql Server时，如果你使用的数据库是中文环境时，最好设置<code>encoding</code>参数。</p>
 <p>如果是linux上通过odbc连接SqlServer,一般情况下可以不用设置编码。如果还是乱码，在连接字符中设置字符编码charset=zh_CN.GBK，设置为gbk会报错。</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="odbc包.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(odbc)</span>
-<span id="cb356-2"><a href="odbc包.html#cb356-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb356-3"><a href="odbc包.html#cb356-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">Server =</span> <span class="st">&quot;Vega&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;ghzy&quot;</span>,</span>
-<span id="cb356-4"><a href="odbc包.html#cb356-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Trusted_Connection =</span> <span class="st">&quot;True&quot;</span></span>
-<span id="cb356-5"><a href="odbc包.html#cb356-5" aria-hidden="true" tabindex="-1"></a>) <span class="co"># windows身份认证连接</span></span>
-<span id="cb356-6"><a href="odbc包.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="co"># con &lt;- dbConnect(odbc::odbc(), .connection_string = &quot;Driver={SQL Server};</span></span>
-<span id="cb356-7"><a href="odbc包.html#cb356-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                                 server=Vega;database=ghzy;uid=zhongyf;pwd=Zyf123456;&quot;, timeout = 10)</span></span>
-<span id="cb356-8"><a href="odbc包.html#cb356-8" aria-hidden="true" tabindex="-1"></a>con</span>
-<span id="cb356-9"><a href="odbc包.html#cb356-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run</span></span>
-<span id="cb356-10"><a href="odbc包.html#cb356-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Win</span></span>
-<span id="cb356-11"><a href="odbc包.html#cb356-11" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
-<span id="cb356-12"><a href="odbc包.html#cb356-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>,<span class="at">encoding =</span> <span class="st">&#39;gbk&#39;</span>)</span>
-<span id="cb356-13"><a href="odbc包.html#cb356-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Linux</span></span>
-<span id="cb356-14"><a href="odbc包.html#cb356-14" aria-hidden="true" tabindex="-1"></a>con_dd <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;</span></span>
-<span id="cb356-15"><a href="odbc包.html#cb356-15" aria-hidden="true" tabindex="-1"></a><span class="st">                 database=aojo_dd;uid=wj;pwd=12qw#$ER;charset=zh_CN.GBK&quot;</span>, <span class="at">timeout =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="odbc包.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(odbc)</span>
+<span id="cb361-2"><a href="odbc包.html#cb361-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb361-3"><a href="odbc包.html#cb361-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">Server =</span> <span class="st">&quot;Vega&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;ghzy&quot;</span>,</span>
+<span id="cb361-4"><a href="odbc包.html#cb361-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Trusted_Connection =</span> <span class="st">&quot;True&quot;</span></span>
+<span id="cb361-5"><a href="odbc包.html#cb361-5" aria-hidden="true" tabindex="-1"></a>) <span class="co"># windows身份认证连接</span></span>
+<span id="cb361-6"><a href="odbc包.html#cb361-6" aria-hidden="true" tabindex="-1"></a><span class="co"># con &lt;- dbConnect(odbc::odbc(), .connection_string = &quot;Driver={SQL Server};</span></span>
+<span id="cb361-7"><a href="odbc包.html#cb361-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                                 server=Vega;database=ghzy;uid=zhongyf;pwd=Zyf123456;&quot;, timeout = 10)</span></span>
+<span id="cb361-8"><a href="odbc包.html#cb361-8" aria-hidden="true" tabindex="-1"></a>con</span>
+<span id="cb361-9"><a href="odbc包.html#cb361-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run</span></span>
+<span id="cb361-10"><a href="odbc包.html#cb361-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Win</span></span>
+<span id="cb361-11"><a href="odbc包.html#cb361-11" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
+<span id="cb361-12"><a href="odbc包.html#cb361-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>,<span class="at">encoding =</span> <span class="st">&#39;gbk&#39;</span>)</span>
+<span id="cb361-13"><a href="odbc包.html#cb361-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Linux</span></span>
+<span id="cb361-14"><a href="odbc包.html#cb361-14" aria-hidden="true" tabindex="-1"></a>con_dd <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;</span></span>
+<span id="cb361-15"><a href="odbc包.html#cb361-15" aria-hidden="true" tabindex="-1"></a><span class="st">                 database=aojo_dd;uid=wj;pwd=12qw#$ER;charset=zh_CN.GBK&quot;</span>, <span class="at">timeout =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p>3.查询</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="odbc包.html#cb357-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from DT&#39;</span>)</span>
-<span id="cb357-2"><a href="odbc包.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="odbc包.html#cb362-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from DT&#39;</span>)</span>
+<span id="cb362-2"><a href="odbc包.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
 <p>4.写入数据库</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="odbc包.html#cb358-1" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">overwrite =</span> T ) <span class="co"># 是否覆盖</span></span>
-<span id="cb358-2"><a href="odbc包.html#cb358-2" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">append =</span> T ) <span class="co"># 是否追加</span></span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="odbc包.html#cb363-1" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">overwrite =</span> T ) <span class="co"># 是否覆盖</span></span>
+<span id="cb363-2"><a href="odbc包.html#cb363-2" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">append =</span> T ) <span class="co"># 是否追加</span></span></code></pre></div>
 </div>
             </section>
 

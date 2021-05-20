@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -461,28 +461,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.6.1</span> 自定义函数计算</h3>
 <p>1.自定义函数处理列</p>
 <p>按照自定义函数计算修改单列或多列</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="运用.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 测试函数</span></span>
-<span id="cb339-2"><a href="运用.html#cb339-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-3"><a href="运用.html#cb339-3" aria-hidden="true" tabindex="-1"></a>fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb339-4"><a href="运用.html#cb339-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb339-5"><a href="运用.html#cb339-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb339-6"><a href="运用.html#cb339-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-7"><a href="运用.html#cb339-7" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="at">each=</span><span class="dv">3</span>), <span class="at">v=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>), <span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">b=</span><span class="dv">9</span><span class="sc">:</span><span class="dv">1</span>)</span>
-<span id="cb339-8"><a href="运用.html#cb339-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-9"><a href="运用.html#cb339-9" aria-hidden="true" tabindex="-1"></a>DT[,.(<span class="at">newcol=</span><span class="fu">fun</span>(y)),by<span class="ot">=</span>.(x)]</span>
-<span id="cb339-10"><a href="运用.html#cb339-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-11"><a href="运用.html#cb339-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Not run</span></span>
-<span id="cb339-12"><a href="运用.html#cb339-12" aria-hidden="true" tabindex="-1"></a><span class="co">#DT[,lapply(.SD,fun),.SDcols=c(&#39;y&#39;,&#39;a&#39;),by=.(x)] #多列参与计算</span></span>
-<span id="cb339-13"><a href="运用.html#cb339-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-14"><a href="运用.html#cb339-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-15"><a href="运用.html#cb339-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 批量修改列</span></span>
-<span id="cb339-16"><a href="运用.html#cb339-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Not run</span></span>
-<span id="cb339-17"><a href="运用.html#cb339-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-18"><a href="运用.html#cb339-18" aria-hidden="true" tabindex="-1"></a><span class="co"># myfun &lt;- function(x){</span></span>
-<span id="cb339-19"><a href="运用.html#cb339-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(x)</span></span>
-<span id="cb339-20"><a href="运用.html#cb339-20" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
-<span id="cb339-21"><a href="运用.html#cb339-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb339-22"><a href="运用.html#cb339-22" aria-hidden="true" tabindex="-1"></a><span class="co"># dt &lt;- dt[,colnames(dt):=lapply(.SD[,1:ncol(dt)],myfun)] #很重要的用法</span></span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="运用.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 测试函数</span></span>
+<span id="cb344-2"><a href="运用.html#cb344-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-3"><a href="运用.html#cb344-3" aria-hidden="true" tabindex="-1"></a>fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb344-4"><a href="运用.html#cb344-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb344-5"><a href="运用.html#cb344-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb344-6"><a href="运用.html#cb344-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-7"><a href="运用.html#cb344-7" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="at">each=</span><span class="dv">3</span>), <span class="at">v=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>), <span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">b=</span><span class="dv">9</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb344-8"><a href="运用.html#cb344-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-9"><a href="运用.html#cb344-9" aria-hidden="true" tabindex="-1"></a>DT[,.(<span class="at">newcol=</span><span class="fu">fun</span>(y)),by<span class="ot">=</span>.(x)]</span>
+<span id="cb344-10"><a href="运用.html#cb344-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-11"><a href="运用.html#cb344-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Not run</span></span>
+<span id="cb344-12"><a href="运用.html#cb344-12" aria-hidden="true" tabindex="-1"></a><span class="co">#DT[,lapply(.SD,fun),.SDcols=c(&#39;y&#39;,&#39;a&#39;),by=.(x)] #多列参与计算</span></span>
+<span id="cb344-13"><a href="运用.html#cb344-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-14"><a href="运用.html#cb344-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-15"><a href="运用.html#cb344-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 批量修改列</span></span>
+<span id="cb344-16"><a href="运用.html#cb344-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Not run</span></span>
+<span id="cb344-17"><a href="运用.html#cb344-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-18"><a href="运用.html#cb344-18" aria-hidden="true" tabindex="-1"></a><span class="co"># myfun &lt;- function(x){</span></span>
+<span id="cb344-19"><a href="运用.html#cb344-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(x)</span></span>
+<span id="cb344-20"><a href="运用.html#cb344-20" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb344-21"><a href="运用.html#cb344-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb344-22"><a href="运用.html#cb344-22" aria-hidden="true" tabindex="-1"></a><span class="co"># dt &lt;- dt[,colnames(dt):=lapply(.SD[,1:ncol(dt)],myfun)] #很重要的用法</span></span></code></pre></div>
 </div>
 <div id="带汇总的聚合运算" class="section level3" number="7.6.2">
 <h3><span class="header-section-number">7.6.2</span> 带汇总的聚合运算</h3>
@@ -491,47 +491,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>rollup</li>
 </ol>
 <p>分组聚合后设置id=TRUE将各个级别的汇总显示清晰,当by字段只有一个是和正常聚合计算没有区别.以下是官方案例.</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="运用.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usage</span></span>
-<span id="cb340-2"><a href="运用.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(x, j, by, .SDcols, id = FALSE, ...)</span></span>
-<span id="cb340-3"><a href="运用.html#cb340-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> 24L</span>
-<span id="cb340-4"><a href="运用.html#cb340-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">25</span>)</span>
-<span id="cb340-5"><a href="运用.html#cb340-5" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
-<span id="cb340-6"><a href="运用.html#cb340-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;red&quot;</span>), n, <span class="cn">TRUE</span>),</span>
-<span id="cb340-7"><a href="运用.html#cb340-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">as.Date</span>(<span class="fu">sample</span>(<span class="fu">paste0</span>(<span class="dv">2011</span><span class="sc">:</span><span class="dv">2015</span>,<span class="st">&quot;-01-01&quot;</span>), n, <span class="cn">TRUE</span>)),</span>
-<span id="cb340-8"><a href="运用.html#cb340-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="fu">as.factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;removed&quot;</span>,<span class="st">&quot;active&quot;</span>,<span class="st">&quot;inactive&quot;</span>,<span class="st">&quot;archived&quot;</span>), n, <span class="cn">TRUE</span>)),</span>
-<span id="cb340-9"><a href="运用.html#cb340-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">amount =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, n, <span class="cn">TRUE</span>),</span>
-<span id="cb340-10"><a href="运用.html#cb340-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">3.5</span>, <span class="fl">2.5</span>, <span class="dv">2</span>), n, <span class="cn">TRUE</span>)</span>
-<span id="cb340-11"><a href="运用.html#cb340-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb340-12"><a href="运用.html#cb340-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(DT, <span class="at">j =</span> <span class="fu">sum</span>(value), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>)) <span class="co"># default id=FALSE</span></span>
-<span id="cb340-13"><a href="运用.html#cb340-13" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(DT, j = sum(value), by = c(&quot;color&quot;,&quot;year&quot;,&quot;status&quot;), id=TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="运用.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usage</span></span>
+<span id="cb345-2"><a href="运用.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(x, j, by, .SDcols, id = FALSE, ...)</span></span>
+<span id="cb345-3"><a href="运用.html#cb345-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> 24L</span>
+<span id="cb345-4"><a href="运用.html#cb345-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">25</span>)</span>
+<span id="cb345-5"><a href="运用.html#cb345-5" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
+<span id="cb345-6"><a href="运用.html#cb345-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;red&quot;</span>), n, <span class="cn">TRUE</span>),</span>
+<span id="cb345-7"><a href="运用.html#cb345-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">as.Date</span>(<span class="fu">sample</span>(<span class="fu">paste0</span>(<span class="dv">2011</span><span class="sc">:</span><span class="dv">2015</span>,<span class="st">&quot;-01-01&quot;</span>), n, <span class="cn">TRUE</span>)),</span>
+<span id="cb345-8"><a href="运用.html#cb345-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="fu">as.factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;removed&quot;</span>,<span class="st">&quot;active&quot;</span>,<span class="st">&quot;inactive&quot;</span>,<span class="st">&quot;archived&quot;</span>), n, <span class="cn">TRUE</span>)),</span>
+<span id="cb345-9"><a href="运用.html#cb345-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">amount =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, n, <span class="cn">TRUE</span>),</span>
+<span id="cb345-10"><a href="运用.html#cb345-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">3.5</span>, <span class="fl">2.5</span>, <span class="dv">2</span>), n, <span class="cn">TRUE</span>)</span>
+<span id="cb345-11"><a href="运用.html#cb345-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb345-12"><a href="运用.html#cb345-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(DT, <span class="at">j =</span> <span class="fu">sum</span>(value), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>)) <span class="co"># default id=FALSE</span></span>
+<span id="cb345-13"><a href="运用.html#cb345-13" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(DT, j = sum(value), by = c(&quot;color&quot;,&quot;year&quot;,&quot;status&quot;), id=TRUE)</span></span></code></pre></div>
 <p>个人运用,实际工作中常常需要汇总项,汇总项在Excel透视表中很简单,在R中我之前是构造重复的数据源聚合汇总出现汇总项,极大浪费内存,运算速度减慢.</p>
 <ul>
 <li>新方法 rollup</li>
 </ul>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="运用.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">25</span>)</span>
-<span id="cb341-2"><a href="运用.html#cb341-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb341-3"><a href="运用.html#cb341-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="fu">sample</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],N,<span class="at">replace =</span> T),<span class="at">col2=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],N,<span class="at">replace =</span> T),<span class="at">num=</span><span class="dv">1</span><span class="sc">:</span>N)</span>
-<span id="cb341-4"><a href="运用.html#cb341-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb341-5"><a href="运用.html#cb341-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(dt,<span class="at">j=</span><span class="fu">c</span>(<span class="fu">list</span>(<span class="fu">sum</span>(num))),<span class="at">by=</span><span class="fu">c</span>(<span class="st">&#39;col1&#39;</span>,<span class="st">&#39;col2&#39;</span>))</span>
-<span id="cb341-6"><a href="运用.html#cb341-6" aria-hidden="true" tabindex="-1"></a><span class="co">#同上 添加汇总项名称 total</span></span>
-<span id="cb341-7"><a href="运用.html#cb341-7" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(dt,j=c(list(total=sum(num))),by=c(&#39;col1&#39;,&#39;col2&#39;))</span></span>
-<span id="cb341-8"><a href="运用.html#cb341-8" aria-hidden="true" tabindex="-1"></a><span class="co">#添加id=TRUE参数,多出的grouping 列显示聚合级别</span></span>
-<span id="cb341-9"><a href="运用.html#cb341-9" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(dt,j=c(list(total=sum(num))),by=c(&#39;col1&#39;,&#39;col2&#39;),id=TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="运用.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">25</span>)</span>
+<span id="cb346-2"><a href="运用.html#cb346-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb346-3"><a href="运用.html#cb346-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="fu">sample</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],N,<span class="at">replace =</span> T),<span class="at">col2=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],N,<span class="at">replace =</span> T),<span class="at">num=</span><span class="dv">1</span><span class="sc">:</span>N)</span>
+<span id="cb346-4"><a href="运用.html#cb346-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb346-5"><a href="运用.html#cb346-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(dt,<span class="at">j=</span><span class="fu">c</span>(<span class="fu">list</span>(<span class="fu">sum</span>(num))),<span class="at">by=</span><span class="fu">c</span>(<span class="st">&#39;col1&#39;</span>,<span class="st">&#39;col2&#39;</span>))</span>
+<span id="cb346-6"><a href="运用.html#cb346-6" aria-hidden="true" tabindex="-1"></a><span class="co">#同上 添加汇总项名称 total</span></span>
+<span id="cb346-7"><a href="运用.html#cb346-7" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(dt,j=c(list(total=sum(num))),by=c(&#39;col1&#39;,&#39;col2&#39;))</span></span>
+<span id="cb346-8"><a href="运用.html#cb346-8" aria-hidden="true" tabindex="-1"></a><span class="co">#添加id=TRUE参数,多出的grouping 列显示聚合级别</span></span>
+<span id="cb346-9"><a href="运用.html#cb346-9" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(dt,j=c(list(total=sum(num))),by=c(&#39;col1&#39;,&#39;col2&#39;),id=TRUE)</span></span></code></pre></div>
 <p>2.groupingsets</p>
 <p>按照指定字段聚合.包作者说相同与SQL中的 GROUPING SETS 操作.详情参照<a href="http://www.postgresql.org/docs/9.5/static/queries-table-expressions.html#QUERIES-GROUPING-SETS">postgresql</a></p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="运用.html#cb342-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">groupingsets</span>(DT, <span class="at">j =</span> <span class="fu">c</span>(<span class="fu">list</span>(<span class="at">count=</span>.N), <span class="fu">lapply</span>(.SD, sum)), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>),</span>
-<span id="cb342-2"><a href="运用.html#cb342-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&quot;color&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>), <span class="fu">character</span>()), <span class="at">id=</span><span class="cn">TRUE</span>)</span>
-<span id="cb342-3"><a href="运用.html#cb342-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="运用.html#cb347-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">groupingsets</span>(DT, <span class="at">j =</span> <span class="fu">c</span>(<span class="fu">list</span>(<span class="at">count=</span>.N), <span class="fu">lapply</span>(.SD, sum)), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>),</span>
+<span id="cb347-2"><a href="运用.html#cb347-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&quot;color&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>), <span class="fu">character</span>()), <span class="at">id=</span><span class="cn">TRUE</span>)</span>
+<span id="cb347-3"><a href="运用.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span></code></pre></div>
 <p>注意groupingsets函数中sets参数,用list()包裹想要聚合的字段组合,最后还有一个character(),加上该部分相当于全部聚合.当by只有一个字段时,相当于汇总.用法类似sql中“().”</p>
 <p>上述语句结果等同于下面sql.</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb343-1"><a href="运用.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> color ,<span class="dt">year</span>, status,<span class="fu">count</span>(<span class="op">*</span>) <span class="fu">count</span>,<span class="fu">sum</span>(amount) amount,<span class="fu">sum</span>(<span class="fu">value</span>) <span class="fu">value</span> </span>
-<span id="cb343-2"><a href="运用.html#cb343-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> dbo.DT</span>
-<span id="cb343-3"><a href="运用.html#cb343-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span></span>
-<span id="cb343-4"><a href="运用.html#cb343-4" aria-hidden="true" tabindex="-1"></a><span class="fu">GROUPING</span> SETS(</span>
-<span id="cb343-5"><a href="运用.html#cb343-5" aria-hidden="true" tabindex="-1"></a>(color),</span>
-<span id="cb343-6"><a href="运用.html#cb343-6" aria-hidden="true" tabindex="-1"></a>(<span class="dt">year</span>,status),</span>
-<span id="cb343-7"><a href="运用.html#cb343-7" aria-hidden="true" tabindex="-1"></a>() <span class="co">---- 类似 character()</span></span>
-<span id="cb343-8"><a href="运用.html#cb343-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb348-1"><a href="运用.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> color ,<span class="dt">year</span>, status,<span class="fu">count</span>(<span class="op">*</span>) <span class="fu">count</span>,<span class="fu">sum</span>(amount) amount,<span class="fu">sum</span>(<span class="fu">value</span>) <span class="fu">value</span> </span>
+<span id="cb348-2"><a href="运用.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> dbo.DT</span>
+<span id="cb348-3"><a href="运用.html#cb348-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span></span>
+<span id="cb348-4"><a href="运用.html#cb348-4" aria-hidden="true" tabindex="-1"></a><span class="fu">GROUPING</span> SETS(</span>
+<span id="cb348-5"><a href="运用.html#cb348-5" aria-hidden="true" tabindex="-1"></a>(color),</span>
+<span id="cb348-6"><a href="运用.html#cb348-6" aria-hidden="true" tabindex="-1"></a>(<span class="dt">year</span>,status),</span>
+<span id="cb348-7"><a href="运用.html#cb348-7" aria-hidden="true" tabindex="-1"></a>() <span class="co">---- 类似 character()</span></span>
+<span id="cb348-8"><a href="运用.html#cb348-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>最后还有cube()函数,可?cube查看用法</p>
 </div>
 <div id="行列转变" class="section level3" number="7.6.3">
@@ -540,26 +540,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>一列变多行</li>
 </ul>
 <p>用tstrsplit()函数实现</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="运用.html#cb344-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb344-2"><a href="运用.html#cb344-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">name=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span>n],<span class="at">char=</span><span class="fu">rep</span>(<span class="st">&#39;我-爱-R-语-言&#39;</span>),n)</span>
-<span id="cb344-3"><a href="运用.html#cb344-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> dt[,.(<span class="at">newcol=</span><span class="fu">tstrsplit</span>(char,<span class="st">&#39;-&#39;</span>)),by<span class="ot">=</span>.(name)]</span>
-<span id="cb344-4"><a href="运用.html#cb344-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="运用.html#cb349-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb349-2"><a href="运用.html#cb349-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">name=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span>n],<span class="at">char=</span><span class="fu">rep</span>(<span class="st">&#39;我-爱-R-语-言&#39;</span>),n)</span>
+<span id="cb349-3"><a href="运用.html#cb349-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> dt[,.(<span class="at">newcol=</span><span class="fu">tstrsplit</span>(char,<span class="st">&#39;-&#39;</span>)),by<span class="ot">=</span>.(name)]</span>
+<span id="cb349-4"><a href="运用.html#cb349-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span></code></pre></div>
 <ul>
 <li>多行变一列</li>
 </ul>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="运用.html#cb345-1" aria-hidden="true" tabindex="-1"></a>res[,.(<span class="at">char=</span><span class="fu">paste0</span>(newcol,<span class="at">collapse =</span> <span class="st">&#39;-&#39;</span>)),by<span class="ot">=</span>.(name)]</span>
-<span id="cb345-2"><a href="运用.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="co">#同上</span></span>
-<span id="cb345-3"><a href="运用.html#cb345-3" aria-hidden="true" tabindex="-1"></a><span class="co">#res[,.(char=stringr::str_c(newcol,collapse = &#39;-&#39;)),by=.(name)]</span></span>
-<span id="cb345-4"><a href="运用.html#cb345-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A 我-爱-R-语-言           </span></span>
-<span id="cb345-5"><a href="运用.html#cb345-5" aria-hidden="true" tabindex="-1"></a><span class="co"># B 我-爱-R-语-言           </span></span>
-<span id="cb345-6"><a href="运用.html#cb345-6" aria-hidden="true" tabindex="-1"></a><span class="co"># C 我-爱-R-语-言           </span></span>
-<span id="cb345-7"><a href="运用.html#cb345-7" aria-hidden="true" tabindex="-1"></a><span class="co"># D 我-爱-R-语-言           </span></span>
-<span id="cb345-8"><a href="运用.html#cb345-8" aria-hidden="true" tabindex="-1"></a><span class="co"># E 我-爱-R-语-言           </span></span>
-<span id="cb345-9"><a href="运用.html#cb345-9" aria-hidden="true" tabindex="-1"></a><span class="co"># F 我-爱-R-语-言           </span></span>
-<span id="cb345-10"><a href="运用.html#cb345-10" aria-hidden="true" tabindex="-1"></a><span class="co"># G 我-爱-R-语-言           </span></span>
-<span id="cb345-11"><a href="运用.html#cb345-11" aria-hidden="true" tabindex="-1"></a><span class="co"># H 我-爱-R-语-言           </span></span>
-<span id="cb345-12"><a href="运用.html#cb345-12" aria-hidden="true" tabindex="-1"></a><span class="co"># I 我-爱-R-语-言           </span></span>
-<span id="cb345-13"><a href="运用.html#cb345-13" aria-hidden="true" tabindex="-1"></a><span class="co"># J 我-爱-R-语-言</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="运用.html#cb350-1" aria-hidden="true" tabindex="-1"></a>res[,.(<span class="at">char=</span><span class="fu">paste0</span>(newcol,<span class="at">collapse =</span> <span class="st">&#39;-&#39;</span>)),by<span class="ot">=</span>.(name)]</span>
+<span id="cb350-2"><a href="运用.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="co">#同上</span></span>
+<span id="cb350-3"><a href="运用.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="co">#res[,.(char=stringr::str_c(newcol,collapse = &#39;-&#39;)),by=.(name)]</span></span>
+<span id="cb350-4"><a href="运用.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A 我-爱-R-语-言           </span></span>
+<span id="cb350-5"><a href="运用.html#cb350-5" aria-hidden="true" tabindex="-1"></a><span class="co"># B 我-爱-R-语-言           </span></span>
+<span id="cb350-6"><a href="运用.html#cb350-6" aria-hidden="true" tabindex="-1"></a><span class="co"># C 我-爱-R-语-言           </span></span>
+<span id="cb350-7"><a href="运用.html#cb350-7" aria-hidden="true" tabindex="-1"></a><span class="co"># D 我-爱-R-语-言           </span></span>
+<span id="cb350-8"><a href="运用.html#cb350-8" aria-hidden="true" tabindex="-1"></a><span class="co"># E 我-爱-R-语-言           </span></span>
+<span id="cb350-9"><a href="运用.html#cb350-9" aria-hidden="true" tabindex="-1"></a><span class="co"># F 我-爱-R-语-言           </span></span>
+<span id="cb350-10"><a href="运用.html#cb350-10" aria-hidden="true" tabindex="-1"></a><span class="co"># G 我-爱-R-语-言           </span></span>
+<span id="cb350-11"><a href="运用.html#cb350-11" aria-hidden="true" tabindex="-1"></a><span class="co"># H 我-爱-R-语-言           </span></span>
+<span id="cb350-12"><a href="运用.html#cb350-12" aria-hidden="true" tabindex="-1"></a><span class="co"># I 我-爱-R-语-言           </span></span>
+<span id="cb350-13"><a href="运用.html#cb350-13" aria-hidden="true" tabindex="-1"></a><span class="co"># J 我-爱-R-语-言</span></span></code></pre></div>
 
 </div>
 </div>

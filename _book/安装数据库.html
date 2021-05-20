@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -473,20 +473,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><a href="https://docs.microsoft.com/zh-cn/sql/linux/sql-server-linux-setup?view=sql-server-ver15">官网安装指南</a></p>
 <p>以下用于 SQL Server 2019 的命令指向 Ubuntu 20.04 存储库。 如果使用的是 Ubuntu 18.04 或 16.04，请将以下路径更改为 /ubuntu/18.04/ 或 /ubuntu/16.04/，而不是 /ubuntu/20.04/。</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb346-1"><a href="安装数据库.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 导入公共存储库的密钥</span></span>
-<span id="cb346-2"><a href="安装数据库.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://packages.microsoft.com/keys/microsoft.asc <span class="kw">|</span> <span class="fu">sudo</span> apt-key add <span class="at">-</span></span>
-<span id="cb346-3"><a href="安装数据库.html#cb346-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb346-4"><a href="安装数据库.html#cb346-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 为 SQL Server 2019 注册 Microsoft SQL Server Ubuntu 存储库</span></span>
-<span id="cb346-5"><a href="安装数据库.html#cb346-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;</span><span class="va">$(</span><span class="fu">wget</span> <span class="at">-qO-</span> https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list<span class="va">)</span><span class="st">&quot;</span></span>
-<span id="cb346-6"><a href="安装数据库.html#cb346-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb346-7"><a href="安装数据库.html#cb346-7" aria-hidden="true" tabindex="-1"></a><span class="co"># sudo add-apt-repository &quot;$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list)&quot;</span></span>
-<span id="cb346-8"><a href="安装数据库.html#cb346-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb346-9"><a href="安装数据库.html#cb346-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装 SQL Server</span></span>
-<span id="cb346-10"><a href="安装数据库.html#cb346-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb346-11"><a href="安装数据库.html#cb346-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> mssql-server</span>
-<span id="cb346-12"><a href="安装数据库.html#cb346-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb346-13"><a href="安装数据库.html#cb346-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 验证服务是否运行</span></span>
-<span id="cb346-14"><a href="安装数据库.html#cb346-14" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status mssql-server <span class="at">--no-pager</span></span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb351-1"><a href="安装数据库.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 导入公共存储库的密钥</span></span>
+<span id="cb351-2"><a href="安装数据库.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://packages.microsoft.com/keys/microsoft.asc <span class="kw">|</span> <span class="fu">sudo</span> apt-key add <span class="at">-</span></span>
+<span id="cb351-3"><a href="安装数据库.html#cb351-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb351-4"><a href="安装数据库.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 为 SQL Server 2019 注册 Microsoft SQL Server Ubuntu 存储库</span></span>
+<span id="cb351-5"><a href="安装数据库.html#cb351-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;</span><span class="va">$(</span><span class="fu">wget</span> <span class="at">-qO-</span> https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list<span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb351-6"><a href="安装数据库.html#cb351-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb351-7"><a href="安装数据库.html#cb351-7" aria-hidden="true" tabindex="-1"></a><span class="co"># sudo add-apt-repository &quot;$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list)&quot;</span></span>
+<span id="cb351-8"><a href="安装数据库.html#cb351-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb351-9"><a href="安装数据库.html#cb351-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装 SQL Server</span></span>
+<span id="cb351-10"><a href="安装数据库.html#cb351-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb351-11"><a href="安装数据库.html#cb351-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> mssql-server</span>
+<span id="cb351-12"><a href="安装数据库.html#cb351-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb351-13"><a href="安装数据库.html#cb351-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 验证服务是否运行</span></span>
+<span id="cb351-14"><a href="安装数据库.html#cb351-14" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status mssql-server <span class="at">--no-pager</span></span></code></pre></div>
 <p>至于其他如安装sql server 命令行工具请<a href="https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15&amp;preserve-view=true">查阅官网安装</a>。</p>
 <p>接下来我们就R语言与数据库的交互包展开介绍。</p>
 </div>

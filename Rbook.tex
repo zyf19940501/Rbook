@@ -4377,11 +4377,16 @@ now()函数是当前时间，只有一个参数tzone,默认为系统的timezone�
 \hypertarget{ux89e3ux6790ux65e5ux671fux65f6ux95f4}{%
 \subsection{解析日期时间}\label{ux89e3ux6790ux65e5ux671fux65f6ux95f4}}
 
-从时间表达式中提取想要时间。存储的数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生成库可能是不同的系统，导致时间日期格式混乱，如果没有BI，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
+数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生产库可能是不同的数据库系统，导致时间日期格式混乱，如果公司没有统一的用户层数据源，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
+
+\begin{itemize}
+\tightlist
+\item
+  解析日期
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
 \CommentTok{\# 整数和字符都可以}
 \FunctionTok{ymd}\NormalTok{(}\DecValTok{20200604}\NormalTok{) }
 \FunctionTok{ymd}\NormalTok{(}\StringTok{\textquotesingle{}20200604\textquotesingle{}}\NormalTok{)}
@@ -4390,7 +4395,20 @@ now()函数是当前时间，只有一个参数tzone,默认为系统的timezone�
 \end{Highlighting}
 \end{Shaded}
 
-遇到unix 时间戳 可以用 .POSIXct()函数转化.
+\begin{itemize}
+\tightlist
+\item
+  解析时间
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ymd\_hm}\NormalTok{(}\StringTok{"20100201 07{-}01"}\NormalTok{, }\StringTok{"20100201 07{-}1"}\NormalTok{, }\StringTok{"20100201 7{-}01"}\NormalTok{)}
+\FunctionTok{ymd\_hms}\NormalTok{(}\StringTok{"2013{-}01{-}24 19:39:07"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+当需要处理unix时间戳时应.POSIXct()函数转化.
 
 \href{https://unixtime.51240.com/}{unix在线转换}
 
@@ -4401,34 +4419,20 @@ now()函数是当前时间，只有一个参数tzone,默认为系统的timezone�
 \end{Highlighting}
 \end{Shaded}
 
-unix时间戳里面有时区的概念，在用mysql，RDS数据库时需要注意时区，特别是需要提取时间点时。lubridate包里面tz参数指定时区
+在使用unix时间戳转换时一定注意R环境和数据系统环境时区是否一直。
+
+\begin{quote}
+曾经我在使用阿里云的RDS数据库时没注意时区差异，导致我清洗出来的时间数据错误。
+\end{quote}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ymd\_hms}\NormalTok{(}\FunctionTok{.POSIXct}\NormalTok{(}\DecValTok{1591709615}\NormalTok{),}\AttributeTok{tz =} \StringTok{\textquotesingle{}asia/shanghai\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。
-
-如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.
-
-\begin{itemize}
-\tightlist
-\item
-  \url{https://home.kpn.nl/vanadovv/time/TZworld.html\#asi}
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{lubridate}\SpecialCharTok{::}\FunctionTok{now}\NormalTok{()}
-\FunctionTok{as\_datetime}\NormalTok{(}\FunctionTok{now}\NormalTok{()) }\CommentTok{\#默认是UTC}
-\FunctionTok{as\_datetime}\NormalTok{(}\FunctionTok{now}\NormalTok{(),}\AttributeTok{tz =} \StringTok{\textquotesingle{}asia/shanghai\textquotesingle{}}\NormalTok{)}
+\FunctionTok{ymd\_hms}\NormalTok{(}\FunctionTok{.POSIXct}\NormalTok{(}\DecValTok{1591709615}\NormalTok{),}\AttributeTok{tz =} \StringTok{\textquotesingle{}Asia/Shanghai\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{lubridate:extracting-information}{%
-\subsection{提取日期时间部分}\label{lubridate:extracting-information}}
+\subsection{提取日期时间成分}\label{lubridate:extracting-information}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4509,10 +4513,36 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 \end{Highlighting}
 \end{Shaded}
 
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  时区差异
+\end{enumerate}
+
+从下面三个时间观察时区，CST时间:中央标准时间;UTC时间:世界协调时间(UTC)是世界上不同国家用来调节时钟和时间的主要时间标准。
+
+如:当UTC时间为0点时，中国CST时间为8点，因为零时区和中国北京时区相差8个时区.
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://home.kpn.nl/vanadovv/time/TZworld.html\#asi}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lubridate}\SpecialCharTok{::}\FunctionTok{now}\NormalTok{() }\CommentTok{\# now函数调用系统默认时区}
+\FunctionTok{as\_datetime}\NormalTok{(}\FunctionTok{now}\NormalTok{()) }\CommentTok{\#as\_datetime默认是UTC}
+\FunctionTok{as\_datetime}\NormalTok{(}\FunctionTok{now}\NormalTok{(),}\AttributeTok{tz =} \StringTok{\textquotesingle{}asia/shanghai\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{ux65f6ux95f4ux95f4ux9694}{%
 \subsection{时间间隔}\label{ux65f6ux95f4ux95f4ux9694}}
 
-我们可以用\texttt{lubridate}将时间间隔保存为\texttt{interveal}类对象
+\texttt{lubridate}中将时间间隔保存为\texttt{interveal}类对象。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4525,6 +4555,14 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 \NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{interval}\NormalTok{(arrive, leave) }
 \CommentTok{\# same above}
 \NormalTok{res }\OtherTok{\textless{}{-}}\NormalTok{ arrive }\SpecialCharTok{\%{-}{-}\%}\NormalTok{ leave}
+\end{Highlighting}
+\end{Shaded}
+
+查看类
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(res)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4575,7 +4613,7 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 \hypertarget{ux65f6ux95f4ux65e5ux671fux8ba1ux7b97}{%
 \subsection{时间日期计算}\label{ux65f6ux95f4ux65e5ux671fux8ba1ux7b97}}
 
-时间日期计算以\texttt{number\ line}为依据计算。原文是\texttt{Because\ the\ timeline\ is\ not\ as\ reliable\ as\ the\ number\ line}。
+时间日期计算以\texttt{number\ line}为依据计算。原文是\texttt{Because\ the\ timeline\ is\ not\ as\ reliable\ as\ the\ number\ line}，我没理解这句话。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4653,16 +4691,61 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 \hypertarget{ux7efcux5408ux8fd0ux7528-1}{%
 \section{综合运用}\label{ux7efcux5408ux8fd0ux7528-1}}
 
-\hypertarget{ux5e74ux540cux73afux6bd4}{%
-\subsection{年同环比}\label{ux5e74ux540cux73afux6bd4}}
+\hypertarget{ux65e5ux62a5ux540cux73afux6bd4ux8ba1ux7b97}{%
+\subsection{日报同环比计算}\label{ux65e5ux62a5ux540cux73afux6bd4ux8ba1ux7b97}}
 
-\texttt{floor\_date()}函数根据要求周期回滚日期，
+零售行业基本都存在日报，作为数据分析师大概率是需要出日报的，但根据所在部门情况会有所不同。很多人都已经在sql或exel中实现了，本案例不完全实现日报，主要是教大家为了实现同环比，怎么利用R做日期范围筛选。
+
+首先我们看看R里面怎么做日期的同环比计算：
+
+\begin{itemize}
+\tightlist
+\item
+  常用函数
+\end{itemize}
+
+\texttt{round\_date()}函数根据要求周期回滚日期
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{floor\_date}\NormalTok{(}\FunctionTok{today}\NormalTok{(),}\AttributeTok{unit =} \StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{)}
-\FunctionTok{floor\_date}\NormalTok{(}\FunctionTok{today}\NormalTok{(),}\AttributeTok{unit =} \StringTok{\textquotesingle{}month\textquotesingle{}}\NormalTok{) }\CommentTok{\#可与rollback函数达到同样效果}
+\FunctionTok{floor\_date}\NormalTok{(}\FunctionTok{today}\NormalTok{(),}\AttributeTok{unit =} \StringTok{\textquotesingle{}month\textquotesingle{}}\NormalTok{) }
 \FunctionTok{floor\_date}\NormalTok{(}\FunctionTok{today}\NormalTok{(),}\AttributeTok{unit =} \StringTok{\textquotesingle{}week\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+以上同系列函数从名字就能大概看出端倪，其中关键参数是unit，可选想如下:
+1s,second,minute,5 mins,hour,dat,week,months,bimonth,quarter,season,halfyear,year。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round\_date}\NormalTok{(}
+\NormalTok{  x,}
+  \AttributeTok{unit =} \StringTok{"second"}\NormalTok{,}
+  \AttributeTok{week\_start =} \FunctionTok{getOption}\NormalTok{(}\StringTok{"lubridate.week.start"}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\NormalTok{)}
+
+\FunctionTok{floor\_date}\NormalTok{(}
+\NormalTok{  x,}
+  \AttributeTok{unit =} \StringTok{"seconds"}\NormalTok{,}
+  \AttributeTok{week\_start =} \FunctionTok{getOption}\NormalTok{(}\StringTok{"lubridate.week.start"}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\NormalTok{)}
+
+\FunctionTok{ceiling\_date}\NormalTok{(}
+\NormalTok{  x,}
+  \AttributeTok{unit =} \StringTok{"seconds"}\NormalTok{,}
+  \AttributeTok{change\_on\_boundary =} \ConstantTok{NULL}\NormalTok{,}
+  \AttributeTok{week\_start =} \FunctionTok{getOption}\NormalTok{(}\StringTok{"lubridate.week.start"}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+change\_on\_boundary参数
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ceiling\_date}\NormalTok{(}\FunctionTok{ymd\_hms}\NormalTok{(}\StringTok{\textquotesingle{}2021{-}01{-}1 00:00:00\textquotesingle{}}\NormalTok{),}\StringTok{\textquotesingle{}month\textquotesingle{}}\NormalTok{)}
+\FunctionTok{ceiling\_date}\NormalTok{(}\FunctionTok{ymd\_hms}\NormalTok{(}\StringTok{\textquotesingle{}2021{-}01{-}1 00:00:00\textquotesingle{}}\NormalTok{),}\StringTok{\textquotesingle{}month\textquotesingle{}}\NormalTok{,}\AttributeTok{change\_on\_boundary =}\NormalTok{ T)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4680,6 +4763,7 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 \NormalTok{current\_start\_date }\OtherTok{\textless{}{-}}  \FunctionTok{floor\_date}\NormalTok{(date,}\AttributeTok{unit =} \StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{)}
 \NormalTok{current\_start\_date}
 \NormalTok{date }
+
 \CommentTok{\# last year}
 \NormalTok{last\_start\_date }\OtherTok{\textless{}{-}} \FunctionTok{floor\_date}\NormalTok{(date,}\AttributeTok{unit =} \StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%m{-}\%} \FunctionTok{years}\NormalTok{(n)}
 \NormalTok{last\_start\_date}
@@ -4688,7 +4772,22 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 \end{Highlighting}
 \end{Shaded}
 
-月同比类似，回滚时间周期调整为``month''即可
+以上,n表示间隔年数，大部分时候都是1。但特殊时候，比如2021年同比2020年2-4月(新冠疫情)基本没有同比意义，所以在此设置为参数。
+
+\begin{itemize}
+\tightlist
+\item
+  计算月同比
+\end{itemize}
+
+\texttt{rollback()}函数返回上个月的最后一天或当前月的第一天
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rollback}\NormalTok{(}\FunctionTok{today}\NormalTok{())}
+\FunctionTok{rollback}\NormalTok{(}\FunctionTok{today}\NormalTok{(),}\AttributeTok{roll\_to\_first =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{itemize}
 \tightlist
@@ -4696,34 +4795,47 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
   计算月环比
 \end{itemize}
 
-\texttt{\%m+\%}或\texttt{\%m-\%}可以很好解决月份天数不一的问题
+计算环比时，\texttt{\%m+\%}或\texttt{\%m-\%}可以很好解决月份天数不一的问题
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{as\_date}\NormalTok{(}\StringTok{\textquotesingle{}2020{-}03{-}30\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%m{-}\%} \FunctionTok{months}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# 环比月截止日}
 \FunctionTok{today}\NormalTok{()}
 \FunctionTok{today}\NormalTok{() }\SpecialCharTok{\%m{-}\%} \FunctionTok{months}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-得到了两对时间周期，然后在订单数据或者其他中筛选即可获得同比维度数据
+经过以上计算，得到一对对时间周期，然后在订单或者其它数据中筛选即可获得同环比维度数据。
 
-模拟计算
+\begin{itemize}
+\tightlist
+\item
+  模拟计算
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 构造数据}
 \NormalTok{bill\_date }\OtherTok{\textless{}{-}} \FunctionTok{as\_date}\NormalTok{((}\FunctionTok{as\_date}\NormalTok{(}\StringTok{\textquotesingle{}2019{-}01{-}01\textquotesingle{}}\NormalTok{)}\SpecialCharTok{:}\FunctionTok{as\_date}\NormalTok{(}\StringTok{\textquotesingle{}2020{-}12{-}01\textquotesingle{}}\NormalTok{)))}
 \NormalTok{area }\OtherTok{\textless{}{-}}  \FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}华东\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}华西\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}华南\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}华北\textquotesingle{}}\NormalTok{),}\AttributeTok{size =} \FunctionTok{length}\NormalTok{(bill\_date),}\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
-\NormalTok{dt }\OtherTok{\textless{}{-}}\NormalTok{ tibble}\SpecialCharTok{::}\FunctionTok{tibble}\NormalTok{(}\AttributeTok{bill\_date =}\NormalTok{ bill\_date ,}\AttributeTok{money =} \FunctionTok{sample}\NormalTok{(}\DecValTok{80}\SpecialCharTok{:}\DecValTok{150}\NormalTok{,}\AttributeTok{size =} \FunctionTok{length}\NormalTok{(bill\_date),}\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{),}\AttributeTok{area =}\NormalTok{ area)}
+\NormalTok{category }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}品类A\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}品类B\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}品类C\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}品类D\textquotesingle{}}\NormalTok{),}\AttributeTok{size =} \FunctionTok{length}\NormalTok{(bill\_date),}\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{dt }\OtherTok{\textless{}{-}}\NormalTok{ tibble}\SpecialCharTok{::}\FunctionTok{tibble}\NormalTok{(}\AttributeTok{bill\_date =}\NormalTok{ bill\_date ,}\AttributeTok{money =} \FunctionTok{sample}\NormalTok{(}\DecValTok{80}\SpecialCharTok{:}\DecValTok{150}\NormalTok{,}\AttributeTok{size =} \FunctionTok{length}\NormalTok{(bill\_date),}\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{),}\AttributeTok{area =}\NormalTok{ area,}\AttributeTok{category =}\NormalTok{ category)}
 \FunctionTok{head}\NormalTok{(dt)}
 \end{Highlighting}
 \end{Shaded}
 
+\begin{itemize}
+\tightlist
+\item
+  自定义函数
+\end{itemize}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr,}\AttributeTok{warn.conflicts =} \ConstantTok{FALSE}\NormalTok{)}
-
+\FunctionTok{library}\NormalTok{(lubridate)}
 \NormalTok{y\_to\_y }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(.dt,date,}\AttributeTok{n =} \DecValTok{1}\NormalTok{,...)\{}
   
 \NormalTok{  date }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(date)}
@@ -4755,7 +4867,13 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{y\_to\_y}\NormalTok{(dt,}\AttributeTok{date =} \StringTok{\textquotesingle{}20200101\textquotesingle{}}\NormalTok{,}\AttributeTok{n =} \DecValTok{1}\NormalTok{,area,类型)}
+\FunctionTok{y\_to\_y}\NormalTok{(dt,}\AttributeTok{date =} \StringTok{\textquotesingle{}20201001\textquotesingle{}}\NormalTok{,}\AttributeTok{n =} \DecValTok{1}\NormalTok{,area,类型) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  tidyr}\SpecialCharTok{::}\FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{id\_cols =} \StringTok{\textquotesingle{}area\textquotesingle{}}\NormalTok{,}\AttributeTok{names\_from =} \StringTok{\textquotesingle{}类型\textquotesingle{}}\NormalTok{,}\AttributeTok{values\_from =} \StringTok{\textquotesingle{}金额\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(增长率 }\OtherTok{=}\NormalTok{ 当前 }\SpecialCharTok{/}\NormalTok{ 同期)}
+
+\FunctionTok{y\_to\_y}\NormalTok{(dt,}\AttributeTok{date =} \StringTok{\textquotesingle{}20201001\textquotesingle{}}\NormalTok{,}\AttributeTok{n =} \DecValTok{1}\NormalTok{,area,类型,category) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  tidyr}\SpecialCharTok{::}\FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{id\_cols =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}area\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}category\textquotesingle{}}\NormalTok{),}\AttributeTok{names\_from =} \StringTok{\textquotesingle{}类型\textquotesingle{}}\NormalTok{,}\AttributeTok{values\_from =} \StringTok{\textquotesingle{}金额\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(增长率 }\OtherTok{=}\NormalTok{ 当前 }\SpecialCharTok{/}\NormalTok{ 同期)}
 \end{Highlighting}
 \end{Shaded}
 

@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -465,25 +465,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>MS SQL SERVER 乱码</li>
 </ul>
 <p>修改encoding参数，在win系统下，可以考虑使用RODBC包连接查询数据库，因为该包将自动转换编码，不会存在乱码问题。但是上传效率奇慢，为了减少包依赖保持代码一致性使用odbc连接数据库时遇到乱码，在连接数据库时设定encoding即可。</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="常见问题.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="co"># win</span></span>
-<span id="cb371-2"><a href="常见问题.html#cb371-2" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb371-3"><a href="常见问题.html#cb371-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.connection_string =</span></span>
-<span id="cb371-4"><a href="常见问题.html#cb371-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;driver={ SQLServer};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
-<span id="cb371-5"><a href="常见问题.html#cb371-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;gbk&quot;</span></span>
-<span id="cb371-6"><a href="常见问题.html#cb371-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb371-7"><a href="常见问题.html#cb371-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb371-8"><a href="常见问题.html#cb371-8" aria-hidden="true" tabindex="-1"></a><span class="co"># linux </span></span>
-<span id="cb371-9"><a href="常见问题.html#cb371-9" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb371-10"><a href="常见问题.html#cb371-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.connection_string =</span></span>
-<span id="cb371-11"><a href="常见问题.html#cb371-11" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
-<span id="cb371-12"><a href="常见问题.html#cb371-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf8&quot;</span></span>
-<span id="cb371-13"><a href="常见问题.html#cb371-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="常见问题.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co"># win</span></span>
+<span id="cb376-2"><a href="常见问题.html#cb376-2" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb376-3"><a href="常见问题.html#cb376-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.connection_string =</span></span>
+<span id="cb376-4"><a href="常见问题.html#cb376-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;driver={ SQLServer};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
+<span id="cb376-5"><a href="常见问题.html#cb376-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;gbk&quot;</span></span>
+<span id="cb376-6"><a href="常见问题.html#cb376-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb376-7"><a href="常见问题.html#cb376-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-8"><a href="常见问题.html#cb376-8" aria-hidden="true" tabindex="-1"></a><span class="co"># linux </span></span>
+<span id="cb376-9"><a href="常见问题.html#cb376-9" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb376-10"><a href="常见问题.html#cb376-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.connection_string =</span></span>
+<span id="cb376-11"><a href="常见问题.html#cb376-11" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
+<span id="cb376-12"><a href="常见问题.html#cb376-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf8&quot;</span></span>
+<span id="cb376-13"><a href="常见问题.html#cb376-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ul>
 <li>MySQL乱码</li>
 </ul>
 <p>1.代码修改</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="常见问题.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co">#执行查询语句前执行</span></span>
-<span id="cb372-2"><a href="常见问题.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,<span class="st">&#39;SET NAMES gbk&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="常见问题.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="co">#执行查询语句前执行</span></span>
+<span id="cb377-2"><a href="常见问题.html#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,<span class="st">&#39;SET NAMES gbk&#39;</span>)</span></code></pre></div>
 <p>2.ODBC配置</p>
 <p>如果是通过ODBC数据源连接,可通过配置需改,如下所示：</p>
 <div class="figure">
@@ -495,17 +495,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.7.2</span> 无法连接问题</h3>
 <p>首先需要装mysql的驱动,确保<code>RMySQL</code>成功安装 如果是测试自己安装的mysql,可以先用Navicat连接,如果出现Authentication plugin ‘caching_sha2_password’ cannot be loaded的错误。</p>
 <p>可能是由于 mysql8 之前的版本中加密规则是mysql_native_password,而在mysql8之后,加密规则是caching_sha2_password,通过修改加密规则可解决无法连接问题。</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb373-1"><a href="常见问题.html#cb373-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-2"><a href="常见问题.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="co">--cmd 登录本地数据</span></span>
-<span id="cb373-3"><a href="常见问题.html#cb373-3" aria-hidden="true" tabindex="-1"></a>mysql <span class="op">-</span>u root <span class="op">-</span>p</span>
-<span id="cb373-4"><a href="常见问题.html#cb373-4" aria-hidden="true" tabindex="-1"></a><span class="co">--输入密码</span></span>
-<span id="cb373-5"><a href="常见问题.html#cb373-5" aria-hidden="true" tabindex="-1"></a><span class="kw">password</span>: </span>
-<span id="cb373-6"><a href="常见问题.html#cb373-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-7"><a href="常见问题.html#cb373-7" aria-hidden="true" tabindex="-1"></a><span class="co">--执行命令</span></span>
-<span id="cb373-8"><a href="常见问题.html#cb373-8" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;password&#39;</span> <span class="kw">PASSWORD</span> <span class="kw">EXPIRE</span> <span class="kw">NEVER</span>;   #修改加密规则 </span>
-<span id="cb373-9"><a href="常见问题.html#cb373-9" aria-hidden="true" tabindex="-1"></a><span class="co">---ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; PASSWORD EXPIRE NEVER; 看账号权限注意与上面的区别</span></span>
-<span id="cb373-10"><a href="常见问题.html#cb373-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-11"><a href="常见问题.html#cb373-11" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">WITH</span> mysql_native_password <span class="kw">BY</span> <span class="st">&#39;password&#39;</span>; #更新一下用户的密码 </span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb378-1"><a href="常见问题.html#cb378-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb378-2"><a href="常见问题.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="co">--cmd 登录本地数据</span></span>
+<span id="cb378-3"><a href="常见问题.html#cb378-3" aria-hidden="true" tabindex="-1"></a>mysql <span class="op">-</span>u root <span class="op">-</span>p</span>
+<span id="cb378-4"><a href="常见问题.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="co">--输入密码</span></span>
+<span id="cb378-5"><a href="常见问题.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="kw">password</span>: </span>
+<span id="cb378-6"><a href="常见问题.html#cb378-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb378-7"><a href="常见问题.html#cb378-7" aria-hidden="true" tabindex="-1"></a><span class="co">--执行命令</span></span>
+<span id="cb378-8"><a href="常见问题.html#cb378-8" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;password&#39;</span> <span class="kw">PASSWORD</span> <span class="kw">EXPIRE</span> <span class="kw">NEVER</span>;   #修改加密规则 </span>
+<span id="cb378-9"><a href="常见问题.html#cb378-9" aria-hidden="true" tabindex="-1"></a><span class="co">---ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; PASSWORD EXPIRE NEVER; 看账号权限注意与上面的区别</span></span>
+<span id="cb378-10"><a href="常见问题.html#cb378-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb378-11"><a href="常见问题.html#cb378-11" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">WITH</span> mysql_native_password <span class="kw">BY</span> <span class="st">&#39;password&#39;</span>; #更新一下用户的密码 </span></code></pre></div>
 </div>
 <div id="远程连接" class="section level3" number="8.7.3">
 <h3><span class="header-section-number">8.7.3</span> 远程连接</h3>

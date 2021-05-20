@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -457,33 +457,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="条件执行" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> 条件执行</h2>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="条件执行.html#cb409-1" aria-hidden="true" tabindex="-1"></a>has_name <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb409-2"><a href="条件执行.html#cb409-2" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">&lt;-</span> <span class="fu">names</span>(x)</span>
-<span id="cb409-3"><a href="条件执行.html#cb409-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(nms)) {</span>
-<span id="cb409-4"><a href="条件执行.html#cb409-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="fu">length</span>(x))</span>
-<span id="cb409-5"><a href="条件执行.html#cb409-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb409-6"><a href="条件执行.html#cb409-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(nms) <span class="sc">&amp;</span> nms <span class="sc">!=</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb409-7"><a href="条件执行.html#cb409-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb409-8"><a href="条件执行.html#cb409-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="条件执行.html#cb414-1" aria-hidden="true" tabindex="-1"></a>has_name <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb414-2"><a href="条件执行.html#cb414-2" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">&lt;-</span> <span class="fu">names</span>(x)</span>
+<span id="cb414-3"><a href="条件执行.html#cb414-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(nms)) {</span>
+<span id="cb414-4"><a href="条件执行.html#cb414-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="fu">length</span>(x))</span>
+<span id="cb414-5"><a href="条件执行.html#cb414-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb414-6"><a href="条件执行.html#cb414-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(nms) <span class="sc">&amp;</span> nms <span class="sc">!=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb414-7"><a href="条件执行.html#cb414-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb414-8"><a href="条件执行.html#cb414-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div id="多条件执行" class="section level3" number="11.2.1">
 <h3><span class="header-section-number">11.2.1</span> 多条件执行</h3>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="条件执行.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (this) {</span>
-<span id="cb410-2"><a href="条件执行.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do that</span></span>
-<span id="cb410-3"><a href="条件执行.html#cb410-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (that) {</span>
-<span id="cb410-4"><a href="条件执行.html#cb410-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
-<span id="cb410-5"><a href="条件执行.html#cb410-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb410-6"><a href="条件执行.html#cb410-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
-<span id="cb410-7"><a href="条件执行.html#cb410-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="条件执行.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (this) {</span>
+<span id="cb415-2"><a href="条件执行.html#cb415-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do that</span></span>
+<span id="cb415-3"><a href="条件执行.html#cb415-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (that) {</span>
+<span id="cb415-4"><a href="条件执行.html#cb415-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
+<span id="cb415-5"><a href="条件执行.html#cb415-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb415-6"><a href="条件执行.html#cb415-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
+<span id="cb415-7"><a href="条件执行.html#cb415-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>当需要很多if时可考虑用switch()功能</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="条件执行.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x, y, op) {</span>
-<span id="cb411-2"><a href="条件执行.html#cb411-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">switch</span>(op,</span>
-<span id="cb411-3"><a href="条件执行.html#cb411-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">plus =</span> x <span class="sc">+</span> y,</span>
-<span id="cb411-4"><a href="条件执行.html#cb411-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">minus =</span> x <span class="sc">-</span> y,</span>
-<span id="cb411-5"><a href="条件执行.html#cb411-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">times =</span> x <span class="sc">*</span> y,</span>
-<span id="cb411-6"><a href="条件执行.html#cb411-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">divide =</span> x <span class="sc">/</span> y,</span>
-<span id="cb411-7"><a href="条件执行.html#cb411-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">stop</span>(<span class="st">&quot;Unknown op!&quot;</span>)</span>
-<span id="cb411-8"><a href="条件执行.html#cb411-8" aria-hidden="true" tabindex="-1"></a>   )</span>
-<span id="cb411-9"><a href="条件执行.html#cb411-9" aria-hidden="true" tabindex="-1"></a> }</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="条件执行.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x, y, op) {</span>
+<span id="cb416-2"><a href="条件执行.html#cb416-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">switch</span>(op,</span>
+<span id="cb416-3"><a href="条件执行.html#cb416-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">plus =</span> x <span class="sc">+</span> y,</span>
+<span id="cb416-4"><a href="条件执行.html#cb416-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">minus =</span> x <span class="sc">-</span> y,</span>
+<span id="cb416-5"><a href="条件执行.html#cb416-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">times =</span> x <span class="sc">*</span> y,</span>
+<span id="cb416-6"><a href="条件执行.html#cb416-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">divide =</span> x <span class="sc">/</span> y,</span>
+<span id="cb416-7"><a href="条件执行.html#cb416-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">stop</span>(<span class="st">&quot;Unknown op!&quot;</span>)</span>
+<span id="cb416-8"><a href="条件执行.html#cb416-8" aria-hidden="true" tabindex="-1"></a>   )</span>
+<span id="cb416-9"><a href="条件执行.html#cb416-9" aria-hidden="true" tabindex="-1"></a> }</span></code></pre></div>
 </div>
 </div>
             </section>

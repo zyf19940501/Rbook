@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -461,36 +461,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>map</li>
 </ul>
 <p>用map循环迭代,map函数始终返回list对象。</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="简单用法.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb392-2"><a href="简单用法.html#cb392-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-3"><a href="简单用法.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define function</span></span>
-<span id="cb392-4"><a href="简单用法.html#cb392-4" aria-hidden="true" tabindex="-1"></a>addTen <span class="ot">&lt;-</span> <span class="cf">function</span>(.x) {</span>
-<span id="cb392-5"><a href="简单用法.html#cb392-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.x <span class="sc">+</span> <span class="dv">10</span>)</span>
-<span id="cb392-6"><a href="简单用法.html#cb392-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb392-7"><a href="简单用法.html#cb392-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-8"><a href="简单用法.html#cb392-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="at">.f =</span> addTen)</span>
-<span id="cb392-9"><a href="简单用法.html#cb392-9" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb392-10"><a href="简单用法.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="co"># map(c(1, 4, 7), addTen) # same above</span></span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="简单用法.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb397-2"><a href="简单用法.html#cb397-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb397-3"><a href="简单用法.html#cb397-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define function</span></span>
+<span id="cb397-4"><a href="简单用法.html#cb397-4" aria-hidden="true" tabindex="-1"></a>addTen <span class="ot">&lt;-</span> <span class="cf">function</span>(.x) {</span>
+<span id="cb397-5"><a href="简单用法.html#cb397-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.x <span class="sc">+</span> <span class="dv">10</span>)</span>
+<span id="cb397-6"><a href="简单用法.html#cb397-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb397-7"><a href="简单用法.html#cb397-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb397-8"><a href="简单用法.html#cb397-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="at">.f =</span> addTen)</span>
+<span id="cb397-9"><a href="简单用法.html#cb397-9" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb397-10"><a href="简单用法.html#cb397-10" aria-hidden="true" tabindex="-1"></a><span class="co"># map(c(1, 4, 7), addTen) # same above</span></span></code></pre></div>
 <ul>
 <li>map_dbl</li>
 </ul>
 <p>用map_dbl循环迭代，map_dbl函数返回vector。</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="简单用法.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(purrr)</span></span>
-<span id="cb393-2"><a href="简单用法.html#cb393-2" aria-hidden="true" tabindex="-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb393-3"><a href="简单用法.html#cb393-3" aria-hidden="true" tabindex="-1"></a>  (x<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>x</span>
-<span id="cb393-4"><a href="简单用法.html#cb393-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb393-5"><a href="简单用法.html#cb393-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,add1) <span class="co"># maP_dbl 输出结果为向量</span></span>
-<span id="cb393-6"><a href="简单用法.html#cb393-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-7"><a href="简单用法.html#cb393-7" aria-hidden="true" tabindex="-1"></a><span class="co">#for版本</span></span>
-<span id="cb393-8"><a href="简单用法.html#cb393-8" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">1000</span>)</span>
-<span id="cb393-9"><a href="简单用法.html#cb393-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb393-10"><a href="简单用法.html#cb393-10" aria-hidden="true" tabindex="-1"></a>  result2[i] <span class="ot">&lt;-</span> (i<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> i</span>
-<span id="cb393-11"><a href="简单用法.html#cb393-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb393-12"><a href="简单用法.html#cb393-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test </span></span>
-<span id="cb393-13"><a href="简单用法.html#cb393-13" aria-hidden="true" tabindex="-1"></a><span class="co">#not run</span></span>
-<span id="cb393-14"><a href="简单用法.html#cb393-14" aria-hidden="true" tabindex="-1"></a><span class="co">#table(result1 == result2)</span></span>
-<span id="cb393-15"><a href="简单用法.html#cb393-15" aria-hidden="true" tabindex="-1"></a><span class="co"># all equal</span></span>
-<span id="cb393-16"><a href="简单用法.html#cb393-16" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(result1,result2)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="简单用法.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(purrr)</span></span>
+<span id="cb398-2"><a href="简单用法.html#cb398-2" aria-hidden="true" tabindex="-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb398-3"><a href="简单用法.html#cb398-3" aria-hidden="true" tabindex="-1"></a>  (x<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>x</span>
+<span id="cb398-4"><a href="简单用法.html#cb398-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb398-5"><a href="简单用法.html#cb398-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,add1) <span class="co"># maP_dbl 输出结果为向量</span></span>
+<span id="cb398-6"><a href="简单用法.html#cb398-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-7"><a href="简单用法.html#cb398-7" aria-hidden="true" tabindex="-1"></a><span class="co">#for版本</span></span>
+<span id="cb398-8"><a href="简单用法.html#cb398-8" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb398-9"><a href="简单用法.html#cb398-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb398-10"><a href="简单用法.html#cb398-10" aria-hidden="true" tabindex="-1"></a>  result2[i] <span class="ot">&lt;-</span> (i<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> i</span>
+<span id="cb398-11"><a href="简单用法.html#cb398-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb398-12"><a href="简单用法.html#cb398-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test </span></span>
+<span id="cb398-13"><a href="简单用法.html#cb398-13" aria-hidden="true" tabindex="-1"></a><span class="co">#not run</span></span>
+<span id="cb398-14"><a href="简单用法.html#cb398-14" aria-hidden="true" tabindex="-1"></a><span class="co">#table(result1 == result2)</span></span>
+<span id="cb398-15"><a href="简单用法.html#cb398-15" aria-hidden="true" tabindex="-1"></a><span class="co"># all equal</span></span>
+<span id="cb398-16"><a href="简单用法.html#cb398-16" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(result1,result2)</span></code></pre></div>
 </div>
             </section>
 

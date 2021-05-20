@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -462,23 +462,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>reduce</li>
 </ul>
 <p>在实际工作中,我长用reduce函数实现merge()功能。示例如下：</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="归约累计函数.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
-<span id="cb395-2"><a href="归约累计函数.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">1</span>,<span class="st">`</span><span class="at">-</span><span class="st">`</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="归约累计函数.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
+<span id="cb400-2"><a href="归约累计函数.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">1</span>,<span class="st">`</span><span class="at">-</span><span class="st">`</span>)</span></code></pre></div>
 <p>将函数功能不断运用到list上得到最后结果。</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="归约累计函数.html#cb396-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb396-2"><a href="归约累计函数.html#cb396-2" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b1=</span><span class="fu">rnorm</span>(n))</span>
-<span id="cb396-3"><a href="归约累计函数.html#cb396-3" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b2=</span><span class="fu">rnorm</span>(n))</span>
-<span id="cb396-4"><a href="归约累计函数.html#cb396-4" aria-hidden="true" tabindex="-1"></a>dt3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b3=</span><span class="fu">rnorm</span>(n))</span>
-<span id="cb396-5"><a href="归约累计函数.html#cb396-5" aria-hidden="true" tabindex="-1"></a>dt4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b4=</span><span class="fu">rnorm</span>(n))</span>
-<span id="cb396-6"><a href="归约累计函数.html#cb396-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-7"><a href="归约累计函数.html#cb396-7" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="fu">list</span>(dt1,dt2,dt3,dt4),merge)</span>
-<span id="cb396-8"><a href="归约累计函数.html#cb396-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb396-9"><a href="归约累计函数.html#cb396-9" aria-hidden="true" tabindex="-1"></a><span class="co"># reduce(list(dt1,dt2,dt3,dt4),merge,by=&#39;a&#39;) same above</span></span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="归约累计函数.html#cb401-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb401-2"><a href="归约累计函数.html#cb401-2" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b1=</span><span class="fu">rnorm</span>(n))</span>
+<span id="cb401-3"><a href="归约累计函数.html#cb401-3" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b2=</span><span class="fu">rnorm</span>(n))</span>
+<span id="cb401-4"><a href="归约累计函数.html#cb401-4" aria-hidden="true" tabindex="-1"></a>dt3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b3=</span><span class="fu">rnorm</span>(n))</span>
+<span id="cb401-5"><a href="归约累计函数.html#cb401-5" aria-hidden="true" tabindex="-1"></a>dt4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b4=</span><span class="fu">rnorm</span>(n))</span>
+<span id="cb401-6"><a href="归约累计函数.html#cb401-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-7"><a href="归约累计函数.html#cb401-7" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="fu">list</span>(dt1,dt2,dt3,dt4),merge)</span>
+<span id="cb401-8"><a href="归约累计函数.html#cb401-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb401-9"><a href="归约累计函数.html#cb401-9" aria-hidden="true" tabindex="-1"></a><span class="co"># reduce(list(dt1,dt2,dt3,dt4),merge,by=&#39;a&#39;) same above</span></span></code></pre></div>
 <ul>
 <li>accumulate</li>
 </ul>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="归约累计函数.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">%&gt;%</span> <span class="fu">accumulate</span>(<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
-<span id="cb397-2"><a href="归约累计函数.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="fu">accumulate</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], paste, <span class="at">sep =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="归约累计函数.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">%&gt;%</span> <span class="fu">accumulate</span>(<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
+<span id="cb402-2"><a href="归约累计函数.html#cb402-2" aria-hidden="true" tabindex="-1"></a><span class="fu">accumulate</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], paste, <span class="at">sep =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 

@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -461,26 +461,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="安装-8" class="section level3" number="8.6.1">
 <h3><span class="header-section-number">8.6.1</span> 安装</h3>
 <p>Win系统下直接安装即可，其它平台下需提前安装依赖环境。</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb367-1"><a href="rmysql包.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co">#On recent Debian or Ubuntu install libmariadbclient-dev</span></span>
-<span id="cb367-2"><a href="rmysql包.html#cb367-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb367-3"><a href="rmysql包.html#cb367-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> libmariadbclient-dev</span>
-<span id="cb367-4"><a href="rmysql包.html#cb367-4" aria-hidden="true" tabindex="-1"></a><span class="co">#On Fedora, CentOS or RHEL we need mariadb-devel:</span></span>
-<span id="cb367-5"><a href="rmysql包.html#cb367-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb367-6"><a href="rmysql包.html#cb367-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install mariadb-devel</span>
-<span id="cb367-7"><a href="rmysql包.html#cb367-7" aria-hidden="true" tabindex="-1"></a><span class="co">#On OS-X use mariadb-connector-c from Homebrew:</span></span>
-<span id="cb367-8"><a href="rmysql包.html#cb367-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb367-9"><a href="rmysql包.html#cb367-9" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install mariadb-connector-c</span></code></pre></div>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="rmysql包.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMySQL&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb372-1"><a href="rmysql包.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co">#On recent Debian or Ubuntu install libmariadbclient-dev</span></span>
+<span id="cb372-2"><a href="rmysql包.html#cb372-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-3"><a href="rmysql包.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> libmariadbclient-dev</span>
+<span id="cb372-4"><a href="rmysql包.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="co">#On Fedora, CentOS or RHEL we need mariadb-devel:</span></span>
+<span id="cb372-5"><a href="rmysql包.html#cb372-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-6"><a href="rmysql包.html#cb372-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install mariadb-devel</span>
+<span id="cb372-7"><a href="rmysql包.html#cb372-7" aria-hidden="true" tabindex="-1"></a><span class="co">#On OS-X use mariadb-connector-c from Homebrew:</span></span>
+<span id="cb372-8"><a href="rmysql包.html#cb372-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-9"><a href="rmysql包.html#cb372-9" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install mariadb-connector-c</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="rmysql包.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMySQL&#39;</span>)</span></code></pre></div>
 </div>
 <div id="连接使用" class="section level3" number="8.6.2">
 <h3><span class="header-section-number">8.6.2</span> 连接使用</h3>
 <p>连接数据库，与上述连接方式基本一致。</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="rmysql包.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
-<span id="cb369-2"><a href="rmysql包.html#cb369-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;mysql&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="rmysql包.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb374-2"><a href="rmysql包.html#cb374-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;mysql&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
 <p><code>RMariaDB</code>包与<code>RMySQL</code>包用法基本一致，在连接时注意驱动的选择即可。</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="rmysql包.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMariaDB&#39;</span>)</span>
-<span id="cb370-2"><a href="rmysql包.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
-<span id="cb370-3"><a href="rmysql包.html#cb370-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>() ,<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;dbtest&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="rmysql包.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMariaDB&#39;</span>)</span>
+<span id="cb375-2"><a href="rmysql包.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
+<span id="cb375-3"><a href="rmysql包.html#cb375-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>() ,<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;dbtest&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>

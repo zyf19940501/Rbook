@@ -293,14 +293,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="lubridate.html"><a href="lubridate.html#lubridate:current-datetime"><i class="fa fa-check"></i><b>5.2.2</b> 当前时间日期</a></li>
 <li class="chapter" data-level="5.2.3" data-path="lubridate.html"><a href="lubridate.html#lubridate:make-datetime"><i class="fa fa-check"></i><b>5.2.3</b> 构造日期时间</a></li>
 <li class="chapter" data-level="5.2.4" data-path="lubridate.html"><a href="lubridate.html#解析日期时间"><i class="fa fa-check"></i><b>5.2.4</b> 解析日期时间</a></li>
-<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间部分</a></li>
+<li class="chapter" data-level="5.2.5" data-path="lubridate.html"><a href="lubridate.html#lubridate:extracting-information"><i class="fa fa-check"></i><b>5.2.5</b> 提取日期时间成分</a></li>
 <li class="chapter" data-level="5.2.6" data-path="lubridate.html"><a href="lubridate.html#lubridate:time-zones"><i class="fa fa-check"></i><b>5.2.6</b> 处理时区</a></li>
 <li class="chapter" data-level="5.2.7" data-path="lubridate.html"><a href="lubridate.html#时间间隔"><i class="fa fa-check"></i><b>5.2.7</b> 时间间隔</a></li>
 <li class="chapter" data-level="5.2.8" data-path="lubridate.html"><a href="lubridate.html#时间日期计算"><i class="fa fa-check"></i><b>5.2.8</b> 时间日期计算</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="综合运用-1.html"><a href="综合运用-1.html"><i class="fa fa-check"></i><b>5.3</b> 综合运用</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#年同环比"><i class="fa fa-check"></i><b>5.3.1</b> 年同环比</a></li>
+<li class="chapter" data-level="5.3.1" data-path="综合运用-1.html"><a href="综合运用-1.html#日报同环比计算"><i class="fa fa-check"></i><b>5.3.1</b> 日报同环比计算</a></li>
 <li class="chapter" data-level="5.3.2" data-path="综合运用-1.html"><a href="综合运用-1.html#清洗不同类型日期格式"><i class="fa fa-check"></i><b>5.3.2</b> 清洗不同类型日期格式</a></li>
 <li class="chapter" data-level="5.3.3" data-path="综合运用-1.html"><a href="综合运用-1.html#扫码后中奖时间匹配"><i class="fa fa-check"></i><b>5.3.3</b> 扫码后中奖时间匹配</a></li>
 </ul></li>
@@ -458,18 +458,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="映射多个参数" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> 映射多个参数</h2>
 <p>map2 和 pmap 函数可以映射两个及以上参数。</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="映射多个参数.html#cb400-1" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb400-2"><a href="映射多个参数.html#cb400-2" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb400-3"><a href="映射多个参数.html#cb400-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(li1,li2,<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="映射多个参数.html#cb405-1" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb405-2"><a href="映射多个参数.html#cb405-2" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb405-3"><a href="映射多个参数.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(li1,li2,<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span></code></pre></div>
 <p>类似函数 map2_dbl,map2_chr,map2_dfr等等。</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="映射多个参数.html#cb401-1" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb401-2"><a href="映射多个参数.html#cb401-2" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb401-3"><a href="映射多个参数.html#cb401-3" aria-hidden="true" tabindex="-1"></a>li3 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb401-4"><a href="映射多个参数.html#cb401-4" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb401-5"><a href="映射多个参数.html#cb401-5" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb401-6"><a href="映射多个参数.html#cb401-6" aria-hidden="true" tabindex="-1"></a>li3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb401-7"><a href="映射多个参数.html#cb401-7" aria-hidden="true" tabindex="-1"></a>li <span class="ot">&lt;-</span> <span class="fu">list</span>(li1,li2,li3)</span>
-<span id="cb401-8"><a href="映射多个参数.html#cb401-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(li,sum)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="映射多个参数.html#cb406-1" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb406-2"><a href="映射多个参数.html#cb406-2" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb406-3"><a href="映射多个参数.html#cb406-3" aria-hidden="true" tabindex="-1"></a>li3 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb406-4"><a href="映射多个参数.html#cb406-4" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb406-5"><a href="映射多个参数.html#cb406-5" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb406-6"><a href="映射多个参数.html#cb406-6" aria-hidden="true" tabindex="-1"></a>li3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb406-7"><a href="映射多个参数.html#cb406-7" aria-hidden="true" tabindex="-1"></a>li <span class="ot">&lt;-</span> <span class="fu">list</span>(li1,li2,li3)</span>
+<span id="cb406-8"><a href="映射多个参数.html#cb406-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(li,sum)</span></code></pre></div>
 <p>同上有pmap_int,pmap_dbl,pmap_dfr等函数。</p>
 </div>
             </section>
