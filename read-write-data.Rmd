@@ -1,7 +1,3 @@
-```{r setup3, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
-```
-
 
 # 数据导入导出 {#data:read-write-description}
 
@@ -148,6 +144,7 @@ purrr::map_dfr(allfiles,read_excel)
 
 ```{r}
 library(tidyverse)
+library(readxl)
 dt <- read_xlsx(path = './data/read-write/批量读写.xlsx')
 
 
@@ -205,7 +202,7 @@ write_xlsx(list(mysheet1 = iris,mysheet2 = iris),path = 'iris.xlsx')
 
 效率比较
 
-```{r}
+```{r eval=FALSE }
 library(microbenchmark)
 library(nycflights13)
 microbenchmark(
@@ -218,6 +215,7 @@ microbenchmark(
 文件大小比较
 
 ```{r}
+library(nycflights13)
 writexl::write_xlsx(flights, tmp1 <- tempfile())
 file.info(tmp1)$size
 ```
@@ -800,7 +798,7 @@ datapasta是一个addins插件，方便将数据复制到R。
 
 1.安装
 
-```{r}
+```{r eval=FALSE}
 install.packages("datapasta")
 ```
 

@@ -469,7 +469,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>与<code>ifelse</code>不同的是，<code>if_else</code>保留类型</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="dplyr-functions.html#cb111-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb111-2"><a href="dplyr-functions.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), x, <span class="fu">factor</span>(<span class="cn">NA</span>))</span>
-<span id="cb111-3"><a href="dplyr-functions.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), x, <span class="fu">factor</span>(<span class="cn">NA</span>))</span></code></pre></div>
+<span id="cb111-3"><a href="dplyr-functions.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  2 NA  2  1 NA  1  2  3  1</span></span>
+<span id="cb111-4"><a href="dplyr-functions.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), x, <span class="fu">factor</span>(<span class="cn">NA</span>))</span>
+<span id="cb111-5"><a href="dplyr-functions.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] a    b    &lt;NA&gt; b    a    &lt;NA&gt; a    b    c    a   </span></span>
+<span id="cb111-6"><a href="dplyr-functions.html#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: a b c d e</span></span></code></pre></div>
 </div>
 <div id="case_when" class="section level3" number="2.7.2">
 <h3><span class="header-section-number">2.7.2</span> case_when</h3>
@@ -480,7 +483,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb112-4"><a href="dplyr-functions.html#cb112-4" aria-hidden="true" tabindex="-1"></a>  Dates <span class="sc">==</span> <span class="st">&#39;2018-10-02&#39;</span> <span class="sc">~</span> Dates <span class="sc">+</span> <span class="dv">1</span>,</span>
 <span id="cb112-5"><a href="dplyr-functions.html#cb112-5" aria-hidden="true" tabindex="-1"></a>  Dates <span class="sc">==</span> <span class="st">&#39;2018-10-03&#39;</span> <span class="sc">~</span> Dates <span class="sc">+</span> <span class="dv">2</span>,</span>
 <span id="cb112-6"><a href="dplyr-functions.html#cb112-6" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> Dates</span>
-<span id="cb112-7"><a href="dplyr-functions.html#cb112-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb112-7"><a href="dplyr-functions.html#cb112-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb112-8"><a href="dplyr-functions.html#cb112-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2018-09-30&quot; &quot;2018-10-03&quot; &quot;2018-10-05&quot;</span></span></code></pre></div>
 </div>
 <div id="计数函数" class="section level3" number="2.7.3">
 <h3><span class="header-section-number">2.7.3</span> 计数函数</h3>
@@ -492,15 +496,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb113-2"><a href="dplyr-functions.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
 <span id="cb113-3"><a href="dplyr-functions.html#cb113-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(a, b) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="dplyr-functions.html#cb114-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">count</span>(species)</span>
-<span id="cb114-2"><a href="dplyr-functions.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same above 等价</span></span>
-<span id="cb114-3"><a href="dplyr-functions.html#cb114-3" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
+<span id="cb114-2"><a href="dplyr-functions.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 38 x 2</span></span>
+<span id="cb114-3"><a href="dplyr-functions.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   species      n</span></span>
+<span id="cb114-4"><a href="dplyr-functions.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span></span>
+<span id="cb114-5"><a href="dplyr-functions.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Aleena       1</span></span>
+<span id="cb114-6"><a href="dplyr-functions.html#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Besalisk     1</span></span>
+<span id="cb114-7"><a href="dplyr-functions.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Cerean       1</span></span>
+<span id="cb114-8"><a href="dplyr-functions.html#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Chagrian     1</span></span>
+<span id="cb114-9"><a href="dplyr-functions.html#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Clawdite     1</span></span>
+<span id="cb114-10"><a href="dplyr-functions.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Droid        6</span></span>
+<span id="cb114-11"><a href="dplyr-functions.html#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 32 more rows</span></span>
+<span id="cb114-12"><a href="dplyr-functions.html#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="co"># same above 等价</span></span>
+<span id="cb114-13"><a href="dplyr-functions.html#cb114-13" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb114-14"><a href="dplyr-functions.html#cb114-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 38 x 2</span></span>
+<span id="cb114-15"><a href="dplyr-functions.html#cb114-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   species      n</span></span>
+<span id="cb114-16"><a href="dplyr-functions.html#cb114-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span></span>
+<span id="cb114-17"><a href="dplyr-functions.html#cb114-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Aleena       1</span></span>
+<span id="cb114-18"><a href="dplyr-functions.html#cb114-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Besalisk     1</span></span>
+<span id="cb114-19"><a href="dplyr-functions.html#cb114-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Cerean       1</span></span>
+<span id="cb114-20"><a href="dplyr-functions.html#cb114-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Chagrian     1</span></span>
+<span id="cb114-21"><a href="dplyr-functions.html#cb114-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Clawdite     1</span></span>
+<span id="cb114-22"><a href="dplyr-functions.html#cb114-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Droid        6</span></span>
+<span id="cb114-23"><a href="dplyr-functions.html#cb114-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 32 more rows</span></span></code></pre></div>
 <ul>
 <li>非重复计数</li>
 </ul>
 <p><code>n_distinct()</code>与<code>length(unique(x))</code>等价，但是更快更简洁。当我们需要给门店或订单之类数据需要去重计算时采用该函数。</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="dplyr-functions.html#cb115-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="fl">1e5</span>, <span class="at">rep =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb115-2"><a href="dplyr-functions.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(x))</span>
-<span id="cb115-3"><a href="dplyr-functions.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(x)</span></code></pre></div>
+<span id="cb115-3"><a href="dplyr-functions.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
+<span id="cb115-4"><a href="dplyr-functions.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(x)</span>
+<span id="cb115-5"><a href="dplyr-functions.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
 </div>
 <div id="排序函数" class="section level3" number="2.7.4">
 <h3><span class="header-section-number">2.7.4</span> 排序函数</h3>
@@ -513,10 +539,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="dplyr-functions.html#cb116-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="cn">NA</span>)</span>
 <span id="cb116-2"><a href="dplyr-functions.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">row_number</span>(x)</span>
-<span id="cb116-3"><a href="dplyr-functions.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">min_rank</span>(x)</span>
-<span id="cb116-4"><a href="dplyr-functions.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dense_rank</span>(x)</span>
-<span id="cb116-5"><a href="dplyr-functions.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="fu">percent_rank</span>(x)</span>
-<span id="cb116-6"><a href="dplyr-functions.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cume_dist</span>(x)</span></code></pre></div>
+<span id="cb116-3"><a href="dplyr-functions.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  5  1  4  2  3 NA</span></span>
+<span id="cb116-4"><a href="dplyr-functions.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="fu">min_rank</span>(x)</span>
+<span id="cb116-5"><a href="dplyr-functions.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  5  1  4  2  2 NA</span></span>
+<span id="cb116-6"><a href="dplyr-functions.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dense_rank</span>(x)</span>
+<span id="cb116-7"><a href="dplyr-functions.html#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  4  1  3  2  2 NA</span></span>
+<span id="cb116-8"><a href="dplyr-functions.html#cb116-8" aria-hidden="true" tabindex="-1"></a><span class="fu">percent_rank</span>(x)</span>
+<span id="cb116-9"><a href="dplyr-functions.html#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 0.00 0.75 0.25 0.25   NA</span></span>
+<span id="cb116-10"><a href="dplyr-functions.html#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cume_dist</span>(x)</span>
+<span id="cb116-11"><a href="dplyr-functions.html#cb116-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.0 0.2 0.8 0.6 0.6  NA</span></span></code></pre></div>
 </div>
 <div id="提取向量" class="section level3" number="2.7.5">
 <h3><span class="header-section-number">2.7.5</span> 提取向量</h3>
@@ -527,9 +558,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="dplyr-functions.html#cb118-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb118-2"><a href="dplyr-functions.html#cb118-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">1</span></span>
 <span id="cb118-3"><a href="dplyr-functions.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">first</span>(x)</span>
-<span id="cb118-4"><a href="dplyr-functions.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="fu">last</span>(y)</span>
-<span id="cb118-5"><a href="dplyr-functions.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, <span class="dv">1</span>)</span>
-<span id="cb118-6"><a href="dplyr-functions.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, <span class="dv">5</span>)</span></code></pre></div>
+<span id="cb118-4"><a href="dplyr-functions.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb118-5"><a href="dplyr-functions.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="fu">last</span>(y)</span>
+<span id="cb118-6"><a href="dplyr-functions.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb118-7"><a href="dplyr-functions.html#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, <span class="dv">1</span>)</span>
+<span id="cb118-8"><a href="dplyr-functions.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb118-9"><a href="dplyr-functions.html#cb118-9" aria-hidden="true" tabindex="-1"></a><span class="fu">nth</span>(x, <span class="dv">5</span>)</span>
+<span id="cb118-10"><a href="dplyr-functions.html#cb118-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
 </div>
 <div id="group-系列" class="section level3" number="2.7.6">
 <h3><span class="header-section-number">2.7.6</span> group 系列</h3>
@@ -541,14 +576,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="dplyr-functions.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co">#group_by()不会改变数据框</span></span>
 <span id="cb119-2"><a href="dplyr-functions.html#cb119-2" aria-hidden="true" tabindex="-1"></a>by_cyl <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl)</span>
 <span id="cb119-3"><a href="dplyr-functions.html#cb119-3" aria-hidden="true" tabindex="-1"></a>by_cyl</span>
-<span id="cb119-4"><a href="dplyr-functions.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It changes how it acts with the other dplyr verbs:</span></span>
-<span id="cb119-5"><a href="dplyr-functions.html#cb119-5" aria-hidden="true" tabindex="-1"></a>by_cyl <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
-<span id="cb119-6"><a href="dplyr-functions.html#cb119-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">disp =</span> <span class="fu">mean</span>(disp),</span>
-<span id="cb119-7"><a href="dplyr-functions.html#cb119-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hp =</span> <span class="fu">mean</span>(hp)</span>
-<span id="cb119-8"><a href="dplyr-functions.html#cb119-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb119-9"><a href="dplyr-functions.html#cb119-9" aria-hidden="true" tabindex="-1"></a><span class="co"># group_by中可以添加计算字段 即mutate操作</span></span>
-<span id="cb119-10"><a href="dplyr-functions.html#cb119-10" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(<span class="at">vsam =</span> vs <span class="sc">+</span> am) <span class="sc">%&gt;%</span></span>
-<span id="cb119-11"><a href="dplyr-functions.html#cb119-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span></code></pre></div>
+<span id="cb119-4"><a href="dplyr-functions.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 32 x 11</span></span>
+<span id="cb119-5"><a href="dplyr-functions.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   cyl [3]</span></span>
+<span id="cb119-6"><a href="dplyr-functions.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb119-7"><a href="dplyr-functions.html#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb119-8"><a href="dplyr-functions.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  21       6   160   110  3.9   2.62  16.5     0     1     4     4</span></span>
+<span id="cb119-9"><a href="dplyr-functions.html#cb119-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span></span>
+<span id="cb119-10"><a href="dplyr-functions.html#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span></span>
+<span id="cb119-11"><a href="dplyr-functions.html#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span></span>
+<span id="cb119-12"><a href="dplyr-functions.html#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
+<span id="cb119-13"><a href="dplyr-functions.html#cb119-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span></span>
+<span id="cb119-14"><a href="dplyr-functions.html#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 26 more rows</span></span>
+<span id="cb119-15"><a href="dplyr-functions.html#cb119-15" aria-hidden="true" tabindex="-1"></a><span class="co"># It changes how it acts with the other dplyr verbs:</span></span>
+<span id="cb119-16"><a href="dplyr-functions.html#cb119-16" aria-hidden="true" tabindex="-1"></a>by_cyl <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb119-17"><a href="dplyr-functions.html#cb119-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">disp =</span> <span class="fu">mean</span>(disp),</span>
+<span id="cb119-18"><a href="dplyr-functions.html#cb119-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">hp =</span> <span class="fu">mean</span>(hp)</span>
+<span id="cb119-19"><a href="dplyr-functions.html#cb119-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb119-20"><a href="dplyr-functions.html#cb119-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb119-21"><a href="dplyr-functions.html#cb119-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     cyl  disp    hp</span></span>
+<span id="cb119-22"><a href="dplyr-functions.html#cb119-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb119-23"><a href="dplyr-functions.html#cb119-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     4  105.  82.6</span></span>
+<span id="cb119-24"><a href="dplyr-functions.html#cb119-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     6  183. 122. </span></span>
+<span id="cb119-25"><a href="dplyr-functions.html#cb119-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     8  353. 209.</span></span>
+<span id="cb119-26"><a href="dplyr-functions.html#cb119-26" aria-hidden="true" tabindex="-1"></a><span class="co"># group_by中可以添加计算字段 即mutate操作</span></span>
+<span id="cb119-27"><a href="dplyr-functions.html#cb119-27" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(<span class="at">vsam =</span> vs <span class="sc">+</span> am) <span class="sc">%&gt;%</span></span>
+<span id="cb119-28"><a href="dplyr-functions.html#cb119-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span>
+<span id="cb119-29"><a href="dplyr-functions.html#cb119-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;vsam&quot;</span></span></code></pre></div>
 <ul>
 <li>group_map()</li>
 </ul>
@@ -558,14 +611,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb120-2"><a href="dplyr-functions.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 返回列表</span></span>
 <span id="cb120-3"><a href="dplyr-functions.html#cb120-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
 <span id="cb120-4"><a href="dplyr-functions.html#cb120-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb120-5"><a href="dplyr-functions.html#cb120-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">head</span>(.x, 2L))</span></code></pre></div>
+<span id="cb120-5"><a href="dplyr-functions.html#cb120-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">head</span>(.x, 2L))</span>
+<span id="cb120-6"><a href="dplyr-functions.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb120-7"><a href="dplyr-functions.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 10</span></span>
+<span id="cb120-8"><a href="dplyr-functions.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb120-9"><a href="dplyr-functions.html#cb120-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb120-10"><a href="dplyr-functions.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  22.8  108     93  3.85  2.32  18.6     1     1     4     1</span></span>
+<span id="cb120-11"><a href="dplyr-functions.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  24.4  147.    62  3.69  3.19  20       1     0     4     2</span></span>
+<span id="cb120-12"><a href="dplyr-functions.html#cb120-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb120-13"><a href="dplyr-functions.html#cb120-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb120-14"><a href="dplyr-functions.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 10</span></span>
+<span id="cb120-15"><a href="dplyr-functions.html#cb120-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb120-16"><a href="dplyr-functions.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb120-17"><a href="dplyr-functions.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    21   160   110   3.9  2.62  16.5     0     1     4     4</span></span>
+<span id="cb120-18"><a href="dplyr-functions.html#cb120-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    21   160   110   3.9  2.88  17.0     0     1     4     4</span></span>
+<span id="cb120-19"><a href="dplyr-functions.html#cb120-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb120-20"><a href="dplyr-functions.html#cb120-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb120-21"><a href="dplyr-functions.html#cb120-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 10</span></span>
+<span id="cb120-22"><a href="dplyr-functions.html#cb120-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb120-23"><a href="dplyr-functions.html#cb120-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb120-24"><a href="dplyr-functions.html#cb120-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  18.7   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
+<span id="cb120-25"><a href="dplyr-functions.html#cb120-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  14.3   360   245  3.21  3.57  15.8     0     0     3     4</span></span></code></pre></div>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="dplyr-functions.html#cb121-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
 <span id="cb121-2"><a href="dplyr-functions.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
 <span id="cb121-3"><a href="dplyr-functions.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_modify</span>(<span class="sc">~</span> {</span>
 <span id="cb121-4"><a href="dplyr-functions.html#cb121-4" aria-hidden="true" tabindex="-1"></a>    .x <span class="sc">%&gt;%</span></span>
 <span id="cb121-5"><a href="dplyr-functions.html#cb121-5" aria-hidden="true" tabindex="-1"></a>      purrr<span class="sc">::</span><span class="fu">map_dfc</span>(fivenum) <span class="sc">%&gt;%</span></span>
 <span id="cb121-6"><a href="dplyr-functions.html#cb121-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">nms =</span> <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;median&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;max&quot;</span>))</span>
-<span id="cb121-7"><a href="dplyr-functions.html#cb121-7" aria-hidden="true" tabindex="-1"></a>  })</span></code></pre></div>
+<span id="cb121-7"><a href="dplyr-functions.html#cb121-7" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb121-8"><a href="dplyr-functions.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 x 6</span></span>
+<span id="cb121-9"><a href="dplyr-functions.html#cb121-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   Species [3]</span></span>
+<span id="cb121-10"><a href="dplyr-functions.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width nms   </span></span>
+<span id="cb121-11"><a href="dplyr-functions.html#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt; </span></span>
+<span id="cb121-12"><a href="dplyr-functions.html#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 setosa              4.3         2.3          1           0.1 min   </span></span>
+<span id="cb121-13"><a href="dplyr-functions.html#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 setosa              4.8         3.2          1.4         0.2 Q1    </span></span>
+<span id="cb121-14"><a href="dplyr-functions.html#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 setosa              5           3.4          1.5         0.2 median</span></span>
+<span id="cb121-15"><a href="dplyr-functions.html#cb121-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 setosa              5.2         3.7          1.6         0.3 Q3    </span></span>
+<span id="cb121-16"><a href="dplyr-functions.html#cb121-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 setosa              5.8         4.4          1.9         0.6 max   </span></span>
+<span id="cb121-17"><a href="dplyr-functions.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 versicolor          4.9         2            3           1   min   </span></span>
+<span id="cb121-18"><a href="dplyr-functions.html#cb121-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more rows</span></span></code></pre></div>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="dplyr-functions.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group_walk</span></span>
 <span id="cb122-2"><a href="dplyr-functions.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
 <span id="cb122-3"><a href="dplyr-functions.html#cb122-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
@@ -578,7 +662,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>选择分组变量</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="dplyr-functions.html#cb123-1" aria-hidden="true" tabindex="-1"></a>gdf <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species)</span>
-<span id="cb123-2"><a href="dplyr-functions.html#cb123-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">group_cols</span>())</span></code></pre></div>
+<span id="cb123-2"><a href="dplyr-functions.html#cb123-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">group_cols</span>())</span>
+<span id="cb123-3"><a href="dplyr-functions.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 150 x 1</span></span>
+<span id="cb123-4"><a href="dplyr-functions.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   Species [3]</span></span>
+<span id="cb123-5"><a href="dplyr-functions.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Species</span></span>
+<span id="cb123-6"><a href="dplyr-functions.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;  </span></span>
+<span id="cb123-7"><a href="dplyr-functions.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 setosa </span></span>
+<span id="cb123-8"><a href="dplyr-functions.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 setosa </span></span>
+<span id="cb123-9"><a href="dplyr-functions.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 setosa </span></span>
+<span id="cb123-10"><a href="dplyr-functions.html#cb123-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 setosa </span></span>
+<span id="cb123-11"><a href="dplyr-functions.html#cb123-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 setosa </span></span>
+<span id="cb123-12"><a href="dplyr-functions.html#cb123-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 setosa </span></span>
+<span id="cb123-13"><a href="dplyr-functions.html#cb123-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 144 more rows</span></span></code></pre></div>
 </div>
 <div id="其它函数" class="section level3" number="2.7.7">
 <h3><span class="header-section-number">2.7.7</span> 其它函数</h3>
@@ -589,10 +684,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>累计系列函数</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="dplyr-functions.html#cb124-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb124-2"><a href="dplyr-functions.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cummean</span>(x)</span>
-<span id="cb124-3"><a href="dplyr-functions.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x) <span class="sc">/</span> <span class="fu">seq_along</span>(x)</span>
-<span id="cb124-4"><a href="dplyr-functions.html#cb124-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-5"><a href="dplyr-functions.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cumall</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>)</span>
-<span id="cb124-6"><a href="dplyr-functions.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cumany</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span></code></pre></div>
+<span id="cb124-3"><a href="dplyr-functions.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 2.00 3.00 2.75 2.60</span></span>
+<span id="cb124-4"><a href="dplyr-functions.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x) <span class="sc">/</span> <span class="fu">seq_along</span>(x)</span>
+<span id="cb124-5"><a href="dplyr-functions.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 2.00 3.00 2.75 2.60</span></span>
+<span id="cb124-6"><a href="dplyr-functions.html#cb124-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-7"><a href="dplyr-functions.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cumall</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>)</span>
+<span id="cb124-8"><a href="dplyr-functions.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE FALSE</span></span>
+<span id="cb124-9"><a href="dplyr-functions.html#cb124-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cumany</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb124-10"><a href="dplyr-functions.html#cb124-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
 <ul>
 <li>distinct</li>
 </ul>

@@ -17,8 +17,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -130,8 +129,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -140,10 +138,6 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-```{r setup3, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
-```
-
 
 # 数据导入导出 {#data:read-write-description}
 
@@ -290,6 +284,7 @@ purrr::map_dfr(allfiles,read_excel)
 
 ```{r}
 library(tidyverse)
+library(readxl)
 dt <- read_xlsx(path = './data/read-write/批量读写.xlsx')
 
 
@@ -347,7 +342,7 @@ write_xlsx(list(mysheet1 = iris,mysheet2 = iris),path = 'iris.xlsx')
 
 效率比较
 
-```{r}
+```{r eval=FALSE }
 library(microbenchmark)
 library(nycflights13)
 microbenchmark(
@@ -360,6 +355,7 @@ microbenchmark(
 文件大小比较
 
 ```{r}
+library(nycflights13)
 writexl::write_xlsx(flights, tmp1 <- tempfile())
 file.info(tmp1)$size
 ```
@@ -942,7 +938,7 @@ datapasta是一个addins插件，方便将数据复制到R。
 
 1.安装
 
-```{r}
+```{r eval=FALSE}
 install.packages("datapasta")
 ```
 
@@ -1033,8 +1029,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -2152,8 +2147,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -2697,8 +2691,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -3342,8 +3335,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -4255,8 +4247,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -4305,8 +4296,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -5319,18 +5309,9 @@ head(res)
 
 ```{r}
 res[,.(char=paste0(newcol,collapse = '-')),by=.(name)]
-#同上
-#res[,.(char=stringr::str_c(newcol,collapse = '-')),by=.(name)]
-# A	我-爱-R-语-言			
-# B	我-爱-R-语-言			
-# C	我-爱-R-语-言			
-# D	我-爱-R-语-言			
-# E	我-爱-R-语-言			
-# F	我-爱-R-语-言			
-# G	我-爱-R-语-言			
-# H	我-爱-R-语-言			
-# I	我-爱-R-语-言			
-# J	我-爱-R-语-言
+# 同上
+# res[,.(char=stringr::str_c(newcol,collapse = '-')),by=.(name)]
+
 ```
 
 
@@ -5343,8 +5324,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -5353,8 +5333,7 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-
-```{r setup1, include=FALSE}
+```{r setup-database, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 ```
 
@@ -5430,7 +5409,7 @@ install.packages('DBI')
 
 通过以下代码即可连接到服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。
 
-```{r}
+```{r eval=FALSE}
 library(DBI)
 con <- dbConnect(
   drv = odbc::odbc(), Driver = "SQL Server", server = "172.16.88.2",database = "spb", uid = "zhongyf", pwd = "Zyf123456"
@@ -5440,7 +5419,7 @@ con <- dbConnect(
 
 如果你用windows系统，通过DBI包连接数据库发现乱码时，根据数据库编码指定encoding参数即可，常规在win下连接sqlserver设置encoding = "GBK"。
 
-```{r }
+```{r eval=FALSE}
 library(DBI)
 #根据数据库编码方式指定encoding
 con <- dbConnect(
@@ -5455,7 +5434,7 @@ head(Drivers_tbl)
 
 查询数据库编码方式,从而选择连接数据库时相应的编码方式。
 
-```{r}
+```{r eval=FALSE}
 con <- dbConnect(
   drv = odbc::odbc(), Driver = "ODBC Driver 17 for SQL Server",
   server = "172.16.88.2", database = "spb", uid = "zhongyf", pwd = "Zyf123456"
@@ -5747,7 +5726,7 @@ brew install mariadb-connector-c
 
 ```
 
-```{r}
+```{r eval=FALSE}
 install.packages('RMySQL')
 ```
 
@@ -6017,8 +5996,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -6232,8 +6210,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
@@ -6480,8 +6457,7 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
- # cache = TRUE,
-  out.width = "70%",
+  out.width = "90%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi

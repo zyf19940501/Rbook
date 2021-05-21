@@ -477,12 +477,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb84-3"><a href="dplyr-merge-table.html#cb84-3" aria-hidden="true" tabindex="-1"></a>flights2 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(year<span class="sc">:</span>day, hour, origin, dest, tailnum, carrier)</span>
 <span id="cb84-4"><a href="dplyr-merge-table.html#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-5"><a href="dplyr-merge-table.html#cb84-5" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> </span>
-<span id="cb84-6"><a href="dplyr-merge-table.html#cb84-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airlines)</span></code></pre></div>
+<span id="cb84-6"><a href="dplyr-merge-table.html#cb84-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airlines)</span>
+<span id="cb84-7"><a href="dplyr-merge-table.html#cb84-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Joining, by = &quot;carrier&quot;</span></span>
+<span id="cb84-8"><a href="dplyr-merge-table.html#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 336,776 x 9</span></span>
+<span id="cb84-9"><a href="dplyr-merge-table.html#cb84-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year month   day  hour origin dest  tailnum carrier name                  </span></span>
+<span id="cb84-10"><a href="dplyr-merge-table.html#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                 </span></span>
+<span id="cb84-11"><a href="dplyr-merge-table.html#cb84-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2013     1     1     5 EWR    IAH   N14228  UA      United Air Lines Inc. </span></span>
+<span id="cb84-12"><a href="dplyr-merge-table.html#cb84-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2013     1     1     5 LGA    IAH   N24211  UA      United Air Lines Inc. </span></span>
+<span id="cb84-13"><a href="dplyr-merge-table.html#cb84-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2013     1     1     5 JFK    MIA   N619AA  AA      American Airlines Inc.</span></span>
+<span id="cb84-14"><a href="dplyr-merge-table.html#cb84-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2013     1     1     5 JFK    BQN   N804JB  B6      JetBlue Airways       </span></span>
+<span id="cb84-15"><a href="dplyr-merge-table.html#cb84-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2013     1     1     6 LGA    ATL   N668DN  DL      Delta Air Lines Inc.  </span></span>
+<span id="cb84-16"><a href="dplyr-merge-table.html#cb84-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2013     1     1     5 EWR    ORD   N39463  UA      United Air Lines Inc. </span></span>
+<span id="cb84-17"><a href="dplyr-merge-table.html#cb84-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 336,770 more rows</span></span></code></pre></div>
 <p>指定关联条件列，类似数据库中<code>on a.column = b.column</code>。</p>
 <ul>
 <li>R实现</li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="dplyr-merge-table.html#cb85-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(planes, <span class="at">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="dplyr-merge-table.html#cb85-1" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(planes, <span class="at">by =</span> <span class="st">&quot;tailnum&quot;</span>)</span>
+<span id="cb85-2"><a href="dplyr-merge-table.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 336,776 x 16</span></span>
+<span id="cb85-3"><a href="dplyr-merge-table.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   year.x month   day  hour origin dest  tailnum carrier year.y type             </span></span>
+<span id="cb85-4"><a href="dplyr-merge-table.html#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;            </span></span>
+<span id="cb85-5"><a href="dplyr-merge-table.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing multi~</span></span>
+<span id="cb85-6"><a href="dplyr-merge-table.html#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing multi~</span></span>
+<span id="cb85-7"><a href="dplyr-merge-table.html#cb85-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing multi~</span></span>
+<span id="cb85-8"><a href="dplyr-merge-table.html#cb85-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing multi~</span></span>
+<span id="cb85-9"><a href="dplyr-merge-table.html#cb85-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing multi~</span></span>
+<span id="cb85-10"><a href="dplyr-merge-table.html#cb85-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wing multi~</span></span>
+<span id="cb85-11"><a href="dplyr-merge-table.html#cb85-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 336,770 more rows, and 6 more variables: manufacturer &lt;chr&gt;,</span></span>
+<span id="cb85-12"><a href="dplyr-merge-table.html#cb85-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   model &lt;chr&gt;, engines &lt;int&gt;, seats &lt;int&gt;, speed &lt;int&gt;, engine &lt;chr&gt;</span></span></code></pre></div>
 <ul>
 <li>Sql实现</li>
 </ul>
@@ -493,8 +515,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>left_join(x,y,by = c("a" = "b", "c" = "d"))</code> 将会匹配 <code>x$a</code> to <code>y$b</code> 和 <code>x$c</code> to <code>y$d</code> 作为关联条件</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="dplyr-merge-table.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">#出发机场和目的机场信息</span></span>
 <span id="cb87-2"><a href="dplyr-merge-table.html#cb87-2" aria-hidden="true" tabindex="-1"></a>flights2 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;dest&quot;</span> <span class="ot">=</span> <span class="st">&quot;faa&quot;</span>))</span>
-<span id="cb87-3"><a href="dplyr-merge-table.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="co">#flights2 %&gt;% left_join(airports, c(&quot;origin&quot; = &quot;faa&quot;))</span></span>
-<span id="cb87-4"><a href="dplyr-merge-table.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 组合条件 多条件时用向量包裹即可c(&quot;dest&quot; = &quot;faa&quot;,&quot;cola&quot; = &quot;colb&quot;))</span></span></code></pre></div>
+<span id="cb87-3"><a href="dplyr-merge-table.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 336,776 x 15</span></span>
+<span id="cb87-4"><a href="dplyr-merge-table.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year month   day  hour origin dest  tailnum carrier name      lat   lon   alt</span></span>
+<span id="cb87-5"><a href="dplyr-merge-table.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb87-6"><a href="dplyr-merge-table.html#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2013     1     1     5 EWR    IAH   N14228  UA      George~  30.0 -95.3    97</span></span>
+<span id="cb87-7"><a href="dplyr-merge-table.html#cb87-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2013     1     1     5 LGA    IAH   N24211  UA      George~  30.0 -95.3    97</span></span>
+<span id="cb87-8"><a href="dplyr-merge-table.html#cb87-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami ~  25.8 -80.3     8</span></span>
+<span id="cb87-9"><a href="dplyr-merge-table.html#cb87-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2013     1     1     5 JFK    BQN   N804JB  B6      &lt;NA&gt;     NA    NA      NA</span></span>
+<span id="cb87-10"><a href="dplyr-merge-table.html#cb87-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsf~  33.6 -84.4  1026</span></span>
+<span id="cb87-11"><a href="dplyr-merge-table.html#cb87-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2013     1     1     5 EWR    ORD   N39463  UA      Chicag~  42.0 -87.9   668</span></span>
+<span id="cb87-12"><a href="dplyr-merge-table.html#cb87-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 336,770 more rows, and 3 more variables: tz &lt;dbl&gt;, dst &lt;chr&gt;,</span></span>
+<span id="cb87-13"><a href="dplyr-merge-table.html#cb87-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   tzone &lt;chr&gt;</span></span>
+<span id="cb87-14"><a href="dplyr-merge-table.html#cb87-14" aria-hidden="true" tabindex="-1"></a><span class="co">#flights2 %&gt;% left_join(airports, c(&quot;origin&quot; = &quot;faa&quot;))</span></span>
+<span id="cb87-15"><a href="dplyr-merge-table.html#cb87-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 组合条件 多条件时用向量包裹即可c(&quot;dest&quot; = &quot;faa&quot;,&quot;cola&quot; = &quot;colb&quot;))</span></span></code></pre></div>
 <ul>
 <li>筛选连接</li>
 </ul>
@@ -504,7 +537,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb88-2"><a href="dplyr-merge-table.html#cb88-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a=</span>letters,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
 <span id="cb88-3"><a href="dplyr-merge-table.html#cb88-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb88-4"><a href="dplyr-merge-table.html#cb88-4" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2)</span>
-<span id="cb88-5"><a href="dplyr-merge-table.html#cb88-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df1)</span></code></pre></div>
+<span id="cb88-5"><a href="dplyr-merge-table.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Joining, by = c(&quot;a&quot;, &quot;b&quot;)</span></span>
+<span id="cb88-6"><a href="dplyr-merge-table.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 20 x 2</span></span>
+<span id="cb88-7"><a href="dplyr-merge-table.html#cb88-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   a         b</span></span>
+<span id="cb88-8"><a href="dplyr-merge-table.html#cb88-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt;</span></span>
+<span id="cb88-9"><a href="dplyr-merge-table.html#cb88-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a         1</span></span>
+<span id="cb88-10"><a href="dplyr-merge-table.html#cb88-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 b         2</span></span>
+<span id="cb88-11"><a href="dplyr-merge-table.html#cb88-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 c         3</span></span>
+<span id="cb88-12"><a href="dplyr-merge-table.html#cb88-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 d         4</span></span>
+<span id="cb88-13"><a href="dplyr-merge-table.html#cb88-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 e         5</span></span>
+<span id="cb88-14"><a href="dplyr-merge-table.html#cb88-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 f         6</span></span>
+<span id="cb88-15"><a href="dplyr-merge-table.html#cb88-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 14 more rows</span></span>
+<span id="cb88-16"><a href="dplyr-merge-table.html#cb88-16" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df1)</span>
+<span id="cb88-17"><a href="dplyr-merge-table.html#cb88-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Joining, by = c(&quot;a&quot;, &quot;b&quot;)</span></span>
+<span id="cb88-18"><a href="dplyr-merge-table.html#cb88-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 2</span></span>
+<span id="cb88-19"><a href="dplyr-merge-table.html#cb88-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   a         b</span></span>
+<span id="cb88-20"><a href="dplyr-merge-table.html#cb88-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt;</span></span>
+<span id="cb88-21"><a href="dplyr-merge-table.html#cb88-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 u        21</span></span>
+<span id="cb88-22"><a href="dplyr-merge-table.html#cb88-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 v        22</span></span>
+<span id="cb88-23"><a href="dplyr-merge-table.html#cb88-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 w        23</span></span>
+<span id="cb88-24"><a href="dplyr-merge-table.html#cb88-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 x        24</span></span>
+<span id="cb88-25"><a href="dplyr-merge-table.html#cb88-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 y        25</span></span>
+<span id="cb88-26"><a href="dplyr-merge-table.html#cb88-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 z        26</span></span></code></pre></div>
 <ul>
 <li>集合操作</li>
 </ul>
@@ -514,11 +568,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>setdiff(x,y)</code>返回存在x中但是不存在y中的记录</p></li>
 </ol>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="dplyr-merge-table.html#cb89-1" aria-hidden="true" tabindex="-1"></a>(df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">c</span>(1L, 1L)))</span>
-<span id="cb89-2"><a href="dplyr-merge-table.html#cb89-2" aria-hidden="true" tabindex="-1"></a>(df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span>
-<span id="cb89-3"><a href="dplyr-merge-table.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(df1, df2)</span>
-<span id="cb89-4"><a href="dplyr-merge-table.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(df1, df2)</span>
-<span id="cb89-5"><a href="dplyr-merge-table.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df1, df2)</span>
-<span id="cb89-6"><a href="dplyr-merge-table.html#cb89-6" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df2, df1)</span></code></pre></div>
+<span id="cb89-2"><a href="dplyr-merge-table.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb89-3"><a href="dplyr-merge-table.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y</span></span>
+<span id="cb89-4"><a href="dplyr-merge-table.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb89-5"><a href="dplyr-merge-table.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     1</span></span>
+<span id="cb89-6"><a href="dplyr-merge-table.html#cb89-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     1</span></span>
+<span id="cb89-7"><a href="dplyr-merge-table.html#cb89-7" aria-hidden="true" tabindex="-1"></a>(df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span>
+<span id="cb89-8"><a href="dplyr-merge-table.html#cb89-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb89-9"><a href="dplyr-merge-table.html#cb89-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y</span></span>
+<span id="cb89-10"><a href="dplyr-merge-table.html#cb89-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb89-11"><a href="dplyr-merge-table.html#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     1</span></span>
+<span id="cb89-12"><a href="dplyr-merge-table.html#cb89-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     2</span></span>
+<span id="cb89-13"><a href="dplyr-merge-table.html#cb89-13" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(df1, df2)</span>
+<span id="cb89-14"><a href="dplyr-merge-table.html#cb89-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 x 2</span></span>
+<span id="cb89-15"><a href="dplyr-merge-table.html#cb89-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y</span></span>
+<span id="cb89-16"><a href="dplyr-merge-table.html#cb89-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb89-17"><a href="dplyr-merge-table.html#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     1</span></span>
+<span id="cb89-18"><a href="dplyr-merge-table.html#cb89-18" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(df1, df2)</span>
+<span id="cb89-19"><a href="dplyr-merge-table.html#cb89-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
+<span id="cb89-20"><a href="dplyr-merge-table.html#cb89-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y</span></span>
+<span id="cb89-21"><a href="dplyr-merge-table.html#cb89-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb89-22"><a href="dplyr-merge-table.html#cb89-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     1</span></span>
+<span id="cb89-23"><a href="dplyr-merge-table.html#cb89-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     1</span></span>
+<span id="cb89-24"><a href="dplyr-merge-table.html#cb89-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     2     2</span></span>
+<span id="cb89-25"><a href="dplyr-merge-table.html#cb89-25" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df1, df2)</span>
+<span id="cb89-26"><a href="dplyr-merge-table.html#cb89-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 x 2</span></span>
+<span id="cb89-27"><a href="dplyr-merge-table.html#cb89-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y</span></span>
+<span id="cb89-28"><a href="dplyr-merge-table.html#cb89-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb89-29"><a href="dplyr-merge-table.html#cb89-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     2     1</span></span>
+<span id="cb89-30"><a href="dplyr-merge-table.html#cb89-30" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(df2, df1)</span>
+<span id="cb89-31"><a href="dplyr-merge-table.html#cb89-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 x 2</span></span>
+<span id="cb89-32"><a href="dplyr-merge-table.html#cb89-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y</span></span>
+<span id="cb89-33"><a href="dplyr-merge-table.html#cb89-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb89-34"><a href="dplyr-merge-table.html#cb89-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     2     2</span></span></code></pre></div>
 </div>
 <div id="多表操作" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> 多表操作</h3>
@@ -530,7 +612,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb90-5"><a href="dplyr-merge-table.html#cb90-5" aria-hidden="true" tabindex="-1"></a>dt5 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters,<span class="at">cole =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>)</span>
 <span id="cb90-6"><a href="dplyr-merge-table.html#cb90-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-7"><a href="dplyr-merge-table.html#cb90-7" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">list</span>(dt1,dt2,dt3,dt4,dt5)</span>
-<span id="cb90-8"><a href="dplyr-merge-table.html#cb90-8" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">reduce</span>(dtlist,left_join,<span class="at">by=</span><span class="st">&#39;x&#39;</span>)</span></code></pre></div>
+<span id="cb90-8"><a href="dplyr-merge-table.html#cb90-8" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">reduce</span>(dtlist,left_join,<span class="at">by=</span><span class="st">&#39;x&#39;</span>)</span>
+<span id="cb90-9"><a href="dplyr-merge-table.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x cola colb cold cole</span></span>
+<span id="cb90-10"><a href="dplyr-merge-table.html#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  a    1    1    1    1</span></span>
+<span id="cb90-11"><a href="dplyr-merge-table.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  b    2    2    2    2</span></span>
+<span id="cb90-12"><a href="dplyr-merge-table.html#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  c    3    3    3    3</span></span>
+<span id="cb90-13"><a href="dplyr-merge-table.html#cb90-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  d    4    4    4    4</span></span>
+<span id="cb90-14"><a href="dplyr-merge-table.html#cb90-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  e    5    5    5    5</span></span>
+<span id="cb90-15"><a href="dplyr-merge-table.html#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  f    6    6    6    6</span></span>
+<span id="cb90-16"><a href="dplyr-merge-table.html#cb90-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  g    7    7    7    7</span></span>
+<span id="cb90-17"><a href="dplyr-merge-table.html#cb90-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  h    8    8    8    8</span></span>
+<span id="cb90-18"><a href="dplyr-merge-table.html#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  i    9    9    9    9</span></span>
+<span id="cb90-19"><a href="dplyr-merge-table.html#cb90-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 j   10   10   10   10</span></span>
+<span id="cb90-20"><a href="dplyr-merge-table.html#cb90-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 k   11   11   11   11</span></span>
+<span id="cb90-21"><a href="dplyr-merge-table.html#cb90-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 l   12   12   12   12</span></span>
+<span id="cb90-22"><a href="dplyr-merge-table.html#cb90-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 m   13   13   13   13</span></span>
+<span id="cb90-23"><a href="dplyr-merge-table.html#cb90-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 n   14   14   14   14</span></span>
+<span id="cb90-24"><a href="dplyr-merge-table.html#cb90-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 o   15   15   15   15</span></span>
+<span id="cb90-25"><a href="dplyr-merge-table.html#cb90-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 p   16   16   16   16</span></span>
+<span id="cb90-26"><a href="dplyr-merge-table.html#cb90-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 q   17   17   17   17</span></span>
+<span id="cb90-27"><a href="dplyr-merge-table.html#cb90-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 r   18   18   18   18</span></span>
+<span id="cb90-28"><a href="dplyr-merge-table.html#cb90-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 s   19   19   19   19</span></span>
+<span id="cb90-29"><a href="dplyr-merge-table.html#cb90-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20 t   20   20   20   20</span></span>
+<span id="cb90-30"><a href="dplyr-merge-table.html#cb90-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21 u   21   21   21   21</span></span>
+<span id="cb90-31"><a href="dplyr-merge-table.html#cb90-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22 v   22   22   22   22</span></span>
+<span id="cb90-32"><a href="dplyr-merge-table.html#cb90-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 w   23   23   23   23</span></span>
+<span id="cb90-33"><a href="dplyr-merge-table.html#cb90-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 x   24   24   24   24</span></span>
+<span id="cb90-34"><a href="dplyr-merge-table.html#cb90-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 y   25   25   25   25</span></span>
+<span id="cb90-35"><a href="dplyr-merge-table.html#cb90-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 z   26   26   26   26</span></span></code></pre></div>
 </div>
 </div>
             </section>

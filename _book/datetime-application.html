@@ -471,8 +471,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>round_date()</code>函数根据要求周期回滚日期</p>
 <div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="datetime-application.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
-<span id="cb273-2"><a href="datetime-application.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;month&#39;</span>) </span>
-<span id="cb273-3"><a href="datetime-application.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;week&#39;</span>)</span></code></pre></div>
+<span id="cb273-2"><a href="datetime-application.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01&quot;</span></span>
+<span id="cb273-3"><a href="datetime-application.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;month&#39;</span>) </span>
+<span id="cb273-4"><a href="datetime-application.html#cb273-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-01&quot;</span></span>
+<span id="cb273-5"><a href="datetime-application.html#cb273-5" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;week&#39;</span>)</span>
+<span id="cb273-6"><a href="datetime-application.html#cb273-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-16&quot;</span></span></code></pre></div>
 <p>以上同系列函数从名字就能大概看出端倪，其中关键参数是unit，可选想如下:
 1s,second,minute,5 mins,hour,dat,week,months,bimonth,quarter,season,halfyear,year。</p>
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="datetime-application.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round_date</span>(</span>
@@ -495,7 +498,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb274-18"><a href="datetime-application.html#cb274-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>change_on_boundary参数</p>
 <div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="datetime-application.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(<span class="fu">ymd_hms</span>(<span class="st">&#39;2021-01-1 00:00:00&#39;</span>),<span class="st">&#39;month&#39;</span>)</span>
-<span id="cb275-2"><a href="datetime-application.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(<span class="fu">ymd_hms</span>(<span class="st">&#39;2021-01-1 00:00:00&#39;</span>),<span class="st">&#39;month&#39;</span>,<span class="at">change_on_boundary =</span> T)</span></code></pre></div>
+<span id="cb275-2"><a href="datetime-application.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01 UTC&quot;</span></span>
+<span id="cb275-3"><a href="datetime-application.html#cb275-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(<span class="fu">ymd_hms</span>(<span class="st">&#39;2021-01-1 00:00:00&#39;</span>),<span class="st">&#39;month&#39;</span>,<span class="at">change_on_boundary =</span> T)</span>
+<span id="cb275-4"><a href="datetime-application.html#cb275-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-02-01 UTC&quot;</span></span></code></pre></div>
 <ul>
 <li>计算年同比</li>
 </ul>
@@ -504,29 +509,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb276-3"><a href="datetime-application.html#cb276-3" aria-hidden="true" tabindex="-1"></a><span class="co"># current </span></span>
 <span id="cb276-4"><a href="datetime-application.html#cb276-4" aria-hidden="true" tabindex="-1"></a>current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
 <span id="cb276-5"><a href="datetime-application.html#cb276-5" aria-hidden="true" tabindex="-1"></a>current_start_date</span>
-<span id="cb276-6"><a href="datetime-application.html#cb276-6" aria-hidden="true" tabindex="-1"></a>date </span>
-<span id="cb276-7"><a href="datetime-application.html#cb276-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb276-8"><a href="datetime-application.html#cb276-8" aria-hidden="true" tabindex="-1"></a><span class="co"># last year</span></span>
-<span id="cb276-9"><a href="datetime-application.html#cb276-9" aria-hidden="true" tabindex="-1"></a>last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb276-10"><a href="datetime-application.html#cb276-10" aria-hidden="true" tabindex="-1"></a>last_start_date</span>
-<span id="cb276-11"><a href="datetime-application.html#cb276-11" aria-hidden="true" tabindex="-1"></a>last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb276-12"><a href="datetime-application.html#cb276-12" aria-hidden="true" tabindex="-1"></a>last_end_date</span></code></pre></div>
+<span id="cb276-6"><a href="datetime-application.html#cb276-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01&quot;</span></span>
+<span id="cb276-7"><a href="datetime-application.html#cb276-7" aria-hidden="true" tabindex="-1"></a>date </span>
+<span id="cb276-8"><a href="datetime-application.html#cb276-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-21&quot;</span></span>
+<span id="cb276-9"><a href="datetime-application.html#cb276-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb276-10"><a href="datetime-application.html#cb276-10" aria-hidden="true" tabindex="-1"></a><span class="co"># last year</span></span>
+<span id="cb276-11"><a href="datetime-application.html#cb276-11" aria-hidden="true" tabindex="-1"></a>last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb276-12"><a href="datetime-application.html#cb276-12" aria-hidden="true" tabindex="-1"></a>last_start_date</span>
+<span id="cb276-13"><a href="datetime-application.html#cb276-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-01-01&quot;</span></span>
+<span id="cb276-14"><a href="datetime-application.html#cb276-14" aria-hidden="true" tabindex="-1"></a>last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb276-15"><a href="datetime-application.html#cb276-15" aria-hidden="true" tabindex="-1"></a>last_end_date</span>
+<span id="cb276-16"><a href="datetime-application.html#cb276-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-05-21&quot;</span></span></code></pre></div>
 <p>以上,n表示间隔年数，大部分时候都是1。但特殊时候，比如2021年同比2020年2-4月(新冠疫情)基本没有同比意义，所以在此设置为参数。</p>
 <ul>
 <li>计算月同比</li>
 </ul>
 <p><code>rollback()</code>函数返回上个月的最后一天或当前月的第一天</p>
 <div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="datetime-application.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rollback</span>(<span class="fu">today</span>())</span>
-<span id="cb277-2"><a href="datetime-application.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rollback</span>(<span class="fu">today</span>(),<span class="at">roll_to_first =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<span id="cb277-2"><a href="datetime-application.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-04-30&quot;</span></span>
+<span id="cb277-3"><a href="datetime-application.html#cb277-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rollback</span>(<span class="fu">today</span>(),<span class="at">roll_to_first =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb277-4"><a href="datetime-application.html#cb277-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-01&quot;</span></span></code></pre></div>
 <ul>
 <li>计算月环比</li>
 </ul>
 <p>计算环比时，<code>%m+%</code>或<code>%m-%</code>可以很好解决月份天数不一的问题</p>
 <div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="datetime-application.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="st">&#39;2020-03-30&#39;</span>) <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
-<span id="cb278-2"><a href="datetime-application.html#cb278-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb278-3"><a href="datetime-application.html#cb278-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 环比月截止日</span></span>
-<span id="cb278-4"><a href="datetime-application.html#cb278-4" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb278-5"><a href="datetime-application.html#cb278-5" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span></code></pre></div>
+<span id="cb278-2"><a href="datetime-application.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-02-29&quot;</span></span>
+<span id="cb278-3"><a href="datetime-application.html#cb278-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb278-4"><a href="datetime-application.html#cb278-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 环比月截止日</span></span>
+<span id="cb278-5"><a href="datetime-application.html#cb278-5" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
+<span id="cb278-6"><a href="datetime-application.html#cb278-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-21&quot;</span></span>
+<span id="cb278-7"><a href="datetime-application.html#cb278-7" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb278-8"><a href="datetime-application.html#cb278-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-04-21&quot;</span></span></code></pre></div>
 <p>经过以上计算，得到一对对时间周期，然后在订单或者其它数据中筛选即可获得同环比维度数据。</p>
 <ul>
 <li>模拟计算</li>
@@ -536,7 +550,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb279-3"><a href="datetime-application.html#cb279-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb279-4"><a href="datetime-application.html#cb279-4" aria-hidden="true" tabindex="-1"></a>category <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;品类A&#39;</span>,<span class="st">&#39;品类B&#39;</span>,<span class="st">&#39;品类C&#39;</span>,<span class="st">&#39;品类D&#39;</span>),<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb279-5"><a href="datetime-application.html#cb279-5" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">bill_date =</span> bill_date ,<span class="at">money =</span> <span class="fu">sample</span>(<span class="dv">80</span><span class="sc">:</span><span class="dv">150</span>,<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>),<span class="at">area =</span> area,<span class="at">category =</span> category)</span>
-<span id="cb279-6"><a href="datetime-application.html#cb279-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
+<span id="cb279-6"><a href="datetime-application.html#cb279-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb279-7"><a href="datetime-application.html#cb279-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
+<span id="cb279-8"><a href="datetime-application.html#cb279-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   bill_date  money area  category</span></span>
+<span id="cb279-9"><a href="datetime-application.html#cb279-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;date&gt;     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   </span></span>
+<span id="cb279-10"><a href="datetime-application.html#cb279-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2019-01-01   138 华东  品类C   </span></span>
+<span id="cb279-11"><a href="datetime-application.html#cb279-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2019-01-02    80 华南  品类D   </span></span>
+<span id="cb279-12"><a href="datetime-application.html#cb279-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2019-01-03   111 华北  品类B   </span></span>
+<span id="cb279-13"><a href="datetime-application.html#cb279-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2019-01-04    97 华南  品类C   </span></span>
+<span id="cb279-14"><a href="datetime-application.html#cb279-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2019-01-05   126 华东  品类D   </span></span>
+<span id="cb279-15"><a href="datetime-application.html#cb279-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2019-01-06   149 华西  品类A</span></span></code></pre></div>
 <ul>
 <li>自定义函数</li>
 </ul>
@@ -571,10 +594,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="datetime-application.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20201001&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型) <span class="sc">%&gt;%</span> </span>
 <span id="cb281-2"><a href="datetime-application.html#cb281-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="st">&#39;area&#39;</span>,<span class="at">names_from =</span> <span class="st">&#39;类型&#39;</span>,<span class="at">values_from =</span> <span class="st">&#39;金额&#39;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb281-3"><a href="datetime-application.html#cb281-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(增长率 <span class="ot">=</span> 当前 <span class="sc">/</span> 同期)</span>
-<span id="cb281-4"><a href="datetime-application.html#cb281-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb281-5"><a href="datetime-application.html#cb281-5" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20201001&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型,category) <span class="sc">%&gt;%</span> </span>
-<span id="cb281-6"><a href="datetime-application.html#cb281-6" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="fu">c</span>(<span class="st">&#39;area&#39;</span>,<span class="st">&#39;category&#39;</span>),<span class="at">names_from =</span> <span class="st">&#39;类型&#39;</span>,<span class="at">values_from =</span> <span class="st">&#39;金额&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb281-7"><a href="datetime-application.html#cb281-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(增长率 <span class="ot">=</span> 当前 <span class="sc">/</span> 同期)</span></code></pre></div>
+<span id="cb281-4"><a href="datetime-application.html#cb281-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;area&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb281-5"><a href="datetime-application.html#cb281-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 4</span></span>
+<span id="cb281-6"><a href="datetime-application.html#cb281-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   area   当前  同期 增长率</span></span>
+<span id="cb281-7"><a href="datetime-application.html#cb281-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;</span></span>
+<span id="cb281-8"><a href="datetime-application.html#cb281-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 华北   7572  7674  0.987</span></span>
+<span id="cb281-9"><a href="datetime-application.html#cb281-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 华东   8713  8344  1.04 </span></span>
+<span id="cb281-10"><a href="datetime-application.html#cb281-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 华南   6279  8150  0.770</span></span>
+<span id="cb281-11"><a href="datetime-application.html#cb281-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 华西   8805  7161  1.23</span></span>
+<span id="cb281-12"><a href="datetime-application.html#cb281-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-13"><a href="datetime-application.html#cb281-13" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20201001&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型,category) <span class="sc">%&gt;%</span> </span>
+<span id="cb281-14"><a href="datetime-application.html#cb281-14" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="fu">c</span>(<span class="st">&#39;area&#39;</span>,<span class="st">&#39;category&#39;</span>),<span class="at">names_from =</span> <span class="st">&#39;类型&#39;</span>,<span class="at">values_from =</span> <span class="st">&#39;金额&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb281-15"><a href="datetime-application.html#cb281-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(增长率 <span class="ot">=</span> 当前 <span class="sc">/</span> 同期)</span>
+<span id="cb281-16"><a href="datetime-application.html#cb281-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;area&#39;, &#39;类型&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb281-17"><a href="datetime-application.html#cb281-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 16 x 5</span></span>
+<span id="cb281-18"><a href="datetime-application.html#cb281-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   area  category  当前  同期 增长率</span></span>
+<span id="cb281-19"><a href="datetime-application.html#cb281-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;</span></span>
+<span id="cb281-20"><a href="datetime-application.html#cb281-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 华北  品类A     1515  1268  1.19 </span></span>
+<span id="cb281-21"><a href="datetime-application.html#cb281-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 华北  品类B     1807  2600  0.695</span></span>
+<span id="cb281-22"><a href="datetime-application.html#cb281-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 华北  品类C     1956  1837  1.06 </span></span>
+<span id="cb281-23"><a href="datetime-application.html#cb281-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 华北  品类D     2294  1969  1.17 </span></span>
+<span id="cb281-24"><a href="datetime-application.html#cb281-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 华东  品类A     1797  2400  0.749</span></span>
+<span id="cb281-25"><a href="datetime-application.html#cb281-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 华东  品类B     2507  2064  1.21 </span></span>
+<span id="cb281-26"><a href="datetime-application.html#cb281-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 10 more rows</span></span></code></pre></div>
 </div>
 <div id="清洗不同类型日期格式" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> 清洗不同类型日期格式</h3>
@@ -602,7 +644,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb282-20"><a href="datetime-application.html#cb282-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_datetime</span>(res,<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
 <span id="cb282-21"><a href="datetime-application.html#cb282-21" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb282-22"><a href="datetime-application.html#cb282-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb282-23"><a href="datetime-application.html#cb282-23" aria-hidden="true" tabindex="-1"></a><span class="fu">myfun</span>(date1)</span></code></pre></div>
+<span id="cb282-23"><a href="datetime-application.html#cb282-23" aria-hidden="true" tabindex="-1"></a><span class="fu">myfun</span>(date1)</span>
+<span id="cb282-24"><a href="datetime-application.html#cb282-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2001-02-13 10:33:00 CST&quot; &quot;2013-01-24 11:16:00 CST&quot;</span></span></code></pre></div>
 </div>
 <div id="扫码后中奖时间匹配" class="section level3" number="5.3.3">
 <h3><span class="header-section-number">5.3.3</span> 扫码后中奖时间匹配</h3>

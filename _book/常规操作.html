@@ -487,15 +487,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb307-2"><a href="常规操作.html#cb307-2" aria-hidden="true" tabindex="-1"></a><span class="co">#between(x, lower, upper, incbounds=TRUE, NAbounds=TRUE, check=FALSE)</span></span>
 <span id="cb307-3"><a href="常规操作.html#cb307-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">c=</span><span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>))</span>
 <span id="cb307-4"><a href="常规操作.html#cb307-4" aria-hidden="true" tabindex="-1"></a>X[b <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>)]</span>
-<span id="cb307-5"><a href="常规操作.html#cb307-5" aria-hidden="true" tabindex="-1"></a>X[<span class="fu">between</span>(b, <span class="dv">7</span>, <span class="dv">9</span>)] <span class="co">#效果同上</span></span>
-<span id="cb307-6"><a href="常规操作.html#cb307-6" aria-hidden="true" tabindex="-1"></a>X[c <span class="sc">%between%</span> <span class="fu">list</span>(a,b)] <span class="co"># 矢量化</span></span></code></pre></div>
+<span id="cb307-5"><a href="常规操作.html#cb307-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
+<span id="cb307-6"><a href="常规操作.html#cb307-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2 7 4</span></span>
+<span id="cb307-7"><a href="常规操作.html#cb307-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 3 8 3</span></span>
+<span id="cb307-8"><a href="常规操作.html#cb307-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 4 9 2</span></span>
+<span id="cb307-9"><a href="常规操作.html#cb307-9" aria-hidden="true" tabindex="-1"></a>X[<span class="fu">between</span>(b, <span class="dv">7</span>, <span class="dv">9</span>)] <span class="co">#效果同上</span></span>
+<span id="cb307-10"><a href="常规操作.html#cb307-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
+<span id="cb307-11"><a href="常规操作.html#cb307-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2 7 4</span></span>
+<span id="cb307-12"><a href="常规操作.html#cb307-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 3 8 3</span></span>
+<span id="cb307-13"><a href="常规操作.html#cb307-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 4 9 2</span></span>
+<span id="cb307-14"><a href="常规操作.html#cb307-14" aria-hidden="true" tabindex="-1"></a>X[c <span class="sc">%between%</span> <span class="fu">list</span>(a,b)] <span class="co"># 矢量化</span></span>
+<span id="cb307-15"><a href="常规操作.html#cb307-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
+<span id="cb307-16"><a href="常规操作.html#cb307-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 1 6 5</span></span>
+<span id="cb307-17"><a href="常规操作.html#cb307-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2 7 4</span></span>
+<span id="cb307-18"><a href="常规操作.html#cb307-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 3 8 3</span></span></code></pre></div>
 <ul>
 <li>like 筛选</li>
 </ul>
 <p>%like% 用法与SQL中 like 类似。</p>
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="常规操作.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %like% 用法与SQL中 like 类似</span></span>
 <span id="cb308-2"><a href="常规操作.html#cb308-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">Name=</span><span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>,<span class="st">&quot;George&quot;</span>,<span class="st">&quot;Martha&quot;</span>), <span class="at">Salary=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb308-3"><a href="常规操作.html#cb308-3" aria-hidden="true" tabindex="-1"></a>DT[Name <span class="sc">%like%</span> <span class="st">&quot;^Mar&quot;</span>]</span></code></pre></div>
+<span id="cb308-3"><a href="常规操作.html#cb308-3" aria-hidden="true" tabindex="-1"></a>DT[Name <span class="sc">%like%</span> <span class="st">&quot;^Mar&quot;</span>]</span>
+<span id="cb308-4"><a href="常规操作.html#cb308-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Name Salary</span></span>
+<span id="cb308-5"><a href="常规操作.html#cb308-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   Mary      2</span></span>
+<span id="cb308-6"><a href="常规操作.html#cb308-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: Martha      4</span></span></code></pre></div>
 </div>
 <div id="新增更新列" class="section level3" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> 新增更新列</h3>
@@ -505,8 +520,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="常规操作.html#cb309-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb309-2"><a href="常规操作.html#cb309-2" aria-hidden="true" tabindex="-1"></a>dt[,.(col1,col2)]</span>
-<span id="cb309-3"><a href="常规操作.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb309-4"><a href="常规操作.html#cb309-4" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(col1,col2)]</span></code></pre></div>
+<span id="cb309-3"><a href="常规操作.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2</span></span>
+<span id="cb309-4"><a href="常规操作.html#cb309-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a</span></span>
+<span id="cb309-5"><a href="常规操作.html#cb309-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b</span></span>
+<span id="cb309-6"><a href="常规操作.html#cb309-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c</span></span>
+<span id="cb309-7"><a href="常规操作.html#cb309-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d</span></span>
+<span id="cb309-8"><a href="常规操作.html#cb309-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e</span></span>
+<span id="cb309-9"><a href="常规操作.html#cb309-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f</span></span>
+<span id="cb309-10"><a href="常规操作.html#cb309-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g</span></span>
+<span id="cb309-11"><a href="常规操作.html#cb309-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h</span></span>
+<span id="cb309-12"><a href="常规操作.html#cb309-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i</span></span>
+<span id="cb309-13"><a href="常规操作.html#cb309-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j</span></span>
+<span id="cb309-14"><a href="常规操作.html#cb309-14" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb309-15"><a href="常规操作.html#cb309-15" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(col1,col2)]</span>
+<span id="cb309-16"><a href="常规操作.html#cb309-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2</span></span>
+<span id="cb309-17"><a href="常规操作.html#cb309-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a</span></span>
+<span id="cb309-18"><a href="常规操作.html#cb309-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b</span></span>
+<span id="cb309-19"><a href="常规操作.html#cb309-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c</span></span>
+<span id="cb309-20"><a href="常规操作.html#cb309-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d</span></span>
+<span id="cb309-21"><a href="常规操作.html#cb309-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e</span></span>
+<span id="cb309-22"><a href="常规操作.html#cb309-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f</span></span>
+<span id="cb309-23"><a href="常规操作.html#cb309-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g</span></span>
+<span id="cb309-24"><a href="常规操作.html#cb309-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h</span></span>
+<span id="cb309-25"><a href="常规操作.html#cb309-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i</span></span>
+<span id="cb309-26"><a href="常规操作.html#cb309-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j</span></span></code></pre></div>
 <ul>
 <li>新增列</li>
 </ul>
@@ -515,26 +552,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb310-2"><a href="常规操作.html#cb310-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb310-3"><a href="常规操作.html#cb310-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增列 :=</span></span>
 <span id="cb310-4"><a href="常规操作.html#cb310-4" aria-hidden="true" tabindex="-1"></a>dt[,addcol<span class="sc">:</span><span class="er">=</span><span class="fu">rep</span>(<span class="st">&#39;新列&#39;</span>,<span class="dv">10</span>)][] <span class="co">#最后的[]是为了显示新增列的数据框,可不增加</span></span>
-<span id="cb310-5"><a href="常规操作.html#cb310-5" aria-hidden="true" tabindex="-1"></a><span class="co">#dt[,addcol:=rep(&#39;新列&#39;,10)] 不会显示返回结果,加上[]会显示返回</span></span>
-<span id="cb310-6"><a href="常规操作.html#cb310-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增多列</span></span>
-<span id="cb310-7"><a href="常规操作.html#cb310-7" aria-hidden="true" tabindex="-1"></a>dt[,<span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">newcol1=</span><span class="fu">rep</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="dv">10</span>),<span class="at">newcol2=</span><span class="fu">rep</span>(<span class="st">&#39;newcol2&#39;</span>,<span class="dv">10</span>))][]</span></code></pre></div>
+<span id="cb310-5"><a href="常规操作.html#cb310-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2 col3 col4 addcol</span></span>
+<span id="cb310-6"><a href="常规操作.html#cb310-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a    A    1   新列</span></span>
+<span id="cb310-7"><a href="常规操作.html#cb310-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b    B    2   新列</span></span>
+<span id="cb310-8"><a href="常规操作.html#cb310-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c    C    3   新列</span></span>
+<span id="cb310-9"><a href="常规操作.html#cb310-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d    D    4   新列</span></span>
+<span id="cb310-10"><a href="常规操作.html#cb310-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e    E    5   新列</span></span>
+<span id="cb310-11"><a href="常规操作.html#cb310-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f    F    6   新列</span></span>
+<span id="cb310-12"><a href="常规操作.html#cb310-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g    G    7   新列</span></span>
+<span id="cb310-13"><a href="常规操作.html#cb310-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h    H    8   新列</span></span>
+<span id="cb310-14"><a href="常规操作.html#cb310-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i    I    9   新列</span></span>
+<span id="cb310-15"><a href="常规操作.html#cb310-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j    J   10   新列</span></span>
+<span id="cb310-16"><a href="常规操作.html#cb310-16" aria-hidden="true" tabindex="-1"></a><span class="co">#dt[,addcol:=rep(&#39;新列&#39;,10)] 不会显示返回结果,加上[]会显示返回</span></span>
+<span id="cb310-17"><a href="常规操作.html#cb310-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增多列</span></span>
+<span id="cb310-18"><a href="常规操作.html#cb310-18" aria-hidden="true" tabindex="-1"></a>dt[,<span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">newcol1=</span><span class="fu">rep</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="dv">10</span>),<span class="at">newcol2=</span><span class="fu">rep</span>(<span class="st">&#39;newcol2&#39;</span>,<span class="dv">10</span>))][]</span>
+<span id="cb310-19"><a href="常规操作.html#cb310-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2 col3 col4 addcol newcol1 newcol2</span></span>
+<span id="cb310-20"><a href="常规操作.html#cb310-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a    A    1   新列 newcol1 newcol2</span></span>
+<span id="cb310-21"><a href="常规操作.html#cb310-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b    B    2   新列 newcol1 newcol2</span></span>
+<span id="cb310-22"><a href="常规操作.html#cb310-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c    C    3   新列 newcol1 newcol2</span></span>
+<span id="cb310-23"><a href="常规操作.html#cb310-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d    D    4   新列 newcol1 newcol2</span></span>
+<span id="cb310-24"><a href="常规操作.html#cb310-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e    E    5   新列 newcol1 newcol2</span></span>
+<span id="cb310-25"><a href="常规操作.html#cb310-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f    F    6   新列 newcol1 newcol2</span></span>
+<span id="cb310-26"><a href="常规操作.html#cb310-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g    G    7   新列 newcol1 newcol2</span></span>
+<span id="cb310-27"><a href="常规操作.html#cb310-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h    H    8   新列 newcol1 newcol2</span></span>
+<span id="cb310-28"><a href="常规操作.html#cb310-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i    I    9   新列 newcol1 newcol2</span></span>
+<span id="cb310-29"><a href="常规操作.html#cb310-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j    J   10   新列 newcol1 newcol2</span></span></code></pre></div>
 <ul>
 <li>删除列</li>
 </ul>
 <p>删除列即将列赋值NULL即可</p>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="常规操作.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除列</span></span>
 <span id="cb311-2"><a href="常规操作.html#cb311-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span>
-<span id="cb311-3"><a href="常规操作.html#cb311-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除多列</span></span>
-<span id="cb311-4"><a href="常规操作.html#cb311-4" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">c</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="st">&#39;newcol2&#39;</span>)<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span></code></pre></div>
+<span id="cb311-3"><a href="常规操作.html#cb311-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol newcol1 newcol2</span></span>
+<span id="cb311-4"><a href="常规操作.html#cb311-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列 newcol1 newcol2</span></span>
+<span id="cb311-5"><a href="常规操作.html#cb311-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列 newcol1 newcol2</span></span>
+<span id="cb311-6"><a href="常规操作.html#cb311-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列 newcol1 newcol2</span></span>
+<span id="cb311-7"><a href="常规操作.html#cb311-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列 newcol1 newcol2</span></span>
+<span id="cb311-8"><a href="常规操作.html#cb311-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列 newcol1 newcol2</span></span>
+<span id="cb311-9"><a href="常规操作.html#cb311-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列 newcol1 newcol2</span></span>
+<span id="cb311-10"><a href="常规操作.html#cb311-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列 newcol1 newcol2</span></span>
+<span id="cb311-11"><a href="常规操作.html#cb311-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列 newcol1 newcol2</span></span>
+<span id="cb311-12"><a href="常规操作.html#cb311-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列 newcol1 newcol2</span></span>
+<span id="cb311-13"><a href="常规操作.html#cb311-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列 newcol1 newcol2</span></span>
+<span id="cb311-14"><a href="常规操作.html#cb311-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除多列</span></span>
+<span id="cb311-15"><a href="常规操作.html#cb311-15" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">c</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="st">&#39;newcol2&#39;</span>)<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span>
+<span id="cb311-16"><a href="常规操作.html#cb311-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol</span></span>
+<span id="cb311-17"><a href="常规操作.html#cb311-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列</span></span>
+<span id="cb311-18"><a href="常规操作.html#cb311-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列</span></span>
+<span id="cb311-19"><a href="常规操作.html#cb311-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列</span></span>
+<span id="cb311-20"><a href="常规操作.html#cb311-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列</span></span>
+<span id="cb311-21"><a href="常规操作.html#cb311-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列</span></span>
+<span id="cb311-22"><a href="常规操作.html#cb311-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列</span></span>
+<span id="cb311-23"><a href="常规操作.html#cb311-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列</span></span>
+<span id="cb311-24"><a href="常规操作.html#cb311-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列</span></span>
+<span id="cb311-25"><a href="常规操作.html#cb311-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列</span></span>
+<span id="cb311-26"><a href="常规操作.html#cb311-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列</span></span></code></pre></div>
 <ul>
 <li>更新</li>
 </ul>
 <p>更新即重新赋值，将现有列参与计算等于是重新赋值，可以看成是更新列。</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="常规操作.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 更新列</span></span>
 <span id="cb312-2"><a href="常规操作.html#cb312-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>][]</span>
-<span id="cb312-3"><a href="常规操作.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="co"># not run </span></span>
-<span id="cb312-4"><a href="常规操作.html#cb312-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 两列间计算 也可以理解为更新</span></span>
-<span id="cb312-5"><a href="常规操作.html#cb312-5" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span>col1<span class="sc">/</span>col4]</span></code></pre></div>
+<span id="cb312-3"><a href="常规操作.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol col1</span></span>
+<span id="cb312-4"><a href="常规操作.html#cb312-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列   11</span></span>
+<span id="cb312-5"><a href="常规操作.html#cb312-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列   12</span></span>
+<span id="cb312-6"><a href="常规操作.html#cb312-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列   13</span></span>
+<span id="cb312-7"><a href="常规操作.html#cb312-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列   14</span></span>
+<span id="cb312-8"><a href="常规操作.html#cb312-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列   15</span></span>
+<span id="cb312-9"><a href="常规操作.html#cb312-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列   16</span></span>
+<span id="cb312-10"><a href="常规操作.html#cb312-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列   17</span></span>
+<span id="cb312-11"><a href="常规操作.html#cb312-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列   18</span></span>
+<span id="cb312-12"><a href="常规操作.html#cb312-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列   19</span></span>
+<span id="cb312-13"><a href="常规操作.html#cb312-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列   20</span></span>
+<span id="cb312-14"><a href="常规操作.html#cb312-14" aria-hidden="true" tabindex="-1"></a><span class="co"># not run </span></span>
+<span id="cb312-15"><a href="常规操作.html#cb312-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 两列间计算 也可以理解为更新</span></span>
+<span id="cb312-16"><a href="常规操作.html#cb312-16" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span>col1<span class="sc">/</span>col4]</span></code></pre></div>
 <blockquote>
 <p>Note: DT[a &gt; 4, b := c] is different from DT[a &gt; 4][, b := c]</p>
 </blockquote>

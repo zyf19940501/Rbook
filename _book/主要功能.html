@@ -523,7 +523,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb135-2"><a href="主要功能.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb135-3"><a href="主要功能.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="主要功能.html#cb136-1" aria-hidden="true" tabindex="-1"></a>relig_income <span class="sc">%&gt;%</span> </span>
-<span id="cb136-2"><a href="主要功能.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">!</span>religion,<span class="at">names_to =</span> <span class="st">&#39;income&#39;</span>,<span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>)</span></code></pre></div>
+<span id="cb136-2"><a href="主要功能.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">!</span>religion,<span class="at">names_to =</span> <span class="st">&#39;income&#39;</span>,<span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>)</span>
+<span id="cb136-3"><a href="主要功能.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 180 x 3</span></span>
+<span id="cb136-4"><a href="主要功能.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   religion income  count</span></span>
+<span id="cb136-5"><a href="主要功能.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb136-6"><a href="主要功能.html#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Agnostic &lt;$10k      27</span></span>
+<span id="cb136-7"><a href="主要功能.html#cb136-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Agnostic $10-20k    34</span></span>
+<span id="cb136-8"><a href="主要功能.html#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Agnostic $20-30k    60</span></span>
+<span id="cb136-9"><a href="主要功能.html#cb136-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Agnostic $30-40k    81</span></span>
+<span id="cb136-10"><a href="主要功能.html#cb136-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Agnostic $40-50k    76</span></span>
+<span id="cb136-11"><a href="主要功能.html#cb136-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Agnostic $50-75k   137</span></span>
+<span id="cb136-12"><a href="主要功能.html#cb136-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 174 more rows</span></span></code></pre></div>
 <ul>
 <li>第一个参数是数据集</li>
 <li>第二个参数是那些列需要重塑，在该例中除了<code>religion</code>的其他全部列</li>
@@ -539,7 +549,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb137-4"><a href="主要功能.html#cb137-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>, </span>
 <span id="cb137-5"><a href="主要功能.html#cb137-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span>,</span>
 <span id="cb137-6"><a href="主要功能.html#cb137-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
-<span id="cb137-7"><a href="主要功能.html#cb137-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb137-7"><a href="主要功能.html#cb137-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb137-8"><a href="主要功能.html#cb137-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5,307 x 5</span></span>
+<span id="cb137-9"><a href="主要功能.html#cb137-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   artist track                   date.entered week   rank</span></span>
+<span id="cb137-10"><a href="主要功能.html#cb137-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span id="cb137-11"><a href="主要功能.html#cb137-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk1      87</span></span>
+<span id="cb137-12"><a href="主要功能.html#cb137-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk2      82</span></span>
+<span id="cb137-13"><a href="主要功能.html#cb137-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk3      72</span></span>
+<span id="cb137-14"><a href="主要功能.html#cb137-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk4      77</span></span>
+<span id="cb137-15"><a href="主要功能.html#cb137-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk5      87</span></span>
+<span id="cb137-16"><a href="主要功能.html#cb137-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk6      94</span></span>
+<span id="cb137-17"><a href="主要功能.html#cb137-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 5,301 more rows</span></span></code></pre></div>
 <p><code>names_prefix</code> 调整内容前缀，配合<code>names_transform</code>参数使用</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="主要功能.html#cb138-1" aria-hidden="true" tabindex="-1"></a>billboard <span class="sc">%&gt;%</span> </span>
 <span id="cb138-2"><a href="主要功能.html#cb138-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
@@ -549,7 +569,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb138-6"><a href="主要功能.html#cb138-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">week =</span> as.integer),</span>
 <span id="cb138-7"><a href="主要功能.html#cb138-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span>,</span>
 <span id="cb138-8"><a href="主要功能.html#cb138-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb138-9"><a href="主要功能.html#cb138-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb138-9"><a href="主要功能.html#cb138-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb138-10"><a href="主要功能.html#cb138-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5,307 x 5</span></span>
+<span id="cb138-11"><a href="主要功能.html#cb138-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   artist track                   date.entered  week  rank</span></span>
+<span id="cb138-12"><a href="主要功能.html#cb138-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb138-13"><a href="主要功能.html#cb138-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       1    87</span></span>
+<span id="cb138-14"><a href="主要功能.html#cb138-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       2    82</span></span>
+<span id="cb138-15"><a href="主要功能.html#cb138-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       3    72</span></span>
+<span id="cb138-16"><a href="主要功能.html#cb138-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       4    77</span></span>
+<span id="cb138-17"><a href="主要功能.html#cb138-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       5    87</span></span>
+<span id="cb138-18"><a href="主要功能.html#cb138-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       6    94</span></span>
+<span id="cb138-19"><a href="主要功能.html#cb138-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 5,301 more rows</span></span></code></pre></div>
 <p>经过以上转换<code>week</code>列属性变成了整数，当然达到以上效果有其他的途径，如下：</p>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="主要功能.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse,<span class="at">warn.conflicts =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb139-2"><a href="主要功能.html#cb139-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -583,7 +613,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb140-3"><a href="主要功能.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>), </span>
 <span id="cb140-4"><a href="主要功能.html#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>,</span>
 <span id="cb140-5"><a href="主要功能.html#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span></span>
-<span id="cb140-6"><a href="主要功能.html#cb140-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb140-6"><a href="主要功能.html#cb140-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb140-7"><a href="主要功能.html#cb140-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 405,440 x 8</span></span>
+<span id="cb140-8"><a href="主要功能.html#cb140-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   country     iso2  iso3   year diagnosis gender age   count</span></span>
+<span id="cb140-9"><a href="主要功能.html#cb140-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;</span></span>
+<span id="cb140-10"><a href="主要功能.html#cb140-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Afghanistan AF    AFG    1980 sp        m      014      NA</span></span>
+<span id="cb140-11"><a href="主要功能.html#cb140-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Afghanistan AF    AFG    1980 sp        m      1524     NA</span></span>
+<span id="cb140-12"><a href="主要功能.html#cb140-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Afghanistan AF    AFG    1980 sp        m      2534     NA</span></span>
+<span id="cb140-13"><a href="主要功能.html#cb140-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Afghanistan AF    AFG    1980 sp        m      3544     NA</span></span>
+<span id="cb140-14"><a href="主要功能.html#cb140-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Afghanistan AF    AFG    1980 sp        m      4554     NA</span></span>
+<span id="cb140-15"><a href="主要功能.html#cb140-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Afghanistan AF    AFG    1980 sp        m      5564     NA</span></span>
+<span id="cb140-16"><a href="主要功能.html#cb140-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 405,434 more rows</span></span></code></pre></div>
 <p>进一步处理列<code>gender</code>，<code>age</code> 。</p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="主要功能.html#cb141-1" aria-hidden="true" tabindex="-1"></a>who <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(</span>
 <span id="cb141-2"><a href="主要功能.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65,</span>
@@ -598,7 +638,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb141-11"><a href="主要功能.html#cb141-11" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb141-12"><a href="主要功能.html#cb141-12" aria-hidden="true" tabindex="-1"></a>  ),</span>
 <span id="cb141-13"><a href="主要功能.html#cb141-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>,</span>
-<span id="cb141-14"><a href="主要功能.html#cb141-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb141-14"><a href="主要功能.html#cb141-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb141-15"><a href="主要功能.html#cb141-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 405,440 x 8</span></span>
+<span id="cb141-16"><a href="主要功能.html#cb141-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   country     iso2  iso3   year diagnosis gender age   count</span></span>
+<span id="cb141-17"><a href="主要功能.html#cb141-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;fct&gt;  &lt;ord&gt; &lt;int&gt;</span></span>
+<span id="cb141-18"><a href="主要功能.html#cb141-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Afghanistan AF    AFG    1980 sp        m      014      NA</span></span>
+<span id="cb141-19"><a href="主要功能.html#cb141-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Afghanistan AF    AFG    1980 sp        m      1524     NA</span></span>
+<span id="cb141-20"><a href="主要功能.html#cb141-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Afghanistan AF    AFG    1980 sp        m      2534     NA</span></span>
+<span id="cb141-21"><a href="主要功能.html#cb141-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Afghanistan AF    AFG    1980 sp        m      3544     NA</span></span>
+<span id="cb141-22"><a href="主要功能.html#cb141-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Afghanistan AF    AFG    1980 sp        m      4554     NA</span></span>
+<span id="cb141-23"><a href="主要功能.html#cb141-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Afghanistan AF    AFG    1980 sp        m      5564     NA</span></span>
+<span id="cb141-24"><a href="主要功能.html#cb141-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 405,434 more rows</span></span></code></pre></div>
 </div>
 <div id="一行多观测值" class="section level4" number="3.2.1.4">
 <h4><span class="header-section-number">3.2.1.4</span> 一行多观测值</h4>
@@ -611,7 +661,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb142-7"><a href="主要功能.html#cb142-7" aria-hidden="true" tabindex="-1"></a>  5L, <span class="st">&quot;2000-12-05&quot;</span>, <span class="st">&quot;2005-02-28&quot;</span>, 2L, 1L,</span>
 <span id="cb142-8"><a href="主要功能.html#cb142-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb142-9"><a href="主要功能.html#cb142-9" aria-hidden="true" tabindex="-1"></a>family <span class="ot">&lt;-</span> family <span class="sc">%&gt;%</span> <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">&quot;dob&quot;</span>)), parse_date)</span>
-<span id="cb142-10"><a href="主要功能.html#cb142-10" aria-hidden="true" tabindex="-1"></a>family</span></code></pre></div>
+<span id="cb142-10"><a href="主要功能.html#cb142-10" aria-hidden="true" tabindex="-1"></a>family</span>
+<span id="cb142-11"><a href="主要功能.html#cb142-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
+<span id="cb142-12"><a href="主要功能.html#cb142-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   family dob_child1 dob_child2 gender_child1 gender_child2</span></span>
+<span id="cb142-13"><a href="主要功能.html#cb142-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt; &lt;date&gt;     &lt;date&gt;             &lt;int&gt;         &lt;int&gt;</span></span>
+<span id="cb142-14"><a href="主要功能.html#cb142-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1 1998-11-26 2000-01-29             1             2</span></span>
+<span id="cb142-15"><a href="主要功能.html#cb142-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      2 1996-06-22 NA                     2            NA</span></span>
+<span id="cb142-16"><a href="主要功能.html#cb142-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      3 2002-07-11 2004-04-05             2             2</span></span>
+<span id="cb142-17"><a href="主要功能.html#cb142-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      4 2004-10-10 2009-08-27             1             1</span></span>
+<span id="cb142-18"><a href="主要功能.html#cb142-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      5 2000-12-05 2005-02-28             2             1</span></span></code></pre></div>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="主要功能.html#cb143-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb143-2"><a href="主要功能.html#cb143-2" aria-hidden="true" tabindex="-1"></a>family <span class="sc">%&gt;%</span> </span>
 <span id="cb143-3"><a href="主要功能.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
@@ -619,13 +677,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb143-5"><a href="主要功能.html#cb143-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;.value&quot;</span>, <span class="st">&quot;child&quot;</span>), </span>
 <span id="cb143-6"><a href="主要功能.html#cb143-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="st">&quot;_&quot;</span>, </span>
 <span id="cb143-7"><a href="主要功能.html#cb143-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
-<span id="cb143-8"><a href="主要功能.html#cb143-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb143-8"><a href="主要功能.html#cb143-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb143-9"><a href="主要功能.html#cb143-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 9 x 4</span></span>
+<span id="cb143-10"><a href="主要功能.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   family child  dob        gender</span></span>
+<span id="cb143-11"><a href="主要功能.html#cb143-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;  &lt;date&gt;      &lt;int&gt;</span></span>
+<span id="cb143-12"><a href="主要功能.html#cb143-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1 child1 1998-11-26      1</span></span>
+<span id="cb143-13"><a href="主要功能.html#cb143-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1 child2 2000-01-29      2</span></span>
+<span id="cb143-14"><a href="主要功能.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      2 child1 1996-06-22      2</span></span>
+<span id="cb143-15"><a href="主要功能.html#cb143-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      3 child1 2002-07-11      2</span></span>
+<span id="cb143-16"><a href="主要功能.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      3 child2 2004-04-05      2</span></span>
+<span id="cb143-17"><a href="主要功能.html#cb143-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      4 child1 2004-10-10      1</span></span>
+<span id="cb143-18"><a href="主要功能.html#cb143-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 3 more rows</span></span></code></pre></div>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="主要功能.html#cb144-1" aria-hidden="true" tabindex="-1"></a>anscombe <span class="sc">%&gt;%</span> </span>
 <span id="cb144-2"><a href="主要功能.html#cb144-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), </span>
 <span id="cb144-3"><a href="主要功能.html#cb144-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;.value&quot;</span>, <span class="st">&quot;set&quot;</span>), </span>
 <span id="cb144-4"><a href="主要功能.html#cb144-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">&quot;(.)(.)&quot;</span></span>
 <span id="cb144-5"><a href="主要功能.html#cb144-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb144-6"><a href="主要功能.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(set)</span></code></pre></div>
+<span id="cb144-6"><a href="主要功能.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(set)</span>
+<span id="cb144-7"><a href="主要功能.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 44 x 3</span></span>
+<span id="cb144-8"><a href="主要功能.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   set       x     y</span></span>
+<span id="cb144-9"><a href="主要功能.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb144-10"><a href="主要功能.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1        10  8.04</span></span>
+<span id="cb144-11"><a href="主要功能.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1         8  6.95</span></span>
+<span id="cb144-12"><a href="主要功能.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 1        13  7.58</span></span>
+<span id="cb144-13"><a href="主要功能.html#cb144-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1         9  8.81</span></span>
+<span id="cb144-14"><a href="主要功能.html#cb144-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1        11  8.33</span></span>
+<span id="cb144-15"><a href="主要功能.html#cb144-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 1        14  9.96</span></span>
+<span id="cb144-16"><a href="主要功能.html#cb144-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 38 more rows</span></span></code></pre></div>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="主要功能.html#cb145-1" aria-hidden="true" tabindex="-1"></a>pnl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb145-2"><a href="主要功能.html#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
 <span id="cb145-3"><a href="主要功能.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>,<span class="dv">0</span>, <span class="dv">0</span>),</span>
@@ -641,12 +719,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb145-13"><a href="主要功能.html#cb145-13" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">c</span>(x, a, b), </span>
 <span id="cb145-14"><a href="主要功能.html#cb145-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;.value&quot;</span>, <span class="st">&quot;time&quot;</span>), </span>
 <span id="cb145-15"><a href="主要功能.html#cb145-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">&quot;(.)(.)&quot;</span></span>
-<span id="cb145-16"><a href="主要功能.html#cb145-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb145-16"><a href="主要功能.html#cb145-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb145-17"><a href="主要功能.html#cb145-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 8 x 6</span></span>
+<span id="cb145-18"><a href="主要功能.html#cb145-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     a     b time       y     z</span></span>
+<span id="cb145-19"><a href="主要功能.html#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb145-20"><a href="主要功能.html#cb145-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     1     0 1     -1.40      3</span></span>
+<span id="cb145-21"><a href="主要功能.html#cb145-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     1     1     0 2      0.622    -2</span></span>
+<span id="cb145-22"><a href="主要功能.html#cb145-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     2     1     1 1      0.255     3</span></span>
+<span id="cb145-23"><a href="主要功能.html#cb145-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2     1     1 2      1.15     -2</span></span>
+<span id="cb145-24"><a href="主要功能.html#cb145-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     3     0     1 1     -2.44      3</span></span>
+<span id="cb145-25"><a href="主要功能.html#cb145-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     3     0     1 2     -1.82     -2</span></span>
+<span id="cb145-26"><a href="主要功能.html#cb145-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 2 more rows</span></span></code></pre></div>
 </div>
 <div id="重复列名" class="section level4" number="3.2.1.5">
 <h4><span class="header-section-number">3.2.1.5</span> 重复列名</h4>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="主要功能.html#cb146-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">y =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">y =</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">.name_repair =</span> <span class="st">&quot;minimal&quot;</span>)</span>
-<span id="cb146-2"><a href="主要功能.html#cb146-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>id, <span class="at">names_to =</span> <span class="st">&quot;name&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span></code></pre></div>
+<span id="cb146-2"><a href="主要功能.html#cb146-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>id, <span class="at">names_to =</span> <span class="st">&quot;name&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span>
+<span id="cb146-3"><a href="主要功能.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 9 x 3</span></span>
+<span id="cb146-4"><a href="主要功能.html#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id name  value</span></span>
+<span id="cb146-5"><a href="主要功能.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;int&gt;</span></span>
+<span id="cb146-6"><a href="主要功能.html#cb146-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 y         4</span></span>
+<span id="cb146-7"><a href="主要功能.html#cb146-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     1 y         5</span></span>
+<span id="cb146-8"><a href="主要功能.html#cb146-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     1 y         7</span></span>
+<span id="cb146-9"><a href="主要功能.html#cb146-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 y         5</span></span>
+<span id="cb146-10"><a href="主要功能.html#cb146-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     2 y         6</span></span>
+<span id="cb146-11"><a href="主要功能.html#cb146-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     2 y         8</span></span>
+<span id="cb146-12"><a href="主要功能.html#cb146-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 3 more rows</span></span></code></pre></div>
 </div>
 </div>
 <div id="长转宽" class="section level3" number="3.2.2">
@@ -654,20 +752,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>pivot_wider()</code>功能与<code>pivot_longer()</code>相反。通过增加列数减少行数使数据集变得更宽，通常我们在汇总时候使用，达到类似Excel透视表结果。</p>
 <div id="基础-2" class="section level4" number="3.2.2.1">
 <h4><span class="header-section-number">3.2.2.1</span> 基础</h4>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="主要功能.html#cb147-1" aria-hidden="true" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="主要功能.html#cb147-1" aria-hidden="true" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen)</span>
+<span id="cb147-2"><a href="主要功能.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 19 x 12</span></span>
+<span id="cb147-3"><a href="主要功能.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW</span></span>
+<span id="cb147-4"><a href="主要功能.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb147-5"><a href="主要功能.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 4842        1     1      1     1       1     1     1     1     1     1     1</span></span>
+<span id="cb147-6"><a href="主要功能.html#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 4843        1     1      1     1       1     1     1     1     1     1     1</span></span>
+<span id="cb147-7"><a href="主要功能.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 4844        1     1      1     1       1     1     1     1     1     1     1</span></span>
+<span id="cb147-8"><a href="主要功能.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA</span></span>
+<span id="cb147-9"><a href="主要功能.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA</span></span>
+<span id="cb147-10"><a href="主要功能.html#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA</span></span>
+<span id="cb147-11"><a href="主要功能.html#cb147-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 13 more rows</span></span></code></pre></div>
 <p>缺失值填充</p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="主要功能.html#cb148-1" aria-hidden="true" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
 <span id="cb148-2"><a href="主要功能.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> station, </span>
 <span id="cb148-3"><a href="主要功能.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> seen,</span>
 <span id="cb148-4"><a href="主要功能.html#cb148-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_fill =</span> <span class="dv">0</span></span>
-<span id="cb148-5"><a href="主要功能.html#cb148-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb148-5"><a href="主要功能.html#cb148-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb148-6"><a href="主要功能.html#cb148-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 19 x 12</span></span>
+<span id="cb148-7"><a href="主要功能.html#cb148-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW</span></span>
+<span id="cb148-8"><a href="主要功能.html#cb148-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb148-9"><a href="主要功能.html#cb148-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 4842        1     1      1     1       1     1     1     1     1     1     1</span></span>
+<span id="cb148-10"><a href="主要功能.html#cb148-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 4843        1     1      1     1       1     1     1     1     1     1     1</span></span>
+<span id="cb148-11"><a href="主要功能.html#cb148-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 4844        1     1      1     1       1     1     1     1     1     1     1</span></span>
+<span id="cb148-12"><a href="主要功能.html#cb148-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 4845        1     1      1     1       1     0     0     0     0     0     0</span></span>
+<span id="cb148-13"><a href="主要功能.html#cb148-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 4847        1     1      1     0       0     0     0     0     0     0     0</span></span>
+<span id="cb148-14"><a href="主要功能.html#cb148-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 4848        1     1      1     1       0     0     0     0     0     0     0</span></span>
+<span id="cb148-15"><a href="主要功能.html#cb148-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 13 more rows</span></span></code></pre></div>
 </div>
 <div id="聚合" class="section level4" number="3.2.2.2">
 <h4><span class="header-section-number">3.2.2.2</span> 聚合</h4>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="主要功能.html#cb149-1" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="ot">&lt;-</span> warpbreaks <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>() </span>
-<span id="cb149-2"><a href="主要功能.html#cb149-2" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span> <span class="fu">count</span>(wool, tension)</span></code></pre></div>
+<span id="cb149-2"><a href="主要功能.html#cb149-2" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span> <span class="fu">count</span>(wool, tension)</span>
+<span id="cb149-3"><a href="主要功能.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
+<span id="cb149-4"><a href="主要功能.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   wool  tension     n</span></span>
+<span id="cb149-5"><a href="主要功能.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
+<span id="cb149-6"><a href="主要功能.html#cb149-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 A     L           9</span></span>
+<span id="cb149-7"><a href="主要功能.html#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 A     M           9</span></span>
+<span id="cb149-8"><a href="主要功能.html#cb149-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 A     H           9</span></span>
+<span id="cb149-9"><a href="主要功能.html#cb149-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 B     L           9</span></span>
+<span id="cb149-10"><a href="主要功能.html#cb149-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 B     M           9</span></span>
+<span id="cb149-11"><a href="主要功能.html#cb149-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 B     H           9</span></span></code></pre></div>
 <p>需要通过<code>values_fn</code>指定聚合方式</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="主要功能.html#cb150-1" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> wool, <span class="at">values_from =</span> breaks,<span class="at">values_fn=</span> <span class="fu">list</span>(<span class="at">breaks =</span> sum))</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="主要功能.html#cb150-1" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> wool, <span class="at">values_from =</span> breaks,<span class="at">values_fn=</span> <span class="fu">list</span>(<span class="at">breaks =</span> sum))</span>
+<span id="cb150-2"><a href="主要功能.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb150-3"><a href="主要功能.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   tension     A     B</span></span>
+<span id="cb150-4"><a href="主要功能.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb150-5"><a href="主要功能.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 L         401   254</span></span>
+<span id="cb150-6"><a href="主要功能.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 M         216   259</span></span>
+<span id="cb150-7"><a href="主要功能.html#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 H         221   169</span></span></code></pre></div>
 </div>
 <div id="从多个变量生成新列名" class="section level4" number="3.2.2.3">
 <h4><span class="header-section-number">3.2.2.3</span> 从多个变量生成新列名</h4>
@@ -678,28 +811,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb151-5"><a href="主要功能.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb151-6"><a href="主要功能.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>((product <span class="sc">==</span> <span class="st">&quot;A&quot;</span> <span class="sc">&amp;</span> country <span class="sc">==</span> <span class="st">&quot;AI&quot;</span>) <span class="sc">|</span> product <span class="sc">==</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb151-7"><a href="主要功能.html#cb151-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">production =</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(.)))</span>
-<span id="cb151-8"><a href="主要功能.html#cb151-8" aria-hidden="true" tabindex="-1"></a>production</span></code></pre></div>
+<span id="cb151-8"><a href="主要功能.html#cb151-8" aria-hidden="true" tabindex="-1"></a>production</span>
+<span id="cb151-9"><a href="主要功能.html#cb151-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 45 x 4</span></span>
+<span id="cb151-10"><a href="主要功能.html#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   product country  year production</span></span>
+<span id="cb151-11"><a href="主要功能.html#cb151-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;      &lt;dbl&gt;</span></span>
+<span id="cb151-12"><a href="主要功能.html#cb151-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 A       AI       2000     -0.244</span></span>
+<span id="cb151-13"><a href="主要功能.html#cb151-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 A       AI       2001     -0.283</span></span>
+<span id="cb151-14"><a href="主要功能.html#cb151-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 A       AI       2002     -0.554</span></span>
+<span id="cb151-15"><a href="主要功能.html#cb151-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 A       AI       2003      0.629</span></span>
+<span id="cb151-16"><a href="主要功能.html#cb151-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 A       AI       2004      2.07 </span></span>
+<span id="cb151-17"><a href="主要功能.html#cb151-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 A       AI       2005     -1.63 </span></span>
+<span id="cb151-18"><a href="主要功能.html#cb151-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 39 more rows</span></span></code></pre></div>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="主要功能.html#cb152-1" aria-hidden="true" tabindex="-1"></a>production <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
 <span id="cb152-2"><a href="主要功能.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="fu">c</span>(product, country), </span>
 <span id="cb152-3"><a href="主要功能.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> production</span>
-<span id="cb152-4"><a href="主要功能.html#cb152-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb152-4"><a href="主要功能.html#cb152-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb152-5"><a href="主要功能.html#cb152-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 x 4</span></span>
+<span id="cb152-6"><a href="主要功能.html#cb152-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year   A_AI    B_AI    B_EI</span></span>
+<span id="cb152-7"><a href="主要功能.html#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb152-8"><a href="主要功能.html#cb152-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000 -0.244  0.738  -0.313 </span></span>
+<span id="cb152-9"><a href="主要功能.html#cb152-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2001 -0.283  1.89    1.07  </span></span>
+<span id="cb152-10"><a href="主要功能.html#cb152-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2002 -0.554 -0.0974  0.0700</span></span>
+<span id="cb152-11"><a href="主要功能.html#cb152-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2003  0.629 -0.936  -0.639 </span></span>
+<span id="cb152-12"><a href="主要功能.html#cb152-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2004  2.07  -0.0160 -0.0500</span></span>
+<span id="cb152-13"><a href="主要功能.html#cb152-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2005 -1.63  -0.827  -0.251 </span></span>
+<span id="cb152-14"><a href="主要功能.html#cb152-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more rows</span></span></code></pre></div>
 <p>通过<code>names_sep</code>和<code>names_prefix</code>参数控制新的列名，或通过<code>names_glue</code></p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="主要功能.html#cb153-1" aria-hidden="true" tabindex="-1"></a>production <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
 <span id="cb153-2"><a href="主要功能.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="fu">c</span>(product, country), </span>
 <span id="cb153-3"><a href="主要功能.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> production,</span>
 <span id="cb153-4"><a href="主要功能.html#cb153-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_sep =</span> <span class="st">&quot;.&quot;</span>,</span>
 <span id="cb153-5"><a href="主要功能.html#cb153-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_prefix =</span> <span class="st">&quot;prod.&quot;</span></span>
-<span id="cb153-6"><a href="主要功能.html#cb153-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb153-6"><a href="主要功能.html#cb153-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb153-7"><a href="主要功能.html#cb153-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 x 4</span></span>
+<span id="cb153-8"><a href="主要功能.html#cb153-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year prod.A.AI prod.B.AI prod.B.EI</span></span>
+<span id="cb153-9"><a href="主要功能.html#cb153-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb153-10"><a href="主要功能.html#cb153-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000    -0.244    0.738    -0.313 </span></span>
+<span id="cb153-11"><a href="主要功能.html#cb153-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2001    -0.283    1.89      1.07  </span></span>
+<span id="cb153-12"><a href="主要功能.html#cb153-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2002    -0.554   -0.0974    0.0700</span></span>
+<span id="cb153-13"><a href="主要功能.html#cb153-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2003     0.629   -0.936    -0.639 </span></span>
+<span id="cb153-14"><a href="主要功能.html#cb153-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2004     2.07    -0.0160   -0.0500</span></span>
+<span id="cb153-15"><a href="主要功能.html#cb153-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2005    -1.63    -0.827    -0.251 </span></span>
+<span id="cb153-16"><a href="主要功能.html#cb153-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more rows</span></span></code></pre></div>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="主要功能.html#cb154-1" aria-hidden="true" tabindex="-1"></a>production <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
 <span id="cb154-2"><a href="主要功能.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="fu">c</span>(product, country), </span>
 <span id="cb154-3"><a href="主要功能.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> production,</span>
 <span id="cb154-4"><a href="主要功能.html#cb154-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_glue =</span> <span class="st">&quot;prod_{product}_{country}&quot;</span></span>
-<span id="cb154-5"><a href="主要功能.html#cb154-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb154-5"><a href="主要功能.html#cb154-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb154-6"><a href="主要功能.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 x 4</span></span>
+<span id="cb154-7"><a href="主要功能.html#cb154-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year prod_A_AI prod_B_AI prod_B_EI</span></span>
+<span id="cb154-8"><a href="主要功能.html#cb154-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb154-9"><a href="主要功能.html#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000    -0.244    0.738    -0.313 </span></span>
+<span id="cb154-10"><a href="主要功能.html#cb154-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2001    -0.283    1.89      1.07  </span></span>
+<span id="cb154-11"><a href="主要功能.html#cb154-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2002    -0.554   -0.0974    0.0700</span></span>
+<span id="cb154-12"><a href="主要功能.html#cb154-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2003     0.629   -0.936    -0.639 </span></span>
+<span id="cb154-13"><a href="主要功能.html#cb154-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2004     2.07    -0.0160   -0.0500</span></span>
+<span id="cb154-14"><a href="主要功能.html#cb154-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2005    -1.63    -0.827    -0.251 </span></span>
+<span id="cb154-15"><a href="主要功能.html#cb154-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more rows</span></span></code></pre></div>
 </div>
 <div id="多值变宽" class="section level4" number="3.2.2.4">
 <h4><span class="header-section-number">3.2.2.4</span> 多值变宽</h4>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="主要功能.html#cb155-1" aria-hidden="true" tabindex="-1"></a>us_rent_income <span class="sc">%&gt;%</span> </span>
-<span id="cb155-2"><a href="主要功能.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe))</span></code></pre></div>
+<span id="cb155-2"><a href="主要功能.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe))</span>
+<span id="cb155-3"><a href="主要功能.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 52 x 6</span></span>
+<span id="cb155-4"><a href="主要功能.html#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   GEOID NAME       estimate_income estimate_rent moe_income moe_rent</span></span>
+<span id="cb155-5"><a href="主要功能.html#cb155-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb155-6"><a href="主要功能.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 01    Alabama              24476           747        136        3</span></span>
+<span id="cb155-7"><a href="主要功能.html#cb155-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 02    Alaska               32940          1200        508       13</span></span>
+<span id="cb155-8"><a href="主要功能.html#cb155-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 04    Arizona              27517           972        148        4</span></span>
+<span id="cb155-9"><a href="主要功能.html#cb155-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 05    Arkansas             23789           709        165        5</span></span>
+<span id="cb155-10"><a href="主要功能.html#cb155-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 06    California           29454          1358        109        3</span></span>
+<span id="cb155-11"><a href="主要功能.html#cb155-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 08    Colorado             32401          1125        109        5</span></span>
+<span id="cb155-12"><a href="主要功能.html#cb155-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 46 more rows</span></span></code></pre></div>
 </div>
 </div>
 <div id="处理jsonhtml的数据" class="section level3" number="3.2.3">
@@ -711,7 +894,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb156-3"><a href="主要功能.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(repurrrsive)</span></code></pre></div>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="主要功能.html#cb157-1" aria-hidden="true" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">user =</span> gh_users)</span>
 <span id="cb157-2"><a href="主要功能.html#cb157-2" aria-hidden="true" tabindex="-1"></a>users</span>
-<span id="cb157-3"><a href="主要功能.html#cb157-3" aria-hidden="true" tabindex="-1"></a>users <span class="sc">%&gt;%</span> <span class="fu">unnest_wider</span>(user)</span></code></pre></div>
+<span id="cb157-3"><a href="主要功能.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 1</span></span>
+<span id="cb157-4"><a href="主要功能.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   user             </span></span>
+<span id="cb157-5"><a href="主要功能.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;list&gt;           </span></span>
+<span id="cb157-6"><a href="主要功能.html#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;named list [30]&gt;</span></span>
+<span id="cb157-7"><a href="主要功能.html#cb157-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 &lt;named list [30]&gt;</span></span>
+<span id="cb157-8"><a href="主要功能.html#cb157-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 &lt;named list [30]&gt;</span></span>
+<span id="cb157-9"><a href="主要功能.html#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;named list [30]&gt;</span></span>
+<span id="cb157-10"><a href="主要功能.html#cb157-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 &lt;named list [30]&gt;</span></span>
+<span id="cb157-11"><a href="主要功能.html#cb157-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 &lt;named list [30]&gt;</span></span>
+<span id="cb157-12"><a href="主要功能.html#cb157-12" aria-hidden="true" tabindex="-1"></a>users <span class="sc">%&gt;%</span> <span class="fu">unnest_wider</span>(user)</span>
+<span id="cb157-13"><a href="主要功能.html#cb157-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 30</span></span>
+<span id="cb157-14"><a href="主要功能.html#cb157-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   login     id avatar_url gravatar_id url   html_url followers_url following_url</span></span>
+<span id="cb157-15"><a href="主要功能.html#cb157-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;        </span></span>
+<span id="cb157-16"><a href="主要功能.html#cb157-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 gabo~ 6.60e5 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
+<span id="cb157-17"><a href="主要功能.html#cb157-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 jenn~ 5.99e5 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
+<span id="cb157-18"><a href="主要功能.html#cb157-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 jtle~ 1.57e6 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
+<span id="cb157-19"><a href="主要功能.html#cb157-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 juli~ 1.25e7 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
+<span id="cb157-20"><a href="主要功能.html#cb157-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 leep~ 3.51e6 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
+<span id="cb157-21"><a href="主要功能.html#cb157-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 masa~ 8.36e6 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
+<span id="cb157-22"><a href="主要功能.html#cb157-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 22 more variables: gists_url &lt;chr&gt;, starred_url &lt;chr&gt;,</span></span>
+<span id="cb157-23"><a href="主要功能.html#cb157-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   subscriptions_url &lt;chr&gt;, organizations_url &lt;chr&gt;, repos_url &lt;chr&gt;,</span></span>
+<span id="cb157-24"><a href="主要功能.html#cb157-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   events_url &lt;chr&gt;, received_events_url &lt;chr&gt;, type &lt;chr&gt;, site_admin &lt;lgl&gt;,</span></span>
+<span id="cb157-25"><a href="主要功能.html#cb157-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   name &lt;chr&gt;, company &lt;chr&gt;, blog &lt;chr&gt;, location &lt;chr&gt;, email &lt;chr&gt;,</span></span>
+<span id="cb157-26"><a href="主要功能.html#cb157-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   public_repos &lt;int&gt;, public_gists &lt;int&gt;, followers &lt;int&gt;, following &lt;int&gt;,</span></span>
+<span id="cb157-27"><a href="主要功能.html#cb157-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   created_at &lt;chr&gt;, updated_at &lt;chr&gt;, bio &lt;chr&gt;, hireable &lt;lgl&gt;</span></span></code></pre></div>
 </div>
 <div id="嵌套数据" class="section level3" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> 嵌套数据</h3>
@@ -729,7 +936,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb159-6"><a href="主要功能.html#cb159-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">10</span>)</span>
 <span id="cb159-7"><a href="主要功能.html#cb159-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb159-8"><a href="主要功能.html#cb159-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb159-9"><a href="主要功能.html#cb159-9" aria-hidden="true" tabindex="-1"></a>df1</span></code></pre></div>
+<span id="cb159-9"><a href="主要功能.html#cb159-9" aria-hidden="true" tabindex="-1"></a>df1</span>
+<span id="cb159-10"><a href="主要功能.html#cb159-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
+<span id="cb159-11"><a href="主要功能.html#cb159-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       g data            </span></span>
+<span id="cb159-12"><a href="主要功能.html#cb159-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;list&gt;          </span></span>
+<span id="cb159-13"><a href="主要功能.html#cb159-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 &lt;tibble [1 x 2]&gt;</span></span>
+<span id="cb159-14"><a href="主要功能.html#cb159-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 &lt;tibble [2 x 2]&gt;</span></span>
+<span id="cb159-15"><a href="主要功能.html#cb159-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 &lt;tibble [1 x 1]&gt;</span></span></code></pre></div>
 <p>因为<code>data.frame()</code>的列特性【每列都是列表】【不确定理解对不对】：可以做如下操作：</p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="主要功能.html#cb160-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb160-2"><a href="主要功能.html#cb160-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>g, <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
@@ -739,11 +952,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb160-6"><a href="主要功能.html#cb160-6" aria-hidden="true" tabindex="-1"></a>   <span class="dv">3</span>, <span class="dv">10</span>,  <span class="cn">NA</span></span>
 <span id="cb160-7"><a href="主要功能.html#cb160-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb160-8"><a href="主要功能.html#cb160-8" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">nest</span>(<span class="at">data =</span> <span class="fu">c</span>(x, y))</span>
-<span id="cb160-9"><a href="主要功能.html#cb160-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-10"><a href="主要功能.html#cb160-10" aria-hidden="true" tabindex="-1"></a><span class="co">#sample above</span></span>
-<span id="cb160-11"><a href="主要功能.html#cb160-11" aria-hidden="true" tabindex="-1"></a><span class="co">#df2 %&gt;% group_by(g) %&gt;% nest()</span></span></code></pre></div>
+<span id="cb160-9"><a href="主要功能.html#cb160-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
+<span id="cb160-10"><a href="主要功能.html#cb160-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       g data            </span></span>
+<span id="cb160-11"><a href="主要功能.html#cb160-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;list&gt;          </span></span>
+<span id="cb160-12"><a href="主要功能.html#cb160-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 &lt;tibble [1 x 2]&gt;</span></span>
+<span id="cb160-13"><a href="主要功能.html#cb160-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 &lt;tibble [2 x 2]&gt;</span></span>
+<span id="cb160-14"><a href="主要功能.html#cb160-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 &lt;tibble [1 x 2]&gt;</span></span>
+<span id="cb160-15"><a href="主要功能.html#cb160-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-16"><a href="主要功能.html#cb160-16" aria-hidden="true" tabindex="-1"></a><span class="co">#sample above</span></span>
+<span id="cb160-17"><a href="主要功能.html#cb160-17" aria-hidden="true" tabindex="-1"></a><span class="co">#df2 %&gt;% group_by(g) %&gt;% nest()</span></span></code></pre></div>
 <p>nest的反面 unnest</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="主要功能.html#cb161-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="主要功能.html#cb161-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(data)</span>
+<span id="cb161-2"><a href="主要功能.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 3</span></span>
+<span id="cb161-3"><a href="主要功能.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       g     x     y</span></span>
+<span id="cb161-4"><a href="主要功能.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb161-5"><a href="主要功能.html#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     1     2</span></span>
+<span id="cb161-6"><a href="主要功能.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6</span></span>
+<span id="cb161-7"><a href="主要功能.html#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     2     5     7</span></span>
+<span id="cb161-8"><a href="主要功能.html#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     3    10    NA</span></span></code></pre></div>
 </div>
 </div>
 <div id="嵌套数据和模型" class="section level3" number="3.2.5">
@@ -752,13 +978,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb162-2"><a href="主要功能.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
 <span id="cb162-3"><a href="主要功能.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>()</span>
 <span id="cb162-4"><a href="主要功能.html#cb162-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb162-5"><a href="主要功能.html#cb162-5" aria-hidden="true" tabindex="-1"></a>mtcars_nested</span></code></pre></div>
+<span id="cb162-5"><a href="主要功能.html#cb162-5" aria-hidden="true" tabindex="-1"></a>mtcars_nested</span>
+<span id="cb162-6"><a href="主要功能.html#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
+<span id="cb162-7"><a href="主要功能.html#cb162-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   cyl [3]</span></span>
+<span id="cb162-8"><a href="主要功能.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     cyl data              </span></span>
+<span id="cb162-9"><a href="主要功能.html#cb162-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;            </span></span>
+<span id="cb162-10"><a href="主要功能.html#cb162-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     6 &lt;tibble [7 x 10]&gt; </span></span>
+<span id="cb162-11"><a href="主要功能.html#cb162-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4 &lt;tibble [11 x 10]&gt;</span></span>
+<span id="cb162-12"><a href="主要功能.html#cb162-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     8 &lt;tibble [14 x 10]&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="主要功能.html#cb163-1" aria-hidden="true" tabindex="-1"></a>mtcars_nested <span class="ot">&lt;-</span> mtcars_nested <span class="sc">%&gt;%</span> </span>
 <span id="cb163-2"><a href="主要功能.html#cb163-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="fu">map</span>(data, <span class="cf">function</span>(df) <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> df)))</span>
-<span id="cb163-3"><a href="主要功能.html#cb163-3" aria-hidden="true" tabindex="-1"></a>mtcars_nested</span></code></pre></div>
+<span id="cb163-3"><a href="主要功能.html#cb163-3" aria-hidden="true" tabindex="-1"></a>mtcars_nested</span>
+<span id="cb163-4"><a href="主要功能.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb163-5"><a href="主要功能.html#cb163-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   cyl [3]</span></span>
+<span id="cb163-6"><a href="主要功能.html#cb163-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     cyl data               model </span></span>
+<span id="cb163-7"><a href="主要功能.html#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;             &lt;list&gt;</span></span>
+<span id="cb163-8"><a href="主要功能.html#cb163-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     6 &lt;tibble [7 x 10]&gt;  &lt;lm&gt;  </span></span>
+<span id="cb163-9"><a href="主要功能.html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4 &lt;tibble [11 x 10]&gt; &lt;lm&gt;  </span></span>
+<span id="cb163-10"><a href="主要功能.html#cb163-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     8 &lt;tibble [14 x 10]&gt; &lt;lm&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="主要功能.html#cb164-1" aria-hidden="true" tabindex="-1"></a>mtcars_nested <span class="ot">&lt;-</span> mtcars_nested <span class="sc">%&gt;%</span> </span>
 <span id="cb164-2"><a href="主要功能.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="fu">map</span>(model, predict))</span>
-<span id="cb164-3"><a href="主要功能.html#cb164-3" aria-hidden="true" tabindex="-1"></a>mtcars_nested  </span></code></pre></div>
+<span id="cb164-3"><a href="主要功能.html#cb164-3" aria-hidden="true" tabindex="-1"></a>mtcars_nested  </span>
+<span id="cb164-4"><a href="主要功能.html#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
+<span id="cb164-5"><a href="主要功能.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   cyl [3]</span></span>
+<span id="cb164-6"><a href="主要功能.html#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     cyl data               model     </span></span>
+<span id="cb164-7"><a href="主要功能.html#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;             &lt;list&gt;    </span></span>
+<span id="cb164-8"><a href="主要功能.html#cb164-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     6 &lt;tibble [7 x 10]&gt;  &lt;dbl [7]&gt; </span></span>
+<span id="cb164-9"><a href="主要功能.html#cb164-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4 &lt;tibble [11 x 10]&gt; &lt;dbl [11]&gt;</span></span>
+<span id="cb164-10"><a href="主要功能.html#cb164-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     8 &lt;tibble [14 x 10]&gt; &lt;dbl [14]&gt;</span></span></code></pre></div>
 </div>
 <div id="拆分和合并" class="section level3" number="3.2.6">
 <h3><span class="header-section-number">3.2.6</span> 拆分和合并</h3>
@@ -767,52 +1014,143 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>有时我们需要将一列拆分为多列：</p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="主要功能.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb165-2"><a href="主要功能.html#cb165-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a.b&quot;</span>, <span class="st">&quot;a.d&quot;</span>, <span class="st">&quot;b.c&quot;</span>))</span>
-<span id="cb165-3"><a href="主要功能.html#cb165-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span></code></pre></div>
+<span id="cb165-3"><a href="主要功能.html#cb165-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb165-4"><a href="主要功能.html#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb165-5"><a href="主要功能.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb165-6"><a href="主要功能.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb165-7"><a href="主要功能.html#cb165-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
+<span id="cb165-8"><a href="主要功能.html#cb165-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span></code></pre></div>
 <p>拆分数多列或少列时用<code>NA</code>补齐：</p>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="主要功能.html#cb166-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;a b&quot;</span>, <span class="st">&quot;a b c&quot;</span>, <span class="cn">NA</span>))</span>
-<span id="cb166-2"><a href="主要功能.html#cb166-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))</span></code></pre></div>
+<span id="cb166-2"><a href="主要功能.html#cb166-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))</span>
+<span id="cb166-3"><a href="主要功能.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Additional pieces discarded in 1 rows [3].</span></span>
+<span id="cb166-4"><a href="主要功能.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1 rows [1].</span></span>
+<span id="cb166-5"><a href="主要功能.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
+<span id="cb166-6"><a href="主要功能.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    a &lt;NA&gt;</span></span>
+<span id="cb166-7"><a href="主要功能.html#cb166-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb166-8"><a href="主要功能.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    b</span></span>
+<span id="cb166-9"><a href="主要功能.html#cb166-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
 <p>多余的部分舍弃，缺失填充在左边还是右边：</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="主要功能.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same behaviour as previous, but drops the c without warnings:</span></span>
-<span id="cb167-2"><a href="主要功能.html#cb167-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;drop&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;right&quot;</span>)</span></code></pre></div>
+<span id="cb167-2"><a href="主要功能.html#cb167-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;drop&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;right&quot;</span>)</span>
+<span id="cb167-3"><a href="主要功能.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
+<span id="cb167-4"><a href="主要功能.html#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    a &lt;NA&gt;</span></span>
+<span id="cb167-5"><a href="主要功能.html#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb167-6"><a href="主要功能.html#cb167-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    b</span></span>
+<span id="cb167-7"><a href="主要功能.html#cb167-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
 <p>多余部分合并，缺失填充在左边</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="主要功能.html#cb168-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="主要功能.html#cb168-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;left&quot;</span>)</span>
+<span id="cb168-2"><a href="主要功能.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
+<span id="cb168-3"><a href="主要功能.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;    a</span></span>
+<span id="cb168-4"><a href="主要功能.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb168-5"><a href="主要功能.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a  b c</span></span>
+<span id="cb168-6"><a href="主要功能.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
 <p>或者全部保留</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="主要功能.html#cb169-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="主要功能.html#cb169-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</span>
+<span id="cb169-2"><a href="主要功能.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 3 pieces. Missing pieces filled with `NA` in 2 rows [1, 2].</span></span>
+<span id="cb169-3"><a href="主要功能.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b    c</span></span>
+<span id="cb169-4"><a href="主要功能.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    a &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb169-5"><a href="主要功能.html#cb169-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b &lt;NA&gt;</span></span>
+<span id="cb169-6"><a href="主要功能.html#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    b    c</span></span>
+<span id="cb169-7"><a href="主要功能.html#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
 <p>指定分隔符</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="主要功能.html#cb170-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;key&quot;</span>, <span class="st">&quot;value&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>, <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="主要功能.html#cb170-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;key&quot;</span>, <span class="st">&quot;value&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>, <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>)</span>
+<span id="cb170-2"><a href="主要功能.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Missing pieces filled with `NA` in 3 rows [1, 2, 3].</span></span>
+<span id="cb170-3"><a href="主要功能.html#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     key value</span></span>
+<span id="cb170-4"><a href="主要功能.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     a  &lt;NA&gt;</span></span>
+<span id="cb170-5"><a href="主要功能.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   a b  &lt;NA&gt;</span></span>
+<span id="cb170-6"><a href="主要功能.html#cb170-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 a b c  &lt;NA&gt;</span></span>
+<span id="cb170-7"><a href="主要功能.html#cb170-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  &lt;NA&gt;  &lt;NA&gt;</span></span></code></pre></div>
 <p>使用正则表达式</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="主要功能.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use regular expressions to separate on multiple characters:</span></span>
 <span id="cb171-2"><a href="主要功能.html#cb171-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a?b&quot;</span>, <span class="st">&quot;a.d&quot;</span>, <span class="st">&quot;b:c&quot;</span>))</span>
-<span id="cb171-3"><a href="主要功能.html#cb171-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;([.?:])&quot;</span>)</span></code></pre></div>
+<span id="cb171-3"><a href="主要功能.html#cb171-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;([.?:])&quot;</span>)</span>
+<span id="cb171-4"><a href="主要功能.html#cb171-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb171-5"><a href="主要功能.html#cb171-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb171-6"><a href="主要功能.html#cb171-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb171-7"><a href="主要功能.html#cb171-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
+<span id="cb171-8"><a href="主要功能.html#cb171-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span></code></pre></div>
 </div>
 <div id="新列提取" class="section level4" number="3.2.6.2">
 <h4><span class="header-section-number">3.2.6.2</span> 新列提取</h4>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="主要功能.html#cb172-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a-b&quot;</span>, <span class="st">&quot;a-d&quot;</span>, <span class="st">&quot;b-c&quot;</span>, <span class="st">&quot;d-e&quot;</span>))</span>
 <span id="cb172-2"><a href="主要功能.html#cb172-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="st">&quot;A&quot;</span>)</span>
-<span id="cb172-3"><a href="主要功能.html#cb172-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="st">&quot;([[:alnum:]]+)-([[:alnum:]]+)&quot;</span>)</span>
-<span id="cb172-4"><a href="主要功能.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="co"># [:alnum:] 匹配字母和数字</span></span></code></pre></div>
+<span id="cb172-3"><a href="主要功能.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A</span></span>
+<span id="cb172-4"><a href="主要功能.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
+<span id="cb172-5"><a href="主要功能.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a</span></span>
+<span id="cb172-6"><a href="主要功能.html#cb172-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a</span></span>
+<span id="cb172-7"><a href="主要功能.html#cb172-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b</span></span>
+<span id="cb172-8"><a href="主要功能.html#cb172-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    d</span></span>
+<span id="cb172-9"><a href="主要功能.html#cb172-9" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="st">&quot;([[:alnum:]]+)-([[:alnum:]]+)&quot;</span>)</span>
+<span id="cb172-10"><a href="主要功能.html#cb172-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb172-11"><a href="主要功能.html#cb172-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb172-12"><a href="主要功能.html#cb172-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb172-13"><a href="主要功能.html#cb172-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
+<span id="cb172-14"><a href="主要功能.html#cb172-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span>
+<span id="cb172-15"><a href="主要功能.html#cb172-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    d    e</span></span>
+<span id="cb172-16"><a href="主要功能.html#cb172-16" aria-hidden="true" tabindex="-1"></a><span class="co"># [:alnum:] 匹配字母和数字</span></span></code></pre></div>
 <p>以上本质是字符处理，<a href="http://baiy.cn/utils/_regex_doc/index.htm">正则表达式</a></p>
 </div>
 <div id="合并" class="section level4" number="3.2.6.3">
 <h4><span class="header-section-number">3.2.6.3</span> 合并</h4>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="主要功能.html#cb173-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="cn">NA</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;b&quot;</span>, <span class="cn">NA</span>))</span>
 <span id="cb173-2"><a href="主要功能.html#cb173-2" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb173-3"><a href="主要功能.html#cb173-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>, x<span class="sc">:</span>y, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb173-4"><a href="主要功能.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="co"># expand_grid 类似笛卡尔积功能</span></span></code></pre></div>
+<span id="cb173-3"><a href="主要功能.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 2</span></span>
+<span id="cb173-4"><a href="主要功能.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x     y    </span></span>
+<span id="cb173-5"><a href="主要功能.html#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb173-6"><a href="主要功能.html#cb173-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a     b    </span></span>
+<span id="cb173-7"><a href="主要功能.html#cb173-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 a     &lt;NA&gt; </span></span>
+<span id="cb173-8"><a href="主要功能.html#cb173-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 &lt;NA&gt;  b    </span></span>
+<span id="cb173-9"><a href="主要功能.html#cb173-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb173-10"><a href="主要功能.html#cb173-10" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>, x<span class="sc">:</span>y, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb173-11"><a href="主要功能.html#cb173-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 3</span></span>
+<span id="cb173-12"><a href="主要功能.html#cb173-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   z     x     y    </span></span>
+<span id="cb173-13"><a href="主要功能.html#cb173-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb173-14"><a href="主要功能.html#cb173-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a_b   a     b    </span></span>
+<span id="cb173-15"><a href="主要功能.html#cb173-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 a_NA  a     &lt;NA&gt; </span></span>
+<span id="cb173-16"><a href="主要功能.html#cb173-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 NA_b  &lt;NA&gt;  b    </span></span>
+<span id="cb173-17"><a href="主要功能.html#cb173-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 NA_NA &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb173-18"><a href="主要功能.html#cb173-18" aria-hidden="true" tabindex="-1"></a><span class="co"># expand_grid 类似笛卡尔积功能</span></span></code></pre></div>
 <p>移除缺失值</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="主要功能.html#cb174-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>, x<span class="sc">:</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="主要功能.html#cb174-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>, x<span class="sc">:</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb174-2"><a href="主要功能.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 3</span></span>
+<span id="cb174-3"><a href="主要功能.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   z     x     y    </span></span>
+<span id="cb174-4"><a href="主要功能.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb174-5"><a href="主要功能.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &quot;a_b&quot; a     b    </span></span>
+<span id="cb174-6"><a href="主要功能.html#cb174-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 &quot;a&quot;   a     &lt;NA&gt; </span></span>
+<span id="cb174-7"><a href="主要功能.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 &quot;b&quot;   &lt;NA&gt;  b    </span></span>
+<span id="cb174-8"><a href="主要功能.html#cb174-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &quot;&quot;    &lt;NA&gt;  &lt;NA&gt;</span></span></code></pre></div>
 <p>合并后再拆分</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="主要功能.html#cb175-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb175-2"><a href="主要功能.html#cb175-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">&quot;xy&quot;</span>, x<span class="sc">:</span>y) <span class="sc">%&gt;%</span></span>
-<span id="cb175-3"><a href="主要功能.html#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(xy, <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>))</span></code></pre></div>
+<span id="cb175-3"><a href="主要功能.html#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(xy, <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>))</span>
+<span id="cb175-4"><a href="主要功能.html#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 2</span></span>
+<span id="cb175-5"><a href="主要功能.html#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x     y    </span></span>
+<span id="cb175-6"><a href="主要功能.html#cb175-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb175-7"><a href="主要功能.html#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a     b    </span></span>
+<span id="cb175-8"><a href="主要功能.html#cb175-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 a     NA   </span></span>
+<span id="cb175-9"><a href="主要功能.html#cb175-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 NA    b    </span></span>
+<span id="cb175-10"><a href="主要功能.html#cb175-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 NA    NA</span></span></code></pre></div>
 </div>
 </div>
 <div id="缺失值处理" class="section level3" number="3.2.7">
 <h3><span class="header-section-number">3.2.7</span> 缺失值处理</h3>
 <p><code>replace_na()</code>用特定值替换缺失值。</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="主要功能.html#cb176-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;b&quot;</span>))</span>
-<span id="cb176-2"><a href="主要功能.html#cb176-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="st">&quot;unknown&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="主要功能.html#cb177-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">replace_na</span>(x, <span class="dv">0</span>))</span></code></pre></div>
+<span id="cb176-2"><a href="主要功能.html#cb176-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="st">&quot;unknown&quot;</span>))</span>
+<span id="cb176-3"><a href="主要功能.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
+<span id="cb176-4"><a href="主要功能.html#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x y      </span></span>
+<span id="cb176-5"><a href="主要功能.html#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  </span></span>
+<span id="cb176-6"><a href="主要功能.html#cb176-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 a      </span></span>
+<span id="cb176-7"><a href="主要功能.html#cb176-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 unknown</span></span>
+<span id="cb176-8"><a href="主要功能.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0 b</span></span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="主要功能.html#cb177-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">replace_na</span>(x, <span class="dv">0</span>))</span>
+<span id="cb177-2"><a href="主要功能.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
+<span id="cb177-3"><a href="主要功能.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x y    </span></span>
+<span id="cb177-4"><a href="主要功能.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb177-5"><a href="主要功能.html#cb177-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 a    </span></span>
+<span id="cb177-6"><a href="主要功能.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 &lt;NA&gt; </span></span>
+<span id="cb177-7"><a href="主要功能.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0 b</span></span></code></pre></div>
 
 </div>
 </div>

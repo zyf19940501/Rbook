@@ -472,14 +472,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="dplyr-groupby-manipulation.html#cb106-1" aria-hidden="true" tabindex="-1"></a>bmi_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="cn">Inf</span>)</span>
 <span id="cb106-2"><a href="dplyr-groupby-manipulation.html#cb106-2" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
 <span id="cb106-3"><a href="dplyr-groupby-manipulation.html#cb106-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">bmi_cat =</span> <span class="fu">cut</span>(mass<span class="sc">/</span>(height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="at">breaks=</span>bmi_breaks)) <span class="sc">%&gt;%</span></span>
-<span id="cb106-4"><a href="dplyr-groupby-manipulation.html#cb106-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div>
+<span id="cb106-4"><a href="dplyr-groupby-manipulation.html#cb106-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span>
+<span id="cb106-5"><a href="dplyr-groupby-manipulation.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span id="cb106-6"><a href="dplyr-groupby-manipulation.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   bmi_cat       n</span></span>
+<span id="cb106-7"><a href="dplyr-groupby-manipulation.html#cb106-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt;</span></span>
+<span id="cb106-8"><a href="dplyr-groupby-manipulation.html#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 (0,18.5]     10</span></span>
+<span id="cb106-9"><a href="dplyr-groupby-manipulation.html#cb106-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 (18.5,25]    24</span></span>
+<span id="cb106-10"><a href="dplyr-groupby-manipulation.html#cb106-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 (25,30]      13</span></span>
+<span id="cb106-11"><a href="dplyr-groupby-manipulation.html#cb106-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 (30,Inf]     12</span></span>
+<span id="cb106-12"><a href="dplyr-groupby-manipulation.html#cb106-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 &lt;NA&gt;         28</span></span></code></pre></div>
 </div>
 <div id="删除分组变量" class="section level3" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> 删除分组变量</h3>
 <p>要删除所有分组变量，使用<code>ungroup()</code>:</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="dplyr-groupby-manipulation.html#cb107-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="sc">%&gt;%</span></span>
 <span id="cb107-2"><a href="dplyr-groupby-manipulation.html#cb107-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb107-3"><a href="dplyr-groupby-manipulation.html#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div>
+<span id="cb107-3"><a href="dplyr-groupby-manipulation.html#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span>
+<span id="cb107-4"><a href="dplyr-groupby-manipulation.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 x 1</span></span>
+<span id="cb107-5"><a href="dplyr-groupby-manipulation.html#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       n</span></span>
+<span id="cb107-6"><a href="dplyr-groupby-manipulation.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;</span></span>
+<span id="cb107-7"><a href="dplyr-groupby-manipulation.html#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    87</span></span></code></pre></div>
 </div>
 <div id="动词" class="section level3" number="2.6.3">
 <h3><span class="header-section-number">2.6.3</span> 动词</h3>
@@ -488,7 +500,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb108-2"><a href="dplyr-groupby-manipulation.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb108-3"><a href="dplyr-groupby-manipulation.html#cb108-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
 <span id="cb108-4"><a href="dplyr-groupby-manipulation.html#cb108-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb108-5"><a href="dplyr-groupby-manipulation.html#cb108-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb108-5"><a href="dplyr-groupby-manipulation.html#cb108-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb108-6"><a href="dplyr-groupby-manipulation.html#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 38 x 3</span></span>
+<span id="cb108-7"><a href="dplyr-groupby-manipulation.html#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   species      n height</span></span>
+<span id="cb108-8"><a href="dplyr-groupby-manipulation.html#cb108-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;  &lt;dbl&gt;</span></span>
+<span id="cb108-9"><a href="dplyr-groupby-manipulation.html#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Aleena       1    79 </span></span>
+<span id="cb108-10"><a href="dplyr-groupby-manipulation.html#cb108-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Besalisk     1   198 </span></span>
+<span id="cb108-11"><a href="dplyr-groupby-manipulation.html#cb108-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Cerean       1   198 </span></span>
+<span id="cb108-12"><a href="dplyr-groupby-manipulation.html#cb108-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Chagrian     1   196 </span></span>
+<span id="cb108-13"><a href="dplyr-groupby-manipulation.html#cb108-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Clawdite     1   168 </span></span>
+<span id="cb108-14"><a href="dplyr-groupby-manipulation.html#cb108-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Droid        6   131.</span></span>
+<span id="cb108-15"><a href="dplyr-groupby-manipulation.html#cb108-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 32 more rows</span></span></code></pre></div>
 <p>该<code>.groups=</code>参数控制输出的分组结构。删除右侧分组变量的历史行为对应于<code>.groups =</code> “drop_last”没有消息或.groups = NULL有消息（默认值）。</p>
 <p>从1.0.0版开始，分组信息可以保留<code>(.groups = "keep")</code>或删除 <code>(.groups = 'drop)</code></p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="dplyr-groupby-manipulation.html#cb109-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> by_species <span class="sc">%&gt;%</span></span>
@@ -504,7 +526,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb109-11"><a href="dplyr-groupby-manipulation.html#cb109-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_vars</span>()</span>
 <span id="cb109-12"><a href="dplyr-groupby-manipulation.html#cb109-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb109-13"><a href="dplyr-groupby-manipulation.html#cb109-13" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(a)</span>
-<span id="cb109-14"><a href="dplyr-groupby-manipulation.html#cb109-14" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(b)</span></code></pre></div>
+<span id="cb109-14"><a href="dplyr-groupby-manipulation.html#cb109-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 48 bytes</span></span>
+<span id="cb109-15"><a href="dplyr-groupby-manipulation.html#cb109-15" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(b)</span>
+<span id="cb109-16"><a href="dplyr-groupby-manipulation.html#cb109-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 112 bytes</span></span></code></pre></div>
 <p>在实际使用中，当数据较大时需要删掉分组信息。以上可以看到保留分组信息的比没保留的大了两倍多。</p>
 </div>
 </div>

@@ -466,7 +466,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-date-class" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Date</h3>
 <p>如果我们的数据结构中只有日期，没有时间，我们仅需要使用Date类。</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="datetime-base-R.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">Sys.Date</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="datetime-base-R.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">Sys.Date</span>())</span>
+<span id="cb226-2"><a href="datetime-base-R.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Date&quot;</span></span></code></pre></div>
 <p>1.创建日期</p>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="datetime-base-R.html#cb227-1" aria-hidden="true" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2021-05-18&#39;</span>)</span>
 <span id="cb227-2"><a href="datetime-base-R.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as.Date(32768, origin = &quot;1900-01-01&quot;)</span></span>
@@ -474,58 +475,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>当日期字符不规则时必须指定format参数</p>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="datetime-base-R.html#cb228-1" aria-hidden="true" tabindex="-1"></a>date2 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;5/14/2021&quot;</span>,<span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
 <p>想想如何才将将“2021年5月8日”转换成日期：</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="datetime-base-R.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&quot;2021年5月18日&quot;</span>,<span class="at">format=</span><span class="st">&quot;%Y年%m月%d日&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="datetime-base-R.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&quot;2021年5月18日&quot;</span>,<span class="at">format=</span><span class="st">&quot;%Y年%m月%d日&quot;</span>)</span>
+<span id="cb229-2"><a href="datetime-base-R.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-18&quot;</span></span></code></pre></div>
 <p>重点是时间的format，详情可以通过<code>?strptime()</code>查看。</p>
 <p>2.日期计算</p>
 <p>两日期之间间隔</p>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="datetime-base-R.html#cb230-1" aria-hidden="true" tabindex="-1"></a>date1 <span class="sc">-</span> date2</span>
-<span id="cb230-2"><a href="datetime-base-R.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(date1,date2,<span class="at">units =</span> <span class="st">&#39;days&#39;</span>)</span></code></pre></div>
+<span id="cb230-2"><a href="datetime-base-R.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of 4 days</span></span>
+<span id="cb230-3"><a href="datetime-base-R.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(date1,date2,<span class="at">units =</span> <span class="st">&#39;days&#39;</span>)</span>
+<span id="cb230-4"><a href="datetime-base-R.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of 4 days</span></span></code></pre></div>
 <p>日期加减天数</p>
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="datetime-base-R.html#cb231-1" aria-hidden="true" tabindex="-1"></a>date1 <span class="sc">-</span> <span class="dv">4</span></span>
-<span id="cb231-2"><a href="datetime-base-R.html#cb231-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb231-3"><a href="datetime-base-R.html#cb231-3" aria-hidden="true" tabindex="-1"></a>date2 <span class="sc">+</span> <span class="dv">4</span></span></code></pre></div>
+<span id="cb231-2"><a href="datetime-base-R.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-14&quot;</span></span>
+<span id="cb231-3"><a href="datetime-base-R.html#cb231-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb231-4"><a href="datetime-base-R.html#cb231-4" aria-hidden="true" tabindex="-1"></a>date2 <span class="sc">+</span> <span class="dv">4</span></span>
+<span id="cb231-5"><a href="datetime-base-R.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-18&quot;</span></span></code></pre></div>
 <p>向量化计算</p>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="datetime-base-R.html#cb232-1" aria-hidden="true" tabindex="-1"></a>three_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&#39;2021-05-01&#39;</span>,<span class="st">&#39;2021-05-05&#39;</span>,<span class="st">&#39;2021-05-10&#39;</span>))</span>
-<span id="cb232-2"><a href="datetime-base-R.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(three_date)</span></code></pre></div>
+<span id="cb232-2"><a href="datetime-base-R.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(three_date)</span>
+<span id="cb232-3"><a href="datetime-base-R.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time differences in days</span></span>
+<span id="cb232-4"><a href="datetime-base-R.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 5</span></span></code></pre></div>
 <p>在计算顾客购物间隔天数时比较有用。</p>
 <p>3.创建日期向量</p>
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="datetime-base-R.html#cb233-1" aria-hidden="true" tabindex="-1"></a>date3 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2020-01-01&#39;</span>)</span>
 <span id="cb233-2"><a href="datetime-base-R.html#cb233-2" aria-hidden="true" tabindex="-1"></a>date4 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&#39;2021-01-01&#39;</span>)</span>
 <span id="cb233-3"><a href="datetime-base-R.html#cb233-3" aria-hidden="true" tabindex="-1"></a>date_col <span class="ot">&lt;-</span> date3<span class="sc">:</span>date4</span>
-<span id="cb233-4"><a href="datetime-base-R.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(date_col)</span></code></pre></div>
+<span id="cb233-4"><a href="datetime-base-R.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(date_col)</span>
+<span id="cb233-5"><a href="datetime-base-R.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 18262 18263 18264 18265 18266 18267</span></span></code></pre></div>
 <p>以上方式创建日期向量会数字化，正确方式如下所示:</p>
 <div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="datetime-base-R.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seq(date3,date4)</span></span>
 <span id="cb234-2"><a href="datetime-base-R.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(date3,date4,<span class="at">by=</span><span class="st">&quot;30 days&quot;</span>)</span>
-<span id="cb234-3"><a href="datetime-base-R.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(date3,date4,<span class="at">by=</span><span class="st">&quot;8 weeks&quot;</span>)</span></code></pre></div>
+<span id="cb234-3"><a href="datetime-base-R.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;2020-01-01&quot; &quot;2020-01-31&quot; &quot;2020-03-01&quot; &quot;2020-03-31&quot; &quot;2020-04-30&quot;</span></span>
+<span id="cb234-4"><a href="datetime-base-R.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;2020-05-30&quot; &quot;2020-06-29&quot; &quot;2020-07-29&quot; &quot;2020-08-28&quot; &quot;2020-09-27&quot;</span></span>
+<span id="cb234-5"><a href="datetime-base-R.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;2020-10-27&quot; &quot;2020-11-26&quot; &quot;2020-12-26&quot;</span></span>
+<span id="cb234-6"><a href="datetime-base-R.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(date3,date4,<span class="at">by=</span><span class="st">&quot;8 weeks&quot;</span>)</span>
+<span id="cb234-7"><a href="datetime-base-R.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-01-01&quot; &quot;2020-02-26&quot; &quot;2020-04-22&quot; &quot;2020-06-17&quot; &quot;2020-08-12&quot;</span></span>
+<span id="cb234-8"><a href="datetime-base-R.html#cb234-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] &quot;2020-10-07&quot; &quot;2020-12-02&quot;</span></span></code></pre></div>
 </div>
 <div id="the-POSIXct-class" class="section level3" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> POSIXct</h3>
 <p>如果在数据中有时间，最好使用该类；</p>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="datetime-base-R.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>() <span class="co">#获取当前时间</span></span>
-<span id="cb235-2"><a href="datetime-base-R.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">Sys.time</span>())</span></code></pre></div>
+<span id="cb235-2"><a href="datetime-base-R.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-21 18:36:15 CST&quot;</span></span>
+<span id="cb235-3"><a href="datetime-base-R.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">Sys.time</span>())</span>
+<span id="cb235-4"><a href="datetime-base-R.html#cb235-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</span></span></code></pre></div>
 <p>1.创建POSIXct类</p>
 <div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="datetime-base-R.html#cb236-1" aria-hidden="true" tabindex="-1"></a>tm1 <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>)</span>
 <span id="cb236-2"><a href="datetime-base-R.html#cb236-2" aria-hidden="true" tabindex="-1"></a>tm1</span>
-<span id="cb236-3"><a href="datetime-base-R.html#cb236-3" aria-hidden="true" tabindex="-1"></a>tm2 <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;19052021 16:05:45&quot;</span>,<span class="at">format =</span> <span class="st">&quot;%d%m%Y %H:%M:%S&quot;</span>)</span>
-<span id="cb236-4"><a href="datetime-base-R.html#cb236-4" aria-hidden="true" tabindex="-1"></a>tm2</span>
-<span id="cb236-5"><a href="datetime-base-R.html#cb236-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 比较是否相同</span></span>
-<span id="cb236-6"><a href="datetime-base-R.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(tm1,tm2)</span></code></pre></div>
+<span id="cb236-3"><a href="datetime-base-R.html#cb236-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-19 16:05:45 CST&quot;</span></span>
+<span id="cb236-4"><a href="datetime-base-R.html#cb236-4" aria-hidden="true" tabindex="-1"></a>tm2 <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;19052021 16:05:45&quot;</span>,<span class="at">format =</span> <span class="st">&quot;%d%m%Y %H:%M:%S&quot;</span>)</span>
+<span id="cb236-5"><a href="datetime-base-R.html#cb236-5" aria-hidden="true" tabindex="-1"></a>tm2</span>
+<span id="cb236-6"><a href="datetime-base-R.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-19 16:05:45 CST&quot;</span></span>
+<span id="cb236-7"><a href="datetime-base-R.html#cb236-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 比较是否相同</span></span>
+<span id="cb236-8"><a href="datetime-base-R.html#cb236-8" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(tm1,tm2)</span>
+<span id="cb236-9"><a href="datetime-base-R.html#cb236-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>2.时区</p>
 <p>时区如果不正确指定，将导致我们在做时间计算时可能出现错误，一般相差8小时,因为我们在东八区。</p>
 <p>默认时区</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="datetime-base-R.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="datetime-base-R.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>,<span class="at">tz =</span> <span class="st">&#39;CST6CDT&#39;</span>) <span class="co">#不知道什么原因 CST需要变成CST6CDT不会报错</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="datetime-base-R.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span>
+<span id="cb237-2"><a href="datetime-base-R.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Asia/Taipei&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="datetime-base-R.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>,<span class="at">tz =</span> <span class="st">&#39;CST6CDT&#39;</span>) <span class="co">#不知道什么原因 CST需要变成CST6CDT不会报错</span></span>
+<span id="cb238-2"><a href="datetime-base-R.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-19 16:05:45 CDT&quot;</span></span></code></pre></div>
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="datetime-base-R.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>,<span class="at">tz =</span> <span class="st">&#39;GMT&#39;</span>) <span class="sc">-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>,<span class="at">tz =</span> <span class="st">&#39;CST6CDT&#39;</span>)</span>
-<span id="cb239-2"><a href="datetime-base-R.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>,<span class="at">tz =</span> <span class="st">&#39;UTC&#39;</span>) <span class="sc">-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>,<span class="at">tz =</span> <span class="st">&#39;CST6CDT&#39;</span>)</span></code></pre></div>
+<span id="cb239-2"><a href="datetime-base-R.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of -5 hours</span></span>
+<span id="cb239-3"><a href="datetime-base-R.html#cb239-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>,<span class="at">tz =</span> <span class="st">&#39;UTC&#39;</span>) <span class="sc">-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>,<span class="at">tz =</span> <span class="st">&#39;CST6CDT&#39;</span>)</span>
+<span id="cb239-4"><a href="datetime-base-R.html#cb239-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of -5 hours</span></span></code></pre></div>
 <p>3.计算</p>
 <p>比较</p>
 <div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="datetime-base-R.html#cb240-1" aria-hidden="true" tabindex="-1"></a>tm1 <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:05:45&quot;</span>) </span>
 <span id="cb240-2"><a href="datetime-base-R.html#cb240-2" aria-hidden="true" tabindex="-1"></a>tm2 <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-5-19 16:15:45&quot;</span>) </span>
-<span id="cb240-3"><a href="datetime-base-R.html#cb240-3" aria-hidden="true" tabindex="-1"></a>tm2 <span class="sc">&gt;</span> tm1</span></code></pre></div>
+<span id="cb240-3"><a href="datetime-base-R.html#cb240-3" aria-hidden="true" tabindex="-1"></a>tm2 <span class="sc">&gt;</span> tm1</span>
+<span id="cb240-4"><a href="datetime-base-R.html#cb240-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>加减计算，默认单位秒</p>
 <div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="datetime-base-R.html#cb241-1" aria-hidden="true" tabindex="-1"></a>tm1 <span class="sc">+</span> <span class="dv">300</span></span>
-<span id="cb241-2"><a href="datetime-base-R.html#cb241-2" aria-hidden="true" tabindex="-1"></a>tm2 <span class="sc">-</span> <span class="dv">300</span></span></code></pre></div>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="datetime-base-R.html#cb242-1" aria-hidden="true" tabindex="-1"></a>tm2 <span class="sc">-</span> tm1</span></code></pre></div>
+<span id="cb241-2"><a href="datetime-base-R.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-19 16:10:45 CST&quot;</span></span>
+<span id="cb241-3"><a href="datetime-base-R.html#cb241-3" aria-hidden="true" tabindex="-1"></a>tm2 <span class="sc">-</span> <span class="dv">300</span></span>
+<span id="cb241-4"><a href="datetime-base-R.html#cb241-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-19 16:10:45 CST&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="datetime-base-R.html#cb242-1" aria-hidden="true" tabindex="-1"></a>tm2 <span class="sc">-</span> tm1</span>
+<span id="cb242-2"><a href="datetime-base-R.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of 10 mins</span></span></code></pre></div>
 </div>
 <div id="the-POSIXlt-class" class="section level3" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> POSIXlt</h3>
@@ -533,13 +560,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>创建时间</p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="datetime-base-R.html#cb243-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(<span class="st">&#39;2021-5-19 16:05:45&#39;</span>)</span>
 <span id="cb243-2"><a href="datetime-base-R.html#cb243-2" aria-hidden="true" tabindex="-1"></a>t1</span>
-<span id="cb243-3"><a href="datetime-base-R.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(t1)</span></code></pre></div>
+<span id="cb243-3"><a href="datetime-base-R.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-19 16:05:45 CST&quot;</span></span>
+<span id="cb243-4"><a href="datetime-base-R.html#cb243-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(t1)</span>
+<span id="cb243-5"><a href="datetime-base-R.html#cb243-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $sec</span></span>
+<span id="cb243-6"><a href="datetime-base-R.html#cb243-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 45</span></span>
+<span id="cb243-7"><a href="datetime-base-R.html#cb243-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-8"><a href="datetime-base-R.html#cb243-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $min</span></span>
+<span id="cb243-9"><a href="datetime-base-R.html#cb243-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span>
+<span id="cb243-10"><a href="datetime-base-R.html#cb243-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-11"><a href="datetime-base-R.html#cb243-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $hour</span></span>
+<span id="cb243-12"><a href="datetime-base-R.html#cb243-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
+<span id="cb243-13"><a href="datetime-base-R.html#cb243-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-14"><a href="datetime-base-R.html#cb243-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $mday</span></span>
+<span id="cb243-15"><a href="datetime-base-R.html#cb243-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 19</span></span>
+<span id="cb243-16"><a href="datetime-base-R.html#cb243-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-17"><a href="datetime-base-R.html#cb243-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $mon</span></span>
+<span id="cb243-18"><a href="datetime-base-R.html#cb243-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb243-19"><a href="datetime-base-R.html#cb243-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-20"><a href="datetime-base-R.html#cb243-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $year</span></span>
+<span id="cb243-21"><a href="datetime-base-R.html#cb243-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 121</span></span>
+<span id="cb243-22"><a href="datetime-base-R.html#cb243-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-23"><a href="datetime-base-R.html#cb243-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $wday</span></span>
+<span id="cb243-24"><a href="datetime-base-R.html#cb243-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb243-25"><a href="datetime-base-R.html#cb243-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-26"><a href="datetime-base-R.html#cb243-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $yday</span></span>
+<span id="cb243-27"><a href="datetime-base-R.html#cb243-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 138</span></span>
+<span id="cb243-28"><a href="datetime-base-R.html#cb243-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-29"><a href="datetime-base-R.html#cb243-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $isdst</span></span>
+<span id="cb243-30"><a href="datetime-base-R.html#cb243-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span>
+<span id="cb243-31"><a href="datetime-base-R.html#cb243-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-32"><a href="datetime-base-R.html#cb243-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $zone</span></span>
+<span id="cb243-33"><a href="datetime-base-R.html#cb243-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;CST&quot;</span></span>
+<span id="cb243-34"><a href="datetime-base-R.html#cb243-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb243-35"><a href="datetime-base-R.html#cb243-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $gmtoff</span></span>
+<span id="cb243-36"><a href="datetime-base-R.html#cb243-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span></code></pre></div>
 <p>提取</p>
 <div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="datetime-base-R.html#cb244-1" aria-hidden="true" tabindex="-1"></a>t1<span class="sc">$</span>mday</span>
-<span id="cb244-2"><a href="datetime-base-R.html#cb244-2" aria-hidden="true" tabindex="-1"></a>t1<span class="sc">$</span>wday</span></code></pre></div>
+<span id="cb244-2"><a href="datetime-base-R.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 19</span></span>
+<span id="cb244-3"><a href="datetime-base-R.html#cb244-3" aria-hidden="true" tabindex="-1"></a>t1<span class="sc">$</span>wday</span>
+<span id="cb244-4"><a href="datetime-base-R.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <p>截断</p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="datetime-base-R.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trunc</span>(t1,<span class="st">&#39;day&#39;</span>)</span>
-<span id="cb245-2"><a href="datetime-base-R.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="fu">trunc</span>(t1,<span class="st">&#39;min&#39;</span>)</span></code></pre></div>
+<span id="cb245-2"><a href="datetime-base-R.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-19 CST&quot;</span></span>
+<span id="cb245-3"><a href="datetime-base-R.html#cb245-3" aria-hidden="true" tabindex="-1"></a><span class="fu">trunc</span>(t1,<span class="st">&#39;min&#39;</span>)</span>
+<span id="cb245-4"><a href="datetime-base-R.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-19 16:05:00 CST&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div class="footnotes">

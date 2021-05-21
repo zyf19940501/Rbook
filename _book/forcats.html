@@ -466,7 +466,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>因子是用于对数据进行分类的R的一种数据类型. 它们可以存储字符串和整数.它们在具有有限数量的唯一值的列中很有用. 像“男性”，“女性”和True，False等。它们在统计建模的数据分析中很有用.</p>
 <p>因子变量会占用更小空间,R4.0改变了字符默认为因子的方式.想了解更多请参考 <a href="https://r4ds.had.co.nz/factors.html" class="uri">https://r4ds.had.co.nz/factors.html</a></p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="forcats.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(<span class="fu">rep</span>(letters,<span class="dv">100000</span>))</span>
-<span id="cb288-2"><a href="forcats.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(<span class="fu">rep</span>(forcats<span class="sc">::</span><span class="fu">as_factor</span>(letters),<span class="dv">100000</span>))</span></code></pre></div>
+<span id="cb288-2"><a href="forcats.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20801504 bytes</span></span>
+<span id="cb288-3"><a href="forcats.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(<span class="fu">rep</span>(forcats<span class="sc">::</span><span class="fu">as_factor</span>(letters),<span class="dv">100000</span>))</span>
+<span id="cb288-4"><a href="forcats.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10402096 bytes</span></span></code></pre></div>
 </div>
             </section>
 

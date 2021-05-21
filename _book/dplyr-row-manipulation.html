@@ -466,11 +466,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="比较差异" class="section level3" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> 比较差异</h3>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="dplyr-row-manipulation.html#cb100-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb100-2"><a href="dplyr-row-manipulation.html#cb100-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>()</span></code></pre></div>
+<span id="cb100-2"><a href="dplyr-row-manipulation.html#cb100-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>()</span>
+<span id="cb100-3"><a href="dplyr-row-manipulation.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 3</span></span>
+<span id="cb100-4"><a href="dplyr-row-manipulation.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb100-5"><a href="dplyr-row-manipulation.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z</span></span>
+<span id="cb100-6"><a href="dplyr-row-manipulation.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb100-7"><a href="dplyr-row-manipulation.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5</span></span>
+<span id="cb100-8"><a href="dplyr-row-manipulation.html#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6</span></span></code></pre></div>
 <p>像<code>group_by()</code>,<code>rowwise()</code>并没有做任何事情，它的作用是改变其他动词的工作方式。</p>
 <p>注意以下代码返回结果不同</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="dplyr-row-manipulation.html#cb101-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb101-2"><a href="dplyr-row-manipulation.html#cb101-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span></code></pre></div>
+<span id="cb101-2"><a href="dplyr-row-manipulation.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
+<span id="cb101-3"><a href="dplyr-row-manipulation.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb101-4"><a href="dplyr-row-manipulation.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb101-5"><a href="dplyr-row-manipulation.html#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5   3.5</span></span>
+<span id="cb101-6"><a href="dplyr-row-manipulation.html#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6   3.5</span></span>
+<span id="cb101-7"><a href="dplyr-row-manipulation.html#cb101-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb101-8"><a href="dplyr-row-manipulation.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
+<span id="cb101-9"><a href="dplyr-row-manipulation.html#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb101-10"><a href="dplyr-row-manipulation.html#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb101-11"><a href="dplyr-row-manipulation.html#cb101-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb101-12"><a href="dplyr-row-manipulation.html#cb101-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5     3</span></span>
+<span id="cb101-13"><a href="dplyr-row-manipulation.html#cb101-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6     4</span></span></code></pre></div>
 <p><code>df %&gt;% mutate(m = mean(c(x, y, z)))</code>返回的结果是x,y,z散列全部数据的均值；<code>df %&gt;% rowwise() %&gt;% mutate(m = mean(c(x, y, z)))</code>通过rowwise改变了mean的作为范围，返回的某行x,y,z列3个数字的均值。两种动词的作用的范围因为rowwise完全改变。</p>
 <p>您可以选择在调用中提供“标识符”变量<code>rowwise()</code>。这些变量在您调用时被保留<code>summarise()</code>，因此它们的行为与传递给的分组变量有些相似<code>group_by()</code>：</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="dplyr-row-manipulation.html#cb102-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mara&quot;</span>, <span class="st">&quot;Hadley&quot;</span>), <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
@@ -478,10 +495,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb102-3"><a href="dplyr-row-manipulation.html#cb102-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
 <span id="cb102-4"><a href="dplyr-row-manipulation.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb102-5"><a href="dplyr-row-manipulation.html#cb102-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb102-6"><a href="dplyr-row-manipulation.html#cb102-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-7"><a href="dplyr-row-manipulation.html#cb102-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb102-8"><a href="dplyr-row-manipulation.html#cb102-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>(name) <span class="sc">%&gt;%</span> </span>
-<span id="cb102-9"><a href="dplyr-row-manipulation.html#cb102-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span></code></pre></div>
+<span id="cb102-6"><a href="dplyr-row-manipulation.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has ungrouped output. You can override using the `.groups` argument.</span></span>
+<span id="cb102-7"><a href="dplyr-row-manipulation.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 1</span></span>
+<span id="cb102-8"><a href="dplyr-row-manipulation.html#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       m</span></span>
+<span id="cb102-9"><a href="dplyr-row-manipulation.html#cb102-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt;</span></span>
+<span id="cb102-10"><a href="dplyr-row-manipulation.html#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     3</span></span>
+<span id="cb102-11"><a href="dplyr-row-manipulation.html#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4</span></span>
+<span id="cb102-12"><a href="dplyr-row-manipulation.html#cb102-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-13"><a href="dplyr-row-manipulation.html#cb102-13" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb102-14"><a href="dplyr-row-manipulation.html#cb102-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb102-15"><a href="dplyr-row-manipulation.html#cb102-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb102-16"><a href="dplyr-row-manipulation.html#cb102-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;name&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb102-17"><a href="dplyr-row-manipulation.html#cb102-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb102-18"><a href="dplyr-row-manipulation.html#cb102-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   name [2]</span></span>
+<span id="cb102-19"><a href="dplyr-row-manipulation.html#cb102-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name       m</span></span>
+<span id="cb102-20"><a href="dplyr-row-manipulation.html#cb102-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span id="cb102-21"><a href="dplyr-row-manipulation.html#cb102-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Mara       3</span></span>
+<span id="cb102-22"><a href="dplyr-row-manipulation.html#cb102-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Hadley     4</span></span></code></pre></div>
 </div>
 <div id="行汇总" class="section level3" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> 行汇总</h3>
@@ -489,18 +519,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="dplyr-row-manipulation.html#cb103-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">w =</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">x =</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">y =</span> <span class="dv">30</span><span class="sc">:</span><span class="dv">35</span>, <span class="at">z =</span> <span class="dv">40</span><span class="sc">:</span><span class="dv">45</span>)</span>
 <span id="cb103-2"><a href="dplyr-row-manipulation.html#cb103-2" aria-hidden="true" tabindex="-1"></a>rf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>(id)</span>
 <span id="cb103-3"><a href="dplyr-row-manipulation.html#cb103-3" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(w, x, y, z)))</span>
-<span id="cb103-4"><a href="dplyr-row-manipulation.html#cb103-4" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(w, x, y, z)))</span></code></pre></div>
+<span id="cb103-4"><a href="dplyr-row-manipulation.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 6</span></span>
+<span id="cb103-5"><a href="dplyr-row-manipulation.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise:  id</span></span>
+<span id="cb103-6"><a href="dplyr-row-manipulation.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id     w     x     y     z total</span></span>
+<span id="cb103-7"><a href="dplyr-row-manipulation.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb103-8"><a href="dplyr-row-manipulation.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1    10    20    30    40   100</span></span>
+<span id="cb103-9"><a href="dplyr-row-manipulation.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2    11    21    31    41   104</span></span>
+<span id="cb103-10"><a href="dplyr-row-manipulation.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3    12    22    32    42   108</span></span>
+<span id="cb103-11"><a href="dplyr-row-manipulation.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4    13    23    33    43   112</span></span>
+<span id="cb103-12"><a href="dplyr-row-manipulation.html#cb103-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5    14    24    34    44   116</span></span>
+<span id="cb103-13"><a href="dplyr-row-manipulation.html#cb103-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6    15    25    35    45   120</span></span>
+<span id="cb103-14"><a href="dplyr-row-manipulation.html#cb103-14" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(w, x, y, z)))</span>
+<span id="cb103-15"><a href="dplyr-row-manipulation.html#cb103-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;id&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb103-16"><a href="dplyr-row-manipulation.html#cb103-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 2</span></span>
+<span id="cb103-17"><a href="dplyr-row-manipulation.html#cb103-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   id [6]</span></span>
+<span id="cb103-18"><a href="dplyr-row-manipulation.html#cb103-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id total</span></span>
+<span id="cb103-19"><a href="dplyr-row-manipulation.html#cb103-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb103-20"><a href="dplyr-row-manipulation.html#cb103-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1   100</span></span>
+<span id="cb103-21"><a href="dplyr-row-manipulation.html#cb103-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2   104</span></span>
+<span id="cb103-22"><a href="dplyr-row-manipulation.html#cb103-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3   108</span></span>
+<span id="cb103-23"><a href="dplyr-row-manipulation.html#cb103-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4   112</span></span>
+<span id="cb103-24"><a href="dplyr-row-manipulation.html#cb103-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5   116</span></span>
+<span id="cb103-25"><a href="dplyr-row-manipulation.html#cb103-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6   120</span></span></code></pre></div>
 <p>键入每个变量名称很繁琐，通过<code>c_across()</code>使更简单。</p>
 <blockquote>
 <p>详情可见vignette(“rowwise”)。</p>
 </blockquote>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="dplyr-row-manipulation.html#cb104-1" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z)))</span>
-<span id="cb104-2"><a href="dplyr-row-manipulation.html#cb104-2" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="fu">where</span>(is.numeric))))</span>
-<span id="cb104-3"><a href="dplyr-row-manipulation.html#cb104-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-4"><a href="dplyr-row-manipulation.html#cb104-4" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> </span>
-<span id="cb104-5"><a href="dplyr-row-manipulation.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z))) <span class="sc">%&gt;%</span> </span>
-<span id="cb104-6"><a href="dplyr-row-manipulation.html#cb104-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb104-7"><a href="dplyr-row-manipulation.html#cb104-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(w<span class="sc">:</span>z, <span class="sc">~</span> . <span class="sc">/</span> total))</span></code></pre></div>
+<span id="cb104-2"><a href="dplyr-row-manipulation.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 6</span></span>
+<span id="cb104-3"><a href="dplyr-row-manipulation.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise:  id</span></span>
+<span id="cb104-4"><a href="dplyr-row-manipulation.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id     w     x     y     z total</span></span>
+<span id="cb104-5"><a href="dplyr-row-manipulation.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb104-6"><a href="dplyr-row-manipulation.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1    10    20    30    40   100</span></span>
+<span id="cb104-7"><a href="dplyr-row-manipulation.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2    11    21    31    41   104</span></span>
+<span id="cb104-8"><a href="dplyr-row-manipulation.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3    12    22    32    42   108</span></span>
+<span id="cb104-9"><a href="dplyr-row-manipulation.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4    13    23    33    43   112</span></span>
+<span id="cb104-10"><a href="dplyr-row-manipulation.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5    14    24    34    44   116</span></span>
+<span id="cb104-11"><a href="dplyr-row-manipulation.html#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6    15    25    35    45   120</span></span>
+<span id="cb104-12"><a href="dplyr-row-manipulation.html#cb104-12" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="fu">where</span>(is.numeric))))</span>
+<span id="cb104-13"><a href="dplyr-row-manipulation.html#cb104-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 6</span></span>
+<span id="cb104-14"><a href="dplyr-row-manipulation.html#cb104-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise:  id</span></span>
+<span id="cb104-15"><a href="dplyr-row-manipulation.html#cb104-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id     w     x     y     z total</span></span>
+<span id="cb104-16"><a href="dplyr-row-manipulation.html#cb104-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb104-17"><a href="dplyr-row-manipulation.html#cb104-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1    10    20    30    40   100</span></span>
+<span id="cb104-18"><a href="dplyr-row-manipulation.html#cb104-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2    11    21    31    41   104</span></span>
+<span id="cb104-19"><a href="dplyr-row-manipulation.html#cb104-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3    12    22    32    42   108</span></span>
+<span id="cb104-20"><a href="dplyr-row-manipulation.html#cb104-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4    13    23    33    43   112</span></span>
+<span id="cb104-21"><a href="dplyr-row-manipulation.html#cb104-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5    14    24    34    44   116</span></span>
+<span id="cb104-22"><a href="dplyr-row-manipulation.html#cb104-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6    15    25    35    45   120</span></span>
+<span id="cb104-23"><a href="dplyr-row-manipulation.html#cb104-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-24"><a href="dplyr-row-manipulation.html#cb104-24" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> </span>
+<span id="cb104-25"><a href="dplyr-row-manipulation.html#cb104-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z))) <span class="sc">%&gt;%</span> </span>
+<span id="cb104-26"><a href="dplyr-row-manipulation.html#cb104-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb104-27"><a href="dplyr-row-manipulation.html#cb104-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(w<span class="sc">:</span>z, <span class="sc">~</span> . <span class="sc">/</span> total))</span>
+<span id="cb104-28"><a href="dplyr-row-manipulation.html#cb104-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 6</span></span>
+<span id="cb104-29"><a href="dplyr-row-manipulation.html#cb104-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id     w     x     y     z total</span></span>
+<span id="cb104-30"><a href="dplyr-row-manipulation.html#cb104-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb104-31"><a href="dplyr-row-manipulation.html#cb104-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 0.1   0.2   0.3   0.4     100</span></span>
+<span id="cb104-32"><a href="dplyr-row-manipulation.html#cb104-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 0.106 0.202 0.298 0.394   104</span></span>
+<span id="cb104-33"><a href="dplyr-row-manipulation.html#cb104-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 0.111 0.204 0.296 0.389   108</span></span>
+<span id="cb104-34"><a href="dplyr-row-manipulation.html#cb104-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 0.116 0.205 0.295 0.384   112</span></span>
+<span id="cb104-35"><a href="dplyr-row-manipulation.html#cb104-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 0.121 0.207 0.293 0.379   116</span></span>
+<span id="cb104-36"><a href="dplyr-row-manipulation.html#cb104-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     6 0.125 0.208 0.292 0.375   120</span></span></code></pre></div>
 </div>
 </div>
             </section>

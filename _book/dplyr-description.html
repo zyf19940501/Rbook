@@ -485,7 +485,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb54-8"><a href="dplyr-description.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;)</span></span>
 <span id="cb54-9"><a href="dplyr-description.html#cb54-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/dplyr&quot;</span>)</span></code></pre></div>
 <p>在开始使用前，请确保自己dplyr版本是较新版本，因为1.0.0版本有较大更新。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="dplyr-description.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&#39;dplyr&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="dplyr-description.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&#39;dplyr&#39;</span>)</span>
+<span id="cb55-2"><a href="dplyr-description.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &#39;1.0.6&#39;</span></span></code></pre></div>
 </div>
 <div id="dplyr:difference-of-sql" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Excel and Sql 类比</h3>
@@ -507,7 +508,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb56-4"><a href="dplyr-description.html#cb56-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
 <span id="cb56-5"><a href="dplyr-description.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2014</span>,month<span class="sc">==</span><span class="dv">6</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb56-6"><a href="dplyr-description.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin,dest) <span class="sc">%&gt;%</span> </span>
-<span id="cb56-7"><a href="dplyr-description.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(distance求和项 <span class="ot">=</span> <span class="fu">sum</span>(distance))</span></code></pre></div>
+<span id="cb56-7"><a href="dplyr-description.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(distance求和项 <span class="ot">=</span> <span class="fu">sum</span>(distance))</span>
+<span id="cb56-8"><a href="dplyr-description.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 195 x 3</span></span>
+<span id="cb56-9"><a href="dplyr-description.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   origin [3]</span></span>
+<span id="cb56-10"><a href="dplyr-description.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   origin dest  distance求和项</span></span>
+<span id="cb56-11"><a href="dplyr-description.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb56-12"><a href="dplyr-description.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 EWR    ALB              715</span></span>
+<span id="cb56-13"><a href="dplyr-description.html#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 EWR    ANC            13480</span></span>
+<span id="cb56-14"><a href="dplyr-description.html#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 EWR    ATL           317050</span></span>
+<span id="cb56-15"><a href="dplyr-description.html#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 EWR    AUS            88736</span></span>
+<span id="cb56-16"><a href="dplyr-description.html#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 EWR    AVL            13409</span></span>
+<span id="cb56-17"><a href="dplyr-description.html#cb56-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 EWR    BDL             8236</span></span>
+<span id="cb56-18"><a href="dplyr-description.html#cb56-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 189 more rows</span></span></code></pre></div>
 <p>Sql实现：</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="dplyr-description.html#cb57-1" aria-hidden="true" tabindex="-1"></a>select origin,dest,<span class="fu">sum</span>(distance) distance求和项 from flights where year <span class="ot">=</span> <span class="dv">2014</span> and month <span class="ot">=</span><span class="dv">6</span> group by origin,dest</span></code></pre></div>
 <!-- 本初很奇怪，无法正确编译通过 -->

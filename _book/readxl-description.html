@@ -486,24 +486,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="readxl-description.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb5-2"><a href="readxl-description.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">readxl_example</span>()</span>
-<span id="cb5-3"><a href="readxl-description.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">readxl_example</span>(<span class="st">&quot;clippy.xls&quot;</span>)</span></code></pre></div>
+<span id="cb5-3"><a href="readxl-description.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;clippy.xls&quot;    &quot;clippy.xlsx&quot;   &quot;datasets.xls&quot;  &quot;datasets.xlsx&quot;</span></span>
+<span id="cb5-4"><a href="readxl-description.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;deaths.xls&quot;    &quot;deaths.xlsx&quot;   &quot;geometry.xls&quot;  &quot;geometry.xlsx&quot;</span></span>
+<span id="cb5-5"><a href="readxl-description.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;type-me.xls&quot;   &quot;type-me.xlsx&quot;</span></span>
+<span id="cb5-6"><a href="readxl-description.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">readxl_example</span>(<span class="st">&quot;clippy.xls&quot;</span>)</span>
+<span id="cb5-7"><a href="readxl-description.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/R/R-4.1.0/library/readxl/extdata/clippy.xls&quot;</span></span></code></pre></div>
 <p><code>read_excel()</code>可读取xls和xlsx文件。</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="readxl-description.html#cb6-1" aria-hidden="true" tabindex="-1"></a>xlsx_example <span class="ot">&lt;-</span> <span class="fu">readxl_example</span>(<span class="st">&quot;datasets.xlsx&quot;</span>)</span>
 <span id="cb6-2"><a href="readxl-description.html#cb6-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(xlsx_example)</span>
 <span id="cb6-3"><a href="readxl-description.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="readxl-description.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看数据</span></span>
 <span id="cb6-5"><a href="readxl-description.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb6-6"><a href="readxl-description.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="readxl-description.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看数据类型</span></span>
-<span id="cb6-8"><a href="readxl-description.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dt)</span></code></pre></div>
+<span id="cb6-6"><a href="readxl-description.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 5</span></span>
+<span id="cb6-7"><a href="readxl-description.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span id="cb6-8"><a href="readxl-description.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  </span></span>
+<span id="cb6-9"><a href="readxl-description.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5          1.4         0.2 setosa </span></span>
+<span id="cb6-10"><a href="readxl-description.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3            1.4         0.2 setosa </span></span>
+<span id="cb6-11"><a href="readxl-description.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2          1.3         0.2 setosa </span></span>
+<span id="cb6-12"><a href="readxl-description.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2 setosa </span></span>
+<span id="cb6-13"><a href="readxl-description.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          5           3.6          1.4         0.2 setosa </span></span>
+<span id="cb6-14"><a href="readxl-description.html#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4 setosa</span></span>
+<span id="cb6-15"><a href="readxl-description.html#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="readxl-description.html#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看数据类型</span></span>
+<span id="cb6-17"><a href="readxl-description.html#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dt)</span>
+<span id="cb6-18"><a href="readxl-description.html#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; tibble [150 x 5] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb6-19"><a href="readxl-description.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Sepal.Length: num [1:150] 5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span></span>
+<span id="cb6-20"><a href="readxl-description.html#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Sepal.Width : num [1:150] 3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span></span>
+<span id="cb6-21"><a href="readxl-description.html#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Petal.Length: num [1:150] 1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span></span>
+<span id="cb6-22"><a href="readxl-description.html#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Petal.Width : num [1:150] 0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span></span>
+<span id="cb6-23"><a href="readxl-description.html#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Species     : chr [1:150] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; ...</span></span></code></pre></div>
 <p>通过函数<code>excel_sheets()</code>查看Excel的sheet名称</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="readxl-description.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(xlsx_example)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="readxl-description.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(xlsx_example)</span>
+<span id="cb7-2"><a href="readxl-description.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;iris&quot;     &quot;mtcars&quot;   &quot;chickwts&quot; &quot;quakes&quot;</span></span></code></pre></div>
 <p>指定worksheet的名字读取，可以是sheet的名字或序号。</p>
 <p>当我们要读取的本地xlsx文件有多个sheets时，通过指定sheet参数读取指定的sheet。</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="readxl-description.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(xlsx_example, <span class="at">sheet =</span> <span class="st">&quot;chickwts&quot;</span>)</span>
-<span id="cb8-2"><a href="readxl-description.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb8-3"><a href="readxl-description.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#read_excel(xlsx_example, sheet = 1)</span></span>
-<span id="cb8-4"><a href="readxl-description.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#read_excel(xlsx_example, sheet = 3)</span></span></code></pre></div>
+<span id="cb8-2"><a href="readxl-description.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 71 x 2</span></span>
+<span id="cb8-3"><a href="readxl-description.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   weight feed     </span></span>
+<span id="cb8-4"><a href="readxl-description.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;    </span></span>
+<span id="cb8-5"><a href="readxl-description.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    179 horsebean</span></span>
+<span id="cb8-6"><a href="readxl-description.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    160 horsebean</span></span>
+<span id="cb8-7"><a href="readxl-description.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    136 horsebean</span></span>
+<span id="cb8-8"><a href="readxl-description.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    227 horsebean</span></span>
+<span id="cb8-9"><a href="readxl-description.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    217 horsebean</span></span>
+<span id="cb8-10"><a href="readxl-description.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    168 horsebean</span></span>
+<span id="cb8-11"><a href="readxl-description.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 65 more rows</span></span>
+<span id="cb8-12"><a href="readxl-description.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb8-13"><a href="readxl-description.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#read_excel(xlsx_example, sheet = 1)</span></span>
+<span id="cb8-14"><a href="readxl-description.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#read_excel(xlsx_example, sheet = 3)</span></span></code></pre></div>
 <p>读取xlsx文件的指定范围，有多种方法控制。</p>
 <p>本处提供几个案例，详情请<code>?read_excel()</code>查看帮助。</p>
 <p>readxl::read_excel参数如下：</p>
@@ -525,13 +555,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.1.4</span> 批量输出</h3>
 <p>我们按照一定条件拆解数据集，分别输出，代码如下：</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="readxl-description.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-2"><a href="readxl-description.html#cb11-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="at">path =</span> <span class="st">&#39;./data/read-write/批量读写.xlsx&#39;</span>)</span>
-<span id="cb11-3"><a href="readxl-description.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="readxl-description.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb11-3"><a href="readxl-description.html#cb11-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="at">path =</span> <span class="st">&#39;./data/read-write/批量读写.xlsx&#39;</span>)</span>
 <span id="cb11-4"><a href="readxl-description.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="readxl-description.html#cb11-5" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span> </span>
-<span id="cb11-6"><a href="readxl-description.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-7"><a href="readxl-description.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_walk</span>(<span class="sc">~</span> <span class="fu">write.csv</span>(.x,<span class="at">file =</span> <span class="fu">file.path</span>(<span class="st">&#39;data/read-write&#39;</span>,<span class="fu">paste0</span>(.y<span class="sc">$</span>name,<span class="st">&#39;.csv&#39;</span>))))</span>
-<span id="cb11-8"><a href="readxl-description.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&#39;data/read-write/&#39;</span>)</span></code></pre></div>
+<span id="cb11-5"><a href="readxl-description.html#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="readxl-description.html#cb11-6" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span> </span>
+<span id="cb11-7"><a href="readxl-description.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-8"><a href="readxl-description.html#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_walk</span>(<span class="sc">~</span> <span class="fu">write.csv</span>(.x,<span class="at">file =</span> <span class="fu">file.path</span>(<span class="st">&#39;data/read-write&#39;</span>,<span class="fu">paste0</span>(.y<span class="sc">$</span>name,<span class="st">&#39;.csv&#39;</span>))))</span>
+<span id="cb11-9"><a href="readxl-description.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&#39;data/read-write/&#39;</span>)</span>
+<span id="cb11-10"><a href="readxl-description.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a.csv&quot;         &quot;b.csv&quot;         &quot;d.csv&quot;         &quot;批量读写.xlsx&quot;</span></span></code></pre></div>
 <blockquote>
 <p>暂时不用理解批量读取和输出的代码具体含义，可以先记住用法。</p>
 </blockquote>

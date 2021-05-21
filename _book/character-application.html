@@ -471,21 +471,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="character-application.html#cb220-1" aria-hidden="true" tabindex="-1"></a>r_left <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
 <span id="cb220-2"><a href="character-application.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">end =</span> num)</span>
 <span id="cb220-3"><a href="character-application.html#cb220-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb220-4"><a href="character-application.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span></code></pre></div>
+<span id="cb220-4"><a href="character-application.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
+<span id="cb220-5"><a href="character-application.html#cb220-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;我是R&quot;</span></span></code></pre></div>
 <ul>
 <li>right</li>
 </ul>
 <div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="character-application.html#cb221-1" aria-hidden="true" tabindex="-1"></a>r_right <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
 <span id="cb221-2"><a href="character-application.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="fu">str_length</span>(str) <span class="sc">-</span> num <span class="sc">+</span> <span class="dv">1</span>)</span>
 <span id="cb221-3"><a href="character-application.html#cb221-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb221-4"><a href="character-application.html#cb221-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span></code></pre></div>
+<span id="cb221-4"><a href="character-application.html#cb221-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
+<span id="cb221-5"><a href="character-application.html#cb221-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;学习者&quot;</span></span></code></pre></div>
 <ul>
 <li>mid</li>
 </ul>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="character-application.html#cb222-1" aria-hidden="true" tabindex="-1"></a>r_mid <span class="ot">&lt;-</span> <span class="cf">function</span>(str,start,num){</span>
 <span id="cb222-2"><a href="character-application.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> start,<span class="at">end =</span> start <span class="sc">+</span> num <span class="sc">-</span><span class="dv">1</span>)</span>
 <span id="cb222-3"><a href="character-application.html#cb222-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb222-4"><a href="character-application.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span></code></pre></div>
+<span id="cb222-4"><a href="character-application.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb222-5"><a href="character-application.html#cb222-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span></code></pre></div>
 <p>其余函数可以尝试自行实现。</p>
 </div>
 <div id="使用案例" class="section level3" number="4.3.2">
@@ -495,8 +498,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>合并</li>
 </ul>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="character-application.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb223-2"><a href="character-application.html#cb223-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">rep</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">10</span>),<span class="at">letters=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
-<span id="cb223-3"><a href="character-application.html#cb223-3" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span><span class="fu">str_c</span>(letters,<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>),by<span class="ot">=</span>.(col)][]</span></code></pre></div>
+<span id="cb223-2"><a href="character-application.html#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb223-3"><a href="character-application.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 载入程辑包：&#39;data.table&#39;</span></span>
+<span id="cb223-4"><a href="character-application.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb223-5"><a href="character-application.html#cb223-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb223-6"><a href="character-application.html#cb223-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     between, first, last</span></span>
+<span id="cb223-7"><a href="character-application.html#cb223-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb223-8"><a href="character-application.html#cb223-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb223-9"><a href="character-application.html#cb223-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     transpose</span></span>
+<span id="cb223-10"><a href="character-application.html#cb223-10" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">rep</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">10</span>),<span class="at">letters=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb223-11"><a href="character-application.html#cb223-11" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span><span class="fu">str_c</span>(letters,<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>),by<span class="ot">=</span>.(col)][]</span>
+<span id="cb223-12"><a href="character-application.html#cb223-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col letters              newcol</span></span>
+<span id="cb223-13"><a href="character-application.html#cb223-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a       a a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-14"><a href="character-application.html#cb223-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a       b a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-15"><a href="character-application.html#cb223-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a       c a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-16"><a href="character-application.html#cb223-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a       d a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-17"><a href="character-application.html#cb223-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a       e a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-18"><a href="character-application.html#cb223-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a       f a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-19"><a href="character-application.html#cb223-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a       g a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-20"><a href="character-application.html#cb223-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a       h a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-21"><a href="character-application.html#cb223-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a       i a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb223-22"><a href="character-application.html#cb223-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a       j a|b|c|d|e|f|g|h|i|j</span></span></code></pre></div>
 <ul>
 <li>拆解</li>
 </ul>
@@ -509,7 +531,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb224-7"><a href="character-application.html#cb224-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(x,<span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">|&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()  <span class="co">#str_split 拆解出来是列表 需要向量化</span></span>
 <span id="cb224-8"><a href="character-application.html#cb224-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb224-9"><a href="character-application.html#cb224-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb224-10"><a href="character-application.html#cb224-10" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(<span class="at">newcol=</span><span class="fu">my_str_split</span>(letters)),by<span class="ot">=</span>.(col)]</span></code></pre></div>
+<span id="cb224-10"><a href="character-application.html#cb224-10" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(<span class="at">newcol=</span><span class="fu">my_str_split</span>(letters)),by<span class="ot">=</span>.(col)]</span>
+<span id="cb224-11"><a href="character-application.html#cb224-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col newcol</span></span>
+<span id="cb224-12"><a href="character-application.html#cb224-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a      a</span></span>
+<span id="cb224-13"><a href="character-application.html#cb224-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a      b</span></span>
+<span id="cb224-14"><a href="character-application.html#cb224-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a      c</span></span>
+<span id="cb224-15"><a href="character-application.html#cb224-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a      d</span></span>
+<span id="cb224-16"><a href="character-application.html#cb224-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a      e</span></span>
+<span id="cb224-17"><a href="character-application.html#cb224-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a      f</span></span>
+<span id="cb224-18"><a href="character-application.html#cb224-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a      g</span></span>
+<span id="cb224-19"><a href="character-application.html#cb224-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a      h</span></span>
+<span id="cb224-20"><a href="character-application.html#cb224-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a      i</span></span>
+<span id="cb224-21"><a href="character-application.html#cb224-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a      j</span></span></code></pre></div>
 </div>
 </div>
             </section>

@@ -529,7 +529,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb132-4"><a href="dplyr-programming.html#cb132-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb132-5"><a href="dplyr-programming.html#cb132-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb132-6"><a href="dplyr-programming.html#cb132-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(homeworld)</span>
-<span id="cb132-7"><a href="dplyr-programming.html#cb132-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(sex, gender)</span></code></pre></div>
+<span id="cb132-7"><a href="dplyr-programming.html#cb132-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 49 x 3</span></span>
+<span id="cb132-8"><a href="dplyr-programming.html#cb132-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   homeworld       mass height</span></span>
+<span id="cb132-9"><a href="dplyr-programming.html#cb132-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb132-10"><a href="dplyr-programming.html#cb132-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Alderaan          64   176.</span></span>
+<span id="cb132-11"><a href="dplyr-programming.html#cb132-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Aleen Minor       15    79 </span></span>
+<span id="cb132-12"><a href="dplyr-programming.html#cb132-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Bespin            79   175 </span></span>
+<span id="cb132-13"><a href="dplyr-programming.html#cb132-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Bestine IV       110   180 </span></span>
+<span id="cb132-14"><a href="dplyr-programming.html#cb132-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Cato Neimoidia    90   191 </span></span>
+<span id="cb132-15"><a href="dplyr-programming.html#cb132-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Cerea             82   198 </span></span>
+<span id="cb132-16"><a href="dplyr-programming.html#cb132-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 43 more rows</span></span>
+<span id="cb132-17"><a href="dplyr-programming.html#cb132-17" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(sex, gender)</span>
+<span id="cb132-18"><a href="dplyr-programming.html#cb132-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;sex&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb132-19"><a href="dplyr-programming.html#cb132-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
+<span id="cb132-20"><a href="dplyr-programming.html#cb132-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   sex [5]</span></span>
+<span id="cb132-21"><a href="dplyr-programming.html#cb132-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sex            gender      mass height</span></span>
+<span id="cb132-22"><a href="dplyr-programming.html#cb132-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb132-23"><a href="dplyr-programming.html#cb132-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 female         feminine    54.7   169.</span></span>
+<span id="cb132-24"><a href="dplyr-programming.html#cb132-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 hermaphroditic masculine 1358     175 </span></span>
+<span id="cb132-25"><a href="dplyr-programming.html#cb132-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 male           masculine   81.0   179.</span></span>
+<span id="cb132-26"><a href="dplyr-programming.html#cb132-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 none           feminine   NaN      96 </span></span>
+<span id="cb132-27"><a href="dplyr-programming.html#cb132-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 none           masculine   69.8   140 </span></span>
+<span id="cb132-28"><a href="dplyr-programming.html#cb132-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 &lt;NA&gt;           &lt;NA&gt;        48     181.</span></span></code></pre></div>
 </div>
 </div>
             </section>

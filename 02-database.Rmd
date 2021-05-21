@@ -1,5 +1,4 @@
-
-```{r setup1, include=FALSE}
+```{r setup-database, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 ```
 
@@ -75,7 +74,7 @@ install.packages('DBI')
 
 通过以下代码即可连接到服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。
 
-```{r}
+```{r eval=FALSE}
 library(DBI)
 con <- dbConnect(
   drv = odbc::odbc(), Driver = "SQL Server", server = "172.16.88.2",database = "spb", uid = "zhongyf", pwd = "Zyf123456"
@@ -85,7 +84,7 @@ con <- dbConnect(
 
 如果你用windows系统，通过DBI包连接数据库发现乱码时，根据数据库编码指定encoding参数即可，常规在win下连接sqlserver设置encoding = "GBK"。
 
-```{r }
+```{r eval=FALSE}
 library(DBI)
 #根据数据库编码方式指定encoding
 con <- dbConnect(
@@ -100,7 +99,7 @@ head(Drivers_tbl)
 
 查询数据库编码方式,从而选择连接数据库时相应的编码方式。
 
-```{r}
+```{r eval=FALSE}
 con <- dbConnect(
   drv = odbc::odbc(), Driver = "ODBC Driver 17 for SQL Server",
   server = "172.16.88.2", database = "spb", uid = "zhongyf", pwd = "Zyf123456"
@@ -392,7 +391,7 @@ brew install mariadb-connector-c
 
 ```
 
-```{r}
+```{r eval=FALSE}
 install.packages('RMySQL')
 ```
 

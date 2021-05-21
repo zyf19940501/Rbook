@@ -491,7 +491,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 - <code>read_table()</code>:表格文件，列间用空格隔开
 - <code>read_log()</code>:Web日志文件</p>
 <p>在大多数情况下，我们常使用<code>read_csv()</code>，提供文件路径，将得到数据表。示例如下:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="readr-package.html#cb36-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="readr-package.html#cb36-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>))</span>
+<span id="cb36-2"><a href="readr-package.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb36-3"><a href="readr-package.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Column specification --------------------------------------------------------</span></span>
+<span id="cb36-4"><a href="readr-package.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cols(</span></span>
+<span id="cb36-5"><a href="readr-package.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mpg = col_double(),</span></span>
+<span id="cb36-6"><a href="readr-package.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   cyl = col_double(),</span></span>
+<span id="cb36-7"><a href="readr-package.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   disp = col_double(),</span></span>
+<span id="cb36-8"><a href="readr-package.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   hp = col_double(),</span></span>
+<span id="cb36-9"><a href="readr-package.html#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   drat = col_double(),</span></span>
+<span id="cb36-10"><a href="readr-package.html#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   wt = col_double(),</span></span>
+<span id="cb36-11"><a href="readr-package.html#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   qsec = col_double(),</span></span>
+<span id="cb36-12"><a href="readr-package.html#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   vs = col_double(),</span></span>
+<span id="cb36-13"><a href="readr-package.html#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   am = col_double(),</span></span>
+<span id="cb36-14"><a href="readr-package.html#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   gear = col_double(),</span></span>
+<span id="cb36-15"><a href="readr-package.html#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   carb = col_double()</span></span>
+<span id="cb36-16"><a href="readr-package.html#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; )</span></span></code></pre></div>
 <p>通过上述输出反馈，我们可以知道读进去的数据集每列类型。如果发现不对可以通过<code>col_types</code>参数修改。大多数情况下，我们并不需要指定列的类型，readr会自动猜测列类型。</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="readr-package.html#cb37-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>), <span class="at">col_types =</span> </span>
 <span id="cb37-2"><a href="readr-package.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols</span>(</span>
@@ -533,8 +548,40 @@ c = character，i = integer，n = number，d = double，l = logical，f = factor
 <p>locale:locale参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。</p>
 <p><code>locale()</code>的第一个参数是date_names，控制月份和日期的名称，指定最简单的方式<a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639 language code</a></p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="readr-package.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;zh&#39;</span>) <span class="co"># 中文</span></span>
-<span id="cb39-2"><a href="readr-package.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;ja&#39;</span>) <span class="co">#日本</span></span>
-<span id="cb39-3"><a href="readr-package.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;ko&#39;</span>) <span class="co">#韩国</span></span></code></pre></div>
+<span id="cb39-2"><a href="readr-package.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;locale&gt;</span></span>
+<span id="cb39-3"><a href="readr-package.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Numbers:  123,456.78</span></span>
+<span id="cb39-4"><a href="readr-package.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Formats:  %AD / %AT</span></span>
+<span id="cb39-5"><a href="readr-package.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Timezone: UTC</span></span>
+<span id="cb39-6"><a href="readr-package.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Encoding: UTF-8</span></span>
+<span id="cb39-7"><a href="readr-package.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;date_names&gt;</span></span>
+<span id="cb39-8"><a href="readr-package.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Days:   星期日 (周日), 星期一 (周一), 星期二 (周二), 星期三 (周三), 星期四</span></span>
+<span id="cb39-9"><a href="readr-package.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         (周四), 星期五 (周五), 星期六 (周六)</span></span>
+<span id="cb39-10"><a href="readr-package.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Months: 一月 (1月), 二月 (2月), 三月 (3月), 四月 (4月), 五月 (5月), 六月 (6月),</span></span>
+<span id="cb39-11"><a href="readr-package.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         七月 (7月), 八月 (8月), 九月 (9月), 十月 (10月), 十一月 (11月),</span></span>
+<span id="cb39-12"><a href="readr-package.html#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         十二月 (12月)</span></span>
+<span id="cb39-13"><a href="readr-package.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AM/PM:  上午/下午</span></span>
+<span id="cb39-14"><a href="readr-package.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;ja&#39;</span>) <span class="co">#日本</span></span>
+<span id="cb39-15"><a href="readr-package.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;locale&gt;</span></span>
+<span id="cb39-16"><a href="readr-package.html#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Numbers:  123,456.78</span></span>
+<span id="cb39-17"><a href="readr-package.html#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Formats:  %AD / %AT</span></span>
+<span id="cb39-18"><a href="readr-package.html#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Timezone: UTC</span></span>
+<span id="cb39-19"><a href="readr-package.html#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Encoding: UTF-8</span></span>
+<span id="cb39-20"><a href="readr-package.html#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;date_names&gt;</span></span>
+<span id="cb39-21"><a href="readr-package.html#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Days:   日曜日 (日), 月曜日 (月), 火曜日 (火), 水曜日 (水), 木曜日 (木), 金曜日</span></span>
+<span id="cb39-22"><a href="readr-package.html#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         (金), 土曜日 (土)</span></span>
+<span id="cb39-23"><a href="readr-package.html#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Months: 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月</span></span>
+<span id="cb39-24"><a href="readr-package.html#cb39-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AM/PM:  午前/午後</span></span>
+<span id="cb39-25"><a href="readr-package.html#cb39-25" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span>(<span class="st">&#39;ko&#39;</span>) <span class="co">#韩国</span></span>
+<span id="cb39-26"><a href="readr-package.html#cb39-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;locale&gt;</span></span>
+<span id="cb39-27"><a href="readr-package.html#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Numbers:  123,456.78</span></span>
+<span id="cb39-28"><a href="readr-package.html#cb39-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Formats:  %AD / %AT</span></span>
+<span id="cb39-29"><a href="readr-package.html#cb39-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Timezone: UTC</span></span>
+<span id="cb39-30"><a href="readr-package.html#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Encoding: UTF-8</span></span>
+<span id="cb39-31"><a href="readr-package.html#cb39-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;date_names&gt;</span></span>
+<span id="cb39-32"><a href="readr-package.html#cb39-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Days:   &lt;U+C77C&gt;&lt;U+C694&gt;&lt;U+C77C&gt; (&lt;U+C77C&gt;), &lt;U+C6D4&gt;&lt;U+C694&gt;&lt;U+C77C&gt; (&lt;U+C6D4&gt;), &lt;U+D654&gt;&lt;U+C694&gt;&lt;U+C77C&gt; (&lt;U+D654&gt;), &lt;U+C218&gt;&lt;U+C694&gt;&lt;U+C77C&gt; (&lt;U+C218&gt;), &lt;U+BAA9&gt;&lt;U+C694&gt;&lt;U+C77C&gt; (&lt;U+BAA9&gt;), &lt;U+AE08&gt;&lt;U+C694&gt;&lt;U+C77C&gt;</span></span>
+<span id="cb39-33"><a href="readr-package.html#cb39-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         (&lt;U+AE08&gt;), &lt;U+D1A0&gt;&lt;U+C694&gt;&lt;U+C77C&gt; (&lt;U+D1A0&gt;)</span></span>
+<span id="cb39-34"><a href="readr-package.html#cb39-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Months: 1&lt;U+C6D4&gt;, 2&lt;U+C6D4&gt;, 3&lt;U+C6D4&gt;, 4&lt;U+C6D4&gt;, 5&lt;U+C6D4&gt;, 6&lt;U+C6D4&gt;, 7&lt;U+C6D4&gt;, 8&lt;U+C6D4&gt;, 9&lt;U+C6D4&gt;, 10&lt;U+C6D4&gt;, 11&lt;U+C6D4&gt;, 12&lt;U+C6D4&gt;</span></span>
+<span id="cb39-35"><a href="readr-package.html#cb39-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AM/PM:  &lt;U+C624&gt;&lt;U+C804&gt;/&lt;U+C624&gt;&lt;U+D6C4&gt;</span></span></code></pre></div>
 <p>编码和时区问题是我们常面临的问题。</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="readr-package.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">readr_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>),<span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>,<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>))</span></code></pre></div>
 <p>详细信息查看手册<code>vignette("locales")</code>。</p>

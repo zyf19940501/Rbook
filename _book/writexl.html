@@ -489,10 +489,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-6"><a href="writexl.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">2</span></span>
 <span id="cb15-7"><a href="writexl.html#cb15-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>文件大小比较</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="writexl.html#cb16-1" aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(flights, tmp1 <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
-<span id="cb16-2"><a href="writexl.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(tmp1)<span class="sc">$</span>size</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="writexl.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb16-2"><a href="writexl.html#cb16-2" aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(flights, tmp1 <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
+<span id="cb16-3"><a href="writexl.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(tmp1)<span class="sc">$</span>size</span>
+<span id="cb16-4"><a href="writexl.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 29139353</span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="writexl.html#cb17-1" aria-hidden="true" tabindex="-1"></a>openxlsx<span class="sc">::</span><span class="fu">write.xlsx</span>(flights, tmp2 <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
-<span id="cb17-2"><a href="writexl.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(tmp2)<span class="sc">$</span>size</span></code></pre></div>
+<span id="cb17-2"><a href="writexl.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(tmp2)<span class="sc">$</span>size</span>
+<span id="cb17-3"><a href="writexl.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 26833693</span></span></code></pre></div>
 <p>其它功能</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="writexl.html#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb18-2"><a href="writexl.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;UCLA&quot;</span>, <span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;Jeroen&quot;</span>),</span>

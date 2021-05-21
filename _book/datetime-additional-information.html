@@ -471,10 +471,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">5.4.1.1</span> 差异</h4>
 <p><code>R</code>中日期起始时间是<code>1970-01-01</code>,Excel中起始日期<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>(Windows)是<code>1900-01-01</code>,转化成数字两者相差25568。如下所示：</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="datetime-additional-information.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>)</span>
-<span id="cb286-2"><a href="datetime-additional-information.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1900-01-01&#39;</span>) <span class="co"># 1970-01-02</span></span>
-<span id="cb286-3"><a href="datetime-additional-information.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1899-12-31&#39;</span>) <span class="co"># 1970-01-01</span></span></code></pre></div>
+<span id="cb286-2"><a href="datetime-additional-information.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span>
+<span id="cb286-3"><a href="datetime-additional-information.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1900-01-01&#39;</span>) <span class="co"># 1970-01-02</span></span>
+<span id="cb286-4"><a href="datetime-additional-information.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-02&quot;</span></span>
+<span id="cb286-5"><a href="datetime-additional-information.html#cb286-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1899-12-31&#39;</span>) <span class="co"># 1970-01-01</span></span>
+<span id="cb286-6"><a href="datetime-additional-information.html#cb286-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span></code></pre></div>
 <p>Excel中1900-01-01代表数字1，但是R中1970-01-01代表0。这也是比较怪异的点，毕竟R一般都是从1开始。</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="datetime-additional-information.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="datetime-additional-information.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>))</span>
+<span id="cb287-2"><a href="datetime-additional-information.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
 <p>这样导致:
 R日期2021-05-21转化成数字是18768,
 Excel中日期2021-05-21转化成数字是44337,<strong>两者相差25569</strong>。</p>

@@ -466,28 +466,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.5.1</span> 用{}抑制中间过程输出</h3>
 <p>默认只返回未命名花括号中定义的最后一个对象。</p>
 <div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="小技巧.html#cb343-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(mtcars)</span>
-<span id="cb343-2"><a href="小技巧.html#cb343-2" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg); tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1)); tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>)}, by<span class="ot">=</span>cyl]</span></code></pre></div>
+<span id="cb343-2"><a href="小技巧.html#cb343-2" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg); tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1)); tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>)}, by<span class="ot">=</span>cyl]</span>
+<span id="cb343-3"><a href="小技巧.html#cb343-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl   V1</span></span>
+<span id="cb343-4"><a href="小技巧.html#cb343-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19</span></span>
+<span id="cb343-5"><a href="小技巧.html#cb343-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83</span></span>
+<span id="cb343-6"><a href="小技巧.html#cb343-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79</span></span></code></pre></div>
 <p>在我不知道上述技巧之前，我可能的操作是</p>
 <div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="小技巧.html#cb344-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(mtcars)</span>
 <span id="cb344-2"><a href="小技巧.html#cb344-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> dt[,tmp1<span class="sc">:</span><span class="er">=</span><span class="fu">mean</span>(mpg), by<span class="ot">=</span>cyl][,.(<span class="at">tmp2=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1))), by<span class="ot">=</span>.(cyl)]</span>
-<span id="cb344-3"><a href="小技巧.html#cb344-3" aria-hidden="true" tabindex="-1"></a>res[,.(<span class="fu">round</span>(tmp2,<span class="dv">2</span>)),by<span class="ot">=</span>.(cyl)][]</span></code></pre></div>
+<span id="cb344-3"><a href="小技巧.html#cb344-3" aria-hidden="true" tabindex="-1"></a>res[,.(<span class="fu">round</span>(tmp2,<span class="dv">2</span>)),by<span class="ot">=</span>.(cyl)][]</span>
+<span id="cb344-4"><a href="小技巧.html#cb344-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl   V1</span></span>
+<span id="cb344-5"><a href="小技巧.html#cb344-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19</span></span>
+<span id="cb344-6"><a href="小技巧.html#cb344-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83</span></span>
+<span id="cb344-7"><a href="小技巧.html#cb344-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79</span></span></code></pre></div>
 <p>保留中间变量</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="小技巧.html#cb345-1" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg); tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1)); tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>); <span class="fu">list</span>(<span class="at">tmp2=</span>tmp2, <span class="at">tmp3=</span>tmp3)}, by<span class="ot">=</span>cyl][]</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="小技巧.html#cb345-1" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg); tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1)); tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>); <span class="fu">list</span>(<span class="at">tmp2=</span>tmp2, <span class="at">tmp3=</span>tmp3)}, by<span class="ot">=</span>cyl][]</span>
+<span id="cb345-2"><a href="小技巧.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl tmp2 tmp3</span></span>
+<span id="cb345-3"><a href="小技巧.html#cb345-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19 1.19</span></span>
+<span id="cb345-4"><a href="小技巧.html#cb345-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83 3.83</span></span>
+<span id="cb345-5"><a href="小技巧.html#cb345-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79 1.79</span></span></code></pre></div>
 <p>不写分号的方式</p>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="小技巧.html#cb346-1" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg)</span>
 <span id="cb346-2"><a href="小技巧.html#cb346-2" aria-hidden="true" tabindex="-1"></a>     tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1))</span>
 <span id="cb346-3"><a href="小技巧.html#cb346-3" aria-hidden="true" tabindex="-1"></a>     tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>)</span>
 <span id="cb346-4"><a href="小技巧.html#cb346-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">list</span>(<span class="at">tmp2=</span>tmp2, <span class="at">tmp3=</span>tmp3)},</span>
-<span id="cb346-5"><a href="小技巧.html#cb346-5" aria-hidden="true" tabindex="-1"></a>   by<span class="ot">=</span>cyl][]</span></code></pre></div>
+<span id="cb346-5"><a href="小技巧.html#cb346-5" aria-hidden="true" tabindex="-1"></a>   by<span class="ot">=</span>cyl][]</span>
+<span id="cb346-6"><a href="小技巧.html#cb346-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl tmp2 tmp3</span></span>
+<span id="cb346-7"><a href="小技巧.html#cb346-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19 1.19</span></span>
+<span id="cb346-8"><a href="小技巧.html#cb346-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83 3.83</span></span>
+<span id="cb346-9"><a href="小技巧.html#cb346-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79 1.79</span></span></code></pre></div>
 </div>
 <div id="使用打印data.table" class="section level3" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> 使用[]打印data.table</h3>
 <p>在测试代码查看结果时很有用。</p>
 <div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="小技巧.html#cb347-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars) <span class="co"># doesn&#39;t print</span></span>
-<span id="cb347-2"><a href="小技巧.html#cb347-2" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars)) <span class="co"># does print</span></span></code></pre></div>
+<span id="cb347-2"><a href="小技巧.html#cb347-2" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars)) <span class="co"># does print</span></span>
+<span id="cb347-3"><a href="小技巧.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 11</span></span>
+<span id="cb347-4"><a href="小技巧.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb347-5"><a href="小技巧.html#cb347-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb347-6"><a href="小技巧.html#cb347-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  21       6   160   110  3.9   2.62  16.5     0     1     4     4</span></span>
+<span id="cb347-7"><a href="小技巧.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span></span>
+<span id="cb347-8"><a href="小技巧.html#cb347-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span></span>
+<span id="cb347-9"><a href="小技巧.html#cb347-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span></span>
+<span id="cb347-10"><a href="小技巧.html#cb347-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
+<span id="cb347-11"><a href="小技巧.html#cb347-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span></span></code></pre></div>
 <div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="小技巧.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table way of printing after an assignment</span></span>
 <span id="cb348-2"><a href="小技巧.html#cb348-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="fu">head</span>(mtcars)) <span class="co"># doesn&#39;t print</span></span>
-<span id="cb348-3"><a href="小技巧.html#cb348-3" aria-hidden="true" tabindex="-1"></a>dt[,hp2wt<span class="sc">:</span><span class="er">=</span>hp<span class="sc">/</span>wt][] <span class="co"># does print</span></span></code></pre></div>
+<span id="cb348-3"><a href="小技巧.html#cb348-3" aria-hidden="true" tabindex="-1"></a>dt[,hp2wt<span class="sc">:</span><span class="er">=</span>hp<span class="sc">/</span>wt][] <span class="co"># does print</span></span>
+<span id="cb348-4"><a href="小技巧.html#cb348-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg cyl disp  hp drat   wt qsec vs am gear carb hp2wt</span></span>
+<span id="cb348-5"><a href="小技巧.html#cb348-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4  42.0</span></span>
+<span id="cb348-6"><a href="小技巧.html#cb348-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4  38.3</span></span>
+<span id="cb348-7"><a href="小技巧.html#cb348-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 22.8   4  108  93 3.85 2.32 18.6  1  1    4    1  40.1</span></span>
+<span id="cb348-8"><a href="小技巧.html#cb348-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1  34.2</span></span>
+<span id="cb348-9"><a href="小技巧.html#cb348-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2  50.9</span></span>
+<span id="cb348-10"><a href="小技巧.html#cb348-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1  30.3</span></span></code></pre></div>
 </div>
 </div>
             </section>

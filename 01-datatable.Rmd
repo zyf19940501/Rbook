@@ -1002,17 +1002,8 @@ head(res)
 
 ```{r}
 res[,.(char=paste0(newcol,collapse = '-')),by=.(name)]
-#同上
-#res[,.(char=stringr::str_c(newcol,collapse = '-')),by=.(name)]
-# A	我-爱-R-语-言			
-# B	我-爱-R-语-言			
-# C	我-爱-R-语-言			
-# D	我-爱-R-语-言			
-# E	我-爱-R-语-言			
-# F	我-爱-R-语-言			
-# G	我-爱-R-语-言			
-# H	我-爱-R-语-言			
-# I	我-爱-R-语-言			
-# J	我-爱-R-语-言
+# 同上
+# res[,.(char=stringr::str_c(newcol,collapse = '-')),by=.(name)]
+
 ```
 

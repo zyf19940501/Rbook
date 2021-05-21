@@ -466,8 +466,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="创建因子.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
 <span id="cb289-2"><a href="创建因子.html#cb289-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;部门a&#39;</span>,<span class="st">&#39;部门b&#39;</span>,<span class="st">&#39;部门d&#39;</span>,<span class="st">&#39;部门f&#39;</span>)</span>
 <span id="cb289-3"><a href="创建因子.html#cb289-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(vec1)</span>
-<span id="cb289-4"><a href="创建因子.html#cb289-4" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="st">&#39;部门f&#39;</span>,<span class="st">&#39;部门d&#39;</span>,<span class="st">&#39;部门a&#39;</span>,<span class="st">&#39;部门b&#39;</span>))</span>
-<span id="cb289-5"><a href="创建因子.html#cb289-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(vec2)</span></code></pre></div>
+<span id="cb289-4"><a href="创建因子.html#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;部门a&quot; &quot;部门b&quot; &quot;部门d&quot; &quot;部门f&quot;</span></span>
+<span id="cb289-5"><a href="创建因子.html#cb289-5" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="st">&#39;部门f&#39;</span>,<span class="st">&#39;部门d&#39;</span>,<span class="st">&#39;部门a&#39;</span>,<span class="st">&#39;部门b&#39;</span>))</span>
+<span id="cb289-6"><a href="创建因子.html#cb289-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(vec2)</span>
+<span id="cb289-7"><a href="创建因子.html#cb289-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 部门f 部门d 部门a 部门b</span></span>
+<span id="cb289-8"><a href="创建因子.html#cb289-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: 部门f 部门d 部门a 部门b</span></span></code></pre></div>
 <p>如上所示:实际工作中可以通过指定因子水平从而达到排序效果,在可视化中也可以运用,像指定X轴的顺序.</p>
 
 </div>

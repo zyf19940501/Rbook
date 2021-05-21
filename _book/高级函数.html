@@ -483,23 +483,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>rollup</li>
 </ul>
 <div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="高级函数.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb332-2"><a href="高级函数.html#cb332-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&#39;./data/data-table-groupingsets.csv&#39;</span>,<span class="at">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</span>
-<span id="cb332-3"><a href="高级函数.html#cb332-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">rollup</span>(DT,<span class="at">j =</span><span class="fu">list</span>(以下项目的总和 <span class="ot">=</span><span class="fu">sum</span>(value)),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">id =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">setorderv</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&#39;area&#39;</span>,<span class="st">&#39;grouping&#39;</span>),<span class="at">na.last =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<span id="cb332-2"><a href="高级函数.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb332-3"><a href="高级函数.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 载入程辑包：&#39;magrittr&#39;</span></span>
+<span id="cb332-4"><a href="高级函数.html#cb332-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb332-5"><a href="高级函数.html#cb332-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb332-6"><a href="高级函数.html#cb332-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     set_names</span></span>
+<span id="cb332-7"><a href="高级函数.html#cb332-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:tidyr&#39;:</span></span>
+<span id="cb332-8"><a href="高级函数.html#cb332-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb332-9"><a href="高级函数.html#cb332-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     extract</span></span>
+<span id="cb332-10"><a href="高级函数.html#cb332-10" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&#39;./data/data-table-groupingsets.csv&#39;</span>,<span class="at">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</span>
+<span id="cb332-11"><a href="高级函数.html#cb332-11" aria-hidden="true" tabindex="-1"></a>(<span class="fu">rollup</span>(DT,<span class="at">j =</span><span class="fu">list</span>(以下项目的总和 <span class="ot">=</span><span class="fu">sum</span>(value)),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">id =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">setorderv</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&#39;area&#39;</span>,<span class="st">&#39;grouping&#39;</span>),<span class="at">na.last =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb332-12"><a href="高级函数.html#cb332-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type 以下项目的总和</span></span>
+<span id="cb332-13"><a href="高级函数.html#cb332-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        0 华东     不可比              9</span></span>
+<span id="cb332-14"><a href="高级函数.html#cb332-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        0 华东       可比            309</span></span>
+<span id="cb332-15"><a href="高级函数.html#cb332-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华东       &lt;NA&gt;            318</span></span>
+<span id="cb332-16"><a href="高级函数.html#cb332-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        0 华北     不可比             72</span></span>
+<span id="cb332-17"><a href="高级函数.html#cb332-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华北       可比            173</span></span>
+<span id="cb332-18"><a href="高级函数.html#cb332-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        1 华北       &lt;NA&gt;            245</span></span>
+<span id="cb332-19"><a href="高级函数.html#cb332-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华南       可比             86</span></span>
+<span id="cb332-20"><a href="高级函数.html#cb332-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华南     不可比             79</span></span>
+<span id="cb332-21"><a href="高级函数.html#cb332-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        1 华南       &lt;NA&gt;            165</span></span>
+<span id="cb332-22"><a href="高级函数.html#cb332-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华西       可比              2</span></span>
+<span id="cb332-23"><a href="高级函数.html#cb332-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华西     不可比            198</span></span>
+<span id="cb332-24"><a href="高级函数.html#cb332-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        1 华西       &lt;NA&gt;            200</span></span>
+<span id="cb332-25"><a href="高级函数.html#cb332-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        3 &lt;NA&gt;       &lt;NA&gt;            928</span></span></code></pre></div>
 <p>通过上述计算,发现计算结果与Excel透视表一样。</p>
 <ul>
 <li>cube</li>
 </ul>
 <p>观察<code>cube()</code>计算结果与<code>rollup()</code>差异，发现<code>cube()</code>聚合层次更多。</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="高级函数.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cube</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">id =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="高级函数.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cube</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb333-2"><a href="高级函数.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
+<span id="cb333-3"><a href="高级函数.html#cb333-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        0 华东     不可比   9</span></span>
+<span id="cb333-4"><a href="高级函数.html#cb333-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        0 华东       可比 309</span></span>
+<span id="cb333-5"><a href="高级函数.html#cb333-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        0 华西       可比   2</span></span>
+<span id="cb333-6"><a href="高级函数.html#cb333-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        0 华西     不可比 198</span></span>
+<span id="cb333-7"><a href="高级函数.html#cb333-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华南       可比  86</span></span>
+<span id="cb333-8"><a href="高级函数.html#cb333-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华北     不可比  72</span></span>
+<span id="cb333-9"><a href="高级函数.html#cb333-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华南     不可比  79</span></span>
+<span id="cb333-10"><a href="高级函数.html#cb333-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华北       可比 173</span></span>
+<span id="cb333-11"><a href="高级函数.html#cb333-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        1 华东       &lt;NA&gt; 318</span></span>
+<span id="cb333-12"><a href="高级函数.html#cb333-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        1 华西       &lt;NA&gt; 200</span></span>
+<span id="cb333-13"><a href="高级函数.html#cb333-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        1 华南       &lt;NA&gt; 165</span></span>
+<span id="cb333-14"><a href="高级函数.html#cb333-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        1 华北       &lt;NA&gt; 245</span></span>
+<span id="cb333-15"><a href="高级函数.html#cb333-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        2 &lt;NA&gt;     不可比 358</span></span>
+<span id="cb333-16"><a href="高级函数.html#cb333-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:        2 &lt;NA&gt;       可比 570</span></span>
+<span id="cb333-17"><a href="高级函数.html#cb333-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span></code></pre></div>
 <ul>
 <li>groupingsets</li>
 </ul>
 <p>根据需要指定指定聚合的层次。</p>
 <div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="高级函数.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 与本例中rollup 结果一致</span></span>
 <span id="cb334-2"><a href="高级函数.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&#39;area&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>), <span class="fu">character</span>()),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb334-3"><a href="高级函数.html#cb334-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb334-4"><a href="高级函数.html#cb334-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 与本例中cube 结果一致</span></span>
-<span id="cb334-5"><a href="高级函数.html#cb334-5" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&#39;area&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="st">&quot;store_type&quot;</span>, <span class="fu">character</span>()),<span class="at">id =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<span id="cb334-3"><a href="高级函数.html#cb334-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
+<span id="cb334-4"><a href="高级函数.html#cb334-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        1 华东       &lt;NA&gt; 318</span></span>
+<span id="cb334-5"><a href="高级函数.html#cb334-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        1 华西       &lt;NA&gt; 200</span></span>
+<span id="cb334-6"><a href="高级函数.html#cb334-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华南       &lt;NA&gt; 165</span></span>
+<span id="cb334-7"><a href="高级函数.html#cb334-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        1 华北       &lt;NA&gt; 245</span></span>
+<span id="cb334-8"><a href="高级函数.html#cb334-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华东     不可比   9</span></span>
+<span id="cb334-9"><a href="高级函数.html#cb334-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华东       可比 309</span></span>
+<span id="cb334-10"><a href="高级函数.html#cb334-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华西       可比   2</span></span>
+<span id="cb334-11"><a href="高级函数.html#cb334-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华西     不可比 198</span></span>
+<span id="cb334-12"><a href="高级函数.html#cb334-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        0 华南       可比  86</span></span>
+<span id="cb334-13"><a href="高级函数.html#cb334-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华北     不可比  72</span></span>
+<span id="cb334-14"><a href="高级函数.html#cb334-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华南     不可比  79</span></span>
+<span id="cb334-15"><a href="高级函数.html#cb334-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        0 华北       可比 173</span></span>
+<span id="cb334-16"><a href="高级函数.html#cb334-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span>
+<span id="cb334-17"><a href="高级函数.html#cb334-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-18"><a href="高级函数.html#cb334-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 与本例中cube 结果一致</span></span>
+<span id="cb334-19"><a href="高级函数.html#cb334-19" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&#39;area&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="st">&quot;store_type&quot;</span>, <span class="fu">character</span>()),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb334-20"><a href="高级函数.html#cb334-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
+<span id="cb334-21"><a href="高级函数.html#cb334-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        1 华东       &lt;NA&gt; 318</span></span>
+<span id="cb334-22"><a href="高级函数.html#cb334-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        1 华西       &lt;NA&gt; 200</span></span>
+<span id="cb334-23"><a href="高级函数.html#cb334-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华南       &lt;NA&gt; 165</span></span>
+<span id="cb334-24"><a href="高级函数.html#cb334-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        1 华北       &lt;NA&gt; 245</span></span>
+<span id="cb334-25"><a href="高级函数.html#cb334-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华东     不可比   9</span></span>
+<span id="cb334-26"><a href="高级函数.html#cb334-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华东       可比 309</span></span>
+<span id="cb334-27"><a href="高级函数.html#cb334-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华西       可比   2</span></span>
+<span id="cb334-28"><a href="高级函数.html#cb334-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华西     不可比 198</span></span>
+<span id="cb334-29"><a href="高级函数.html#cb334-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        0 华南       可比  86</span></span>
+<span id="cb334-30"><a href="高级函数.html#cb334-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华北     不可比  72</span></span>
+<span id="cb334-31"><a href="高级函数.html#cb334-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华南     不可比  79</span></span>
+<span id="cb334-32"><a href="高级函数.html#cb334-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        0 华北       可比 173</span></span>
+<span id="cb334-33"><a href="高级函数.html#cb334-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        2 &lt;NA&gt;     不可比 358</span></span>
+<span id="cb334-34"><a href="高级函数.html#cb334-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:        2 &lt;NA&gt;       可比 570</span></span>
+<span id="cb334-35"><a href="高级函数.html#cb334-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span></code></pre></div>
 <blockquote>
 <p>groupingsets: sets参数,用list()包裹想要聚合的字段组合,最后character(),加上该部分相当于不区分层级全部聚合,用法类似sql中“().”</p>
 </blockquote>
@@ -511,14 +579,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.4.2</span> rleid</h3>
 <p>该函数根据分组生成长度列。</p>
 <p>即将0011001110111101类似这种分组成1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8。在特定时候是很便捷的一个函数。如在计算股票连续上涨或下跌天数时。</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="高级函数.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="高级函数.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb335-2"><a href="高级函数.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8</span></span></code></pre></div>
 <p>用法：</p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="高级函数.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(..., <span class="at">prefix=</span><span class="cn">NULL</span>)</span>
 <span id="cb336-2"><a href="高级函数.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">prefix=</span><span class="cn">NULL</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="高级函数.html#cb337-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">grp=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)), <span class="at">value=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb337-2"><a href="高级函数.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp) <span class="co"># get run-length ids</span></span>
-<span id="cb337-3"><a href="高级函数.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(DT, <span class="st">&quot;grp&quot;</span>) <span class="co"># same as above</span></span>
-<span id="cb337-4"><a href="高级函数.html#cb337-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp, <span class="at">prefix=</span><span class="st">&quot;grp&quot;</span>) <span class="co"># prefix with &#39;grp&#39;</span></span></code></pre></div>
+<span id="cb337-3"><a href="高级函数.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
+<span id="cb337-4"><a href="高级函数.html#cb337-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(DT, <span class="st">&quot;grp&quot;</span>) <span class="co"># same as above</span></span>
+<span id="cb337-5"><a href="高级函数.html#cb337-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
+<span id="cb337-6"><a href="高级函数.html#cb337-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp, <span class="at">prefix=</span><span class="st">&quot;grp&quot;</span>) <span class="co"># prefix with &#39;grp&#39;</span></span>
+<span id="cb337-7"><a href="高级函数.html#cb337-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;grp1&quot; &quot;grp1&quot; &quot;grp2&quot; &quot;grp2&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp4&quot; &quot;grp5&quot; &quot;grp5&quot;</span></span></code></pre></div>
 </div>
 <div id="shift" class="section level3" number="7.4.3">
 <h3><span class="header-section-number">7.4.3</span> shift</h3>
@@ -526,7 +598,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>示例如下：</p>
 <div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="高级函数.html#cb338-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
 <span id="cb338-2"><a href="高级函数.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lag with n=1 and pad with NA (returns vector)</span></span>
-<span id="cb338-3"><a href="高级函数.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shift</span>(x, <span class="at">n=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">type=</span><span class="st">&quot;lag&quot;</span>)</span></code></pre></div>
+<span id="cb338-3"><a href="高级函数.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shift</span>(x, <span class="at">n=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">type=</span><span class="st">&quot;lag&quot;</span>)</span>
+<span id="cb338-4"><a href="高级函数.html#cb338-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  1  2  3  4</span></span></code></pre></div>
 <p>其中参数n控制偏移量，n正负数和type的参数相对应。, n=-1 and type=‘lead’ 与 n=1 and type=’lag’效果相同。</p>
 <p>在data.table上使用：</p>
 <div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="高级函数.html#cb339-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">year=</span><span class="dv">2010</span><span class="sc">:</span><span class="dv">2014</span>, <span class="at">v1=</span><span class="fu">runif</span>(<span class="dv">5</span>), <span class="at">v2=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">v3=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
@@ -536,7 +609,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>例如求某人连续消费时间间隔天数时：</p>
 <div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="高级函数.html#cb340-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">dates =</span>lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="fu">c</span>(<span class="dv">20210105</span>,<span class="dv">20210115</span>,<span class="dv">20210124</span>,<span class="dv">20210218</span>,<span class="dv">20210424</span>)))</span>
 <span id="cb340-2"><a href="高级函数.html#cb340-2" aria-hidden="true" tabindex="-1"></a>DT[,newdate<span class="sc">:</span><span class="er">=</span><span class="fu">shift</span>(dates)]</span>
-<span id="cb340-3"><a href="高级函数.html#cb340-3" aria-hidden="true" tabindex="-1"></a>DT</span></code></pre></div>
+<span id="cb340-3"><a href="高级函数.html#cb340-3" aria-hidden="true" tabindex="-1"></a>DT</span>
+<span id="cb340-4"><a href="高级函数.html#cb340-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         dates    newdate</span></span>
+<span id="cb340-5"><a href="高级函数.html#cb340-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2021-01-05       &lt;NA&gt;</span></span>
+<span id="cb340-6"><a href="高级函数.html#cb340-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2021-01-15 2021-01-05</span></span>
+<span id="cb340-7"><a href="高级函数.html#cb340-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2021-01-24 2021-01-15</span></span>
+<span id="cb340-8"><a href="高级函数.html#cb340-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2021-02-18 2021-01-24</span></span>
+<span id="cb340-9"><a href="高级函数.html#cb340-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2021-04-24 2021-02-18</span></span></code></pre></div>
 <p>通过构造新列newdate，然后将两列相减<code>dates-newdate</code>即可得到每次购物间隔天数。</p>
 </div>
 <div id="j" class="section level3" number="7.4.4">
@@ -554,8 +633,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>我喜欢用<code>CJ()</code>函数创建笛卡尔积表。例如在商品运营中，时常需要将门店和商品形成笛卡尔积表，相比起<code>dplyr::full_join()</code> ,<code>data.table::merge.data.table(allow.cartesian = TRUE )</code>,<code>CJ</code>更加方便快捷。</p>
 <div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="高级函数.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CJ usage examples</span></span>
 <span id="cb342-2"><a href="高级函数.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CJ</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>))                 <span class="co"># sorted and keyed data.table</span></span>
-<span id="cb342-3"><a href="高级函数.html#cb342-3" aria-hidden="true" tabindex="-1"></a><span class="co"># do.call(CJ, list(c(5, NA, 1), c(1, 3, 2)))  # same as above</span></span>
-<span id="cb342-4"><a href="高级函数.html#cb342-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CJ(c(5, NA, 1), c(1, 3, 2), sorted=FALSE)   # same order as input, unkeyed</span></span></code></pre></div>
+<span id="cb342-3"><a href="高级函数.html#cb342-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    V1 V2</span></span>
+<span id="cb342-4"><a href="高级函数.html#cb342-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: NA  1</span></span>
+<span id="cb342-5"><a href="高级函数.html#cb342-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: NA  2</span></span>
+<span id="cb342-6"><a href="高级函数.html#cb342-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: NA  3</span></span>
+<span id="cb342-7"><a href="高级函数.html#cb342-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:  1  1</span></span>
+<span id="cb342-8"><a href="高级函数.html#cb342-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:  1  2</span></span>
+<span id="cb342-9"><a href="高级函数.html#cb342-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:  1  3</span></span>
+<span id="cb342-10"><a href="高级函数.html#cb342-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7:  5  1</span></span>
+<span id="cb342-11"><a href="高级函数.html#cb342-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8:  5  2</span></span>
+<span id="cb342-12"><a href="高级函数.html#cb342-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9:  5  3</span></span>
+<span id="cb342-13"><a href="高级函数.html#cb342-13" aria-hidden="true" tabindex="-1"></a><span class="co"># do.call(CJ, list(c(5, NA, 1), c(1, 3, 2)))  # same as above</span></span>
+<span id="cb342-14"><a href="高级函数.html#cb342-14" aria-hidden="true" tabindex="-1"></a><span class="co"># CJ(c(5, NA, 1), c(1, 3, 2), sorted=FALSE)   # same order as input, unkeyed</span></span></code></pre></div>
 <ul>
 <li>SJ</li>
 </ul>

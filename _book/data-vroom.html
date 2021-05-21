@@ -479,9 +479,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="data-vroom.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vroom)</span>
 <span id="cb43-2"><a href="data-vroom.html#cb43-2" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">vroom_example</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span>
 <span id="cb43-3"><a href="data-vroom.html#cb43-3" aria-hidden="true" tabindex="-1"></a>file</span>
-<span id="cb43-4"><a href="data-vroom.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="data-vroom.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span>
-<span id="cb43-6"><a href="data-vroom.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file, <span class="at">delim =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<span id="cb43-4"><a href="data-vroom.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/R/R-4.1.0/library/vroom/extdata/mtcars.csv&quot;</span></span>
+<span id="cb43-5"><a href="data-vroom.html#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="data-vroom.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span>
+<span id="cb43-7"><a href="data-vroom.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 32</span></span>
+<span id="cb43-8"><a href="data-vroom.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 12</span></span>
+<span id="cb43-9"><a href="data-vroom.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Delimiter: &quot;,&quot;</span></span>
+<span id="cb43-10"><a href="data-vroom.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; chr [ 1]: model</span></span>
+<span id="cb43-11"><a href="data-vroom.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dbl [11]: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb</span></span>
+<span id="cb43-12"><a href="data-vroom.html#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb43-13"><a href="data-vroom.html#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Use `spec()` to retrieve the guessed column specification</span></span>
+<span id="cb43-14"><a href="data-vroom.html#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Pass a specification to the `col_types` argument to quiet this message</span></span>
+<span id="cb43-15"><a href="data-vroom.html#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 32 x 12</span></span>
+<span id="cb43-16"><a href="data-vroom.html#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb43-17"><a href="data-vroom.html#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb43-18"><a href="data-vroom.html#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Mazda RX4     21       6   160   110  3.9   2.62  16.5     0     1     4     4</span></span>
+<span id="cb43-19"><a href="data-vroom.html#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Mazda RX4 W~  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span></span>
+<span id="cb43-20"><a href="data-vroom.html#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Datsun 710    22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span></span>
+<span id="cb43-21"><a href="data-vroom.html#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Hornet 4 Dr~  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span></span>
+<span id="cb43-22"><a href="data-vroom.html#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Hornet Spor~  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
+<span id="cb43-23"><a href="data-vroom.html#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Valiant       18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span></span>
+<span id="cb43-24"><a href="data-vroom.html#cb43-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 26 more rows</span></span>
+<span id="cb43-25"><a href="data-vroom.html#cb43-25" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file, <span class="at">delim =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb43-26"><a href="data-vroom.html#cb43-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 32</span></span>
+<span id="cb43-27"><a href="data-vroom.html#cb43-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 12</span></span>
+<span id="cb43-28"><a href="data-vroom.html#cb43-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Delimiter: &quot;,&quot;</span></span>
+<span id="cb43-29"><a href="data-vroom.html#cb43-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; chr [ 1]: model</span></span>
+<span id="cb43-30"><a href="data-vroom.html#cb43-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dbl [11]: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb</span></span>
+<span id="cb43-31"><a href="data-vroom.html#cb43-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb43-32"><a href="data-vroom.html#cb43-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Use `spec()` to retrieve the guessed column specification</span></span>
+<span id="cb43-33"><a href="data-vroom.html#cb43-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Pass a specification to the `col_types` argument to quiet this message</span></span>
+<span id="cb43-34"><a href="data-vroom.html#cb43-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 32 x 12</span></span>
+<span id="cb43-35"><a href="data-vroom.html#cb43-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb43-36"><a href="data-vroom.html#cb43-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb43-37"><a href="data-vroom.html#cb43-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Mazda RX4     21       6   160   110  3.9   2.62  16.5     0     1     4     4</span></span>
+<span id="cb43-38"><a href="data-vroom.html#cb43-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Mazda RX4 W~  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span></span>
+<span id="cb43-39"><a href="data-vroom.html#cb43-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Datsun 710    22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span></span>
+<span id="cb43-40"><a href="data-vroom.html#cb43-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Hornet 4 Dr~  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span></span>
+<span id="cb43-41"><a href="data-vroom.html#cb43-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Hornet Spor~  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
+<span id="cb43-42"><a href="data-vroom.html#cb43-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Valiant       18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span></span>
+<span id="cb43-43"><a href="data-vroom.html#cb43-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 26 more rows</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>读取多文件</li>
 </ol>
@@ -512,7 +549,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>读取网络文件</li>
 </ol>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-vroom.html#cb46-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/r-lib/vroom/master/inst/extdata/mtcars.csv&quot;</span></span>
-<span id="cb46-2"><a href="data-vroom.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span></code></pre></div>
+<span id="cb46-2"><a href="data-vroom.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file)</span>
+<span id="cb46-3"><a href="data-vroom.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 32</span></span>
+<span id="cb46-4"><a href="data-vroom.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 12</span></span>
+<span id="cb46-5"><a href="data-vroom.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Delimiter: &quot;,&quot;</span></span>
+<span id="cb46-6"><a href="data-vroom.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; chr [ 1]: model</span></span>
+<span id="cb46-7"><a href="data-vroom.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dbl [11]: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb</span></span>
+<span id="cb46-8"><a href="data-vroom.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb46-9"><a href="data-vroom.html#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Use `spec()` to retrieve the guessed column specification</span></span>
+<span id="cb46-10"><a href="data-vroom.html#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Pass a specification to the `col_types` argument to quiet this message</span></span>
+<span id="cb46-11"><a href="data-vroom.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 32 x 12</span></span>
+<span id="cb46-12"><a href="data-vroom.html#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   model          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb46-13"><a href="data-vroom.html#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb46-14"><a href="data-vroom.html#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Mazda RX4     21       6   160   110  3.9   2.62  16.5     0     1     4     4</span></span>
+<span id="cb46-15"><a href="data-vroom.html#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Mazda RX4 W~  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span></span>
+<span id="cb46-16"><a href="data-vroom.html#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Datsun 710    22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span></span>
+<span id="cb46-17"><a href="data-vroom.html#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Hornet 4 Dr~  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span></span>
+<span id="cb46-18"><a href="data-vroom.html#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Hornet Spor~  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
+<span id="cb46-19"><a href="data-vroom.html#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Valiant       18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span></span>
+<span id="cb46-20"><a href="data-vroom.html#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 26 more rows</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>选择列读取</li>
 </ol>
@@ -520,10 +575,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-vroom.html#cb47-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">vroom_example</span>(<span class="st">&quot;mtcars.csv.gz&quot;</span>)</span>
 <span id="cb47-2"><a href="data-vroom.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="data-vroom.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vroom</span>(file, <span class="at">col_select =</span> <span class="fu">c</span>(model, cyl, gear))</span>
-<span id="cb47-4"><a href="data-vroom.html#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-5"><a href="data-vroom.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom(file, col_select = c(1, 3, 11))</span></span>
-<span id="cb47-6"><a href="data-vroom.html#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="data-vroom.html#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom(file, col_select = list(car = model, everything()))</span></span></code></pre></div>
+<span id="cb47-4"><a href="data-vroom.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 32 x 3</span></span>
+<span id="cb47-5"><a href="data-vroom.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   model               cyl  gear</span></span>
+<span id="cb47-6"><a href="data-vroom.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb47-7"><a href="data-vroom.html#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Mazda RX4             6     4</span></span>
+<span id="cb47-8"><a href="data-vroom.html#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Mazda RX4 Wag         6     4</span></span>
+<span id="cb47-9"><a href="data-vroom.html#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Datsun 710            4     4</span></span>
+<span id="cb47-10"><a href="data-vroom.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Hornet 4 Drive        6     3</span></span>
+<span id="cb47-11"><a href="data-vroom.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Hornet Sportabout     8     3</span></span>
+<span id="cb47-12"><a href="data-vroom.html#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Valiant               6     3</span></span>
+<span id="cb47-13"><a href="data-vroom.html#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 26 more rows</span></span>
+<span id="cb47-14"><a href="data-vroom.html#cb47-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-15"><a href="data-vroom.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom(file, col_select = c(1, 3, 11))</span></span>
+<span id="cb47-16"><a href="data-vroom.html#cb47-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-17"><a href="data-vroom.html#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="co"># vroom(file, col_select = list(car = model, everything()))</span></span></code></pre></div>
 </div>
 </div>
             </section>
