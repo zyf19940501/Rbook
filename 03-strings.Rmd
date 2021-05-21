@@ -1,5 +1,5 @@
 
-# 字符处理 
+# 字符处理 {#character:handling}
 
 
 实际数据分析工作中,经常需要处理字符串以便让数据整洁，符合分析需求。在我们常用的Excel或sql中也有处理字符串的经验，大部分时候截断、替换等基础实现就能满足我们的大部分字符处理需求。
@@ -13,7 +13,7 @@ Excel中自带的字符串函数[^text]，如:`left`,`len`,`mid`,`find`,`Proper`
 
 字符处理本人觉得本质上就是将字符定位后去实现不同的操作。所以觉得难点在于字符串中字符的定位，而实现这个功能就需要用到正则表达式，所以字符处理真正的难点在于正则表达式的编写，但是在我看来正则表达式想要掌握，难度过高，我们秉着随用随查的态度对待即可。
 
-因为大部分的数据分析工作者并不会面临太多复杂的字符处理工作，对大部分常规商业数据分析工作者面对的数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作。面对舆情监控，购物评价等纯文本情感分析工作，个人觉得对普通数据分析岗位有点超纲，所以本章节的字符处理仅仅是常规的字符处理。
+因为大部分的数据分析工作者并不会面临太多复杂的字符处理工作，对大部分常规商业数据分析工作者面对的数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒序等基础操作。面对舆情监控，购物评价等纯文本情感分析工作，个人觉得对普通数据分析岗位有点超纲，所以本章节的字符处理仅仅是常规的字符处理。
 
 
 [^text]:Excel中支持的[TEXT functions] (https://support.microsoft.com/zh-cn/office/%e6%96%87%e6%9c%ac%e5%87%bd%e6%95%b0%ef%bc%88%e5%8f%82%e8%80%83%ef%bc%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN&rs=zh-CN&ad=CN)
@@ -21,7 +21,7 @@ Excel中自带的字符串函数[^text]，如:`left`,`len`,`mid`,`find`,`Proper`
 [^Regularexpression]:正则表达式(regular expression)描述了一种字符串匹配的模式(pattern),查看帮助`?regex`。
 
 
-## base R 
+## base R {#character:base-R}
 
 本部分简述base R中关于字符处理的常用函数。
 
@@ -35,7 +35,7 @@ Excel中自带的字符串函数[^text]，如:`left`,`len`,`mid`,`find`,`Proper`
  
  - 单引号字符串通常用在字符串内包含双引号时，如用R执行sql字符串代码时
  
- - R-4.0之后引入的R字符[新特性]，让单双引号基本没区别
+ - R-4.0之后引入的R字符[newfeatures]，让单双引号基本没区别
 
 
 R中的字符用单双引号都可创建，如下所示:
@@ -139,7 +139,7 @@ strReverse(c("abc", "Statistics"))
 ```
 
 
-### 新特性{#新特性}
+### 新特性{#newfeatures}
 
 该特性让反斜杠或单引号和双引号书写变得容易。用法r"(...)"，括号中可以是任意字符，详情请看`?Quotes`。
 
@@ -162,7 +162,7 @@ cat(char)
 
 
 
-## stringr
+## stringr{#character:stringr-packages}
 
 
 本小节介绍R包`stringr`，stringr处理字符相对简单，并且是tidyverse系列的一部分，是很成熟的R包，API功能稳定。stringr是基于`stringi`之上构建的,stringr包集合了常见字符功能函数，如果发现stringr缺少某些功能可以查看`stringi`包。
@@ -177,7 +177,7 @@ cat(char)
 
 本小节的部分案例照搬[R for Data Science](https://r4ds.had.co.nz/strings.html)。
 
-### 安装
+### 安装 {#stringr-install}
 
 ```{r eval=FALSE}
 # Install the released version from CRAN:
@@ -188,7 +188,7 @@ install.packages("stringr")
 devtools::install_github("tidyverse/stringr")
 ```
 
-### 基本使用
+### 基本使用 {#stringr-usage}
 
 stringr包中所有的函数都已`str_`开头，让字符做第一个参数。
 
@@ -252,7 +252,7 @@ str_remove(string = 'a||b',pattern = "\\|\\|")
 
 
 
-### 常用函数
+### 常用函数{#stringr-functions}
 
 
 #### 截取字符
@@ -511,7 +511,7 @@ str_to_sentence("the quick brown dog")
 ```
  
  
-## 综合运用
+## 综合运用{#character:application}
 
 ### 实现excel函数
 
@@ -577,7 +577,7 @@ dt[,list(newcol=my_str_split(letters)),by=.(col)]
 
 
 
-## base和stringr
+## base和stringr{#character:the-difference-stringr-and-base}
 
 以下表格数据对比，主要是base R 和 stringr中的相应字符处理功能函数对比。
 
@@ -617,7 +617,7 @@ dt <- read_html('https://stringr.tidyverse.org/articles/from-base.html') %>%
 通过以上对比，方便我们从Base R 切换到stringr包的使用。
 
 
-## 参考资料
+## 参考资料 {#character:reference-material}
 
 1. tidyverse-stringr:<https://stringr.tidyverse.org/articles/from-base.html>
 2. stringr vignettes:<https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html>

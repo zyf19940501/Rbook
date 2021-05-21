@@ -37,13 +37,13 @@ csv文件也被称作平面文件，结构简单，平面文件比结构文件�
 
 
 
-## readxl {#data:readxl}
+## readxl {#readxl:description}
 
 readxl软件包使R获取Excel数据变得方便简洁。与现有的软件包(例如：xlsx)相比，readxl没有外部依赖性，xlsx等包依赖java环境。readxl包容易在所有的操作系统安装使用。
 
 readxl[项目地址](https://readxl.tidyverse.org/)，本节大部分代码来源项目官网介绍，可自行查阅官网。
 
-### 安装
+### 安装{#readxl:install}
 
 从CRAN安装最新发行版本的最简单方法是安装整个tidyverse。
 
@@ -67,7 +67,7 @@ devtools::install_github("tidyverse/readxl")
 ```
 
 
-### 用法
+### 用法 {#readxl:usage}
 
 1.读取
 
@@ -165,14 +165,14 @@ list.files(path = 'data/read-write/')
 
 
 
-## writexl {#data:writexl}
+## writexl {#writexl}
 
 
 截止到2021年5月17日，writexl包功能比较简单，仅有输出Excel功能。快速、不依赖java和Excle是它绝对的优势，并且输出文件相比`openxlsx`包较小。
 
 [项目地址](https://docs.ropensci.org/writexl/)
 
-### 用法
+### 用法 {#writexl:usage}
 
 安装 
 
@@ -245,7 +245,9 @@ write_xlsx(df, 'universities.xlsx')
 unlink('universities.xlsx')
 ```
 
-## openxlsx {#data:openxlsx}
+
+
+## openxlsx {#openxlsx:description}
 
 openxlsx是当我需要定制输出Excel表格或报表时常用R包。目前该包的版本4.2.3，通过使用Rcpp加速，包的读写速度在Excel的百万级下是可接受状态，包的相关函数功能完善且简易好用，并且正在积极开发中，相信它以后功能会越来越强大。
 
@@ -271,7 +273,7 @@ packageVersion("openxlsx")
 
 本人公众号:宇飞的世界中有更加详细的阐述:<https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ>
 
-### 安装
+### 安装 {#openxlsx:install}
 
 稳定版
 
@@ -289,11 +291,11 @@ install_github("ycphs/openxlsx")
 ```
 
 
-### 基础功能
+### 基础功能 {#openxlsx:functions}
 
 本文仅呈现基础功能部分，即读写EXCEL文件。其它功能，请查阅项目官方地址或微信公众号文章[R包-openxlsx-学习笔记](https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ)
 
-#### 读取Excel
+#### 读取Excel {#openxlsx:read-function}
 
 read.xlsx()是读取函数，主要参数如下：
 
@@ -343,7 +345,7 @@ xlsxFile <- system.file("extdata", "readTest.xlsx", package = "openxlsx")
 df1 <- readWorkbook(xlsxFile = xlsxFile, sheet = 1)
 ```
 
-#### 写入Excel
+#### 写入Excel {#openxlsx:write-function}
 
 数据清洗完之后，或者是透视表已经完成，需要将结果从R导出到Excle，这时就利用函数将结果数据集data.frame写入Excle中。
 
@@ -555,7 +557,7 @@ R包openxlsx学习笔记:<https://www.yuque.com/docs/share/7a768e6f-95e0-417c-a9
 个人主页:<https://www.yuque.com/zyufei>
 
 
-## readr {#data:readr}
+## readr {#readr:package}
 
 
 readr提供了一种快速友好的方式读取矩形数据[^矩形数据](如：csv,tsv,fwf)，且当读取大型数据集时默认有进度条显示。
@@ -567,7 +569,7 @@ readr提供了一种快速友好的方式读取矩形数据[^矩形数据](如�
 
 
 
-### 安装
+### 安装 {#readr:install}
 
 直接安装tidyverse获取或单独安装readr。
 
@@ -584,7 +586,7 @@ devtools::install_github("tidyverse/readr")
 ```
 
 
-### 用法
+### 用法 {#readr:usage}
 
 
 readr包是tidyverse系列的核心包，可以加载tidyverse使用。
@@ -678,7 +680,7 @@ read_csv(readr_example("mtcars.csv"),locale = locale(encoding = 'UTF-8',tz = 'As
 
 详细信息查看手册`vignette("locales")`。
 
-### 导出功能
+### 导出功能 {#readr:write-function}
 
 由于系统不同的缘故，在win系统下可能面临编码问题。我用readr导出数据时一般采用`write_excel_csv()`功能导出。
 
@@ -697,7 +699,7 @@ write_csv(storms, "storms.csv.gz")
 当数据集前面行缺失值较多，readr自动猜数据列类型错误时，需要我们人为指定列类型；当编码时区等错误时，需指定`locale()`；以上是可能遇到的问题以及解决办法。
 
 
-## vroom {#data:vroom}
+## vroom {#data:vroom} 
 
 vroom实现读取矩形数据到R中,如 comma separated(csv),tab separated(tsv), fixed width files(fwf)。该包的功能类似`readr::read_csv()`,`data.table::fread()`和`read.csv()`,但是对于许多数据集来说，`vroom::vroom()`读取速度会快得多。
 
@@ -783,12 +785,14 @@ vroom(file, col_select = c(model, cyl, gear))
 ## Rstudio导入 {#data:rstudio-addins}
 
 
-利用rstudio导入数据，本质也是调用`readr`和`readxl`包，如下所示：
+### 利用rstudio工具栏导入
+
+本质也是调用`readr`和`readxl`包，如下所示：
 
 ![rstudio-load-data](picture/read-write/Rstudio-load-data.png)
 
 
-插件导入
+### 插件导入
 
 [项目地址](https://github.com/milesmcbain/datapasta)
 
@@ -803,6 +807,7 @@ install.packages("datapasta")
 2.使用
 
 ![datapasta](picture/read-write/datapasta-copy.gif)
+ 
  
 ## 文件路径 {#data:file-path}
 

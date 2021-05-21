@@ -1,4 +1,4 @@
-# 时间处理 {#datetime }
+# 时间处理 {#datetime}
 
 时间处理看起来是一件简单的事情，因为我们每天都在使用，但事实上是一件复杂的事情。闰年导致每年的天数并不一致，每天也并不是24小时。可以自行搜索“夏令时”，“为什么一天是24小时”或"Why do we have 24 hours in a day"等问题了解关于时间的概念。
 
@@ -25,7 +25,7 @@ R中内置Date,POSIXct和POSIXlt三个关于日期和时间的类[^类]。
 
 [^类]:类是面向对象编程的一个术语，一个对象通常有0个1个或多个类。在R中用`class()`函数查看所属对象的类。
 
-### Date {#datetime:base-R-date}
+### Date {#the-date-class}
 
 如果我们的数据结构中只有日期，没有时间，我们仅需要使用Date类。
 
@@ -99,7 +99,7 @@ seq(date3,date4,by="30 days")
 seq(date3,date4,by="8 weeks")
 ```
 
-### POSIXct {#datetime:base-R-POSIXct}
+### POSIXct {#the-POSIXct-class}
 
 如果在数据中有时间，最好使用该类；
 
@@ -165,7 +165,7 @@ tm2 - tm1
 
 
 
-### POSIXlt {#datetime:base-R-POSIXlt}
+### POSIXlt {#the-POSIXlt-class}
 
 通过此类，我们可以很便捷提取时间中的特定成分。其中"ct"代表日历时间,"it"代表本地时间,该类对象是list(列表)。
 
@@ -207,7 +207,7 @@ trunc(t1,'min')
 
 
 
-### 安装包 {#lubridate:install}
+### 安装包 {#lubridate-install}
 
 ```{r eval=FALSE}
 install.packages("tidyverse")
@@ -223,7 +223,7 @@ devtools::install_github("tidyverse/lubridate")
 library(lubridate,warn.conflicts = FALSE)
 ```
 
-### 当前时间日期 {#lubridate:current-datetime}
+### 当前时间日期 {#get-current-datetime}
 
 - `now`函数
 
@@ -248,7 +248,7 @@ base::Sys.Date()
 
 
 
-### 构造日期时间 {#lubridate:make-datetime}
+### 构造日期时间 {#make-datetime}
 
 使用数值直接创建日期时间。
 
@@ -297,7 +297,7 @@ as_date('2020-01-09') #ymd格式
 ```
 
 
-### 解析日期时间
+### 解析日期时间{#parse-datetime}
 
 数据源中日期列可能是各种的字符形式，需要转换为时间格式方便进行日期计算。商业环境中的数据是混乱的，生产库可能是不同的数据库系统，导致时间日期格式混乱，如果公司没有统一的用户层数据源，我们就需要自己清洗数据，将不同形式的日期格式转化为标准格式。
 
@@ -339,7 +339,7 @@ ymd_hms(.POSIXct(1591709615),tz = 'Asia/Shanghai')
 
 
 
-### 提取日期时间成分 {#lubridate:extracting-information}
+### 提取日期时间成分 {#extracting-datetime-information}
 
 ```{r}
 #获取年
@@ -362,7 +362,7 @@ second(now())
 ```
 
 
-### 处理时区 {#lubridate:time-zones}
+### 处理时区 {#time-zones}
 
 数据时区与本地R环境一致时，数据中的时区没必要处理，但是当数据是跨时区的或者不同生产系统的时区不一致，我们需要将数据时区处理一致。
 
@@ -425,7 +425,7 @@ as_datetime(now(),tz = 'asia/shanghai')
 
 
 
-### 时间间隔
+### 时间间隔{#interveal}
 
 `lubridate`中将时间间隔保存为`interveal`类对象。
 
@@ -490,7 +490,7 @@ int_diff(times)
 
 
 
-### 时间日期计算
+### 时间日期计算{#calculate-datetime}
 
 时间日期计算以`number line`为依据计算。原文是`Because the timeline is not as reliable as the number line`，我没理解这句话。
 
@@ -555,7 +555,7 @@ jan31 %m-% months(0:11)
 
 
 
-## 综合运用
+## 综合运用 {#datetime:application }
 
 ### 日报同环比计算
 
@@ -820,7 +820,7 @@ purrr::map_dfr(dtlist,testfun)
 
 
 
-## 补充资料
+## 补充资料{#datetime:additional-information}
 
 ### Excel and R 
 

@@ -1,36 +1,63 @@
 
-```{r setup2, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-#  dplyr
-
-`dplyr`包是`tidyverse`系列中的核心包之一,dplyr是**A Grammar of Data Manipulation **，即dplyr是数据处理的语法。
+#  数据处理之-dplyr {#Data:Manipulation-dplyr}
 
 
-与`sql`相比，用R实现相同功能的好处：
+本章节主要目的是通过阐述dplyr动词用法，实现与`Excel透视表`或`sql`相同功能，从而达到不同的数据整理、聚合需求。
+
+本章主要从以下方面阐述：
+
+1. 行条件筛选
+2. 列筛选
+3. 字段重命名
+4. 列位置排序
+5. 行排序
+6. 新增计算字段
+7. 分组聚合
+8. 表关联
+9. 行列操作
+10. 使用dplyr编写自定义函数
+
+
+其中9,10行列操作和自定义函数有一定难度，大家可以先熟悉dplyr基本用法后再了解其用法。
+
+与`sql`相比，用dplyr的优势：
 
 - 代码量极大减少
 
-- 当逻辑复杂时，`R`可以按照顺序一步步实现，无需嵌套，实现过程简单
+- 逻辑复杂时，dplyr动词可以按照顺序一步步实现，无需嵌套，实现过程简单
 
-- 该包就是从数据库相关操作中抽象而来，迁移成本低
+- 代码可读性好
 
 - 配合`dbplyr`包使用，大部分情况下可以扔掉`sql`语法，从而实现不同数据库间语法并不完全一致时，代码可重复使用
 
 
-本章节利用`R`语言完成与`Excel透视表`或`sql`语句的功能，将从行条件筛选、排序、分组聚合、表关联等方面记录`R`的实现方式。
-
-> 本章节会照搬dplyr包中的部分案例
-
-## 前言
+> 本章节中部分案例照搬dplyr包的官方案例，
+dplyr动词从数据库相关操作中抽象而来，从sql迁移成本低
 
 
-数据操作在数据库中往往被增、改、删、查四字描述，加上表连接查询基本涵盖了大部分的数据库数据操作。在tidyverse系列中的dplyr包通过一组动词来解决相似数据操作动作。
 
-在本章介绍部分，我们将拿R与Excel中的数据操作做类比，以达到Excel中透视表等功能。
+## 前言 {#dplyr:description}
 
-###  安装
+
+`dplyr`包是`tidyverse`系列的核心包之一。dplyr是**A Grammar of Data Manipulation **，即dplyr是数据处理的语法。数据操作在数据库中往往被增、改、删、查四字描述，加上表连接查询基本涵盖了大部分的数据操作。
+
+
+`dplyr`包通过提供一组动词来解决最常见的数据处理问题：
+
+- `mutate()` 添加新变量,现有变量的函数
+
+- `select()` 筛选列,根据现有变量名称选择变量
+
+- `filter()` 筛选行，根据条件筛选
+
+- `summarise()` 按照一定条件汇总聚合
+
+- `arrange()` 行排序
+
+以上动词都可以和`group_by()`结合，使我们可以按组执行以上任何操作。除了以上单个表操作的动词，dplyr中还有操作两表(表关联)的动词，可以通过`vignette("two-table")`查看学习。   
+
+
+###  安装 {#dplyr:install-package}
 
 dplyr包可以直接安装。
 
@@ -46,31 +73,61 @@ install.packages('dplyr')
 devtools::install_github("tidyverse/dplyr")
 ```
 
+在开始使用前，请确保自己dplyr版本是较新版本，因为1.0.0版本有较大更新。
 
-### 介绍
-
-`dplyr`包提供一组动词来解决最常见的数据处理问题：
-
-- `mutate()` 添加新变量,现有变量的函数
-
-- `select()` 筛选列,根据现有变量名称选择变量
-
-- `filter()` 筛选行，根据条件筛选
-
-- `summarise()` 按照一定条件汇总聚合
-
-- `arrange()` 行排序
-
-以上动词都可以和`group_by()`结合，使我们可以按组执行以上任何操作。除了以上单个表操作的动词，dplyr中还有操作两表(表关联)的动词，可以通过`vignette("two-table")`查看学习。   
+```{r}
+packageVersion('dplyr')
+```
 
 
-**Excel类比**
+### Excel and Sql 类比{#dplyr:difference-of-sql}
 
-类比Excel数据操作功能,`filter`实现筛选，`mutate`实现列计算，`summarise`配合`group_by`实现数据透视表，`arrange`实现排序功能。
-另外配合`dplyr::left_join()`等表连接功能，实现Excel中的`vlookup`,`xlookup`等函数效果。
+与Excel相比,dplyr使用`filter`实现筛选，`mutate`实现列新增计算，`summarise`配合`group_by`实现数据透视表，`arrange`实现排序功能。
+`dplyr::left_join()`等表连接功能，实现Excel中的`vlookup`,`xlookup`等函数效果。
 
-dplyr包中的动词可实现Excel中的大部分数据操作功能。
-如下所示：筛选订单表中的1-5月订单数据，按照城市汇总，求每个城市的销售额和门店数(去重)。
+请看案例：
+
+>案例中使用的数据集是R包`nycflights13`带的flights数据集。
+
+Excel实现
+
+![透视表截图](./picture/data-table/01picture.png)
+
+
+R实现：
+
+```{r message=FALSE,warning=FALSE}
+library(tidyverse,warn.conflicts = FALSE)
+data <- readr::read_csv("./data/flights.csv")
+
+data %>% 
+  filter(year==2014,month==6) %>% 
+  group_by(origin,dest) %>% 
+  summarise(distance求和项 = sum(distance))
+
+```
+
+Sql实现：
+
+
+```{r include=FALSE}
+library(DBI)
+data <- readr::read_csv("C:/Users/zhongyf/Desktop/Rbook/data/flights.csv")
+conn <- dbConnect(RSQLite::SQLite(), ":memory:")
+RSQLite::dbWriteTable(conn,'flights',data)
+```
+
+
+```{r eval=FALSE}
+select origin,dest,sum(distance) distance求和项 from flights where year = 2014 and month =6 group by origin,dest
+```
+
+<!-- 本初很奇怪，无法正确编译通过 -->
+
+
+### 常见问题
+
+1. 筛选订单表中的1-5月订单数据，按照城市汇总，求每个城市的销售额和门店数(去重)?
 
 
 ```{r eval=FALSE}
@@ -80,6 +137,20 @@ data %>%
   summarise(金额 = sum(金额),门店数 = n_distinct(门店编码))
 ```
 
+2. 近30天商品销量排名?
+
+
+```{r eval=FALSE}
+data %>% 
+  filter(订单日期 >= Sys.Date()-30) %>% 
+  group_by(分析大类,商品编码) %>% 
+  summarise(商品销量 = sum(数量)) %>% 
+  group_by(分析大类) %>% 
+  mutate(商品排名 = dense_rank(desc(商品销量))) 
+# 注意用desc倒序，销量高排第一
+```
+
+3. 销售和库存形成笛卡尔积表，计算商品有货率、动销率?
 
 
 **Cheat Sheet**
@@ -94,19 +165,18 @@ Rstudio其它手册:<https://www.rstudio.com/resources/cheatsheets/>
 
 
 
-## 基础用法
+## 基础用法 {#dplyr:usage}
 
 基础用法部分，我们将从行筛选，重命名、列位置调整、新增计算列、排序、分组聚合几个方面阐述`dplyr`动词功能。
 
-### 加载包
+首先加载包，加载包时可能会有一些重名函数的提示，可以通过warn.conflict参数禁掉提示。如下所示：
 
 ```{r}
-#library(dplyr)
 # 禁掉提示
 library(dplyr,warn.conflicts = FALSE)
 ```
 
-### filter
+### filter{#dplyr-filter}
 
 `filter`动词顾名思义即筛选功能，按照一定条件筛选data.frame；与Excel中的筛选功能和`SQL`中`where`条件一致。
 
@@ -166,6 +236,7 @@ select * from starwars where species in ("Droid","Clawdite") --sql查询
 - 逻辑关系筛选
 
 条件运算分为逻辑运算、关系运算。
+
 关系运算符 >、<、==、!=、>=、<=分别代表大于、小于、等于、不等于、大于等于、小于等于。
 
 逻辑运算符 &、|、！。 `|`为 或, `&` 为并、且条件，`!`为非。
@@ -186,9 +257,9 @@ starwars %>%
 > !的运算级别相比 %in% 更高
 
 
-### select 
+### select  {#dplyr-select}
 
-当完整数据集列数较多时，我们某次分析可能并不需要那么多列，通过动词`select()`筛选列
+当完整数据集列较多时，我们某次分析可能并不需要那么多列，通过动词`select()`筛选列,剔除不需要的列。
 
 - 基础用法
 
@@ -206,15 +277,27 @@ starwars %>%
 ```{r}
 starwars %>% 
   select(name : eye_color)
+
 #same above
 starwars %>% 
   select(1:6)
-# starwars %>% 
-#   select(c(1,2,4,5,7))
+
+# starwars %>% select(c(1,2,4,5,7))
+
+
+```
+
+- 新增列筛选方式
+
+```{r}
+# starwars %>% select(!(name:mass))
+# iris %>% select(!ends_with("Width"))
+# iris %>% select(starts_with("Petal") & ends_with("Width"))
+# iris %>% select(starts_with("Petal") | ends_with("Width"))
 ```
 
 
-### rename
+### rename {#dplyr-rename}
 
 列重命名使用`rename()`函数，新名称写前面，如下所示：
 
@@ -232,11 +315,11 @@ select * ,homeworld  home_word from starwars
 > as 可以省略，但中间有一个以上空格。与R的差异是新增home_word列，原始列继续存在，R中是替换列名。
 
 
-### relocate
+### relocate {#dplyr-relocate}
 
 更改列顺序，与使用`select()`动词指定列顺序功能相似。
 
-参数
+relocate参数如下：
 
 ```{r eval=FALSE}
 relocate(.data, ..., .before = NULL, .after = NULL)
@@ -249,9 +332,9 @@ starwars %>% relocate(sex:homeworld, .before = height)
 ```
 
 
-### mutate
+### mutate {#dplyr-mutate}
 
-动词`mutate`
+动词`mutate`可以新增计算列，删除列，更新已有列，列之间的计算都可以通过mutate实现。
 
 - 新增计算列
 
@@ -269,6 +352,8 @@ starwars %>%
   select(name:mass,bmi,newbmi)
 ```
 
+
+
 - 删除列
 
 ```{r}
@@ -276,7 +361,7 @@ starwars %>% mutate(height = NULL)
 ```
 
 
-### arrange
+### arrange {#dplyr-arrange}
 
 - 单列排序，默认升序，通过`desc()`降序排列
 
@@ -300,7 +385,7 @@ select * from starwars order by height,mass desc
 
 
 
-### summarise
+### summarise {#dplyr-summarise}
 
 `summarise`常与`group_by`结合使用。
 
@@ -311,7 +396,7 @@ mtcars %>%
 
 > n()是dplyr包中的计算当前组的大小，用在summarise()和mutate()中。通常可用来组计算。
 
-### group_by
+### group_by {#dplyr-groupby}
 
 聚合前一般都需要分组，`group_by()`动词实现该功能，与`SQL`中`group by ···`类似。
 
@@ -333,15 +418,12 @@ GROUP BY  species
 ```
 
 
-## 表操作
+## 表关联 {#dplyr:merge-table}
 
-1. 指像`sql`中的`left join`,`inner join`等表格之间的操作，或者是Excel中`Power Piovt`建模的建立关系，从而实现不同表格间的关联
+表关联指像`sql`中的`left join`,`inner join`等表格之间的操作，或者是Excel中`Power Piovt`建模的建立关系，从而实现不同表格间的关联。
 
-2. 表格中的列操作，如列求和，均值等
 
-3. 行操作指不同字段间的计算，如`Excle`的列与列之间计算,`Excle`中的函数对行列不敏感，没有明显区别，但是`R`中`tidyverse`里列计算简单，行间计算依赖`rowwise()`函数实现
-
-### 基础
+### 基础 
 
 `left_join()`,`full_join`,`inner_join()`等动词关联两个表。详情请查看：`vignette("two-table")`
 
@@ -362,15 +444,24 @@ flights2 %>%
   left_join(airlines)
 ```
 
-指定关联条件列，类似数据库中`on a.column = b.column `
+指定关联条件列，类似数据库中`on a.column = b.column `。
+
+- R实现
 
 ```{r}
 flights2 %>% left_join(planes, by = "tailnum")
 ```
 
+- Sql实现
+
+```{sql eval=FALSE}
+select * from flights2 a left join planes b on a.tailnum = b.tailnum 
+```
+
+
 - 不同名称列关联
 
-`left_join(x,y,by = c("a" = "b", "c" = "d"))` 将会匹配 x$a to y$b 和 x$c to y$d 作为关联条件
+`left_join(x,y,by = c("a" = "b", "c" = "d"))` 将会匹配 `x$a` to `y$b` 和 `x$c` to `y$d` 作为关联条件
 
 ```{r}
 #出发机场和目的机场信息
@@ -430,7 +521,7 @@ purrr::reduce(dtlist,left_join,by='x')
 
 
 
-## 列操作
+## 列操作 {#dplyr-column-manipulation}
 
 在多列上执行相同的操作是常用的操作，但是通过复制和粘贴代码，麻烦不说还容易错：
 
@@ -507,7 +598,7 @@ starwars %>% summarise(across(where(is.numeric), min_max))
 
 NB:该参数的机制没有特别理解，需多练习体会。主要是运用到匿名函数时
 
-以下是官方图册中的案例，但是报错：
+以下是官方案例，但是报错(目前已修复)：
 
 ```{r eval=FALSE}
 starwars %>% summarise(across(where(is.numeric), min_max, .names = "{.fn}.{.col}"))
@@ -528,6 +619,7 @@ starwars %>% summarise(across(where(is.numeric), min_max, .names = "{fn}——{c
 
 ```
 
+
 ### 当前列
 
 如果需要，可以通过调用访问内部的“当前”列的名称`cur_column()`。
@@ -541,34 +633,33 @@ mult <- list(x = 1, y = 10, z = 100)
 df %>% mutate(across(all_of(names(mult)), ~ .x * mult[[cur_column()]]))
 ```
 
-## 行操作
 
-在操纵数据框中，`dplyr`等工具让我们对列操作相对简单，但是对行操作则困难些。
 
-### 构造数据集
+
+
+## 行操作{#dplyr-row-manipulation}
+
+ 行操作指不同字段间的计算，如`Excle`的列与列之间计算,`Excle`中的函数对行列不敏感，没有明显区别，但是`R`中`tidyverse`里列计算简单，行间计算依赖`rowwise()`函数实现
+
+### 比较差异
 
 ```{r}
 df <- tibble(x = 1:2, y = 3:4, z = 5:6)
 df %>% rowwise()
 ```
 
-像`group_by()`,`rowwise()`并没有做任何事情，它的作用是改变其他动词的工作方式：
-比较以下代码中不的不同
+像`group_by()`,`rowwise()`并没有做任何事情，它的作用是改变其他动词的工作方式。
+
+注意以下代码返回结果不同
 
 ```{r}
 df %>% mutate(m = mean(c(x, y, z)))
 df %>% rowwise() %>% mutate(m = mean(c(x, y, z)))
 ```
 
-`data.table`中的操作:
+`df %>% mutate(m = mean(c(x, y, z)))`返回的结果是x,y,z散列全部数据的均值；`df %>% rowwise() %>% mutate(m = mean(c(x, y, z)))`通过rowwise改变了mean的作为范围，返回的某行x,y,z列3个数字的均值。两种动词的作用的范围因为rowwise完全改变。
 
-```{r eval=FALSE}
-library(data.table)
 
-dt <- data.table(x = 1:2, y = 3:4, z = 5:6)
-dt[,m:=mean(c(x,y,z))][]
-dt[,m:=mean(c(x,y,z)),by=.(x)][]
-```
 
 您可以选择在调用中提供“标识符”变量`rowwise()`。这些变量在您调用时被保留`summarise()`，因此它们的行为与传递给的分组变量有些相似`group_by()`：
 
@@ -585,9 +676,9 @@ df %>%
 ```
 
 
-### 行汇总统计
+### 行汇总
 
-`dplyr::summarise()`使得汇总一列中各行的值非常容易。当与之结合使用时`rowwise()`，还可以轻松汇总一行中各列的值：
+`dplyr::summarise()`使得聚合一列的值非常容易。当`summarise()`与`rowwise()`结合使用时，可以轻松聚合一行各列的值：
 
 ```{r}
 df <- tibble(id = 1:6, w = 10:15, x = 20:25, y = 30:35, z = 40:45)
@@ -597,7 +688,9 @@ rf %>% summarise(total = sum(c(w, x, y, z)))
 ```
 
 
-键入每个变量名称很繁琐，通过`c_across()`使更简单
+键入每个变量名称很繁琐，通过`c_across()`使更简单。
+
+>详情可见vignette("rowwise")。
 
 ```{r}
 rf %>% mutate(total = sum(c_across(w:z)))
@@ -612,7 +705,7 @@ rf %>%
 
 
 
-## 分组操作
+## 分组操作 {#dplyr-groupby-manipulation}
 
 详情: <https://cloud.r-project.org/web/packages/dplyr/vignettes/grouping.html>
 
@@ -683,7 +776,9 @@ object.size(b)
 
 在实际使用中，当数据较大时需要删掉分组信息。以上可以看到保留分组信息的比没保留的大了两倍多。
 
-## 常用函数
+
+
+## 常用函数 {#dplyr-functions}
 
 ### 条件判断 
 
@@ -890,15 +985,11 @@ distinct(df, diff = abs(x - y))
 
 
 
-## 用`dplyr`编程
+## `dplyr`编程{#dplyr-programming}
 
-Programming with dplyr:
+[Programming with dplyr](https://cloud.r-project.org/web/packages/dplyr/vignettes/programming.html)
 
-<https://cloud.r-project.org/web/packages/dplyr/vignettes/programming.html>
-
-本节概念性东西较多且复杂不易理解，先尝试会使用，概念再慢慢消化理解。
-
-虽然复杂但是比较实用，尤其是当我们需要定义一些通用功能函数时
+本节概念性东西较多且复杂不易理解，先尝试会使用，概念再慢慢消化理解。虽然复杂,但是比较实用，尤其是当我们需要定义一些通用功能函数时。
 
 以下是对原文引用
 
@@ -1002,4 +1093,7 @@ starwars %>% my_summarise(sex, gender)
 ```
 
 
+## 参考资料
 
+1.programming <https://dplyr.tidyverse.org/dev/articles/programming.html>
+2.https://cloud.r-project.org/web/packages/dplyr/vignettes/programming.html

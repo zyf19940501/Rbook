@@ -21,7 +21,7 @@ data.table 优势：
 - 语法简洁
 
 
-
+>本文会照搬很多官方关于data.table的demo
 
 ## 基础介绍
 
@@ -51,9 +51,11 @@ example(data.table)
 
 在我实际工作中接触的数据大部分以数据库,csv,Excel等形式存在，并且CSV格式数据较少。但是data.table包读取数据的`fread`函数仅接受CSV格式。如果是Excel格式文件，需要通过如`readxl`，`openxlsx`等包读入后转换为`data.table`格式数据。
 
-fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线文件.
+fread 函数可以直接读取CSV格式文件,无论是本地文件或者在线文件,如下所示:
 
-本文会照搬很多官方关于data.table的demo.
+>案例中使用的数据集是R包`nycflights13`带的flights数据集。
+
+
 
 ```{r}
 library(data.table)
