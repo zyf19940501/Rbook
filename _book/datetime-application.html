@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-21" />
+<meta name="date" content="2021-05-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -475,7 +475,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb273-3"><a href="datetime-application.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;month&#39;</span>) </span>
 <span id="cb273-4"><a href="datetime-application.html#cb273-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-01&quot;</span></span>
 <span id="cb273-5"><a href="datetime-application.html#cb273-5" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;week&#39;</span>)</span>
-<span id="cb273-6"><a href="datetime-application.html#cb273-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-16&quot;</span></span></code></pre></div>
+<span id="cb273-6"><a href="datetime-application.html#cb273-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-23&quot;</span></span></code></pre></div>
 <p>以上同系列函数从名字就能大概看出端倪，其中关键参数是unit，可选想如下:
 1s,second,minute,5 mins,hour,dat,week,months,bimonth,quarter,season,halfyear,year。</p>
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="datetime-application.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round_date</span>(</span>
@@ -511,7 +511,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb276-5"><a href="datetime-application.html#cb276-5" aria-hidden="true" tabindex="-1"></a>current_start_date</span>
 <span id="cb276-6"><a href="datetime-application.html#cb276-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01&quot;</span></span>
 <span id="cb276-7"><a href="datetime-application.html#cb276-7" aria-hidden="true" tabindex="-1"></a>date </span>
-<span id="cb276-8"><a href="datetime-application.html#cb276-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-21&quot;</span></span>
+<span id="cb276-8"><a href="datetime-application.html#cb276-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-24&quot;</span></span>
 <span id="cb276-9"><a href="datetime-application.html#cb276-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb276-10"><a href="datetime-application.html#cb276-10" aria-hidden="true" tabindex="-1"></a><span class="co"># last year</span></span>
 <span id="cb276-11"><a href="datetime-application.html#cb276-11" aria-hidden="true" tabindex="-1"></a>last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
@@ -519,7 +519,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb276-13"><a href="datetime-application.html#cb276-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-01-01&quot;</span></span>
 <span id="cb276-14"><a href="datetime-application.html#cb276-14" aria-hidden="true" tabindex="-1"></a>last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
 <span id="cb276-15"><a href="datetime-application.html#cb276-15" aria-hidden="true" tabindex="-1"></a>last_end_date</span>
-<span id="cb276-16"><a href="datetime-application.html#cb276-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-05-21&quot;</span></span></code></pre></div>
+<span id="cb276-16"><a href="datetime-application.html#cb276-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-05-24&quot;</span></span></code></pre></div>
 <p>以上,n表示间隔年数，大部分时候都是1。但特殊时候，比如2021年同比2020年2-4月(新冠疫情)基本没有同比意义，所以在此设置为参数。</p>
 <ul>
 <li>计算月同比</li>
@@ -538,9 +538,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb278-3"><a href="datetime-application.html#cb278-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb278-4"><a href="datetime-application.html#cb278-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 环比月截止日</span></span>
 <span id="cb278-5"><a href="datetime-application.html#cb278-5" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb278-6"><a href="datetime-application.html#cb278-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-21&quot;</span></span>
+<span id="cb278-6"><a href="datetime-application.html#cb278-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-24&quot;</span></span>
 <span id="cb278-7"><a href="datetime-application.html#cb278-7" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
-<span id="cb278-8"><a href="datetime-application.html#cb278-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-04-21&quot;</span></span></code></pre></div>
+<span id="cb278-8"><a href="datetime-application.html#cb278-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-04-24&quot;</span></span></code></pre></div>
 <p>经过以上计算，得到一对对时间周期，然后在订单或者其它数据中筛选即可获得同环比维度数据。</p>
 <ul>
 <li>模拟计算</li>

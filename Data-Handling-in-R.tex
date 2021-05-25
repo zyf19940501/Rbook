@@ -128,7 +128,7 @@
 
 \title{R语言学习笔记}
 \author{Yufei Zhong}
-\date{2021-05-21}
+\date{2021-05-24}
 
 \begin{document}
 \maketitle
@@ -171,7 +171,7 @@
 
 
 
-\multicolumn{12}{!{\color[HTML]{666666}\vrule width 1pt}>{\raggedright}p{\dimexpr 10.42in+22\tabcolsep+11\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Arial}\textit{数据更新时间:2021-05-21}}}} \\
+\multicolumn{12}{!{\color[HTML]{666666}\vrule width 1pt}>{\raggedright}p{\dimexpr 10.42in+22\tabcolsep+11\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Arial}\textit{数据更新时间:2021-05-24}}}} \\
 
 \hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}\endfoot
 
@@ -589,7 +589,7 @@ range接受单元格范围，最简单的表示方式即Excle中单元格表示�
 \FunctionTok{library}\NormalTok{(nycflights13)}
 \NormalTok{writexl}\SpecialCharTok{::}\FunctionTok{write\_xlsx}\NormalTok{(flights, tmp1 }\OtherTok{\textless{}{-}} \FunctionTok{tempfile}\NormalTok{())}
 \FunctionTok{file.info}\NormalTok{(tmp1)}\SpecialCharTok{$}\NormalTok{size}
-\CommentTok{\#\textgreater{} [1] 29139352}
+\CommentTok{\#\textgreater{} [1] 29139353}
 \end{Highlighting}
 \end{Shaded}
 
@@ -597,7 +597,7 @@ range接受单元格范围，最简单的表示方式即Excle中单元格表示�
 \begin{Highlighting}[]
 \NormalTok{openxlsx}\SpecialCharTok{::}\FunctionTok{write.xlsx}\NormalTok{(flights, tmp2 }\OtherTok{\textless{}{-}} \FunctionTok{tempfile}\NormalTok{())}
 \FunctionTok{file.info}\NormalTok{(tmp2)}\SpecialCharTok{$}\NormalTok{size}
-\CommentTok{\#\textgreater{} [1] 26833693}
+\CommentTok{\#\textgreater{} [1] 26833694}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1659,9 +1659,40 @@ Sql实现：
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{select origin,dest,}\FunctionTok{sum}\NormalTok{(distance) distance求和项 from flights where year }\OtherTok{=} \DecValTok{2014}\NormalTok{ and month }\OtherTok{=}\DecValTok{6}\NormalTok{ group by origin,dest}
+\KeywordTok{select}\NormalTok{ origin,dest,}\FunctionTok{sum}\NormalTok{(distance) distance求和项 }\KeywordTok{from}\NormalTok{ flights }\KeywordTok{where} \DataTypeTok{year} \OperatorTok{=} \DecValTok{2014} \KeywordTok{and} \DataTypeTok{month} \OperatorTok{=}\DecValTok{6} \KeywordTok{group} \KeywordTok{by}\NormalTok{ origin,dest}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-62}Displaying records 1 - 10}
+\centering
+\begin{tabular}[t]{l|l|r}
+\hline
+origin & dest & distance求和项\\
+\hline
+EWR & ALB & 715\\
+\hline
+EWR & ANC & 13480\\
+\hline
+EWR & ATL & 317050\\
+\hline
+EWR & AUS & 88736\\
+\hline
+EWR & AVL & 13409\\
+\hline
+EWR & BDL & 8236\\
+\hline
+EWR & BNA & 138380\\
+\hline
+EWR & BOS & 92600\\
+\hline
+EWR & BQN & 47550\\
+\hline
+EWR & BTV & 15960\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{ux5e38ux89c1ux95eeux9898}{%
 \subsection{常见问题}\label{ux5e38ux89c1ux95eeux9898}}
@@ -5491,7 +5522,7 @@ R中内置Date,POSIXct和POSIXlt三个关于日期和时间的类\footnote{类�
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{Sys.time}\NormalTok{() }\CommentTok{\#获取当前时间}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21 18:37:50 CST"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24 09:49:04 CST"}
 \FunctionTok{class}\NormalTok{(}\FunctionTok{Sys.time}\NormalTok{())}
 \CommentTok{\#\textgreater{} [1] "POSIXct" "POSIXt"}
 \end{Highlighting}
@@ -5684,11 +5715,11 @@ now()函数是当前时间，只有一个参数tzone,默认为系统的timezone�
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{now}\NormalTok{()}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21 18:37:50 CST"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24 09:49:04 CST"}
 \CommentTok{\# now(tzone = \textquotesingle{}Asia/Shanghai\textquotesingle{})}
 \CommentTok{\# base R}
 \NormalTok{base}\SpecialCharTok{::}\FunctionTok{Sys.time}\NormalTok{()}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21 18:37:50 CST"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24 09:49:04 CST"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5703,10 +5734,10 @@ now()函数是当前时间，只有一个参数tzone,默认为系统的timezone�
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{today}\NormalTok{(}\AttributeTok{tzone =} \StringTok{\textquotesingle{}Asia/Shanghai\textquotesingle{}}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24"}
 \CommentTok{\#base R}
 \NormalTok{base}\SpecialCharTok{::}\FunctionTok{Sys.Date}\NormalTok{()}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5750,7 +5781,7 @@ now()函数是当前时间，只有一个参数tzone,默认为系统的timezone�
   \AttributeTok{sec =} \FunctionTok{second}\NormalTok{(}\FunctionTok{now}\NormalTok{()),}
   \AttributeTok{tz =} \StringTok{"asia/shanghai"}
 \NormalTok{)}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21 18:37:50 CST"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24 09:49:04 CST"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5852,23 +5883,23 @@ now()函数是当前时间，只有一个参数tzone,默认为系统的timezone�
 \CommentTok{\#\textgreater{} [1] 5}
 \CommentTok{\# 当前时间所在年份天数}
 \FunctionTok{yday}\NormalTok{(}\FunctionTok{now}\NormalTok{())}
-\CommentTok{\#\textgreater{} [1] 141}
+\CommentTok{\#\textgreater{} [1] 144}
 \CommentTok{\# 当前时间所在月天数}
 \FunctionTok{mday}\NormalTok{(}\FunctionTok{now}\NormalTok{())}
-\CommentTok{\#\textgreater{} [1] 21}
+\CommentTok{\#\textgreater{} [1] 24}
 \CommentTok{\# 周几}
 \FunctionTok{wday}\NormalTok{(}\FunctionTok{now}\NormalTok{(),}\AttributeTok{label =} \ConstantTok{TRUE}\NormalTok{,}\AttributeTok{week\_start =} \DecValTok{1}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 周五}
+\CommentTok{\#\textgreater{} [1] 周一}
 \CommentTok{\#\textgreater{} Levels: 周一 \textless{} 周二 \textless{} 周三 \textless{} 周四 \textless{} 周五 \textless{} 周六 \textless{} 周日}
 \CommentTok{\# 所在时刻}
 \FunctionTok{hour}\NormalTok{(}\FunctionTok{now}\NormalTok{())}
-\CommentTok{\#\textgreater{} [1] 18}
+\CommentTok{\#\textgreater{} [1] 9}
 \CommentTok{\# 所在时刻}
 \FunctionTok{minute}\NormalTok{(}\FunctionTok{now}\NormalTok{())}
-\CommentTok{\#\textgreater{} [1] 37}
+\CommentTok{\#\textgreater{} [1] 49}
 \CommentTok{\# 所在时刻}
 \FunctionTok{second}\NormalTok{(}\FunctionTok{now}\NormalTok{())}
-\CommentTok{\#\textgreater{} [1] 50.6}
+\CommentTok{\#\textgreater{} [1] 4.58}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5896,7 +5927,7 @@ now()函数是当前时间，只有一个参数tzone,默认为系统的timezone�
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{now}\NormalTok{()}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21 18:37:50 CST"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24 09:49:04 CST"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5956,11 +5987,11 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{lubridate}\SpecialCharTok{::}\FunctionTok{now}\NormalTok{() }\CommentTok{\# now函数调用系统默认时区}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21 18:37:50 CST"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24 09:49:04 CST"}
 \FunctionTok{as\_datetime}\NormalTok{(}\FunctionTok{now}\NormalTok{()) }\CommentTok{\#as\_datetime默认是UTC}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21 10:37:50 UTC"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24 01:49:04 UTC"}
 \FunctionTok{as\_datetime}\NormalTok{(}\FunctionTok{now}\NormalTok{(),}\AttributeTok{tz =} \StringTok{\textquotesingle{}asia/shanghai\textquotesingle{}}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21 18:37:50 CST"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24 09:49:04 CST"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6169,7 +6200,7 @@ lubridate中用\texttt{with\_tz()}，\texttt{force\_tz()}处理时区问题
 \FunctionTok{floor\_date}\NormalTok{(}\FunctionTok{today}\NormalTok{(),}\AttributeTok{unit =} \StringTok{\textquotesingle{}month\textquotesingle{}}\NormalTok{) }
 \CommentTok{\#\textgreater{} [1] "2021{-}05{-}01"}
 \FunctionTok{floor\_date}\NormalTok{(}\FunctionTok{today}\NormalTok{(),}\AttributeTok{unit =} \StringTok{\textquotesingle{}week\textquotesingle{}}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}16"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}23"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6225,7 +6256,7 @@ change\_on\_boundary参数
 \NormalTok{current\_start\_date}
 \CommentTok{\#\textgreater{} [1] "2021{-}01{-}01"}
 \NormalTok{date }
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24"}
 
 \CommentTok{\# last year}
 \NormalTok{last\_start\_date }\OtherTok{\textless{}{-}} \FunctionTok{floor\_date}\NormalTok{(date,}\AttributeTok{unit =} \StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%m{-}\%} \FunctionTok{years}\NormalTok{(n)}
@@ -6233,7 +6264,7 @@ change\_on\_boundary参数
 \CommentTok{\#\textgreater{} [1] "2020{-}01{-}01"}
 \NormalTok{last\_end\_date }\OtherTok{\textless{}{-}}\NormalTok{ date }\SpecialCharTok{\%m{-}\%} \FunctionTok{years}\NormalTok{(n)}
 \NormalTok{last\_end\_date}
-\CommentTok{\#\textgreater{} [1] "2020{-}05{-}21"}
+\CommentTok{\#\textgreater{} [1] "2020{-}05{-}24"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6271,9 +6302,9 @@ change\_on\_boundary参数
 
 \CommentTok{\# 环比月截止日}
 \FunctionTok{today}\NormalTok{()}
-\CommentTok{\#\textgreater{} [1] "2021{-}05{-}21"}
+\CommentTok{\#\textgreater{} [1] "2021{-}05{-}24"}
 \FunctionTok{today}\NormalTok{() }\SpecialCharTok{\%m{-}\%} \FunctionTok{months}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] "2021{-}04{-}21"}
+\CommentTok{\#\textgreater{} [1] "2021{-}04{-}24"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6532,8 +6563,8 @@ Excel中1900-01-01代表数字1，但是R中1970-01-01代表0。这也是比较�
 \end{Shaded}
 
 这样导致:
-R日期2021-05-21转化成数字是18768,
-Excel中日期2021-05-21转化成数字是44337,\textbf{两者相差25569}。
+R日期2021-05-24转化成数字是18771,
+Excel中日期2021-05-24转化成数字是44340,\textbf{两者相差25569}。
 
 \sout{在用R读取Excel文件时，涉及到数字日期转化时需要注意其中差异。}
 

@@ -1,19 +1,51 @@
-```{r setup-database, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
-```
 
 
-# database
-
-实际工作中，需要从数据库获取数据并清洗，R与数据库有多种交互方式,目前工作中打交道数据库主要是MSSQL,Oracle,mysql等,本文主要从以上数据库介绍记录“R与数据库的连接”。
-
-R中与数据库交互的包主要有DBI,RODBC,RMySQL,ROracle,odbc等包。DBI库在查询或上传工作中效率比RODBC高,特别数据量较大时,上传效率差异巨大,具体[差异](https://github.com/r-dbi/odbc)请点击查看详情。
+# database {#database}
 
 
-即使你暂时没有用数据库，也建议你未来用数据库存储数据，尤其是当有一定数据量时;在我最开始接触数据时，数据一般保存在Excel,那时候数据量大概在50万行左右，当公式较多，尤其时需要大批量vlookup时，Excel表格将会很卡顿。
+我们作为数据分析师有必要和数据库打交道吗？实际工作中，数据量达到一定的程度，当你开始需要使用 Excel PowerPivot 做数据透视表[^Power Pivot]时，你就必须开始和数据库打交道，因为这时数据源超过Excel上限了，已经没办法承接。
+
+[^PowerPivot]:PowerPivot 是一种数据建模技术，用于创建数据模型，建立关系，以及创建计算。 可使用 PowerPivot 处理大型数据集，构建广泛的关系，以及创建复杂（或简单）的计算，这些操作全部在高性能环境中和所你熟悉的 Excel 内执行。
 
 
-## 安装数据库
+现实中的数据大部分都是脏数据，我们需要从数据库获取数据并清洗，再使用R、 Excel 、Power BI、tebleau等工具连接使用。那我们使用什么工具完成ETL[^ETL]呢？经过实践发现，使用R语言完成该过程对我们个人用户来说足够使用。
+
+[^ETL]:Extract-Transform-Load,将数据从来源端经过抽取（extract）、转换（transform）、加载（load）至目的端的过程。
+
+
+
+即使你暂时没有接触使用数据库，也建议你未来用数据库存储数据，尤其是当有一定数据量时;在我最开始接触数据时，数据一般保存在Excel中,那时候数据量大概在50万行左右，当表格中sumifs等公式较多时，Excel表格将会很卡顿，甚至发送崩溃。当需要大批量vlookup时，在Excel中操作也是一件很痛苦的事情。
+
+
+目前工作中打交道数据库主要是MSSQL,Oracle,MySQL等，R中与数据库交互的包主要有odbc,DBI,RODBC,RMySQL,ROracle等包。本文主要从以上数据库介绍记录“R与数据库的连接交互”，主要分为：
+
+
+- 安装 SQL Server 数据库
+
+- odbc 包介绍
+
+- DBI 包介绍
+
+- 其它R包介绍
+
+- 与数据库交互常见问题
+
+- dbplyr 包介绍
+
+- 参考资料
+
+
+
+> DBI库在查询或上传工作中效率比RODBC高,特别数据量较大时,上传效率差异巨大,具体[差异](https://github.com/r-dbi/odbc)请点击查看详情。所以建议采用DBI包，但是RODBC对中文支持友好，在练习阶段可以尝试使用，加深印象。
+
+> RSQLite是练习使用R中的数据库的最简单方法，因为程序包本身包含[SQLite](https://www.sqlite.org/index.html)，无需任何外部软件。
+
+
+
+
+
+
+## 安装数据库 {#database:install}
 
 如果暂时没有数据库使用经验，如果是使用Windows系统，直接去微软官网下载安装数据库即可。如果决定用R做数据分析相关工作，尤其时商业环境下，使用数据库有较强的必要性。安装数据库后，利用数据库做数据分析的练习测试也是不错的体验。另外也可以积累ETL相关经验。
 
@@ -34,7 +66,7 @@ MS[下载](https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads)，�
 以下用于 SQL Server 2019 的命令指向 Ubuntu 20.04 存储库。 如果使用的是 Ubuntu 18.04 或 16.04，请将以下路径更改为 /ubuntu/18.04/ 或 /ubuntu/16.04/，而不是 /ubuntu/20.04/。
 
 
-```{bash}
+```{bash eval=FALSE}
 # 导入公共存储库的密钥
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
@@ -57,22 +89,271 @@ systemctl status mssql-server --no-pager
 接下来我们就R语言与数据库的交互包展开介绍。
 
 
+## odbc包{#database:odbc-package}
 
-## DBI
+官方说明:The goal of the odbc package is to provide a DBI-compliant interface to Open Database Connectivity (ODBC) drivers. This allows for an efficient, easy to setup connection to any database with ODBC drivers available, including SQL Server, Oracle, MySQL, PostgreSQL, SQLite and others. The implementation builds on the nanodbc C++ library。
 
+odbc可以运用于包括(SQL Server, Oracle, MySQL,PostgreSQL,SQLite)等odbc驱动程序于`DBI`兼容的接口，相比起来`DBI`包适用范围更广。
+
+[odbc项目地址](https://github.com/r-dbi/odbc)
+
+### 安装包
+
+- Windows
+
+Windows与ODBC库捆绑在一起，但是每个数据库的驱动程序需要单独安装。windows系统上可以通过以下命令直接安装。
+
+```{r eval=FALSE}
+#安装包
+install.packages('odbc')
+```
+
+
+- 其它系统
+
+其它系统在安装前需要安装依赖环境，如下所示:
+
+```{bash eval=FALSE}
+ # Macos
+ brew install unixodbc
+ 
+ # Debian /Ubuntu
+ apt-get install unixodbc unixodbc-dev
+```
+
+### 驱动安装
+
+由于Win系统绑定ODBC库，不需要安装依赖环境即可正常安装使用R包odbc，其它系统经过上面依赖环境安装，现在系统已经能正常安装odbc包。
+
+最后通过`odbc::odbcListDrivers()`查看系统上是否存在可用驱动程序。
+
+
+查看可用系统可用驱动：
+
+```{r}
+head(odbc::odbcListDrivers())
+```
+
+
+1.Windows
+
+默认情况下，win系统即使不安装也可使用驱动"SQL Server",如下所示：
+
+![win-drivers](picture/chap2/odbcdrivers.png)
+
+如果想要安装最新的SQL Server驱动，该如何安装呢?具体安装教程请查看微软[安装说明](https://docs.microsoft.com/zh-cn/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
+
+win系统最新的SQL Server驱动[ODBC Driver 17 for SQL Server下载地址](https://download.microsoft.com/download/2/c/c/2cc12eab-a3aa-45d6-95bb-13f968fb6cd6/zh-CN/17.7.2.1/x64/msodbcsql.msi)
+
+其它系统上如果安装sql server驱动请参照[安装说明](https://docs.microsoft.com/zh-cn/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
+
+2.Macos
+
+Macos安装驱动
+
+```{bash eval=FALSE}
+brew install unixodbc
+
+# Microsoft SQL Server ODBC Drivers (Recommended)
+brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
+brew update
+brew install msodbcsql17 mssql-tools
+```
+
+成功安装后如下所示:
+
+![mac-odbcdriver](picture/chap2/mac-odbcdriver.jpg)
+
+### 连接数据库
+
+连接数据库需要注意时区、编码，尤其是涉及到时间时区时如果设置有误，可能导致时间数据错误。当你在Win系统上连接Sql Server时，如果你使用的数据库是中文环境时，设置`encoding`参数中文将不会乱码。如果是linux上通过odbc连接SqlServer,一般情况下可以不用设置编码，另外设置encoding为gbk会报错。
+
+数据库连接有几种方式，详情请参照[数据库连接字符串](https://www.connectionstrings.com/),我们以SQL Server2019数据库，驱动`ODBC Driver 17 for SQL Server`举例。
+
+1.标准模式
+
+连接字符串
+
+```{bash eval=FALSE}
+Driver={ODBC Driver 17 for SQL Server};Server=myServerAddress;Database=myDataBase;UID=myUsername;PWD=myPassword;
+```
+
+参数形式:
+
+```{r eval=FALSE}
+con <- odbc::dbConnect(drv=odbc(),driver="ODBC Driver 17 for SQL Server",server='172.16.88.2',database='spb',uid='zhongyf',pwd='Zyf123456',encoding='UTF-8',timezone="Asia/Shanghai")
+```
+
+字符串形式：
+
+```{r eval=FALSE}
+con <- odbc::dbConnect(drv = odbc(),.connection_string='Driver={ODBC Driver 17 for SQL Server};Server=172.16.88.2;Database=spb;UID=zhongyf;PWD=Zyf123456;',encoding='UTF-8',timezone="Asia/Shanghai")
+```
+
+2.信任连接
+
+通过windows身份认证连接，通过数据库管理员配置相关账户权限即可。
+
+```{bash eval=FALSE}
+Driver={ODBC Driver 17 for SQL Server};Server=myServerAddress;Database=myDataBase;Trusted_Connection=yes;
+```
+
+
+```{r eval=FALSE}
+library(odbc)
+con <- odbc::dbConnect(odbc(),
+  Driver = "SQL Server", Server = "Vega", Database = "ghzy",
+  Trusted_Connection = "True"
+)
+
+```
+
+3.连接SQL Server实例[^SQLServer实例]
+
+```{bash eval=FALSE}
+Driver={ODBC Driver 17 for SQL Server};Server=serverName\instanceName;
+Database=myDataBase;Trusted_Connection=yes;
+```
+
+
+[^SQLServer实例]:在一台计算机上可以安装多个SQL Server,每个SQL Server就是一个实例，实例分为默认实例和命令实例。
+
+4.非标准端口
+
+SQL Server数据库的默认端口是1433，连接非标端口字符串如下所示：
+
+```{bash eval=FALSE}
+Driver={ODBC Driver 17 for SQL Server};Server=myServerName,myPortNumber;Database=myDataBase;UID=myUsername;PWD=myPassword;
+```
+
+
+通过配置DSN也可连接数据库，但是这样写的脚本在同事间分享不方便，故不推荐。
+
+win10开始-->运行 打开ODBC数据源(64) 配置。
+
+
+![odbc-dsn](picture/chap2/ODBC-DSN.png)
+
+```{r eval=FALSE}
+con <- dbConnect(odbc::odbc(), dsn="ghzy")
+dbGetInfo(con) #查看连接信息
+
+
+$dbname
+[1] "spb"
+
+$dbms.name
+[1] "Microsoft SQL Server"
+
+$db.version
+[1] "12.00.5203"
+
+$username
+[1] "dbo"
+
+$host
+[1] ""
+
+$port
+[1] ""
+
+$sourcename
+[1] "ghzy"
+
+$servername
+[1] "personalSQL"
+
+$drivername
+[1] "msodbcsql17.dll"
+
+$odbc.version
+[1] "03.80.0000"
+
+$driver.version
+[1] "17.05.0002"
+
+$odbcdriver.version
+[1] "03.80"
+
+$supports.transactions
+[1] TRUE
+
+$getdata.extensions.any_column
+[1] FALSE
+
+$getdata.extensions.any_order
+[1] FALSE
+
+attr(,"class")
+[1] "Microsoft SQL Server" "driver_info"          "list"   
+```
+
+
+### 读写数据库
+
+1.查询
+
+`odbc::dbGetQuery()`函数执行sql语句并返回数据
+
+```{r  eval=FALSE}
+dt <- odbc::dbGetQuery(con,'select * from DT')
+head(dt)
+```
+
+
+2.写入数据库
+
+```{r eval=FALSE}
+odbc::dbWriteTable(con,name = '表名',value = dt,overwrite = T ) # 是否覆盖
+odbc::dbWriteTable(con,name = '表名',value = dt,append = T ) # 是否追加
+```
+
+由于odbc包的函数都是DBI中一些函数的实现，我们将其它的一些函数放在接下来的DBI包中讲解。
+
+
+综上，我们使用odbc包主要是作为连接[开放式数据库](https://docs.microsoft.com/zh-cn/sql/odbc/microsoft-open-database-connectivity-odbc?view=sql-server-ver15)(odbc)中介使用。
+
+
+## DBI包{#database:DBI-package}
+
+R包DBI将与DBMS[^DBMS]的连接分为“前端”和“后端”，DBI定义了一个由DBI后端实现的接口,接口定义了一些类和方法,支持以下一些操作：
+
+- 连接/断开与DBMS的连接
+- 在DBMS中创建和执行语句
+- 从语句中提取结果
+
+
+通过DBI可以连接大部分主流关系型数据库，如:PostgreSQL,SQL Server,Oralce,MySQL,SQLite。
+
+
+[^DBMS]:Database Management System,即数据库管理系统
+
+
+
+[DBI介绍](https://dbi.r-dbi.org/)
 
 
 ### 安装
+
+从CRAN安装发行的DBI版本：
 
 ```{r eval=FALSE}
 install.packages('DBI')
 ```
 
+从Github安装开发的DBI版本：
+
+```{r eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("r-dbi/DBI")
+```
+
+
 ### 连接数据库
 
 - 连接MS SQL SERVER 
 
-通过以下代码即可连接到服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。
+通过以下代码即可连接微软的sql server,服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。
 
 ```{r eval=FALSE}
 library(DBI)
@@ -81,21 +362,6 @@ con <- dbConnect(
 )
 ```
 
-
-如果你用windows系统，通过DBI包连接数据库发现乱码时，根据数据库编码指定encoding参数即可，常规在win下连接sqlserver设置encoding = "GBK"。
-
-```{r eval=FALSE}
-library(DBI)
-#根据数据库编码方式指定encoding
-con <- dbConnect(
-  drv = odbc::odbc(), Driver = "SQL Server", server = "172.16.88.2",
-  database = "spb", uid = "zhongyf", pwd = "Zyf123456", encoding = "GBK"
-)
-# 查看本机可用驱动 如缺少相应驱动则安装，ODBC Driver 17 for SQL Server 就是个人安装的驱动
-
-Drivers_tbl <- odbc::odbcListDrivers() 
-head(Drivers_tbl)
-```
 
 查询数据库编码方式,从而选择连接数据库时相应的编码方式。
 
@@ -113,10 +379,9 @@ dbGetQuery(con,sql)
 # same above
 # dbExecute(con,sql)
 
-# 用完后记得关闭数据库连接
+# 关闭数据库连接
 DBI::dbDisconnect(con)
 ```
-
 
 
 - 连接mysql
@@ -144,11 +409,31 @@ con <- DBI::dbConnect(odbc::odbc(),
 
 mysql数据库默认端口是3306,访问不通时记得检查3306端口是否开放。
 
-### 执行sql任务
 
-dbGetQuery()函数处理由DBI包创建的con连接查询任务,dbExecute()执行一些数据库任务
+- 连接oracle
+
+由ROracle包构造驱动。
 
 ```{r eval=FALSE}
+library(ROracle)
+drv <-dbDriver("Oracle")
+connect.string <- '(DESCRIPTION =
+                    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.16.88.129)(PORT = 1521))
+                  (CONNECT_DATA =
+                      (SERVER = DEDICATED)
+                    (SERVICE_NAME = bidev)
+                  ))' #连接字符串
+
+con <- dbConnect(drv,username = "query", password = "query",dbname = connect.string)
+```
+
+
+### 读写数据库
+
+
+dbGetQuery()函数查询数据并直接返回,dbExecute()执行sql语句，是`dbSendStatement()`的封装。
+
+```{r dbi-read-write,eval=FALSE}
 # dbGetQuery 直接查询
 res_table <- dbGetQuery(con,'select * from table') #直接获取sql查询结果
 
@@ -161,100 +446,208 @@ dbFetch(res)
 dbClearResult(res)
 
 # dbExecute
-dbExecute(con,'delete from table where num <=1000') #类似任务
+dbExecute(con,'delete from table where num <=1000') # 执行sql语句
 
 # dbWriteTable()
 # 上传数据,指定表名,需上传的数据框df,overwrite是否覆盖,append是否可追加
 dbWriteTable(conn = con,name = '表名',value = df,overwrite=TURE,append=FALSE)
 ```
 
+参数化查询
 
-### 函数介绍
+
+```{r}
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbWriteTable(con, "iris", iris)
+
+iris_result <- dbSendQuery(con, "SELECT * FROM iris WHERE [Petal.Width] > ?")
+dbBind(iris_result, list(2.3))
+dbFetch(iris_result)
+dbBind(iris_result, list(3))
+dbFetch(iris_result)
+dbClearResult(iris_result)
+```
+
+实际运用中，我们从数据库(SQL Server)查询不同订单周期时的销售数据：
+
+
+```{r}
+con <- dbConnect(odbc::odbc(), .connection_string = "driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=test;uid=zhongyf;pwd=Zyf123456", timeout = 10)
+
+result <- dbSendQuery(con, "SELECT * FROM sales_order WHERE [单据日期] between ? and ? ") # ?在本处是占位符
+dbBind(result,params = list('2021-01-01','2021-01-05'))
+dbFetch(result)
+
+dbBind(result,params = list('2021-05-01','2021-05-05'))
+dbFetch(result)
+dbClearResult(result)
+```
+
+>以上方式可以实现参数化查询，减少代码量，但是由于查询速度相比`dbGetQuery()`较慢，我一般不采用。
+> 关于sql语句中?的用法请自行查阅?dbBind()。DBI当前未指定占位符格式,将来可能会支持统一的占位符语法
+
+
+### 其它函数介绍
 
 查看数据库信息,查看表名,删除表，关闭连接等常用操作.
 
-```{r eval=FALSE}
-con <- dbConnect(
-  drv = odbc::odbc(),
-  Driver = "ODBC Driver 17 for SQL Server", server = "172.16.88.2", 
-  database = "spb", uid = "zhongyf", pwd = "Zyf123456", encoding = "GBK"
-)
+```{r else-functions,include=FALSE}
+library(nycflights13)
+library(DBI)
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbWriteTable(con,'测试表',iris)
+dbWriteTable(con,'flights',flights)
+```
 
-#查看数据版本连接信息
+
+- 查看数据库信息
+
+```{r}
 dbGetInfo(con)
+```
 
-# 数据库中的全部表名
-dbListTables(con) #win下中文表名还是会乱码
+- 数据库读写权限
 
-# 删除表
-dbRemoveTable(con,'tbl_name')
+返回连接账户是否只有只读权限。
 
-# 关闭连接
+```{r}
+dbIsReadOnly(con)
+```
+
+- 查看全部表名
+
+win下SQL Server中文表名会乱码
+
+```{r}
+dbListTables(con) 
+```
+
+- 读取表
+
+```{r}
+dt <- dbReadTable(con,'测试表')
+head(dt)
+```
+
+- 查询
+
+```{r}
+rs <- dbSendQuery(con, "SELECT * from flights limit 100 ")
+dt <- dbFetch(rs)
+head(dt)
+dbClearResult(rs) # 记得清除结果
+```
+
+
+- 是否存在表
+
+```{r}
+dbExistsTable(con,'测试表') 
+```
+
+- 创建表
+
+```{r eval=FALSE}
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbCreateTable(con, "iris", iris)
+dbAppendTable(con, "iris", iris)
+dbReadTable(con, "iris")
+dbDisconnect(con)
+```
+
+
+- 删除表
+
+```{r}
+dbRemoveTable(con,'测试表')
+# same above
+# dbExecute(con,'delete from 测试表')
+```
+
+- 是否有效
+
+```{r eval=FALSE}
+dbIsValid(con)
+
+rs <- dbSendQuery(con, "SELECT * from flights")
+dbIsValid(rs)
+dbClearResult(rs)
+dbIsValid(rs)
+```
+
+- 执行任务
+
+执行语句,返回受影响的行数。
+
+```{r eval= FALSE}
+dbExecute(conn, statement, ...)
+dbExecute(con,'delete from 测试表')
+```
+
+
+- 关闭连接
+
+在完成连接后，最后关闭连接。
+
+```{r}
 dbDisconnect(con)
 ```
 
 
 
-## odbc包
+通过学习odbc,DBI包，我们已经对R与数据库交互有一定了解。连接数据库并返回我们查询的结果，最后上传数据到数据库中，以上三步能正确使用即可满足我们数据分析师绝大部分需求。但是我们可能会对odbc与DBI的关系感到困惑,由于我并不太了解数据库，仅谈谈自己的理解，不一定正确。
 
-官方介绍：Connect to ODBC databases (using the DBI interface)
+> 以上三步，配合R的定时任务，可以完成ETL(Extract-Transform-Load).
 
-记录到此时，并不时特别清晰`odbc`与`DBI`之间的关系。
-
-odbc可以运用于包括(SQL Server, Oracle, MySQL,PostgreSQL,SQLite)等odbc驱动程序于`DBI`兼容的接口，相比起来`DBI`包适用范围更广。
-
-1.安装包
+odbc提供了与odbc类数据库的连接方式，odbc基于DBI包，我们在安装odbc包时会自动安装DBI包。odbc负责连接odbc类数据库，DBI提供后端服务，换句话说odbc连接数据库，其它的交互通过DBI包完成。通过比较以下连接方式来理解：
 
 ```{r eval=FALSE}
-#安装包
-install.packages('odbc')
+# 方式一  odbc 
+con <- DBI::dbConnect(odbc::odbc(),
+  Driver = "MySQL ODBC 8.0 Unicode Driver",
+  Server = "localhost", UID = "root", PWD = "123456", Database = "test",
+  Port = 3306
+)
+
+# 方式二 RMySQL
+library(RMySQL)
+con <- dbConnect(MySQL(),
+  dbname = "test", user = "root", password = "123456",
+  host = "localhost"
+)
 ```
 
-2.连接数据库
+方式二与方式一都可以成功连接本地的mysql数据库，方式二是通过RMySQLB包的`MySQL()`功能提供的驱动程序。
 
-连接数据库需要注意时区、编码，尤其是涉及到时间时时区如果设置有误，可能导致上传数据错误。
-
-当你在Win系统上连接Sql Server时，如果你使用的数据库是中文环境时，最好设置`encoding`参数。
-
-如果是linux上通过odbc连接SqlServer,一般情况下可以不用设置编码。如果还是乱码，在连接字符中设置字符编码charset=zh_CN.GBK，设置为gbk会报错。
+但是不同的连接方式可能导致读写效率有明显的差异，详见oracle连接差异。
 
 ```{r eval=FALSE}
-library(odbc)
-con <- odbc::dbConnect(odbc(),
-  Driver = "SQL Server", Server = "Vega", Database = "ghzy",
-  Trusted_Connection = "True"
-) # windows身份认证连接
-# con <- dbConnect(odbc::odbc(), .connection_string = "Driver={SQL Server};
-#                                 server=Vega;database=ghzy;uid=zhongyf;pwd=Zyf123456;", timeout = 10)
-con
-## Not run
-# Win
-con_spb <- dbConnect(odbc(), .connection_string = "driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456", 
-                     timeout = 10, timezone = "Asia/Shanghai",encoding = 'gbk')
-#Linux
-con_dd <- dbConnect(odbc::odbc(), .connection_string = "driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;
-                 database=aojo_dd;uid=wj;pwd=12qw#$ER;charset=zh_CN.GBK", timeout = 10)
+library(ROracle)
+# 方式一
+# use ROracle packages connect databse
+drv <-dbDriver("Oracle")
+connect.string <- '(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.16.88.131)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = ghbi) ))'
+con_oracle <- dbConnect(drv,username = "pub_query", password = "pub_query",dbname = connect.string,encoding='utf8')
 
-```
+# 方式二
+# use odbc packages connect databse
+con_odbc <- dbConnect(odbc::odbc(), .connection_string = "Driver={Oracle in OraClient11g_home1};DBQ=172.16.88.131:1521/ghbi;UID=pub_query;PWD=pub_query;", timeout = 10)
 
-3.查询
-
-```{r  eval=FALSE}
-dt <- odbc::dbGetQuery(con,'select * from DT')
-head(dt)
-```
-
-4.写入数据库
-
-```{r eval=FALSE}
-odbc::dbWriteTable(con,name = '表名',value = dt,overwrite = T ) # 是否覆盖
-odbc::dbWriteTable(con,name = '表名',value = dt,append = T ) # 是否追加
+# Oracle in OraClient11g_home1 根据实际驱动更改
+# 通过odbc::odbcListDrivers() 查看
 ```
 
 
-## RODBC包
 
-RODBC包是R语言对ODBC数据库接口,可以连接所有的ODBC数据库.
+
+## 其他R包{#database:else-package}
+
+通过前文了解，以下R包(RODBC除外)的作用仅仅是提供驱动即可，再通过DBI包与数据库交互。
+
+
+### RODBC包
+
+RODBC包是R语言对ODBC数据库接口的封装,可连接所有的ODBC数据库，但是读写效率较低。
 
 
 1.安装包
@@ -273,14 +666,7 @@ con
 RODBC::sqlQuery(con,'select * from test')
 ```
 
-在WINDOWS机器上,需要知道本机是否有相应数据库的驱动程序.
-
-* 查看本机上可用驱动
-
-```{r eval=FALSE}
-odbc::odbcListDrivers()
-
-```
+`
 
 * 怎样安装驱动
 
@@ -302,7 +688,7 @@ sql server 请参照[sql server连接字符串](https://www.connectionstrings.co
 
 
 
-## ROracle包
+### ROracle包
 
 
 在第一次安装这个包时遇到了很多困难，首先需要安装oracle客户端，其次配置好环境变量，最后安装包。R与Oracle的连接需要安装[Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html)，
@@ -315,18 +701,11 @@ sql server 请参照[sql server连接字符串](https://www.connectionstrings.co
 
 根据自己所使用的系统，配置环境变量
 
-```
+```{bash eval=FALSE}
 OCI_INC='D:\app\zhongyf\product\11.2.0\client_1\oci\include'
 OCI_LIB64='D:\app\zhongyf\product\11.2.0\client_1\BIN'
 ```
 
-   
-
-linxu上安装`Roracle`包，可以参考我的
-
-微信公众号：宇飞的世界
-
-[公众号文章连接](https://mp.weixin.qq.com/s/QLwedZ5mTybqSXdHMTGRIw)
 
 
 3. 安装包
@@ -368,17 +747,20 @@ select userenv('language') from dual
 Sys.setenv(NLS_LANG="SIMPLIFIED CHINESE_CHINA.AL32UTF8")
 ```
 
+由于ROracle包的安装存在一定难度，具体安装说明可以参考微信公众号-宇飞的世界[R包ROracle安装](https://mp.weixin.qq.com/s/QLwedZ5mTybqSXdHMTGRIw)
 
 
-## RMySQL包
+
+
+### RMySQL包
 
 RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下.该包正在逐渐被淘汰，可以使用RMariaDB包替换。
 
-### 安装
+1.安装
 
 Win系统下直接安装即可，其它平台下需提前安装依赖环境。
 
-```{bash }
+```{bash eval=FALSE}
 #On recent Debian or Ubuntu install libmariadbclient-dev
 
 sudo apt-get install -y libmariadbclient-dev
@@ -396,9 +778,9 @@ install.packages('RMySQL')
 ```
 
 
-### 连接使用
+2.连接使用
 
-连接数据库，与上述连接方式基本一致。
+上述连接方式一致，仅仅是指驱动差异
 
 ```{r eval=FALSE}
 library(RMySQL)
@@ -413,10 +795,97 @@ library(RMariaDB)
 con <- RMySQL::dbConnect(drv = RMariaDB::MariaDB() ,host='localhost',dbname="dbtest",username="root",password='123456')
 ```
 
+### RSQLite
 
-## 常见问题
+RSQLite是练习使用R中的数据库的最简单方法，因为程序包本身包含SQLite，无需任何外部软件。
 
-在使用R包连接数据库时有些常见的问题，整理如下：
+[项目地址](https://rsqlite.r-dbi.org/)
+
+1.安装
+
+```{r eval=FALSE}
+install.packages("RSQLite")
+```
+
+2.基础用法  
+
+```{r}
+library(DBI)
+# 在内存中创建一个临时数据库
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbListTables(con)
+```
+
+```{r}
+dbWriteTable(con, "mtcars", mtcars)
+dbListTables(con)
+```
+
+```{r}
+dbReadTable(con, "mtcars")
+```
+
+```{r}
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+dbFetch(res)
+dbClearResult(res)
+dbDisconnect(con)
+Acknowled
+```
+
+基础用法与DBI功能一致。
+
+### 大数据相关R包
+
+- sparklyr <https://spark.rstudio.com/>
+
+- RClickhouse <https://github.com/hannesmuehleisen/clickhouse-r>
+
+
+#### RClickhouse
+
+按照官网[安装教程](https://clickhouse.tech/docs/en/getting-started/install/)安装。
+
+
+1.R包安装
+
+```{r eval=FALSE}
+install.packages("RClickhouse")
+```
+
+2.配置远程连接
+
+[参考资料](https://blog.csdn.net/zhangpeterx/article/details/95059059)
+
+3.安装驱动
+
+[驱动下载](https://github.com/ClickHouse/clickhouse-odbc/releases/tag/2018-05-15)
+
+4.连接
+
+```{r eval=FALSE}
+library(RClickhouse)
+library(DBI)
+
+# 本地默认连接
+con_local <- dbConnect(RClickhouse::clickhouse(), host="localhost", port=9000L, user="default", password="")
+dbExecute(con_local,"CREATE DATABASE IF NOT EXISTS tutorial")
+
+# 指定库远程连接
+con_remote <- dbConnect(RClickhouse::clickhouse(), host="192.168.2.237", port=9000L, user="default", password="",dbname='tutorial')
+
+```
+
+win系统上配置odbc时，注意ODBC版本，[clickhouse-odbc下载](https://github.com/ClickHouse/clickhouse-odbc/releases)。最初我使用的odbc版本太旧，Excel无法成功连接clickhouse数据库。
+
+clickhouse测试下来，感觉速度也没有特别快，不知道是不是因为我是用的虚拟机测试的原因。另外上传表和常规方式不一样，也挺麻烦，建议先保持观望。
+
+
+
+## 常见问题{#database:FAQ}
+
+在使用R包连接数据库时有些常见的问题，整理如下。
 
 ### 乱码问题
 
@@ -430,15 +899,15 @@ R中中文乱码问题一直都很麻烦，并且常常遇见，尤其是使用w
 # win
 con_spb <- dbConnect(odbc(),
   .connection_string =
-    "driver={ SQLServer};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456", 
+    "driver={SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456", 
   timeout = 10, timezone = "Asia/Shanghai", encoding = "gbk"
 )
 
 # linux 
 con_spb <- dbConnect(odbc(),
-                     .connection_string =
-                       "driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456", 
-                     timeout = 10, timezone = "Asia/Shanghai", encoding = "utf8"
+  .connection_string =
+    "driver={SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456",
+  timeout = 10, timezone = "Asia/Shanghai", encoding = "utf8"
 )
 ```
 
@@ -457,8 +926,22 @@ dbSendQuery(con,'SET NAMES gbk')
 
 ![ODBC配置截图](./picture/chap2/pic1.png)
 
+- oracle乱码
+
+linux上通过ROracle连接oracle数据库，中文乱码。可以通过设置环境变量或配置.Renviron文件修改oracle语言环境。
+
+```{r}
+Sys.setenv(NLS_LANG="SIMPLIFIED CHINESE_CHINA.AL32UTF8")
+```
+
 
 ### 无法连接问题
+
+- SQL Servver无法连接
+
+如果是自己安装配置的数据库，无法通过IP地址连接，可能是没有开启远程连接。
+
+- mysql无法连接
 
 首先需要装mysql的驱动,确保`RMySQL`成功安装 如果是测试自己安装的mysql,可以先用Navicat连接,如果出现Authentication plugin 'caching_sha2_password' cannot be loaded的错误。
 
@@ -486,8 +969,50 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password
 另外如果是云服务器上搭建的数据库,需要开启数据库端口，如Mysql默认端口3306;如果是阿里云的Rds数据库,找DBA管理员要数据库地址以及端口信息。
 
 
+### 跳板机连接
 
-## dbplyr
+有些数据库是无法外网访问的，需要通过跳板机跳转后后才有权限访问，或者给某公网IP配置权限后才能访问。
+
+
+- R解决方案
+
+在本地使用[Putty](https://www.putty.org/)或通过R包ssh解决。
+
+
+```{r eval=FALSE}
+library(ssh)
+session <- ssh_connect(host = 'user@ip:port',passwd = 'password')
+ssh_tunnel(session = session,port = 3306,target = 'ip:port')
+```
+
+
+- python解决方案
+
+```{python eval=FALSE}
+import mysql.connector
+import sshtunnel
+
+with sshtunnel.SSHTunnelForwarder(
+        (_host, _ssh_port),
+        ssh_username=_username,
+        ssh_password=_password,
+        remote_bind_address=(_remote_bind_address, _remote_mysql_port),
+        local_bind_address=(_local_bind_address, _local_mysql_port)
+) as tunnel:
+    connection = mysql.connector.connect(
+        user=_db_user,
+        password=_db_password,
+        host=_local_bind_address,
+        database=_db_name,
+        port=_local_mysql_port)
+    ...
+```
+
+
+关于数据库无法连接的问题，请咨询公司DBA管理人员。
+
+
+## dbplyr{#database:dbplyr-package}
 
 `dbplyr`将`dplyr`包的函数转化为`SQL`语句去服务器获取数据；在数据量较大、计算较多时，可以将远程连接数据库中的表当作内存中的数据框使用，当本机内存不够大时，这样做的好处不言而喻。
 
@@ -502,6 +1027,22 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password
  - 通过`dplyr`动词方便实现复杂的逻辑，当过程越多越复杂时`dbplyr`的优势越明显，不用一层层嵌套语句。 
  
 
+[dbplyr项目介绍](https://dbplyr.tidyverse.org/)
+
+### 安装
+
+dbplyr包是tidyverse系列核心包之一，可以通过安装tidyverse或仅安装dbplyr。
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+
+# 从CRAN安装发行版
+install.packages("dbplyr")
+
+# 开发版
+library(devtools)
+devtools::install_github("tidyverse/dbplyr")
+```
 
 
 ### 基础用法
@@ -575,16 +1116,15 @@ tailnum_delay <- tailnum_delay_db %>% collect() #把数据从数据库加载到R
 ### 无法正确转化
 
 
-在使用过程中发现无法识别`lubridate`包的函数，但是`dbplyr`对于不认识的函数都将保留。
-
-利用这个特性，可以使用数据库中原生的相关函数：如下所示，在Oracle中`to_date`函数
+在使用过程中发现无法识别`lubridate`包的函数，但是`dbplyr`对于不认识的函数都将保留。利用这个特性，可以使用数据库中原生的相关函数：如下所示，在Oracle中`to_date`函数。
 
 以下的自定义函数可以实现按照想要`group_by`的字段汇总金额、数量、吊牌额、折扣率等,其中关于时间周期的筛选就利用了该特性。
 
 - date
 
 ```{r eval=FALSE}
-#个人写的争对目前公司数仓写的包中获取销售数据的一段代码
+#个人写的针对目前公司数仓写的包中获取销售数据的一段代码
+
 get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,category_name = NULL,shop_no = NULL){
 
   store_table <- store(con,brand_name = brand_name,channel_type = channel_type ,area_name = area_name,boss_name = boss_name,shop_no = shop_no) #门店信息
@@ -608,7 +1148,6 @@ get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type =
     collect() %>%
     mutate(折扣率:= 金额 / 吊牌金额) %>% 
     arrange(...)
-
 
   # return(res)
 }
@@ -637,17 +1176,19 @@ mf %>%
 
 
 
-## 参考资料
+## 参考资料{#database:reference-material}
 
 
-`DBI`包资料<https://dbi.r-dbi.org/reference/>
+1.`DBI`包资料 <https://dbi.r-dbi.org/reference/>
 
-`dbplyr`包资料<https://dbplyr.tidyverse.org/>
+2.`dbplyr`包资料 <https://dbplyr.tidyverse.org/>
 
-rstudio关于数据库介绍 <https://db.rstudio.com/databases>
+3.rstudio关于数据库介绍 <https://db.rstudio.com/databases>
 
-数据库连接字符串介绍  <https://www.connectionstrings.com/>
+4.数据库连接字符串介绍  <https://www.connectionstrings.com/>
 
-个人博客关于Roracle的安装介绍  <http://www.zhongyufei.com/2020/07/25/roracle-install/>
+5.驱动安装 <https://github.com/r-dbi/odbc#installation>
 
-<https://www.r-consortium.org/blog/2017/05/15/improving-dbi-a-retrospect>
+6.关于Roracle的安装介绍 <https://mp.weixin.qq.com/s/QLwedZ5mTybqSXdHMTGRIw>
+
+7.DBI消息 <https://www.r-consortium.org/blog/2017/05/15/improving-dbi-a-retrospect>
