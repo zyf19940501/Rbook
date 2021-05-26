@@ -3,7 +3,7 @@
 # database {#database}
 
 
-我们作为数据分析师有必要和数据库打交道吗？实际工作中，数据量达到一定的程度，当你开始需要使用 Excel PowerPivot 做数据透视表[^Power Pivot]时，你就必须开始和数据库打交道，因为这时数据源超过Excel上限了，已经没办法承接。
+我们作为数据分析师有必要和数据库打交道吗？实际工作中，数据量达到一定的程度，当你开始需要使用 Excel PowerPivot 做数据透视表[^PowerPivot]时，你就必须开始和数据库打交道，因为这时数据源超过Excel上限了，已经没办法承接。
 
 [^PowerPivot]:PowerPivot 是一种数据建模技术，用于创建数据模型，建立关系，以及创建计算。 可使用 PowerPivot 处理大型数据集，构建广泛的关系，以及创建复杂（或简单）的计算，这些操作全部在高性能环境中和所你熟悉的 Excel 内执行。
 
@@ -47,7 +47,7 @@
 
 ## 安装数据库 {#database:install}
 
-如果暂时没有数据库使用经验，如果是使用Windows系统，直接去微软官网下载安装数据库即可。如果决定用R做数据分析相关工作，尤其时商业环境下，使用数据库有较强的必要性。安装数据库后，利用数据库做数据分析的练习测试也是不错的体验。另外也可以积累ETL相关经验。
+如果暂时没有数据库使用经验，如果是使用Windows系统，直接去微软官网下载安装数据库即可。如果决定用R做数据分析相关工作，尤其时商业环境下，使用数据库有较强的必要性。安装数据库后，利用数据库做数据分析的练习测试也是不错的体验,另外也可以积累ETL相关经验。
 
 仅简单介绍 MS SQL Server 安装
 
@@ -83,7 +83,7 @@ sudo apt-get install -y mssql-server
 systemctl status mssql-server --no-pager
 ```
 
-至于其他如安装sql server 命令行工具请[查阅官网安装](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15&preserve-view=true)。
+至于其他安装如sql server 命令行工具请[查阅官网安装](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15&preserve-view=true)。
 
 
 接下来我们就R语言与数据库的交互包展开介绍。
@@ -358,7 +358,12 @@ devtools::install_github("r-dbi/DBI")
 ```{r eval=FALSE}
 library(DBI)
 con <- dbConnect(
-  drv = odbc::odbc(), Driver = "SQL Server", server = "172.16.88.2",database = "spb", uid = "zhongyf", pwd = "Zyf123456"
+  drv = odbc::odbc(), 
+  Driver = "SQL Server", 
+  server = "172.16.88.2",
+  database = "spb", 
+  uid = "zhongyf", 
+  pwd = "Zyf123456"
 )
 ```
 
@@ -457,6 +462,7 @@ dbWriteTable(conn = con,name = '表名',value = df,overwrite=TURE,append=FALSE)
 
 
 ```{r}
+library(DBI)
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbWriteTable(con, "iris", iris)
 
@@ -466,12 +472,13 @@ dbFetch(iris_result)
 dbBind(iris_result, list(3))
 dbFetch(iris_result)
 dbClearResult(iris_result)
+dbDisconnect(con)
 ```
 
 实际运用中，我们从数据库(SQL Server)查询不同订单周期时的销售数据：
 
 
-```{r}
+```{r eval=FALSE}
 con <- dbConnect(odbc::odbc(), .connection_string = "driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=test;uid=zhongyf;pwd=Zyf123456", timeout = 10)
 
 result <- dbSendQuery(con, "SELECT * FROM sales_order WHERE [单据日期] between ? and ? ") # ?在本处是占位符
@@ -831,7 +838,6 @@ res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
 dbFetch(res)
 dbClearResult(res)
 dbDisconnect(con)
-Acknowled
 ```
 
 基础用法与DBI功能一致。

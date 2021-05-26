@@ -1,4 +1,4 @@
-# data.table
+# data.table{#Data-Manipulation-datatable}
 
 
 data.table包是我数据处理最常用的R包，是我目前觉得最好用的数据处理包,大部分我需要用到的功能集成在包里，不需要很多的依赖包。我简单接触过python，julia两种语言，并没有深入比较，所以我这个好用的印象仅仅是个人感受。
@@ -23,7 +23,7 @@ data.table 优势：
 
 >本文会照搬很多官方关于data.table的demo
 
-## 基础介绍
+## 基础介绍{#datatable:description}
 
 本部分从data.table安装，内置的案例查看，到data.table的句式语法，实现基础行列筛选和聚合计算。
 
@@ -240,7 +240,7 @@ head(dt)
 
 
 
-## 常规操作
+## 常规操作{#datatable:usage}
 
 
 ### 行筛选
@@ -375,7 +375,7 @@ setorderv(DT, c("A", "B"), c(1, -1))
 
 
 
-## 常用函数
+## 常用函数{#datatable:function}
 
 常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。
 
@@ -645,7 +645,7 @@ allow.cartesian=getOption("datatable.allow.cartesian"),  # default FALSE
 x.y为连个数据框,当两个数据框连接字段相同时,用by=c('','')连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.
 
 
-## 高级函数
+## 高级函数{#datatable:advanced-functions}
 
 高级函数并不是指使用难度，而是使用频率可能不高，但在实现某些功能时特别便利的函数。
 
@@ -818,7 +818,7 @@ SJ : Sorted Join. The same value as J() but additionally setkey() is called on a
 
 
 
-## 小技巧
+## 小技巧{#datatable:tips}
 
 ### 用{}抑制中间过程输出
 
@@ -871,7 +871,7 @@ dt[,hp2wt:=hp/wt][] # does print
 ```
 
 
-## 运用
+## 运用{#datatable:application}
 
 ### 自定义函数计算
 

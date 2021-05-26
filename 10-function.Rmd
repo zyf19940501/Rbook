@@ -1,4 +1,4 @@
-# define function
+# 自定义函数{#self:define-function}
 
 
 函数功能使我们尽可能避免复制粘贴代码,而且需要更改的时候不需要大面积修改代码仅需要调整函数参数,使代码整体更加模块化.
@@ -35,9 +35,8 @@ res1 <- if_else(num <= 50,"1-50",
 
 当需要修改区间时候仅仅只需要调整参数,而不必大量修改代码,当在脚本中需要调用多次时,能简洁代码.
 
-```{r eval=FALSE}
-# 排名区间函数
-#library(tidyverse)
+```{r }
+
 cut_function <- function(vecto,x,n){
   vec <- c(0)
   for(i in 1:n){
@@ -58,19 +57,27 @@ cut_function <- function(vecto,x,n){
 
 res2 <- cut_function(num,50,4)
 
-# identical(res1,res2)
-# > TRUE
+identical(res1,res2)
+
 ```
+
+当然以上的函数本质是用base R中`cut()`:
+
+```{r}
+cut(1:201,breaks = c(0,50,100,150,200,Inf))
+```
+
+
 
 
 [参考资料](https://r4ds.had.co.nz/functions.html)
 
 
 
-## 简单示例
+## 简单示例{#define-function-example}
 
 
-给函数取一个合适名字是很难的事情,徐尽可能从函数名称看出你实现的功能.
+给函数取一个合适名字是很难的事情,需尽可能从函数名称看出你实现的功能.
 
 ```{r}
 add_ten <- function(x){
@@ -92,7 +99,7 @@ add_ten <- function(x){
 }
 ```
 
-## 条件执行
+## 条件执行 {#define-function:conditional-execution}
 
 ```{r}
 has_name <- function(x) {
@@ -132,7 +139,7 @@ function(x, y, op) {
 ```
 
 
-## 函数参数
+## 函数参数{#define-function:parameter}
 
 函数的参数通常分为两大类,一组是提供要计算的参数,另外一组提供计算时的细节参数.
 
@@ -202,7 +209,7 @@ rule("Important output")
 
 
 
-## 返回值
+## 返回值 {#function:return}
 
 ###  显式返回
 
@@ -279,7 +286,7 @@ mtcars %>%
 ```
 
 
-## 环境
+## 环境 {#function:environment}
 
 环境是复杂的,建议阅读原文.
 
@@ -309,7 +316,7 @@ f(10)
 <http://adv-r.had.co.nz/>
 
 
-## 拓展部分
+## 拓展部分{#function:expand}
 
 
 在我之前工作中遇到需要分组计算时,我想要编写一个函数实现某些功能,但是分组的group_by()字段不一样时,导致代码没办法复用。

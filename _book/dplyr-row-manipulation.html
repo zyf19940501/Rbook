@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-24" />
+<meta name="date" content="2021-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="dplyr-column-manipulation.html"/>
 <link rel="next" href="dplyr-programming.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,6 +53,15 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -246,18 +255,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.9" data-path="dplyr-reference-material.html"><a href="dplyr-reference-material.html"><i class="fa fa-check"></i><b>2.9</b> 参考资料</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
+<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="安装-1.html"><a href="安装-1.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
-<li class="chapter" data-level="3.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
+<li class="chapter" data-level="3.1" data-path="tidyr-install.html"><a href="tidyr-install.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
-<li class="chapter" data-level="3.2.2" data-path="主要功能.html"><a href="主要功能.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
-<li class="chapter" data-level="3.2.3" data-path="主要功能.html"><a href="主要功能.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
-<li class="chapter" data-level="3.2.4" data-path="主要功能.html"><a href="主要功能.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
-<li class="chapter" data-level="3.2.5" data-path="主要功能.html"><a href="主要功能.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
-<li class="chapter" data-level="3.2.6" data-path="主要功能.html"><a href="主要功能.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
-<li class="chapter" data-level="3.2.7" data-path="主要功能.html"><a href="主要功能.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
+<li class="chapter" data-level="3.2.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
+<li class="chapter" data-level="3.2.3" data-path="tidyr-useage.html"><a href="tidyr-useage.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
+<li class="chapter" data-level="3.2.4" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
+<li class="chapter" data-level="3.2.5" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
+<li class="chapter" data-level="3.2.6" data-path="tidyr-useage.html"><a href="tidyr-useage.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
+<li class="chapter" data-level="3.2.7" data-path="tidyr-useage.html"><a href="tidyr-useage.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="character-handling.html"><a href="character-handling.html"><i class="fa fa-check"></i><b>4</b> 字符处理</a>
@@ -314,135 +323,162 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.2" data-path="datetime-additional-information.html"><a href="datetime-additional-information.html#参考资料"><i class="fa fa-check"></i><b>5.4.2</b> 参考资料</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> forcats</a>
+<li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> 因子介绍</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="创建因子.html"><a href="创建因子.html"><i class="fa fa-check"></i><b>6.1</b> 创建因子</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
+<li class="chapter" data-level="7" data-path="Data-Manipulation-datatable.html"><a href="Data-Manipulation-datatable.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>7.1</b> 基础介绍</a>
+<li class="chapter" data-level="7.1" data-path="datatable-description.html"><a href="datatable-description.html"><i class="fa fa-check"></i><b>7.1</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>7.1.1</b> 读取数据</a></li>
-<li class="chapter" data-level="7.1.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>7.1.2</b> 基本格式</a></li>
-<li class="chapter" data-level="7.1.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>7.1.3</b> i j by 使用</a></li>
-<li class="chapter" data-level="7.1.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>7.1.4</b> 行列筛选总结</a></li>
+<li class="chapter" data-level="7.1.1" data-path="datatable-description.html"><a href="datatable-description.html#读取数据"><i class="fa fa-check"></i><b>7.1.1</b> 读取数据</a></li>
+<li class="chapter" data-level="7.1.2" data-path="datatable-description.html"><a href="datatable-description.html#基本格式"><i class="fa fa-check"></i><b>7.1.2</b> 基本格式</a></li>
+<li class="chapter" data-level="7.1.3" data-path="datatable-description.html"><a href="datatable-description.html#i-j-by-使用"><i class="fa fa-check"></i><b>7.1.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="7.1.4" data-path="datatable-description.html"><a href="datatable-description.html#行列筛选总结"><i class="fa fa-check"></i><b>7.1.4</b> 行列筛选总结</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>7.2</b> 常规操作</a>
+<li class="chapter" data-level="7.2" data-path="datatable-usage.html"><a href="datatable-usage.html"><i class="fa fa-check"></i><b>7.2</b> 常规操作</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>7.2.1</b> 行筛选</a></li>
-<li class="chapter" data-level="7.2.2" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>7.2.2</b> 新增更新列</a></li>
-<li class="chapter" data-level="7.2.3" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>7.2.3</b> 排序</a></li>
+<li class="chapter" data-level="7.2.1" data-path="datatable-usage.html"><a href="datatable-usage.html#行筛选"><i class="fa fa-check"></i><b>7.2.1</b> 行筛选</a></li>
+<li class="chapter" data-level="7.2.2" data-path="datatable-usage.html"><a href="datatable-usage.html#新增更新列"><i class="fa fa-check"></i><b>7.2.2</b> 新增更新列</a></li>
+<li class="chapter" data-level="7.2.3" data-path="datatable-usage.html"><a href="datatable-usage.html#排序"><i class="fa fa-check"></i><b>7.2.3</b> 排序</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="常用函数-1.html"><a href="常用函数-1.html"><i class="fa fa-check"></i><b>7.3</b> 常用函数</a>
+<li class="chapter" data-level="7.3" data-path="datatable-function.html"><a href="datatable-function.html"><i class="fa fa-check"></i><b>7.3</b> 常用函数</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="常用函数-1.html"><a href="常用函数-1.html#特殊符号"><i class="fa fa-check"></i><b>7.3.1</b> 特殊符号</a></li>
-<li class="chapter" data-level="7.3.2" data-path="常用函数-1.html"><a href="常用函数-1.html#排序函数-1"><i class="fa fa-check"></i><b>7.3.2</b> 排序函数</a></li>
-<li class="chapter" data-level="7.3.3" data-path="常用函数-1.html"><a href="常用函数-1.html#非重复计数"><i class="fa fa-check"></i><b>7.3.3</b> 非重复计数</a></li>
-<li class="chapter" data-level="7.3.4" data-path="常用函数-1.html"><a href="常用函数-1.html#判断函数"><i class="fa fa-check"></i><b>7.3.4</b> 判断函数</a></li>
-<li class="chapter" data-level="7.3.5" data-path="常用函数-1.html"><a href="常用函数-1.html#交集-差集-合并"><i class="fa fa-check"></i><b>7.3.5</b> 交集 差集 合并</a></li>
-<li class="chapter" data-level="7.3.6" data-path="常用函数-1.html"><a href="常用函数-1.html#长宽转换"><i class="fa fa-check"></i><b>7.3.6</b> 长宽转换</a></li>
-<li class="chapter" data-level="7.3.7" data-path="常用函数-1.html"><a href="常用函数-1.html#表连接"><i class="fa fa-check"></i><b>7.3.7</b> 表连接</a></li>
+<li class="chapter" data-level="7.3.1" data-path="datatable-function.html"><a href="datatable-function.html#特殊符号"><i class="fa fa-check"></i><b>7.3.1</b> 特殊符号</a></li>
+<li class="chapter" data-level="7.3.2" data-path="datatable-function.html"><a href="datatable-function.html#排序函数-1"><i class="fa fa-check"></i><b>7.3.2</b> 排序函数</a></li>
+<li class="chapter" data-level="7.3.3" data-path="datatable-function.html"><a href="datatable-function.html#非重复计数"><i class="fa fa-check"></i><b>7.3.3</b> 非重复计数</a></li>
+<li class="chapter" data-level="7.3.4" data-path="datatable-function.html"><a href="datatable-function.html#判断函数"><i class="fa fa-check"></i><b>7.3.4</b> 判断函数</a></li>
+<li class="chapter" data-level="7.3.5" data-path="datatable-function.html"><a href="datatable-function.html#交集-差集-合并"><i class="fa fa-check"></i><b>7.3.5</b> 交集 差集 合并</a></li>
+<li class="chapter" data-level="7.3.6" data-path="datatable-function.html"><a href="datatable-function.html#长宽转换"><i class="fa fa-check"></i><b>7.3.6</b> 长宽转换</a></li>
+<li class="chapter" data-level="7.3.7" data-path="datatable-function.html"><a href="datatable-function.html#表连接"><i class="fa fa-check"></i><b>7.3.7</b> 表连接</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>7.4</b> 高级函数</a>
+<li class="chapter" data-level="7.4" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html"><i class="fa fa-check"></i><b>7.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>7.4.1</b> groupingsets</a></li>
-<li class="chapter" data-level="7.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>7.4.2</b> rleid</a></li>
-<li class="chapter" data-level="7.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>7.4.3</b> shift</a></li>
-<li class="chapter" data-level="7.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>7.4.4</b> J</a></li>
+<li class="chapter" data-level="7.4.1" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#groupingsets"><i class="fa fa-check"></i><b>7.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="7.4.2" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#rleid"><i class="fa fa-check"></i><b>7.4.2</b> rleid</a></li>
+<li class="chapter" data-level="7.4.3" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#shift"><i class="fa fa-check"></i><b>7.4.3</b> shift</a></li>
+<li class="chapter" data-level="7.4.4" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#j"><i class="fa fa-check"></i><b>7.4.4</b> J</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="小技巧.html"><a href="小技巧.html"><i class="fa fa-check"></i><b>7.5</b> 小技巧</a>
+<li class="chapter" data-level="7.5" data-path="datatable-tips.html"><a href="datatable-tips.html"><i class="fa fa-check"></i><b>7.5</b> 小技巧</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="小技巧.html"><a href="小技巧.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>7.5.1</b> 用{}抑制中间过程输出</a></li>
-<li class="chapter" data-level="7.5.2" data-path="小技巧.html"><a href="小技巧.html#使用打印data.table"><i class="fa fa-check"></i><b>7.5.2</b> 使用[]打印data.table</a></li>
+<li class="chapter" data-level="7.5.1" data-path="datatable-tips.html"><a href="datatable-tips.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>7.5.1</b> 用{}抑制中间过程输出</a></li>
+<li class="chapter" data-level="7.5.2" data-path="datatable-tips.html"><a href="datatable-tips.html#使用打印data.table"><i class="fa fa-check"></i><b>7.5.2</b> 使用[]打印data.table</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>7.6</b> 运用</a>
+<li class="chapter" data-level="7.6" data-path="datatable-application.html"><a href="datatable-application.html"><i class="fa fa-check"></i><b>7.6</b> 运用</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>7.6.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="7.6.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>7.6.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="7.6.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>7.6.3</b> 行列转变</a></li>
+<li class="chapter" data-level="7.6.1" data-path="datatable-application.html"><a href="datatable-application.html#自定义函数计算"><i class="fa fa-check"></i><b>7.6.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="7.6.2" data-path="datatable-application.html"><a href="datatable-application.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>7.6.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="7.6.3" data-path="datatable-application.html"><a href="datatable-application.html#行列转变"><i class="fa fa-check"></i><b>7.6.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>8</b> database</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>8.1</b> 安装数据库</a></li>
-<li class="chapter" data-level="8.2" data-path="odbc包.html"><a href="odbc包.html"><i class="fa fa-check"></i><b>8.2</b> odbc包</a>
+<li class="chapter" data-level="8.1" data-path="database-install.html"><a href="database-install.html"><i class="fa fa-check"></i><b>8.1</b> 安装数据库</a></li>
+<li class="chapter" data-level="8.2" data-path="database-odbc-package.html"><a href="database-odbc-package.html"><i class="fa fa-check"></i><b>8.2</b> odbc包</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="odbc包.html"><a href="odbc包.html#安装包"><i class="fa fa-check"></i><b>8.2.1</b> 安装包</a></li>
-<li class="chapter" data-level="8.2.2" data-path="odbc包.html"><a href="odbc包.html#驱动安装"><i class="fa fa-check"></i><b>8.2.2</b> 驱动安装</a></li>
-<li class="chapter" data-level="8.2.3" data-path="odbc包.html"><a href="odbc包.html#连接数据库"><i class="fa fa-check"></i><b>8.2.3</b> 连接数据库</a></li>
-<li class="chapter" data-level="8.2.4" data-path="odbc包.html"><a href="odbc包.html#读写数据库"><i class="fa fa-check"></i><b>8.2.4</b> 读写数据库</a></li>
+<li class="chapter" data-level="8.2.1" data-path="database-odbc-package.html"><a href="database-odbc-package.html#安装包"><i class="fa fa-check"></i><b>8.2.1</b> 安装包</a></li>
+<li class="chapter" data-level="8.2.2" data-path="database-odbc-package.html"><a href="database-odbc-package.html#驱动安装"><i class="fa fa-check"></i><b>8.2.2</b> 驱动安装</a></li>
+<li class="chapter" data-level="8.2.3" data-path="database-odbc-package.html"><a href="database-odbc-package.html#连接数据库"><i class="fa fa-check"></i><b>8.2.3</b> 连接数据库</a></li>
+<li class="chapter" data-level="8.2.4" data-path="database-odbc-package.html"><a href="database-odbc-package.html#读写数据库"><i class="fa fa-check"></i><b>8.2.4</b> 读写数据库</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="dbi包.html"><a href="dbi包.html"><i class="fa fa-check"></i><b>8.3</b> DBI包</a>
+<li class="chapter" data-level="8.3" data-path="database-DBI-package.html"><a href="database-DBI-package.html"><i class="fa fa-check"></i><b>8.3</b> DBI包</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="dbi包.html"><a href="dbi包.html#安装-2"><i class="fa fa-check"></i><b>8.3.1</b> 安装</a></li>
-<li class="chapter" data-level="8.3.2" data-path="dbi包.html"><a href="dbi包.html#连接数据库-1"><i class="fa fa-check"></i><b>8.3.2</b> 连接数据库</a></li>
-<li class="chapter" data-level="8.3.3" data-path="dbi包.html"><a href="dbi包.html#读写数据库-1"><i class="fa fa-check"></i><b>8.3.3</b> 读写数据库</a></li>
-<li class="chapter" data-level="8.3.4" data-path="dbi包.html"><a href="dbi包.html#其它函数介绍"><i class="fa fa-check"></i><b>8.3.4</b> 其它函数介绍</a></li>
+<li class="chapter" data-level="8.3.1" data-path="database-DBI-package.html"><a href="database-DBI-package.html#安装-1"><i class="fa fa-check"></i><b>8.3.1</b> 安装</a></li>
+<li class="chapter" data-level="8.3.2" data-path="database-DBI-package.html"><a href="database-DBI-package.html#连接数据库-1"><i class="fa fa-check"></i><b>8.3.2</b> 连接数据库</a></li>
+<li class="chapter" data-level="8.3.3" data-path="database-DBI-package.html"><a href="database-DBI-package.html#读写数据库-1"><i class="fa fa-check"></i><b>8.3.3</b> 读写数据库</a></li>
+<li class="chapter" data-level="8.3.4" data-path="database-DBI-package.html"><a href="database-DBI-package.html#其它函数介绍"><i class="fa fa-check"></i><b>8.3.4</b> 其它函数介绍</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="其他r包.html"><a href="其他r包.html"><i class="fa fa-check"></i><b>8.4</b> 其他R包</a>
+<li class="chapter" data-level="8.4" data-path="database-else-package.html"><a href="database-else-package.html"><i class="fa fa-check"></i><b>8.4</b> 其他R包</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="其他r包.html"><a href="其他r包.html#rodbc包"><i class="fa fa-check"></i><b>8.4.1</b> RODBC包</a></li>
-<li class="chapter" data-level="8.4.2" data-path="其他r包.html"><a href="其他r包.html#roracle包"><i class="fa fa-check"></i><b>8.4.2</b> ROracle包</a></li>
-<li class="chapter" data-level="8.4.3" data-path="其他r包.html"><a href="其他r包.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
+<li class="chapter" data-level="8.4.1" data-path="database-else-package.html"><a href="database-else-package.html#rodbc包"><i class="fa fa-check"></i><b>8.4.1</b> RODBC包</a></li>
+<li class="chapter" data-level="8.4.2" data-path="database-else-package.html"><a href="database-else-package.html#roracle包"><i class="fa fa-check"></i><b>8.4.2</b> ROracle包</a></li>
+<li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
+<li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
+<li class="chapter" data-level="8.4.5" data-path="database-else-package.html"><a href="database-else-package.html#大数据相关r包"><i class="fa fa-check"></i><b>8.4.5</b> 大数据相关R包</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="常见问题-1.html"><a href="常见问题-1.html"><i class="fa fa-check"></i><b>8.5</b> 常见问题</a>
+<li class="chapter" data-level="8.5" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.5</b> 常见问题</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="常见问题-1.html"><a href="常见问题-1.html#乱码问题"><i class="fa fa-check"></i><b>8.5.1</b> 乱码问题</a></li>
-<li class="chapter" data-level="8.5.2" data-path="常见问题-1.html"><a href="常见问题-1.html#无法连接问题"><i class="fa fa-check"></i><b>8.5.2</b> 无法连接问题</a></li>
-<li class="chapter" data-level="8.5.3" data-path="常见问题-1.html"><a href="常见问题-1.html#远程连接"><i class="fa fa-check"></i><b>8.5.3</b> 远程连接</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-FAQ.html"><a href="database-FAQ.html#乱码问题"><i class="fa fa-check"></i><b>8.5.1</b> 乱码问题</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-FAQ.html"><a href="database-FAQ.html#无法连接问题"><i class="fa fa-check"></i><b>8.5.2</b> 无法连接问题</a></li>
+<li class="chapter" data-level="8.5.3" data-path="database-FAQ.html"><a href="database-FAQ.html#远程连接"><i class="fa fa-check"></i><b>8.5.3</b> 远程连接</a></li>
+<li class="chapter" data-level="8.5.4" data-path="database-FAQ.html"><a href="database-FAQ.html#跳板机连接"><i class="fa fa-check"></i><b>8.5.4</b> 跳板机连接</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="dbplyr.html"><a href="dbplyr.html"><i class="fa fa-check"></i><b>8.6</b> dbplyr</a>
+<li class="chapter" data-level="8.6" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html"><i class="fa fa-check"></i><b>8.6</b> dbplyr</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="dbplyr.html"><a href="dbplyr.html#基础用法"><i class="fa fa-check"></i><b>8.6.1</b> 基础用法</a></li>
-<li class="chapter" data-level="8.6.2" data-path="dbplyr.html"><a href="dbplyr.html#无法正确转化"><i class="fa fa-check"></i><b>8.6.2</b> 无法正确转化</a></li>
+<li class="chapter" data-level="8.6.1" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#安装-2"><i class="fa fa-check"></i><b>8.6.1</b> 安装</a></li>
+<li class="chapter" data-level="8.6.2" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#基础用法"><i class="fa fa-check"></i><b>8.6.2</b> 基础用法</a></li>
+<li class="chapter" data-level="8.6.3" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#无法正确转化"><i class="fa fa-check"></i><b>8.6.3</b> 无法正确转化</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="参考资料-1.html"><a href="参考资料-1.html"><i class="fa fa-check"></i><b>8.7</b> 参考资料</a></li>
+<li class="chapter" data-level="8.7" data-path="database-reference-material.html"><a href="database-reference-material.html"><i class="fa fa-check"></i><b>8.7</b> 参考资料</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="loop-structure.html"><a href="loop-structure.html"><i class="fa fa-check"></i><b>9</b> Loop structure</a>
+<li class="chapter" data-level="9" data-path="R-loop-structure.html"><a href="R-loop-structure.html"><i class="fa fa-check"></i><b>9</b> 循环结构</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="简单示例.html"><a href="简单示例.html"><i class="fa fa-check"></i><b>9.1</b> 简单示例</a></li>
-<li class="chapter" data-level="9.2" data-path="循环基础.html"><a href="循环基础.html"><i class="fa fa-check"></i><b>9.2</b> 循环基础</a>
+<li class="chapter" data-level="9.1" data-path="R-loop-description.html"><a href="R-loop-description.html"><i class="fa fa-check"></i><b>9.1</b> R循环介绍</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="循环基础.html"><a href="循环基础.html#循环结构"><i class="fa fa-check"></i><b>9.2.1</b> 循环结构</a></li>
-<li class="chapter" data-level="9.2.2" data-path="循环基础.html"><a href="循环基础.html#next-break-用法"><i class="fa fa-check"></i><b>9.2.2</b> next break 用法</a></li>
-<li class="chapter" data-level="9.2.3" data-path="循环基础.html"><a href="循环基础.html#嵌套循环"><i class="fa fa-check"></i><b>9.2.3</b> 嵌套循环</a></li>
+<li class="chapter" data-level="9.1.1" data-path="R-loop-description.html"><a href="R-loop-description.html#R:loop-example"><i class="fa fa-check"></i><b>9.1.1</b> 简单示例</a></li>
+<li class="chapter" data-level="9.1.2" data-path="R-loop-description.html"><a href="R-loop-description.html#three:loop-structure"><i class="fa fa-check"></i><b>9.1.2</b> 循环结构</a></li>
+<li class="chapter" data-level="9.1.3" data-path="R-loop-description.html"><a href="R-loop-description.html#loop:control"><i class="fa fa-check"></i><b>9.1.3</b> 循环控制</a></li>
+<li class="chapter" data-level="9.1.4" data-path="R-loop-description.html"><a href="R-loop-description.html#嵌套循环"><i class="fa fa-check"></i><b>9.1.4</b> 嵌套循环</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="循环变化.html"><a href="循环变化.html"><i class="fa fa-check"></i><b>9.3</b> 循环变化</a>
+<li class="chapter" data-level="9.2" data-path="loop-changes.html"><a href="loop-changes.html"><i class="fa fa-check"></i><b>9.2</b> 循环变化</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="循环变化.html"><a href="循环变化.html#修改已有对象"><i class="fa fa-check"></i><b>9.3.1</b> 修改已有对象</a></li>
-<li class="chapter" data-level="9.3.2" data-path="循环变化.html"><a href="循环变化.html#循环模式"><i class="fa fa-check"></i><b>9.3.2</b> 循环模式</a></li>
-<li class="chapter" data-level="9.3.3" data-path="循环变化.html"><a href="循环变化.html#未知长度输出"><i class="fa fa-check"></i><b>9.3.3</b> 未知长度输出</a></li>
+<li class="chapter" data-level="9.2.1" data-path="loop-changes.html"><a href="loop-changes.html#修改已有对象"><i class="fa fa-check"></i><b>9.2.1</b> 修改已有对象</a></li>
+<li class="chapter" data-level="9.2.2" data-path="loop-changes.html"><a href="loop-changes.html#循环模式"><i class="fa fa-check"></i><b>9.2.2</b> 循环模式</a></li>
+<li class="chapter" data-level="9.2.3" data-path="loop-changes.html"><a href="loop-changes.html#未知长度输出"><i class="fa fa-check"></i><b>9.2.3</b> 未知长度输出</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>10</b> Iteration</a>
+<li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="简单用法.html"><a href="简单用法.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
-<li class="chapter" data-level="10.2" data-path="map系列常用函数.html"><a href="map系列常用函数.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
-<li class="chapter" data-level="10.3" data-path="归约累计函数.html"><a href="归约累计函数.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
-<li class="chapter" data-level="10.4" data-path="安全函数.html"><a href="安全函数.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
-<li class="chapter" data-level="10.5" data-path="映射多个参数.html"><a href="映射多个参数.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
-<li class="chapter" data-level="10.6" data-path="其他函数介绍.html"><a href="其他函数介绍.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
+<li class="chapter" data-level="10.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
+<li class="chapter" data-level="10.2" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
+<li class="chapter" data-level="10.3" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
+<li class="chapter" data-level="10.4" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
+<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
+<li class="chapter" data-level="10.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="define-function.html"><a href="define-function.html"><i class="fa fa-check"></i><b>11</b> define function</a>
+<li class="chapter" data-level="11" data-path="self-define-function.html"><a href="self-define-function.html"><i class="fa fa-check"></i><b>11</b> 自定义函数</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="简单示例-1.html"><a href="简单示例-1.html"><i class="fa fa-check"></i><b>11.1</b> 简单示例</a></li>
-<li class="chapter" data-level="11.2" data-path="条件执行.html"><a href="条件执行.html"><i class="fa fa-check"></i><b>11.2</b> 条件执行</a>
+<li class="chapter" data-level="11.1" data-path="define-function-example.html"><a href="define-function-example.html"><i class="fa fa-check"></i><b>11.1</b> 简单示例</a></li>
+<li class="chapter" data-level="11.2" data-path="define-function-conditional-execution.html"><a href="define-function-conditional-execution.html"><i class="fa fa-check"></i><b>11.2</b> 条件执行</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="条件执行.html"><a href="条件执行.html#多条件执行"><i class="fa fa-check"></i><b>11.2.1</b> 多条件执行</a></li>
+<li class="chapter" data-level="11.2.1" data-path="define-function-conditional-execution.html"><a href="define-function-conditional-execution.html#多条件执行"><i class="fa fa-check"></i><b>11.2.1</b> 多条件执行</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="函数参数-1.html"><a href="函数参数-1.html"><i class="fa fa-check"></i><b>11.3</b> 函数参数</a>
+<li class="chapter" data-level="11.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html"><i class="fa fa-check"></i><b>11.3</b> 函数参数</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="函数参数-1.html"><a href="函数参数-1.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
-<li class="chapter" data-level="11.3.2" data-path="函数参数-1.html"><a href="函数参数-1.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="11.3.3" data-path="函数参数-1.html"><a href="函数参数-1.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
+<li class="chapter" data-level="11.3.1" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
+<li class="chapter" data-level="11.3.2" data-path="define-function-parameter.html"><a href="define-function-parameter.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
+<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="返回值.html"><a href="返回值.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
+<li class="chapter" data-level="11.4" data-path="function-return.html"><a href="function-return.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="返回值.html"><a href="返回值.html#显式返回"><i class="fa fa-check"></i><b>11.4.1</b> 显式返回</a></li>
-<li class="chapter" data-level="11.4.2" data-path="返回值.html"><a href="返回值.html#编写管道函数"><i class="fa fa-check"></i><b>11.4.2</b> 编写管道函数</a></li>
+<li class="chapter" data-level="11.4.1" data-path="function-return.html"><a href="function-return.html#显式返回"><i class="fa fa-check"></i><b>11.4.1</b> 显式返回</a></li>
+<li class="chapter" data-level="11.4.2" data-path="function-return.html"><a href="function-return.html#编写管道函数"><i class="fa fa-check"></i><b>11.4.2</b> 编写管道函数</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="环境.html"><a href="环境.html"><i class="fa fa-check"></i><b>11.5</b> 环境</a></li>
-<li class="chapter" data-level="11.6" data-path="拓展部分.html"><a href="拓展部分.html"><i class="fa fa-check"></i><b>11.6</b> 拓展部分</a></li>
+<li class="chapter" data-level="11.5" data-path="function-environment.html"><a href="function-environment.html"><i class="fa fa-check"></i><b>11.5</b> 环境</a></li>
+<li class="chapter" data-level="11.6" data-path="function-expand.html"><a href="function-expand.html"><i class="fa fa-check"></i><b>11.6</b> 拓展部分</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="file-system-operation.html"><a href="file-system-operation.html"><i class="fa fa-check"></i><b>12</b> R语言文件系统操作</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="file-base-r.html"><a href="file-base-r.html"><i class="fa fa-check"></i><b>12.1</b> base R</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="file-base-r.html"><a href="file-base-r.html#base:r-usage"><i class="fa fa-check"></i><b>12.1.1</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="fs-package.html"><a href="fs-package.html"><i class="fa fa-check"></i><b>12.2</b> fs package</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="fs-package.html"><a href="fs-package.html#fs-install"><i class="fa fa-check"></i><b>12.2.1</b> 安装</a></li>
+<li class="chapter" data-level="12.2.2" data-path="fs-package.html"><a href="fs-package.html#fs-advanced"><i class="fa fa-check"></i><b>12.2.2</b> 优势</a></li>
+<li class="chapter" data-level="12.2.3" data-path="fs-package.html"><a href="fs-package.html#fs-usage"><i class="fa fa-check"></i><b>12.2.3</b> 基础用法</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="fs-functions.html"><a href="fs-functions.html"><i class="fa fa-check"></i><b>12.3</b> fs函数介绍</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="fs-functions.html"><a href="fs-functions.html#fs-file-manipulation"><i class="fa fa-check"></i><b>12.3.1</b> 文件操作</a></li>
+<li class="chapter" data-level="12.3.2" data-path="fs-functions.html"><a href="fs-functions.html#fs-dir-manipulation"><i class="fa fa-check"></i><b>12.3.2</b> 目录操作</a></li>
+<li class="chapter" data-level="12.3.3" data-path="fs-functions.html"><a href="fs-functions.html#fs-link-manipulation"><i class="fa fa-check"></i><b>12.3.3</b> 链接操作</a></li>
+<li class="chapter" data-level="12.3.4" data-path="fs-functions.html"><a href="fs-functions.html#fs-path-manipulation"><i class="fa fa-check"></i><b>12.3.4</b> 路径操作</a></li>
+<li class="chapter" data-level="12.3.5" data-path="fs-functions.html"><a href="fs-functions.html#fs-help-manipulation"><i class="fa fa-check"></i><b>12.3.5</b> 辅助函数</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="file-base-fs-difference.html"><a href="file-base-fs-difference.html"><i class="fa fa-check"></i><b>12.4</b> base-fs-shell比较</a></li>
+<li class="chapter" data-level="12.5" data-path="file-manipulation-reference-material.html"><a href="file-manipulation-reference-material.html"><i class="fa fa-check"></i><b>12.5</b> 参考资料</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://gitee.com/zhongyufei/Rbook" target="blank">gitee地址</a></li>
@@ -471,121 +507,121 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="picture/dplyr/dplyr-row-manipulation.png" alt="" />
 <p class="caption">Excel-sum</p>
 </div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="dplyr-row-manipulation.html#cb71-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb71-2"><a href="dplyr-row-manipulation.html#cb71-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>()</span>
-<span id="cb71-3"><a href="dplyr-row-manipulation.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 3</span></span>
-<span id="cb71-4"><a href="dplyr-row-manipulation.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
-<span id="cb71-5"><a href="dplyr-row-manipulation.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z</span></span>
-<span id="cb71-6"><a href="dplyr-row-manipulation.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb71-7"><a href="dplyr-row-manipulation.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5</span></span>
-<span id="cb71-8"><a href="dplyr-row-manipulation.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6</span></span>
-<span id="cb71-9"><a href="dplyr-row-manipulation.html#cb71-9" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(x, y, z))) <span class="co">#返回结果与Excel一致</span></span>
-<span id="cb71-10"><a href="dplyr-row-manipulation.html#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
-<span id="cb71-11"><a href="dplyr-row-manipulation.html#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
-<span id="cb71-12"><a href="dplyr-row-manipulation.html#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z total</span></span>
-<span id="cb71-13"><a href="dplyr-row-manipulation.html#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb71-14"><a href="dplyr-row-manipulation.html#cb71-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5     9</span></span>
-<span id="cb71-15"><a href="dplyr-row-manipulation.html#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6    12</span></span>
-<span id="cb71-16"><a href="dplyr-row-manipulation.html#cb71-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-17"><a href="dplyr-row-manipulation.html#cb71-17" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(x, y, z))) <span class="co"># 返回结果不符合预期</span></span>
-<span id="cb71-18"><a href="dplyr-row-manipulation.html#cb71-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
-<span id="cb71-19"><a href="dplyr-row-manipulation.html#cb71-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z total</span></span>
-<span id="cb71-20"><a href="dplyr-row-manipulation.html#cb71-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb71-21"><a href="dplyr-row-manipulation.html#cb71-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5    21</span></span>
-<span id="cb71-22"><a href="dplyr-row-manipulation.html#cb71-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6    21</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="dplyr-row-manipulation.html#cb124-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb124-2"><a href="dplyr-row-manipulation.html#cb124-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>()</span>
+<span id="cb124-3"><a href="dplyr-row-manipulation.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 3</span></span>
+<span id="cb124-4"><a href="dplyr-row-manipulation.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb124-5"><a href="dplyr-row-manipulation.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z</span></span>
+<span id="cb124-6"><a href="dplyr-row-manipulation.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb124-7"><a href="dplyr-row-manipulation.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5</span></span>
+<span id="cb124-8"><a href="dplyr-row-manipulation.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6</span></span>
+<span id="cb124-9"><a href="dplyr-row-manipulation.html#cb124-9" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(x, y, z))) <span class="co">#返回结果与Excel一致</span></span>
+<span id="cb124-10"><a href="dplyr-row-manipulation.html#cb124-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
+<span id="cb124-11"><a href="dplyr-row-manipulation.html#cb124-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb124-12"><a href="dplyr-row-manipulation.html#cb124-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z total</span></span>
+<span id="cb124-13"><a href="dplyr-row-manipulation.html#cb124-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb124-14"><a href="dplyr-row-manipulation.html#cb124-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5     9</span></span>
+<span id="cb124-15"><a href="dplyr-row-manipulation.html#cb124-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6    12</span></span>
+<span id="cb124-16"><a href="dplyr-row-manipulation.html#cb124-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-17"><a href="dplyr-row-manipulation.html#cb124-17" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c</span>(x, y, z))) <span class="co"># 返回结果不符合预期</span></span>
+<span id="cb124-18"><a href="dplyr-row-manipulation.html#cb124-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
+<span id="cb124-19"><a href="dplyr-row-manipulation.html#cb124-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z total</span></span>
+<span id="cb124-20"><a href="dplyr-row-manipulation.html#cb124-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb124-21"><a href="dplyr-row-manipulation.html#cb124-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5    21</span></span>
+<span id="cb124-22"><a href="dplyr-row-manipulation.html#cb124-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6    21</span></span></code></pre></div>
 <div id="比较差异" class="section level3" number="2.7.1">
 <h3><span class="header-section-number">2.7.1</span> 比较差异</h3>
 <p>像<code>group_by()</code>,<code>rowwise()</code>并没有做任何事情，它的作用是改变其他动词的工作方式。</p>
 <p>注意以下代码返回结果不同:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="dplyr-row-manipulation.html#cb72-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb72-2"><a href="dplyr-row-manipulation.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
-<span id="cb72-3"><a href="dplyr-row-manipulation.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
-<span id="cb72-4"><a href="dplyr-row-manipulation.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
-<span id="cb72-5"><a href="dplyr-row-manipulation.html#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5   3.5</span></span>
-<span id="cb72-6"><a href="dplyr-row-manipulation.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6   3.5</span></span>
-<span id="cb72-7"><a href="dplyr-row-manipulation.html#cb72-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb72-8"><a href="dplyr-row-manipulation.html#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
-<span id="cb72-9"><a href="dplyr-row-manipulation.html#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
-<span id="cb72-10"><a href="dplyr-row-manipulation.html#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
-<span id="cb72-11"><a href="dplyr-row-manipulation.html#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
-<span id="cb72-12"><a href="dplyr-row-manipulation.html#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5     3</span></span>
-<span id="cb72-13"><a href="dplyr-row-manipulation.html#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6     4</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="dplyr-row-manipulation.html#cb125-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb125-2"><a href="dplyr-row-manipulation.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
+<span id="cb125-3"><a href="dplyr-row-manipulation.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb125-4"><a href="dplyr-row-manipulation.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb125-5"><a href="dplyr-row-manipulation.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5   3.5</span></span>
+<span id="cb125-6"><a href="dplyr-row-manipulation.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6   3.5</span></span>
+<span id="cb125-7"><a href="dplyr-row-manipulation.html#cb125-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb125-8"><a href="dplyr-row-manipulation.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
+<span id="cb125-9"><a href="dplyr-row-manipulation.html#cb125-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb125-10"><a href="dplyr-row-manipulation.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb125-11"><a href="dplyr-row-manipulation.html#cb125-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb125-12"><a href="dplyr-row-manipulation.html#cb125-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     3     5     3</span></span>
+<span id="cb125-13"><a href="dplyr-row-manipulation.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6     4</span></span></code></pre></div>
 <p><code>df %&gt;% mutate(m = mean(c(x, y, z)))</code>返回的结果是x,y,z散列全部数据的均值；<code>df %&gt;% rowwise() %&gt;% mutate(m = mean(c(x, y, z)))</code>通过rowwise改变了mean的作为范围，返回的某行x,y,z列3个数字的均值。两种动词的作用的范围因为rowwise完全改变。</p>
 <p>可以选择在调用中提供“标识符”变量<code>rowwise()</code>。这些变量在您调用时被保留<code>summarise()</code>，因此它们的行为与传递给的分组变量有些相似<code>group_by()</code>：</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="dplyr-row-manipulation.html#cb73-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mara&quot;</span>, <span class="st">&quot;Hadley&quot;</span>), <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb73-2"><a href="dplyr-row-manipulation.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-3"><a href="dplyr-row-manipulation.html#cb73-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb73-4"><a href="dplyr-row-manipulation.html#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb73-5"><a href="dplyr-row-manipulation.html#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb73-6"><a href="dplyr-row-manipulation.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has ungrouped output. You can override using the `.groups` argument.</span></span>
-<span id="cb73-7"><a href="dplyr-row-manipulation.html#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 1</span></span>
-<span id="cb73-8"><a href="dplyr-row-manipulation.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       m</span></span>
-<span id="cb73-9"><a href="dplyr-row-manipulation.html#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt;</span></span>
-<span id="cb73-10"><a href="dplyr-row-manipulation.html#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     3</span></span>
-<span id="cb73-11"><a href="dplyr-row-manipulation.html#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4</span></span>
-<span id="cb73-12"><a href="dplyr-row-manipulation.html#cb73-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-13"><a href="dplyr-row-manipulation.html#cb73-13" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb73-14"><a href="dplyr-row-manipulation.html#cb73-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>(name) <span class="sc">%&gt;%</span> </span>
-<span id="cb73-15"><a href="dplyr-row-manipulation.html#cb73-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb73-16"><a href="dplyr-row-manipulation.html#cb73-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;name&#39;. You can override using the `.groups` argument.</span></span>
-<span id="cb73-17"><a href="dplyr-row-manipulation.html#cb73-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
-<span id="cb73-18"><a href="dplyr-row-manipulation.html#cb73-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   name [2]</span></span>
-<span id="cb73-19"><a href="dplyr-row-manipulation.html#cb73-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name       m</span></span>
-<span id="cb73-20"><a href="dplyr-row-manipulation.html#cb73-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;</span></span>
-<span id="cb73-21"><a href="dplyr-row-manipulation.html#cb73-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Mara       3</span></span>
-<span id="cb73-22"><a href="dplyr-row-manipulation.html#cb73-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Hadley     4</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="dplyr-row-manipulation.html#cb126-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Mara&quot;</span>, <span class="st">&quot;Hadley&quot;</span>), <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">z =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb126-2"><a href="dplyr-row-manipulation.html#cb126-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-3"><a href="dplyr-row-manipulation.html#cb126-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb126-4"><a href="dplyr-row-manipulation.html#cb126-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb126-5"><a href="dplyr-row-manipulation.html#cb126-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb126-6"><a href="dplyr-row-manipulation.html#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has ungrouped output. You can override using the `.groups` argument.</span></span>
+<span id="cb126-7"><a href="dplyr-row-manipulation.html#cb126-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 1</span></span>
+<span id="cb126-8"><a href="dplyr-row-manipulation.html#cb126-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       m</span></span>
+<span id="cb126-9"><a href="dplyr-row-manipulation.html#cb126-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt;</span></span>
+<span id="cb126-10"><a href="dplyr-row-manipulation.html#cb126-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     3</span></span>
+<span id="cb126-11"><a href="dplyr-row-manipulation.html#cb126-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4</span></span>
+<span id="cb126-12"><a href="dplyr-row-manipulation.html#cb126-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-13"><a href="dplyr-row-manipulation.html#cb126-13" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb126-14"><a href="dplyr-row-manipulation.html#cb126-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-15"><a href="dplyr-row-manipulation.html#cb126-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb126-16"><a href="dplyr-row-manipulation.html#cb126-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;name&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb126-17"><a href="dplyr-row-manipulation.html#cb126-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb126-18"><a href="dplyr-row-manipulation.html#cb126-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   name [2]</span></span>
+<span id="cb126-19"><a href="dplyr-row-manipulation.html#cb126-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name       m</span></span>
+<span id="cb126-20"><a href="dplyr-row-manipulation.html#cb126-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span id="cb126-21"><a href="dplyr-row-manipulation.html#cb126-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Mara       3</span></span>
+<span id="cb126-22"><a href="dplyr-row-manipulation.html#cb126-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Hadley     4</span></span></code></pre></div>
 </div>
 <div id="常用案例" class="section level3" number="2.7.2">
 <h3><span class="header-section-number">2.7.2</span> 常用案例</h3>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="dplyr-row-manipulation.html#cb74-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">6</span>), <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">6</span>), <span class="at">z =</span> <span class="fu">runif</span>(<span class="dv">6</span>))</span>
-<span id="cb74-2"><a href="dplyr-row-manipulation.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the mean of x, y, z in each row</span></span>
-<span id="cb74-3"><a href="dplyr-row-manipulation.html#cb74-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb74-4"><a href="dplyr-row-manipulation.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
-<span id="cb74-5"><a href="dplyr-row-manipulation.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
-<span id="cb74-6"><a href="dplyr-row-manipulation.html#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
-<span id="cb74-7"><a href="dplyr-row-manipulation.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb74-8"><a href="dplyr-row-manipulation.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.652 0.153 0.751 0.518</span></span>
-<span id="cb74-9"><a href="dplyr-row-manipulation.html#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 0.341 0.905 0.645 0.630</span></span>
-<span id="cb74-10"><a href="dplyr-row-manipulation.html#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 0.996 0.216 0.806 0.673</span></span>
-<span id="cb74-11"><a href="dplyr-row-manipulation.html#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 0.546 0.644 0.338 0.509</span></span>
-<span id="cb74-12"><a href="dplyr-row-manipulation.html#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 0.629 0.921 0.377 0.642</span></span>
-<span id="cb74-13"><a href="dplyr-row-manipulation.html#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 0.545 0.791 0.428 0.588</span></span>
-<span id="cb74-14"><a href="dplyr-row-manipulation.html#cb74-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-15"><a href="dplyr-row-manipulation.html#cb74-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-16"><a href="dplyr-row-manipulation.html#cb74-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the minimum of x and y in each row</span></span>
-<span id="cb74-17"><a href="dplyr-row-manipulation.html#cb74-17" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">min</span>(<span class="fu">c</span>(x, y, z)))</span>
-<span id="cb74-18"><a href="dplyr-row-manipulation.html#cb74-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
-<span id="cb74-19"><a href="dplyr-row-manipulation.html#cb74-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
-<span id="cb74-20"><a href="dplyr-row-manipulation.html#cb74-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
-<span id="cb74-21"><a href="dplyr-row-manipulation.html#cb74-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb74-22"><a href="dplyr-row-manipulation.html#cb74-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.652 0.153 0.751 0.153</span></span>
-<span id="cb74-23"><a href="dplyr-row-manipulation.html#cb74-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 0.341 0.905 0.645 0.341</span></span>
-<span id="cb74-24"><a href="dplyr-row-manipulation.html#cb74-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 0.996 0.216 0.806 0.216</span></span>
-<span id="cb74-25"><a href="dplyr-row-manipulation.html#cb74-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 0.546 0.644 0.338 0.338</span></span>
-<span id="cb74-26"><a href="dplyr-row-manipulation.html#cb74-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 0.629 0.921 0.377 0.377</span></span>
-<span id="cb74-27"><a href="dplyr-row-manipulation.html#cb74-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 0.545 0.791 0.428 0.428</span></span>
-<span id="cb74-28"><a href="dplyr-row-manipulation.html#cb74-28" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case you can use an existing vectorised function:</span></span>
-<span id="cb74-29"><a href="dplyr-row-manipulation.html#cb74-29" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">pmin</span>(x, y, z))</span>
-<span id="cb74-30"><a href="dplyr-row-manipulation.html#cb74-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
-<span id="cb74-31"><a href="dplyr-row-manipulation.html#cb74-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
-<span id="cb74-32"><a href="dplyr-row-manipulation.html#cb74-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb74-33"><a href="dplyr-row-manipulation.html#cb74-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.652 0.153 0.751 0.153</span></span>
-<span id="cb74-34"><a href="dplyr-row-manipulation.html#cb74-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 0.341 0.905 0.645 0.341</span></span>
-<span id="cb74-35"><a href="dplyr-row-manipulation.html#cb74-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 0.996 0.216 0.806 0.216</span></span>
-<span id="cb74-36"><a href="dplyr-row-manipulation.html#cb74-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 0.546 0.644 0.338 0.338</span></span>
-<span id="cb74-37"><a href="dplyr-row-manipulation.html#cb74-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 0.629 0.921 0.377 0.377</span></span>
-<span id="cb74-38"><a href="dplyr-row-manipulation.html#cb74-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 0.545 0.791 0.428 0.428</span></span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="dplyr-row-manipulation.html#cb127-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">6</span>), <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">6</span>), <span class="at">z =</span> <span class="fu">runif</span>(<span class="dv">6</span>))</span>
+<span id="cb127-2"><a href="dplyr-row-manipulation.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the mean of x, y, z in each row</span></span>
+<span id="cb127-3"><a href="dplyr-row-manipulation.html#cb127-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb127-4"><a href="dplyr-row-manipulation.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
+<span id="cb127-5"><a href="dplyr-row-manipulation.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb127-6"><a href="dplyr-row-manipulation.html#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb127-7"><a href="dplyr-row-manipulation.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb127-8"><a href="dplyr-row-manipulation.html#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.652 0.153 0.751 0.518</span></span>
+<span id="cb127-9"><a href="dplyr-row-manipulation.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 0.341 0.905 0.645 0.630</span></span>
+<span id="cb127-10"><a href="dplyr-row-manipulation.html#cb127-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 0.996 0.216 0.806 0.673</span></span>
+<span id="cb127-11"><a href="dplyr-row-manipulation.html#cb127-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 0.546 0.644 0.338 0.509</span></span>
+<span id="cb127-12"><a href="dplyr-row-manipulation.html#cb127-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 0.629 0.921 0.377 0.642</span></span>
+<span id="cb127-13"><a href="dplyr-row-manipulation.html#cb127-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 0.545 0.791 0.428 0.588</span></span>
+<span id="cb127-14"><a href="dplyr-row-manipulation.html#cb127-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-15"><a href="dplyr-row-manipulation.html#cb127-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-16"><a href="dplyr-row-manipulation.html#cb127-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the minimum of x and y in each row</span></span>
+<span id="cb127-17"><a href="dplyr-row-manipulation.html#cb127-17" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">min</span>(<span class="fu">c</span>(x, y, z)))</span>
+<span id="cb127-18"><a href="dplyr-row-manipulation.html#cb127-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
+<span id="cb127-19"><a href="dplyr-row-manipulation.html#cb127-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Rowwise: </span></span>
+<span id="cb127-20"><a href="dplyr-row-manipulation.html#cb127-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb127-21"><a href="dplyr-row-manipulation.html#cb127-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb127-22"><a href="dplyr-row-manipulation.html#cb127-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.652 0.153 0.751 0.153</span></span>
+<span id="cb127-23"><a href="dplyr-row-manipulation.html#cb127-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 0.341 0.905 0.645 0.341</span></span>
+<span id="cb127-24"><a href="dplyr-row-manipulation.html#cb127-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 0.996 0.216 0.806 0.216</span></span>
+<span id="cb127-25"><a href="dplyr-row-manipulation.html#cb127-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 0.546 0.644 0.338 0.338</span></span>
+<span id="cb127-26"><a href="dplyr-row-manipulation.html#cb127-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 0.629 0.921 0.377 0.377</span></span>
+<span id="cb127-27"><a href="dplyr-row-manipulation.html#cb127-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 0.545 0.791 0.428 0.428</span></span>
+<span id="cb127-28"><a href="dplyr-row-manipulation.html#cb127-28" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case you can use an existing vectorised function:</span></span>
+<span id="cb127-29"><a href="dplyr-row-manipulation.html#cb127-29" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">pmin</span>(x, y, z))</span>
+<span id="cb127-30"><a href="dplyr-row-manipulation.html#cb127-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
+<span id="cb127-31"><a href="dplyr-row-manipulation.html#cb127-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z     m</span></span>
+<span id="cb127-32"><a href="dplyr-row-manipulation.html#cb127-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb127-33"><a href="dplyr-row-manipulation.html#cb127-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.652 0.153 0.751 0.153</span></span>
+<span id="cb127-34"><a href="dplyr-row-manipulation.html#cb127-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 0.341 0.905 0.645 0.341</span></span>
+<span id="cb127-35"><a href="dplyr-row-manipulation.html#cb127-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 0.996 0.216 0.806 0.216</span></span>
+<span id="cb127-36"><a href="dplyr-row-manipulation.html#cb127-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 0.546 0.644 0.338 0.338</span></span>
+<span id="cb127-37"><a href="dplyr-row-manipulation.html#cb127-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 0.629 0.921 0.377 0.377</span></span>
+<span id="cb127-38"><a href="dplyr-row-manipulation.html#cb127-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 0.545 0.791 0.428 0.428</span></span></code></pre></div>
 <p>键入每个变量名称很繁琐，通过<code>c_across()</code>使更简单。</p>
 <blockquote>
 <p>详情可见vignette(“rowwise”)。</p>
 </blockquote>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="dplyr-row-manipulation.html#cb75-1" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z)))</span>
-<span id="cb75-2"><a href="dplyr-row-manipulation.html#cb75-2" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="fu">where</span>(is.numeric))))</span>
-<span id="cb75-3"><a href="dplyr-row-manipulation.html#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-4"><a href="dplyr-row-manipulation.html#cb75-4" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> </span>
-<span id="cb75-5"><a href="dplyr-row-manipulation.html#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z))) <span class="sc">%&gt;%</span> </span>
-<span id="cb75-6"><a href="dplyr-row-manipulation.html#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb75-7"><a href="dplyr-row-manipulation.html#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(w<span class="sc">:</span>z, <span class="sc">~</span> . <span class="sc">/</span> total))</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="dplyr-row-manipulation.html#cb128-1" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z)))</span>
+<span id="cb128-2"><a href="dplyr-row-manipulation.html#cb128-2" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="fu">where</span>(is.numeric))))</span>
+<span id="cb128-3"><a href="dplyr-row-manipulation.html#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="dplyr-row-manipulation.html#cb128-4" aria-hidden="true" tabindex="-1"></a>rf <span class="sc">%&gt;%</span> </span>
+<span id="cb128-5"><a href="dplyr-row-manipulation.html#cb128-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(w<span class="sc">:</span>z))) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-6"><a href="dplyr-row-manipulation.html#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb128-7"><a href="dplyr-row-manipulation.html#cb128-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(w<span class="sc">:</span>z, <span class="sc">~</span> . <span class="sc">/</span> total))</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -645,6 +681,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

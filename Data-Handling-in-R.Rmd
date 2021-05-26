@@ -65,22 +65,35 @@ ft
 
 ## 内容概要{#abstract .unnumbered}
 
-主要内容是为了将数据报表，数据报告，数据可视化等需求利用R语言自动化。
+主要内容是为了将数据报表，数据报告，数据可视化等需求利用R语言自动化实现，从而解放双手。
 
 - 数据导入导出
+
+读Excel:readxl,openxlsx;写Excel:openxlsx,writexl,读写CSV,TSV,TXT等:readr,vroom,data.table;
+
 - 数据操作 dplyr
+
 - 数据整洁 tidyr
-- 字符处理
-- 日期时间处理
-- 因子处理
+
+- 字符处理 stringr
+
+- 日期时间处理 lubridate
+
+- 因子处理 forcats
+
 - 数据处理利器 data.table
-- 数据库使用
+
+- 数据库使用 
+
+主要是odbc,DBI,ROracle,RMySQL等
+
 - 循环结构
 - 循环迭代之purrr包介绍
 - 自定义函数功能
 
+- 文件系统管理
 
-
+数据操作处理分为:tidyverse系列，data.table两大语法体系。
 
 
 ## 授权说明 {#sec:licenses .unnumbered}
@@ -115,7 +128,7 @@ xfun::session_info(packages = c(
 
 Email: <598253220@qq.com> 
 
-微信公众号: 宇飞的世界 
+公众号: 宇飞的世界 
 
 语雀: https://www.yuque.com/zyufei
 
@@ -2220,7 +2233,7 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-# tidyr
+# tidyr {#Data:tidyr-package}
 
 在实际工作中，我们数据分析工作者80%的时间可能贡献在数据准备和数据清晰上。另外发现新问题时，可能又要重复数据准备、数据清晰的过程。如果采用不能完全复现的方式做数据准备清洗的工作，那将是一场灾难。
 
@@ -2232,7 +2245,7 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 
 
-## 安装
+## 安装{#tidyr:install}
 
 本章节，我们重点关注`tidyr`包，这个软件包提供了许多的功能函数整理混乱的数据。tidyr是tidyverse的核心成员包
 
@@ -2251,7 +2264,7 @@ devtools::install_github("tidyverse/tidyr")
 ```
 
 
-## 主要功能
+## 主要功能 {#tidyr:useage}
 
 整洁的数据表现为：
 
@@ -4320,7 +4333,7 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-# forcats
+# 因子介绍{#forcats}
 
 我在实际工作中因子数据类型使用较少,forcats软件包用来处理因子,该软件包是tidyverse的一部分.
 
@@ -4369,7 +4382,7 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-# data.table
+# data.table{#Data-Manipulation-datatable}
 
 
 data.table包是我数据处理最常用的R包，是我目前觉得最好用的数据处理包,大部分我需要用到的功能集成在包里，不需要很多的依赖包。我简单接触过python，julia两种语言，并没有深入比较，所以我这个好用的印象仅仅是个人感受。
@@ -4394,7 +4407,7 @@ data.table 优势：
 
 >本文会照搬很多官方关于data.table的demo
 
-## 基础介绍
+## 基础介绍{#datatable:description}
 
 本部分从data.table安装，内置的案例查看，到data.table的句式语法，实现基础行列筛选和聚合计算。
 
@@ -4611,7 +4624,7 @@ head(dt)
 
 
 
-## 常规操作
+## 常规操作{#datatable:usage}
 
 
 ### 行筛选
@@ -4746,7 +4759,7 @@ setorderv(DT, c("A", "B"), c(1, -1))
 
 
 
-## 常用函数
+## 常用函数{#datatable:function}
 
 常用函数指我们常用功能的函数，如排名、排序、非重复计数、判断、表连接、长宽转换等功能。
 
@@ -5016,7 +5029,7 @@ allow.cartesian=getOption("datatable.allow.cartesian"),  # default FALSE
 x.y为连个数据框,当两个数据框连接字段相同时,用by=c('','')连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.
 
 
-## 高级函数
+## 高级函数{#datatable:advanced-functions}
 
 高级函数并不是指使用难度，而是使用频率可能不高，但在实现某些功能时特别便利的函数。
 
@@ -5189,7 +5202,7 @@ SJ : Sorted Join. The same value as J() but additionally setkey() is called on a
 
 
 
-## 小技巧
+## 小技巧{#datatable:tips}
 
 ### 用{}抑制中间过程输出
 
@@ -5242,7 +5255,7 @@ dt[,hp2wt:=hp/wt][] # does print
 ```
 
 
-## 运用
+## 运用{#datatable:application}
 
 ### 自定义函数计算
 
@@ -5402,7 +5415,7 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 # database {#database}
 
 
-我们作为数据分析师有必要和数据库打交道吗？实际工作中，数据量达到一定的程度，当你开始需要使用 Excel PowerPivot 做数据透视表[^Power Pivot]时，你就必须开始和数据库打交道，因为这时数据源超过Excel上限了，已经没办法承接。
+我们作为数据分析师有必要和数据库打交道吗？实际工作中，数据量达到一定的程度，当你开始需要使用 Excel PowerPivot 做数据透视表[^PowerPivot]时，你就必须开始和数据库打交道，因为这时数据源超过Excel上限了，已经没办法承接。
 
 [^PowerPivot]:PowerPivot 是一种数据建模技术，用于创建数据模型，建立关系，以及创建计算。 可使用 PowerPivot 处理大型数据集，构建广泛的关系，以及创建复杂（或简单）的计算，这些操作全部在高性能环境中和所你熟悉的 Excel 内执行。
 
@@ -5446,7 +5459,7 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 ## 安装数据库 {#database:install}
 
-如果暂时没有数据库使用经验，如果是使用Windows系统，直接去微软官网下载安装数据库即可。如果决定用R做数据分析相关工作，尤其时商业环境下，使用数据库有较强的必要性。安装数据库后，利用数据库做数据分析的练习测试也是不错的体验。另外也可以积累ETL相关经验。
+如果暂时没有数据库使用经验，如果是使用Windows系统，直接去微软官网下载安装数据库即可。如果决定用R做数据分析相关工作，尤其时商业环境下，使用数据库有较强的必要性。安装数据库后，利用数据库做数据分析的练习测试也是不错的体验,另外也可以积累ETL相关经验。
 
 仅简单介绍 MS SQL Server 安装
 
@@ -5482,7 +5495,7 @@ sudo apt-get install -y mssql-server
 systemctl status mssql-server --no-pager
 ```
 
-至于其他如安装sql server 命令行工具请[查阅官网安装](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15&preserve-view=true)。
+至于其他安装如sql server 命令行工具请[查阅官网安装](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-linux-ver15&preserve-view=true)。
 
 
 接下来我们就R语言与数据库的交互包展开介绍。
@@ -5757,7 +5770,12 @@ devtools::install_github("r-dbi/DBI")
 ```{r eval=FALSE}
 library(DBI)
 con <- dbConnect(
-  drv = odbc::odbc(), Driver = "SQL Server", server = "172.16.88.2",database = "spb", uid = "zhongyf", pwd = "Zyf123456"
+  drv = odbc::odbc(), 
+  Driver = "SQL Server", 
+  server = "172.16.88.2",
+  database = "spb", 
+  uid = "zhongyf", 
+  pwd = "Zyf123456"
 )
 ```
 
@@ -5856,6 +5874,7 @@ dbWriteTable(conn = con,name = '表名',value = df,overwrite=TURE,append=FALSE)
 
 
 ```{r}
+library(DBI)
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbWriteTable(con, "iris", iris)
 
@@ -5865,12 +5884,13 @@ dbFetch(iris_result)
 dbBind(iris_result, list(3))
 dbFetch(iris_result)
 dbClearResult(iris_result)
+dbDisconnect(con)
 ```
 
 实际运用中，我们从数据库(SQL Server)查询不同订单周期时的销售数据：
 
 
-```{r}
+```{r eval=FALSE}
 con <- dbConnect(odbc::odbc(), .connection_string = "driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=test;uid=zhongyf;pwd=Zyf123456", timeout = 10)
 
 result <- dbSendQuery(con, "SELECT * FROM sales_order WHERE [单据日期] between ? and ? ") # ?在本处是占位符
@@ -6230,7 +6250,6 @@ res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
 dbFetch(res)
 dbClearResult(res)
 dbDisconnect(con)
-Acknowled
 ```
 
 基础用法与DBI功能一致。
@@ -6276,7 +6295,9 @@ con_remote <- dbConnect(RClickhouse::clickhouse(), host="192.168.2.237", port=90
 
 ```
 
-clickhouse整体测试下来感觉还处于发展阶段，建议先观望。
+win系统上配置odbc时，注意ODBC版本，[clickhouse-odbc下载](https://github.com/ClickHouse/clickhouse-odbc/releases)。最初我使用的odbc版本太旧，Excel无法成功连接clickhouse数据库。
+
+clickhouse测试下来，感觉速度也没有特别快，不知道是不是因为我是用的虚拟机测试的原因。另外上传表和常规方式不一样，也挺麻烦，建议先保持观望。
 
 
 
@@ -6608,12 +6629,28 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-# Loop structure
+# 循环结构{#R:loop-structure}
 
-实际场景中,当需要重复做某动作时,可运用循环结构。
+所有现代编程语言都提供允许重复指令或指令快的特殊构造。在R中当需要重复做某动作时,可运用循环结构。比如1+2+3,我们可以直接写表达式，但是1+2+3+...+100，我们不可能直接写表达式，这时就可以借用循环重复计算。
+
+```{r}
+1+2+3
+```
+
+<center>
+
+![loop-structure](picture/loop/loop-structure.png)
+
+</center>
+
+## R循环介绍{#R:loop-description}
+
+通过命令`?Control`可以查看R中的循环结构。循环结构中关键词`for`，`while`,`repeat`，以及`break`,`next`。
+
+**我们终极目是:清晰了解循环结构后，用向量化或purrr包提供的功能摆脱循环。**
 
 
-## 简单示例
+### 简单示例{#R:loop-example}
 
 利用循环实现1到100连续相加求和
 
@@ -6629,44 +6666,16 @@ print(paste0('1到100连续相加求和等于:',total))
 ```
 
 
-## 循环基础
 
-### 循环结构 
+### 循环结构{#three:loop-structure}
 
 R中有三种循环结构：
 
-- Repeat
-
-```{r}
-i <- 1
-total <- 0
-repeat{
-  total <- total+i
-  i <- i+1
-  if(i > 100){
-    print(paste0('连续相加求和等于:',total))
-    break
-  }
-}
-```
-
-- while
-
-```{r}
-i <- 1
-total <- 0
-while(i <= 1000){
-  total <- total+i
-  i <- i+1
-}
-print(paste0('1到1000连续相加求和等于:',total))
-# not run
-# sum(1:1000)
-```
-
 - for 
 
-代码如示例所示
+for循环是大家使用最多的循环结构，for循环的迭代次数是固定的，并且事先知道。如最开始的示例中，1连续相加到100,共计加法次数是100次。
+
+for循环示例如下：
 
 ```{r message=FALSE,warning=FALSE}
 library(tidyverse)
@@ -6684,9 +6693,9 @@ for (i in seq_along(df)) {            # 2. sequence
 output
 ```
 
-循环中尽可能利用R中的向量化,比如指定output的长度,当数据量大的时候效率提升将比较明显,养成向量化的意识对提高代码效率有显著效果.
+代码解释：
 
-上面代码中 `vector`函数创建一个空向量带指定长度，有两个参数，第一个时向量类型('逻辑','整数','双精度','字符'等)，第二个是向量长度 `vector(length=5)`,类型默认是逻辑型.
+上面代码中 `vector`函数创建一个空向量带指定长度，有两个参数，第一个时向量类型('逻辑','整数','双精度','字符'等)，第二个是向量长度 `vector(length=5)`,类型默认是逻辑型。
 
 `seq_along`可以`?seq`查看用法.
 
@@ -6702,8 +6711,55 @@ seq_along(c())
 # generates the integer sequence 1, 2, ..., length(along.with). (along.with is usually abbreviated to along, and  seq_along is much faster.)
 ```
 
-### next break 用法
+> 循环中尽可能利用R中的向量化,比如指定output的长度,当数据量大的时候效率提升将比较明显,养成向量化的意识对提高代码效率有显著效果.
 
+
+- while
+
+当我们不知道要循环迭代的次数时，可以考虑使用while循环结构。
+
+示例如下：
+
+
+```{r eval=FALSE}
+readinteger <- function(){
+  n <- readline(prompt="Please, enter your ANSWER: ")
+}
+
+response <- as.integer(readinteger())
+
+while (response!=42) {   
+  print("Sorry, the answer to whatever the question MUST be 42");
+  response <- as.integer(readinteger());
+}
+
+```
+
+
+
+
+- Repeat
+
+repeat循环与while循环类似。如下所示，直到满足if条件后才会跳出循环结构。
+
+```{r}
+i <- 1
+total <- 0
+repeat{
+  total <- total+i
+  i <- i+1
+  if(i > 100){
+    print(paste0('连续相加求和等于:',total))
+    break
+  }
+}
+```
+
+
+
+### 循环控制{#loop:control}
+
+R中如何中断或退出循环呢？除了自然结束的for循环，while,repeat是如何结束的呢，在R中，我们可以通过`break`以及`next`控制循环，上一示例中我们已经看到`break`是如何跳出循环的。
 
 - next 用法
 
@@ -6718,11 +6774,34 @@ for(i in letters[1:6] ){
 
 - break 用法
 
-可以当条件满足时跳出循环常常与repeat循环结构配合使用。
+当条件满足时，跳出循环。
+
+```{r}
+m=10 
+n=10
+ctr=0
+mymat = matrix(0,m,n)
+
+for(i in 1:m) {
+  for(j in 1:n) {   
+    if(i==j) { 
+      break;
+    } else {
+       # you assign the values only when i<>j
+      mymat[i,j] = i*j
+      ctr=ctr+1
+      }
+  }
+  print(i*j) 
+}
+# 共赋值多少次
+print(ctr)
+```
 
 
 ### 嵌套循环
 
+嵌套循环即在循环体中再循环。
 
 ```{r}
 # not run
@@ -6735,7 +6814,7 @@ for(i in 1:10){
 ```
 
 
-## 循环变化
+## 循环变化{#loop:changes}
 
 ### 修改已有对象
 
@@ -6750,7 +6829,7 @@ str(res)
 
 ### 循环模式
 
-共有三种遍历向量的方法,之前展示的都是遍历数字索引`for (i in seq_along(xs))`,并使用提取值`x[[i]]`.还有两种方式:
+共有三种遍历向量的方法,之前展示的都是遍历数字索引`for (i in seq_along(xs))`,并使用提取值`x[[i]]`。除此之外，还有两种方式:
 
 - 循环遍历元素
 
@@ -6791,7 +6870,7 @@ for (i in seq_along(means)) {
 str(output)
 ```
 
-但是这种方式浪费时间，当数据量大时候效率会很低下.因为时间复杂度为($O(n^2)$).解决方案是将结果保存在列表中,然后在完成循环后合并为单个向量:
+但是这种方式浪费时间，当数据量大时候效率会很低下。因为时间复杂度为($O(n^2)$)，解决方案是将结果保存在列表中,然后在完成循环后合并为单个向量:
 
 ```{r}
 out <- vector("list", length(means))
@@ -6822,14 +6901,15 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-# Iteration
+# 循环迭代purrr介绍{#purrr:Iteration}
 
-常常需要重复操作同样的功能函数，这时可以用迭代来实现。purrr包提供了一套完整的函数来处理循环迭代,可以有效减少重复性工作和代码。
+常常需要重复操作同样的功能函数，这时可以用迭代来实现。purrr包提供了一套完整的函数来处理循环迭代，可以有效减少重复性工作和代码。
 
-<https://purrr.tidyverse.org/>
+[purrr项目介绍](https://purrr.tidyverse.org/)
 
-## 简单用法
 
+
+## 简单用法{#purrr:basic-usage}
 
 - map
 
@@ -6848,8 +6928,6 @@ map(.x = c(1, 4, 7), .f = addTen)
 # not run
 # map(c(1, 4, 7), addTen) # same above
 ```
-
-
 
 
 
@@ -6877,7 +6955,7 @@ identical(result1,result2)
 ```
 
 
-## map系列常用函数
+## map系列常用函数{#purrr:map}
 
 
 - map_chr
@@ -6921,7 +6999,7 @@ map_df(c(1,4,7),make_dataframe)
 ```
 
 
-## 归约累计函数
+## 归约累计函数{#purrr:reduce}
 
 reduce、accumulate()函数用法介绍.
 
@@ -6958,7 +7036,7 @@ accumulate(letters[1:5], paste, sep = ".")
 ```
 
 
-## 安全函数 
+## 安全函数 {#purrr-safely-functions}
 
 possibly() 和 safely(),当循环时候遇到错误报错导致整个程序停止,这不是我们想要的。
 
@@ -6978,7 +7056,7 @@ map(l,test_fun)
 
 用safely()函数将原始function包裹起来,即使执行过程中遇到错误也可以完成整个任务,不会因为中途报错停止,在大型循环过程中,如爬虫过程中比较实用。
 
-## 映射多个参数 
+## 映射多个参数 {#purrr:multi-parameter}
 
 map2 和 pmap 函数可以映射两个及以上参数。
 
@@ -7004,7 +7082,7 @@ pmap(li,sum)
 同上有pmap_int,pmap_dbl,pmap_dfr等函数。
 
 
-## 其他函数介绍
+## 其他函数介绍{#purrr:else-functions}
 
 - flatten
 
@@ -7069,7 +7147,7 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-# define function
+# 自定义函数{#self:define-function}
 
 
 函数功能使我们尽可能避免复制粘贴代码,而且需要更改的时候不需要大面积修改代码仅需要调整函数参数,使代码整体更加模块化.
@@ -7106,9 +7184,8 @@ res1 <- if_else(num <= 50,"1-50",
 
 当需要修改区间时候仅仅只需要调整参数,而不必大量修改代码,当在脚本中需要调用多次时,能简洁代码.
 
-```{r eval=FALSE}
-# 排名区间函数
-#library(tidyverse)
+```{r }
+
 cut_function <- function(vecto,x,n){
   vec <- c(0)
   for(i in 1:n){
@@ -7129,19 +7206,27 @@ cut_function <- function(vecto,x,n){
 
 res2 <- cut_function(num,50,4)
 
-# identical(res1,res2)
-# > TRUE
+identical(res1,res2)
+
 ```
+
+当然以上的函数本质是用base R中`cut()`:
+
+```{r}
+cut(1:201,breaks = c(0,50,100,150,200,Inf))
+```
+
+
 
 
 [参考资料](https://r4ds.had.co.nz/functions.html)
 
 
 
-## 简单示例
+## 简单示例{#define-function-example}
 
 
-给函数取一个合适名字是很难的事情,徐尽可能从函数名称看出你实现的功能.
+给函数取一个合适名字是很难的事情,需尽可能从函数名称看出你实现的功能.
 
 ```{r}
 add_ten <- function(x){
@@ -7163,7 +7248,7 @@ add_ten <- function(x){
 }
 ```
 
-## 条件执行
+## 条件执行 {#define-function:conditional-execution}
 
 ```{r}
 has_name <- function(x) {
@@ -7203,7 +7288,7 @@ function(x, y, op) {
 ```
 
 
-## 函数参数
+## 函数参数{#define-function:parameter}
 
 函数的参数通常分为两大类,一组是提供要计算的参数,另外一组提供计算时的细节参数.
 
@@ -7273,7 +7358,7 @@ rule("Important output")
 
 
 
-## 返回值
+## 返回值 {#function:return}
 
 ###  显式返回
 
@@ -7350,7 +7435,7 @@ mtcars %>%
 ```
 
 
-## 环境
+## 环境 {#function:environment}
 
 环境是复杂的,建议阅读原文.
 
@@ -7380,7 +7465,7 @@ f(10)
 <http://adv-r.had.co.nz/>
 
 
-## 拓展部分
+## 拓展部分{#function:expand}
 
 
 在我之前工作中遇到需要分组计算时,我想要编写一个函数实现某些功能,但是分组的group_by()字段不一样时,导致代码没办法复用。
@@ -7424,4 +7509,344 @@ identical(res1,res2)
 以上my_summarise3()函数可以按照需求任意指定聚合汇总字段。
 
 <!--chapter:end:10-function.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+set.seed(1014)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  out.width = "90%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.asp = 0.618,  # 1 / phi
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
+
+# R语言文件系统操作{#file:system-operation}
+
+即使是数据处理、分析也涉及到文件系统操作。比如一些表单中包含公司全部合作伙伴的数据，现在需要按照合作伙伴名称切割数据并将数据以附件的形式通过邮件发送？我们就需要将数据按照合作伙伴切割并分开保存打包，最后以邮件发送。那这个过程中就涉及到文件、目录等文件系统操作。
+
+在使用Rstudio-server、部署shiny-server时，文件系统操作将会变得尤其重要。我们掌握好R里面的文件系统操作，就不用使用`bash`命令操作文件系统，让我们自己更加方便。
+
+本章节主要讲R语言里的文件操作。分为：
+
+- base R
+
+- fs package介绍
+
+- base and fs and shell 对比
+
+## base R {#file:base-r}
+
+base R 中提供了一组函数与计算机系统文件交互，从文件创建、复制、删除等常规文件操作。
+
+### 用法{#base:r-usage}
+
+本小节主要将base R中常用的文件函数举例说明用法。
+
+- 常用函数
+
+```{r}
+# 查看路径下的文件列表
+list.files()
+
+# 创建文件夹
+dir.create('test folder')
+
+# 是否存在
+dir.exists('test folder')
+
+# 删除文件夹
+unlink('test folder',recursive = TRUE,force=TRUE) 
+# 注意recursive参数为TRUE，文件夹才能被删除
+```
+
+- 函数介绍
+
+```{r eval=FALSE}
+file.create(..., showWarnings = TRUE)
+file.exists(...)
+file.remove(...)
+file.rename(from, to)
+file.append(file1, file2)
+file.copy(from, to, overwrite = recursive, recursive = FALSE,
+          copy.mode = TRUE, copy.date = FALSE)
+file.symlink(from, to)
+file.link(from, to)
+```
+
+其中需要注意的参数即recursive，是否递归?像macos或linux上的`cp -R`命令。
+
+```{r}
+getwd()
+```
+
+
+`file.create()`:用指定的名称创建文件。创建成功则返回TRUE,失败将返回警告。
+
+```{r}
+file.create('test.txt')
+file.create('test.csv')
+```
+
+`file.exists()`:返回文件是否存在的逻辑向量，如果存在则返回TRUE
+
+```{r}
+file.exists(c('test.txt','test.csv'))
+```
+
+`file.remove()`:删除指定名称文件。
+
+```{r}
+file.remove('test.txt')
+```
+
+
+`file.rename()`:尝试重命名文件。
+
+```{r}
+file.rename(from = 'test.csv',to = 'newtest.csv')
+```
+
+`file.append()`:尝试将第二个文件追加到第一个文件
+
+```{r}
+cat("文件ta的内容\n", file = "ta.txt")
+cat("文件tb的内容\n", file = "tb.txt")
+file.append("ta.txt", "tb.txt")
+cat(readLines('ta.txt'))
+
+```
+
+`file.copy()`:复制文件
+
+```{r}
+dir.create('test')
+file.copy(from = 'ta.txt',to = './test',overwrite = T,recursive = TRUE)
+```
+
+`file.symlink()`:建立符号链接[^文件链接]，在winOS系统上即快捷方式，MacOS上即替身，linux上即软连接类似`ln -s`。
+
+
+```{r}
+file.symlink(from = 'ta.txt',to = 'newab.txt')
+```
+
+`file.link()`:建立硬链接
+
+[^文件链接]:对数据分析而言，没有特别重要(可能在shiny部署时能用到)，请自行了解软链接硬链接。
+
+
+```{r include=FALSE}
+unlink(x = c('ta.txt','tb.txt','newtest.csv'))
+unlink(x = 'test',recursive = TRUE)
+```
+
+<!-- 将测试文件删除 -->
+
+
+详情可以[参考文章](https://www.ouq.net/%E5%88%A9%E7%94%A8r%E8%AF%AD%E8%A8%80%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E3%80%81%E7%A7%BB%E5%8A%A8%E3%80%81%E5%88%A0%E9%99%A4%E3%80%81%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6.html)
+
+
+
+## fs package{#fs-package}
+
+fs[github](https://github.com/r-lib/fs)项目地址，fs为文件系统操作提供了一个跨平台的统计接口。本节基本从fs项目照搬demo。
+
+### 安装{#fs-install}
+
+使用以下命令从[CRAN](https://cran.r-project.org/)安装
+
+```{r eval=FALSE}
+install.packages("fs")
+```
+
+安装来自GitHub的开发版本，其中包括：
+
+```{r eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("r-lib/fs")
+```
+
+### 优势{#fs-advanced}
+
+相比base R相同功能，fs包的优势：
+
+- 向量化。所有fs的函数都是矢量化的，可以批量操作。
+- 编码一致性。fs将输入的路径统一转化为UTF-8。
+- 函数名一致性。fs函数使用一致的命名约定。
+- 函数使用返回“tidy”paths,整洁的路径，和tidyverse一脉相承的概念。
+
+### 基础用法{#fs-usage}
+
+fs函数主要有四大类：
+
+- `path_`系列用于路径构造
+
+- `file_`系列用于文件
+
+- `dir_`系列用木目录
+
+- `link_`系列用于链接
+
+目录和链接是文件的特殊类型，因为`file_`在用于目录和链接时，功能通常可以使用。
+
+```{r}
+library(fs)
+
+# `path()`函数构造路径
+
+path('事业部',c('华东','华西','华南','华北'),'周补货数据')
+
+# 当前目录文件列表
+dir_ls()
+
+# 以Rmd结尾的文件
+dir_ls(regexp = 'Rmd$')
+
+# 创建一个文件夹
+tmp <- dir_create(file_temp())
+tmp
+
+# 在文件夹中创建文件
+file_create(path(tmp, "my-file.txt"))
+dir_ls(tmp)
+
+# 从文件夹中删除文件
+file_delete(path(tmp, "my-file.txt"))
+dir_ls(tmp)
+
+# 删除文件
+dir_delete(tmp)
+```
+
+## fs函数介绍 {#fs-functions}
+
+从文件、目录、链接、路径等方面介绍fs中常用的函数。
+
+### 文件操作{#fs-file-manipulation}
+
+| 文件操作                                                  | 函数作用                                          |
+| --------------------------------------------------------- | :------------------------------------------------ |
+| file_copy() dir_copy() link_copy()                        | 复制文件、目录、链接                              |
+| file_create() dir_create() link_create()                  | 创建文件、目录、链接                              |
+| file_delete() dir_delete() link_delete()                  | 删除文件、目录、链接                              |
+| file_access() file_exists() dir_exists()  link_exists()   | 文件是否存在和权限查询                            |
+| file_chmod()                                              | 更改文件权限                                      |
+| file_chown()                                              | 更改文件的所有者和组                              |
+| file_info() file_size()                                   | 文件信息                                          |
+| file_move()                                               | 移动和重命名文件                                  |
+| file_show()                                               | 打开文件或目录                                    |
+| file_temp() file_temp_push()  file_temp_pop() path_temp() | 临时文件或路径                                    |
+| file_touch()                                              | 与linux不同，不创建文件，仅更改文件访问和修改时间 |
+
+### 目录操作{#fs-dir-manipulation}
+
+| 目录操作                                                | 函数作用               |
+| ------------------------------------------------------- | ---------------------- |
+| file_copy() dir_copy() link_copy()                      | 复制文件、目录、链接   |
+| file_create() dir_create() link_create()                | 创建文件、目录、链接   |
+| file_delete() dir_delete() link_delete()                | 删除文件、目录、链接   |
+| dir_ls() dir_map() dir_walk() dir_info()                | 查看文件列表、信息     |
+| dir_tree()                                              | 以树状结构打印文件     |
+| file_access() file_exists() dir_exists()  link_exists() | 文件是否存在和权限查询 |
+
+### 链接操作{#fs-link-manipulation}
+
+| 链接操作                                                | 函数作用               |
+| ------------------------------------------------------- | ---------------------- |
+| file_copy() dir_copy() link_copy()                      | 复制文件、目录、链接   |
+| file_create() dir_create() link_create()                | 创建文件、目录、链接   |
+| file_delete() dir_delete() link_delete()                | 删除文件、目录、链接   |
+| file_access() file_exists() dir_exists()  link_exists() | 文件是否存在和权限查询 |
+| link_path()                                             | 读取链接文件路径       |
+
+### 路径操作{#fs-path-manipulation}
+
+| 路径操作                                                     | 函数作用                             |
+| ------------------------------------------------------------ | ------------------------------------ |
+| path() path_wd()                                             | 构造文件、目录路径；获取当前路径     |
+| file_temp() file_temp_push()  file_temp_pop() path_temp()    | 创建临时文件                         |
+| path_expand() path_expand_r()  path_home() path_home_r()     | 查找用户主目录                       |
+| path_file() path_dir() path_ext()  path_ext_remove() path_ext_set() `path_ext<-`() | 处理文件路径                         |
+| path_filter()                                                | 筛选路径                             |
+| path_real() path_split() path_join()  path_abs() path_norm() path_rel() path_common() path_has_parent() | 处理路径                             |
+| path_package()                                               | 包的路径                             |
+| path_sanitize()                                              | 通过删除目录路径和无效字符清理文件名 |
+| path_tidy()                                                  | 整洁路径                             |
+
+### 辅助函数{#fs-help-manipulation}
+
+| 帮助函数                                      | 函数作用                 |
+| --------------------------------------------- | ------------------------ |
+| is_file() is_dir() is_link()  is_file_empty() | 测试文件类型             |
+| as_fs_path() fs_path()                        | 文件路径                 |
+| as_fs_bytes() fs_bytes()                      | 可读文件的大小           |
+| as_fs_perms() fs_perms()                      | 创建、修改、查看文件权限 |
+
+
+## base-fs-shell比较{#file:base-fs-difference}
+
+对比base，fs,shell相同功能函数，加深记忆。直接阅读[官网介绍](https://fs.r-lib.org/articles/function-comparisons.html)
+
+
+>使用Rvest包将[官网介绍](https://fs.r-lib.org/articles/function-comparisons.html)的信息"爬"下来。由于是外网，想要快速正确爬虫确保网络通畅。
+
+爬取代码如下:
+
+```{r eval=FALSE}
+library(rvest)
+library(tidyverse,warn.conflicts = FALSE)
+
+
+# 目录功能对比
+directory_functions_dt <- read_html('https://fs.r-lib.org/articles/function-comparisons.html') %>% 
+  html_nodes('#directory-functions') %>% 
+  rvest::html_table() %>% `[[`(1)
+
+# 文件功能对比
+file_functions_dt <- read_html('https://fs.r-lib.org/articles/function-comparisons.html') %>% 
+  html_nodes('#file-functions') %>% 
+  rvest::html_table() %>% `[[`(1)
+
+# 路径功能对比
+path_functions_dt <- read_html('https://fs.r-lib.org/articles/function-comparisons.html') %>% 
+  html_nodes('#path-functions') %>% 
+  rvest::html_table() %>% `[[`(1)
+```
+
+```{r message=FALSE,warning=FALSE,echo=FALSE}
+library(DT)
+directory_functions_dt <- readr::read_csv('data/file-manipulation/directory_functions_dt.csv')
+file_functions_dt <- readr::read_csv('data/file-manipulation/file_functions_dt.csv')
+path_functions_dt <- readr::read_csv('data/file-manipulation/path_functions_dt.csv')
+
+DT::datatable(directory_functions_dt,class = 'compact nowrap hover',options = list(scrollX = TRUE),caption = '目录功能对比')
+
+DT::datatable(file_functions_dt,class = 'compact nowrap hover',options = list(scrollX = TRUE),caption = '文件功能对比')
+
+DT::datatable(path_functions_dt,class = 'compact nowrap hover',options = list(scrollX = TRUE),caption = '路径功能对比')
+
+
+```
+
+
+![fs-base-shell](picture/file-manipulation/canvas.svg)
+
+## 参考资料{#file:manipulation-reference-material}
+
+1. 软硬链接:<https://www.jianshu.com/p/dde6a01c4094>
+
+2. R file manipulation:<https://stat.ethz.ch/R-manual/R-devel/library/base/html/files.html>
+
+3. fs package:<https://fs.r-lib.org/>
+
+
+
+<!--chapter:end:file-manipulation.Rmd-->
 

@@ -1,0 +1,14 @@
+﻿fs,base,shell
+"path(""top_dir"", ""nested_dir"", ""file"", ext = ""ext"")","file.path(""top_dir"", ""nested_dir"", ""file.ext"")",top_dir/nested_dir/file.ext
+"path_expand(""~/path"")",path.expand(),realpath -m -s ~/path
+"path_dir(""path"")","dirname(""path"")",dirname path
+"path_file(""path"")","basename(""path"")",basename path
+path_home(),"path.expand(""~"")",$HOME
+"path_package(""pkgname"", ""dir"", ""file"")","system.file(""dir"", ""file"", package = ""pkgname"")",No direct equivalent
+"path_norm(""path"")",normalizePath(),realpath
+"path_real(""path"")",normalizePath(mustWork = TRUE),realpath
+"path_rel(""path/foo"", ""path/bar"")",No direct equivalent,No direct equivalent
+"path_common(c(""path/foo"", ""path/bar"", ""path/baz""))",No direct equivalent,No direct equivalent
+"path_ext_remove(""path"")","sub(""\\.[a-zA-Z0-9]*$"", """", ""path"")",No direct equivalent
+"path_ext_set(""path"", ""new_ext"")","sub(""\\.[a-zA-Z0-9]*$"", ""new_ext"", ""path"")",No direct equivalent
+"path_sanitize(""path"")",No direct equivalent,No direct equivalent

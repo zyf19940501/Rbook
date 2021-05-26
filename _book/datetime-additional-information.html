@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-24" />
+<meta name="date" content="2021-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="datetime-application.html"/>
 <link rel="next" href="forcats.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -54,6 +54,14 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -209,56 +217,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.7" data-path="dplyr-usage.html"><a href="dplyr-usage.html#dplyr-summarise"><i class="fa fa-check"></i><b>2.2.7</b> summarise</a></li>
 <li class="chapter" data-level="2.2.8" data-path="dplyr-usage.html"><a href="dplyr-usage.html#dplyr-groupby"><i class="fa fa-check"></i><b>2.2.8</b> group_by</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="dplyr-merge-table.html"><a href="dplyr-merge-table.html"><i class="fa fa-check"></i><b>2.3</b> 表关联</a>
+<li class="chapter" data-level="2.3" data-path="dplyr-merge-two-table.html"><a href="dplyr-merge-two-table.html"><i class="fa fa-check"></i><b>2.3</b> 表关联</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="dplyr-merge-table.html"><a href="dplyr-merge-table.html#基础"><i class="fa fa-check"></i><b>2.3.1</b> 基础</a></li>
-<li class="chapter" data-level="2.3.2" data-path="dplyr-merge-table.html"><a href="dplyr-merge-table.html#多表操作"><i class="fa fa-check"></i><b>2.3.2</b> 多表操作</a></li>
+<li class="chapter" data-level="2.3.1" data-path="dplyr-merge-two-table.html"><a href="dplyr-merge-two-table.html#dplyr:merge-table-usage"><i class="fa fa-check"></i><b>2.3.1</b> 基础操作</a></li>
+<li class="chapter" data-level="2.3.2" data-path="dplyr-merge-two-table.html"><a href="dplyr-merge-two-table.html#dplyr:merge-multiple-table"><i class="fa fa-check"></i><b>2.3.2</b> 多表操作</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.4</b> 列操作</a>
+<li class="chapter" data-level="2.4" data-path="dplyr-functions.html"><a href="dplyr-functions.html"><i class="fa fa-check"></i><b>2.4</b> 常用函数</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html#基本操作"><i class="fa fa-check"></i><b>2.4.1</b> 基本操作</a></li>
-<li class="chapter" data-level="2.4.2" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html#多种函数功能"><i class="fa fa-check"></i><b>2.4.2</b> 多种函数功能</a></li>
-<li class="chapter" data-level="2.4.3" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html#当前列"><i class="fa fa-check"></i><b>2.4.3</b> 当前列</a></li>
+<li class="chapter" data-level="2.4.1" data-path="dplyr-functions.html"><a href="dplyr-functions.html#条件判断"><i class="fa fa-check"></i><b>2.4.1</b> 条件判断</a></li>
+<li class="chapter" data-level="2.4.2" data-path="dplyr-functions.html"><a href="dplyr-functions.html#case_when"><i class="fa fa-check"></i><b>2.4.2</b> case_when</a></li>
+<li class="chapter" data-level="2.4.3" data-path="dplyr-functions.html"><a href="dplyr-functions.html#计数函数"><i class="fa fa-check"></i><b>2.4.3</b> 计数函数</a></li>
+<li class="chapter" data-level="2.4.4" data-path="dplyr-functions.html"><a href="dplyr-functions.html#排序函数"><i class="fa fa-check"></i><b>2.4.4</b> 排序函数</a></li>
+<li class="chapter" data-level="2.4.5" data-path="dplyr-functions.html"><a href="dplyr-functions.html#提取向量"><i class="fa fa-check"></i><b>2.4.5</b> 提取向量</a></li>
+<li class="chapter" data-level="2.4.6" data-path="dplyr-functions.html"><a href="dplyr-functions.html#group-系列"><i class="fa fa-check"></i><b>2.4.6</b> group 系列</a></li>
+<li class="chapter" data-level="2.4.7" data-path="dplyr-functions.html"><a href="dplyr-functions.html#其它函数"><i class="fa fa-check"></i><b>2.4.7</b> 其它函数</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="dplyr-row-manipulation.html"><a href="dplyr-row-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 行操作</a>
+<li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="dplyr-row-manipulation.html"><a href="dplyr-row-manipulation.html#比较差异"><i class="fa fa-check"></i><b>2.5.1</b> 比较差异</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-row-manipulation.html"><a href="dplyr-row-manipulation.html#行汇总"><i class="fa fa-check"></i><b>2.5.2</b> 行汇总</a></li>
+<li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 分组操作</a>
+<li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.6.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.6.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.6.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.6.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.6.3</b> 动词</a></li>
+<li class="chapter" data-level="2.6.1" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html#dplyr-column-manipulation-basic-usage"><i class="fa fa-check"></i><b>2.6.1</b> 基础用法</a></li>
+<li class="chapter" data-level="2.6.2" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html#多种函数功能"><i class="fa fa-check"></i><b>2.6.2</b> 多种函数功能</a></li>
+<li class="chapter" data-level="2.6.3" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html#当前列"><i class="fa fa-check"></i><b>2.6.3</b> 当前列</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="dplyr-functions.html"><a href="dplyr-functions.html"><i class="fa fa-check"></i><b>2.7</b> 常用函数</a>
+<li class="chapter" data-level="2.7" data-path="dplyr-row-manipulation.html"><a href="dplyr-row-manipulation.html"><i class="fa fa-check"></i><b>2.7</b> 行操作</a>
 <ul>
-<li class="chapter" data-level="2.7.1" data-path="dplyr-functions.html"><a href="dplyr-functions.html#条件判断"><i class="fa fa-check"></i><b>2.7.1</b> 条件判断</a></li>
-<li class="chapter" data-level="2.7.2" data-path="dplyr-functions.html"><a href="dplyr-functions.html#case_when"><i class="fa fa-check"></i><b>2.7.2</b> case_when</a></li>
-<li class="chapter" data-level="2.7.3" data-path="dplyr-functions.html"><a href="dplyr-functions.html#计数函数"><i class="fa fa-check"></i><b>2.7.3</b> 计数函数</a></li>
-<li class="chapter" data-level="2.7.4" data-path="dplyr-functions.html"><a href="dplyr-functions.html#排序函数"><i class="fa fa-check"></i><b>2.7.4</b> 排序函数</a></li>
-<li class="chapter" data-level="2.7.5" data-path="dplyr-functions.html"><a href="dplyr-functions.html#提取向量"><i class="fa fa-check"></i><b>2.7.5</b> 提取向量</a></li>
-<li class="chapter" data-level="2.7.6" data-path="dplyr-functions.html"><a href="dplyr-functions.html#group-系列"><i class="fa fa-check"></i><b>2.7.6</b> group 系列</a></li>
-<li class="chapter" data-level="2.7.7" data-path="dplyr-functions.html"><a href="dplyr-functions.html#其它函数"><i class="fa fa-check"></i><b>2.7.7</b> 其它函数</a></li>
+<li class="chapter" data-level="2.7.1" data-path="dplyr-row-manipulation.html"><a href="dplyr-row-manipulation.html#比较差异"><i class="fa fa-check"></i><b>2.7.1</b> 比较差异</a></li>
+<li class="chapter" data-level="2.7.2" data-path="dplyr-row-manipulation.html"><a href="dplyr-row-manipulation.html#常用案例"><i class="fa fa-check"></i><b>2.7.2</b> 常用案例</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="dplyr-programming.html"><a href="dplyr-programming.html"><i class="fa fa-check"></i><b>2.8</b> <code>dplyr</code>编程</a>
 <ul>
 <li class="chapter" data-level="2.8.1" data-path="dplyr-programming.html"><a href="dplyr-programming.html#案例"><i class="fa fa-check"></i><b>2.8.1</b> 案例</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="参考资料.html"><a href="参考资料.html"><i class="fa fa-check"></i><b>2.9</b> 参考资料</a></li>
+<li class="chapter" data-level="2.9" data-path="dplyr-reference-material.html"><a href="dplyr-reference-material.html"><i class="fa fa-check"></i><b>2.9</b> 参考资料</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
+<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="安装-1.html"><a href="安装-1.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
-<li class="chapter" data-level="3.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
+<li class="chapter" data-level="3.1" data-path="tidyr-install.html"><a href="tidyr-install.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
-<li class="chapter" data-level="3.2.2" data-path="主要功能.html"><a href="主要功能.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
-<li class="chapter" data-level="3.2.3" data-path="主要功能.html"><a href="主要功能.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
-<li class="chapter" data-level="3.2.4" data-path="主要功能.html"><a href="主要功能.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
-<li class="chapter" data-level="3.2.5" data-path="主要功能.html"><a href="主要功能.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
-<li class="chapter" data-level="3.2.6" data-path="主要功能.html"><a href="主要功能.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
-<li class="chapter" data-level="3.2.7" data-path="主要功能.html"><a href="主要功能.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
+<li class="chapter" data-level="3.2.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
+<li class="chapter" data-level="3.2.3" data-path="tidyr-useage.html"><a href="tidyr-useage.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
+<li class="chapter" data-level="3.2.4" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
+<li class="chapter" data-level="3.2.5" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
+<li class="chapter" data-level="3.2.6" data-path="tidyr-useage.html"><a href="tidyr-useage.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
+<li class="chapter" data-level="3.2.7" data-path="tidyr-useage.html"><a href="tidyr-useage.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="character-handling.html"><a href="character-handling.html"><i class="fa fa-check"></i><b>4</b> 字符处理</a>
@@ -312,133 +320,165 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="datetime-additional-information.html"><a href="datetime-additional-information.html"><i class="fa fa-check"></i><b>5.4</b> 补充资料</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="datetime-additional-information.html"><a href="datetime-additional-information.html#excel-and-r"><i class="fa fa-check"></i><b>5.4.1</b> Excel and R</a></li>
-<li class="chapter" data-level="5.4.2" data-path="datetime-additional-information.html"><a href="datetime-additional-information.html#参考资料-1"><i class="fa fa-check"></i><b>5.4.2</b> 参考资料</a></li>
+<li class="chapter" data-level="5.4.2" data-path="datetime-additional-information.html"><a href="datetime-additional-information.html#参考资料"><i class="fa fa-check"></i><b>5.4.2</b> 参考资料</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> forcats</a>
+<li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> 因子介绍</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="创建因子.html"><a href="创建因子.html"><i class="fa fa-check"></i><b>6.1</b> 创建因子</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
+<li class="chapter" data-level="7" data-path="Data-Manipulation-datatable.html"><a href="Data-Manipulation-datatable.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>7.1</b> 基础介绍</a>
+<li class="chapter" data-level="7.1" data-path="datatable-description.html"><a href="datatable-description.html"><i class="fa fa-check"></i><b>7.1</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>7.1.1</b> 读取数据</a></li>
-<li class="chapter" data-level="7.1.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>7.1.2</b> 基本格式</a></li>
-<li class="chapter" data-level="7.1.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>7.1.3</b> i j by 使用</a></li>
-<li class="chapter" data-level="7.1.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>7.1.4</b> 行列筛选总结</a></li>
+<li class="chapter" data-level="7.1.1" data-path="datatable-description.html"><a href="datatable-description.html#读取数据"><i class="fa fa-check"></i><b>7.1.1</b> 读取数据</a></li>
+<li class="chapter" data-level="7.1.2" data-path="datatable-description.html"><a href="datatable-description.html#基本格式"><i class="fa fa-check"></i><b>7.1.2</b> 基本格式</a></li>
+<li class="chapter" data-level="7.1.3" data-path="datatable-description.html"><a href="datatable-description.html#i-j-by-使用"><i class="fa fa-check"></i><b>7.1.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="7.1.4" data-path="datatable-description.html"><a href="datatable-description.html#行列筛选总结"><i class="fa fa-check"></i><b>7.1.4</b> 行列筛选总结</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>7.2</b> 常规操作</a>
+<li class="chapter" data-level="7.2" data-path="datatable-usage.html"><a href="datatable-usage.html"><i class="fa fa-check"></i><b>7.2</b> 常规操作</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>7.2.1</b> 行筛选</a></li>
-<li class="chapter" data-level="7.2.2" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>7.2.2</b> 新增更新列</a></li>
-<li class="chapter" data-level="7.2.3" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>7.2.3</b> 排序</a></li>
+<li class="chapter" data-level="7.2.1" data-path="datatable-usage.html"><a href="datatable-usage.html#行筛选"><i class="fa fa-check"></i><b>7.2.1</b> 行筛选</a></li>
+<li class="chapter" data-level="7.2.2" data-path="datatable-usage.html"><a href="datatable-usage.html#新增更新列"><i class="fa fa-check"></i><b>7.2.2</b> 新增更新列</a></li>
+<li class="chapter" data-level="7.2.3" data-path="datatable-usage.html"><a href="datatable-usage.html#排序"><i class="fa fa-check"></i><b>7.2.3</b> 排序</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="常用函数-1.html"><a href="常用函数-1.html"><i class="fa fa-check"></i><b>7.3</b> 常用函数</a>
+<li class="chapter" data-level="7.3" data-path="datatable-function.html"><a href="datatable-function.html"><i class="fa fa-check"></i><b>7.3</b> 常用函数</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="常用函数-1.html"><a href="常用函数-1.html#特殊符号"><i class="fa fa-check"></i><b>7.3.1</b> 特殊符号</a></li>
-<li class="chapter" data-level="7.3.2" data-path="常用函数-1.html"><a href="常用函数-1.html#排序函数-1"><i class="fa fa-check"></i><b>7.3.2</b> 排序函数</a></li>
-<li class="chapter" data-level="7.3.3" data-path="常用函数-1.html"><a href="常用函数-1.html#非重复计数"><i class="fa fa-check"></i><b>7.3.3</b> 非重复计数</a></li>
-<li class="chapter" data-level="7.3.4" data-path="常用函数-1.html"><a href="常用函数-1.html#判断函数"><i class="fa fa-check"></i><b>7.3.4</b> 判断函数</a></li>
-<li class="chapter" data-level="7.3.5" data-path="常用函数-1.html"><a href="常用函数-1.html#交集-差集-合并"><i class="fa fa-check"></i><b>7.3.5</b> 交集 差集 合并</a></li>
-<li class="chapter" data-level="7.3.6" data-path="常用函数-1.html"><a href="常用函数-1.html#长宽转换"><i class="fa fa-check"></i><b>7.3.6</b> 长宽转换</a></li>
-<li class="chapter" data-level="7.3.7" data-path="常用函数-1.html"><a href="常用函数-1.html#表连接"><i class="fa fa-check"></i><b>7.3.7</b> 表连接</a></li>
+<li class="chapter" data-level="7.3.1" data-path="datatable-function.html"><a href="datatable-function.html#特殊符号"><i class="fa fa-check"></i><b>7.3.1</b> 特殊符号</a></li>
+<li class="chapter" data-level="7.3.2" data-path="datatable-function.html"><a href="datatable-function.html#排序函数-1"><i class="fa fa-check"></i><b>7.3.2</b> 排序函数</a></li>
+<li class="chapter" data-level="7.3.3" data-path="datatable-function.html"><a href="datatable-function.html#非重复计数"><i class="fa fa-check"></i><b>7.3.3</b> 非重复计数</a></li>
+<li class="chapter" data-level="7.3.4" data-path="datatable-function.html"><a href="datatable-function.html#判断函数"><i class="fa fa-check"></i><b>7.3.4</b> 判断函数</a></li>
+<li class="chapter" data-level="7.3.5" data-path="datatable-function.html"><a href="datatable-function.html#交集-差集-合并"><i class="fa fa-check"></i><b>7.3.5</b> 交集 差集 合并</a></li>
+<li class="chapter" data-level="7.3.6" data-path="datatable-function.html"><a href="datatable-function.html#长宽转换"><i class="fa fa-check"></i><b>7.3.6</b> 长宽转换</a></li>
+<li class="chapter" data-level="7.3.7" data-path="datatable-function.html"><a href="datatable-function.html#表连接"><i class="fa fa-check"></i><b>7.3.7</b> 表连接</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>7.4</b> 高级函数</a>
+<li class="chapter" data-level="7.4" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html"><i class="fa fa-check"></i><b>7.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>7.4.1</b> groupingsets</a></li>
-<li class="chapter" data-level="7.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>7.4.2</b> rleid</a></li>
-<li class="chapter" data-level="7.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>7.4.3</b> shift</a></li>
-<li class="chapter" data-level="7.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>7.4.4</b> J</a></li>
+<li class="chapter" data-level="7.4.1" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#groupingsets"><i class="fa fa-check"></i><b>7.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="7.4.2" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#rleid"><i class="fa fa-check"></i><b>7.4.2</b> rleid</a></li>
+<li class="chapter" data-level="7.4.3" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#shift"><i class="fa fa-check"></i><b>7.4.3</b> shift</a></li>
+<li class="chapter" data-level="7.4.4" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#j"><i class="fa fa-check"></i><b>7.4.4</b> J</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="小技巧.html"><a href="小技巧.html"><i class="fa fa-check"></i><b>7.5</b> 小技巧</a>
+<li class="chapter" data-level="7.5" data-path="datatable-tips.html"><a href="datatable-tips.html"><i class="fa fa-check"></i><b>7.5</b> 小技巧</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="小技巧.html"><a href="小技巧.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>7.5.1</b> 用{}抑制中间过程输出</a></li>
-<li class="chapter" data-level="7.5.2" data-path="小技巧.html"><a href="小技巧.html#使用打印data.table"><i class="fa fa-check"></i><b>7.5.2</b> 使用[]打印data.table</a></li>
+<li class="chapter" data-level="7.5.1" data-path="datatable-tips.html"><a href="datatable-tips.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>7.5.1</b> 用{}抑制中间过程输出</a></li>
+<li class="chapter" data-level="7.5.2" data-path="datatable-tips.html"><a href="datatable-tips.html#使用打印data.table"><i class="fa fa-check"></i><b>7.5.2</b> 使用[]打印data.table</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>7.6</b> 运用</a>
+<li class="chapter" data-level="7.6" data-path="datatable-application.html"><a href="datatable-application.html"><i class="fa fa-check"></i><b>7.6</b> 运用</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>7.6.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="7.6.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>7.6.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="7.6.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>7.6.3</b> 行列转变</a></li>
+<li class="chapter" data-level="7.6.1" data-path="datatable-application.html"><a href="datatable-application.html#自定义函数计算"><i class="fa fa-check"></i><b>7.6.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="7.6.2" data-path="datatable-application.html"><a href="datatable-application.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>7.6.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="7.6.3" data-path="datatable-application.html"><a href="datatable-application.html#行列转变"><i class="fa fa-check"></i><b>7.6.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>8</b> database</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="安装数据库.html"><a href="安装数据库.html"><i class="fa fa-check"></i><b>8.1</b> 安装数据库</a></li>
-<li class="chapter" data-level="8.2" data-path="dbi.html"><a href="dbi.html"><i class="fa fa-check"></i><b>8.2</b> DBI</a>
+<li class="chapter" data-level="8.1" data-path="database-install.html"><a href="database-install.html"><i class="fa fa-check"></i><b>8.1</b> 安装数据库</a></li>
+<li class="chapter" data-level="8.2" data-path="database-odbc-package.html"><a href="database-odbc-package.html"><i class="fa fa-check"></i><b>8.2</b> odbc包</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="dbi.html"><a href="dbi.html#安装-2"><i class="fa fa-check"></i><b>8.2.1</b> 安装</a></li>
-<li class="chapter" data-level="8.2.2" data-path="dbi.html"><a href="dbi.html#连接数据库"><i class="fa fa-check"></i><b>8.2.2</b> 连接数据库</a></li>
-<li class="chapter" data-level="8.2.3" data-path="dbi.html"><a href="dbi.html#执行sql任务"><i class="fa fa-check"></i><b>8.2.3</b> 执行sql任务</a></li>
-<li class="chapter" data-level="8.2.4" data-path="dbi.html"><a href="dbi.html#函数介绍"><i class="fa fa-check"></i><b>8.2.4</b> 函数介绍</a></li>
+<li class="chapter" data-level="8.2.1" data-path="database-odbc-package.html"><a href="database-odbc-package.html#安装包"><i class="fa fa-check"></i><b>8.2.1</b> 安装包</a></li>
+<li class="chapter" data-level="8.2.2" data-path="database-odbc-package.html"><a href="database-odbc-package.html#驱动安装"><i class="fa fa-check"></i><b>8.2.2</b> 驱动安装</a></li>
+<li class="chapter" data-level="8.2.3" data-path="database-odbc-package.html"><a href="database-odbc-package.html#连接数据库"><i class="fa fa-check"></i><b>8.2.3</b> 连接数据库</a></li>
+<li class="chapter" data-level="8.2.4" data-path="database-odbc-package.html"><a href="database-odbc-package.html#读写数据库"><i class="fa fa-check"></i><b>8.2.4</b> 读写数据库</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="odbc包.html"><a href="odbc包.html"><i class="fa fa-check"></i><b>8.3</b> odbc包</a></li>
-<li class="chapter" data-level="8.4" data-path="rodbc包.html"><a href="rodbc包.html"><i class="fa fa-check"></i><b>8.4</b> RODBC包</a></li>
-<li class="chapter" data-level="8.5" data-path="roracle包.html"><a href="roracle包.html"><i class="fa fa-check"></i><b>8.5</b> ROracle包</a></li>
-<li class="chapter" data-level="8.6" data-path="rmysql包.html"><a href="rmysql包.html"><i class="fa fa-check"></i><b>8.6</b> RMySQL包</a>
+<li class="chapter" data-level="8.3" data-path="database-DBI-package.html"><a href="database-DBI-package.html"><i class="fa fa-check"></i><b>8.3</b> DBI包</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="rmysql包.html"><a href="rmysql包.html#安装-3"><i class="fa fa-check"></i><b>8.6.1</b> 安装</a></li>
-<li class="chapter" data-level="8.6.2" data-path="rmysql包.html"><a href="rmysql包.html#连接使用"><i class="fa fa-check"></i><b>8.6.2</b> 连接使用</a></li>
+<li class="chapter" data-level="8.3.1" data-path="database-DBI-package.html"><a href="database-DBI-package.html#安装-1"><i class="fa fa-check"></i><b>8.3.1</b> 安装</a></li>
+<li class="chapter" data-level="8.3.2" data-path="database-DBI-package.html"><a href="database-DBI-package.html#连接数据库-1"><i class="fa fa-check"></i><b>8.3.2</b> 连接数据库</a></li>
+<li class="chapter" data-level="8.3.3" data-path="database-DBI-package.html"><a href="database-DBI-package.html#读写数据库-1"><i class="fa fa-check"></i><b>8.3.3</b> 读写数据库</a></li>
+<li class="chapter" data-level="8.3.4" data-path="database-DBI-package.html"><a href="database-DBI-package.html#其它函数介绍"><i class="fa fa-check"></i><b>8.3.4</b> 其它函数介绍</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="常见问题-1.html"><a href="常见问题-1.html"><i class="fa fa-check"></i><b>8.7</b> 常见问题</a>
+<li class="chapter" data-level="8.4" data-path="database-else-package.html"><a href="database-else-package.html"><i class="fa fa-check"></i><b>8.4</b> 其他R包</a>
 <ul>
-<li class="chapter" data-level="8.7.1" data-path="常见问题-1.html"><a href="常见问题-1.html#乱码问题"><i class="fa fa-check"></i><b>8.7.1</b> 乱码问题</a></li>
-<li class="chapter" data-level="8.7.2" data-path="常见问题-1.html"><a href="常见问题-1.html#无法连接问题"><i class="fa fa-check"></i><b>8.7.2</b> 无法连接问题</a></li>
-<li class="chapter" data-level="8.7.3" data-path="常见问题-1.html"><a href="常见问题-1.html#远程连接"><i class="fa fa-check"></i><b>8.7.3</b> 远程连接</a></li>
+<li class="chapter" data-level="8.4.1" data-path="database-else-package.html"><a href="database-else-package.html#rodbc包"><i class="fa fa-check"></i><b>8.4.1</b> RODBC包</a></li>
+<li class="chapter" data-level="8.4.2" data-path="database-else-package.html"><a href="database-else-package.html#roracle包"><i class="fa fa-check"></i><b>8.4.2</b> ROracle包</a></li>
+<li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
+<li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
+<li class="chapter" data-level="8.4.5" data-path="database-else-package.html"><a href="database-else-package.html#大数据相关r包"><i class="fa fa-check"></i><b>8.4.5</b> 大数据相关R包</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="dbplyr.html"><a href="dbplyr.html"><i class="fa fa-check"></i><b>8.8</b> dbplyr</a>
+<li class="chapter" data-level="8.5" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.5</b> 常见问题</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="dbplyr.html"><a href="dbplyr.html#基础用法"><i class="fa fa-check"></i><b>8.8.1</b> 基础用法</a></li>
-<li class="chapter" data-level="8.8.2" data-path="dbplyr.html"><a href="dbplyr.html#无法正确转化"><i class="fa fa-check"></i><b>8.8.2</b> 无法正确转化</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-FAQ.html"><a href="database-FAQ.html#乱码问题"><i class="fa fa-check"></i><b>8.5.1</b> 乱码问题</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-FAQ.html"><a href="database-FAQ.html#无法连接问题"><i class="fa fa-check"></i><b>8.5.2</b> 无法连接问题</a></li>
+<li class="chapter" data-level="8.5.3" data-path="database-FAQ.html"><a href="database-FAQ.html#远程连接"><i class="fa fa-check"></i><b>8.5.3</b> 远程连接</a></li>
+<li class="chapter" data-level="8.5.4" data-path="database-FAQ.html"><a href="database-FAQ.html#跳板机连接"><i class="fa fa-check"></i><b>8.5.4</b> 跳板机连接</a></li>
 </ul></li>
-<li class="chapter" data-level="8.9" data-path="参考资料-2.html"><a href="参考资料-2.html"><i class="fa fa-check"></i><b>8.9</b> 参考资料</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="loop-structure.html"><a href="loop-structure.html"><i class="fa fa-check"></i><b>9</b> Loop structure</a>
+<li class="chapter" data-level="8.6" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html"><i class="fa fa-check"></i><b>8.6</b> dbplyr</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="简单示例.html"><a href="简单示例.html"><i class="fa fa-check"></i><b>9.1</b> 简单示例</a></li>
-<li class="chapter" data-level="9.2" data-path="循环基础.html"><a href="循环基础.html"><i class="fa fa-check"></i><b>9.2</b> 循环基础</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="循环基础.html"><a href="循环基础.html#循环结构"><i class="fa fa-check"></i><b>9.2.1</b> 循环结构</a></li>
-<li class="chapter" data-level="9.2.2" data-path="循环基础.html"><a href="循环基础.html#next-break-用法"><i class="fa fa-check"></i><b>9.2.2</b> next break 用法</a></li>
-<li class="chapter" data-level="9.2.3" data-path="循环基础.html"><a href="循环基础.html#嵌套循环"><i class="fa fa-check"></i><b>9.2.3</b> 嵌套循环</a></li>
+<li class="chapter" data-level="8.6.1" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#安装-2"><i class="fa fa-check"></i><b>8.6.1</b> 安装</a></li>
+<li class="chapter" data-level="8.6.2" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#基础用法"><i class="fa fa-check"></i><b>8.6.2</b> 基础用法</a></li>
+<li class="chapter" data-level="8.6.3" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#无法正确转化"><i class="fa fa-check"></i><b>8.6.3</b> 无法正确转化</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="循环变化.html"><a href="循环变化.html"><i class="fa fa-check"></i><b>9.3</b> 循环变化</a>
+<li class="chapter" data-level="8.7" data-path="database-reference-material.html"><a href="database-reference-material.html"><i class="fa fa-check"></i><b>8.7</b> 参考资料</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="R-loop-structure.html"><a href="R-loop-structure.html"><i class="fa fa-check"></i><b>9</b> 循环结构</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="循环变化.html"><a href="循环变化.html#修改已有对象"><i class="fa fa-check"></i><b>9.3.1</b> 修改已有对象</a></li>
-<li class="chapter" data-level="9.3.2" data-path="循环变化.html"><a href="循环变化.html#循环模式"><i class="fa fa-check"></i><b>9.3.2</b> 循环模式</a></li>
-<li class="chapter" data-level="9.3.3" data-path="循环变化.html"><a href="循环变化.html#未知长度输出"><i class="fa fa-check"></i><b>9.3.3</b> 未知长度输出</a></li>
+<li class="chapter" data-level="9.1" data-path="R-loop-description.html"><a href="R-loop-description.html"><i class="fa fa-check"></i><b>9.1</b> R循环介绍</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="R-loop-description.html"><a href="R-loop-description.html#R:loop-example"><i class="fa fa-check"></i><b>9.1.1</b> 简单示例</a></li>
+<li class="chapter" data-level="9.1.2" data-path="R-loop-description.html"><a href="R-loop-description.html#three:loop-structure"><i class="fa fa-check"></i><b>9.1.2</b> 循环结构</a></li>
+<li class="chapter" data-level="9.1.3" data-path="R-loop-description.html"><a href="R-loop-description.html#loop:control"><i class="fa fa-check"></i><b>9.1.3</b> 循环控制</a></li>
+<li class="chapter" data-level="9.1.4" data-path="R-loop-description.html"><a href="R-loop-description.html#嵌套循环"><i class="fa fa-check"></i><b>9.1.4</b> 嵌套循环</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="loop-changes.html"><a href="loop-changes.html"><i class="fa fa-check"></i><b>9.2</b> 循环变化</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="loop-changes.html"><a href="loop-changes.html#修改已有对象"><i class="fa fa-check"></i><b>9.2.1</b> 修改已有对象</a></li>
+<li class="chapter" data-level="9.2.2" data-path="loop-changes.html"><a href="loop-changes.html#循环模式"><i class="fa fa-check"></i><b>9.2.2</b> 循环模式</a></li>
+<li class="chapter" data-level="9.2.3" data-path="loop-changes.html"><a href="loop-changes.html#未知长度输出"><i class="fa fa-check"></i><b>9.2.3</b> 未知长度输出</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>10</b> Iteration</a>
+<li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="简单用法.html"><a href="简单用法.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
-<li class="chapter" data-level="10.2" data-path="map系列常用函数.html"><a href="map系列常用函数.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
-<li class="chapter" data-level="10.3" data-path="归约累计函数.html"><a href="归约累计函数.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
-<li class="chapter" data-level="10.4" data-path="安全函数.html"><a href="安全函数.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
-<li class="chapter" data-level="10.5" data-path="映射多个参数.html"><a href="映射多个参数.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
-<li class="chapter" data-level="10.6" data-path="其他函数介绍.html"><a href="其他函数介绍.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
+<li class="chapter" data-level="10.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
+<li class="chapter" data-level="10.2" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
+<li class="chapter" data-level="10.3" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
+<li class="chapter" data-level="10.4" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
+<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
+<li class="chapter" data-level="10.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="define-function.html"><a href="define-function.html"><i class="fa fa-check"></i><b>11</b> define function</a>
+<li class="chapter" data-level="11" data-path="self-define-function.html"><a href="self-define-function.html"><i class="fa fa-check"></i><b>11</b> 自定义函数</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="简单示例-1.html"><a href="简单示例-1.html"><i class="fa fa-check"></i><b>11.1</b> 简单示例</a></li>
-<li class="chapter" data-level="11.2" data-path="条件执行.html"><a href="条件执行.html"><i class="fa fa-check"></i><b>11.2</b> 条件执行</a>
+<li class="chapter" data-level="11.1" data-path="define-function-example.html"><a href="define-function-example.html"><i class="fa fa-check"></i><b>11.1</b> 简单示例</a></li>
+<li class="chapter" data-level="11.2" data-path="define-function-conditional-execution.html"><a href="define-function-conditional-execution.html"><i class="fa fa-check"></i><b>11.2</b> 条件执行</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="条件执行.html"><a href="条件执行.html#多条件执行"><i class="fa fa-check"></i><b>11.2.1</b> 多条件执行</a></li>
+<li class="chapter" data-level="11.2.1" data-path="define-function-conditional-execution.html"><a href="define-function-conditional-execution.html#多条件执行"><i class="fa fa-check"></i><b>11.2.1</b> 多条件执行</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="函数参数-1.html"><a href="函数参数-1.html"><i class="fa fa-check"></i><b>11.3</b> 函数参数</a>
+<li class="chapter" data-level="11.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html"><i class="fa fa-check"></i><b>11.3</b> 函数参数</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="函数参数-1.html"><a href="函数参数-1.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
-<li class="chapter" data-level="11.3.2" data-path="函数参数-1.html"><a href="函数参数-1.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="11.3.3" data-path="函数参数-1.html"><a href="函数参数-1.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
+<li class="chapter" data-level="11.3.1" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
+<li class="chapter" data-level="11.3.2" data-path="define-function-parameter.html"><a href="define-function-parameter.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
+<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="返回值.html"><a href="返回值.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
+<li class="chapter" data-level="11.4" data-path="function-return.html"><a href="function-return.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="返回值.html"><a href="返回值.html#显式返回"><i class="fa fa-check"></i><b>11.4.1</b> 显式返回</a></li>
-<li class="chapter" data-level="11.4.2" data-path="返回值.html"><a href="返回值.html#编写管道函数"><i class="fa fa-check"></i><b>11.4.2</b> 编写管道函数</a></li>
+<li class="chapter" data-level="11.4.1" data-path="function-return.html"><a href="function-return.html#显式返回"><i class="fa fa-check"></i><b>11.4.1</b> 显式返回</a></li>
+<li class="chapter" data-level="11.4.2" data-path="function-return.html"><a href="function-return.html#编写管道函数"><i class="fa fa-check"></i><b>11.4.2</b> 编写管道函数</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="环境.html"><a href="环境.html"><i class="fa fa-check"></i><b>11.5</b> 环境</a></li>
-<li class="chapter" data-level="11.6" data-path="拓展部分.html"><a href="拓展部分.html"><i class="fa fa-check"></i><b>11.6</b> 拓展部分</a></li>
+<li class="chapter" data-level="11.5" data-path="function-environment.html"><a href="function-environment.html"><i class="fa fa-check"></i><b>11.5</b> 环境</a></li>
+<li class="chapter" data-level="11.6" data-path="function-expand.html"><a href="function-expand.html"><i class="fa fa-check"></i><b>11.6</b> 拓展部分</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="file-system-operation.html"><a href="file-system-operation.html"><i class="fa fa-check"></i><b>12</b> R语言文件系统操作</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="file-base-r.html"><a href="file-base-r.html"><i class="fa fa-check"></i><b>12.1</b> base R</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="file-base-r.html"><a href="file-base-r.html#base:r-usage"><i class="fa fa-check"></i><b>12.1.1</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="fs-package.html"><a href="fs-package.html"><i class="fa fa-check"></i><b>12.2</b> fs package</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="fs-package.html"><a href="fs-package.html#fs-install"><i class="fa fa-check"></i><b>12.2.1</b> 安装</a></li>
+<li class="chapter" data-level="12.2.2" data-path="fs-package.html"><a href="fs-package.html#fs-advanced"><i class="fa fa-check"></i><b>12.2.2</b> 优势</a></li>
+<li class="chapter" data-level="12.2.3" data-path="fs-package.html"><a href="fs-package.html#fs-usage"><i class="fa fa-check"></i><b>12.2.3</b> 基础用法</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="fs-functions.html"><a href="fs-functions.html"><i class="fa fa-check"></i><b>12.3</b> fs函数介绍</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="fs-functions.html"><a href="fs-functions.html#fs-file-manipulation"><i class="fa fa-check"></i><b>12.3.1</b> 文件操作</a></li>
+<li class="chapter" data-level="12.3.2" data-path="fs-functions.html"><a href="fs-functions.html#fs-dir-manipulation"><i class="fa fa-check"></i><b>12.3.2</b> 目录操作</a></li>
+<li class="chapter" data-level="12.3.3" data-path="fs-functions.html"><a href="fs-functions.html#fs-link-manipulation"><i class="fa fa-check"></i><b>12.3.3</b> 链接操作</a></li>
+<li class="chapter" data-level="12.3.4" data-path="fs-functions.html"><a href="fs-functions.html#fs-path-manipulation"><i class="fa fa-check"></i><b>12.3.4</b> 路径操作</a></li>
+<li class="chapter" data-level="12.3.5" data-path="fs-functions.html"><a href="fs-functions.html#fs-help-manipulation"><i class="fa fa-check"></i><b>12.3.5</b> 辅助函数</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="file-base-fs-difference.html"><a href="file-base-fs-difference.html"><i class="fa fa-check"></i><b>12.4</b> base-fs-shell比较</a></li>
+<li class="chapter" data-level="12.5" data-path="file-manipulation-reference-material.html"><a href="file-manipulation-reference-material.html"><i class="fa fa-check"></i><b>12.5</b> 参考资料</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://gitee.com/zhongyufei/Rbook" target="blank">gitee地址</a></li>
@@ -470,18 +510,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="差异" class="section level4" number="5.4.1.1">
 <h4><span class="header-section-number">5.4.1.1</span> 差异</h4>
 <p><code>R</code>中日期起始时间是<code>1970-01-01</code>,Excel中起始日期<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>(Windows)是<code>1900-01-01</code>,转化成数字两者相差25568。如下所示：</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="datetime-additional-information.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>)</span>
-<span id="cb286-2"><a href="datetime-additional-information.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span>
-<span id="cb286-3"><a href="datetime-additional-information.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1900-01-01&#39;</span>) <span class="co"># 1970-01-02</span></span>
-<span id="cb286-4"><a href="datetime-additional-information.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-02&quot;</span></span>
-<span id="cb286-5"><a href="datetime-additional-information.html#cb286-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1899-12-31&#39;</span>) <span class="co"># 1970-01-01</span></span>
-<span id="cb286-6"><a href="datetime-additional-information.html#cb286-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="datetime-additional-information.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>)</span>
+<span id="cb289-2"><a href="datetime-additional-information.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span>
+<span id="cb289-3"><a href="datetime-additional-information.html#cb289-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1900-01-01&#39;</span>) <span class="co"># 1970-01-02</span></span>
+<span id="cb289-4"><a href="datetime-additional-information.html#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-02&quot;</span></span>
+<span id="cb289-5"><a href="datetime-additional-information.html#cb289-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1899-12-31&#39;</span>) <span class="co"># 1970-01-01</span></span>
+<span id="cb289-6"><a href="datetime-additional-information.html#cb289-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span></code></pre></div>
 <p>Excel中1900-01-01代表数字1，但是R中1970-01-01代表0。这也是比较怪异的点，毕竟R一般都是从1开始。</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="datetime-additional-information.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>))</span>
-<span id="cb287-2"><a href="datetime-additional-information.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="datetime-additional-information.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>))</span>
+<span id="cb290-2"><a href="datetime-additional-information.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
 <p>这样导致:
-R日期2021-05-24转化成数字是18771,
-Excel中日期2021-05-24转化成数字是44340,<strong>两者相差25569</strong>。</p>
+R日期2021-05-26转化成数字是18773,
+Excel中日期2021-05-26转化成数字是44342,<strong>两者相差25569</strong>。</p>
 <p><del>在用R读取Excel文件时，涉及到数字日期转化时需要注意其中差异。</del></p>
 </div>
 <div id="excel时间函数" class="section level4" number="5.4.1.2">
@@ -499,7 +539,7 @@ Excel中日期2021-05-24转化成数字是44340,<strong>两者相差25569</stron
 假如熟悉DAX时间智能函数，在<code>R</code>中设计相关功能或实现时可以借鉴参考DAX函数的思路。比如在R中写自动化报表时，涉及到同环比计算时就可以按照这个模式设计。</p>
 </div>
 </div>
-<div id="参考资料-1" class="section level3" number="5.4.2">
+<div id="参考资料" class="section level3" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> 参考资料</h3>
 <ol style="list-style-type: decimal">
 <li><p>lubridate <a href="https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html" class="uri">https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html</a></p></li>

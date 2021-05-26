@@ -1,11 +1,12 @@
-# Iteration
+# 循环迭代purrr介绍{#purrr:Iteration}
 
-常常需要重复操作同样的功能函数，这时可以用迭代来实现。purrr包提供了一套完整的函数来处理循环迭代,可以有效减少重复性工作和代码。
+常常需要重复操作同样的功能函数，这时可以用迭代来实现。purrr包提供了一套完整的函数来处理循环迭代，可以有效减少重复性工作和代码。
 
-<https://purrr.tidyverse.org/>
+[purrr项目介绍](https://purrr.tidyverse.org/)
 
-## 简单用法
 
+
+## 简单用法{#purrr:basic-usage}
 
 - map
 
@@ -24,8 +25,6 @@ map(.x = c(1, 4, 7), .f = addTen)
 # not run
 # map(c(1, 4, 7), addTen) # same above
 ```
-
-
 
 
 
@@ -53,7 +52,7 @@ identical(result1,result2)
 ```
 
 
-## map系列常用函数
+## map系列常用函数{#purrr:map}
 
 
 - map_chr
@@ -97,7 +96,7 @@ map_df(c(1,4,7),make_dataframe)
 ```
 
 
-## 归约累计函数
+## 归约累计函数{#purrr:reduce}
 
 reduce、accumulate()函数用法介绍.
 
@@ -134,7 +133,7 @@ accumulate(letters[1:5], paste, sep = ".")
 ```
 
 
-## 安全函数 
+## 安全函数 {#purrr-safely-functions}
 
 possibly() 和 safely(),当循环时候遇到错误报错导致整个程序停止,这不是我们想要的。
 
@@ -154,7 +153,7 @@ map(l,test_fun)
 
 用safely()函数将原始function包裹起来,即使执行过程中遇到错误也可以完成整个任务,不会因为中途报错停止,在大型循环过程中,如爬虫过程中比较实用。
 
-## 映射多个参数 
+## 映射多个参数 {#purrr:multi-parameter}
 
 map2 和 pmap 函数可以映射两个及以上参数。
 
@@ -180,7 +179,7 @@ pmap(li,sum)
 同上有pmap_int,pmap_dbl,pmap_dfr等函数。
 
 
-## 其他函数介绍
+## 其他函数介绍{#purrr:else-functions}
 
 - flatten
 

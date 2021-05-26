@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-25" />
+<meta name="date" content="2021-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="database-DBI-package.html"/>
 <link rel="next" href="database-FAQ.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,6 +53,15 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -246,18 +255,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.9" data-path="dplyr-reference-material.html"><a href="dplyr-reference-material.html"><i class="fa fa-check"></i><b>2.9</b> 参考资料</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
+<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="安装-1.html"><a href="安装-1.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
-<li class="chapter" data-level="3.2" data-path="主要功能.html"><a href="主要功能.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
+<li class="chapter" data-level="3.1" data-path="tidyr-install.html"><a href="tidyr-install.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="主要功能.html"><a href="主要功能.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
-<li class="chapter" data-level="3.2.2" data-path="主要功能.html"><a href="主要功能.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
-<li class="chapter" data-level="3.2.3" data-path="主要功能.html"><a href="主要功能.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
-<li class="chapter" data-level="3.2.4" data-path="主要功能.html"><a href="主要功能.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
-<li class="chapter" data-level="3.2.5" data-path="主要功能.html"><a href="主要功能.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
-<li class="chapter" data-level="3.2.6" data-path="主要功能.html"><a href="主要功能.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
-<li class="chapter" data-level="3.2.7" data-path="主要功能.html"><a href="主要功能.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
+<li class="chapter" data-level="3.2.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
+<li class="chapter" data-level="3.2.3" data-path="tidyr-useage.html"><a href="tidyr-useage.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
+<li class="chapter" data-level="3.2.4" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
+<li class="chapter" data-level="3.2.5" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
+<li class="chapter" data-level="3.2.6" data-path="tidyr-useage.html"><a href="tidyr-useage.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
+<li class="chapter" data-level="3.2.7" data-path="tidyr-useage.html"><a href="tidyr-useage.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="character-handling.html"><a href="character-handling.html"><i class="fa fa-check"></i><b>4</b> 字符处理</a>
@@ -314,52 +323,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.2" data-path="datetime-additional-information.html"><a href="datetime-additional-information.html#参考资料"><i class="fa fa-check"></i><b>5.4.2</b> 参考资料</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> forcats</a>
+<li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> 因子介绍</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="创建因子.html"><a href="创建因子.html"><i class="fa fa-check"></i><b>6.1</b> 创建因子</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
+<li class="chapter" data-level="7" data-path="Data-Manipulation-datatable.html"><a href="Data-Manipulation-datatable.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="基础介绍.html"><a href="基础介绍.html"><i class="fa fa-check"></i><b>7.1</b> 基础介绍</a>
+<li class="chapter" data-level="7.1" data-path="datatable-description.html"><a href="datatable-description.html"><i class="fa fa-check"></i><b>7.1</b> 基础介绍</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="基础介绍.html"><a href="基础介绍.html#读取数据"><i class="fa fa-check"></i><b>7.1.1</b> 读取数据</a></li>
-<li class="chapter" data-level="7.1.2" data-path="基础介绍.html"><a href="基础介绍.html#基本格式"><i class="fa fa-check"></i><b>7.1.2</b> 基本格式</a></li>
-<li class="chapter" data-level="7.1.3" data-path="基础介绍.html"><a href="基础介绍.html#i-j-by-使用"><i class="fa fa-check"></i><b>7.1.3</b> i j by 使用</a></li>
-<li class="chapter" data-level="7.1.4" data-path="基础介绍.html"><a href="基础介绍.html#行列筛选总结"><i class="fa fa-check"></i><b>7.1.4</b> 行列筛选总结</a></li>
+<li class="chapter" data-level="7.1.1" data-path="datatable-description.html"><a href="datatable-description.html#读取数据"><i class="fa fa-check"></i><b>7.1.1</b> 读取数据</a></li>
+<li class="chapter" data-level="7.1.2" data-path="datatable-description.html"><a href="datatable-description.html#基本格式"><i class="fa fa-check"></i><b>7.1.2</b> 基本格式</a></li>
+<li class="chapter" data-level="7.1.3" data-path="datatable-description.html"><a href="datatable-description.html#i-j-by-使用"><i class="fa fa-check"></i><b>7.1.3</b> i j by 使用</a></li>
+<li class="chapter" data-level="7.1.4" data-path="datatable-description.html"><a href="datatable-description.html#行列筛选总结"><i class="fa fa-check"></i><b>7.1.4</b> 行列筛选总结</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="常规操作.html"><a href="常规操作.html"><i class="fa fa-check"></i><b>7.2</b> 常规操作</a>
+<li class="chapter" data-level="7.2" data-path="datatable-usage.html"><a href="datatable-usage.html"><i class="fa fa-check"></i><b>7.2</b> 常规操作</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="常规操作.html"><a href="常规操作.html#行筛选"><i class="fa fa-check"></i><b>7.2.1</b> 行筛选</a></li>
-<li class="chapter" data-level="7.2.2" data-path="常规操作.html"><a href="常规操作.html#新增更新列"><i class="fa fa-check"></i><b>7.2.2</b> 新增更新列</a></li>
-<li class="chapter" data-level="7.2.3" data-path="常规操作.html"><a href="常规操作.html#排序"><i class="fa fa-check"></i><b>7.2.3</b> 排序</a></li>
+<li class="chapter" data-level="7.2.1" data-path="datatable-usage.html"><a href="datatable-usage.html#行筛选"><i class="fa fa-check"></i><b>7.2.1</b> 行筛选</a></li>
+<li class="chapter" data-level="7.2.2" data-path="datatable-usage.html"><a href="datatable-usage.html#新增更新列"><i class="fa fa-check"></i><b>7.2.2</b> 新增更新列</a></li>
+<li class="chapter" data-level="7.2.3" data-path="datatable-usage.html"><a href="datatable-usage.html#排序"><i class="fa fa-check"></i><b>7.2.3</b> 排序</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="常用函数-1.html"><a href="常用函数-1.html"><i class="fa fa-check"></i><b>7.3</b> 常用函数</a>
+<li class="chapter" data-level="7.3" data-path="datatable-function.html"><a href="datatable-function.html"><i class="fa fa-check"></i><b>7.3</b> 常用函数</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="常用函数-1.html"><a href="常用函数-1.html#特殊符号"><i class="fa fa-check"></i><b>7.3.1</b> 特殊符号</a></li>
-<li class="chapter" data-level="7.3.2" data-path="常用函数-1.html"><a href="常用函数-1.html#排序函数-1"><i class="fa fa-check"></i><b>7.3.2</b> 排序函数</a></li>
-<li class="chapter" data-level="7.3.3" data-path="常用函数-1.html"><a href="常用函数-1.html#非重复计数"><i class="fa fa-check"></i><b>7.3.3</b> 非重复计数</a></li>
-<li class="chapter" data-level="7.3.4" data-path="常用函数-1.html"><a href="常用函数-1.html#判断函数"><i class="fa fa-check"></i><b>7.3.4</b> 判断函数</a></li>
-<li class="chapter" data-level="7.3.5" data-path="常用函数-1.html"><a href="常用函数-1.html#交集-差集-合并"><i class="fa fa-check"></i><b>7.3.5</b> 交集 差集 合并</a></li>
-<li class="chapter" data-level="7.3.6" data-path="常用函数-1.html"><a href="常用函数-1.html#长宽转换"><i class="fa fa-check"></i><b>7.3.6</b> 长宽转换</a></li>
-<li class="chapter" data-level="7.3.7" data-path="常用函数-1.html"><a href="常用函数-1.html#表连接"><i class="fa fa-check"></i><b>7.3.7</b> 表连接</a></li>
+<li class="chapter" data-level="7.3.1" data-path="datatable-function.html"><a href="datatable-function.html#特殊符号"><i class="fa fa-check"></i><b>7.3.1</b> 特殊符号</a></li>
+<li class="chapter" data-level="7.3.2" data-path="datatable-function.html"><a href="datatable-function.html#排序函数-1"><i class="fa fa-check"></i><b>7.3.2</b> 排序函数</a></li>
+<li class="chapter" data-level="7.3.3" data-path="datatable-function.html"><a href="datatable-function.html#非重复计数"><i class="fa fa-check"></i><b>7.3.3</b> 非重复计数</a></li>
+<li class="chapter" data-level="7.3.4" data-path="datatable-function.html"><a href="datatable-function.html#判断函数"><i class="fa fa-check"></i><b>7.3.4</b> 判断函数</a></li>
+<li class="chapter" data-level="7.3.5" data-path="datatable-function.html"><a href="datatable-function.html#交集-差集-合并"><i class="fa fa-check"></i><b>7.3.5</b> 交集 差集 合并</a></li>
+<li class="chapter" data-level="7.3.6" data-path="datatable-function.html"><a href="datatable-function.html#长宽转换"><i class="fa fa-check"></i><b>7.3.6</b> 长宽转换</a></li>
+<li class="chapter" data-level="7.3.7" data-path="datatable-function.html"><a href="datatable-function.html#表连接"><i class="fa fa-check"></i><b>7.3.7</b> 表连接</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="高级函数.html"><a href="高级函数.html"><i class="fa fa-check"></i><b>7.4</b> 高级函数</a>
+<li class="chapter" data-level="7.4" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html"><i class="fa fa-check"></i><b>7.4</b> 高级函数</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="高级函数.html"><a href="高级函数.html#groupingsets"><i class="fa fa-check"></i><b>7.4.1</b> groupingsets</a></li>
-<li class="chapter" data-level="7.4.2" data-path="高级函数.html"><a href="高级函数.html#rleid"><i class="fa fa-check"></i><b>7.4.2</b> rleid</a></li>
-<li class="chapter" data-level="7.4.3" data-path="高级函数.html"><a href="高级函数.html#shift"><i class="fa fa-check"></i><b>7.4.3</b> shift</a></li>
-<li class="chapter" data-level="7.4.4" data-path="高级函数.html"><a href="高级函数.html#j"><i class="fa fa-check"></i><b>7.4.4</b> J</a></li>
+<li class="chapter" data-level="7.4.1" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#groupingsets"><i class="fa fa-check"></i><b>7.4.1</b> groupingsets</a></li>
+<li class="chapter" data-level="7.4.2" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#rleid"><i class="fa fa-check"></i><b>7.4.2</b> rleid</a></li>
+<li class="chapter" data-level="7.4.3" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#shift"><i class="fa fa-check"></i><b>7.4.3</b> shift</a></li>
+<li class="chapter" data-level="7.4.4" data-path="datatable-advanced-functions.html"><a href="datatable-advanced-functions.html#j"><i class="fa fa-check"></i><b>7.4.4</b> J</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="小技巧.html"><a href="小技巧.html"><i class="fa fa-check"></i><b>7.5</b> 小技巧</a>
+<li class="chapter" data-level="7.5" data-path="datatable-tips.html"><a href="datatable-tips.html"><i class="fa fa-check"></i><b>7.5</b> 小技巧</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="小技巧.html"><a href="小技巧.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>7.5.1</b> 用{}抑制中间过程输出</a></li>
-<li class="chapter" data-level="7.5.2" data-path="小技巧.html"><a href="小技巧.html#使用打印data.table"><i class="fa fa-check"></i><b>7.5.2</b> 使用[]打印data.table</a></li>
+<li class="chapter" data-level="7.5.1" data-path="datatable-tips.html"><a href="datatable-tips.html#用抑制中间过程输出"><i class="fa fa-check"></i><b>7.5.1</b> 用{}抑制中间过程输出</a></li>
+<li class="chapter" data-level="7.5.2" data-path="datatable-tips.html"><a href="datatable-tips.html#使用打印data.table"><i class="fa fa-check"></i><b>7.5.2</b> 使用[]打印data.table</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="运用.html"><a href="运用.html"><i class="fa fa-check"></i><b>7.6</b> 运用</a>
+<li class="chapter" data-level="7.6" data-path="datatable-application.html"><a href="datatable-application.html"><i class="fa fa-check"></i><b>7.6</b> 运用</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="运用.html"><a href="运用.html#自定义函数计算"><i class="fa fa-check"></i><b>7.6.1</b> 自定义函数计算</a></li>
-<li class="chapter" data-level="7.6.2" data-path="运用.html"><a href="运用.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>7.6.2</b> 带汇总的聚合运算</a></li>
-<li class="chapter" data-level="7.6.3" data-path="运用.html"><a href="运用.html#行列转变"><i class="fa fa-check"></i><b>7.6.3</b> 行列转变</a></li>
+<li class="chapter" data-level="7.6.1" data-path="datatable-application.html"><a href="datatable-application.html#自定义函数计算"><i class="fa fa-check"></i><b>7.6.1</b> 自定义函数计算</a></li>
+<li class="chapter" data-level="7.6.2" data-path="datatable-application.html"><a href="datatable-application.html#带汇总的聚合运算"><i class="fa fa-check"></i><b>7.6.2</b> 带汇总的聚合运算</a></li>
+<li class="chapter" data-level="7.6.3" data-path="datatable-application.html"><a href="datatable-application.html#行列转变"><i class="fa fa-check"></i><b>7.6.3</b> 行列转变</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="database.html"><a href="database.html"><i class="fa fa-check"></i><b>8</b> database</a>
@@ -374,7 +383,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="database-DBI-package.html"><a href="database-DBI-package.html"><i class="fa fa-check"></i><b>8.3</b> DBI包</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="database-DBI-package.html"><a href="database-DBI-package.html#安装-2"><i class="fa fa-check"></i><b>8.3.1</b> 安装</a></li>
+<li class="chapter" data-level="8.3.1" data-path="database-DBI-package.html"><a href="database-DBI-package.html#安装-1"><i class="fa fa-check"></i><b>8.3.1</b> 安装</a></li>
 <li class="chapter" data-level="8.3.2" data-path="database-DBI-package.html"><a href="database-DBI-package.html#连接数据库-1"><i class="fa fa-check"></i><b>8.3.2</b> 连接数据库</a></li>
 <li class="chapter" data-level="8.3.3" data-path="database-DBI-package.html"><a href="database-DBI-package.html#读写数据库-1"><i class="fa fa-check"></i><b>8.3.3</b> 读写数据库</a></li>
 <li class="chapter" data-level="8.3.4" data-path="database-DBI-package.html"><a href="database-DBI-package.html#其它函数介绍"><i class="fa fa-check"></i><b>8.3.4</b> 其它函数介绍</a></li>
@@ -384,65 +393,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.1" data-path="database-else-package.html"><a href="database-else-package.html#rodbc包"><i class="fa fa-check"></i><b>8.4.1</b> RODBC包</a></li>
 <li class="chapter" data-level="8.4.2" data-path="database-else-package.html"><a href="database-else-package.html#roracle包"><i class="fa fa-check"></i><b>8.4.2</b> ROracle包</a></li>
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
+<li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
+<li class="chapter" data-level="8.4.5" data-path="database-else-package.html"><a href="database-else-package.html#大数据相关r包"><i class="fa fa-check"></i><b>8.4.5</b> 大数据相关R包</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.5</b> 常见问题</a>
 <ul>
 <li class="chapter" data-level="8.5.1" data-path="database-FAQ.html"><a href="database-FAQ.html#乱码问题"><i class="fa fa-check"></i><b>8.5.1</b> 乱码问题</a></li>
 <li class="chapter" data-level="8.5.2" data-path="database-FAQ.html"><a href="database-FAQ.html#无法连接问题"><i class="fa fa-check"></i><b>8.5.2</b> 无法连接问题</a></li>
 <li class="chapter" data-level="8.5.3" data-path="database-FAQ.html"><a href="database-FAQ.html#远程连接"><i class="fa fa-check"></i><b>8.5.3</b> 远程连接</a></li>
+<li class="chapter" data-level="8.5.4" data-path="database-FAQ.html"><a href="database-FAQ.html#跳板机连接"><i class="fa fa-check"></i><b>8.5.4</b> 跳板机连接</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html"><i class="fa fa-check"></i><b>8.6</b> dbplyr</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#基础用法"><i class="fa fa-check"></i><b>8.6.1</b> 基础用法</a></li>
-<li class="chapter" data-level="8.6.2" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#无法正确转化"><i class="fa fa-check"></i><b>8.6.2</b> 无法正确转化</a></li>
+<li class="chapter" data-level="8.6.1" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#安装-2"><i class="fa fa-check"></i><b>8.6.1</b> 安装</a></li>
+<li class="chapter" data-level="8.6.2" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#基础用法"><i class="fa fa-check"></i><b>8.6.2</b> 基础用法</a></li>
+<li class="chapter" data-level="8.6.3" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#无法正确转化"><i class="fa fa-check"></i><b>8.6.3</b> 无法正确转化</a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="database-reference-material.html"><a href="database-reference-material.html"><i class="fa fa-check"></i><b>8.7</b> 参考资料</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="loop-structure.html"><a href="loop-structure.html"><i class="fa fa-check"></i><b>9</b> Loop structure</a>
+<li class="chapter" data-level="9" data-path="R-loop-structure.html"><a href="R-loop-structure.html"><i class="fa fa-check"></i><b>9</b> 循环结构</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="简单示例.html"><a href="简单示例.html"><i class="fa fa-check"></i><b>9.1</b> 简单示例</a></li>
-<li class="chapter" data-level="9.2" data-path="循环基础.html"><a href="循环基础.html"><i class="fa fa-check"></i><b>9.2</b> 循环基础</a>
+<li class="chapter" data-level="9.1" data-path="R-loop-description.html"><a href="R-loop-description.html"><i class="fa fa-check"></i><b>9.1</b> R循环介绍</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="循环基础.html"><a href="循环基础.html#循环结构"><i class="fa fa-check"></i><b>9.2.1</b> 循环结构</a></li>
-<li class="chapter" data-level="9.2.2" data-path="循环基础.html"><a href="循环基础.html#next-break-用法"><i class="fa fa-check"></i><b>9.2.2</b> next break 用法</a></li>
-<li class="chapter" data-level="9.2.3" data-path="循环基础.html"><a href="循环基础.html#嵌套循环"><i class="fa fa-check"></i><b>9.2.3</b> 嵌套循环</a></li>
+<li class="chapter" data-level="9.1.1" data-path="R-loop-description.html"><a href="R-loop-description.html#R:loop-example"><i class="fa fa-check"></i><b>9.1.1</b> 简单示例</a></li>
+<li class="chapter" data-level="9.1.2" data-path="R-loop-description.html"><a href="R-loop-description.html#three:loop-structure"><i class="fa fa-check"></i><b>9.1.2</b> 循环结构</a></li>
+<li class="chapter" data-level="9.1.3" data-path="R-loop-description.html"><a href="R-loop-description.html#loop:control"><i class="fa fa-check"></i><b>9.1.3</b> 循环控制</a></li>
+<li class="chapter" data-level="9.1.4" data-path="R-loop-description.html"><a href="R-loop-description.html#嵌套循环"><i class="fa fa-check"></i><b>9.1.4</b> 嵌套循环</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="循环变化.html"><a href="循环变化.html"><i class="fa fa-check"></i><b>9.3</b> 循环变化</a>
+<li class="chapter" data-level="9.2" data-path="loop-changes.html"><a href="loop-changes.html"><i class="fa fa-check"></i><b>9.2</b> 循环变化</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="循环变化.html"><a href="循环变化.html#修改已有对象"><i class="fa fa-check"></i><b>9.3.1</b> 修改已有对象</a></li>
-<li class="chapter" data-level="9.3.2" data-path="循环变化.html"><a href="循环变化.html#循环模式"><i class="fa fa-check"></i><b>9.3.2</b> 循环模式</a></li>
-<li class="chapter" data-level="9.3.3" data-path="循环变化.html"><a href="循环变化.html#未知长度输出"><i class="fa fa-check"></i><b>9.3.3</b> 未知长度输出</a></li>
+<li class="chapter" data-level="9.2.1" data-path="loop-changes.html"><a href="loop-changes.html#修改已有对象"><i class="fa fa-check"></i><b>9.2.1</b> 修改已有对象</a></li>
+<li class="chapter" data-level="9.2.2" data-path="loop-changes.html"><a href="loop-changes.html#循环模式"><i class="fa fa-check"></i><b>9.2.2</b> 循环模式</a></li>
+<li class="chapter" data-level="9.2.3" data-path="loop-changes.html"><a href="loop-changes.html#未知长度输出"><i class="fa fa-check"></i><b>9.2.3</b> 未知长度输出</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>10</b> Iteration</a>
+<li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="简单用法.html"><a href="简单用法.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
-<li class="chapter" data-level="10.2" data-path="map系列常用函数.html"><a href="map系列常用函数.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
-<li class="chapter" data-level="10.3" data-path="归约累计函数.html"><a href="归约累计函数.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
-<li class="chapter" data-level="10.4" data-path="安全函数.html"><a href="安全函数.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
-<li class="chapter" data-level="10.5" data-path="映射多个参数.html"><a href="映射多个参数.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
-<li class="chapter" data-level="10.6" data-path="其他函数介绍.html"><a href="其他函数介绍.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
+<li class="chapter" data-level="10.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
+<li class="chapter" data-level="10.2" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
+<li class="chapter" data-level="10.3" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
+<li class="chapter" data-level="10.4" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
+<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
+<li class="chapter" data-level="10.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="define-function.html"><a href="define-function.html"><i class="fa fa-check"></i><b>11</b> define function</a>
+<li class="chapter" data-level="11" data-path="self-define-function.html"><a href="self-define-function.html"><i class="fa fa-check"></i><b>11</b> 自定义函数</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="简单示例-1.html"><a href="简单示例-1.html"><i class="fa fa-check"></i><b>11.1</b> 简单示例</a></li>
-<li class="chapter" data-level="11.2" data-path="条件执行.html"><a href="条件执行.html"><i class="fa fa-check"></i><b>11.2</b> 条件执行</a>
+<li class="chapter" data-level="11.1" data-path="define-function-example.html"><a href="define-function-example.html"><i class="fa fa-check"></i><b>11.1</b> 简单示例</a></li>
+<li class="chapter" data-level="11.2" data-path="define-function-conditional-execution.html"><a href="define-function-conditional-execution.html"><i class="fa fa-check"></i><b>11.2</b> 条件执行</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="条件执行.html"><a href="条件执行.html#多条件执行"><i class="fa fa-check"></i><b>11.2.1</b> 多条件执行</a></li>
+<li class="chapter" data-level="11.2.1" data-path="define-function-conditional-execution.html"><a href="define-function-conditional-execution.html#多条件执行"><i class="fa fa-check"></i><b>11.2.1</b> 多条件执行</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="函数参数-1.html"><a href="函数参数-1.html"><i class="fa fa-check"></i><b>11.3</b> 函数参数</a>
+<li class="chapter" data-level="11.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html"><i class="fa fa-check"></i><b>11.3</b> 函数参数</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="函数参数-1.html"><a href="函数参数-1.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
-<li class="chapter" data-level="11.3.2" data-path="函数参数-1.html"><a href="函数参数-1.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="11.3.3" data-path="函数参数-1.html"><a href="函数参数-1.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
+<li class="chapter" data-level="11.3.1" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
+<li class="chapter" data-level="11.3.2" data-path="define-function-parameter.html"><a href="define-function-parameter.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
+<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="返回值.html"><a href="返回值.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
+<li class="chapter" data-level="11.4" data-path="function-return.html"><a href="function-return.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="返回值.html"><a href="返回值.html#显式返回"><i class="fa fa-check"></i><b>11.4.1</b> 显式返回</a></li>
-<li class="chapter" data-level="11.4.2" data-path="返回值.html"><a href="返回值.html#编写管道函数"><i class="fa fa-check"></i><b>11.4.2</b> 编写管道函数</a></li>
+<li class="chapter" data-level="11.4.1" data-path="function-return.html"><a href="function-return.html#显式返回"><i class="fa fa-check"></i><b>11.4.1</b> 显式返回</a></li>
+<li class="chapter" data-level="11.4.2" data-path="function-return.html"><a href="function-return.html#编写管道函数"><i class="fa fa-check"></i><b>11.4.2</b> 编写管道函数</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="环境.html"><a href="环境.html"><i class="fa fa-check"></i><b>11.5</b> 环境</a></li>
-<li class="chapter" data-level="11.6" data-path="拓展部分.html"><a href="拓展部分.html"><i class="fa fa-check"></i><b>11.6</b> 拓展部分</a></li>
+<li class="chapter" data-level="11.5" data-path="function-environment.html"><a href="function-environment.html"><i class="fa fa-check"></i><b>11.5</b> 环境</a></li>
+<li class="chapter" data-level="11.6" data-path="function-expand.html"><a href="function-expand.html"><i class="fa fa-check"></i><b>11.6</b> 拓展部分</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="file-system-operation.html"><a href="file-system-operation.html"><i class="fa fa-check"></i><b>12</b> R语言文件系统操作</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="file-base-r.html"><a href="file-base-r.html"><i class="fa fa-check"></i><b>12.1</b> base R</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="file-base-r.html"><a href="file-base-r.html#base:r-usage"><i class="fa fa-check"></i><b>12.1.1</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="fs-package.html"><a href="fs-package.html"><i class="fa fa-check"></i><b>12.2</b> fs package</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="fs-package.html"><a href="fs-package.html#fs-install"><i class="fa fa-check"></i><b>12.2.1</b> 安装</a></li>
+<li class="chapter" data-level="12.2.2" data-path="fs-package.html"><a href="fs-package.html#fs-advanced"><i class="fa fa-check"></i><b>12.2.2</b> 优势</a></li>
+<li class="chapter" data-level="12.2.3" data-path="fs-package.html"><a href="fs-package.html#fs-usage"><i class="fa fa-check"></i><b>12.2.3</b> 基础用法</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="fs-functions.html"><a href="fs-functions.html"><i class="fa fa-check"></i><b>12.3</b> fs函数介绍</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="fs-functions.html"><a href="fs-functions.html#fs-file-manipulation"><i class="fa fa-check"></i><b>12.3.1</b> 文件操作</a></li>
+<li class="chapter" data-level="12.3.2" data-path="fs-functions.html"><a href="fs-functions.html#fs-dir-manipulation"><i class="fa fa-check"></i><b>12.3.2</b> 目录操作</a></li>
+<li class="chapter" data-level="12.3.3" data-path="fs-functions.html"><a href="fs-functions.html#fs-link-manipulation"><i class="fa fa-check"></i><b>12.3.3</b> 链接操作</a></li>
+<li class="chapter" data-level="12.3.4" data-path="fs-functions.html"><a href="fs-functions.html#fs-path-manipulation"><i class="fa fa-check"></i><b>12.3.4</b> 路径操作</a></li>
+<li class="chapter" data-level="12.3.5" data-path="fs-functions.html"><a href="fs-functions.html#fs-help-manipulation"><i class="fa fa-check"></i><b>12.3.5</b> 辅助函数</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="file-base-fs-difference.html"><a href="file-base-fs-difference.html"><i class="fa fa-check"></i><b>12.4</b> base-fs-shell比较</a></li>
+<li class="chapter" data-level="12.5" data-path="file-manipulation-reference-material.html"><a href="file-manipulation-reference-material.html"><i class="fa fa-check"></i><b>12.5</b> 参考资料</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://gitee.com/zhongyufei/Rbook" target="blank">gitee地址</a></li>
@@ -466,16 +502,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="database:else-package" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> 其他R包</h2>
+<p>通过前文了解，以下R包(RODBC除外)的作用仅仅是提供驱动即可，再通过DBI包与数据库交互。</p>
 <div id="rodbc包" class="section level3" number="8.4.1">
 <h3><span class="header-section-number">8.4.1</span> RODBC包</h3>
 <p>RODBC包是R语言对ODBC数据库接口的封装,可连接所有的ODBC数据库，但是读写效率较低。</p>
 <p>1.安装包</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="database-else-package.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RODBC&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="database-else-package.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RODBC&#39;</span>)</span></code></pre></div>
 <p>2.SQL SERVER 数据库举例</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="database-else-package.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RODBC)</span>
-<span id="cb38-2"><a href="database-else-package.html#cb38-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;driver={SQL Server};server=192.168.2.62;database=dbname;uid=zhongyf;pwd=Zyf123456&quot;</span>)</span>
-<span id="cb38-3"><a href="database-else-package.html#cb38-3" aria-hidden="true" tabindex="-1"></a>con</span>
-<span id="cb38-4"><a href="database-else-package.html#cb38-4" aria-hidden="true" tabindex="-1"></a>RODBC<span class="sc">::</span><span class="fu">sqlQuery</span>(con,<span class="st">&#39;select * from test&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="database-else-package.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RODBC)</span>
+<span id="cb398-2"><a href="database-else-package.html#cb398-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;driver={SQL Server};server=192.168.2.62;database=dbname;uid=zhongyf;pwd=Zyf123456&quot;</span>)</span>
+<span id="cb398-3"><a href="database-else-package.html#cb398-3" aria-hidden="true" tabindex="-1"></a>con</span>
+<span id="cb398-4"><a href="database-else-package.html#cb398-4" aria-hidden="true" tabindex="-1"></a>RODBC<span class="sc">::</span><span class="fu">sqlQuery</span>(con,<span class="st">&#39;select * from test&#39;</span>)</span></code></pre></div>
 <p>`</p>
 <ul>
 <li>怎样安装驱动</li>
@@ -484,8 +521,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ODBC for sql server driver 下载地址<a href="https://docs.microsoft.com/zh-cn/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">地址</a></p>
 <p>3.数据库字符串</p>
 <p>请参照<a href="https://www.connectionstrings.com/">数据库连接字符串</a></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="database-else-package.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ODBC Driver 17 for SQL Server</span></span>
-<span id="cb39-2"><a href="database-else-package.html#cb39-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=name;UID=username;PWD=123456;&quot;</span>) <span class="co">#server 数据库 UID 数据库账户 PWD 数据库账户密码</span></span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="database-else-package.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ODBC Driver 17 for SQL Server</span></span>
+<span id="cb399-2"><a href="database-else-package.html#cb399-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=name;UID=username;PWD=123456;&quot;</span>) <span class="co">#server 数据库 UID 数据库账户 PWD 数据库账户密码</span></span></code></pre></div>
 <p>sql server 请参照<a href="https://www.connectionstrings.com/microsoft-odbc-driver-17-for-sql-server/">sql server连接字符串</a></p>
 </div>
 <div id="roracle包" class="section level3" number="8.4.2">
@@ -499,36 +536,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>配置环境变量</li>
 </ol>
 <p>根据自己所使用的系统，配置环境变量</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="database-else-package.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="va">OCI_INC=</span><span class="st">&#39;D:\app\zhongyf\product\11.2.0\client_1\oci\include&#39;</span></span>
-<span id="cb40-2"><a href="database-else-package.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="va">OCI_LIB64=</span><span class="st">&#39;D:\app\zhongyf\product\11.2.0\client_1\BIN&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb400-1"><a href="database-else-package.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="va">OCI_INC=</span><span class="st">&#39;D:\app\zhongyf\product\11.2.0\client_1\oci\include&#39;</span></span>
+<span id="cb400-2"><a href="database-else-package.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="va">OCI_LIB64=</span><span class="st">&#39;D:\app\zhongyf\product\11.2.0\client_1\BIN&#39;</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>安装包</li>
 </ol>
 <p>安装Roracle包需要配置相应版本的Rtools并添加到环境变量，另外配置两个oracle的环境变量。代码中有注释,按照自己安装版本路径修改。</p>
 <p>由于ROracle依赖于Oracle Instant Client,安装之前一定要先安装好客户端。</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="database-else-package.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;ROracle&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="database-else-package.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;ROracle&#39;</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>连接数据库</li>
 </ol>
 <p><code>Roracle</code>可以通过<code>DBI</code>包链接，除了驱动和连接字符串有差异，其他部分一样。</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="database-else-package.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROracle)</span>
-<span id="cb42-2"><a href="database-else-package.html#cb42-2" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span><span class="fu">dbDriver</span>(<span class="st">&quot;Oracle&quot;</span>)</span>
-<span id="cb42-3"><a href="database-else-package.html#cb42-3" aria-hidden="true" tabindex="-1"></a>connect.string <span class="ot">&lt;-</span> <span class="st">&#39;(DESCRIPTION =</span></span>
-<span id="cb42-4"><a href="database-else-package.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="st">                    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.16.88.129)(PORT = 1521))</span></span>
-<span id="cb42-5"><a href="database-else-package.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="st">                  (CONNECT_DATA =</span></span>
-<span id="cb42-6"><a href="database-else-package.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="st">                      (SERVER = DEDICATED)</span></span>
-<span id="cb42-7"><a href="database-else-package.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="st">                    (SERVICE_NAME = bidev)</span></span>
-<span id="cb42-8"><a href="database-else-package.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="st">                  ))&#39;</span> <span class="co">#连接字符串</span></span>
-<span id="cb42-9"><a href="database-else-package.html#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="database-else-package.html#cb42-10" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv,<span class="at">username =</span> <span class="st">&quot;query&quot;</span>, <span class="at">password =</span> <span class="st">&quot;query&quot;</span>,<span class="at">dbname =</span> connect.string)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="database-else-package.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROracle)</span>
+<span id="cb402-2"><a href="database-else-package.html#cb402-2" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span><span class="fu">dbDriver</span>(<span class="st">&quot;Oracle&quot;</span>)</span>
+<span id="cb402-3"><a href="database-else-package.html#cb402-3" aria-hidden="true" tabindex="-1"></a>connect.string <span class="ot">&lt;-</span> <span class="st">&#39;(DESCRIPTION =</span></span>
+<span id="cb402-4"><a href="database-else-package.html#cb402-4" aria-hidden="true" tabindex="-1"></a><span class="st">                    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.16.88.129)(PORT = 1521))</span></span>
+<span id="cb402-5"><a href="database-else-package.html#cb402-5" aria-hidden="true" tabindex="-1"></a><span class="st">                  (CONNECT_DATA =</span></span>
+<span id="cb402-6"><a href="database-else-package.html#cb402-6" aria-hidden="true" tabindex="-1"></a><span class="st">                      (SERVER = DEDICATED)</span></span>
+<span id="cb402-7"><a href="database-else-package.html#cb402-7" aria-hidden="true" tabindex="-1"></a><span class="st">                    (SERVICE_NAME = bidev)</span></span>
+<span id="cb402-8"><a href="database-else-package.html#cb402-8" aria-hidden="true" tabindex="-1"></a><span class="st">                  ))&#39;</span> <span class="co">#连接字符串</span></span>
+<span id="cb402-9"><a href="database-else-package.html#cb402-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-10"><a href="database-else-package.html#cb402-10" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv,<span class="at">username =</span> <span class="st">&quot;query&quot;</span>, <span class="at">password =</span> <span class="st">&quot;query&quot;</span>,<span class="at">dbname =</span> connect.string)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>乱码问题</li>
 </ol>
 <p>如果连接oracle数据库，中文乱码设置以下环境变量即可，或者在启动文件配置该环境变量。</p>
 <p>linux下可以在文件Renviron中添加，记得引号，路径为[/opt/R/4.0.2/lib/R/etc/Renviron]</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="database-else-package.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查询数据库编码</span></span>
-<span id="cb43-2"><a href="database-else-package.html#cb43-2" aria-hidden="true" tabindex="-1"></a>select <span class="fu">userenv</span>(<span class="st">&#39;language&#39;</span>) from dual</span>
-<span id="cb43-3"><a href="database-else-package.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">NLS_LANG=</span><span class="st">&quot;SIMPLIFIED CHINESE_CHINA.AL32UTF8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="database-else-package.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查询数据库编码</span></span>
+<span id="cb403-2"><a href="database-else-package.html#cb403-2" aria-hidden="true" tabindex="-1"></a>select <span class="fu">userenv</span>(<span class="st">&#39;language&#39;</span>) from dual</span>
+<span id="cb403-3"><a href="database-else-package.html#cb403-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">NLS_LANG=</span><span class="st">&quot;SIMPLIFIED CHINESE_CHINA.AL32UTF8&quot;</span>)</span></code></pre></div>
 <p>由于ROracle包的安装存在一定难度，具体安装说明可以参考微信公众号-宇飞的世界<a href="https://mp.weixin.qq.com/s/QLwedZ5mTybqSXdHMTGRIw">R包ROracle安装</a></p>
 </div>
 <div id="rmysql包" class="section level3" number="8.4.3">
@@ -536,24 +573,121 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下.该包正在逐渐被淘汰，可以使用RMariaDB包替换。</p>
 <p>1.安装</p>
 <p>Win系统下直接安装即可，其它平台下需提前安装依赖环境。</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="database-else-package.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#On recent Debian or Ubuntu install libmariadbclient-dev</span></span>
-<span id="cb44-2"><a href="database-else-package.html#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="database-else-package.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> libmariadbclient-dev</span>
-<span id="cb44-4"><a href="database-else-package.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#On Fedora, CentOS or RHEL we need mariadb-devel:</span></span>
-<span id="cb44-5"><a href="database-else-package.html#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-6"><a href="database-else-package.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install mariadb-devel</span>
-<span id="cb44-7"><a href="database-else-package.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">#On OS-X use mariadb-connector-c from Homebrew:</span></span>
-<span id="cb44-8"><a href="database-else-package.html#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-9"><a href="database-else-package.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install mariadb-connector-c</span></code></pre></div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="database-else-package.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMySQL&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb404-1"><a href="database-else-package.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="co">#On recent Debian or Ubuntu install libmariadbclient-dev</span></span>
+<span id="cb404-2"><a href="database-else-package.html#cb404-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb404-3"><a href="database-else-package.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> libmariadbclient-dev</span>
+<span id="cb404-4"><a href="database-else-package.html#cb404-4" aria-hidden="true" tabindex="-1"></a><span class="co">#On Fedora, CentOS or RHEL we need mariadb-devel:</span></span>
+<span id="cb404-5"><a href="database-else-package.html#cb404-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb404-6"><a href="database-else-package.html#cb404-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install mariadb-devel</span>
+<span id="cb404-7"><a href="database-else-package.html#cb404-7" aria-hidden="true" tabindex="-1"></a><span class="co">#On OS-X use mariadb-connector-c from Homebrew:</span></span>
+<span id="cb404-8"><a href="database-else-package.html#cb404-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb404-9"><a href="database-else-package.html#cb404-9" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install mariadb-connector-c</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="database-else-package.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMySQL&#39;</span>)</span></code></pre></div>
 <p>2.连接使用</p>
 <p>上述连接方式一致，仅仅是指驱动差异</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="database-else-package.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
-<span id="cb46-2"><a href="database-else-package.html#cb46-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;mysql&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="database-else-package.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb406-2"><a href="database-else-package.html#cb406-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;mysql&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
 <p><code>RMariaDB</code>包与<code>RMySQL</code>包用法基本一致，在连接时注意驱动的选择即可。</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="database-else-package.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMariaDB&#39;</span>)</span>
-<span id="cb47-2"><a href="database-else-package.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
-<span id="cb47-3"><a href="database-else-package.html#cb47-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>() ,<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;dbtest&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="database-else-package.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMariaDB&#39;</span>)</span>
+<span id="cb407-2"><a href="database-else-package.html#cb407-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
+<span id="cb407-3"><a href="database-else-package.html#cb407-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>() ,<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;dbtest&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
+</div>
+<div id="rsqlite" class="section level3" number="8.4.4">
+<h3><span class="header-section-number">8.4.4</span> RSQLite</h3>
+<p>RSQLite是练习使用R中的数据库的最简单方法，因为程序包本身包含SQLite，无需任何外部软件。</p>
+<p><a href="https://rsqlite.r-dbi.org/">项目地址</a></p>
+<p>1.安装</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="database-else-package.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RSQLite&quot;</span>)</span></code></pre></div>
+<p>2.基础用法</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="database-else-package.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb409-2"><a href="database-else-package.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 在内存中创建一个临时数据库</span></span>
+<span id="cb409-3"><a href="database-else-package.html#cb409-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
+<span id="cb409-4"><a href="database-else-package.html#cb409-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-5"><a href="database-else-package.html#cb409-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span>
+<span id="cb409-6"><a href="database-else-package.html#cb409-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; character(0)</span></span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="database-else-package.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;mtcars&quot;</span>, mtcars)</span>
+<span id="cb410-2"><a href="database-else-package.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span>
+<span id="cb410-3"><a href="database-else-package.html#cb410-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mtcars&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="database-else-package.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb411-2"><a href="database-else-package.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg cyl  disp  hp drat   wt qsec vs am gear carb</span></span>
+<span id="cb411-3"><a href="database-else-package.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  21.0   6 160.0 110 3.90 2.62 16.5  0  1    4    4</span></span>
+<span id="cb411-4"><a href="database-else-package.html#cb411-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  21.0   6 160.0 110 3.90 2.88 17.0  0  1    4    4</span></span>
+<span id="cb411-5"><a href="database-else-package.html#cb411-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  22.8   4 108.0  93 3.85 2.32 18.6  1  1    4    1</span></span>
+<span id="cb411-6"><a href="database-else-package.html#cb411-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  21.4   6 258.0 110 3.08 3.21 19.4  1  0    3    1</span></span>
+<span id="cb411-7"><a href="database-else-package.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  18.7   8 360.0 175 3.15 3.44 17.0  0  0    3    2</span></span>
+<span id="cb411-8"><a href="database-else-package.html#cb411-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  18.1   6 225.0 105 2.76 3.46 20.2  1  0    3    1</span></span>
+<span id="cb411-9"><a href="database-else-package.html#cb411-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  14.3   8 360.0 245 3.21 3.57 15.8  0  0    3    4</span></span>
+<span id="cb411-10"><a href="database-else-package.html#cb411-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  24.4   4 146.7  62 3.69 3.19 20.0  1  0    4    2</span></span>
+<span id="cb411-11"><a href="database-else-package.html#cb411-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  22.8   4 140.8  95 3.92 3.15 22.9  1  0    4    2</span></span>
+<span id="cb411-12"><a href="database-else-package.html#cb411-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 19.2   6 167.6 123 3.92 3.44 18.3  1  0    4    4</span></span>
+<span id="cb411-13"><a href="database-else-package.html#cb411-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 17.8   6 167.6 123 3.92 3.44 18.9  1  0    4    4</span></span>
+<span id="cb411-14"><a href="database-else-package.html#cb411-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 16.4   8 275.8 180 3.07 4.07 17.4  0  0    3    3</span></span>
+<span id="cb411-15"><a href="database-else-package.html#cb411-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 17.3   8 275.8 180 3.07 3.73 17.6  0  0    3    3</span></span>
+<span id="cb411-16"><a href="database-else-package.html#cb411-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 15.2   8 275.8 180 3.07 3.78 18.0  0  0    3    3</span></span>
+<span id="cb411-17"><a href="database-else-package.html#cb411-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 10.4   8 472.0 205 2.93 5.25 18.0  0  0    3    4</span></span>
+<span id="cb411-18"><a href="database-else-package.html#cb411-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 10.4   8 460.0 215 3.00 5.42 17.8  0  0    3    4</span></span>
+<span id="cb411-19"><a href="database-else-package.html#cb411-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 14.7   8 440.0 230 3.23 5.34 17.4  0  0    3    4</span></span>
+<span id="cb411-20"><a href="database-else-package.html#cb411-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 32.4   4  78.7  66 4.08 2.20 19.5  1  1    4    1</span></span>
+<span id="cb411-21"><a href="database-else-package.html#cb411-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 30.4   4  75.7  52 4.93 1.61 18.5  1  1    4    2</span></span>
+<span id="cb411-22"><a href="database-else-package.html#cb411-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20 33.9   4  71.1  65 4.22 1.83 19.9  1  1    4    1</span></span>
+<span id="cb411-23"><a href="database-else-package.html#cb411-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21 21.5   4 120.1  97 3.70 2.46 20.0  1  0    3    1</span></span>
+<span id="cb411-24"><a href="database-else-package.html#cb411-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22 15.5   8 318.0 150 2.76 3.52 16.9  0  0    3    2</span></span>
+<span id="cb411-25"><a href="database-else-package.html#cb411-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 15.2   8 304.0 150 3.15 3.44 17.3  0  0    3    2</span></span>
+<span id="cb411-26"><a href="database-else-package.html#cb411-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 13.3   8 350.0 245 3.73 3.84 15.4  0  0    3    4</span></span>
+<span id="cb411-27"><a href="database-else-package.html#cb411-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 19.2   8 400.0 175 3.08 3.85 17.1  0  0    3    2</span></span>
+<span id="cb411-28"><a href="database-else-package.html#cb411-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 27.3   4  79.0  66 4.08 1.94 18.9  1  1    4    1</span></span>
+<span id="cb411-29"><a href="database-else-package.html#cb411-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27 26.0   4 120.3  91 4.43 2.14 16.7  0  1    5    2</span></span>
+<span id="cb411-30"><a href="database-else-package.html#cb411-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28 30.4   4  95.1 113 3.77 1.51 16.9  1  1    5    2</span></span>
+<span id="cb411-31"><a href="database-else-package.html#cb411-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29 15.8   8 351.0 264 4.22 3.17 14.5  0  1    5    4</span></span>
+<span id="cb411-32"><a href="database-else-package.html#cb411-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30 19.7   6 145.0 175 3.62 2.77 15.5  0  1    5    6</span></span>
+<span id="cb411-33"><a href="database-else-package.html#cb411-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31 15.0   8 301.0 335 3.54 3.57 14.6  0  1    5    8</span></span>
+<span id="cb411-34"><a href="database-else-package.html#cb411-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32 21.4   4 121.0 109 4.11 2.78 18.6  1  1    4    2</span></span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="database-else-package.html#cb412-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * FROM mtcars WHERE cyl = 4&quot;</span>)</span>
+<span id="cb412-2"><a href="database-else-package.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(res)</span>
+<span id="cb412-3"><a href="database-else-package.html#cb412-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg cyl  disp  hp drat   wt qsec vs am gear carb</span></span>
+<span id="cb412-4"><a href="database-else-package.html#cb412-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  22.8   4 108.0  93 3.85 2.32 18.6  1  1    4    1</span></span>
+<span id="cb412-5"><a href="database-else-package.html#cb412-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  24.4   4 146.7  62 3.69 3.19 20.0  1  0    4    2</span></span>
+<span id="cb412-6"><a href="database-else-package.html#cb412-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  22.8   4 140.8  95 3.92 3.15 22.9  1  0    4    2</span></span>
+<span id="cb412-7"><a href="database-else-package.html#cb412-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  32.4   4  78.7  66 4.08 2.20 19.5  1  1    4    1</span></span>
+<span id="cb412-8"><a href="database-else-package.html#cb412-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  30.4   4  75.7  52 4.93 1.61 18.5  1  1    4    2</span></span>
+<span id="cb412-9"><a href="database-else-package.html#cb412-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  33.9   4  71.1  65 4.22 1.83 19.9  1  1    4    1</span></span>
+<span id="cb412-10"><a href="database-else-package.html#cb412-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  21.5   4 120.1  97 3.70 2.46 20.0  1  0    3    1</span></span>
+<span id="cb412-11"><a href="database-else-package.html#cb412-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  27.3   4  79.0  66 4.08 1.94 18.9  1  1    4    1</span></span>
+<span id="cb412-12"><a href="database-else-package.html#cb412-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  26.0   4 120.3  91 4.43 2.14 16.7  0  1    5    2</span></span>
+<span id="cb412-13"><a href="database-else-package.html#cb412-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 30.4   4  95.1 113 3.77 1.51 16.9  1  1    5    2</span></span>
+<span id="cb412-14"><a href="database-else-package.html#cb412-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 21.4   4 121.0 109 4.11 2.78 18.6  1  1    4    2</span></span>
+<span id="cb412-15"><a href="database-else-package.html#cb412-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
+<span id="cb412-16"><a href="database-else-package.html#cb412-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<p>基础用法与DBI功能一致。</p>
+</div>
+<div id="大数据相关r包" class="section level3" number="8.4.5">
+<h3><span class="header-section-number">8.4.5</span> 大数据相关R包</h3>
+<ul>
+<li><p>sparklyr <a href="https://spark.rstudio.com/" class="uri">https://spark.rstudio.com/</a></p></li>
+<li><p>RClickhouse <a href="https://github.com/hannesmuehleisen/clickhouse-r" class="uri">https://github.com/hannesmuehleisen/clickhouse-r</a></p></li>
+</ul>
+<div id="rclickhouse" class="section level4" number="8.4.5.1">
+<h4><span class="header-section-number">8.4.5.1</span> RClickhouse</h4>
+<p>按照官网<a href="https://clickhouse.tech/docs/en/getting-started/install/">安装教程</a>安装。</p>
+<p>1.R包安装</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="database-else-package.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RClickhouse&quot;</span>)</span></code></pre></div>
+<p>2.配置远程连接</p>
+<p><a href="https://blog.csdn.net/zhangpeterx/article/details/95059059">参考资料</a></p>
+<p>3.安装驱动</p>
+<p><a href="https://github.com/ClickHouse/clickhouse-odbc/releases/tag/2018-05-15">驱动下载</a></p>
+<p>4.连接</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="database-else-package.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RClickhouse)</span>
+<span id="cb414-2"><a href="database-else-package.html#cb414-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb414-3"><a href="database-else-package.html#cb414-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-4"><a href="database-else-package.html#cb414-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 本地默认连接</span></span>
+<span id="cb414-5"><a href="database-else-package.html#cb414-5" aria-hidden="true" tabindex="-1"></a>con_local <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RClickhouse<span class="sc">::</span><span class="fu">clickhouse</span>(), <span class="at">host=</span><span class="st">&quot;localhost&quot;</span>, <span class="at">port=</span>9000L, <span class="at">user=</span><span class="st">&quot;default&quot;</span>, <span class="at">password=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb414-6"><a href="database-else-package.html#cb414-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con_local,<span class="st">&quot;CREATE DATABASE IF NOT EXISTS tutorial&quot;</span>)</span>
+<span id="cb414-7"><a href="database-else-package.html#cb414-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-8"><a href="database-else-package.html#cb414-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定库远程连接</span></span>
+<span id="cb414-9"><a href="database-else-package.html#cb414-9" aria-hidden="true" tabindex="-1"></a>con_remote <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RClickhouse<span class="sc">::</span><span class="fu">clickhouse</span>(), <span class="at">host=</span><span class="st">&quot;192.168.2.237&quot;</span>, <span class="at">port=</span>9000L, <span class="at">user=</span><span class="st">&quot;default&quot;</span>, <span class="at">password=</span><span class="st">&quot;&quot;</span>,<span class="at">dbname=</span><span class="st">&#39;tutorial&#39;</span>)</span></code></pre></div>
+<p>win系统上配置odbc时，注意ODBC版本，<a href="https://github.com/ClickHouse/clickhouse-odbc/releases">clickhouse-odbc下载</a>。最初我使用的odbc版本太旧，Excel无法成功连接clickhouse数据库。</p>
+<p>clickhouse测试下来，感觉速度也没有特别快，不知道是不是因为我是用的虚拟机测试的原因。另外上传表和常规方式不一样，也挺麻烦，建议先保持观望。</p>
+</div>
 </div>
 </div>
             </section>
@@ -613,6 +747,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
