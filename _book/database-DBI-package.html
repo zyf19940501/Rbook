@@ -34,7 +34,7 @@
 <link rel="prev" href="database-odbc-package.html"/>
 <link rel="next" href="database-else-package.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,15 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -395,10 +386,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -506,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="database:DBI-package" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> DBI包</h2>
-<p>R包DBI将与DBMS<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>的连接分为“前端”和“后端”，DBI定义了一个由DBI后端实现的接口,接口定义了一些类和方法,支持以下一些操作：</p>
+<p>R包DBI将与DBMS<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>的连接分为“前端”和“后端”，DBI定义了一个由DBI后端实现的接口,接口定义了一些类和方法,支持以下一些操作：</p>
 <ul>
 <li>连接/断开与DBMS的连接</li>
 <li>在DBMS中创建和执行语句</li>
@@ -517,10 +508,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="安装-1" class="section level3" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> 安装</h3>
 <p>从CRAN安装发行的DBI版本：</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="database-DBI-package.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;DBI&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="database-DBI-package.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;DBI&#39;</span>)</span></code></pre></div>
 <p>从Github安装开发的DBI版本：</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="database-DBI-package.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb379-2"><a href="database-DBI-package.html#cb379-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;r-dbi/DBI&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="database-DBI-package.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb17-2"><a href="database-DBI-package.html#cb17-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;r-dbi/DBI&quot;</span>)</span></code></pre></div>
 </div>
 <div id="连接数据库-1" class="section level3" number="8.3.2">
 <h3><span class="header-section-number">8.3.2</span> 连接数据库</h3>
@@ -528,113 +519,113 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>连接MS SQL SERVER</li>
 </ul>
 <p>通过以下代码即可连接微软的sql server,服务器172.16.88.2(即IP地址)的数据库，成功连接后即可与数据库交互。</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="database-DBI-package.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb380-2"><a href="database-DBI-package.html#cb380-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
-<span id="cb380-3"><a href="database-DBI-package.html#cb380-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), </span>
-<span id="cb380-4"><a href="database-DBI-package.html#cb380-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, </span>
-<span id="cb380-5"><a href="database-DBI-package.html#cb380-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>,</span>
-<span id="cb380-6"><a href="database-DBI-package.html#cb380-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, </span>
-<span id="cb380-7"><a href="database-DBI-package.html#cb380-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, </span>
-<span id="cb380-8"><a href="database-DBI-package.html#cb380-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
-<span id="cb380-9"><a href="database-DBI-package.html#cb380-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="database-DBI-package.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb18-2"><a href="database-DBI-package.html#cb18-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb18-3"><a href="database-DBI-package.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), </span>
+<span id="cb18-4"><a href="database-DBI-package.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, </span>
+<span id="cb18-5"><a href="database-DBI-package.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>,</span>
+<span id="cb18-6"><a href="database-DBI-package.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, </span>
+<span id="cb18-7"><a href="database-DBI-package.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, </span>
+<span id="cb18-8"><a href="database-DBI-package.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
+<span id="cb18-9"><a href="database-DBI-package.html#cb18-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>查询数据库编码方式,从而选择连接数据库时相应的编码方式。</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="database-DBI-package.html#cb381-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
-<span id="cb381-2"><a href="database-DBI-package.html#cb381-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>,</span>
-<span id="cb381-3"><a href="database-DBI-package.html#cb381-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>, <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
-<span id="cb381-4"><a href="database-DBI-package.html#cb381-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb381-5"><a href="database-DBI-package.html#cb381-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-6"><a href="database-DBI-package.html#cb381-6" aria-hidden="true" tabindex="-1"></a><span class="co">#查看编码是否是936 代表中文简体</span></span>
-<span id="cb381-7"><a href="database-DBI-package.html#cb381-7" aria-hidden="true" tabindex="-1"></a>sql <span class="ot">&lt;-</span> <span class="st">&quot;SELECT COLLATIONPROPERTY( &#39;chinese_prc_ci_as&#39;, &#39;codepage&#39; )&quot;</span></span>
-<span id="cb381-8"><a href="database-DBI-package.html#cb381-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-9"><a href="database-DBI-package.html#cb381-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con,sql)</span>
-<span id="cb381-10"><a href="database-DBI-package.html#cb381-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-11"><a href="database-DBI-package.html#cb381-11" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb381-12"><a href="database-DBI-package.html#cb381-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute(con,sql)</span></span>
-<span id="cb381-13"><a href="database-DBI-package.html#cb381-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-14"><a href="database-DBI-package.html#cb381-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 关闭数据库连接</span></span>
-<span id="cb381-15"><a href="database-DBI-package.html#cb381-15" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="database-DBI-package.html#cb19-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb19-2"><a href="database-DBI-package.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">Driver =</span> <span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>,</span>
+<span id="cb19-3"><a href="database-DBI-package.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">&quot;172.16.88.2&quot;</span>, <span class="at">database =</span> <span class="st">&quot;spb&quot;</span>, <span class="at">uid =</span> <span class="st">&quot;zhongyf&quot;</span>, <span class="at">pwd =</span> <span class="st">&quot;Zyf123456&quot;</span></span>
+<span id="cb19-4"><a href="database-DBI-package.html#cb19-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-5"><a href="database-DBI-package.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="database-DBI-package.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#查看编码是否是936 代表中文简体</span></span>
+<span id="cb19-7"><a href="database-DBI-package.html#cb19-7" aria-hidden="true" tabindex="-1"></a>sql <span class="ot">&lt;-</span> <span class="st">&quot;SELECT COLLATIONPROPERTY( &#39;chinese_prc_ci_as&#39;, &#39;codepage&#39; )&quot;</span></span>
+<span id="cb19-8"><a href="database-DBI-package.html#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="database-DBI-package.html#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con,sql)</span>
+<span id="cb19-10"><a href="database-DBI-package.html#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="database-DBI-package.html#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb19-12"><a href="database-DBI-package.html#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute(con,sql)</span></span>
+<span id="cb19-13"><a href="database-DBI-package.html#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="database-DBI-package.html#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 关闭数据库连接</span></span>
+<span id="cb19-15"><a href="database-DBI-package.html#cb19-15" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 <ul>
 <li>连接mysql</li>
 </ul>
 <p><code>MySQL()</code>函数来源<code>RMySQL</code>包，用来创建<code>&lt;MySQLDriver&gt;</code>驱动，以下代码可连接到阿里云的MySQL数据库。</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="database-DBI-package.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
-<span id="cb382-2"><a href="database-DBI-package.html#cb382-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),</span>
-<span id="cb382-3"><a href="database-DBI-package.html#cb382-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">&quot;test&quot;</span>, <span class="at">user =</span> <span class="st">&quot;test_admin&quot;</span>, <span class="at">password =</span> <span class="st">&quot;30HL1234M7#￥lD6gxjB&quot;</span>,</span>
-<span id="cb382-4"><a href="database-DBI-package.html#cb382-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">&quot;prd-public-mypersonal.mysql.test.zhangjiabei.rds.aliyuncs.com&quot;</span></span>
-<span id="cb382-5"><a href="database-DBI-package.html#cb382-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="database-DBI-package.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb20-2"><a href="database-DBI-package.html#cb20-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),</span>
+<span id="cb20-3"><a href="database-DBI-package.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">&quot;test&quot;</span>, <span class="at">user =</span> <span class="st">&quot;test_admin&quot;</span>, <span class="at">password =</span> <span class="st">&quot;30HL1234M7#￥lD6gxjB&quot;</span>,</span>
+<span id="cb20-4"><a href="database-DBI-package.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">&quot;prd-public-mypersonal.mysql.test.zhangjiabei.rds.aliyuncs.com&quot;</span></span>
+<span id="cb20-5"><a href="database-DBI-package.html#cb20-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>或者通过本地已安装驱动连接数据库</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="database-DBI-package.html#cb383-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
-<span id="cb383-2"><a href="database-DBI-package.html#cb383-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;MySQL ODBC 8.0 Unicode Driver&quot;</span>,</span>
-<span id="cb383-3"><a href="database-DBI-package.html#cb383-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Server =</span> <span class="st">&quot;localhost&quot;</span>, <span class="at">UID =</span> <span class="st">&quot;root&quot;</span>, <span class="at">PWD =</span> <span class="st">&quot;123456&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;mysql&quot;</span>,</span>
-<span id="cb383-4"><a href="database-DBI-package.html#cb383-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Port =</span> <span class="dv">3306</span></span>
-<span id="cb383-5"><a href="database-DBI-package.html#cb383-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="database-DBI-package.html#cb21-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
+<span id="cb21-2"><a href="database-DBI-package.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;MySQL ODBC 8.0 Unicode Driver&quot;</span>,</span>
+<span id="cb21-3"><a href="database-DBI-package.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Server =</span> <span class="st">&quot;localhost&quot;</span>, <span class="at">UID =</span> <span class="st">&quot;root&quot;</span>, <span class="at">PWD =</span> <span class="st">&quot;123456&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;mysql&quot;</span>,</span>
+<span id="cb21-4"><a href="database-DBI-package.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Port =</span> <span class="dv">3306</span></span>
+<span id="cb21-5"><a href="database-DBI-package.html#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>mysql数据库默认端口是3306,访问不通时记得检查3306端口是否开放。</p>
 <ul>
 <li>连接oracle</li>
 </ul>
 <p>由ROracle包构造驱动。</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="database-DBI-package.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROracle)</span>
-<span id="cb384-2"><a href="database-DBI-package.html#cb384-2" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span><span class="fu">dbDriver</span>(<span class="st">&quot;Oracle&quot;</span>)</span>
-<span id="cb384-3"><a href="database-DBI-package.html#cb384-3" aria-hidden="true" tabindex="-1"></a>connect.string <span class="ot">&lt;-</span> <span class="st">&#39;(DESCRIPTION =</span></span>
-<span id="cb384-4"><a href="database-DBI-package.html#cb384-4" aria-hidden="true" tabindex="-1"></a><span class="st">                    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.16.88.129)(PORT = 1521))</span></span>
-<span id="cb384-5"><a href="database-DBI-package.html#cb384-5" aria-hidden="true" tabindex="-1"></a><span class="st">                  (CONNECT_DATA =</span></span>
-<span id="cb384-6"><a href="database-DBI-package.html#cb384-6" aria-hidden="true" tabindex="-1"></a><span class="st">                      (SERVER = DEDICATED)</span></span>
-<span id="cb384-7"><a href="database-DBI-package.html#cb384-7" aria-hidden="true" tabindex="-1"></a><span class="st">                    (SERVICE_NAME = bidev)</span></span>
-<span id="cb384-8"><a href="database-DBI-package.html#cb384-8" aria-hidden="true" tabindex="-1"></a><span class="st">                  ))&#39;</span> <span class="co">#连接字符串</span></span>
-<span id="cb384-9"><a href="database-DBI-package.html#cb384-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb384-10"><a href="database-DBI-package.html#cb384-10" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv,<span class="at">username =</span> <span class="st">&quot;query&quot;</span>, <span class="at">password =</span> <span class="st">&quot;query&quot;</span>,<span class="at">dbname =</span> connect.string)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="database-DBI-package.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROracle)</span>
+<span id="cb22-2"><a href="database-DBI-package.html#cb22-2" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span><span class="fu">dbDriver</span>(<span class="st">&quot;Oracle&quot;</span>)</span>
+<span id="cb22-3"><a href="database-DBI-package.html#cb22-3" aria-hidden="true" tabindex="-1"></a>connect.string <span class="ot">&lt;-</span> <span class="st">&#39;(DESCRIPTION =</span></span>
+<span id="cb22-4"><a href="database-DBI-package.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="st">                    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.16.88.129)(PORT = 1521))</span></span>
+<span id="cb22-5"><a href="database-DBI-package.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="st">                  (CONNECT_DATA =</span></span>
+<span id="cb22-6"><a href="database-DBI-package.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">                      (SERVER = DEDICATED)</span></span>
+<span id="cb22-7"><a href="database-DBI-package.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="st">                    (SERVICE_NAME = bidev)</span></span>
+<span id="cb22-8"><a href="database-DBI-package.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="st">                  ))&#39;</span> <span class="co">#连接字符串</span></span>
+<span id="cb22-9"><a href="database-DBI-package.html#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="database-DBI-package.html#cb22-10" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv,<span class="at">username =</span> <span class="st">&quot;query&quot;</span>, <span class="at">password =</span> <span class="st">&quot;query&quot;</span>,<span class="at">dbname =</span> connect.string)</span></code></pre></div>
 </div>
 <div id="读写数据库-1" class="section level3" number="8.3.3">
 <h3><span class="header-section-number">8.3.3</span> 读写数据库</h3>
 <p>dbGetQuery()函数查询数据并直接返回,dbExecute()执行sql语句，是<code>dbSendStatement()</code>的封装。</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="database-DBI-package.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dbGetQuery 直接查询</span></span>
-<span id="cb385-2"><a href="database-DBI-package.html#cb385-2" aria-hidden="true" tabindex="-1"></a>res_table <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from table&#39;</span>) <span class="co">#直接获取sql查询结果</span></span>
-<span id="cb385-3"><a href="database-DBI-package.html#cb385-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-4"><a href="database-DBI-package.html#cb385-4" aria-hidden="true" tabindex="-1"></a><span class="co">#dbReadTable直接读取</span></span>
-<span id="cb385-5"><a href="database-DBI-package.html#cb385-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con,<span class="st">&#39;tbl_name&#39;</span>) <span class="co">#直接读取数据库中某表</span></span>
-<span id="cb385-6"><a href="database-DBI-package.html#cb385-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-7"><a href="database-DBI-package.html#cb385-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dbSendQuery 执行一个查询任务 </span></span>
-<span id="cb385-8"><a href="database-DBI-package.html#cb385-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(<span class="at">conn =</span> con,<span class="at">statement =</span> <span class="st">&#39;select * FROM tab&#39;</span>)</span>
-<span id="cb385-9"><a href="database-DBI-package.html#cb385-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(res)</span>
-<span id="cb385-10"><a href="database-DBI-package.html#cb385-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
-<span id="cb385-11"><a href="database-DBI-package.html#cb385-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-12"><a href="database-DBI-package.html#cb385-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute</span></span>
-<span id="cb385-13"><a href="database-DBI-package.html#cb385-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con,<span class="st">&#39;delete from table where num &lt;=1000&#39;</span>) <span class="co"># 执行sql语句</span></span>
-<span id="cb385-14"><a href="database-DBI-package.html#cb385-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-15"><a href="database-DBI-package.html#cb385-15" aria-hidden="true" tabindex="-1"></a><span class="co"># dbWriteTable()</span></span>
-<span id="cb385-16"><a href="database-DBI-package.html#cb385-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传数据,指定表名,需上传的数据框df,overwrite是否覆盖,append是否可追加</span></span>
-<span id="cb385-17"><a href="database-DBI-package.html#cb385-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(<span class="at">conn =</span> con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> df,<span class="at">overwrite=</span>TURE,<span class="at">append=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="database-DBI-package.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dbGetQuery 直接查询</span></span>
+<span id="cb23-2"><a href="database-DBI-package.html#cb23-2" aria-hidden="true" tabindex="-1"></a>res_table <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from table&#39;</span>) <span class="co">#直接获取sql查询结果</span></span>
+<span id="cb23-3"><a href="database-DBI-package.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="database-DBI-package.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#dbReadTable直接读取</span></span>
+<span id="cb23-5"><a href="database-DBI-package.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con,<span class="st">&#39;tbl_name&#39;</span>) <span class="co">#直接读取数据库中某表</span></span>
+<span id="cb23-6"><a href="database-DBI-package.html#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="database-DBI-package.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dbSendQuery 执行一个查询任务 </span></span>
+<span id="cb23-8"><a href="database-DBI-package.html#cb23-8" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(<span class="at">conn =</span> con,<span class="at">statement =</span> <span class="st">&#39;select * FROM tab&#39;</span>)</span>
+<span id="cb23-9"><a href="database-DBI-package.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(res)</span>
+<span id="cb23-10"><a href="database-DBI-package.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
+<span id="cb23-11"><a href="database-DBI-package.html#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="database-DBI-package.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute</span></span>
+<span id="cb23-13"><a href="database-DBI-package.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con,<span class="st">&#39;delete from table where num &lt;=1000&#39;</span>) <span class="co"># 执行sql语句</span></span>
+<span id="cb23-14"><a href="database-DBI-package.html#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="database-DBI-package.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co"># dbWriteTable()</span></span>
+<span id="cb23-16"><a href="database-DBI-package.html#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传数据,指定表名,需上传的数据框df,overwrite是否覆盖,append是否可追加</span></span>
+<span id="cb23-17"><a href="database-DBI-package.html#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(<span class="at">conn =</span> con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> df,<span class="at">overwrite=</span>TURE,<span class="at">append=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <p>参数化查询</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="database-DBI-package.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb386-2"><a href="database-DBI-package.html#cb386-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
-<span id="cb386-3"><a href="database-DBI-package.html#cb386-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;iris&quot;</span>, iris)</span>
-<span id="cb386-4"><a href="database-DBI-package.html#cb386-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-5"><a href="database-DBI-package.html#cb386-5" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * FROM iris WHERE [Petal.Width] &gt; ?&quot;</span>)</span>
-<span id="cb386-6"><a href="database-DBI-package.html#cb386-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="fl">2.3</span>))</span>
-<span id="cb386-7"><a href="database-DBI-package.html#cb386-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
-<span id="cb386-8"><a href="database-DBI-package.html#cb386-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span></span>
-<span id="cb386-9"><a href="database-DBI-package.html#cb386-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          6.3         3.3          6.0         2.5 virginica</span></span>
-<span id="cb386-10"><a href="database-DBI-package.html#cb386-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          7.2         3.6          6.1         2.5 virginica</span></span>
-<span id="cb386-11"><a href="database-DBI-package.html#cb386-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          5.8         2.8          5.1         2.4 virginica</span></span>
-<span id="cb386-12"><a href="database-DBI-package.html#cb386-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          6.3         3.4          5.6         2.4 virginica</span></span>
-<span id="cb386-13"><a href="database-DBI-package.html#cb386-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          6.7         3.1          5.6         2.4 virginica</span></span>
-<span id="cb386-14"><a href="database-DBI-package.html#cb386-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          6.7         3.3          5.7         2.5 virginica</span></span>
-<span id="cb386-15"><a href="database-DBI-package.html#cb386-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="dv">3</span>))</span>
-<span id="cb386-16"><a href="database-DBI-package.html#cb386-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
-<span id="cb386-17"><a href="database-DBI-package.html#cb386-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     </span></span>
-<span id="cb386-18"><a href="database-DBI-package.html#cb386-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;0 行&gt; (或0-长度的row.names)</span></span>
-<span id="cb386-19"><a href="database-DBI-package.html#cb386-19" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
-<span id="cb386-20"><a href="database-DBI-package.html#cb386-20" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="database-DBI-package.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb24-2"><a href="database-DBI-package.html#cb24-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
+<span id="cb24-3"><a href="database-DBI-package.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;iris&quot;</span>, iris)</span>
+<span id="cb24-4"><a href="database-DBI-package.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="database-DBI-package.html#cb24-5" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * FROM iris WHERE [Petal.Width] &gt; ?&quot;</span>)</span>
+<span id="cb24-6"><a href="database-DBI-package.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="fl">2.3</span>))</span>
+<span id="cb24-7"><a href="database-DBI-package.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
+<span id="cb24-8"><a href="database-DBI-package.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span></span>
+<span id="cb24-9"><a href="database-DBI-package.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          6.3         3.3          6.0         2.5 virginica</span></span>
+<span id="cb24-10"><a href="database-DBI-package.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          7.2         3.6          6.1         2.5 virginica</span></span>
+<span id="cb24-11"><a href="database-DBI-package.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          5.8         2.8          5.1         2.4 virginica</span></span>
+<span id="cb24-12"><a href="database-DBI-package.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          6.3         3.4          5.6         2.4 virginica</span></span>
+<span id="cb24-13"><a href="database-DBI-package.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          6.7         3.1          5.6         2.4 virginica</span></span>
+<span id="cb24-14"><a href="database-DBI-package.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          6.7         3.3          5.7         2.5 virginica</span></span>
+<span id="cb24-15"><a href="database-DBI-package.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="dv">3</span>))</span>
+<span id="cb24-16"><a href="database-DBI-package.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
+<span id="cb24-17"><a href="database-DBI-package.html#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     </span></span>
+<span id="cb24-18"><a href="database-DBI-package.html#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;0 行&gt; (或0-长度的row.names)</span></span>
+<span id="cb24-19"><a href="database-DBI-package.html#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb24-20"><a href="database-DBI-package.html#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 <p>实际运用中，我们从数据库(SQL Server)查询不同订单周期时的销售数据：</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="database-DBI-package.html#cb387-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=test;uid=zhongyf;pwd=Zyf123456&quot;</span>, <span class="at">timeout =</span> <span class="dv">10</span>)</span>
-<span id="cb387-2"><a href="database-DBI-package.html#cb387-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb387-3"><a href="database-DBI-package.html#cb387-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * FROM sales_order WHERE [单据日期] between ? and ? &quot;</span>) <span class="co"># ?在本处是占位符</span></span>
-<span id="cb387-4"><a href="database-DBI-package.html#cb387-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(result,<span class="at">params =</span> <span class="fu">list</span>(<span class="st">&#39;2021-01-01&#39;</span>,<span class="st">&#39;2021-01-05&#39;</span>))</span>
-<span id="cb387-5"><a href="database-DBI-package.html#cb387-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(result)</span>
-<span id="cb387-6"><a href="database-DBI-package.html#cb387-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb387-7"><a href="database-DBI-package.html#cb387-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(result,<span class="at">params =</span> <span class="fu">list</span>(<span class="st">&#39;2021-05-01&#39;</span>,<span class="st">&#39;2021-05-05&#39;</span>))</span>
-<span id="cb387-8"><a href="database-DBI-package.html#cb387-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(result)</span>
-<span id="cb387-9"><a href="database-DBI-package.html#cb387-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="database-DBI-package.html#cb25-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;driver={ODBC Driver 17 for SQL Server};server=172.16.88.2;database=test;uid=zhongyf;pwd=Zyf123456&quot;</span>, <span class="at">timeout =</span> <span class="dv">10</span>)</span>
+<span id="cb25-2"><a href="database-DBI-package.html#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="database-DBI-package.html#cb25-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * FROM sales_order WHERE [单据日期] between ? and ? &quot;</span>) <span class="co"># ?在本处是占位符</span></span>
+<span id="cb25-4"><a href="database-DBI-package.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(result,<span class="at">params =</span> <span class="fu">list</span>(<span class="st">&#39;2021-01-01&#39;</span>,<span class="st">&#39;2021-01-05&#39;</span>))</span>
+<span id="cb25-5"><a href="database-DBI-package.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(result)</span>
+<span id="cb25-6"><a href="database-DBI-package.html#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="database-DBI-package.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(result,<span class="at">params =</span> <span class="fu">list</span>(<span class="st">&#39;2021-05-01&#39;</span>,<span class="st">&#39;2021-05-05&#39;</span>))</span>
+<span id="cb25-8"><a href="database-DBI-package.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(result)</span>
+<span id="cb25-9"><a href="database-DBI-package.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(result)</span></code></pre></div>
 <blockquote>
 <p>以上方式可以实现参数化查询，减少代码量，但是由于查询速度相比<code>dbGetQuery()</code>较慢，我一般不采用。
 关于sql语句中?的用法请自行查阅?dbBind()。DBI当前未指定占位符格式,将来可能会支持统一的占位符语法</p>
@@ -646,137 +637,151 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>查看数据库信息</li>
 </ul>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="database-DBI-package.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetInfo</span>(con)</span>
-<span id="cb388-2"><a href="database-DBI-package.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $db.version</span></span>
-<span id="cb388-3"><a href="database-DBI-package.html#cb388-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;3.35.5&quot;</span></span>
-<span id="cb388-4"><a href="database-DBI-package.html#cb388-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb388-5"><a href="database-DBI-package.html#cb388-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $dbname</span></span>
-<span id="cb388-6"><a href="database-DBI-package.html#cb388-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;:memory:&quot;</span></span>
-<span id="cb388-7"><a href="database-DBI-package.html#cb388-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb388-8"><a href="database-DBI-package.html#cb388-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $username</span></span>
-<span id="cb388-9"><a href="database-DBI-package.html#cb388-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
-<span id="cb388-10"><a href="database-DBI-package.html#cb388-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb388-11"><a href="database-DBI-package.html#cb388-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $host</span></span>
-<span id="cb388-12"><a href="database-DBI-package.html#cb388-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
-<span id="cb388-13"><a href="database-DBI-package.html#cb388-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb388-14"><a href="database-DBI-package.html#cb388-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $port</span></span>
-<span id="cb388-15"><a href="database-DBI-package.html#cb388-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="database-DBI-package.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetInfo</span>(con)</span>
+<span id="cb26-2"><a href="database-DBI-package.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $db.version</span></span>
+<span id="cb26-3"><a href="database-DBI-package.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;3.35.5&quot;</span></span>
+<span id="cb26-4"><a href="database-DBI-package.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb26-5"><a href="database-DBI-package.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $dbname</span></span>
+<span id="cb26-6"><a href="database-DBI-package.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;:memory:&quot;</span></span>
+<span id="cb26-7"><a href="database-DBI-package.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb26-8"><a href="database-DBI-package.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $username</span></span>
+<span id="cb26-9"><a href="database-DBI-package.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb26-10"><a href="database-DBI-package.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb26-11"><a href="database-DBI-package.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $host</span></span>
+<span id="cb26-12"><a href="database-DBI-package.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb26-13"><a href="database-DBI-package.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb26-14"><a href="database-DBI-package.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $port</span></span>
+<span id="cb26-15"><a href="database-DBI-package.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span></code></pre></div>
 <ul>
 <li>数据库读写权限</li>
 </ul>
 <p>返回连接账户是否只有只读权限。</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="database-DBI-package.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbIsReadOnly</span>(con)</span>
-<span id="cb389-2"><a href="database-DBI-package.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="database-DBI-package.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbIsReadOnly</span>(con)</span>
+<span id="cb27-2"><a href="database-DBI-package.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 <ul>
 <li>查看全部表名</li>
 </ul>
 <p>win下SQL Server中文表名会乱码</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="database-DBI-package.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con) </span>
-<span id="cb390-2"><a href="database-DBI-package.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;flights&quot; &quot;测试表&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="database-DBI-package.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con) </span>
+<span id="cb28-2"><a href="database-DBI-package.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;flights&quot; &quot;测试表&quot;</span></span></code></pre></div>
 <ul>
 <li>读取表</li>
 </ul>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="database-DBI-package.html#cb391-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con,<span class="st">&#39;测试表&#39;</span>)</span>
-<span id="cb391-2"><a href="database-DBI-package.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb391-3"><a href="database-DBI-package.html#cb391-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
-<span id="cb391-4"><a href="database-DBI-package.html#cb391-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
-<span id="cb391-5"><a href="database-DBI-package.html#cb391-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
-<span id="cb391-6"><a href="database-DBI-package.html#cb391-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
-<span id="cb391-7"><a href="database-DBI-package.html#cb391-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
-<span id="cb391-8"><a href="database-DBI-package.html#cb391-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
-<span id="cb391-9"><a href="database-DBI-package.html#cb391-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="database-DBI-package.html#cb29-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con,<span class="st">&#39;测试表&#39;</span>)</span>
+<span id="cb29-2"><a href="database-DBI-package.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb29-3"><a href="database-DBI-package.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span id="cb29-4"><a href="database-DBI-package.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
+<span id="cb29-5"><a href="database-DBI-package.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
+<span id="cb29-6"><a href="database-DBI-package.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
+<span id="cb29-7"><a href="database-DBI-package.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
+<span id="cb29-8"><a href="database-DBI-package.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
+<span id="cb29-9"><a href="database-DBI-package.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
 <ul>
 <li>查询</li>
 </ul>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="database-DBI-package.html#cb392-1" aria-hidden="true" tabindex="-1"></a>rs <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * from flights limit 100 &quot;</span>)</span>
-<span id="cb392-2"><a href="database-DBI-package.html#cb392-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">dbFetch</span>(rs)</span>
-<span id="cb392-3"><a href="database-DBI-package.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb392-4"><a href="database-DBI-package.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   year month day dep_delay arr_delay carrier origin dest air_time distance hour</span></span>
-<span id="cb392-5"><a href="database-DBI-package.html#cb392-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2014     1   1        14        13      AA    JFK  LAX      359     2475    9</span></span>
-<span id="cb392-6"><a href="database-DBI-package.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2014     1   1        -3        13      AA    JFK  LAX      363     2475   11</span></span>
-<span id="cb392-7"><a href="database-DBI-package.html#cb392-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2014     1   1         2         9      AA    JFK  LAX      351     2475   19</span></span>
-<span id="cb392-8"><a href="database-DBI-package.html#cb392-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2014     1   1        -8       -26      AA    LGA  PBI      157     1035    7</span></span>
-<span id="cb392-9"><a href="database-DBI-package.html#cb392-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2014     1   1         2         1      AA    JFK  LAX      350     2475   13</span></span>
-<span id="cb392-10"><a href="database-DBI-package.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2014     1   1         4         0      AA    EWR  LAX      339     2454   18</span></span>
-<span id="cb392-11"><a href="database-DBI-package.html#cb392-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(rs) <span class="co"># 记得清除结果</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="database-DBI-package.html#cb30-1" aria-hidden="true" tabindex="-1"></a>rs <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * from flights limit 100 &quot;</span>)</span>
+<span id="cb30-2"><a href="database-DBI-package.html#cb30-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">dbFetch</span>(rs)</span>
+<span id="cb30-3"><a href="database-DBI-package.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb30-4"><a href="database-DBI-package.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   year month day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span id="cb30-5"><a href="database-DBI-package.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2013     1   1      517            515         2      830            819</span></span>
+<span id="cb30-6"><a href="database-DBI-package.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2013     1   1      533            529         4      850            830</span></span>
+<span id="cb30-7"><a href="database-DBI-package.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2013     1   1      542            540         2      923            850</span></span>
+<span id="cb30-8"><a href="database-DBI-package.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2013     1   1      544            545        -1     1004           1022</span></span>
+<span id="cb30-9"><a href="database-DBI-package.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2013     1   1      554            600        -6      812            837</span></span>
+<span id="cb30-10"><a href="database-DBI-package.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2013     1   1      554            558        -4      740            728</span></span>
+<span id="cb30-11"><a href="database-DBI-package.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   arr_delay carrier flight tailnum origin dest air_time distance hour minute</span></span>
+<span id="cb30-12"><a href="database-DBI-package.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        11      UA   1545  N14228    EWR  IAH      227     1400    5     15</span></span>
+<span id="cb30-13"><a href="database-DBI-package.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2        20      UA   1714  N24211    LGA  IAH      227     1416    5     29</span></span>
+<span id="cb30-14"><a href="database-DBI-package.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        33      AA   1141  N619AA    JFK  MIA      160     1089    5     40</span></span>
+<span id="cb30-15"><a href="database-DBI-package.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4       -18      B6    725  N804JB    JFK  BQN      183     1576    5     45</span></span>
+<span id="cb30-16"><a href="database-DBI-package.html#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5       -25      DL    461  N668DN    LGA  ATL      116      762    6      0</span></span>
+<span id="cb30-17"><a href="database-DBI-package.html#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6        12      UA   1696  N39463    EWR  ORD      150      719    5     58</span></span>
+<span id="cb30-18"><a href="database-DBI-package.html#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   time_hour</span></span>
+<span id="cb30-19"><a href="database-DBI-package.html#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1.36e+09</span></span>
+<span id="cb30-20"><a href="database-DBI-package.html#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1.36e+09</span></span>
+<span id="cb30-21"><a href="database-DBI-package.html#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  1.36e+09</span></span>
+<span id="cb30-22"><a href="database-DBI-package.html#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1.36e+09</span></span>
+<span id="cb30-23"><a href="database-DBI-package.html#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  1.36e+09</span></span>
+<span id="cb30-24"><a href="database-DBI-package.html#cb30-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  1.36e+09</span></span>
+<span id="cb30-25"><a href="database-DBI-package.html#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(rs) <span class="co"># 记得清除结果</span></span></code></pre></div>
 <ul>
 <li>是否存在表</li>
 </ul>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="database-DBI-package.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExistsTable</span>(con,<span class="st">&#39;测试表&#39;</span>) </span>
-<span id="cb393-2"><a href="database-DBI-package.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="database-DBI-package.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExistsTable</span>(con,<span class="st">&#39;测试表&#39;</span>) </span>
+<span id="cb31-2"><a href="database-DBI-package.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <ul>
 <li>创建表</li>
 </ul>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="database-DBI-package.html#cb394-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
-<span id="cb394-2"><a href="database-DBI-package.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbCreateTable</span>(con, <span class="st">&quot;iris&quot;</span>, iris)</span>
-<span id="cb394-3"><a href="database-DBI-package.html#cb394-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbAppendTable</span>(con, <span class="st">&quot;iris&quot;</span>, iris)</span>
-<span id="cb394-4"><a href="database-DBI-package.html#cb394-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">&quot;iris&quot;</span>)</span>
-<span id="cb394-5"><a href="database-DBI-package.html#cb394-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="database-DBI-package.html#cb32-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
+<span id="cb32-2"><a href="database-DBI-package.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbCreateTable</span>(con, <span class="st">&quot;iris&quot;</span>, iris)</span>
+<span id="cb32-3"><a href="database-DBI-package.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbAppendTable</span>(con, <span class="st">&quot;iris&quot;</span>, iris)</span>
+<span id="cb32-4"><a href="database-DBI-package.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb32-5"><a href="database-DBI-package.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 <ul>
 <li>删除表</li>
 </ul>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="database-DBI-package.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbRemoveTable</span>(con,<span class="st">&#39;测试表&#39;</span>)</span>
-<span id="cb395-2"><a href="database-DBI-package.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb395-3"><a href="database-DBI-package.html#cb395-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute(con,&#39;delete from 测试表&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="database-DBI-package.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbRemoveTable</span>(con,<span class="st">&#39;测试表&#39;</span>)</span>
+<span id="cb33-2"><a href="database-DBI-package.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb33-3"><a href="database-DBI-package.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dbExecute(con,&#39;delete from 测试表&#39;)</span></span></code></pre></div>
 <ul>
 <li>是否有效</li>
 </ul>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="database-DBI-package.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbIsValid</span>(con)</span>
-<span id="cb396-2"><a href="database-DBI-package.html#cb396-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-3"><a href="database-DBI-package.html#cb396-3" aria-hidden="true" tabindex="-1"></a>rs <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * from flights&quot;</span>)</span>
-<span id="cb396-4"><a href="database-DBI-package.html#cb396-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbIsValid</span>(rs)</span>
-<span id="cb396-5"><a href="database-DBI-package.html#cb396-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(rs)</span>
-<span id="cb396-6"><a href="database-DBI-package.html#cb396-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbIsValid</span>(rs)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="database-DBI-package.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbIsValid</span>(con)</span>
+<span id="cb34-2"><a href="database-DBI-package.html#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="database-DBI-package.html#cb34-3" aria-hidden="true" tabindex="-1"></a>rs <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * from flights&quot;</span>)</span>
+<span id="cb34-4"><a href="database-DBI-package.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbIsValid</span>(rs)</span>
+<span id="cb34-5"><a href="database-DBI-package.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(rs)</span>
+<span id="cb34-6"><a href="database-DBI-package.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbIsValid</span>(rs)</span></code></pre></div>
 <ul>
 <li>执行任务</li>
 </ul>
 <p>执行语句,返回受影响的行数。</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="database-DBI-package.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(conn, statement, ...)</span>
-<span id="cb397-2"><a href="database-DBI-package.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con,<span class="st">&#39;delete from 测试表&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="database-DBI-package.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(conn, statement, ...)</span>
+<span id="cb35-2"><a href="database-DBI-package.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con,<span class="st">&#39;delete from 测试表&#39;</span>)</span></code></pre></div>
 <ul>
 <li>关闭连接</li>
 </ul>
 <p>在完成连接后，最后关闭连接。</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="database-DBI-package.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="database-DBI-package.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 <p>通过学习odbc,DBI包，我们已经对R与数据库交互有一定了解。连接数据库并返回我们查询的结果，最后上传数据到数据库中，以上三步能正确使用即可满足我们数据分析师绝大部分需求。但是我们可能会对odbc与DBI的关系感到困惑,由于我并不太了解数据库，仅谈谈自己的理解，不一定正确。</p>
 <blockquote>
 <p>以上三步，配合R的定时任务，可以完成ETL(Extract-Transform-Load).</p>
 </blockquote>
 <p>odbc提供了与odbc类数据库的连接方式，odbc基于DBI包，我们在安装odbc包时会自动安装DBI包。odbc负责连接odbc类数据库，DBI提供后端服务，换句话说odbc连接数据库，其它的交互通过DBI包完成。通过比较以下连接方式来理解：</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="database-DBI-package.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式一  odbc </span></span>
-<span id="cb399-2"><a href="database-DBI-package.html#cb399-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
-<span id="cb399-3"><a href="database-DBI-package.html#cb399-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;MySQL ODBC 8.0 Unicode Driver&quot;</span>,</span>
-<span id="cb399-4"><a href="database-DBI-package.html#cb399-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Server =</span> <span class="st">&quot;localhost&quot;</span>, <span class="at">UID =</span> <span class="st">&quot;root&quot;</span>, <span class="at">PWD =</span> <span class="st">&quot;123456&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;test&quot;</span>,</span>
-<span id="cb399-5"><a href="database-DBI-package.html#cb399-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Port =</span> <span class="dv">3306</span></span>
-<span id="cb399-6"><a href="database-DBI-package.html#cb399-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb399-7"><a href="database-DBI-package.html#cb399-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-8"><a href="database-DBI-package.html#cb399-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式二 RMySQL</span></span>
-<span id="cb399-9"><a href="database-DBI-package.html#cb399-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
-<span id="cb399-10"><a href="database-DBI-package.html#cb399-10" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),</span>
-<span id="cb399-11"><a href="database-DBI-package.html#cb399-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">&quot;test&quot;</span>, <span class="at">user =</span> <span class="st">&quot;root&quot;</span>, <span class="at">password =</span> <span class="st">&quot;123456&quot;</span>,</span>
-<span id="cb399-12"><a href="database-DBI-package.html#cb399-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">&quot;localhost&quot;</span></span>
-<span id="cb399-13"><a href="database-DBI-package.html#cb399-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="database-DBI-package.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式一  odbc </span></span>
+<span id="cb37-2"><a href="database-DBI-package.html#cb37-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
+<span id="cb37-3"><a href="database-DBI-package.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;MySQL ODBC 8.0 Unicode Driver&quot;</span>,</span>
+<span id="cb37-4"><a href="database-DBI-package.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Server =</span> <span class="st">&quot;localhost&quot;</span>, <span class="at">UID =</span> <span class="st">&quot;root&quot;</span>, <span class="at">PWD =</span> <span class="st">&quot;123456&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;test&quot;</span>,</span>
+<span id="cb37-5"><a href="database-DBI-package.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Port =</span> <span class="dv">3306</span></span>
+<span id="cb37-6"><a href="database-DBI-package.html#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-7"><a href="database-DBI-package.html#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="database-DBI-package.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式二 RMySQL</span></span>
+<span id="cb37-9"><a href="database-DBI-package.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb37-10"><a href="database-DBI-package.html#cb37-10" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),</span>
+<span id="cb37-11"><a href="database-DBI-package.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">&quot;test&quot;</span>, <span class="at">user =</span> <span class="st">&quot;root&quot;</span>, <span class="at">password =</span> <span class="st">&quot;123456&quot;</span>,</span>
+<span id="cb37-12"><a href="database-DBI-package.html#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">&quot;localhost&quot;</span></span>
+<span id="cb37-13"><a href="database-DBI-package.html#cb37-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>方式二与方式一都可以成功连接本地的mysql数据库，方式二是通过RMySQLB包的<code>MySQL()</code>功能提供的驱动程序。</p>
 <p>但是不同的连接方式可能导致读写效率有明显的差异，详见oracle连接差异。</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="database-DBI-package.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROracle)</span>
-<span id="cb400-2"><a href="database-DBI-package.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式一</span></span>
-<span id="cb400-3"><a href="database-DBI-package.html#cb400-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use ROracle packages connect databse</span></span>
-<span id="cb400-4"><a href="database-DBI-package.html#cb400-4" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span><span class="fu">dbDriver</span>(<span class="st">&quot;Oracle&quot;</span>)</span>
-<span id="cb400-5"><a href="database-DBI-package.html#cb400-5" aria-hidden="true" tabindex="-1"></a>connect.string <span class="ot">&lt;-</span> <span class="st">&#39;(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.16.88.131)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = ghbi) ))&#39;</span></span>
-<span id="cb400-6"><a href="database-DBI-package.html#cb400-6" aria-hidden="true" tabindex="-1"></a>con_oracle <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv,<span class="at">username =</span> <span class="st">&quot;pub_query&quot;</span>, <span class="at">password =</span> <span class="st">&quot;pub_query&quot;</span>,<span class="at">dbname =</span> connect.string,<span class="at">encoding=</span><span class="st">&#39;utf8&#39;</span>)</span>
-<span id="cb400-7"><a href="database-DBI-package.html#cb400-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb400-8"><a href="database-DBI-package.html#cb400-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式二</span></span>
-<span id="cb400-9"><a href="database-DBI-package.html#cb400-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use odbc packages connect databse</span></span>
-<span id="cb400-10"><a href="database-DBI-package.html#cb400-10" aria-hidden="true" tabindex="-1"></a>con_odbc <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;Driver={Oracle in OraClient11g_home1};DBQ=172.16.88.131:1521/ghbi;UID=pub_query;PWD=pub_query;&quot;</span>, <span class="at">timeout =</span> <span class="dv">10</span>)</span>
-<span id="cb400-11"><a href="database-DBI-package.html#cb400-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb400-12"><a href="database-DBI-package.html#cb400-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Oracle in OraClient11g_home1 根据实际驱动更改</span></span>
-<span id="cb400-13"><a href="database-DBI-package.html#cb400-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 通过odbc::odbcListDrivers() 查看</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="database-DBI-package.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROracle)</span>
+<span id="cb38-2"><a href="database-DBI-package.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式一</span></span>
+<span id="cb38-3"><a href="database-DBI-package.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use ROracle packages connect databse</span></span>
+<span id="cb38-4"><a href="database-DBI-package.html#cb38-4" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span><span class="fu">dbDriver</span>(<span class="st">&quot;Oracle&quot;</span>)</span>
+<span id="cb38-5"><a href="database-DBI-package.html#cb38-5" aria-hidden="true" tabindex="-1"></a>connect.string <span class="ot">&lt;-</span> <span class="st">&#39;(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.16.88.131)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = ghbi) ))&#39;</span></span>
+<span id="cb38-6"><a href="database-DBI-package.html#cb38-6" aria-hidden="true" tabindex="-1"></a>con_oracle <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv,<span class="at">username =</span> <span class="st">&quot;pub_query&quot;</span>, <span class="at">password =</span> <span class="st">&quot;pub_query&quot;</span>,<span class="at">dbname =</span> connect.string,<span class="at">encoding=</span><span class="st">&#39;utf8&#39;</span>)</span>
+<span id="cb38-7"><a href="database-DBI-package.html#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="database-DBI-package.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式二</span></span>
+<span id="cb38-9"><a href="database-DBI-package.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use odbc packages connect databse</span></span>
+<span id="cb38-10"><a href="database-DBI-package.html#cb38-10" aria-hidden="true" tabindex="-1"></a>con_odbc <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">.connection_string =</span> <span class="st">&quot;Driver={Oracle in OraClient11g_home1};DBQ=172.16.88.131:1521/ghbi;UID=pub_query;PWD=pub_query;&quot;</span>, <span class="at">timeout =</span> <span class="dv">10</span>)</span>
+<span id="cb38-11"><a href="database-DBI-package.html#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="database-DBI-package.html#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Oracle in OraClient11g_home1 根据实际驱动更改</span></span>
+<span id="cb38-13"><a href="database-DBI-package.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 通过odbc::odbcListDrivers() 查看</span></span></code></pre></div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="13">
-<li id="fn13"><p>Database Management System,即数据库管理系统<a href="database-DBI-package.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<ol start="4">
+<li id="fn4"><p>Database Management System,即数据库管理系统<a href="database-DBI-package.html#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -836,20 +841,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
