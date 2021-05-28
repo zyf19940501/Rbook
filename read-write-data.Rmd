@@ -65,11 +65,13 @@ devtools::install_github("tidyverse/readxl")
 
 ### 用法 {#readxl:usage}
 
-1.读取
 
 readxl包中包含了几个示例文件，我们在接下来的案例中使用。
 
-- 查看readxl包中自带xlsx文件
+
+1.读取
+
+通过`readxl_example()`查看readxl包中自带xlsx文件。
 
 ```{r}
 library(readxl)
@@ -77,18 +79,34 @@ readxl_example()
 readxl_example("clippy.xls")
 ```
 
-`read_excel()`可读取xls和xlsx文件。
+需要注意`read_excel()`可读取xls和xlsx文件。
 
 ```{r}
-xlsx_example <- readxl_example("datasets.xlsx")
+xlsx_example <- readxl_example("datasets.xlsx") #返回datasets.xlsx文件所在路径
 dt <- read_excel(xlsx_example)
+```
 
-# 查看数据
+查看数据
+
+```{r}
 head(dt)
+```
+
+将Excel中的数据通过`read_excel()`读取保存到R中，带对象属于`tbl_df`类，是tidyverse系列的数据框结构，是对base R中的`data.frame`结构的改造，但是兼容`data.frame`。
+
+```{r}
+# 查看dt类
+class(dt)
 
 # 查看数据类型
 str(dt)
 ```
+
+
+> 关于`tbl_df`类，可以查阅`vignette("tibble")`。
+
+
+2.指定sheet读取
 
 通过函数`excel_sheets()`查看Excel的sheet名称
 
@@ -96,9 +114,8 @@ str(dt)
 excel_sheets(xlsx_example)
 ```
 
-指定worksheet的名字读取，可以是sheet的名字或序号。
 
-当我们要读取的本地xlsx文件有多个sheets时，通过指定sheet参数读取指定的sheet。
+当我们要读取Excel文件有多个sheets时，通过指定sheet参数,读取指定的sheet，sheet参数可以是sheet的名称或顺序号。
 
 ```{r}
 read_excel(xlsx_example, sheet = "chickwts")
@@ -107,11 +124,24 @@ read_excel(xlsx_example, sheet = "chickwts")
 #read_excel(xlsx_example, sheet = 3)
 ```
 
-读取xlsx文件的指定范围，有多种方法控制。
+3.指定读取范围
 
-本处提供几个案例，详情请`?read_excel()`查看帮助。
+读取Excel文件指定范围。`read_excel()`中range参数接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如 range = "D12:F15" or range = "R1C12:R6C15"。
 
-readxl::read_excel参数如下：
+```{r}
+read_excel(xlsx_example, sheet = "iris")
+
+dt1 <- read_excel(xlsx_example, sheet = "iris",range = 'a1:e6')
+
+dt2 <- read_excel(xlsx_example, sheet = "iris",range = 'R1C1:R6C5')
+
+# dt1 dt2 是否相等
+identical(dt1,dt2)
+```
+
+4.read_excel参数
+
+readxl::read_excel参数如下,请`?read_excel()`查看参数。
 
 ```{r eval=FALSE}
 read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
@@ -120,23 +150,48 @@ read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
   progress = readxl_progress(), .name_repair = "unique")
 ```
 
-range接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如as range = "D12:F15" or range = "R1C12:R6C15"。
 
-其余参数中，个人觉得col_types比较重要，可以指定列的类型。可用选项:"skip", "guess", "logical", "numeric", "date", "text" or "list"。
+| read_excel参数 | 解释                                                  |
+| -------------- | ----------------------------------------------------- |
+| path           | xls或xlsx文件的路径                                   |
+| sheet          | 默认是第一个sheet，可以是数字或sheet的名称            |
+| range          | Excel中表示范围的字符，或者通过cell_类方法指定        |
+| col_name       | 默认为TRUE,用第一行做列名;或者用默认名称,或者指定列名 |
+| col_types      | 默认为NULL，猜测各列类型，可指定各列的类型            |
+| trim_ws        | 默认去掉表头字段中两边的空格                          |
+| skip           | 读取之前要跳过的行数，默认为空                        |
+| n_max          | 读取的最大行数                                        |
+| guess_max      | 猜测列类型的最大行数,默认为1000                       |
+| progress       | 读取过程是否显示进度                                  |
+| .name_repair   | 自动处理列名，避免列名不为空以及不重复                |
+
+
+
+
+个人觉得col_types比较重要，可以指定列的类型。可用选项:"skip", "guess", "logical", "numeric", "date", "text" or "list"。
 .name_repair 参数能自动避免重复字段，可避免手工Excle出现的字段名不唯一的情况。
 
 
 
 ### 批量读取
 
-某文件夹下有大量相同的Excel文件(sheet名称以及列字段相同)，要合并全部Excel数据,代码如下：
+某文件夹下(data/read-write/)有相同格式的Excel文件(sheet名称以及列字段相同)，要合并全部Excel数据,代码如下：
 
-```{r eval=FALSE}
-allfiles <- list.files(path = './data/',pattern = '.xlsx$',full.names = T)
-purrr::map_dfr(allfiles,read_excel)
+文件夹内 excel 文件如下：
+
+```{r echo=FALSE}
+fs::dir_tree('data/read-write/',regexp = 'xlsx$')
 ```
 
 
+使用purrr包合并读取
+
+```{r eval=FALSE}
+allfiles <- list.files(path = './data/read-write/',pattern = '.xlsx$',full.names = T)
+purrr::map_dfr(allfiles,read_excel)
+```
+
+`list.files()`函数按照规则返回某文件目录下的全部文件。关于R语言中文件系统操作可以查看章节[R语言文件系统操作](#file:system-operation)
 
 ### 批量输出
 
@@ -145,8 +200,8 @@ purrr::map_dfr(allfiles,read_excel)
 ```{r}
 library(tidyverse)
 library(readxl)
-dt <- read_xlsx(path = './data/read-write/批量读写.xlsx')
 
+dt <- read_xlsx(path = './data/read-write/批量读写.xlsx')
 
 dt %>% 
   group_by(name) %>% 
@@ -171,13 +226,13 @@ list.files(path = 'data/read-write/')
 
 ### 用法 {#writexl:usage}
 
-安装 
+1.安装 
 
 ```{r eval = FALSE}
 install.packages("writexl")
 ```
 
-参数
+2.函数参数
 
 ```{r eval=FALSE}
 write_xlsx(
@@ -190,17 +245,19 @@ write_xlsx(
 ```
 
 
-输出Excel
+3.输出Excel
 
 ```{r eval=FALSE}
 library(writexl)
 writexl::write_xlsx(iris,path = 'iris.xlsx')
+
+# 输出多sheet
 write_xlsx(list(mysheet1 = iris,mysheet2 = iris),path = 'iris.xlsx')
 
 ```
 
 
-效率比较
+4.效率比较
 
 ```{r eval=FALSE }
 library(microbenchmark)
@@ -212,7 +269,7 @@ microbenchmark(
 )
 ```
 
-文件大小比较
+5.文件大小比较
 
 ```{r}
 library(nycflights13)
@@ -226,9 +283,11 @@ openxlsx::write.xlsx(flights, tmp2 <- tempfile())
 file.info(tmp2)$size
 ```
 
+按照`writexl`官方文档的说法，`writexl`输出的Excel文件应该较少，但实际上并不是，不确定是不是`openxlsx`更新优化过。
 
+6.其它功能
 
-其它功能
+Excel 公式以及超级链接格式。
 
 ```{r eval=FALSE}
 df <- data.frame(
