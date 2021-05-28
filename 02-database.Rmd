@@ -830,31 +830,99 @@ dbListTables(con)
 ```
 
 ```{r}
-dbReadTable(con, "mtcars")
+df <- dbReadTable(con, "mtcars")
+head(df)
 ```
 
 ```{r}
 res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
-dbFetch(res)
+df <- dbFetch(res)
 dbClearResult(res)
+head(df)
 dbDisconnect(con)
 ```
 
 基础用法与DBI功能一致。
 
-### 大数据相关R包
+## 大数据相关R包
 
 - sparklyr <https://spark.rstudio.com/>
 
 - RClickhouse <https://github.com/hannesmuehleisen/clickhouse-r>
 
 
-#### RClickhouse
+其它R包，如[`bigrquery`](https://github.com/r-dbi/bigrquery)。
+
+### sparklyr
+
+sparkly包可以连接[spark][^spark](http://spark.apache.org/)，并且支持dplyr包方法。详情情况[sparklyr介绍](https://spark.rstudio.com/)
+
+> spark 依赖java环境，需要系统上安装java方可使用。
+
+1.R 包安装
+
+```{r eval=FALSE}
+# cran 版
+install.packages("sparklyr")
+
+# 开发版
+devtools::install_github("rstudio/sparklyr")
+```
+
+2.连接到 spark
+
+连接之前需要安装 java 环境以及通过`sparklyr::spark_install()`安装 spark。
+
+[java下载](https://www.java.com/en/)，下载安装后配置java环境变量。
+
+```{bash eval=FALSE}
+# Win10
+JAVA_HOME = C:\Program Files\Java\jre1.8.0_291
+```
+
+检查环境变量，在R中执行
+
+```{r eval=FALSE}
+Sys.getenv('JAVA_HOME')
+>>  "C:\\Program Files\\Java\\jre1.8.0_291"
+```
+
+
+```{r eval=FALSE}
+library(sparklyr)
+sc <- spark_connect(master = "local")
+```
+
+3.使用 dplyr
+
+```{r eval=FALSE}
+library(dplyr)
+iris_tbl <- copy_to(sc, iris)
+flights_tbl <- copy_to(sc, nycflights13::flights, "flights")
+batting_tbl <- copy_to(sc, Lahman::Batting, "batting")
+dplyr::src_tbls(sc)
+```
+
+filter实列:
+
+```{r eval=FALSE}
+flights_tbl %>% filter(dep_delay == 2)
+```
+
+
+sparkrly同样兼容DBI，支持SQL语句查询，更多详情请官网查阅。
+
+
+[^spark]: Apache Spark 是用于大规模数据处理的统一分析引擎。
+
+### RClickhouse
+
+ClickHouse 是面向列的数据库管理系统(DBMS),用于对查询进行连接分析处理(OLAP)。
 
 按照官网[安装教程](https://clickhouse.tech/docs/en/getting-started/install/)安装。
 
 
-1.R包安装
+1.R 包安装
 
 ```{r eval=FALSE}
 install.packages("RClickhouse")
@@ -865,6 +933,8 @@ install.packages("RClickhouse")
 [参考资料](https://blog.csdn.net/zhangpeterx/article/details/95059059)
 
 3.安装驱动
+
+安装ODBC驱动是为了和Power BI，tableau，Excel等工具连接。
 
 [驱动下载](https://github.com/ClickHouse/clickhouse-odbc/releases/tag/2018-05-15)
 
@@ -885,7 +955,10 @@ con_remote <- dbConnect(RClickhouse::clickhouse(), host="192.168.2.237", port=90
 
 win系统上配置odbc时，注意ODBC版本，[clickhouse-odbc下载](https://github.com/ClickHouse/clickhouse-odbc/releases)。最初我使用的odbc版本太旧，Excel无法成功连接clickhouse数据库。
 
-clickhouse测试下来，感觉速度也没有特别快，不知道是不是因为我是用的虚拟机测试的原因。另外上传表和常规方式不一样，也挺麻烦，建议先保持观望。
+我用tableau实时连接clickhouse数据库，测试速度完爆 MS SQL Server，测试的数据量大概在2000万行，6G左右。
+我用Excel通过odbc驱动连接，数据据提取速度特别慢(相比MS SQL Server)。不知道是不是因为 Exce l 和MS SQL Server 都是微软自家产品。另外表中的时间字段和 MS SQL Server 不一样，不能直接上传。
+
+整体测试下来，建议持续保持观望，有机会就测试先试用着。毕竟在OLAP方面确实有一定优势，并且数据库支持中文，但是表头目前还未支持中文。
 
 
 

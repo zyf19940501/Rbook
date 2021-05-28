@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8.5 常见问题 | R语言学习笔记</title>
+  <title>8.6 常见问题 | R语言学习笔记</title>
   <meta name="description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.5 常见问题 | R语言学习笔记" />
+  <meta property="og:title" content="8.6 常见问题 | R语言学习笔记" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.5 常见问题 | R语言学习笔记" />
+  <meta name="twitter:title" content="8.6 常见问题 | R语言学习笔记" />
   
   <meta name="twitter:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
@@ -24,17 +24,17 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-26" />
+<meta name="date" content="2021-05-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="database-else-package.html"/>
+<link rel="prev" href="大数据相关r包.html"/>
 <link rel="next" href="database-dbplyr-package.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,15 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -394,22 +385,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.2" data-path="database-else-package.html"><a href="database-else-package.html#roracle包"><i class="fa fa-check"></i><b>8.4.2</b> ROracle包</a></li>
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
-<li class="chapter" data-level="8.4.5" data-path="database-else-package.html"><a href="database-else-package.html#大数据相关r包"><i class="fa fa-check"></i><b>8.4.5</b> 大数据相关R包</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.5</b> 常见问题</a>
+<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="database-FAQ.html"><a href="database-FAQ.html#乱码问题"><i class="fa fa-check"></i><b>8.5.1</b> 乱码问题</a></li>
-<li class="chapter" data-level="8.5.2" data-path="database-FAQ.html"><a href="database-FAQ.html#无法连接问题"><i class="fa fa-check"></i><b>8.5.2</b> 无法连接问题</a></li>
-<li class="chapter" data-level="8.5.3" data-path="database-FAQ.html"><a href="database-FAQ.html#远程连接"><i class="fa fa-check"></i><b>8.5.3</b> 远程连接</a></li>
-<li class="chapter" data-level="8.5.4" data-path="database-FAQ.html"><a href="database-FAQ.html#跳板机连接"><i class="fa fa-check"></i><b>8.5.4</b> 跳板机连接</a></li>
+<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html"><i class="fa fa-check"></i><b>8.6</b> dbplyr</a>
+<li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#安装-2"><i class="fa fa-check"></i><b>8.6.1</b> 安装</a></li>
-<li class="chapter" data-level="8.6.2" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#基础用法"><i class="fa fa-check"></i><b>8.6.2</b> 基础用法</a></li>
-<li class="chapter" data-level="8.6.3" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#无法正确转化"><i class="fa fa-check"></i><b>8.6.3</b> 无法正确转化</a></li>
+<li class="chapter" data-level="8.6.1" data-path="database-FAQ.html"><a href="database-FAQ.html#乱码问题"><i class="fa fa-check"></i><b>8.6.1</b> 乱码问题</a></li>
+<li class="chapter" data-level="8.6.2" data-path="database-FAQ.html"><a href="database-FAQ.html#无法连接问题"><i class="fa fa-check"></i><b>8.6.2</b> 无法连接问题</a></li>
+<li class="chapter" data-level="8.6.3" data-path="database-FAQ.html"><a href="database-FAQ.html#远程连接"><i class="fa fa-check"></i><b>8.6.3</b> 远程连接</a></li>
+<li class="chapter" data-level="8.6.4" data-path="database-FAQ.html"><a href="database-FAQ.html#跳板机连接"><i class="fa fa-check"></i><b>8.6.4</b> 跳板机连接</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="database-reference-material.html"><a href="database-reference-material.html"><i class="fa fa-check"></i><b>8.7</b> 参考资料</a></li>
+<li class="chapter" data-level="8.7" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html"><i class="fa fa-check"></i><b>8.7</b> dbplyr</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#安装-2"><i class="fa fa-check"></i><b>8.7.1</b> 安装</a></li>
+<li class="chapter" data-level="8.7.2" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#基础用法"><i class="fa fa-check"></i><b>8.7.2</b> 基础用法</a></li>
+<li class="chapter" data-level="8.7.3" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#无法正确转化"><i class="fa fa-check"></i><b>8.7.3</b> 无法正确转化</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="database-reference-material.html"><a href="database-reference-material.html"><i class="fa fa-check"></i><b>8.8</b> 参考资料</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="R-loop-structure.html"><a href="R-loop-structure.html"><i class="fa fa-check"></i><b>9</b> 循环结构</a>
 <ul>
@@ -500,35 +495,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="database:FAQ" class="section level2" number="8.5">
-<h2><span class="header-section-number">8.5</span> 常见问题</h2>
+<div id="database:FAQ" class="section level2" number="8.6">
+<h2><span class="header-section-number">8.6</span> 常见问题</h2>
 <p>在使用R包连接数据库时有些常见的问题，整理如下。</p>
-<div id="乱码问题" class="section level3" number="8.5.1">
-<h3><span class="header-section-number">8.5.1</span> 乱码问题</h3>
+<div id="乱码问题" class="section level3" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> 乱码问题</h3>
 <p>R中中文乱码问题一直都很麻烦，并且常常遇见，尤其是使用win系统时。</p>
 <ul>
 <li>MS SQL SERVER 乱码</li>
 </ul>
 <p>修改encoding参数，在win系统下，可以考虑使用RODBC包连接查询数据库，因为该包将自动转换编码，不会存在乱码问题。但是上传效率奇慢，为了减少包依赖保持代码一致性使用odbc连接数据库时遇到乱码，在连接数据库时设定encoding即可。</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="database-FAQ.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co"># win</span></span>
-<span id="cb415-2"><a href="database-FAQ.html#cb415-2" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb415-3"><a href="database-FAQ.html#cb415-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.connection_string =</span></span>
-<span id="cb415-4"><a href="database-FAQ.html#cb415-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;driver={SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
-<span id="cb415-5"><a href="database-FAQ.html#cb415-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;gbk&quot;</span></span>
-<span id="cb415-6"><a href="database-FAQ.html#cb415-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb415-7"><a href="database-FAQ.html#cb415-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-8"><a href="database-FAQ.html#cb415-8" aria-hidden="true" tabindex="-1"></a><span class="co"># linux </span></span>
-<span id="cb415-9"><a href="database-FAQ.html#cb415-9" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb415-10"><a href="database-FAQ.html#cb415-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">.connection_string =</span></span>
-<span id="cb415-11"><a href="database-FAQ.html#cb415-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;driver={SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>,</span>
-<span id="cb415-12"><a href="database-FAQ.html#cb415-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf8&quot;</span></span>
-<span id="cb415-13"><a href="database-FAQ.html#cb415-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="database-FAQ.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># win</span></span>
+<span id="cb63-2"><a href="database-FAQ.html#cb63-2" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb63-3"><a href="database-FAQ.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.connection_string =</span></span>
+<span id="cb63-4"><a href="database-FAQ.html#cb63-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;driver={SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>, </span>
+<span id="cb63-5"><a href="database-FAQ.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;gbk&quot;</span></span>
+<span id="cb63-6"><a href="database-FAQ.html#cb63-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb63-7"><a href="database-FAQ.html#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="database-FAQ.html#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co"># linux </span></span>
+<span id="cb63-9"><a href="database-FAQ.html#cb63-9" aria-hidden="true" tabindex="-1"></a>con_spb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb63-10"><a href="database-FAQ.html#cb63-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">.connection_string =</span></span>
+<span id="cb63-11"><a href="database-FAQ.html#cb63-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;driver={SQL Server};server=172.16.88.2;database=spb;uid=zhongyf;pwd=Zyf123456&quot;</span>,</span>
+<span id="cb63-12"><a href="database-FAQ.html#cb63-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">timeout =</span> <span class="dv">10</span>, <span class="at">timezone =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;utf8&quot;</span></span>
+<span id="cb63-13"><a href="database-FAQ.html#cb63-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ul>
 <li>MySQL乱码</li>
 </ul>
 <p>1.代码修改</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="database-FAQ.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="co">#执行查询语句前执行</span></span>
-<span id="cb416-2"><a href="database-FAQ.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,<span class="st">&#39;SET NAMES gbk&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="database-FAQ.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">#执行查询语句前执行</span></span>
+<span id="cb64-2"><a href="database-FAQ.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,<span class="st">&#39;SET NAMES gbk&#39;</span>)</span></code></pre></div>
 <p>2.ODBC配置</p>
 <p>如果是通过ODBC数据源连接,可通过配置需改,如下所示：</p>
 <div class="figure">
@@ -539,10 +534,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>oracle乱码</li>
 </ul>
 <p>linux上通过ROracle连接oracle数据库，中文乱码。可以通过设置环境变量或配置.Renviron文件修改oracle语言环境。</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="database-FAQ.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">NLS_LANG=</span><span class="st">&quot;SIMPLIFIED CHINESE_CHINA.AL32UTF8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="database-FAQ.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">NLS_LANG=</span><span class="st">&quot;SIMPLIFIED CHINESE_CHINA.AL32UTF8&quot;</span>)</span></code></pre></div>
 </div>
-<div id="无法连接问题" class="section level3" number="8.5.2">
-<h3><span class="header-section-number">8.5.2</span> 无法连接问题</h3>
+<div id="无法连接问题" class="section level3" number="8.6.2">
+<h3><span class="header-section-number">8.6.2</span> 无法连接问题</h3>
 <ul>
 <li>SQL Servver无法连接</li>
 </ul>
@@ -552,53 +547,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>首先需要装mysql的驱动,确保<code>RMySQL</code>成功安装 如果是测试自己安装的mysql,可以先用Navicat连接,如果出现Authentication plugin ‘caching_sha2_password’ cannot be loaded的错误。</p>
 <p>可能是由于 mysql8 之前的版本中加密规则是mysql_native_password,而在mysql8之后,加密规则是caching_sha2_password,通过修改加密规则可解决无法连接问题。</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb418-1"><a href="database-FAQ.html#cb418-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb418-2"><a href="database-FAQ.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="co">--cmd 登录本地数据</span></span>
-<span id="cb418-3"><a href="database-FAQ.html#cb418-3" aria-hidden="true" tabindex="-1"></a>mysql <span class="op">-</span>u root <span class="op">-</span>p</span>
-<span id="cb418-4"><a href="database-FAQ.html#cb418-4" aria-hidden="true" tabindex="-1"></a><span class="co">--输入密码</span></span>
-<span id="cb418-5"><a href="database-FAQ.html#cb418-5" aria-hidden="true" tabindex="-1"></a><span class="kw">password</span>: </span>
-<span id="cb418-6"><a href="database-FAQ.html#cb418-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb418-7"><a href="database-FAQ.html#cb418-7" aria-hidden="true" tabindex="-1"></a><span class="co">--执行命令</span></span>
-<span id="cb418-8"><a href="database-FAQ.html#cb418-8" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;password&#39;</span> <span class="kw">PASSWORD</span> <span class="kw">EXPIRE</span> <span class="kw">NEVER</span>;   #修改加密规则 </span>
-<span id="cb418-9"><a href="database-FAQ.html#cb418-9" aria-hidden="true" tabindex="-1"></a><span class="co">---ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; PASSWORD EXPIRE NEVER; 看账号权限注意与上面的区别</span></span>
-<span id="cb418-10"><a href="database-FAQ.html#cb418-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb418-11"><a href="database-FAQ.html#cb418-11" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">WITH</span> mysql_native_password <span class="kw">BY</span> <span class="st">&#39;password&#39;</span>; #更新一下用户的密码 </span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb66-1"><a href="database-FAQ.html#cb66-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-2"><a href="database-FAQ.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co">--cmd 登录本地数据</span></span>
+<span id="cb66-3"><a href="database-FAQ.html#cb66-3" aria-hidden="true" tabindex="-1"></a>mysql <span class="op">-</span>u root <span class="op">-</span>p</span>
+<span id="cb66-4"><a href="database-FAQ.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co">--输入密码</span></span>
+<span id="cb66-5"><a href="database-FAQ.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="kw">password</span>: </span>
+<span id="cb66-6"><a href="database-FAQ.html#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="database-FAQ.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="co">--执行命令</span></span>
+<span id="cb66-8"><a href="database-FAQ.html#cb66-8" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">&#39;password&#39;</span> <span class="kw">PASSWORD</span> <span class="kw">EXPIRE</span> <span class="kw">NEVER</span>;   #修改加密规则 </span>
+<span id="cb66-9"><a href="database-FAQ.html#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="co">---ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; PASSWORD EXPIRE NEVER; 看账号权限注意与上面的区别</span></span>
+<span id="cb66-10"><a href="database-FAQ.html#cb66-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-11"><a href="database-FAQ.html#cb66-11" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">&#39;root&#39;</span>@<span class="st">&#39;localhost&#39;</span> <span class="kw">IDENTIFIED</span> <span class="kw">WITH</span> mysql_native_password <span class="kw">BY</span> <span class="st">&#39;password&#39;</span>; #更新一下用户的密码 </span></code></pre></div>
 </div>
-<div id="远程连接" class="section level3" number="8.5.3">
-<h3><span class="header-section-number">8.5.3</span> 远程连接</h3>
+<div id="远程连接" class="section level3" number="8.6.3">
+<h3><span class="header-section-number">8.6.3</span> 远程连接</h3>
 <p>当你需要远程连接时，需要确保数据库的远程连接已经开启。在数据库中开启某账户远程连接权限,在公司的话，数据库连接问题咨询公司的IT人员。自己个人电脑上安装的MS SQL SERVER数据库需要自行开启远程连接。</p>
 <p>另外如果是云服务器上搭建的数据库,需要开启数据库端口，如Mysql默认端口3306;如果是阿里云的Rds数据库,找DBA管理员要数据库地址以及端口信息。</p>
 </div>
-<div id="跳板机连接" class="section level3" number="8.5.4">
-<h3><span class="header-section-number">8.5.4</span> 跳板机连接</h3>
+<div id="跳板机连接" class="section level3" number="8.6.4">
+<h3><span class="header-section-number">8.6.4</span> 跳板机连接</h3>
 <p>有些数据库是无法外网访问的，需要通过跳板机跳转后后才有权限访问，或者给某公网IP配置权限后才能访问。</p>
 <ul>
 <li>R解决方案</li>
 </ul>
 <p>在本地使用<a href="https://www.putty.org/">Putty</a>或通过R包ssh解决。</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="database-FAQ.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ssh)</span>
-<span id="cb419-2"><a href="database-FAQ.html#cb419-2" aria-hidden="true" tabindex="-1"></a>session <span class="ot">&lt;-</span> <span class="fu">ssh_connect</span>(<span class="at">host =</span> <span class="st">&#39;user@ip:port&#39;</span>,<span class="at">passwd =</span> <span class="st">&#39;password&#39;</span>)</span>
-<span id="cb419-3"><a href="database-FAQ.html#cb419-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh_tunnel</span>(<span class="at">session =</span> session,<span class="at">port =</span> <span class="dv">3306</span>,<span class="at">target =</span> <span class="st">&#39;ip:port&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="database-FAQ.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ssh)</span>
+<span id="cb67-2"><a href="database-FAQ.html#cb67-2" aria-hidden="true" tabindex="-1"></a>session <span class="ot">&lt;-</span> <span class="fu">ssh_connect</span>(<span class="at">host =</span> <span class="st">&#39;user@ip:port&#39;</span>,<span class="at">passwd =</span> <span class="st">&#39;password&#39;</span>)</span>
+<span id="cb67-3"><a href="database-FAQ.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh_tunnel</span>(<span class="at">session =</span> session,<span class="at">port =</span> <span class="dv">3306</span>,<span class="at">target =</span> <span class="st">&#39;ip:port&#39;</span>)</span></code></pre></div>
 <ul>
 <li>python解决方案</li>
 </ul>
-<div class="sourceCode" id="cb420"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb420-1"><a href="database-FAQ.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mysql.connector</span>
-<span id="cb420-2"><a href="database-FAQ.html#cb420-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sshtunnel</span>
-<span id="cb420-3"><a href="database-FAQ.html#cb420-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-4"><a href="database-FAQ.html#cb420-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> sshtunnel.SSHTunnelForwarder(</span>
-<span id="cb420-5"><a href="database-FAQ.html#cb420-5" aria-hidden="true" tabindex="-1"></a>        (_host, _ssh_port),</span>
-<span id="cb420-6"><a href="database-FAQ.html#cb420-6" aria-hidden="true" tabindex="-1"></a>        ssh_username<span class="op">=</span>_username,</span>
-<span id="cb420-7"><a href="database-FAQ.html#cb420-7" aria-hidden="true" tabindex="-1"></a>        ssh_password<span class="op">=</span>_password,</span>
-<span id="cb420-8"><a href="database-FAQ.html#cb420-8" aria-hidden="true" tabindex="-1"></a>        remote_bind_address<span class="op">=</span>(_remote_bind_address, _remote_mysql_port),</span>
-<span id="cb420-9"><a href="database-FAQ.html#cb420-9" aria-hidden="true" tabindex="-1"></a>        local_bind_address<span class="op">=</span>(_local_bind_address, _local_mysql_port)</span>
-<span id="cb420-10"><a href="database-FAQ.html#cb420-10" aria-hidden="true" tabindex="-1"></a>) <span class="im">as</span> tunnel:</span>
-<span id="cb420-11"><a href="database-FAQ.html#cb420-11" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> mysql.connector.<span class="ex">connect</span>(</span>
-<span id="cb420-12"><a href="database-FAQ.html#cb420-12" aria-hidden="true" tabindex="-1"></a>        user<span class="op">=</span>_db_user,</span>
-<span id="cb420-13"><a href="database-FAQ.html#cb420-13" aria-hidden="true" tabindex="-1"></a>        password<span class="op">=</span>_db_password,</span>
-<span id="cb420-14"><a href="database-FAQ.html#cb420-14" aria-hidden="true" tabindex="-1"></a>        host<span class="op">=</span>_local_bind_address,</span>
-<span id="cb420-15"><a href="database-FAQ.html#cb420-15" aria-hidden="true" tabindex="-1"></a>        database<span class="op">=</span>_db_name,</span>
-<span id="cb420-16"><a href="database-FAQ.html#cb420-16" aria-hidden="true" tabindex="-1"></a>        port<span class="op">=</span>_local_mysql_port)</span>
-<span id="cb420-17"><a href="database-FAQ.html#cb420-17" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="database-FAQ.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mysql.connector</span>
+<span id="cb68-2"><a href="database-FAQ.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sshtunnel</span>
+<span id="cb68-3"><a href="database-FAQ.html#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="database-FAQ.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> sshtunnel.SSHTunnelForwarder(</span>
+<span id="cb68-5"><a href="database-FAQ.html#cb68-5" aria-hidden="true" tabindex="-1"></a>        (_host, _ssh_port),</span>
+<span id="cb68-6"><a href="database-FAQ.html#cb68-6" aria-hidden="true" tabindex="-1"></a>        ssh_username<span class="op">=</span>_username,</span>
+<span id="cb68-7"><a href="database-FAQ.html#cb68-7" aria-hidden="true" tabindex="-1"></a>        ssh_password<span class="op">=</span>_password,</span>
+<span id="cb68-8"><a href="database-FAQ.html#cb68-8" aria-hidden="true" tabindex="-1"></a>        remote_bind_address<span class="op">=</span>(_remote_bind_address, _remote_mysql_port),</span>
+<span id="cb68-9"><a href="database-FAQ.html#cb68-9" aria-hidden="true" tabindex="-1"></a>        local_bind_address<span class="op">=</span>(_local_bind_address, _local_mysql_port)</span>
+<span id="cb68-10"><a href="database-FAQ.html#cb68-10" aria-hidden="true" tabindex="-1"></a>) <span class="im">as</span> tunnel:</span>
+<span id="cb68-11"><a href="database-FAQ.html#cb68-11" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> mysql.connector.<span class="ex">connect</span>(</span>
+<span id="cb68-12"><a href="database-FAQ.html#cb68-12" aria-hidden="true" tabindex="-1"></a>        user<span class="op">=</span>_db_user,</span>
+<span id="cb68-13"><a href="database-FAQ.html#cb68-13" aria-hidden="true" tabindex="-1"></a>        password<span class="op">=</span>_db_password,</span>
+<span id="cb68-14"><a href="database-FAQ.html#cb68-14" aria-hidden="true" tabindex="-1"></a>        host<span class="op">=</span>_local_bind_address,</span>
+<span id="cb68-15"><a href="database-FAQ.html#cb68-15" aria-hidden="true" tabindex="-1"></a>        database<span class="op">=</span>_db_name,</span>
+<span id="cb68-16"><a href="database-FAQ.html#cb68-16" aria-hidden="true" tabindex="-1"></a>        port<span class="op">=</span>_local_mysql_port)</span>
+<span id="cb68-17"><a href="database-FAQ.html#cb68-17" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div>
 <p>关于数据库无法连接的问题，请咨询公司DBA管理人员。</p>
 </div>
 </div>
@@ -607,7 +602,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="database-else-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="大数据相关r包.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="database-dbplyr-package.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -659,20 +654,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
