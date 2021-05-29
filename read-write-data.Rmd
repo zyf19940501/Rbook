@@ -383,7 +383,14 @@ install_github("ycphs/openxlsx")
 
 #### 读取Excel {#openxlsx:read-function}
 
-read.xlsx()是读取函数，主要参数如下：
+`read.xlsx()`函数读取Excel文件。
+
+```{r}
+library(openxlsx)
+read.xlsx('./data/read-write/批量读写.xlsx')
+```
+
+`read.xlsx()`参数如下：
 
 ```{r eval=FALSE}
 library(openxlsx)
@@ -406,10 +413,7 @@ read.xlsx(
 )
 ```
 
-以上参数中需要注意 ：
-
-detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。
-
+以上参数中需要注意：detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。
 
 fillMergedCells参数，当你读取的表格中存在合并单元格，将用值填充其他全部单元格,如下所示：
 
