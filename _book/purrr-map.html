@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -527,27 +527,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>map_int(.x, .f, ...)</code> 返回整数</p>
 <p>map_df()函数示例</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="purrr-map.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 采用匿名函数</span></span>
-<span id="cb454-2"><a href="purrr-map.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="cf">function</span>(.x) {</span>
-<span id="cb454-3"><a href="purrr-map.html#cb454-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">old_number =</span> .x, </span>
-<span id="cb454-4"><a href="purrr-map.html#cb454-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">new_number =</span> <span class="fu">addTen</span>(.x)))</span>
-<span id="cb454-5"><a href="purrr-map.html#cb454-5" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb454-6"><a href="purrr-map.html#cb454-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
-<span id="cb454-7"><a href="purrr-map.html#cb454-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
-<span id="cb454-8"><a href="purrr-map.html#cb454-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
-<span id="cb454-9"><a href="purrr-map.html#cb454-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span>
-<span id="cb454-10"><a href="purrr-map.html#cb454-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb454-11"><a href="purrr-map.html#cb454-11" aria-hidden="true" tabindex="-1"></a><span class="co">#同上</span></span>
-<span id="cb454-12"><a href="purrr-map.html#cb454-12" aria-hidden="true" tabindex="-1"></a><span class="co">#step1 定义函数</span></span>
-<span id="cb454-13"><a href="purrr-map.html#cb454-13" aria-hidden="true" tabindex="-1"></a>make_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb454-14"><a href="purrr-map.html#cb454-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">old_number =</span> x,<span class="at">new_number =</span> <span class="fu">addTen</span>(x))</span>
-<span id="cb454-15"><a href="purrr-map.html#cb454-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb454-16"><a href="purrr-map.html#cb454-16" aria-hidden="true" tabindex="-1"></a><span class="co">#step2 计算</span></span>
-<span id="cb454-17"><a href="purrr-map.html#cb454-17" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),make_dataframe)</span>
-<span id="cb454-18"><a href="purrr-map.html#cb454-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
-<span id="cb454-19"><a href="purrr-map.html#cb454-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
-<span id="cb454-20"><a href="purrr-map.html#cb454-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
-<span id="cb454-21"><a href="purrr-map.html#cb454-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="purrr-map.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 采用匿名函数</span></span>
+<span id="cb458-2"><a href="purrr-map.html#cb458-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="cf">function</span>(.x) {</span>
+<span id="cb458-3"><a href="purrr-map.html#cb458-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">old_number =</span> .x, </span>
+<span id="cb458-4"><a href="purrr-map.html#cb458-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">new_number =</span> <span class="fu">addTen</span>(.x)))</span>
+<span id="cb458-5"><a href="purrr-map.html#cb458-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb458-6"><a href="purrr-map.html#cb458-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
+<span id="cb458-7"><a href="purrr-map.html#cb458-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
+<span id="cb458-8"><a href="purrr-map.html#cb458-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
+<span id="cb458-9"><a href="purrr-map.html#cb458-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span>
+<span id="cb458-10"><a href="purrr-map.html#cb458-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb458-11"><a href="purrr-map.html#cb458-11" aria-hidden="true" tabindex="-1"></a><span class="co">#同上</span></span>
+<span id="cb458-12"><a href="purrr-map.html#cb458-12" aria-hidden="true" tabindex="-1"></a><span class="co">#step1 定义函数</span></span>
+<span id="cb458-13"><a href="purrr-map.html#cb458-13" aria-hidden="true" tabindex="-1"></a>make_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb458-14"><a href="purrr-map.html#cb458-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">old_number =</span> x,<span class="at">new_number =</span> <span class="fu">addTen</span>(x))</span>
+<span id="cb458-15"><a href="purrr-map.html#cb458-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb458-16"><a href="purrr-map.html#cb458-16" aria-hidden="true" tabindex="-1"></a><span class="co">#step2 计算</span></span>
+<span id="cb458-17"><a href="purrr-map.html#cb458-17" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),make_dataframe)</span>
+<span id="cb458-18"><a href="purrr-map.html#cb458-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
+<span id="cb458-19"><a href="purrr-map.html#cb458-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
+<span id="cb458-20"><a href="purrr-map.html#cb458-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
+<span id="cb458-21"><a href="purrr-map.html#cb458-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span></code></pre></div>
 </div>
             </section>
 

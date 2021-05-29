@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -513,79 +513,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>常用函数</li>
 </ul>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="file-base-r.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看路径下的文件列表</span></span>
-<span id="cb487-2"><a href="file-base-r.html#cb487-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
-<span id="cb487-3"><a href="file-base-r.html#cb487-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;_book&quot;                    &quot;_bookdown.yml&quot;           </span></span>
-<span id="cb487-4"><a href="file-base-r.html#cb487-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;_common.R&quot;                &quot;_output.yml&quot;             </span></span>
-<span id="cb487-5"><a href="file-base-r.html#cb487-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;01-datatable.Rmd&quot;         &quot;02-database.Rmd&quot;         </span></span>
-<span id="cb487-6"><a href="file-base-r.html#cb487-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;03-strings.Rmd&quot;           &quot;04-lubridate.Rmd&quot;        </span></span>
-<span id="cb487-7"><a href="file-base-r.html#cb487-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;05-forcats.Rmd&quot;           &quot;06-tidy-data.Rmd&quot;        </span></span>
-<span id="cb487-8"><a href="file-base-r.html#cb487-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;07-Data-manipulation.Rmd&quot; &quot;08-loop.Rmd&quot;             </span></span>
-<span id="cb487-9"><a href="file-base-r.html#cb487-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;09-iteration.Rmd&quot;         &quot;10-function.Rmd&quot;         </span></span>
-<span id="cb487-10"><a href="file-base-r.html#cb487-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [15] &quot;book.bib&quot;                 &quot;data&quot;                    </span></span>
-<span id="cb487-11"><a href="file-base-r.html#cb487-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;Data-Handling-in-R.log&quot;   &quot;Data-Handling-in-R.Rmd&quot;  </span></span>
-<span id="cb487-12"><a href="file-base-r.html#cb487-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;desktop.ini&quot;              &quot;file-manipulation.Rmd&quot;   </span></span>
-<span id="cb487-13"><a href="file-base-r.html#cb487-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;index.Rmd&quot;                &quot;packages.bib&quot;            </span></span>
-<span id="cb487-14"><a href="file-base-r.html#cb487-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [23] &quot;picture&quot;                  &quot;preamble.tex&quot;            </span></span>
-<span id="cb487-15"><a href="file-base-r.html#cb487-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;Rbook.Rmd&quot;                &quot;Rbook.Rproj&quot;             </span></span>
-<span id="cb487-16"><a href="file-base-r.html#cb487-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [27] &quot;read-write-data.Rmd&quot;      &quot;README.md&quot;               </span></span>
-<span id="cb487-17"><a href="file-base-r.html#cb487-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] &quot;rsconnect&quot;                &quot;style.css&quot;</span></span>
-<span id="cb487-18"><a href="file-base-r.html#cb487-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb487-19"><a href="file-base-r.html#cb487-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建文件夹</span></span>
-<span id="cb487-20"><a href="file-base-r.html#cb487-20" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;test folder&#39;</span>)</span>
-<span id="cb487-21"><a href="file-base-r.html#cb487-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb487-22"><a href="file-base-r.html#cb487-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 是否存在</span></span>
-<span id="cb487-23"><a href="file-base-r.html#cb487-23" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.exists</span>(<span class="st">&#39;test folder&#39;</span>)</span>
-<span id="cb487-24"><a href="file-base-r.html#cb487-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb487-25"><a href="file-base-r.html#cb487-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb487-26"><a href="file-base-r.html#cb487-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除文件夹</span></span>
-<span id="cb487-27"><a href="file-base-r.html#cb487-27" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">&#39;test folder&#39;</span>,<span class="at">recursive =</span> <span class="cn">TRUE</span>,<span class="at">force=</span><span class="cn">TRUE</span>) </span>
-<span id="cb487-28"><a href="file-base-r.html#cb487-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 注意recursive参数为TRUE，文件夹才能被删除</span></span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="file-base-r.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看路径下的文件列表</span></span>
+<span id="cb491-2"><a href="file-base-r.html#cb491-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
+<span id="cb491-3"><a href="file-base-r.html#cb491-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;_book&quot;                    &quot;_bookdown.yml&quot;           </span></span>
+<span id="cb491-4"><a href="file-base-r.html#cb491-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;_common.R&quot;                &quot;_output.yml&quot;             </span></span>
+<span id="cb491-5"><a href="file-base-r.html#cb491-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;01-datatable.Rmd&quot;         &quot;02-database.Rmd&quot;         </span></span>
+<span id="cb491-6"><a href="file-base-r.html#cb491-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;03-strings.Rmd&quot;           &quot;04-lubridate.Rmd&quot;        </span></span>
+<span id="cb491-7"><a href="file-base-r.html#cb491-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;05-forcats.Rmd&quot;           &quot;06-tidy-data.Rmd&quot;        </span></span>
+<span id="cb491-8"><a href="file-base-r.html#cb491-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;07-Data-manipulation.Rmd&quot; &quot;08-loop.Rmd&quot;             </span></span>
+<span id="cb491-9"><a href="file-base-r.html#cb491-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;09-iteration.Rmd&quot;         &quot;10-function.Rmd&quot;         </span></span>
+<span id="cb491-10"><a href="file-base-r.html#cb491-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [15] &quot;book.bib&quot;                 &quot;data&quot;                    </span></span>
+<span id="cb491-11"><a href="file-base-r.html#cb491-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;Data-Handling-in-R.log&quot;   &quot;Data-Handling-in-R.Rmd&quot;  </span></span>
+<span id="cb491-12"><a href="file-base-r.html#cb491-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;desktop.ini&quot;              &quot;file-manipulation.Rmd&quot;   </span></span>
+<span id="cb491-13"><a href="file-base-r.html#cb491-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;index.Rmd&quot;                &quot;packages.bib&quot;            </span></span>
+<span id="cb491-14"><a href="file-base-r.html#cb491-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [23] &quot;picture&quot;                  &quot;preamble.tex&quot;            </span></span>
+<span id="cb491-15"><a href="file-base-r.html#cb491-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;Rbook.Rmd&quot;                &quot;Rbook.Rproj&quot;             </span></span>
+<span id="cb491-16"><a href="file-base-r.html#cb491-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [27] &quot;read-write-data.Rmd&quot;      &quot;README.md&quot;               </span></span>
+<span id="cb491-17"><a href="file-base-r.html#cb491-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] &quot;rsconnect&quot;                &quot;style.css&quot;</span></span>
+<span id="cb491-18"><a href="file-base-r.html#cb491-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb491-19"><a href="file-base-r.html#cb491-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建文件夹</span></span>
+<span id="cb491-20"><a href="file-base-r.html#cb491-20" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;test folder&#39;</span>)</span>
+<span id="cb491-21"><a href="file-base-r.html#cb491-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb491-22"><a href="file-base-r.html#cb491-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 是否存在</span></span>
+<span id="cb491-23"><a href="file-base-r.html#cb491-23" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.exists</span>(<span class="st">&#39;test folder&#39;</span>)</span>
+<span id="cb491-24"><a href="file-base-r.html#cb491-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb491-25"><a href="file-base-r.html#cb491-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb491-26"><a href="file-base-r.html#cb491-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除文件夹</span></span>
+<span id="cb491-27"><a href="file-base-r.html#cb491-27" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">&#39;test folder&#39;</span>,<span class="at">recursive =</span> <span class="cn">TRUE</span>,<span class="at">force=</span><span class="cn">TRUE</span>) </span>
+<span id="cb491-28"><a href="file-base-r.html#cb491-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 注意recursive参数为TRUE，文件夹才能被删除</span></span></code></pre></div>
 <ul>
 <li>函数介绍</li>
 </ul>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="file-base-r.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(..., <span class="at">showWarnings =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb488-2"><a href="file-base-r.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(...)</span>
-<span id="cb488-3"><a href="file-base-r.html#cb488-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.remove</span>(...)</span>
-<span id="cb488-4"><a href="file-base-r.html#cb488-4" aria-hidden="true" tabindex="-1"></a><span class="fu">file.rename</span>(from, to)</span>
-<span id="cb488-5"><a href="file-base-r.html#cb488-5" aria-hidden="true" tabindex="-1"></a><span class="fu">file.append</span>(file1, file2)</span>
-<span id="cb488-6"><a href="file-base-r.html#cb488-6" aria-hidden="true" tabindex="-1"></a><span class="fu">file.copy</span>(from, to, <span class="at">overwrite =</span> recursive, <span class="at">recursive =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb488-7"><a href="file-base-r.html#cb488-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">copy.mode =</span> <span class="cn">TRUE</span>, <span class="at">copy.date =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb488-8"><a href="file-base-r.html#cb488-8" aria-hidden="true" tabindex="-1"></a><span class="fu">file.symlink</span>(from, to)</span>
-<span id="cb488-9"><a href="file-base-r.html#cb488-9" aria-hidden="true" tabindex="-1"></a><span class="fu">file.link</span>(from, to)</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="file-base-r.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(..., <span class="at">showWarnings =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb492-2"><a href="file-base-r.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(...)</span>
+<span id="cb492-3"><a href="file-base-r.html#cb492-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.remove</span>(...)</span>
+<span id="cb492-4"><a href="file-base-r.html#cb492-4" aria-hidden="true" tabindex="-1"></a><span class="fu">file.rename</span>(from, to)</span>
+<span id="cb492-5"><a href="file-base-r.html#cb492-5" aria-hidden="true" tabindex="-1"></a><span class="fu">file.append</span>(file1, file2)</span>
+<span id="cb492-6"><a href="file-base-r.html#cb492-6" aria-hidden="true" tabindex="-1"></a><span class="fu">file.copy</span>(from, to, <span class="at">overwrite =</span> recursive, <span class="at">recursive =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb492-7"><a href="file-base-r.html#cb492-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">copy.mode =</span> <span class="cn">TRUE</span>, <span class="at">copy.date =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb492-8"><a href="file-base-r.html#cb492-8" aria-hidden="true" tabindex="-1"></a><span class="fu">file.symlink</span>(from, to)</span>
+<span id="cb492-9"><a href="file-base-r.html#cb492-9" aria-hidden="true" tabindex="-1"></a><span class="fu">file.link</span>(from, to)</span></code></pre></div>
 <p>其中需要注意的参数即recursive，是否递归?像macos或linux上的<code>cp -R</code>命令。</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="file-base-r.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb489-2"><a href="file-base-r.html#cb489-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/Users/zhongyf/Desktop/Rbook&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="file-base-r.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb493-2"><a href="file-base-r.html#cb493-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/Users/zhongyf/Desktop/Rbook&quot;</span></span></code></pre></div>
 <p><code>file.create()</code>:用指定的名称创建文件。创建成功则返回TRUE,失败将返回警告。</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="file-base-r.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">&#39;test.txt&#39;</span>)</span>
-<span id="cb490-2"><a href="file-base-r.html#cb490-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb490-3"><a href="file-base-r.html#cb490-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">&#39;test.csv&#39;</span>)</span>
-<span id="cb490-4"><a href="file-base-r.html#cb490-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="file-base-r.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">&#39;test.txt&#39;</span>)</span>
+<span id="cb494-2"><a href="file-base-r.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb494-3"><a href="file-base-r.html#cb494-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">&#39;test.csv&#39;</span>)</span>
+<span id="cb494-4"><a href="file-base-r.html#cb494-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p><code>file.exists()</code>:返回文件是否存在的逻辑向量，如果存在则返回TRUE</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="file-base-r.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="fu">c</span>(<span class="st">&#39;test.txt&#39;</span>,<span class="st">&#39;test.csv&#39;</span>))</span>
-<span id="cb491-2"><a href="file-base-r.html#cb491-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="file-base-r.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="fu">c</span>(<span class="st">&#39;test.txt&#39;</span>,<span class="st">&#39;test.csv&#39;</span>))</span>
+<span id="cb495-2"><a href="file-base-r.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE TRUE</span></span></code></pre></div>
 <p><code>file.remove()</code>:删除指定名称文件。</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="file-base-r.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.remove</span>(<span class="st">&#39;test.txt&#39;</span>)</span>
-<span id="cb492-2"><a href="file-base-r.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="file-base-r.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.remove</span>(<span class="st">&#39;test.txt&#39;</span>)</span>
+<span id="cb496-2"><a href="file-base-r.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p><code>file.rename()</code>:尝试重命名文件。</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="file-base-r.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.rename</span>(<span class="at">from =</span> <span class="st">&#39;test.csv&#39;</span>,<span class="at">to =</span> <span class="st">&#39;newtest.csv&#39;</span>)</span>
-<span id="cb493-2"><a href="file-base-r.html#cb493-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="file-base-r.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.rename</span>(<span class="at">from =</span> <span class="st">&#39;test.csv&#39;</span>,<span class="at">to =</span> <span class="st">&#39;newtest.csv&#39;</span>)</span>
+<span id="cb497-2"><a href="file-base-r.html#cb497-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p><code>file.append()</code>:尝试将第二个文件追加到第一个文件</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="file-base-r.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;文件ta的内容</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> <span class="st">&quot;ta.txt&quot;</span>)</span>
-<span id="cb494-2"><a href="file-base-r.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;文件tb的内容</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> <span class="st">&quot;tb.txt&quot;</span>)</span>
-<span id="cb494-3"><a href="file-base-r.html#cb494-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.append</span>(<span class="st">&quot;ta.txt&quot;</span>, <span class="st">&quot;tb.txt&quot;</span>)</span>
-<span id="cb494-4"><a href="file-base-r.html#cb494-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb494-5"><a href="file-base-r.html#cb494-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">readLines</span>(<span class="st">&#39;ta.txt&#39;</span>))</span>
-<span id="cb494-6"><a href="file-base-r.html#cb494-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 文件ta的内容 文件tb的内容</span></span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="file-base-r.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;文件ta的内容</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> <span class="st">&quot;ta.txt&quot;</span>)</span>
+<span id="cb498-2"><a href="file-base-r.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;文件tb的内容</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> <span class="st">&quot;tb.txt&quot;</span>)</span>
+<span id="cb498-3"><a href="file-base-r.html#cb498-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.append</span>(<span class="st">&quot;ta.txt&quot;</span>, <span class="st">&quot;tb.txt&quot;</span>)</span>
+<span id="cb498-4"><a href="file-base-r.html#cb498-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb498-5"><a href="file-base-r.html#cb498-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">readLines</span>(<span class="st">&#39;ta.txt&#39;</span>))</span>
+<span id="cb498-6"><a href="file-base-r.html#cb498-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 文件ta的内容 文件tb的内容</span></span></code></pre></div>
 <p><code>file.copy()</code>:复制文件</p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="file-base-r.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;test&#39;</span>)</span>
-<span id="cb495-2"><a href="file-base-r.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.copy</span>(<span class="at">from =</span> <span class="st">&#39;ta.txt&#39;</span>,<span class="at">to =</span> <span class="st">&#39;./test&#39;</span>,<span class="at">overwrite =</span> T,<span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb495-3"><a href="file-base-r.html#cb495-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="file-base-r.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;test&#39;</span>)</span>
+<span id="cb499-2"><a href="file-base-r.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.copy</span>(<span class="at">from =</span> <span class="st">&#39;ta.txt&#39;</span>,<span class="at">to =</span> <span class="st">&#39;./test&#39;</span>,<span class="at">overwrite =</span> T,<span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb499-3"><a href="file-base-r.html#cb499-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p><code>file.symlink()</code>:建立符号链接<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>，在winOS系统上即快捷方式，MacOS上即替身，linux上即软连接类似<code>ln -s</code>。</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="file-base-r.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.symlink</span>(<span class="at">from =</span> <span class="st">&#39;ta.txt&#39;</span>,<span class="at">to =</span> <span class="st">&#39;newab.txt&#39;</span>)</span>
-<span id="cb496-2"><a href="file-base-r.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in file.symlink(from = &quot;ta.txt&quot;, to = &quot;newab.txt&quot;): 无法打</span></span>
-<span id="cb496-3"><a href="file-base-r.html#cb496-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 开&#39;ta.txt&#39;到&#39;newab.txt&#39;的链结，原因是&#39;客户端没有所需的特权。&#39;</span></span>
-<span id="cb496-4"><a href="file-base-r.html#cb496-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="file-base-r.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.symlink</span>(<span class="at">from =</span> <span class="st">&#39;ta.txt&#39;</span>,<span class="at">to =</span> <span class="st">&#39;newab.txt&#39;</span>)</span>
+<span id="cb500-2"><a href="file-base-r.html#cb500-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in file.symlink(from = &quot;ta.txt&quot;, to = &quot;newab.txt&quot;): 无法打</span></span>
+<span id="cb500-3"><a href="file-base-r.html#cb500-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 开&#39;ta.txt&#39;到&#39;newab.txt&#39;的链结，原因是&#39;客户端没有所需的特权。&#39;</span></span>
+<span id="cb500-4"><a href="file-base-r.html#cb500-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 <p><code>file.link()</code>:建立硬链接</p>
 <!-- 将测试文件删除 -->
 <p>详情可以<a href="https://www.ouq.net/%E5%88%A9%E7%94%A8r%E8%AF%AD%E8%A8%80%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E3%80%81%E7%A7%BB%E5%8A%A8%E3%80%81%E5%88%A0%E9%99%A4%E3%80%81%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6.html">参考文章</a></p>

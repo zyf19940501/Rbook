@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -512,27 +512,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>left</li>
 </ul>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="character-application.html#cb227-1" aria-hidden="true" tabindex="-1"></a>r_left <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
-<span id="cb227-2"><a href="character-application.html#cb227-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">end =</span> num)</span>
-<span id="cb227-3"><a href="character-application.html#cb227-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-4"><a href="character-application.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
-<span id="cb227-5"><a href="character-application.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;我是R&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="character-application.html#cb231-1" aria-hidden="true" tabindex="-1"></a>r_left <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
+<span id="cb231-2"><a href="character-application.html#cb231-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">end =</span> num)</span>
+<span id="cb231-3"><a href="character-application.html#cb231-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb231-4"><a href="character-application.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_left</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
+<span id="cb231-5"><a href="character-application.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;我是R&quot;</span></span></code></pre></div>
 <ul>
 <li>right</li>
 </ul>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="character-application.html#cb228-1" aria-hidden="true" tabindex="-1"></a>r_right <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
-<span id="cb228-2"><a href="character-application.html#cb228-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="fu">str_length</span>(str) <span class="sc">-</span> num <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb228-3"><a href="character-application.html#cb228-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb228-4"><a href="character-application.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
-<span id="cb228-5"><a href="character-application.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;学习者&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="character-application.html#cb232-1" aria-hidden="true" tabindex="-1"></a>r_right <span class="ot">&lt;-</span> <span class="cf">function</span>(str,num){</span>
+<span id="cb232-2"><a href="character-application.html#cb232-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> <span class="fu">str_length</span>(str) <span class="sc">-</span> num <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb232-3"><a href="character-application.html#cb232-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb232-4"><a href="character-application.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_right</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>)</span>
+<span id="cb232-5"><a href="character-application.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;学习者&quot;</span></span></code></pre></div>
 <ul>
 <li>mid</li>
 </ul>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="character-application.html#cb229-1" aria-hidden="true" tabindex="-1"></a>r_mid <span class="ot">&lt;-</span> <span class="cf">function</span>(str,start,num){</span>
-<span id="cb229-2"><a href="character-application.html#cb229-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> start,<span class="at">end =</span> start <span class="sc">+</span> num <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb229-3"><a href="character-application.html#cb229-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb229-4"><a href="character-application.html#cb229-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb229-5"><a href="character-application.html#cb229-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="character-application.html#cb233-1" aria-hidden="true" tabindex="-1"></a>r_mid <span class="ot">&lt;-</span> <span class="cf">function</span>(str,start,num){</span>
+<span id="cb233-2"><a href="character-application.html#cb233-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_sub</span>(<span class="at">string =</span> str,<span class="at">start =</span> start,<span class="at">end =</span> start <span class="sc">+</span> num <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb233-3"><a href="character-application.html#cb233-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb233-4"><a href="character-application.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r_mid</span>(<span class="st">&#39;我是R语言学习者&#39;</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb233-5"><a href="character-application.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span></code></pre></div>
 <p>其余函数可以尝试自行实现。</p>
 </div>
 <div id="使用案例" class="section level3" number="4.3.2">
@@ -541,52 +541,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>合并</li>
 </ul>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="character-application.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb230-2"><a href="character-application.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb230-3"><a href="character-application.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 载入程辑包：&#39;data.table&#39;</span></span>
-<span id="cb230-4"><a href="character-application.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
-<span id="cb230-5"><a href="character-application.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb230-6"><a href="character-application.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     between, first, last</span></span>
-<span id="cb230-7"><a href="character-application.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
-<span id="cb230-8"><a href="character-application.html#cb230-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb230-9"><a href="character-application.html#cb230-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     transpose</span></span>
-<span id="cb230-10"><a href="character-application.html#cb230-10" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">rep</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">10</span>),<span class="at">letters=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
-<span id="cb230-11"><a href="character-application.html#cb230-11" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span><span class="fu">str_c</span>(letters,<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>),by<span class="ot">=</span>.(col)][]</span>
-<span id="cb230-12"><a href="character-application.html#cb230-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col letters              newcol</span></span>
-<span id="cb230-13"><a href="character-application.html#cb230-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a       a a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-14"><a href="character-application.html#cb230-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a       b a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-15"><a href="character-application.html#cb230-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a       c a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-16"><a href="character-application.html#cb230-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a       d a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-17"><a href="character-application.html#cb230-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a       e a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-18"><a href="character-application.html#cb230-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a       f a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-19"><a href="character-application.html#cb230-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a       g a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-20"><a href="character-application.html#cb230-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a       h a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-21"><a href="character-application.html#cb230-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a       i a|b|c|d|e|f|g|h|i|j</span></span>
-<span id="cb230-22"><a href="character-application.html#cb230-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a       j a|b|c|d|e|f|g|h|i|j</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="character-application.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb234-2"><a href="character-application.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb234-3"><a href="character-application.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 载入程辑包：&#39;data.table&#39;</span></span>
+<span id="cb234-4"><a href="character-application.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb234-5"><a href="character-application.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb234-6"><a href="character-application.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     between, first, last</span></span>
+<span id="cb234-7"><a href="character-application.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb234-8"><a href="character-application.html#cb234-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb234-9"><a href="character-application.html#cb234-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     transpose</span></span>
+<span id="cb234-10"><a href="character-application.html#cb234-10" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="fu">rep</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">10</span>),<span class="at">letters=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb234-11"><a href="character-application.html#cb234-11" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span><span class="fu">str_c</span>(letters,<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>),by<span class="ot">=</span>.(col)][]</span>
+<span id="cb234-12"><a href="character-application.html#cb234-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col letters              newcol</span></span>
+<span id="cb234-13"><a href="character-application.html#cb234-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a       a a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-14"><a href="character-application.html#cb234-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a       b a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-15"><a href="character-application.html#cb234-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a       c a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-16"><a href="character-application.html#cb234-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a       d a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-17"><a href="character-application.html#cb234-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a       e a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-18"><a href="character-application.html#cb234-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a       f a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-19"><a href="character-application.html#cb234-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a       g a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-20"><a href="character-application.html#cb234-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a       h a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-21"><a href="character-application.html#cb234-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a       i a|b|c|d|e|f|g|h|i|j</span></span>
+<span id="cb234-22"><a href="character-application.html#cb234-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a       j a|b|c|d|e|f|g|h|i|j</span></span></code></pre></div>
 <ul>
 <li>拆解</li>
 </ul>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="character-application.html#cb231-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb231-2"><a href="character-application.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="co">#工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等</span></span>
-<span id="cb231-3"><a href="character-application.html#cb231-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="st">&#39;a&#39;</span>,<span class="at">letters=</span><span class="fu">str_c</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>))</span>
-<span id="cb231-4"><a href="character-application.html#cb231-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb231-5"><a href="character-application.html#cb231-5" aria-hidden="true" tabindex="-1"></a>my_str_split <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb231-6"><a href="character-application.html#cb231-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb231-7"><a href="character-application.html#cb231-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(x,<span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">|&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()  <span class="co">#str_split 拆解出来是列表 需要向量化</span></span>
-<span id="cb231-8"><a href="character-application.html#cb231-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb231-9"><a href="character-application.html#cb231-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb231-10"><a href="character-application.html#cb231-10" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(<span class="at">newcol=</span><span class="fu">my_str_split</span>(letters)),by<span class="ot">=</span>.(col)]</span>
-<span id="cb231-11"><a href="character-application.html#cb231-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col newcol</span></span>
-<span id="cb231-12"><a href="character-application.html#cb231-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a      a</span></span>
-<span id="cb231-13"><a href="character-application.html#cb231-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a      b</span></span>
-<span id="cb231-14"><a href="character-application.html#cb231-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a      c</span></span>
-<span id="cb231-15"><a href="character-application.html#cb231-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a      d</span></span>
-<span id="cb231-16"><a href="character-application.html#cb231-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a      e</span></span>
-<span id="cb231-17"><a href="character-application.html#cb231-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a      f</span></span>
-<span id="cb231-18"><a href="character-application.html#cb231-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a      g</span></span>
-<span id="cb231-19"><a href="character-application.html#cb231-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a      h</span></span>
-<span id="cb231-20"><a href="character-application.html#cb231-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a      i</span></span>
-<span id="cb231-21"><a href="character-application.html#cb231-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a      j</span></span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="character-application.html#cb235-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-2"><a href="character-application.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="co">#工作中路径需要拆解 类似商品品类路径 进口水果-热带水果-生鲜,用户行为路径等</span></span>
+<span id="cb235-3"><a href="character-application.html#cb235-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col=</span><span class="st">&#39;a&#39;</span>,<span class="at">letters=</span><span class="fu">str_c</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>))</span>
+<span id="cb235-4"><a href="character-application.html#cb235-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-5"><a href="character-application.html#cb235-5" aria-hidden="true" tabindex="-1"></a>my_str_split <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb235-6"><a href="character-application.html#cb235-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb235-7"><a href="character-application.html#cb235-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(x,<span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">|&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()  <span class="co">#str_split 拆解出来是列表 需要向量化</span></span>
+<span id="cb235-8"><a href="character-application.html#cb235-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb235-9"><a href="character-application.html#cb235-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-10"><a href="character-application.html#cb235-10" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(<span class="at">newcol=</span><span class="fu">my_str_split</span>(letters)),by<span class="ot">=</span>.(col)]</span>
+<span id="cb235-11"><a href="character-application.html#cb235-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col newcol</span></span>
+<span id="cb235-12"><a href="character-application.html#cb235-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:   a      a</span></span>
+<span id="cb235-13"><a href="character-application.html#cb235-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:   a      b</span></span>
+<span id="cb235-14"><a href="character-application.html#cb235-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:   a      c</span></span>
+<span id="cb235-15"><a href="character-application.html#cb235-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:   a      d</span></span>
+<span id="cb235-16"><a href="character-application.html#cb235-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:   a      e</span></span>
+<span id="cb235-17"><a href="character-application.html#cb235-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:   a      f</span></span>
+<span id="cb235-18"><a href="character-application.html#cb235-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:   a      g</span></span>
+<span id="cb235-19"><a href="character-application.html#cb235-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:   a      h</span></span>
+<span id="cb235-20"><a href="character-application.html#cb235-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:   a      i</span></span>
+<span id="cb235-21"><a href="character-application.html#cb235-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   a      j</span></span></code></pre></div>
 </div>
 </div>
             </section>

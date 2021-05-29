@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -506,33 +506,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="define-function:conditional-execution" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> 条件执行</h2>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="define-function-conditional-execution.html#cb470-1" aria-hidden="true" tabindex="-1"></a>has_name <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb470-2"><a href="define-function-conditional-execution.html#cb470-2" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">&lt;-</span> <span class="fu">names</span>(x)</span>
-<span id="cb470-3"><a href="define-function-conditional-execution.html#cb470-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(nms)) {</span>
-<span id="cb470-4"><a href="define-function-conditional-execution.html#cb470-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="fu">length</span>(x))</span>
-<span id="cb470-5"><a href="define-function-conditional-execution.html#cb470-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb470-6"><a href="define-function-conditional-execution.html#cb470-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(nms) <span class="sc">&amp;</span> nms <span class="sc">!=</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb470-7"><a href="define-function-conditional-execution.html#cb470-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb470-8"><a href="define-function-conditional-execution.html#cb470-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="define-function-conditional-execution.html#cb474-1" aria-hidden="true" tabindex="-1"></a>has_name <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb474-2"><a href="define-function-conditional-execution.html#cb474-2" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">&lt;-</span> <span class="fu">names</span>(x)</span>
+<span id="cb474-3"><a href="define-function-conditional-execution.html#cb474-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(nms)) {</span>
+<span id="cb474-4"><a href="define-function-conditional-execution.html#cb474-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="fu">length</span>(x))</span>
+<span id="cb474-5"><a href="define-function-conditional-execution.html#cb474-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb474-6"><a href="define-function-conditional-execution.html#cb474-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(nms) <span class="sc">&amp;</span> nms <span class="sc">!=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb474-7"><a href="define-function-conditional-execution.html#cb474-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb474-8"><a href="define-function-conditional-execution.html#cb474-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div id="多条件执行" class="section level3" number="11.2.1">
 <h3><span class="header-section-number">11.2.1</span> 多条件执行</h3>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="define-function-conditional-execution.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (this) {</span>
-<span id="cb471-2"><a href="define-function-conditional-execution.html#cb471-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do that</span></span>
-<span id="cb471-3"><a href="define-function-conditional-execution.html#cb471-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (that) {</span>
-<span id="cb471-4"><a href="define-function-conditional-execution.html#cb471-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
-<span id="cb471-5"><a href="define-function-conditional-execution.html#cb471-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb471-6"><a href="define-function-conditional-execution.html#cb471-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
-<span id="cb471-7"><a href="define-function-conditional-execution.html#cb471-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="define-function-conditional-execution.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (this) {</span>
+<span id="cb475-2"><a href="define-function-conditional-execution.html#cb475-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do that</span></span>
+<span id="cb475-3"><a href="define-function-conditional-execution.html#cb475-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (that) {</span>
+<span id="cb475-4"><a href="define-function-conditional-execution.html#cb475-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
+<span id="cb475-5"><a href="define-function-conditional-execution.html#cb475-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb475-6"><a href="define-function-conditional-execution.html#cb475-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
+<span id="cb475-7"><a href="define-function-conditional-execution.html#cb475-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>当需要很多if时可考虑用switch()功能</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="define-function-conditional-execution.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x, y, op) {</span>
-<span id="cb472-2"><a href="define-function-conditional-execution.html#cb472-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">switch</span>(op,</span>
-<span id="cb472-3"><a href="define-function-conditional-execution.html#cb472-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">plus =</span> x <span class="sc">+</span> y,</span>
-<span id="cb472-4"><a href="define-function-conditional-execution.html#cb472-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">minus =</span> x <span class="sc">-</span> y,</span>
-<span id="cb472-5"><a href="define-function-conditional-execution.html#cb472-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">times =</span> x <span class="sc">*</span> y,</span>
-<span id="cb472-6"><a href="define-function-conditional-execution.html#cb472-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">divide =</span> x <span class="sc">/</span> y,</span>
-<span id="cb472-7"><a href="define-function-conditional-execution.html#cb472-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">stop</span>(<span class="st">&quot;Unknown op!&quot;</span>)</span>
-<span id="cb472-8"><a href="define-function-conditional-execution.html#cb472-8" aria-hidden="true" tabindex="-1"></a>   )</span>
-<span id="cb472-9"><a href="define-function-conditional-execution.html#cb472-9" aria-hidden="true" tabindex="-1"></a> }</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="define-function-conditional-execution.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x, y, op) {</span>
+<span id="cb476-2"><a href="define-function-conditional-execution.html#cb476-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">switch</span>(op,</span>
+<span id="cb476-3"><a href="define-function-conditional-execution.html#cb476-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">plus =</span> x <span class="sc">+</span> y,</span>
+<span id="cb476-4"><a href="define-function-conditional-execution.html#cb476-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">minus =</span> x <span class="sc">-</span> y,</span>
+<span id="cb476-5"><a href="define-function-conditional-execution.html#cb476-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">times =</span> x <span class="sc">*</span> y,</span>
+<span id="cb476-6"><a href="define-function-conditional-execution.html#cb476-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">divide =</span> x <span class="sc">/</span> y,</span>
+<span id="cb476-7"><a href="define-function-conditional-execution.html#cb476-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">stop</span>(<span class="st">&quot;Unknown op!&quot;</span>)</span>
+<span id="cb476-8"><a href="define-function-conditional-execution.html#cb476-8" aria-hidden="true" tabindex="-1"></a>   )</span>
+<span id="cb476-9"><a href="define-function-conditional-execution.html#cb476-9" aria-hidden="true" tabindex="-1"></a> }</span></code></pre></div>
 </div>
 </div>
             </section>

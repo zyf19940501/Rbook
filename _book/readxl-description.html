@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -523,7 +523,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="readxl:usage" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> 用法</h3>
-<p>readxl包中包含了几个示例文件，我们在接下来的案例中使用。</p>
+<p>readxl包的核心函数是读取函数<code>read_excel()</code>，该函数能将Excel文件数据加载到R中。readxl包中包含了几个示例文件，我们在接下来的案例中使用。</p>
 <p>1.读取</p>
 <p>通过<code>readxl_example()</code>查看readxl包中自带xlsx文件。</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="readxl-description.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
@@ -533,7 +533,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-5"><a href="readxl-description.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;type-me.xls&quot;   &quot;type-me.xlsx&quot;</span></span>
 <span id="cb5-6"><a href="readxl-description.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">readxl_example</span>(<span class="st">&quot;clippy.xls&quot;</span>)</span>
 <span id="cb5-7"><a href="readxl-description.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/R/R-4.1.0/library/readxl/extdata/clippy.xls&quot;</span></span></code></pre></div>
-<p>需要注意<code>read_excel()</code>可读取xls和xlsx文件。</p>
+<p>需要注意<code>read_excel()</code>可读取xls和xlsx文件，函数会自动识别。</p>
+<blockquote>
+<p>xls和xlsx的区别: xls 是 excel2003 及以前版本生成的文件格式，而 xlsx 是 excel2007 及以后版本生成的文件格式。xlsx格式是向下兼容的，可兼容xls格式。老旧的业务使用的格式可能是xls格式。</p>
+</blockquote>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="readxl-description.html#cb6-1" aria-hidden="true" tabindex="-1"></a>xlsx_example <span class="ot">&lt;-</span> <span class="fu">readxl_example</span>(<span class="st">&quot;datasets.xlsx&quot;</span>) <span class="co">#返回datasets.xlsx文件所在路径</span></span>
 <span id="cb6-2"><a href="readxl-description.html#cb6-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(xlsx_example)</span></code></pre></div>
 <p>查看数据</p>
@@ -547,7 +550,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-8"><a href="readxl-description.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2 setosa </span></span>
 <span id="cb7-9"><a href="readxl-description.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          5           3.6          1.4         0.2 setosa </span></span>
 <span id="cb7-10"><a href="readxl-description.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4 setosa</span></span></code></pre></div>
-<p>将Excel中的数据通过<code>read_excel()</code>读取保存到R中，带对象属于<code>tbl_df</code>类，是tidyverse系列的数据框结构，是对base R中的<code>data.frame</code>结构的改造，但是兼容<code>data.frame</code>。</p>
+<p>将Excel中的数据通过<code>read_excel()</code>读取保存到R中，该对象属于<code>tbl_df</code>类，是tidyverse系列的数据框结构，是对base R中的<code>data.frame</code>结构的改造，但是兼容<code>data.frame</code>。</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="readxl-description.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看dt类</span></span>
 <span id="cb8-2"><a href="readxl-description.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dt)</span>
 <span id="cb8-3"><a href="readxl-description.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></span>
@@ -663,20 +666,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>个人觉得col_types比较重要，可以指定列的类型。可用选项:“skip,” “guess,” “logical,” “numeric,” “date,” “text” or “list”。
-.name_repair 参数能自动避免重复字段，可避免手工Excle出现的字段名不唯一的情况。</p>
+<p>col_types 参数个人觉得比较重要，可以指定列的类型，可以避免一些错误。可用选项:“skip,” “guess,” “logical,” “numeric,” “date,” “text” or “list”。</p>
+<p>.name_repair 参数能自动避免重复字段，可避免手工Excel出现字段名不唯一的情况。</p>
 </div>
 <div id="批量读取" class="section level3" number="1.1.3">
 <h3><span class="header-section-number">1.1.3</span> 批量读取</h3>
-<p>某文件夹下(data/read-write/)有相同格式的Excel文件(sheet名称以及列字段相同)，要合并全部Excel数据,代码如下：</p>
-<p>文件夹内 excel 文件如下：</p>
+<p>实际工作中，某文件夹下有相同格式的Excel文件(sheet名称以及列字段相同)，想要合并全部Excel数据，熟悉Excel的可以通过Excel的<code>power query</code>的获取数据完成合并，那么在R中该如何实现呢？</p>
+<p>示例：</p>
+<p>文件夹内 excel 文件</p>
 <pre><code>#&gt; data/read-write/
 #&gt; +-- a.xlsx
 #&gt; +-- b.xlsx
 #&gt; \-- 批量读写.xlsx</code></pre>
-<p>使用purrr包合并读取</p>
+<p>R代码如下</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="readxl-description.html#cb14-1" aria-hidden="true" tabindex="-1"></a>allfiles <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&#39;./data/read-write/&#39;</span>,<span class="at">pattern =</span> <span class="st">&#39;.xlsx$&#39;</span>,<span class="at">full.names =</span> T)</span>
-<span id="cb14-2"><a href="readxl-description.html#cb14-2" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(allfiles,read_excel)</span></code></pre></div>
+<span id="cb14-2"><a href="readxl-description.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用purrr包合并读取</span></span>
+<span id="cb14-3"><a href="readxl-description.html#cb14-3" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(allfiles,read_excel)</span></code></pre></div>
 <p><code>list.files()</code>函数按照规则返回某文件目录下的全部文件。关于R语言中文件系统操作可以查看章节<a href="file-system-operation.html#file:system-operation">R语言文件系统操作</a></p>
 </div>
 <div id="批量输出" class="section level3" number="1.1.4">
@@ -691,8 +696,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-7"><a href="readxl-description.html#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
 <span id="cb15-8"><a href="readxl-description.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_walk</span>(<span class="sc">~</span> <span class="fu">write.csv</span>(.x,<span class="at">file =</span> <span class="fu">file.path</span>(<span class="st">&#39;data/read-write&#39;</span>,<span class="fu">paste0</span>(.y<span class="sc">$</span>name,<span class="st">&#39;.csv&#39;</span>))))</span>
 <span id="cb15-9"><a href="readxl-description.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&#39;data/read-write/&#39;</span>)</span>
-<span id="cb15-10"><a href="readxl-description.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a.csv&quot;         &quot;a.xlsx&quot;        &quot;b.csv&quot;         &quot;b.xlsx&quot;       </span></span>
-<span id="cb15-11"><a href="readxl-description.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;d.csv&quot;         &quot;批量读写.xlsx&quot;</span></span></code></pre></div>
+<span id="cb15-10"><a href="readxl-description.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a.csv&quot;            &quot;a.xlsx&quot;           &quot;b.csv&quot;            &quot;b.xlsx&quot;          </span></span>
+<span id="cb15-11"><a href="readxl-description.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;d.csv&quot;            &quot;Id-card-data.csv&quot; &quot;批量读写.xlsx&quot;</span></span></code></pre></div>
 <blockquote>
 <p>暂时不用理解批量读取和输出的代码具体含义，可以先记住用法。</p>
 </blockquote>

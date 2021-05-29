@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -510,38 +510,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.6.1</span> 自定义函数计算</h3>
 <p>1.自定义函数处理列</p>
 <p>按照自定义函数计算修改单列或多列</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="datatable-application.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 测试函数</span></span>
-<span id="cb356-2"><a href="datatable-application.html#cb356-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-3"><a href="datatable-application.html#cb356-3" aria-hidden="true" tabindex="-1"></a>fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb356-4"><a href="datatable-application.html#cb356-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb356-5"><a href="datatable-application.html#cb356-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb356-6"><a href="datatable-application.html#cb356-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-7"><a href="datatable-application.html#cb356-7" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="at">each=</span><span class="dv">3</span>), <span class="at">v=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>), <span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">b=</span><span class="dv">9</span><span class="sc">:</span><span class="dv">1</span>)</span>
-<span id="cb356-8"><a href="datatable-application.html#cb356-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-9"><a href="datatable-application.html#cb356-9" aria-hidden="true" tabindex="-1"></a>DT[,.(<span class="at">newcol=</span><span class="fu">fun</span>(y)),by<span class="ot">=</span>.(x)]</span>
-<span id="cb356-10"><a href="datatable-application.html#cb356-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x newcol</span></span>
-<span id="cb356-11"><a href="datatable-application.html#cb356-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b      2</span></span>
-<span id="cb356-12"><a href="datatable-application.html#cb356-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: b     10</span></span>
-<span id="cb356-13"><a href="datatable-application.html#cb356-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: b     37</span></span>
-<span id="cb356-14"><a href="datatable-application.html#cb356-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: a      2</span></span>
-<span id="cb356-15"><a href="datatable-application.html#cb356-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: a     10</span></span>
-<span id="cb356-16"><a href="datatable-application.html#cb356-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: a     37</span></span>
-<span id="cb356-17"><a href="datatable-application.html#cb356-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: c      2</span></span>
-<span id="cb356-18"><a href="datatable-application.html#cb356-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: c     10</span></span>
-<span id="cb356-19"><a href="datatable-application.html#cb356-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9: c     37</span></span>
-<span id="cb356-20"><a href="datatable-application.html#cb356-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-21"><a href="datatable-application.html#cb356-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Not run</span></span>
-<span id="cb356-22"><a href="datatable-application.html#cb356-22" aria-hidden="true" tabindex="-1"></a><span class="co">#DT[,lapply(.SD,fun),.SDcols=c(&#39;y&#39;,&#39;a&#39;),by=.(x)] #多列参与计算</span></span>
-<span id="cb356-23"><a href="datatable-application.html#cb356-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-24"><a href="datatable-application.html#cb356-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-25"><a href="datatable-application.html#cb356-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 批量修改列</span></span>
-<span id="cb356-26"><a href="datatable-application.html#cb356-26" aria-hidden="true" tabindex="-1"></a><span class="co">#Not run</span></span>
-<span id="cb356-27"><a href="datatable-application.html#cb356-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-28"><a href="datatable-application.html#cb356-28" aria-hidden="true" tabindex="-1"></a><span class="co"># myfun &lt;- function(x){</span></span>
-<span id="cb356-29"><a href="datatable-application.html#cb356-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(x)</span></span>
-<span id="cb356-30"><a href="datatable-application.html#cb356-30" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
-<span id="cb356-31"><a href="datatable-application.html#cb356-31" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb356-32"><a href="datatable-application.html#cb356-32" aria-hidden="true" tabindex="-1"></a><span class="co"># dt &lt;- dt[,colnames(dt):=lapply(.SD[,1:ncol(dt)],myfun)] #很重要的用法</span></span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="datatable-application.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 测试函数</span></span>
+<span id="cb360-2"><a href="datatable-application.html#cb360-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-3"><a href="datatable-application.html#cb360-3" aria-hidden="true" tabindex="-1"></a>fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb360-4"><a href="datatable-application.html#cb360-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb360-5"><a href="datatable-application.html#cb360-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb360-6"><a href="datatable-application.html#cb360-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-7"><a href="datatable-application.html#cb360-7" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="at">each=</span><span class="dv">3</span>), <span class="at">v=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>), <span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">b=</span><span class="dv">9</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb360-8"><a href="datatable-application.html#cb360-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-9"><a href="datatable-application.html#cb360-9" aria-hidden="true" tabindex="-1"></a>DT[,.(<span class="at">newcol=</span><span class="fu">fun</span>(y)),by<span class="ot">=</span>.(x)]</span>
+<span id="cb360-10"><a href="datatable-application.html#cb360-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x newcol</span></span>
+<span id="cb360-11"><a href="datatable-application.html#cb360-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b      2</span></span>
+<span id="cb360-12"><a href="datatable-application.html#cb360-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: b     10</span></span>
+<span id="cb360-13"><a href="datatable-application.html#cb360-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: b     37</span></span>
+<span id="cb360-14"><a href="datatable-application.html#cb360-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: a      2</span></span>
+<span id="cb360-15"><a href="datatable-application.html#cb360-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: a     10</span></span>
+<span id="cb360-16"><a href="datatable-application.html#cb360-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: a     37</span></span>
+<span id="cb360-17"><a href="datatable-application.html#cb360-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: c      2</span></span>
+<span id="cb360-18"><a href="datatable-application.html#cb360-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: c     10</span></span>
+<span id="cb360-19"><a href="datatable-application.html#cb360-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9: c     37</span></span>
+<span id="cb360-20"><a href="datatable-application.html#cb360-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-21"><a href="datatable-application.html#cb360-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Not run</span></span>
+<span id="cb360-22"><a href="datatable-application.html#cb360-22" aria-hidden="true" tabindex="-1"></a><span class="co">#DT[,lapply(.SD,fun),.SDcols=c(&#39;y&#39;,&#39;a&#39;),by=.(x)] #多列参与计算</span></span>
+<span id="cb360-23"><a href="datatable-application.html#cb360-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-24"><a href="datatable-application.html#cb360-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-25"><a href="datatable-application.html#cb360-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 批量修改列</span></span>
+<span id="cb360-26"><a href="datatable-application.html#cb360-26" aria-hidden="true" tabindex="-1"></a><span class="co">#Not run</span></span>
+<span id="cb360-27"><a href="datatable-application.html#cb360-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-28"><a href="datatable-application.html#cb360-28" aria-hidden="true" tabindex="-1"></a><span class="co"># myfun &lt;- function(x){</span></span>
+<span id="cb360-29"><a href="datatable-application.html#cb360-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(x)</span></span>
+<span id="cb360-30"><a href="datatable-application.html#cb360-30" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb360-31"><a href="datatable-application.html#cb360-31" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb360-32"><a href="datatable-application.html#cb360-32" aria-hidden="true" tabindex="-1"></a><span class="co"># dt &lt;- dt[,colnames(dt):=lapply(.SD[,1:ncol(dt)],myfun)] #很重要的用法</span></span></code></pre></div>
 </div>
 <div id="带汇总的聚合运算" class="section level3" number="7.6.2">
 <h3><span class="header-section-number">7.6.2</span> 带汇总的聚合运算</h3>
@@ -550,124 +550,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>rollup</li>
 </ol>
 <p>分组聚合后设置id=TRUE将各个级别的汇总显示清晰,当by字段只有一个是和正常聚合计算没有区别.以下是官方案例.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="datatable-application.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usage</span></span>
-<span id="cb357-2"><a href="datatable-application.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(x, j, by, .SDcols, id = FALSE, ...)</span></span>
-<span id="cb357-3"><a href="datatable-application.html#cb357-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> 24L</span>
-<span id="cb357-4"><a href="datatable-application.html#cb357-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">25</span>)</span>
-<span id="cb357-5"><a href="datatable-application.html#cb357-5" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
-<span id="cb357-6"><a href="datatable-application.html#cb357-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;red&quot;</span>), n, <span class="cn">TRUE</span>),</span>
-<span id="cb357-7"><a href="datatable-application.html#cb357-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">as.Date</span>(<span class="fu">sample</span>(<span class="fu">paste0</span>(<span class="dv">2011</span><span class="sc">:</span><span class="dv">2015</span>,<span class="st">&quot;-01-01&quot;</span>), n, <span class="cn">TRUE</span>)),</span>
-<span id="cb357-8"><a href="datatable-application.html#cb357-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="fu">as.factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;removed&quot;</span>,<span class="st">&quot;active&quot;</span>,<span class="st">&quot;inactive&quot;</span>,<span class="st">&quot;archived&quot;</span>), n, <span class="cn">TRUE</span>)),</span>
-<span id="cb357-9"><a href="datatable-application.html#cb357-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">amount =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, n, <span class="cn">TRUE</span>),</span>
-<span id="cb357-10"><a href="datatable-application.html#cb357-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">3.5</span>, <span class="fl">2.5</span>, <span class="dv">2</span>), n, <span class="cn">TRUE</span>)</span>
-<span id="cb357-11"><a href="datatable-application.html#cb357-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb357-12"><a href="datatable-application.html#cb357-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(DT, <span class="at">j =</span> <span class="fu">sum</span>(value), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>)) <span class="co"># default id=FALSE</span></span>
-<span id="cb357-13"><a href="datatable-application.html#cb357-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      color       year   status   V1</span></span>
-<span id="cb357-14"><a href="datatable-application.html#cb357-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    red 2015-01-01   active  3.5</span></span>
-<span id="cb357-15"><a href="datatable-application.html#cb357-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:  green 2015-01-01 inactive  5.5</span></span>
-<span id="cb357-16"><a href="datatable-application.html#cb357-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:  green 2014-01-01 archived  3.5</span></span>
-<span id="cb357-17"><a href="datatable-application.html#cb357-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:  green 2015-01-01 archived  2.0</span></span>
-<span id="cb357-18"><a href="datatable-application.html#cb357-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5: yellow 2014-01-01   active  4.5</span></span>
-<span id="cb357-19"><a href="datatable-application.html#cb357-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    red 2013-01-01 inactive  2.0</span></span>
-<span id="cb357-20"><a href="datatable-application.html#cb357-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:  green 2011-01-01   active  6.0</span></span>
-<span id="cb357-21"><a href="datatable-application.html#cb357-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    red 2014-01-01 inactive  2.5</span></span>
-<span id="cb357-22"><a href="datatable-application.html#cb357-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:  green 2011-01-01 archived  2.5</span></span>
-<span id="cb357-23"><a href="datatable-application.html#cb357-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10: yellow 2015-01-01   active  2.0</span></span>
-<span id="cb357-24"><a href="datatable-application.html#cb357-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:    red 2012-01-01 archived  2.0</span></span>
-<span id="cb357-25"><a href="datatable-application.html#cb357-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:    red 2011-01-01  removed  3.5</span></span>
-<span id="cb357-26"><a href="datatable-application.html#cb357-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:  green 2014-01-01 inactive  8.0</span></span>
-<span id="cb357-27"><a href="datatable-application.html#cb357-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:  green 2011-01-01  removed  2.0</span></span>
-<span id="cb357-28"><a href="datatable-application.html#cb357-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15: yellow 2012-01-01 archived  2.5</span></span>
-<span id="cb357-29"><a href="datatable-application.html#cb357-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16:    red 2013-01-01  removed  3.5</span></span>
-<span id="cb357-30"><a href="datatable-application.html#cb357-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17:  green 2013-01-01   active  3.0</span></span>
-<span id="cb357-31"><a href="datatable-application.html#cb357-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18:  green 2014-01-01  removed  2.5</span></span>
-<span id="cb357-32"><a href="datatable-application.html#cb357-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19:    red 2011-01-01 archived  3.0</span></span>
-<span id="cb357-33"><a href="datatable-application.html#cb357-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20:    red 2015-01-01     &lt;NA&gt;  3.5</span></span>
-<span id="cb357-34"><a href="datatable-application.html#cb357-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21:  green 2015-01-01     &lt;NA&gt;  7.5</span></span>
-<span id="cb357-35"><a href="datatable-application.html#cb357-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22:  green 2014-01-01     &lt;NA&gt; 14.0</span></span>
-<span id="cb357-36"><a href="datatable-application.html#cb357-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23: yellow 2014-01-01     &lt;NA&gt;  4.5</span></span>
-<span id="cb357-37"><a href="datatable-application.html#cb357-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24:    red 2013-01-01     &lt;NA&gt;  5.5</span></span>
-<span id="cb357-38"><a href="datatable-application.html#cb357-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25:  green 2011-01-01     &lt;NA&gt; 10.5</span></span>
-<span id="cb357-39"><a href="datatable-application.html#cb357-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26:    red 2014-01-01     &lt;NA&gt;  2.5</span></span>
-<span id="cb357-40"><a href="datatable-application.html#cb357-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27: yellow 2015-01-01     &lt;NA&gt;  2.0</span></span>
-<span id="cb357-41"><a href="datatable-application.html#cb357-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28:    red 2012-01-01     &lt;NA&gt;  2.0</span></span>
-<span id="cb357-42"><a href="datatable-application.html#cb357-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29:    red 2011-01-01     &lt;NA&gt;  6.5</span></span>
-<span id="cb357-43"><a href="datatable-application.html#cb357-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30: yellow 2012-01-01     &lt;NA&gt;  2.5</span></span>
-<span id="cb357-44"><a href="datatable-application.html#cb357-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31:  green 2013-01-01     &lt;NA&gt;  3.0</span></span>
-<span id="cb357-45"><a href="datatable-application.html#cb357-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32:    red       &lt;NA&gt;     &lt;NA&gt; 20.0</span></span>
-<span id="cb357-46"><a href="datatable-application.html#cb357-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33:  green       &lt;NA&gt;     &lt;NA&gt; 35.0</span></span>
-<span id="cb357-47"><a href="datatable-application.html#cb357-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 34: yellow       &lt;NA&gt;     &lt;NA&gt;  9.0</span></span>
-<span id="cb357-48"><a href="datatable-application.html#cb357-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35:   &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt; 64.0</span></span>
-<span id="cb357-49"><a href="datatable-application.html#cb357-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      color       year   status   V1</span></span>
-<span id="cb357-50"><a href="datatable-application.html#cb357-50" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(DT, j = sum(value), by = c(&quot;color&quot;,&quot;year&quot;,&quot;status&quot;), id=TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="datatable-application.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Usage</span></span>
+<span id="cb361-2"><a href="datatable-application.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(x, j, by, .SDcols, id = FALSE, ...)</span></span>
+<span id="cb361-3"><a href="datatable-application.html#cb361-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> 24L</span>
+<span id="cb361-4"><a href="datatable-application.html#cb361-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">25</span>)</span>
+<span id="cb361-5"><a href="datatable-application.html#cb361-5" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
+<span id="cb361-6"><a href="datatable-application.html#cb361-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;red&quot;</span>), n, <span class="cn">TRUE</span>),</span>
+<span id="cb361-7"><a href="datatable-application.html#cb361-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">as.Date</span>(<span class="fu">sample</span>(<span class="fu">paste0</span>(<span class="dv">2011</span><span class="sc">:</span><span class="dv">2015</span>,<span class="st">&quot;-01-01&quot;</span>), n, <span class="cn">TRUE</span>)),</span>
+<span id="cb361-8"><a href="datatable-application.html#cb361-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="fu">as.factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;removed&quot;</span>,<span class="st">&quot;active&quot;</span>,<span class="st">&quot;inactive&quot;</span>,<span class="st">&quot;archived&quot;</span>), n, <span class="cn">TRUE</span>)),</span>
+<span id="cb361-9"><a href="datatable-application.html#cb361-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">amount =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, n, <span class="cn">TRUE</span>),</span>
+<span id="cb361-10"><a href="datatable-application.html#cb361-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">3.5</span>, <span class="fl">2.5</span>, <span class="dv">2</span>), n, <span class="cn">TRUE</span>)</span>
+<span id="cb361-11"><a href="datatable-application.html#cb361-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb361-12"><a href="datatable-application.html#cb361-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(DT, <span class="at">j =</span> <span class="fu">sum</span>(value), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>)) <span class="co"># default id=FALSE</span></span>
+<span id="cb361-13"><a href="datatable-application.html#cb361-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      color       year   status   V1</span></span>
+<span id="cb361-14"><a href="datatable-application.html#cb361-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    red 2015-01-01   active  3.5</span></span>
+<span id="cb361-15"><a href="datatable-application.html#cb361-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:  green 2015-01-01 inactive  5.5</span></span>
+<span id="cb361-16"><a href="datatable-application.html#cb361-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:  green 2014-01-01 archived  3.5</span></span>
+<span id="cb361-17"><a href="datatable-application.html#cb361-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:  green 2015-01-01 archived  2.0</span></span>
+<span id="cb361-18"><a href="datatable-application.html#cb361-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5: yellow 2014-01-01   active  4.5</span></span>
+<span id="cb361-19"><a href="datatable-application.html#cb361-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    red 2013-01-01 inactive  2.0</span></span>
+<span id="cb361-20"><a href="datatable-application.html#cb361-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:  green 2011-01-01   active  6.0</span></span>
+<span id="cb361-21"><a href="datatable-application.html#cb361-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    red 2014-01-01 inactive  2.5</span></span>
+<span id="cb361-22"><a href="datatable-application.html#cb361-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:  green 2011-01-01 archived  2.5</span></span>
+<span id="cb361-23"><a href="datatable-application.html#cb361-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10: yellow 2015-01-01   active  2.0</span></span>
+<span id="cb361-24"><a href="datatable-application.html#cb361-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:    red 2012-01-01 archived  2.0</span></span>
+<span id="cb361-25"><a href="datatable-application.html#cb361-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:    red 2011-01-01  removed  3.5</span></span>
+<span id="cb361-26"><a href="datatable-application.html#cb361-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:  green 2014-01-01 inactive  8.0</span></span>
+<span id="cb361-27"><a href="datatable-application.html#cb361-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:  green 2011-01-01  removed  2.0</span></span>
+<span id="cb361-28"><a href="datatable-application.html#cb361-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15: yellow 2012-01-01 archived  2.5</span></span>
+<span id="cb361-29"><a href="datatable-application.html#cb361-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16:    red 2013-01-01  removed  3.5</span></span>
+<span id="cb361-30"><a href="datatable-application.html#cb361-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17:  green 2013-01-01   active  3.0</span></span>
+<span id="cb361-31"><a href="datatable-application.html#cb361-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18:  green 2014-01-01  removed  2.5</span></span>
+<span id="cb361-32"><a href="datatable-application.html#cb361-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19:    red 2011-01-01 archived  3.0</span></span>
+<span id="cb361-33"><a href="datatable-application.html#cb361-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20:    red 2015-01-01     &lt;NA&gt;  3.5</span></span>
+<span id="cb361-34"><a href="datatable-application.html#cb361-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21:  green 2015-01-01     &lt;NA&gt;  7.5</span></span>
+<span id="cb361-35"><a href="datatable-application.html#cb361-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22:  green 2014-01-01     &lt;NA&gt; 14.0</span></span>
+<span id="cb361-36"><a href="datatable-application.html#cb361-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23: yellow 2014-01-01     &lt;NA&gt;  4.5</span></span>
+<span id="cb361-37"><a href="datatable-application.html#cb361-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24:    red 2013-01-01     &lt;NA&gt;  5.5</span></span>
+<span id="cb361-38"><a href="datatable-application.html#cb361-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25:  green 2011-01-01     &lt;NA&gt; 10.5</span></span>
+<span id="cb361-39"><a href="datatable-application.html#cb361-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26:    red 2014-01-01     &lt;NA&gt;  2.5</span></span>
+<span id="cb361-40"><a href="datatable-application.html#cb361-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27: yellow 2015-01-01     &lt;NA&gt;  2.0</span></span>
+<span id="cb361-41"><a href="datatable-application.html#cb361-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28:    red 2012-01-01     &lt;NA&gt;  2.0</span></span>
+<span id="cb361-42"><a href="datatable-application.html#cb361-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29:    red 2011-01-01     &lt;NA&gt;  6.5</span></span>
+<span id="cb361-43"><a href="datatable-application.html#cb361-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30: yellow 2012-01-01     &lt;NA&gt;  2.5</span></span>
+<span id="cb361-44"><a href="datatable-application.html#cb361-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31:  green 2013-01-01     &lt;NA&gt;  3.0</span></span>
+<span id="cb361-45"><a href="datatable-application.html#cb361-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32:    red       &lt;NA&gt;     &lt;NA&gt; 20.0</span></span>
+<span id="cb361-46"><a href="datatable-application.html#cb361-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33:  green       &lt;NA&gt;     &lt;NA&gt; 35.0</span></span>
+<span id="cb361-47"><a href="datatable-application.html#cb361-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 34: yellow       &lt;NA&gt;     &lt;NA&gt;  9.0</span></span>
+<span id="cb361-48"><a href="datatable-application.html#cb361-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35:   &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt; 64.0</span></span>
+<span id="cb361-49"><a href="datatable-application.html#cb361-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      color       year   status   V1</span></span>
+<span id="cb361-50"><a href="datatable-application.html#cb361-50" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(DT, j = sum(value), by = c(&quot;color&quot;,&quot;year&quot;,&quot;status&quot;), id=TRUE)</span></span></code></pre></div>
 <p>个人运用,实际工作中常常需要汇总项,汇总项在Excel透视表中很简单,在R中我之前是构造重复的数据源聚合汇总出现汇总项,极大浪费内存,运算速度减慢.</p>
 <ul>
 <li>新方法 rollup</li>
 </ul>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="datatable-application.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">25</span>)</span>
-<span id="cb358-2"><a href="datatable-application.html#cb358-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb358-3"><a href="datatable-application.html#cb358-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="fu">sample</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],N,<span class="at">replace =</span> T),<span class="at">col2=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],N,<span class="at">replace =</span> T),<span class="at">num=</span><span class="dv">1</span><span class="sc">:</span>N)</span>
-<span id="cb358-4"><a href="datatable-application.html#cb358-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-5"><a href="datatable-application.html#cb358-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(dt,<span class="at">j=</span><span class="fu">c</span>(<span class="fu">list</span>(<span class="fu">sum</span>(num))),<span class="at">by=</span><span class="fu">c</span>(<span class="st">&#39;col1&#39;</span>,<span class="st">&#39;col2&#39;</span>))</span>
-<span id="cb358-6"><a href="datatable-application.html#cb358-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2     V1</span></span>
-<span id="cb358-7"><a href="datatable-application.html#cb358-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    E    a  19926</span></span>
-<span id="cb358-8"><a href="datatable-application.html#cb358-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    D    a  20966</span></span>
-<span id="cb358-9"><a href="datatable-application.html#cb358-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    A    d  12927</span></span>
-<span id="cb358-10"><a href="datatable-application.html#cb358-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    A    b  20862</span></span>
-<span id="cb358-11"><a href="datatable-application.html#cb358-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    A    c  15331</span></span>
-<span id="cb358-12"><a href="datatable-application.html#cb358-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    B    d  15414</span></span>
-<span id="cb358-13"><a href="datatable-application.html#cb358-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    C    e  20794</span></span>
-<span id="cb358-14"><a href="datatable-application.html#cb358-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    D    e  16110</span></span>
-<span id="cb358-15"><a href="datatable-application.html#cb358-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    C    d  22152</span></span>
-<span id="cb358-16"><a href="datatable-application.html#cb358-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    A    a  18378</span></span>
-<span id="cb358-17"><a href="datatable-application.html#cb358-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:    C    c  19474</span></span>
-<span id="cb358-18"><a href="datatable-application.html#cb358-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:    E    d  18831</span></span>
-<span id="cb358-19"><a href="datatable-application.html#cb358-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:    B    b  19941</span></span>
-<span id="cb358-20"><a href="datatable-application.html#cb358-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:    C    a  19652</span></span>
-<span id="cb358-21"><a href="datatable-application.html#cb358-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:    E    c  16734</span></span>
-<span id="cb358-22"><a href="datatable-application.html#cb358-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16:    E    e  24137</span></span>
-<span id="cb358-23"><a href="datatable-application.html#cb358-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17:    E    b  21988</span></span>
-<span id="cb358-24"><a href="datatable-application.html#cb358-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18:    D    b  16607</span></span>
-<span id="cb358-25"><a href="datatable-application.html#cb358-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19:    B    c  25720</span></span>
-<span id="cb358-26"><a href="datatable-application.html#cb358-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20:    B    a  22109</span></span>
-<span id="cb358-27"><a href="datatable-application.html#cb358-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21:    A    e  18724</span></span>
-<span id="cb358-28"><a href="datatable-application.html#cb358-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22:    C    b  24323</span></span>
-<span id="cb358-29"><a href="datatable-application.html#cb358-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23:    D    d  20508</span></span>
-<span id="cb358-30"><a href="datatable-application.html#cb358-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24:    D    c  19668</span></span>
-<span id="cb358-31"><a href="datatable-application.html#cb358-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25:    B    e  29224</span></span>
-<span id="cb358-32"><a href="datatable-application.html#cb358-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26:    E &lt;NA&gt; 101616</span></span>
-<span id="cb358-33"><a href="datatable-application.html#cb358-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27:    D &lt;NA&gt;  93859</span></span>
-<span id="cb358-34"><a href="datatable-application.html#cb358-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28:    A &lt;NA&gt;  86222</span></span>
-<span id="cb358-35"><a href="datatable-application.html#cb358-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29:    B &lt;NA&gt; 112408</span></span>
-<span id="cb358-36"><a href="datatable-application.html#cb358-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30:    C &lt;NA&gt; 106395</span></span>
-<span id="cb358-37"><a href="datatable-application.html#cb358-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31: &lt;NA&gt; &lt;NA&gt; 500500</span></span>
-<span id="cb358-38"><a href="datatable-application.html#cb358-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2     V1</span></span>
-<span id="cb358-39"><a href="datatable-application.html#cb358-39" aria-hidden="true" tabindex="-1"></a><span class="co">#同上 添加汇总项名称 total</span></span>
-<span id="cb358-40"><a href="datatable-application.html#cb358-40" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(dt,j=c(list(total=sum(num))),by=c(&#39;col1&#39;,&#39;col2&#39;))</span></span>
-<span id="cb358-41"><a href="datatable-application.html#cb358-41" aria-hidden="true" tabindex="-1"></a><span class="co">#添加id=TRUE参数,多出的grouping 列显示聚合级别</span></span>
-<span id="cb358-42"><a href="datatable-application.html#cb358-42" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(dt,j=c(list(total=sum(num))),by=c(&#39;col1&#39;,&#39;col2&#39;),id=TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="datatable-application.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">25</span>)</span>
+<span id="cb362-2"><a href="datatable-application.html#cb362-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb362-3"><a href="datatable-application.html#cb362-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="fu">sample</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],N,<span class="at">replace =</span> T),<span class="at">col2=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],N,<span class="at">replace =</span> T),<span class="at">num=</span><span class="dv">1</span><span class="sc">:</span>N)</span>
+<span id="cb362-4"><a href="datatable-application.html#cb362-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-5"><a href="datatable-application.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(dt,<span class="at">j=</span><span class="fu">c</span>(<span class="fu">list</span>(<span class="fu">sum</span>(num))),<span class="at">by=</span><span class="fu">c</span>(<span class="st">&#39;col1&#39;</span>,<span class="st">&#39;col2&#39;</span>))</span>
+<span id="cb362-6"><a href="datatable-application.html#cb362-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2     V1</span></span>
+<span id="cb362-7"><a href="datatable-application.html#cb362-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    E    a  19926</span></span>
+<span id="cb362-8"><a href="datatable-application.html#cb362-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    D    a  20966</span></span>
+<span id="cb362-9"><a href="datatable-application.html#cb362-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    A    d  12927</span></span>
+<span id="cb362-10"><a href="datatable-application.html#cb362-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    A    b  20862</span></span>
+<span id="cb362-11"><a href="datatable-application.html#cb362-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    A    c  15331</span></span>
+<span id="cb362-12"><a href="datatable-application.html#cb362-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    B    d  15414</span></span>
+<span id="cb362-13"><a href="datatable-application.html#cb362-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    C    e  20794</span></span>
+<span id="cb362-14"><a href="datatable-application.html#cb362-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    D    e  16110</span></span>
+<span id="cb362-15"><a href="datatable-application.html#cb362-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    C    d  22152</span></span>
+<span id="cb362-16"><a href="datatable-application.html#cb362-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    A    a  18378</span></span>
+<span id="cb362-17"><a href="datatable-application.html#cb362-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:    C    c  19474</span></span>
+<span id="cb362-18"><a href="datatable-application.html#cb362-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:    E    d  18831</span></span>
+<span id="cb362-19"><a href="datatable-application.html#cb362-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:    B    b  19941</span></span>
+<span id="cb362-20"><a href="datatable-application.html#cb362-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:    C    a  19652</span></span>
+<span id="cb362-21"><a href="datatable-application.html#cb362-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:    E    c  16734</span></span>
+<span id="cb362-22"><a href="datatable-application.html#cb362-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16:    E    e  24137</span></span>
+<span id="cb362-23"><a href="datatable-application.html#cb362-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17:    E    b  21988</span></span>
+<span id="cb362-24"><a href="datatable-application.html#cb362-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18:    D    b  16607</span></span>
+<span id="cb362-25"><a href="datatable-application.html#cb362-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19:    B    c  25720</span></span>
+<span id="cb362-26"><a href="datatable-application.html#cb362-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20:    B    a  22109</span></span>
+<span id="cb362-27"><a href="datatable-application.html#cb362-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21:    A    e  18724</span></span>
+<span id="cb362-28"><a href="datatable-application.html#cb362-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22:    C    b  24323</span></span>
+<span id="cb362-29"><a href="datatable-application.html#cb362-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23:    D    d  20508</span></span>
+<span id="cb362-30"><a href="datatable-application.html#cb362-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24:    D    c  19668</span></span>
+<span id="cb362-31"><a href="datatable-application.html#cb362-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25:    B    e  29224</span></span>
+<span id="cb362-32"><a href="datatable-application.html#cb362-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26:    E &lt;NA&gt; 101616</span></span>
+<span id="cb362-33"><a href="datatable-application.html#cb362-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27:    D &lt;NA&gt;  93859</span></span>
+<span id="cb362-34"><a href="datatable-application.html#cb362-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28:    A &lt;NA&gt;  86222</span></span>
+<span id="cb362-35"><a href="datatable-application.html#cb362-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29:    B &lt;NA&gt; 112408</span></span>
+<span id="cb362-36"><a href="datatable-application.html#cb362-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30:    C &lt;NA&gt; 106395</span></span>
+<span id="cb362-37"><a href="datatable-application.html#cb362-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31: &lt;NA&gt; &lt;NA&gt; 500500</span></span>
+<span id="cb362-38"><a href="datatable-application.html#cb362-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2     V1</span></span>
+<span id="cb362-39"><a href="datatable-application.html#cb362-39" aria-hidden="true" tabindex="-1"></a><span class="co">#同上 添加汇总项名称 total</span></span>
+<span id="cb362-40"><a href="datatable-application.html#cb362-40" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(dt,j=c(list(total=sum(num))),by=c(&#39;col1&#39;,&#39;col2&#39;))</span></span>
+<span id="cb362-41"><a href="datatable-application.html#cb362-41" aria-hidden="true" tabindex="-1"></a><span class="co">#添加id=TRUE参数,多出的grouping 列显示聚合级别</span></span>
+<span id="cb362-42"><a href="datatable-application.html#cb362-42" aria-hidden="true" tabindex="-1"></a><span class="co">#rollup(dt,j=c(list(total=sum(num))),by=c(&#39;col1&#39;,&#39;col2&#39;),id=TRUE)</span></span></code></pre></div>
 <p>2.groupingsets</p>
 <p>按照指定字段聚合.包作者说相同与SQL中的 GROUPING SETS 操作.详情参照<a href="http://www.postgresql.org/docs/9.5/static/queries-table-expressions.html#QUERIES-GROUPING-SETS">postgresql</a></p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="datatable-application.html#cb359-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">groupingsets</span>(DT, <span class="at">j =</span> <span class="fu">c</span>(<span class="fu">list</span>(<span class="at">count=</span>.N), <span class="fu">lapply</span>(.SD, sum)), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>),</span>
-<span id="cb359-2"><a href="datatable-application.html#cb359-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&quot;color&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>), <span class="fu">character</span>()), <span class="at">id=</span><span class="cn">TRUE</span>)</span>
-<span id="cb359-3"><a href="datatable-application.html#cb359-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span>
-<span id="cb359-4"><a href="datatable-application.html#cb359-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    grouping  color       year   status count amount value</span></span>
-<span id="cb359-5"><a href="datatable-application.html#cb359-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:        3    red       &lt;NA&gt;     &lt;NA&gt;     7     19  20.0</span></span>
-<span id="cb359-6"><a href="datatable-application.html#cb359-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:        3  green       &lt;NA&gt;     &lt;NA&gt;    13     43  35.0</span></span>
-<span id="cb359-7"><a href="datatable-application.html#cb359-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:        3 yellow       &lt;NA&gt;     &lt;NA&gt;     4     10   9.0</span></span>
-<span id="cb359-8"><a href="datatable-application.html#cb359-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:        4   &lt;NA&gt; 2015-01-01   active     2      8   5.5</span></span>
-<span id="cb359-9"><a href="datatable-application.html#cb359-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:        4   &lt;NA&gt; 2015-01-01 inactive     2      5   5.5</span></span>
-<span id="cb359-10"><a href="datatable-application.html#cb359-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:        4   &lt;NA&gt; 2014-01-01 archived     1      3   3.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="datatable-application.html#cb363-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">groupingsets</span>(DT, <span class="at">j =</span> <span class="fu">c</span>(<span class="fu">list</span>(<span class="at">count=</span>.N), <span class="fu">lapply</span>(.SD, sum)), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>),</span>
+<span id="cb363-2"><a href="datatable-application.html#cb363-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&quot;color&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>), <span class="fu">character</span>()), <span class="at">id=</span><span class="cn">TRUE</span>)</span>
+<span id="cb363-3"><a href="datatable-application.html#cb363-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span>
+<span id="cb363-4"><a href="datatable-application.html#cb363-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    grouping  color       year   status count amount value</span></span>
+<span id="cb363-5"><a href="datatable-application.html#cb363-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:        3    red       &lt;NA&gt;     &lt;NA&gt;     7     19  20.0</span></span>
+<span id="cb363-6"><a href="datatable-application.html#cb363-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:        3  green       &lt;NA&gt;     &lt;NA&gt;    13     43  35.0</span></span>
+<span id="cb363-7"><a href="datatable-application.html#cb363-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:        3 yellow       &lt;NA&gt;     &lt;NA&gt;     4     10   9.0</span></span>
+<span id="cb363-8"><a href="datatable-application.html#cb363-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:        4   &lt;NA&gt; 2015-01-01   active     2      8   5.5</span></span>
+<span id="cb363-9"><a href="datatable-application.html#cb363-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:        4   &lt;NA&gt; 2015-01-01 inactive     2      5   5.5</span></span>
+<span id="cb363-10"><a href="datatable-application.html#cb363-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:        4   &lt;NA&gt; 2014-01-01 archived     1      3   3.5</span></span></code></pre></div>
 <p>注意groupingsets函数中sets参数,用list()包裹想要聚合的字段组合,最后还有一个character(),加上该部分相当于全部聚合.当by只有一个字段时,相当于汇总.用法类似sql中“().”</p>
 <p>上述语句结果等同于下面sql.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb360-1"><a href="datatable-application.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> color ,<span class="dt">year</span>, status,<span class="fu">count</span>(<span class="op">*</span>) <span class="fu">count</span>,<span class="fu">sum</span>(amount) amount,<span class="fu">sum</span>(<span class="fu">value</span>) <span class="fu">value</span> </span>
-<span id="cb360-2"><a href="datatable-application.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> dbo.DT</span>
-<span id="cb360-3"><a href="datatable-application.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span></span>
-<span id="cb360-4"><a href="datatable-application.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="fu">GROUPING</span> SETS(</span>
-<span id="cb360-5"><a href="datatable-application.html#cb360-5" aria-hidden="true" tabindex="-1"></a>(color),</span>
-<span id="cb360-6"><a href="datatable-application.html#cb360-6" aria-hidden="true" tabindex="-1"></a>(<span class="dt">year</span>,status),</span>
-<span id="cb360-7"><a href="datatable-application.html#cb360-7" aria-hidden="true" tabindex="-1"></a>() <span class="co">---- 类似 character()</span></span>
-<span id="cb360-8"><a href="datatable-application.html#cb360-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb364-1"><a href="datatable-application.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> color ,<span class="dt">year</span>, status,<span class="fu">count</span>(<span class="op">*</span>) <span class="fu">count</span>,<span class="fu">sum</span>(amount) amount,<span class="fu">sum</span>(<span class="fu">value</span>) <span class="fu">value</span> </span>
+<span id="cb364-2"><a href="datatable-application.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> dbo.DT</span>
+<span id="cb364-3"><a href="datatable-application.html#cb364-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span></span>
+<span id="cb364-4"><a href="datatable-application.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="fu">GROUPING</span> SETS(</span>
+<span id="cb364-5"><a href="datatable-application.html#cb364-5" aria-hidden="true" tabindex="-1"></a>(color),</span>
+<span id="cb364-6"><a href="datatable-application.html#cb364-6" aria-hidden="true" tabindex="-1"></a>(<span class="dt">year</span>,status),</span>
+<span id="cb364-7"><a href="datatable-application.html#cb364-7" aria-hidden="true" tabindex="-1"></a>() <span class="co">---- 类似 character()</span></span>
+<span id="cb364-8"><a href="datatable-application.html#cb364-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>最后还有cube()函数,可?cube查看用法</p>
 </div>
 <div id="行列转变" class="section level3" number="7.6.3">
@@ -676,34 +676,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>一列变多行</li>
 </ul>
 <p>用tstrsplit()函数实现</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="datatable-application.html#cb361-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb361-2"><a href="datatable-application.html#cb361-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">name=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span>n],<span class="at">char=</span><span class="fu">rep</span>(<span class="st">&#39;我-爱-R-语-言&#39;</span>),n)</span>
-<span id="cb361-3"><a href="datatable-application.html#cb361-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> dt[,.(<span class="at">newcol=</span><span class="fu">tstrsplit</span>(char,<span class="st">&#39;-&#39;</span>)),by<span class="ot">=</span>.(name)]</span>
-<span id="cb361-4"><a href="datatable-application.html#cb361-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span>
-<span id="cb361-5"><a href="datatable-application.html#cb361-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    name newcol</span></span>
-<span id="cb361-6"><a href="datatable-application.html#cb361-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    A     我</span></span>
-<span id="cb361-7"><a href="datatable-application.html#cb361-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    A     爱</span></span>
-<span id="cb361-8"><a href="datatable-application.html#cb361-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    A      R</span></span>
-<span id="cb361-9"><a href="datatable-application.html#cb361-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    A     语</span></span>
-<span id="cb361-10"><a href="datatable-application.html#cb361-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    A     言</span></span>
-<span id="cb361-11"><a href="datatable-application.html#cb361-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:    B     我</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="datatable-application.html#cb365-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb365-2"><a href="datatable-application.html#cb365-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">name=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span>n],<span class="at">char=</span><span class="fu">rep</span>(<span class="st">&#39;我-爱-R-语-言&#39;</span>),n)</span>
+<span id="cb365-3"><a href="datatable-application.html#cb365-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> dt[,.(<span class="at">newcol=</span><span class="fu">tstrsplit</span>(char,<span class="st">&#39;-&#39;</span>)),by<span class="ot">=</span>.(name)]</span>
+<span id="cb365-4"><a href="datatable-application.html#cb365-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span>
+<span id="cb365-5"><a href="datatable-application.html#cb365-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    name newcol</span></span>
+<span id="cb365-6"><a href="datatable-application.html#cb365-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    A     我</span></span>
+<span id="cb365-7"><a href="datatable-application.html#cb365-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    A     爱</span></span>
+<span id="cb365-8"><a href="datatable-application.html#cb365-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    A      R</span></span>
+<span id="cb365-9"><a href="datatable-application.html#cb365-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    A     语</span></span>
+<span id="cb365-10"><a href="datatable-application.html#cb365-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    A     言</span></span>
+<span id="cb365-11"><a href="datatable-application.html#cb365-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:    B     我</span></span></code></pre></div>
 <ul>
 <li>多行变一列</li>
 </ul>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="datatable-application.html#cb362-1" aria-hidden="true" tabindex="-1"></a>res[,.(<span class="at">char=</span><span class="fu">paste0</span>(newcol,<span class="at">collapse =</span> <span class="st">&#39;-&#39;</span>)),by<span class="ot">=</span>.(name)]</span>
-<span id="cb362-2"><a href="datatable-application.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     name          char</span></span>
-<span id="cb362-3"><a href="datatable-application.html#cb362-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    A 我-爱-R-语-言</span></span>
-<span id="cb362-4"><a href="datatable-application.html#cb362-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    B 我-爱-R-语-言</span></span>
-<span id="cb362-5"><a href="datatable-application.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    C 我-爱-R-语-言</span></span>
-<span id="cb362-6"><a href="datatable-application.html#cb362-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    D 我-爱-R-语-言</span></span>
-<span id="cb362-7"><a href="datatable-application.html#cb362-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    E 我-爱-R-语-言</span></span>
-<span id="cb362-8"><a href="datatable-application.html#cb362-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    F 我-爱-R-语-言</span></span>
-<span id="cb362-9"><a href="datatable-application.html#cb362-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    G 我-爱-R-语-言</span></span>
-<span id="cb362-10"><a href="datatable-application.html#cb362-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    H 我-爱-R-语-言</span></span>
-<span id="cb362-11"><a href="datatable-application.html#cb362-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    I 我-爱-R-语-言</span></span>
-<span id="cb362-12"><a href="datatable-application.html#cb362-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    J 我-爱-R-语-言</span></span>
-<span id="cb362-13"><a href="datatable-application.html#cb362-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 同上</span></span>
-<span id="cb362-14"><a href="datatable-application.html#cb362-14" aria-hidden="true" tabindex="-1"></a><span class="co"># res[,.(char=stringr::str_c(newcol,collapse = &#39;-&#39;)),by=.(name)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="datatable-application.html#cb366-1" aria-hidden="true" tabindex="-1"></a>res[,.(<span class="at">char=</span><span class="fu">paste0</span>(newcol,<span class="at">collapse =</span> <span class="st">&#39;-&#39;</span>)),by<span class="ot">=</span>.(name)]</span>
+<span id="cb366-2"><a href="datatable-application.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     name          char</span></span>
+<span id="cb366-3"><a href="datatable-application.html#cb366-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    A 我-爱-R-语-言</span></span>
+<span id="cb366-4"><a href="datatable-application.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    B 我-爱-R-语-言</span></span>
+<span id="cb366-5"><a href="datatable-application.html#cb366-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    C 我-爱-R-语-言</span></span>
+<span id="cb366-6"><a href="datatable-application.html#cb366-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    D 我-爱-R-语-言</span></span>
+<span id="cb366-7"><a href="datatable-application.html#cb366-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    E 我-爱-R-语-言</span></span>
+<span id="cb366-8"><a href="datatable-application.html#cb366-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    F 我-爱-R-语-言</span></span>
+<span id="cb366-9"><a href="datatable-application.html#cb366-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    G 我-爱-R-语-言</span></span>
+<span id="cb366-10"><a href="datatable-application.html#cb366-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    H 我-爱-R-语-言</span></span>
+<span id="cb366-11"><a href="datatable-application.html#cb366-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    I 我-爱-R-语-言</span></span>
+<span id="cb366-12"><a href="datatable-application.html#cb366-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    J 我-爱-R-语-言</span></span>
+<span id="cb366-13"><a href="datatable-application.html#cb366-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 同上</span></span>
+<span id="cb366-14"><a href="datatable-application.html#cb366-14" aria-hidden="true" tabindex="-1"></a><span class="co"># res[,.(char=stringr::str_c(newcol,collapse = &#39;-&#39;)),by=.(name)]</span></span></code></pre></div>
 
 </div>
 </div>

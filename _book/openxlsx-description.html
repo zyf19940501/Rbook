@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -508,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.3</span> openxlsx</h2>
 <p>openxlsx是当我需要定制输出Excel表格或报表时常用R包。目前该包的版本4.2.3，通过使用Rcpp加速，包的读写速度在Excel的百万级下是可接受状态，包的相关函数功能完善且简易好用，并且正在积极开发中，相信它以后功能会越来越强大。</p>
 <p>项目官方地址:<a href="https://ycphs.github.io/openxlsx/index.html" class="uri">https://ycphs.github.io/openxlsx/index.html</a></p>
-<p>个人感觉主要优势：</p>
+<p>openxlsx主要优势：</p>
 <ul>
 <li>不依赖java环境</li>
 <li>读写速度可接受</li>
@@ -522,13 +522,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>版本信息查看</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="openxlsx-description.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;openxlsx&quot;</span>)</span>
 <span id="cb23-2"><a href="openxlsx-description.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &#39;4.2.3&#39;</span></span></code></pre></div>
-<p>本人公众号:宇飞的世界中有更加详细的阐述:<a href="https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ" class="uri">https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ</a></p>
+<p>关于openxlsx更加详细的阐述:<a href="https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ" class="uri">https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ</a></p>
 <div id="openxlsx:install" class="section level3" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> 安装</h3>
-<p>稳定版</p>
+<p>从CRAN安装发行版</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="openxlsx-description.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 稳定版</span></span>
 <span id="cb24-2"><a href="openxlsx-description.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>, <span class="at">repos =</span> <span class="st">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span>)</span></code></pre></div>
-<p>开发版</p>
+<p>从Github安装开发版</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="openxlsx-description.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;Rcpp&quot;</span>, <span class="st">&quot;devtools&quot;</span>), <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb25-2"><a href="openxlsx-description.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
 <span id="cb25-3"><a href="openxlsx-description.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;ycphs/openxlsx&quot;</span>)</span></code></pre></div>
@@ -560,7 +560,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>以上参数中需要注意 ：</p>
 <p>detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。</p>
 <p>fillMergedCells参数，当你读取的表格中存在合并单元格，将用值填充其他全部单元格,如下所示：</p>
-<p><img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/merge-cell-xlsx.png" /></p>
+<div class="figure">
+<img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/merge-cell-xlsx.png" alt="" />
+<p class="caption">merge-cell</p>
+</div>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="openxlsx-description.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(<span class="st">&#39;./test.xlsx&#39;</span>,<span class="at">detectDates =</span> <span class="cn">TRUE</span>,<span class="at">fillMergedCells =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>读取后如下所示：</p>
 <div class="figure">
@@ -573,7 +576,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="openxlsx:write-function" class="section level4" number="1.3.2.2">
 <h4><span class="header-section-number">1.3.2.2</span> 写入Excel</h4>
-<p>数据清洗完之后，或者是透视表已经完成，需要将结果从R导出到Excle，这时就利用函数将结果数据集data.frame写入Excle中。</p>
+<p>数据清洗完之后，或者是透视表已经完成，需要将结果从R导出到Excle，这时就利用函数将结果数据集写入Excle中。</p>
 <p>write.xlsx()函数写入</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="openxlsx-description.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(iris, <span class="at">file =</span> <span class="st">&quot;writeXLSX1.xlsx&quot;</span>, <span class="at">colNames =</span> <span class="cn">TRUE</span>, <span class="at">borders =</span> <span class="st">&quot;columns&quot;</span>)</span></code></pre></div>
 <p>带格式输出</p>
@@ -586,21 +589,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb30-7"><a href="openxlsx-description.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;writeXLSX3.xlsx&quot;</span>,</span>
 <span id="cb30-8"><a href="openxlsx-description.html#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>, <span class="at">borders =</span> <span class="st">&quot;rows&quot;</span>, <span class="at">headerStyle =</span> hs</span>
 <span id="cb30-9"><a href="openxlsx-description.html#cb30-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><a href="https://www.sioe.cn/yingyong/yanse-rgb-16/">#4F80BD</a>格式属于十六进制颜色码。</p>
 </div>
 </div>
-<div id="带格式输出" class="section level3" number="1.3.3">
-<h3><span class="header-section-number">1.3.3</span> 带格式输出</h3>
-<p>输出过程共四步，第一步创建workbook,第二步添加sheet,第三步写入数据，第四步保存workbook。在输出的过程中可以通过<code>addStyle()</code>、<code>createStyle()</code>或<code>conditionalFormatting</code>添加格式或条件格式。</p>
+<div id="定制格式输出" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> 定制格式输出</h3>
+<p>openxlsx包有两套输出函数，<code>wrire.xlsx()</code>是其中一种，还有如下一种。</p>
+<p>输出过程共分为四步，第一步创建workbook,第二步添加sheet,第三步写入数据，第四步保存workbook。在输出的过程中可以通过<code>addStyle()</code>、<code>createStyle()</code>或<code>conditionalFormatting</code>添加格式或条件格式。</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="openxlsx-description.html#cb31-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">b=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">d=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb31-2"><a href="openxlsx-description.html#cb31-2" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(<span class="at">creator =</span> <span class="st">&#39;zhongyf&#39;</span>,<span class="at">title =</span> <span class="st">&#39;test&#39;</span>)</span>
 <span id="cb31-3"><a href="openxlsx-description.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb,<span class="at">sheetName =</span> <span class="st">&#39;test&#39;</span>)</span>
-<span id="cb31-4"><a href="openxlsx-description.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb,<span class="at">sheet =</span> <span class="st">&#39;test&#39;</span>,<span class="at">x =</span> df)</span>
+<span id="cb31-4"><a href="openxlsx-description.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeDataTable</span>(wb,<span class="at">sheet =</span> <span class="st">&#39;test&#39;</span>,<span class="at">x =</span> df)</span>
 <span id="cb31-5"><a href="openxlsx-description.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;test.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>我们以上面四步输出的方式，查看包自带的例子。</p>
 <ul>
 <li><p>createWorkbook()</p></li>
 <li><p>addWorksheet()</p></li>
-<li><p>writeData()</p></li>
+<li><p>writeDataTable()</p></li>
 <li><p>saveWorkbook()</p></li>
 </ul>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="openxlsx-description.html#cb32-1" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">createWorkbook</span>(<span class="st">&quot;Fred&quot;</span>)</span>
@@ -638,19 +643,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-33"><a href="openxlsx-description.html#cb32-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstFooter =</span> <span class="fu">c</span>(<span class="st">&quot;FIRST ONLY L&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;FIRST ONLY R&quot;</span>)</span>
 <span id="cb32-34"><a href="openxlsx-description.html#cb32-34" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb32-35"><a href="openxlsx-description.html#cb32-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-36"><a href="openxlsx-description.html#cb32-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Need data on worksheet to see all headers and footers</span></span>
-<span id="cb32-37"><a href="openxlsx-description.html#cb32-37" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
-<span id="cb32-38"><a href="openxlsx-description.html#cb32-38" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
-<span id="cb32-39"><a href="openxlsx-description.html#cb32-39" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">7</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
-<span id="cb32-40"><a href="openxlsx-description.html#cb32-40" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">8</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
-<span id="cb32-41"><a href="openxlsx-description.html#cb32-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-42"><a href="openxlsx-description.html#cb32-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Save workbook</span></span>
-<span id="cb32-43"><a href="openxlsx-description.html#cb32-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run: </span></span>
-<span id="cb32-44"><a href="openxlsx-description.html#cb32-44" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;addWorksheetExample.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<span id="cb32-36"><a href="openxlsx-description.html#cb32-36" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(wb,<span class="st">&#39;dataframe&#39;</span>)</span>
+<span id="cb32-37"><a href="openxlsx-description.html#cb32-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-38"><a href="openxlsx-description.html#cb32-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Need data on worksheet to see all headers and footers</span></span>
+<span id="cb32-39"><a href="openxlsx-description.html#cb32-39" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb32-40"><a href="openxlsx-description.html#cb32-40" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb32-41"><a href="openxlsx-description.html#cb32-41" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">7</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb32-42"><a href="openxlsx-description.html#cb32-42" aria-hidden="true" tabindex="-1"></a><span class="fu">writeData</span>(wb, <span class="at">sheet =</span> <span class="dv">8</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>)</span>
+<span id="cb32-43"><a href="openxlsx-description.html#cb32-43" aria-hidden="true" tabindex="-1"></a><span class="fu">writeDataTable</span>(wb,<span class="at">sheet =</span> <span class="st">&#39;dataframe&#39;</span>,iris)</span>
+<span id="cb32-44"><a href="openxlsx-description.html#cb32-44" aria-hidden="true" tabindex="-1"></a><span class="do">## Save workbook</span></span>
+<span id="cb32-45"><a href="openxlsx-description.html#cb32-45" aria-hidden="true" tabindex="-1"></a><span class="do">## Not run: </span></span>
+<span id="cb32-46"><a href="openxlsx-description.html#cb32-46" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, <span class="st">&quot;addWorksheetExample.xlsx&quot;</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="函数参数" class="section level3" number="1.3.4">
 <h3><span class="header-section-number">1.3.4</span> 函数参数</h3>
-<p>输出Excel的过程分为四步，本小节主要拆解<code>createWorkbook</code>，<code>addWorksheet</code>,<code>writeDataTable</code>,<code>saveWorkbook</code>四个函数的参数以及用法。</p>
+<p>本小节主要讲<code>createWorkbook()</code>，<code>addWorksheet()</code>,<code>writeDataTable()</code>,<code>saveWorkbook()</code>四个函数的参数以及用法。</p>
 <ul>
 <li>createWorkbook</li>
 </ul>
@@ -719,18 +726,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>writeDataTable</li>
 </ul>
 <p>writeDataTable()函数将data.frame写入Excel。</p>
-<p>wb:即createWorkbook()函数创建</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="openxlsx-description.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">writeDataTable</span>(</span>
+<span id="cb37-2"><a href="openxlsx-description.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  wb,</span>
+<span id="cb37-3"><a href="openxlsx-description.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  sheet,</span>
+<span id="cb37-4"><a href="openxlsx-description.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  x,</span>
+<span id="cb37-5"><a href="openxlsx-description.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">startCol =</span> <span class="dv">1</span>,</span>
+<span id="cb37-6"><a href="openxlsx-description.html#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">startRow =</span> <span class="dv">1</span>,</span>
+<span id="cb37-7"><a href="openxlsx-description.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xy =</span> <span class="cn">NULL</span>,</span>
+<span id="cb37-8"><a href="openxlsx-description.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">colNames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb37-9"><a href="openxlsx-description.html#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">rowNames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb37-10"><a href="openxlsx-description.html#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">tableStyle =</span> <span class="st">&quot;TableStyleLight9&quot;</span>,</span>
+<span id="cb37-11"><a href="openxlsx-description.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">tableName =</span> <span class="cn">NULL</span>,</span>
+<span id="cb37-12"><a href="openxlsx-description.html#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">headerStyle =</span> <span class="cn">NULL</span>,</span>
+<span id="cb37-13"><a href="openxlsx-description.html#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">withFilter =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb37-14"><a href="openxlsx-description.html#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">keepNA =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb37-15"><a href="openxlsx-description.html#cb37-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.string =</span> <span class="cn">NULL</span>,</span>
+<span id="cb37-16"><a href="openxlsx-description.html#cb37-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;, &quot;</span>,</span>
+<span id="cb37-17"><a href="openxlsx-description.html#cb37-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">stack =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb37-18"><a href="openxlsx-description.html#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">firstColumn =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb37-19"><a href="openxlsx-description.html#cb37-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">lastColumn =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb37-20"><a href="openxlsx-description.html#cb37-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">bandedRows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb37-21"><a href="openxlsx-description.html#cb37-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">bandedCols =</span> <span class="cn">FALSE</span></span>
+<span id="cb37-22"><a href="openxlsx-description.html#cb37-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ul>
 <li>saveWorkbook</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="openxlsx-description.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, file, <span class="at">overwrite =</span> <span class="cn">FALSE</span>, <span class="at">returnValue =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="openxlsx-description.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, file, <span class="at">overwrite =</span> <span class="cn">FALSE</span>, <span class="at">returnValue =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>参数较为简单，wb即上文中的workbook对象，file即输出的文件名，overwrite即如果存在是否覆盖，returnValue如果设置为TRUE，返回TRUE代表保存成功</p>
 </div>
 <div id="总结" class="section level3" number="1.3.5">
 <h3><span class="header-section-number">1.3.5</span> 总结</h3>
 <p>openxlsx包功能较为强大，更多详细用法大家可自行探索，或关注我的语雀笔记，笔记会不定期持续更新。</p>
 <p>R包openxlsx学习笔记:<a href="https://www.yuque.com/docs/share/7a768e6f-95e0-417c-a9b5-dfc8862dc6be?#" class="uri">https://www.yuque.com/docs/share/7a768e6f-95e0-417c-a9b5-dfc8862dc6be?#</a></p>
-<p>个人主页:<a href="https://www.yuque.com/zyufei" class="uri">https://www.yuque.com/zyufei</a></p>
+<p>语雀个人主页:<a href="https://www.yuque.com/zyufei" class="uri">https://www.yuque.com/zyufei</a></p>
 </div>
 </div>
             </section>

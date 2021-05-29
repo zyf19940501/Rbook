@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -507,16 +507,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="define-function:parameter" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> 函数参数</h2>
 <p>函数的参数通常分为两大类,一组是提供要计算的参数,另外一组提供计算时的细节参数.</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="define-function-parameter.html#cb473-1" aria-hidden="true" tabindex="-1"></a>mean_ci <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">conf =</span> <span class="fl">0.95</span>) {</span>
-<span id="cb473-2"><a href="define-function-parameter.html#cb473-2" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(x))</span>
-<span id="cb473-3"><a href="define-function-parameter.html#cb473-3" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> conf</span>
-<span id="cb473-4"><a href="define-function-parameter.html#cb473-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x) <span class="sc">+</span> se <span class="sc">*</span> <span class="fu">qnorm</span>(<span class="fu">c</span>(alpha <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">1</span> <span class="sc">-</span> alpha <span class="sc">/</span> <span class="dv">2</span>))</span>
-<span id="cb473-5"><a href="define-function-parameter.html#cb473-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb473-6"><a href="define-function-parameter.html#cb473-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb473-7"><a href="define-function-parameter.html#cb473-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_ci</span>(x)</span>
-<span id="cb473-8"><a href="define-function-parameter.html#cb473-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.431 0.543</span></span>
-<span id="cb473-9"><a href="define-function-parameter.html#cb473-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_ci</span>(x, <span class="at">conf =</span> <span class="fl">0.99</span>)</span>
-<span id="cb473-10"><a href="define-function-parameter.html#cb473-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.414 0.560</span></span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="define-function-parameter.html#cb477-1" aria-hidden="true" tabindex="-1"></a>mean_ci <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">conf =</span> <span class="fl">0.95</span>) {</span>
+<span id="cb477-2"><a href="define-function-parameter.html#cb477-2" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(x))</span>
+<span id="cb477-3"><a href="define-function-parameter.html#cb477-3" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> conf</span>
+<span id="cb477-4"><a href="define-function-parameter.html#cb477-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x) <span class="sc">+</span> se <span class="sc">*</span> <span class="fu">qnorm</span>(<span class="fu">c</span>(alpha <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">1</span> <span class="sc">-</span> alpha <span class="sc">/</span> <span class="dv">2</span>))</span>
+<span id="cb477-5"><a href="define-function-parameter.html#cb477-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb477-6"><a href="define-function-parameter.html#cb477-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
+<span id="cb477-7"><a href="define-function-parameter.html#cb477-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_ci</span>(x)</span>
+<span id="cb477-8"><a href="define-function-parameter.html#cb477-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.431 0.543</span></span>
+<span id="cb477-9"><a href="define-function-parameter.html#cb477-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_ci</span>(x, <span class="at">conf =</span> <span class="fl">0.99</span>)</span>
+<span id="cb477-10"><a href="define-function-parameter.html#cb477-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.414 0.560</span></span></code></pre></div>
 <div id="参数名称" class="section level3" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> 参数名称</h3>
 <p>参数的名称很重要,方便我们理解参数含义,调用时不会混乱.以下时几个重要的参数名称</p>
@@ -532,33 +532,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="检查参数值" class="section level3" number="11.3.2">
 <h3><span class="header-section-number">11.3.2</span> 检查参数值</h3>
 <p>在写函数时,并不清楚最终函数的输出,在编写函数时进行约束是有必要的.</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="define-function-parameter.html#cb474-1" aria-hidden="true" tabindex="-1"></a>wt_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, w) {</span>
-<span id="cb474-2"><a href="define-function-parameter.html#cb474-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">!=</span> <span class="fu">length</span>(w)) {</span>
-<span id="cb474-3"><a href="define-function-parameter.html#cb474-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;`x` and `w` must be the same length&quot;</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb474-4"><a href="define-function-parameter.html#cb474-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb474-5"><a href="define-function-parameter.html#cb474-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(w <span class="sc">*</span> x) <span class="sc">/</span> <span class="fu">sum</span>(w)</span>
-<span id="cb474-6"><a href="define-function-parameter.html#cb474-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="define-function-parameter.html#cb478-1" aria-hidden="true" tabindex="-1"></a>wt_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, w) {</span>
+<span id="cb478-2"><a href="define-function-parameter.html#cb478-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">!=</span> <span class="fu">length</span>(w)) {</span>
+<span id="cb478-3"><a href="define-function-parameter.html#cb478-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;`x` and `w` must be the same length&quot;</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb478-4"><a href="define-function-parameter.html#cb478-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb478-5"><a href="define-function-parameter.html#cb478-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(w <span class="sc">*</span> x) <span class="sc">/</span> <span class="fu">sum</span>(w)</span>
+<span id="cb478-6"><a href="define-function-parameter.html#cb478-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="参数-1" class="section level3" number="11.3.3">
 <h3><span class="header-section-number">11.3.3</span> …参数</h3>
 <p>R中的许多函数都能接受任意数量的输入：</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="define-function-parameter.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span>
-<span id="cb475-2"><a href="define-function-parameter.html#cb475-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 55</span></span>
-<span id="cb475-3"><a href="define-function-parameter.html#cb475-3" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="st">&#39;e&#39;</span>,<span class="st">&#39;f&#39;</span>,<span class="st">&#39;g&#39;</span>,<span class="st">&#39;h&#39;</span>)</span>
-<span id="cb475-4"><a href="define-function-parameter.html#cb475-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;abdefgh&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="define-function-parameter.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span>
+<span id="cb479-2"><a href="define-function-parameter.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 55</span></span>
+<span id="cb479-3"><a href="define-function-parameter.html#cb479-3" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="st">&#39;e&#39;</span>,<span class="st">&#39;f&#39;</span>,<span class="st">&#39;g&#39;</span>,<span class="st">&#39;h&#39;</span>)</span>
+<span id="cb479-4"><a href="define-function-parameter.html#cb479-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;abdefgh&quot;</span></span></code></pre></div>
 <p>下面的例子中</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="define-function-parameter.html#cb476-1" aria-hidden="true" tabindex="-1"></a>commas <span class="ot">&lt;-</span> <span class="cf">function</span>(...) stringr<span class="sc">::</span><span class="fu">str_c</span>(..., <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>)</span>
-<span id="cb476-2"><a href="define-function-parameter.html#cb476-2" aria-hidden="true" tabindex="-1"></a><span class="fu">commas</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
-<span id="cb476-3"><a href="define-function-parameter.html#cb476-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a, b, c, d, e, f, g, h, i, j&quot;</span></span>
-<span id="cb476-4"><a href="define-function-parameter.html#cb476-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a, b, c, d, e, f, g, h, i, j&quot;</span></span>
-<span id="cb476-5"><a href="define-function-parameter.html#cb476-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb476-6"><a href="define-function-parameter.html#cb476-6" aria-hidden="true" tabindex="-1"></a>rule <span class="ot">&lt;-</span> <span class="cf">function</span>(..., <span class="at">pad =</span> <span class="st">&quot;-&quot;</span>) {</span>
-<span id="cb476-7"><a href="define-function-parameter.html#cb476-7" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">&lt;-</span> <span class="fu">paste0</span>(...)</span>
-<span id="cb476-8"><a href="define-function-parameter.html#cb476-8" aria-hidden="true" tabindex="-1"></a>  width <span class="ot">&lt;-</span> <span class="fu">getOption</span>(<span class="st">&quot;width&quot;</span>) <span class="sc">-</span> <span class="fu">nchar</span>(title) <span class="sc">-</span> <span class="dv">5</span></span>
-<span id="cb476-9"><a href="define-function-parameter.html#cb476-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(title, <span class="st">&quot; &quot;</span>, stringr<span class="sc">::</span><span class="fu">str_dup</span>(pad, width), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb476-10"><a href="define-function-parameter.html#cb476-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb476-11"><a href="define-function-parameter.html#cb476-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rule</span>(<span class="st">&quot;Important output&quot;</span>)</span>
-<span id="cb476-12"><a href="define-function-parameter.html#cb476-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Important output -----------------------------------------------------------</span></span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="define-function-parameter.html#cb480-1" aria-hidden="true" tabindex="-1"></a>commas <span class="ot">&lt;-</span> <span class="cf">function</span>(...) stringr<span class="sc">::</span><span class="fu">str_c</span>(..., <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>)</span>
+<span id="cb480-2"><a href="define-function-parameter.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="fu">commas</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb480-3"><a href="define-function-parameter.html#cb480-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a, b, c, d, e, f, g, h, i, j&quot;</span></span>
+<span id="cb480-4"><a href="define-function-parameter.html#cb480-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a, b, c, d, e, f, g, h, i, j&quot;</span></span>
+<span id="cb480-5"><a href="define-function-parameter.html#cb480-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-6"><a href="define-function-parameter.html#cb480-6" aria-hidden="true" tabindex="-1"></a>rule <span class="ot">&lt;-</span> <span class="cf">function</span>(..., <span class="at">pad =</span> <span class="st">&quot;-&quot;</span>) {</span>
+<span id="cb480-7"><a href="define-function-parameter.html#cb480-7" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">&lt;-</span> <span class="fu">paste0</span>(...)</span>
+<span id="cb480-8"><a href="define-function-parameter.html#cb480-8" aria-hidden="true" tabindex="-1"></a>  width <span class="ot">&lt;-</span> <span class="fu">getOption</span>(<span class="st">&quot;width&quot;</span>) <span class="sc">-</span> <span class="fu">nchar</span>(title) <span class="sc">-</span> <span class="dv">5</span></span>
+<span id="cb480-9"><a href="define-function-parameter.html#cb480-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(title, <span class="st">&quot; &quot;</span>, stringr<span class="sc">::</span><span class="fu">str_dup</span>(pad, width), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb480-10"><a href="define-function-parameter.html#cb480-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb480-11"><a href="define-function-parameter.html#cb480-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rule</span>(<span class="st">&quot;Important output&quot;</span>)</span>
+<span id="cb480-12"><a href="define-function-parameter.html#cb480-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Important output -----------------------------------------------------------</span></span></code></pre></div>
 </div>
 </div>
             </section>

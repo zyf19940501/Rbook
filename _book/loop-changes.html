@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -508,12 +508,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.2</span> 循环变化</h2>
 <div id="修改已有对象" class="section level3" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> 修改已有对象</h3>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="loop-changes.html#cb447-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb447-2"><a href="loop-changes.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(res)){</span>
-<span id="cb447-3"><a href="loop-changes.html#cb447-3" aria-hidden="true" tabindex="-1"></a>  res[i] <span class="ot">&lt;-</span> res[i] <span class="sc">*</span> i</span>
-<span id="cb447-4"><a href="loop-changes.html#cb447-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb447-5"><a href="loop-changes.html#cb447-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(res)</span>
-<span id="cb447-6"><a href="loop-changes.html#cb447-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  int [1:100] 1 4 9 16 25 36 49 64 81 100 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="loop-changes.html#cb451-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb451-2"><a href="loop-changes.html#cb451-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(res)){</span>
+<span id="cb451-3"><a href="loop-changes.html#cb451-3" aria-hidden="true" tabindex="-1"></a>  res[i] <span class="ot">&lt;-</span> res[i] <span class="sc">*</span> i</span>
+<span id="cb451-4"><a href="loop-changes.html#cb451-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb451-5"><a href="loop-changes.html#cb451-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(res)</span>
+<span id="cb451-6"><a href="loop-changes.html#cb451-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  int [1:100] 1 4 9 16 25 36 49 64 81 100 ...</span></span></code></pre></div>
 </div>
 <div id="循环模式" class="section level3" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> 循环模式</h3>
@@ -526,39 +526,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>遍历名称</li>
 </ul>
 <p><code>for (nm in names(xs))</code>,我们可以使用<code>x[[nm]]</code> 该名称访问.当我们要在文件名中使用名称时会比较方便.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="loop-changes.html#cb448-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(x))</span>
-<span id="cb448-2"><a href="loop-changes.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(results) <span class="ot">&lt;-</span> <span class="fu">names</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="loop-changes.html#cb452-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(x))</span>
+<span id="cb452-2"><a href="loop-changes.html#cb452-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(results) <span class="ot">&lt;-</span> <span class="fu">names</span>(x)</span></code></pre></div>
 <p>数字索引的循环模式最常用,因为可以根据位置提取名称和值.</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="loop-changes.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
-<span id="cb449-2"><a href="loop-changes.html#cb449-2" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> <span class="fu">names</span>(x)[[i]]</span>
-<span id="cb449-3"><a href="loop-changes.html#cb449-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> x[[i]]</span>
-<span id="cb449-4"><a href="loop-changes.html#cb449-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="loop-changes.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb453-2"><a href="loop-changes.html#cb453-2" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> <span class="fu">names</span>(x)[[i]]</span>
+<span id="cb453-3"><a href="loop-changes.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> x[[i]]</span>
+<span id="cb453-4"><a href="loop-changes.html#cb453-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="未知长度输出" class="section level3" number="9.2.3">
 <h3><span class="header-section-number">9.2.3</span> 未知长度输出</h3>
 <p>有时候我们的循环我们不确定输出的长度是多少.这样会逐步增加向量的长度,如下所示：</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="loop-changes.html#cb450-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb450-2"><a href="loop-changes.html#cb450-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb450-3"><a href="loop-changes.html#cb450-3" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">double</span>()</span>
-<span id="cb450-4"><a href="loop-changes.html#cb450-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
-<span id="cb450-5"><a href="loop-changes.html#cb450-5" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb450-6"><a href="loop-changes.html#cb450-6" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">rnorm</span>(n, means[[i]]))</span>
-<span id="cb450-7"><a href="loop-changes.html#cb450-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb450-8"><a href="loop-changes.html#cb450-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(output)</span>
-<span id="cb450-9"><a href="loop-changes.html#cb450-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  num [1:69] 0.255 -0.553 1.405 -0.795 -1.567 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="loop-changes.html#cb454-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb454-2"><a href="loop-changes.html#cb454-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb454-3"><a href="loop-changes.html#cb454-3" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">double</span>()</span>
+<span id="cb454-4"><a href="loop-changes.html#cb454-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
+<span id="cb454-5"><a href="loop-changes.html#cb454-5" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb454-6"><a href="loop-changes.html#cb454-6" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">rnorm</span>(n, means[[i]]))</span>
+<span id="cb454-7"><a href="loop-changes.html#cb454-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb454-8"><a href="loop-changes.html#cb454-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(output)</span>
+<span id="cb454-9"><a href="loop-changes.html#cb454-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  num [1:69] 0.255 -0.553 1.405 -0.795 -1.567 ...</span></span></code></pre></div>
 <p>但是这种方式浪费时间，当数据量大时候效率会很低下。因为时间复杂度为(<span class="math inline">\(O(n^2)\)</span>)，解决方案是将结果保存在列表中,然后在完成循环后合并为单个向量:</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="loop-changes.html#cb451-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(means))</span>
-<span id="cb451-2"><a href="loop-changes.html#cb451-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
-<span id="cb451-3"><a href="loop-changes.html#cb451-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb451-4"><a href="loop-changes.html#cb451-4" aria-hidden="true" tabindex="-1"></a>  out[[i]] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, means[[i]])</span>
-<span id="cb451-5"><a href="loop-changes.html#cb451-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb451-6"><a href="loop-changes.html#cb451-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(out)</span>
-<span id="cb451-7"><a href="loop-changes.html#cb451-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb451-8"><a href="loop-changes.html#cb451-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:89] -1.399 0.259 -0.442 0.569 2.127 ...</span></span>
-<span id="cb451-9"><a href="loop-changes.html#cb451-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:81] 2.36 0.929 0.728 -1.447 1.065 ...</span></span>
-<span id="cb451-10"><a href="loop-changes.html#cb451-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:35] 0.0381 2.946 2.549 1.4225 0.7717 ...</span></span>
-<span id="cb451-11"><a href="loop-changes.html#cb451-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">unlist</span>(out)) <span class="co">#unlist将列表向量化</span></span>
-<span id="cb451-12"><a href="loop-changes.html#cb451-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  num [1:205] -1.399 0.259 -0.442 0.569 2.127 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="loop-changes.html#cb455-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(means))</span>
+<span id="cb455-2"><a href="loop-changes.html#cb455-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
+<span id="cb455-3"><a href="loop-changes.html#cb455-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb455-4"><a href="loop-changes.html#cb455-4" aria-hidden="true" tabindex="-1"></a>  out[[i]] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, means[[i]])</span>
+<span id="cb455-5"><a href="loop-changes.html#cb455-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb455-6"><a href="loop-changes.html#cb455-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(out)</span>
+<span id="cb455-7"><a href="loop-changes.html#cb455-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb455-8"><a href="loop-changes.html#cb455-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:89] -1.399 0.259 -0.442 0.569 2.127 ...</span></span>
+<span id="cb455-9"><a href="loop-changes.html#cb455-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:81] 2.36 0.929 0.728 -1.447 1.065 ...</span></span>
+<span id="cb455-10"><a href="loop-changes.html#cb455-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:35] 0.0381 2.946 2.549 1.4225 0.7717 ...</span></span>
+<span id="cb455-11"><a href="loop-changes.html#cb455-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">unlist</span>(out)) <span class="co">#unlist将列表向量化</span></span>
+<span id="cb455-12"><a href="loop-changes.html#cb455-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  num [1:205] -1.399 0.259 -0.442 0.569 2.127 ...</span></span></code></pre></div>
 
 </div>
 </div>

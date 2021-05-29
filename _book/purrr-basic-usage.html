@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:install"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
 <li class="chapter" data-level="1.3.2" data-path="openxlsx-description.html"><a href="openxlsx-description.html#openxlsx:functions"><i class="fa fa-check"></i><b>1.3.2</b> 基础功能</a></li>
-<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#带格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 带格式输出</a></li>
+<li class="chapter" data-level="1.3.3" data-path="openxlsx-description.html"><a href="openxlsx-description.html#定制格式输出"><i class="fa fa-check"></i><b>1.3.3</b> 定制格式输出</a></li>
 <li class="chapter" data-level="1.3.4" data-path="openxlsx-description.html"><a href="openxlsx-description.html#函数参数"><i class="fa fa-check"></i><b>1.3.4</b> 函数参数</a></li>
 <li class="chapter" data-level="1.3.5" data-path="openxlsx-description.html"><a href="openxlsx-description.html#总结"><i class="fa fa-check"></i><b>1.3.5</b> 总结</a></li>
 </ul></li>
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.3" data-path="database-else-package.html"><a href="database-else-package.html#rmysql包"><i class="fa fa-check"></i><b>8.4.3</b> RMySQL包</a></li>
 <li class="chapter" data-level="8.4.4" data-path="database-else-package.html"><a href="database-else-package.html#rsqlite"><i class="fa fa-check"></i><b>8.4.4</b> RSQLite</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="大数据相关r包.html"><a href="大数据相关r包.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
+<li class="chapter" data-level="8.5" data-path="database-big-data.html"><a href="database-big-data.html"><i class="fa fa-check"></i><b>8.5</b> 大数据相关R包</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="大数据相关r包.html"><a href="大数据相关r包.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
-<li class="chapter" data-level="8.5.2" data-path="大数据相关r包.html"><a href="大数据相关r包.html#rclickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
+<li class="chapter" data-level="8.5.1" data-path="database-big-data.html"><a href="database-big-data.html#sparklyr"><i class="fa fa-check"></i><b>8.5.1</b> sparklyr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="database-big-data.html"><a href="database-big-data.html#RClickhouse"><i class="fa fa-check"></i><b>8.5.2</b> RClickhouse</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="database-FAQ.html"><a href="database-FAQ.html"><i class="fa fa-check"></i><b>8.6</b> 常见问题</a>
 <ul>
@@ -510,45 +510,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>map</li>
 </ul>
 <p>用map循环迭代,map函数始终返回list对象。</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="purrr-basic-usage.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb452-2"><a href="purrr-basic-usage.html#cb452-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb452-3"><a href="purrr-basic-usage.html#cb452-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define function</span></span>
-<span id="cb452-4"><a href="purrr-basic-usage.html#cb452-4" aria-hidden="true" tabindex="-1"></a>addTen <span class="ot">&lt;-</span> <span class="cf">function</span>(.x) {</span>
-<span id="cb452-5"><a href="purrr-basic-usage.html#cb452-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.x <span class="sc">+</span> <span class="dv">10</span>)</span>
-<span id="cb452-6"><a href="purrr-basic-usage.html#cb452-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb452-7"><a href="purrr-basic-usage.html#cb452-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb452-8"><a href="purrr-basic-usage.html#cb452-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="at">.f =</span> addTen)</span>
-<span id="cb452-9"><a href="purrr-basic-usage.html#cb452-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb452-10"><a href="purrr-basic-usage.html#cb452-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
-<span id="cb452-11"><a href="purrr-basic-usage.html#cb452-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb452-12"><a href="purrr-basic-usage.html#cb452-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb452-13"><a href="purrr-basic-usage.html#cb452-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14</span></span>
-<span id="cb452-14"><a href="purrr-basic-usage.html#cb452-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb452-15"><a href="purrr-basic-usage.html#cb452-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb452-16"><a href="purrr-basic-usage.html#cb452-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 17</span></span>
-<span id="cb452-17"><a href="purrr-basic-usage.html#cb452-17" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb452-18"><a href="purrr-basic-usage.html#cb452-18" aria-hidden="true" tabindex="-1"></a><span class="co"># map(c(1, 4, 7), addTen) # same above</span></span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="purrr-basic-usage.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb456-2"><a href="purrr-basic-usage.html#cb456-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb456-3"><a href="purrr-basic-usage.html#cb456-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define function</span></span>
+<span id="cb456-4"><a href="purrr-basic-usage.html#cb456-4" aria-hidden="true" tabindex="-1"></a>addTen <span class="ot">&lt;-</span> <span class="cf">function</span>(.x) {</span>
+<span id="cb456-5"><a href="purrr-basic-usage.html#cb456-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.x <span class="sc">+</span> <span class="dv">10</span>)</span>
+<span id="cb456-6"><a href="purrr-basic-usage.html#cb456-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb456-7"><a href="purrr-basic-usage.html#cb456-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb456-8"><a href="purrr-basic-usage.html#cb456-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="at">.f =</span> addTen)</span>
+<span id="cb456-9"><a href="purrr-basic-usage.html#cb456-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb456-10"><a href="purrr-basic-usage.html#cb456-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
+<span id="cb456-11"><a href="purrr-basic-usage.html#cb456-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb456-12"><a href="purrr-basic-usage.html#cb456-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb456-13"><a href="purrr-basic-usage.html#cb456-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14</span></span>
+<span id="cb456-14"><a href="purrr-basic-usage.html#cb456-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb456-15"><a href="purrr-basic-usage.html#cb456-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb456-16"><a href="purrr-basic-usage.html#cb456-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 17</span></span>
+<span id="cb456-17"><a href="purrr-basic-usage.html#cb456-17" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb456-18"><a href="purrr-basic-usage.html#cb456-18" aria-hidden="true" tabindex="-1"></a><span class="co"># map(c(1, 4, 7), addTen) # same above</span></span></code></pre></div>
 <ul>
 <li>map_dbl</li>
 </ul>
 <p>用map_dbl循环迭代，map_dbl函数返回vector。</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="purrr-basic-usage.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(purrr)</span></span>
-<span id="cb453-2"><a href="purrr-basic-usage.html#cb453-2" aria-hidden="true" tabindex="-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb453-3"><a href="purrr-basic-usage.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  (x<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>x</span>
-<span id="cb453-4"><a href="purrr-basic-usage.html#cb453-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb453-5"><a href="purrr-basic-usage.html#cb453-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,add1) <span class="co"># maP_dbl 输出结果为向量</span></span>
-<span id="cb453-6"><a href="purrr-basic-usage.html#cb453-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb453-7"><a href="purrr-basic-usage.html#cb453-7" aria-hidden="true" tabindex="-1"></a><span class="co">#for版本</span></span>
-<span id="cb453-8"><a href="purrr-basic-usage.html#cb453-8" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">1000</span>)</span>
-<span id="cb453-9"><a href="purrr-basic-usage.html#cb453-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb453-10"><a href="purrr-basic-usage.html#cb453-10" aria-hidden="true" tabindex="-1"></a>  result2[i] <span class="ot">&lt;-</span> (i<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> i</span>
-<span id="cb453-11"><a href="purrr-basic-usage.html#cb453-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb453-12"><a href="purrr-basic-usage.html#cb453-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test </span></span>
-<span id="cb453-13"><a href="purrr-basic-usage.html#cb453-13" aria-hidden="true" tabindex="-1"></a><span class="co">#not run</span></span>
-<span id="cb453-14"><a href="purrr-basic-usage.html#cb453-14" aria-hidden="true" tabindex="-1"></a><span class="co">#table(result1 == result2)</span></span>
-<span id="cb453-15"><a href="purrr-basic-usage.html#cb453-15" aria-hidden="true" tabindex="-1"></a><span class="co"># all equal</span></span>
-<span id="cb453-16"><a href="purrr-basic-usage.html#cb453-16" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(result1,result2)</span>
-<span id="cb453-17"><a href="purrr-basic-usage.html#cb453-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="purrr-basic-usage.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(purrr)</span></span>
+<span id="cb457-2"><a href="purrr-basic-usage.html#cb457-2" aria-hidden="true" tabindex="-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb457-3"><a href="purrr-basic-usage.html#cb457-3" aria-hidden="true" tabindex="-1"></a>  (x<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>x</span>
+<span id="cb457-4"><a href="purrr-basic-usage.html#cb457-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb457-5"><a href="purrr-basic-usage.html#cb457-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,add1) <span class="co"># maP_dbl 输出结果为向量</span></span>
+<span id="cb457-6"><a href="purrr-basic-usage.html#cb457-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb457-7"><a href="purrr-basic-usage.html#cb457-7" aria-hidden="true" tabindex="-1"></a><span class="co">#for版本</span></span>
+<span id="cb457-8"><a href="purrr-basic-usage.html#cb457-8" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb457-9"><a href="purrr-basic-usage.html#cb457-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb457-10"><a href="purrr-basic-usage.html#cb457-10" aria-hidden="true" tabindex="-1"></a>  result2[i] <span class="ot">&lt;-</span> (i<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> i</span>
+<span id="cb457-11"><a href="purrr-basic-usage.html#cb457-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb457-12"><a href="purrr-basic-usage.html#cb457-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test </span></span>
+<span id="cb457-13"><a href="purrr-basic-usage.html#cb457-13" aria-hidden="true" tabindex="-1"></a><span class="co">#not run</span></span>
+<span id="cb457-14"><a href="purrr-basic-usage.html#cb457-14" aria-hidden="true" tabindex="-1"></a><span class="co">#table(result1 == result2)</span></span>
+<span id="cb457-15"><a href="purrr-basic-usage.html#cb457-15" aria-hidden="true" tabindex="-1"></a><span class="co"># all equal</span></span>
+<span id="cb457-16"><a href="purrr-basic-usage.html#cb457-16" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(result1,result2)</span>
+<span id="cb457-17"><a href="purrr-basic-usage.html#cb457-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
             </section>
 
