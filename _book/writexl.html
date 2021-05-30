@@ -567,10 +567,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="writexl.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
 <span id="cb19-2"><a href="writexl.html#cb19-2" aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(flights, tmp1 <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
 <span id="cb19-3"><a href="writexl.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(tmp1)<span class="sc">$</span>size</span>
-<span id="cb19-4"><a href="writexl.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 29139353</span></span></code></pre></div>
+<span id="cb19-4"><a href="writexl.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 29139352</span></span></code></pre></div>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="writexl.html#cb20-1" aria-hidden="true" tabindex="-1"></a>openxlsx<span class="sc">::</span><span class="fu">write.xlsx</span>(flights, tmp2 <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
 <span id="cb20-2"><a href="writexl.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(tmp2)<span class="sc">$</span>size</span>
-<span id="cb20-3"><a href="writexl.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 26833692</span></span></code></pre></div>
+<span id="cb20-3"><a href="writexl.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 26833690</span></span></code></pre></div>
 <p>按照<code>writexl</code>官方文档的说法，<code>writexl</code>输出的Excel文件应该较少，但实际上并不是，不确定是不是<code>openxlsx</code>更新优化过。</p>
 <p>6.其它功能</p>
 <p>Excel 公式以及超级链接格式。</p>
