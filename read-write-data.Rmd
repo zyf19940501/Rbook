@@ -386,7 +386,7 @@ install_github("ycphs/openxlsx")
 `read.xlsx()`函数读取Excel文件。
 
 ```{r}
-library(openxlsx)
+library(openxlsx) 
 read.xlsx('./data/read-write/批量读写.xlsx')
 ```
 
@@ -572,6 +572,7 @@ wb <- createWorkbook(
 
 - addWorksheet
 
+`addWorksheet()`函数添加sheet。
 
 ```{r eval=FALSE}
 addWorksheet(
@@ -594,6 +595,7 @@ addWorksheet(
 )
 ```
 
+`addWorksheet()`参数解释如下：
 
 ```{r eval=FALSE}
 gridLines参数：表格中是否有网格线，在Excle『视图』选项卡下面的网格线去除打勾的效果一致
@@ -657,6 +659,50 @@ writeDataTable(
 )
 ```
 
+`writeDataTable()`参数解释如下：
+
+```{r eval=FALSE}
+wb:即createWorkbook()函数创建的workbook对象
+
+sheet:将输入写入的sheet名，由addWorksheet()函数创建
+
+x : a data.frame
+
+startCol: 从哪一列开始写入,接受数字
+
+startRow：从哪一行开始写入，接受数字
+
+xy: 指定开始行以及开始列的向量，xy = c(2,3)即从2列3行位置开始写入
+
+colNames: 如果TRUE,列名写入
+
+rowNames: 如果TRUE,行名写入
+
+tableStyle:一些表格样式，在中文版Excle『开始』选项卡下面的套用表格格式，可以使用预定义的表格样式
+
+tableName:workbook中的表中，表名必须是唯一的，熟悉Power Pivot的人应该很清晰“表”概念
+
+headerStyle:自定义列样式应用,用createStyle()函数创建
+
+withFilter: 在第一行是否由筛选
+
+keepNA:如果TRUE,NA值转化为#NA，如果否，变为空
+
+na.string :如果参数不是NULL,如果keepNA是TRUE,NA将会在Excel中转为该参数指定的字符
+
+sep：
+
+stack :请参照函数使用
+
+firstColumn:logical. If TRUE, the first column is bold
+
+lastColumn :logical. If TRUE, the last column is bold
+
+bandedRows:logical. If TRUE, rows are colour banded 即行线,默认为TRUE
+
+bandedCols:logical. If TRUE, the columns are colour banded 即列线 ,默认为TRUE
+
+```
 
 
 
