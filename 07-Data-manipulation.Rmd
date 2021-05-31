@@ -397,7 +397,7 @@ mtcars %>%
   summarise(mean = mean(disp), n = n())
 ```
 
-> n()是dplyr包中的计算当前组的大小，用在summarise()和mutate()中。通常可用来组计算。
+> n()是dplyr包中的计算当前组大小的函数，用在summarise()和mutate()中。通常用来组计算。
 
 ### group_by {#dplyr-groupby}
 
@@ -421,132 +421,21 @@ GROUP BY  species
 ```
 
 
-## 表关联 {#dplyr:merge-two-table}
 
-表关联指像`sql`中的`left join`,`inner join`等表格之间的操作，或者是Excel中`Power Piovt`建模的建立关系，从而实现不同表格间的关联。
-
-
-### 基础操作 {#dplyr:merge-table-usage}
-
-`left_join()`,`full_join`,`inner_join()`等动词关联两个表。详情请查看：`vignette("two-table")`
-
-`left_join()`实现类似Excel中`VLOOKUP`函数功能或数据库中`left join`功能，将“右表”的字段依据“主键”关联到“左表”上。
-
-- 基础用法
-
-`left_join()`,`right_join()`,`full_join()`,`inner_join`()，第一个以左表为主，第二个右表为主，第三个全连接，第四个内连接(只返回两表中都有的记录)，和数据库中连接方式一致。
-
-默认会自动寻找两表中相同的字段名作为关联的条件
-
-```{r dplyr-merge-data}
-library("nycflights13")
-# Drop unimportant variables so it's easier to understand the join results.
-flights2 <- flights %>% select(year:day, hour, origin, dest, tailnum, carrier)
-
-flights2 %>% 
-  left_join(airlines)
-```
-
-指定关联条件列，类似数据库中`on a.column = b.column `。
-
-- R实现
-
-```{r dplyr-32}
-flights2 %>% left_join(planes, by = "tailnum")
-```
-
-- Sql实现
-
-```{sql dplyr-33, eval=FALSE}
-select * from flights2 a left join planes b on a.tailnum = b.tailnum 
-```
-
-
-- 不同名称列关联
-
-`left_join(x,y,by = c("a" = "b", "c" = "d"))` 将会匹配 `x$a` to `y$b` 和 `x$c` to `y$d` 作为关联条件
-
-```{r}
-#出发机场和目的机场信息
-flights2 %>% left_join(airports, by = c("dest" = "faa"))
-#flights2 %>% left_join(airports, c("origin" = "faa"))
-# 组合条件 多条件时用向量包裹即可c("dest" = "faa","cola" = "colb"))
-```
-
-
-- 筛选连接
-
-`anti_join()` 删除所有左表中在右表中匹配到的行
-
-`semi_join()`保留所有左表在右表中匹配到的行
-
-
-```{r dplyr-34}
-df1 <- tibble(a=letters[1:20],b=1:20)
-df2 <- tibble(a=letters,b=1:26)
-
-df1 %>% semi_join(df2)
-df2 %>% anti_join(df1)
-```
-
-- 集合操作
-
-1. `intersect(x,y)`返回x,y交集
-
-2. `union(x,y)`返回x,y中唯一的值
-
-3. `setdiff(x,y)`返回存在x中但是不存在y中的记录
-
-```{r dplyr-35}
-(df1 <- tibble(x = 1:2, y = c(1L, 1L)))
-(df2 <- tibble(x = 1:2, y = 1:2))
-intersect(df1, df2)
-union(df1, df2)
-setdiff(df1, df2)
-setdiff(df2, df1)
-```
-
-### 多表操作 {#dplyr:merge-multiple-table}
-
-当我们需要将多个表格连续关联时:
-
-- 常规写法
-
-```{r dplyr-36}
-dt1 <- data.frame(x = letters)
-dt2 <- data.frame(x = letters,cola = 1:26)
-dt3 <- data.frame(x = letters,colb = 1:26)
-dt4 <- data.frame(x = letters,cold = 1:26)
-dt5 <- data.frame(x = letters,cole = 1:26)
-```
-
-
-```{r dplyr-37}
-dt1 %>% 
-  left_join(dt2) %>% 
-  left_join(dt3) %>% 
-  left_join(dt4) %>% 
-  left_join(dt5)
-```
-
-- 改进写法
-
-当需要合并多个表格时，可用`purrr::reduce()`实现
-
-```{r}
-dtlist <- list(dt1,dt2,dt3,dt4,dt5)
-purrr::reduce(dtlist,left_join,by='x')
-```
 
 
 
 ## 常用函数 {#dplyr-functions}
 
-本小节介绍数据分析中常用的函数，类似Excel中的if函数，sql中的case_when,count,distinct,row_number,between等函数。
+本小节介绍dplyr处理数据时常用的函数，类似sql中的case_when、count、distinct、row_number、between等函数。
 
 ### 条件判断 
 
-相比于`base::ifelse`,`if_else`更为严格，无论`TRUE`或`FALSE`输出类型一致，这样速度更快。与`data.table::fifelse()`功能相似。
+相比于`base::ifelse`,`if_else`输出类型更为严格，无论`TRUE`或`FALSE`输出类型一致，这样计算速度更快。
+
+> 与`data.table::fifelse()`功能相似
+
+`if_else()`参数
 
 ```{r dplyr-ifelse ,eval=FALSE}
 if_else(condition, true, false, missing = NULL)
@@ -749,7 +638,122 @@ distinct(df, diff = abs(x - y))
 ```
 
 
+## 表关联 {#dplyr:merge-two-table}
 
+表关联指像`sql`中的`left join`,`inner join`等表格之间的操作，或者是Excel中`Power Piovt`建模的建立关系，从而实现不同表格间的关联。
+
+
+### 基础操作 {#dplyr:merge-table-usage}
+
+`left_join()`,`full_join`,`inner_join()`等动词关联两个表。详情请查看：`vignette("two-table")`
+
+`left_join()`实现类似Excel中`VLOOKUP`函数功能或数据库中`left join`功能，将“右表”的字段依据“主键”关联到“左表”上。
+
+- 基础用法
+
+`left_join()`,`right_join()`,`full_join()`,`inner_join`()，第一个以左表为主，第二个右表为主，第三个全连接，第四个内连接(只返回两表中都有的记录)，和数据库中连接方式一致。
+
+默认会自动寻找两表中相同的字段名作为关联的条件
+
+```{r dplyr-merge-data}
+library("nycflights13")
+# Drop unimportant variables so it's easier to understand the join results.
+flights2 <- flights %>% select(year:day, hour, origin, dest, tailnum, carrier)
+
+flights2 %>% 
+  left_join(airlines)
+```
+
+指定关联条件列，类似数据库中`on a.column = b.column `。
+
+- R实现
+
+```{r dplyr-32}
+flights2 %>% left_join(planes, by = "tailnum")
+```
+
+- Sql实现
+
+```{sql dplyr-33, eval=FALSE}
+select * from flights2 a left join planes b on a.tailnum = b.tailnum 
+```
+
+
+- 不同名称列关联
+
+`left_join(x,y,by = c("a" = "b", "c" = "d"))` 将会匹配 `x$a` to `y$b` 和 `x$c` to `y$d` 作为关联条件
+
+```{r}
+#出发机场和目的机场信息
+flights2 %>% left_join(airports, by = c("dest" = "faa"))
+#flights2 %>% left_join(airports, c("origin" = "faa"))
+# 组合条件 多条件时用向量包裹即可c("dest" = "faa","cola" = "colb"))
+```
+
+
+- 筛选连接
+
+`anti_join()` 删除所有左表中在右表中匹配到的行
+
+`semi_join()`保留所有左表在右表中匹配到的行
+
+
+```{r dplyr-34}
+df1 <- tibble(a=letters[1:20],b=1:20)
+df2 <- tibble(a=letters,b=1:26)
+
+df1 %>% semi_join(df2)
+df2 %>% anti_join(df1)
+```
+
+- 集合操作
+
+1. `intersect(x,y)`返回x,y交集
+
+2. `union(x,y)`返回x,y中唯一的值
+
+3. `setdiff(x,y)`返回存在x中但是不存在y中的记录
+
+```{r dplyr-35}
+(df1 <- tibble(x = 1:2, y = c(1L, 1L)))
+(df2 <- tibble(x = 1:2, y = 1:2))
+intersect(df1, df2)
+union(df1, df2)
+setdiff(df1, df2)
+setdiff(df2, df1)
+```
+
+### 多表操作 {#dplyr:merge-multiple-table}
+
+当我们需要将多个表格连续关联时:
+
+- 常规写法
+
+```{r dplyr-36}
+dt1 <- data.frame(x = letters)
+dt2 <- data.frame(x = letters,cola = 1:26)
+dt3 <- data.frame(x = letters,colb = 1:26)
+dt4 <- data.frame(x = letters,cold = 1:26)
+dt5 <- data.frame(x = letters,cole = 1:26)
+```
+
+
+```{r dplyr-37}
+dt1 %>% 
+  left_join(dt2) %>% 
+  left_join(dt3) %>% 
+  left_join(dt4) %>% 
+  left_join(dt5)
+```
+
+- 改进写法
+
+当需要合并多个表格时，可用`purrr::reduce()`实现
+
+```{r}
+dtlist <- list(dt1,dt2,dt3,dt4,dt5)
+purrr::reduce(dtlist,left_join,by='x')
+```
 
 
 
