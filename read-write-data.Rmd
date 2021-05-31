@@ -437,7 +437,7 @@ df1 <- readWorkbook(xlsxFile = xlsxFile, sheet = 1)
 
 #### 写入Excel {#openxlsx:write-function}
 
-数据清洗完之后，或者是透视表已经完成，需要将结果从R导出到Excle，这时就利用函数将结果数据集写入Excle中。
+数据清洗完后，或者是分组聚合完成，需要将结果从R导出到Excle，这时就利用`write.xlsx()`函数将结果数据集写入Excel中。
 
 write.xlsx()函数写入
 
@@ -686,15 +686,15 @@ tableName:workbook中的表中，表名必须是唯一的，熟悉Power Pivot的
 
 headerStyle:自定义列样式应用,用createStyle()函数创建
 
-withFilter: 在第一行是否由筛选
+withFilter: 在第一行是否有筛选
 
 keepNA:如果TRUE,NA值转化为#NA，如果否，变为空
 
 na.string :如果参数不是NULL,如果keepNA是TRUE,NA将会在Excel中转为该参数指定的字符
 
-sep：
+sep：列表列的分隔符，默认为","
 
-stack :请参照函数使用
+stack :详情请参照函数使用
 
 firstColumn:logical. If TRUE, the first column is bold
 
@@ -1073,6 +1073,46 @@ getwd()
 
 ## 拓展 {#data:expand}
 
+### tidyxl
+
+tidyxl:Imports non-tabular from Excel files into R。tidyxl将不规则数据导入R。
+我们可以通过`readxl`包读取整洁的excel数据，那如果是Excel的透视表怎么读取？
+
+[tidyxl项目地址](https://github.com/nacnudus/tidyxl/)。
+
+
+如果我们想要读取以下数据透视表，该如何读取?由于不是整洁的数据表，所以用`readxl`读取后的数据没法直接使用。但是`tidyxl`配合`unpivotr`包经过处理可以达到目的，如下所示：
+
+![PivotTable](picture/read-write/pivottable.png)
+
+```{r message=FALSE,warning=FALSE}
+library(tidyxl)
+library(tidyverse)
+library(unpivotr)
+
+path <- './data/read-write/PivotTable.xlsx'
+unpivot <- xlsx_cells(path,sheets = 1) %>% 
+  dplyr::filter(row>3) %>% 
+  dplyr::filter(!is_blank) %>% 
+  select(row,col,data_type,character,numeric) %>% 
+  behead('left',区域) %>% 
+  behead('up',是否可比) %>% 
+  behead('up-right',新老店) %>% 
+  rename(销售额 = numeric) %>% 
+  select(-character)   
+
+unpivot
+```
+
+经过上述处理，已将透视表数据转化为整洁的数据。
+
+
+
+
+> 如果有可能的话，不要读取如此不规则的数据当作数据源
+
+### 参考资料
+
 1. feather项目地址<https://github.com/wesm/feather>
 
 2. qs提供接口，用于快速将R对象保存到磁盘以及从磁盘读取。该包的目标是替换R中的`saveRDS`和`readRDS`。项目地址<https://github.com/traversc/qs>
@@ -1080,3 +1120,5 @@ getwd()
 3. arrow是feather的接替项目，地址<https://arrow.apache.org/docs/r/>
 
 4. 其它统计学软件数据如spss，stata,SAs等可用`foreign`包读取
+
+5. tidyxl and unpivotr: <https://nacnudus.github.io/spreadsheet-munging-strategies/pivot-simple.html>
