@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-29" />
+<meta name="date" content="2021-05-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="writexl.html"/>
 <link rel="next" href="readr-package.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,15 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -520,25 +511,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>功能稳定可用并且在积极开发中</li>
 </ul>
 <p>版本信息查看</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="openxlsx-description.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;openxlsx&quot;</span>)</span>
-<span id="cb23-2"><a href="openxlsx-description.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &#39;4.2.3&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="openxlsx-description.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;openxlsx&quot;</span>)</span>
+<span id="cb22-2"><a href="openxlsx-description.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &#39;4.2.3&#39;</span></span></code></pre></div>
 <p>关于openxlsx更加详细的阐述:<a href="https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ" class="uri">https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ</a></p>
 <div id="openxlsx:install" class="section level3" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> 安装</h3>
 <p>从CRAN安装发行版</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="openxlsx-description.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 稳定版</span></span>
-<span id="cb24-2"><a href="openxlsx-description.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>, <span class="at">repos =</span> <span class="st">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="openxlsx-description.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 稳定版</span></span>
+<span id="cb23-2"><a href="openxlsx-description.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>, <span class="at">repos =</span> <span class="st">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span>)</span></code></pre></div>
 <p>从Github安装开发版</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="openxlsx-description.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;Rcpp&quot;</span>, <span class="st">&quot;devtools&quot;</span>), <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-2"><a href="openxlsx-description.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb25-3"><a href="openxlsx-description.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;ycphs/openxlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="openxlsx-description.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;Rcpp&quot;</span>, <span class="st">&quot;devtools&quot;</span>), <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-2"><a href="openxlsx-description.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb24-3"><a href="openxlsx-description.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;ycphs/openxlsx&quot;</span>)</span></code></pre></div>
 </div>
 <div id="openxlsx:functions" class="section level3" number="1.3.2">
 <h3><span class="header-section-number">1.3.2</span> 基础功能</h3>
 <p>本文仅呈现基础功能部分，即读写EXCEL文件。其它功能，请查阅项目官方地址或微信公众号文章<a href="https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ">R包-openxlsx-学习笔记</a></p>
 <div id="openxlsx:read-function" class="section level4" number="1.3.2.1">
 <h4><span class="header-section-number">1.3.2.1</span> 读取Excel</h4>
-<p>read.xlsx()是读取函数，主要参数如下：</p>
+<p><code>read.xlsx()</code>函数读取Excel文件。</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="openxlsx-description.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx) </span>
+<span id="cb25-2"><a href="openxlsx-description.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(<span class="st">&#39;./data/read-write/批量读写.xlsx&#39;</span>)</span>
+<span id="cb25-3"><a href="openxlsx-description.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name num</span></span>
+<span id="cb25-4"><a href="openxlsx-description.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    a   1</span></span>
+<span id="cb25-5"><a href="openxlsx-description.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a   2</span></span>
+<span id="cb25-6"><a href="openxlsx-description.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a   3</span></span>
+<span id="cb25-7"><a href="openxlsx-description.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b   4</span></span>
+<span id="cb25-8"><a href="openxlsx-description.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    b   5</span></span>
+<span id="cb25-9"><a href="openxlsx-description.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    b   6</span></span>
+<span id="cb25-10"><a href="openxlsx-description.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    d   7</span></span>
+<span id="cb25-11"><a href="openxlsx-description.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8    d   8</span></span>
+<span id="cb25-12"><a href="openxlsx-description.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9    d   9</span></span></code></pre></div>
+<p><code>read.xlsx()</code>参数如下：</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="openxlsx-description.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
 <span id="cb26-2"><a href="openxlsx-description.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.xlsx</span>(</span>
 <span id="cb26-3"><a href="openxlsx-description.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  xlsxFile,</span>
@@ -557,8 +561,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb26-16"><a href="openxlsx-description.html#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>,</span>
 <span id="cb26-17"><a href="openxlsx-description.html#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">fillMergedCells =</span> <span class="cn">FALSE</span></span>
 <span id="cb26-18"><a href="openxlsx-description.html#cb26-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>以上参数中需要注意 ：</p>
-<p>detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。</p>
+<p>以上参数中需要注意：detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。</p>
 <p>fillMergedCells参数，当你读取的表格中存在合并单元格，将用值填充其他全部单元格,如下所示：</p>
 <div class="figure">
 <img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/merge-cell-xlsx.png" alt="" />
@@ -677,6 +680,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>addWorksheet</li>
 </ul>
+<p><code>addWorksheet()</code>函数添加sheet。</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="openxlsx-description.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addWorksheet</span>(</span>
 <span id="cb35-2"><a href="openxlsx-description.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  wb,</span>
 <span id="cb35-3"><a href="openxlsx-description.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  sheetName,</span>
@@ -695,6 +699,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb35-16"><a href="openxlsx-description.html#cb35-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">vdpi =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.vdpi&quot;</span>, <span class="at">default =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.dpi&quot;</span>, <span class="at">default =</span> <span class="dv">300</span>)),</span>
 <span id="cb35-17"><a href="openxlsx-description.html#cb35-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">hdpi =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.hdpi&quot;</span>, <span class="at">default =</span> <span class="fu">getOption</span>(<span class="st">&quot;openxlsx.dpi&quot;</span>, <span class="at">default =</span> <span class="dv">300</span>))</span>
 <span id="cb35-18"><a href="openxlsx-description.html#cb35-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><code>addWorksheet()</code>参数解释如下：</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="openxlsx-description.html#cb36-1" aria-hidden="true" tabindex="-1"></a>gridLines参数：表格中是否有网格线，在Excle『视图』选项卡下面的网格线去除打勾的效果一致</span>
 <span id="cb36-2"><a href="openxlsx-description.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="openxlsx-description.html#cb36-3" aria-hidden="true" tabindex="-1"></a>tabColour参数：输出表格sheet标签颜色</span>
@@ -748,10 +753,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb37-20"><a href="openxlsx-description.html#cb37-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">bandedRows =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb37-21"><a href="openxlsx-description.html#cb37-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">bandedCols =</span> <span class="cn">FALSE</span></span>
 <span id="cb37-22"><a href="openxlsx-description.html#cb37-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><code>writeDataTable()</code>参数解释如下：</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="openxlsx-description.html#cb38-1" aria-hidden="true" tabindex="-1"></a>wb<span class="sc">:</span>即<span class="fu">createWorkbook</span>()函数创建的workbook对象</span>
+<span id="cb38-2"><a href="openxlsx-description.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="openxlsx-description.html#cb38-3" aria-hidden="true" tabindex="-1"></a>sheet<span class="sc">:</span>将输入写入的sheet名，由<span class="fu">addWorksheet</span>()函数创建</span>
+<span id="cb38-4"><a href="openxlsx-description.html#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="openxlsx-description.html#cb38-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">:</span> a data.frame</span>
+<span id="cb38-6"><a href="openxlsx-description.html#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="openxlsx-description.html#cb38-7" aria-hidden="true" tabindex="-1"></a>startCol<span class="sc">:</span> 从哪一列开始写入,接受数字</span>
+<span id="cb38-8"><a href="openxlsx-description.html#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="openxlsx-description.html#cb38-9" aria-hidden="true" tabindex="-1"></a>startRow：从哪一行开始写入，接受数字</span>
+<span id="cb38-10"><a href="openxlsx-description.html#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="openxlsx-description.html#cb38-11" aria-hidden="true" tabindex="-1"></a>xy<span class="sc">:</span> 指定开始行以及开始列的向量，xy <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)即从2列3行位置开始写入</span>
+<span id="cb38-12"><a href="openxlsx-description.html#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="openxlsx-description.html#cb38-13" aria-hidden="true" tabindex="-1"></a>colNames<span class="sc">:</span> 如果TRUE,列名写入</span>
+<span id="cb38-14"><a href="openxlsx-description.html#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="openxlsx-description.html#cb38-15" aria-hidden="true" tabindex="-1"></a>rowNames<span class="sc">:</span> 如果TRUE,行名写入</span>
+<span id="cb38-16"><a href="openxlsx-description.html#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="openxlsx-description.html#cb38-17" aria-hidden="true" tabindex="-1"></a>tableStyle<span class="sc">:</span>一些表格样式，在中文版Excle『开始』选项卡下面的套用表格格式，可以使用预定义的表格样式</span>
+<span id="cb38-18"><a href="openxlsx-description.html#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="openxlsx-description.html#cb38-19" aria-hidden="true" tabindex="-1"></a>tableName<span class="sc">:</span>workbook中的表中，表名必须是唯一的，熟悉Power Pivot的人应该很清晰“表”概念</span>
+<span id="cb38-20"><a href="openxlsx-description.html#cb38-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-21"><a href="openxlsx-description.html#cb38-21" aria-hidden="true" tabindex="-1"></a>headerStyle<span class="sc">:</span>自定义列样式应用,用<span class="fu">createStyle</span>()函数创建</span>
+<span id="cb38-22"><a href="openxlsx-description.html#cb38-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-23"><a href="openxlsx-description.html#cb38-23" aria-hidden="true" tabindex="-1"></a>withFilter<span class="sc">:</span> 在第一行是否由筛选</span>
+<span id="cb38-24"><a href="openxlsx-description.html#cb38-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-25"><a href="openxlsx-description.html#cb38-25" aria-hidden="true" tabindex="-1"></a>keepNA<span class="sc">:</span>如果TRUE,NA值转化为<span class="co">#NA，如果否，变为空</span></span>
+<span id="cb38-26"><a href="openxlsx-description.html#cb38-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-27"><a href="openxlsx-description.html#cb38-27" aria-hidden="true" tabindex="-1"></a>na.string <span class="sc">:</span>如果参数不是NULL,如果keepNA是TRUE,NA将会在Excel中转为该参数指定的字符</span>
+<span id="cb38-28"><a href="openxlsx-description.html#cb38-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-29"><a href="openxlsx-description.html#cb38-29" aria-hidden="true" tabindex="-1"></a>sep：</span>
+<span id="cb38-30"><a href="openxlsx-description.html#cb38-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-31"><a href="openxlsx-description.html#cb38-31" aria-hidden="true" tabindex="-1"></a>stack <span class="sc">:</span>请参照函数使用</span>
+<span id="cb38-32"><a href="openxlsx-description.html#cb38-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-33"><a href="openxlsx-description.html#cb38-33" aria-hidden="true" tabindex="-1"></a>firstColumn<span class="sc">:</span>logical. If <span class="cn">TRUE</span>, the first column is bold</span>
+<span id="cb38-34"><a href="openxlsx-description.html#cb38-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-35"><a href="openxlsx-description.html#cb38-35" aria-hidden="true" tabindex="-1"></a>lastColumn <span class="sc">:</span>logical. If <span class="cn">TRUE</span>, the last column is bold</span>
+<span id="cb38-36"><a href="openxlsx-description.html#cb38-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-37"><a href="openxlsx-description.html#cb38-37" aria-hidden="true" tabindex="-1"></a>bandedRows<span class="sc">:</span>logical. If <span class="cn">TRUE</span>, rows are colour banded 即行线,默认为TRUE</span>
+<span id="cb38-38"><a href="openxlsx-description.html#cb38-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-39"><a href="openxlsx-description.html#cb38-39" aria-hidden="true" tabindex="-1"></a>bandedCols<span class="sc">:</span>logical. If <span class="cn">TRUE</span>, the columns are colour banded 即列线 ,默认为TRUE</span></code></pre></div>
 <ul>
 <li>saveWorkbook</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="openxlsx-description.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, file, <span class="at">overwrite =</span> <span class="cn">FALSE</span>, <span class="at">returnValue =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="openxlsx-description.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb, file, <span class="at">overwrite =</span> <span class="cn">FALSE</span>, <span class="at">returnValue =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>参数较为简单，wb即上文中的workbook对象，file即输出的文件名，overwrite即如果存在是否覆盖，returnValue如果设置为TRUE，返回TRUE代表保存成功</p>
 </div>
 <div id="总结" class="section level3" number="1.3.5">
@@ -818,20 +863,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
