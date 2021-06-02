@@ -921,13 +921,15 @@ setdiff(df2, df1)
 
 在我们工作中可能需要求两个表之间的笛卡尔乘积[^笛卡尔乘积]，改如何求？
 
-[^笛卡尔乘积]:(笛卡尔乘积是指在数学中，两个集合X和Y的笛卡尔积(Cartesian product)，又称直积，表示为X × Y，第一个对象是X的成员而第二个对象是Y的所有可能有序对的其中一个成员)
+[^笛卡尔乘积]:笛卡尔乘积是指在数学中，两个集合X和Y的笛卡尔积(Cartesian product)，又称直积，表示为X × Y，第一个对象是X的成员而第二个对象是Y的所有可能有序对的其中一个成员
 
 
 ```{r}
 dta <- data.frame(a=letters)
 dtb <- data.frame(b=LETTERS)
-full_join(dta,dtb,by = character())
+
+full_join(dta,dtb,by = character())%>% 
+  glimpse()
 ```
 
 
@@ -935,7 +937,7 @@ full_join(dta,dtb,by = character())
 
 ### 多表操作 {#dplyr:merge-multiple-table}
 
-当我们需要将多个表格连续关联时:
+当我们需要将多个表连续关联时:
 
 - 常规写法
 
@@ -958,7 +960,7 @@ dt1 %>%
 
 - 改进写法
 
-当需要合并多个表格时，可用`purrr::reduce()`实现
+当需要合并多个表时，可用`purrr::reduce()`实现
 
 ```{r}
 dtlist <- list(dt1,dt2,dt3,dt4,dt5)
