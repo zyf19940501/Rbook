@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.3 apply系列函数 | R语言学习笔记</title>
-  <meta name="description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>9.3 apply系列函数 | R 语言学习笔记</title>
+  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.3 apply系列函数 | R语言学习笔记" />
+  <meta property="og:title" content="9.3 apply系列函数 | R 语言学习笔记" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.3 apply系列函数 | R语言学习笔记" />
+  <meta name="twitter:title" content="9.3 apply系列函数 | R 语言学习笔记" />
   
-  <meta name="twitter:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-01" />
+<meta name="date" content="2021-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html"><i class="fa fa-check"></i><b>1.6</b> Rstudio导入</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#利用rstudio工具栏导入"><i class="fa fa-check"></i><b>1.6.1</b> 利用rstudio工具栏导入</a></li>
+<li class="chapter" data-level="1.6.1" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#rstudio-工具栏导入"><i class="fa fa-check"></i><b>1.6.1</b> rstudio 工具栏导入</a></li>
 <li class="chapter" data-level="1.6.2" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#插件导入"><i class="fa fa-check"></i><b>1.6.2</b> 插件导入</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="data-file-path.html"><a href="data-file-path.html"><i class="fa fa-check"></i><b>1.7</b> 文件路径</a>
@@ -228,12 +228,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.3" data-path="dplyr-functions.html"><a href="dplyr-functions.html#计数函数"><i class="fa fa-check"></i><b>2.3.3</b> 计数函数</a></li>
 <li class="chapter" data-level="2.3.4" data-path="dplyr-functions.html"><a href="dplyr-functions.html#排序函数"><i class="fa fa-check"></i><b>2.3.4</b> 排序函数</a></li>
 <li class="chapter" data-level="2.3.5" data-path="dplyr-functions.html"><a href="dplyr-functions.html#提取向量"><i class="fa fa-check"></i><b>2.3.5</b> 提取向量</a></li>
-<li class="chapter" data-level="2.3.6" data-path="dplyr-functions.html"><a href="dplyr-functions.html#group-系列"><i class="fa fa-check"></i><b>2.3.6</b> group 系列</a></li>
-<li class="chapter" data-level="2.3.7" data-path="dplyr-functions.html"><a href="dplyr-functions.html#其它函数"><i class="fa fa-check"></i><b>2.3.7</b> 其它函数</a></li>
+<li class="chapter" data-level="2.3.6" data-path="dplyr-functions.html"><a href="dplyr-functions.html#dplyr:slice"><i class="fa fa-check"></i><b>2.3.6</b> slice 系列</a></li>
+<li class="chapter" data-level="2.3.7" data-path="dplyr-functions.html"><a href="dplyr-functions.html#group-系列"><i class="fa fa-check"></i><b>2.3.7</b> group 系列</a></li>
+<li class="chapter" data-level="2.3.8" data-path="dplyr-functions.html"><a href="dplyr-functions.html#其它函数"><i class="fa fa-check"></i><b>2.3.8</b> 其它函数</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="dplyr-merge-two-table.html"><a href="dplyr-merge-two-table.html"><i class="fa fa-check"></i><b>2.4</b> 表关联</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="dplyr-merge-two-table.html"><a href="dplyr-merge-two-table.html#dplyr:merge-table-usage"><i class="fa fa-check"></i><b>2.4.1</b> 基础操作</a></li>
+<li class="chapter" data-level="2.4.1" data-path="dplyr-merge-two-table.html"><a href="dplyr-merge-two-table.html#dplyr:merge-table-usage"><i class="fa fa-check"></i><b>2.4.1</b> 两表关联</a></li>
 <li class="chapter" data-level="2.4.2" data-path="dplyr-merge-two-table.html"><a href="dplyr-merge-two-table.html#dplyr:merge-multiple-table"><i class="fa fa-check"></i><b>2.4.2</b> 多表操作</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
@@ -414,7 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html"><i class="fa fa-check"></i><b>8.7</b> dbplyr</a>
 <ul>
 <li class="chapter" data-level="8.7.1" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#安装-2"><i class="fa fa-check"></i><b>8.7.1</b> 安装</a></li>
-<li class="chapter" data-level="8.7.2" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#基础用法"><i class="fa fa-check"></i><b>8.7.2</b> 基础用法</a></li>
+<li class="chapter" data-level="8.7.2" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#基础用法-1"><i class="fa fa-check"></i><b>8.7.2</b> 基础用法</a></li>
 <li class="chapter" data-level="8.7.3" data-path="database-dbplyr-package.html"><a href="database-dbplyr-package.html#无法正确转化"><i class="fa fa-check"></i><b>8.7.3</b> 无法正确转化</a></li>
 </ul></li>
 <li class="chapter" data-level="8.8" data-path="database-reference-material.html"><a href="database-reference-material.html"><i class="fa fa-check"></i><b>8.8</b> 参考资料</a></li>
@@ -507,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
           </h1>
         </div>
 
@@ -525,32 +526,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="lapply" class="section level3" number="9.3.1">
 <h3><span class="header-section-number">9.3.1</span> lapply 循环迭代</h3>
 <p>lapply 是 list 和 apply 的结合，lapply是对向量或列表数据应有一个功能函数，返回的数据结构是和前面的数据长度相等的列表。函数的参数如下：</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="apply-function.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(X, FUN, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="apply-function.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(X, FUN, ...)</span></code></pre></div>
 <p>其参数说明如下:</p>
 <p>X: 一个向量或列表，或者是“expression” ,同样是列表。关于“expression” 可以查看帮助<code>?expression</code>。</p>
 <p>FUN：需要运行的函数，可以是任意函数，无论是base R ，R packages，或者是自定义的函数。</p>
 <p>…： 函数中其它参数的设置，如有需要的话。</p>
 <p>我们首先看一个简单的示例:</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="apply-function.html#cb461-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="cn">NA</span>), <span class="at">int =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">logic =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
-<span id="cb461-2"><a href="apply-function.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, mean)</span>
-<span id="cb461-3"><a href="apply-function.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vec</span></span>
-<span id="cb461-4"><a href="apply-function.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
-<span id="cb461-5"><a href="apply-function.html#cb461-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb461-6"><a href="apply-function.html#cb461-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $int</span></span>
-<span id="cb461-7"><a href="apply-function.html#cb461-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.5</span></span>
-<span id="cb461-8"><a href="apply-function.html#cb461-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb461-9"><a href="apply-function.html#cb461-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $logic</span></span>
-<span id="cb461-10"><a href="apply-function.html#cb461-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="apply-function.html#cb477-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="cn">NA</span>), <span class="at">int =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">logic =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
+<span id="cb477-2"><a href="apply-function.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, mean)</span>
+<span id="cb477-3"><a href="apply-function.html#cb477-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vec</span></span>
+<span id="cb477-4"><a href="apply-function.html#cb477-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb477-5"><a href="apply-function.html#cb477-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb477-6"><a href="apply-function.html#cb477-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $int</span></span>
+<span id="cb477-7"><a href="apply-function.html#cb477-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.5</span></span>
+<span id="cb477-8"><a href="apply-function.html#cb477-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb477-9"><a href="apply-function.html#cb477-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $logic</span></span>
+<span id="cb477-10"><a href="apply-function.html#cb477-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
 <p>添加 … 参数 ，给 mean 函数添加参数 na.rm=TRUE</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="apply-function.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb462-2"><a href="apply-function.html#cb462-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vec</span></span>
-<span id="cb462-3"><a href="apply-function.html#cb462-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
-<span id="cb462-4"><a href="apply-function.html#cb462-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb462-5"><a href="apply-function.html#cb462-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $int</span></span>
-<span id="cb462-6"><a href="apply-function.html#cb462-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.5</span></span>
-<span id="cb462-7"><a href="apply-function.html#cb462-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb462-8"><a href="apply-function.html#cb462-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $logic</span></span>
-<span id="cb462-9"><a href="apply-function.html#cb462-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="apply-function.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb478-2"><a href="apply-function.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vec</span></span>
+<span id="cb478-3"><a href="apply-function.html#cb478-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb478-4"><a href="apply-function.html#cb478-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb478-5"><a href="apply-function.html#cb478-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $int</span></span>
+<span id="cb478-6"><a href="apply-function.html#cb478-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.5</span></span>
+<span id="cb478-7"><a href="apply-function.html#cb478-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb478-8"><a href="apply-function.html#cb478-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $logic</span></span>
+<span id="cb478-9"><a href="apply-function.html#cb478-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
 <p>lapply 函数调用均值函数 mean 分别计算 vec,int,logic 三个向量的平均值，最后返回一个长度为3的列表。另外在 … 参数位置上我们添加了 na.rm =TRUE 参数，使mean 函数能忽略 NA 值。</p>
 <p>lapply 的功能强大，并且应用场景多，在我们要使用“循环”时，多考虑能否通过 apply 函数实现。如<a href="#%20batch:read">前文所见</a>,我们可以使用 apply 批量读取文件。</p>
 <blockquote>
@@ -560,14 +561,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sapply-sapply" class="section level3" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> sapply {# sapply}</h3>
 <p>sapply 是lapply的简化版。函数的参数如下：</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="apply-function.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(X, FUN, ..., <span class="at">simplify =</span> <span class="cn">TRUE</span>, <span class="at">USE.NAMES =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="apply-function.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(X, FUN, ..., <span class="at">simplify =</span> <span class="cn">TRUE</span>, <span class="at">USE.NAMES =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>和 lapply 函数的参数差异，simplify 默认为TRUE,是否返回向量，矩阵，数组，如果情况允许。我们用lapply 的例子查看 sapply 的功能。</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="apply-function.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x ,mean)</span>
-<span id="cb464-2"><a href="apply-function.html#cb464-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   vec   int logic </span></span>
-<span id="cb464-3"><a href="apply-function.html#cb464-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    NA   5.5   0.5</span></span>
-<span id="cb464-4"><a href="apply-function.html#cb464-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x ,mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb464-5"><a href="apply-function.html#cb464-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   vec   int logic </span></span>
-<span id="cb464-6"><a href="apply-function.html#cb464-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3.0   5.5   0.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="apply-function.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x ,mean)</span>
+<span id="cb480-2"><a href="apply-function.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   vec   int logic </span></span>
+<span id="cb480-3"><a href="apply-function.html#cb480-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    NA   5.5   0.5</span></span>
+<span id="cb480-4"><a href="apply-function.html#cb480-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x ,mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb480-5"><a href="apply-function.html#cb480-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   vec   int logic </span></span>
+<span id="cb480-6"><a href="apply-function.html#cb480-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3.0   5.5   0.5</span></span></code></pre></div>
 </div>
 <div id="vapply-迭代安全函数-vapply" class="section level3" number="9.3.3">
 <h3><span class="header-section-number">9.3.3</span> vapply 迭代安全函数{# vapply}</h3>
@@ -575,36 +576,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>长度</li>
 </ul>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="apply-function.html#cb465-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">a =</span> <span class="fu">c</span>(<span class="fl">1.0</span>,<span class="fl">2.0</span>,<span class="fl">3.0</span>),<span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>),<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">3</span>))</span>
-<span id="cb465-2"><a href="apply-function.html#cb465-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">3</span>))</span>
-<span id="cb465-3"><a href="apply-function.html#cb465-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb465-4"><a href="apply-function.html#cb465-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>])</span>
-<span id="cb465-5"><a href="apply-function.html#cb465-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $a</span></span>
-<span id="cb465-6"><a href="apply-function.html#cb465-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
-<span id="cb465-7"><a href="apply-function.html#cb465-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb465-8"><a href="apply-function.html#cb465-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $b</span></span>
-<span id="cb465-9"><a href="apply-function.html#cb465-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3 3</span></span>
-<span id="cb465-10"><a href="apply-function.html#cb465-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb465-11"><a href="apply-function.html#cb465-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $d</span></span>
-<span id="cb465-12"><a href="apply-function.html#cb465-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="apply-function.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(x,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>],<span class="at">FUN.VALUE =</span> <span class="fl">1.0</span>)</span>
-<span id="cb466-2"><a href="apply-function.html#cb466-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb466-3"><a href="apply-function.html#cb466-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in vapply(x, function(x) x[x == 3], FUN.VALUE = 1) : </span></span>
-<span id="cb466-4"><a href="apply-function.html#cb466-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 值的长度必需为1，</span></span>
-<span id="cb466-5"><a href="apply-function.html#cb466-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  但FUN(X[[2]])结果的长度却是2</span></span>
-<span id="cb466-6"><a href="apply-function.html#cb466-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb466-7"><a href="apply-function.html#cb466-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb466-8"><a href="apply-function.html#cb466-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 同上</span></span>
-<span id="cb466-9"><a href="apply-function.html#cb466-9" aria-hidden="true" tabindex="-1"></a><span class="co"># vapply(x,function(x) x[x==3],FUN.VALUE = as.numeric(1))</span></span>
-<span id="cb466-10"><a href="apply-function.html#cb466-10" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(y,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>],<span class="at">FUN.VALUE =</span> <span class="fu">as.numeric</span>(<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="apply-function.html#cb481-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">a =</span> <span class="fu">c</span>(<span class="fl">1.0</span>,<span class="fl">2.0</span>,<span class="fl">3.0</span>),<span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>),<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb481-2"><a href="apply-function.html#cb481-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb481-3"><a href="apply-function.html#cb481-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb481-4"><a href="apply-function.html#cb481-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>])</span>
+<span id="cb481-5"><a href="apply-function.html#cb481-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $a</span></span>
+<span id="cb481-6"><a href="apply-function.html#cb481-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb481-7"><a href="apply-function.html#cb481-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb481-8"><a href="apply-function.html#cb481-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $b</span></span>
+<span id="cb481-9"><a href="apply-function.html#cb481-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3 3</span></span>
+<span id="cb481-10"><a href="apply-function.html#cb481-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb481-11"><a href="apply-function.html#cb481-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $d</span></span>
+<span id="cb481-12"><a href="apply-function.html#cb481-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="apply-function.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(x,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>],<span class="at">FUN.VALUE =</span> <span class="fl">1.0</span>)</span>
+<span id="cb482-2"><a href="apply-function.html#cb482-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-3"><a href="apply-function.html#cb482-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in vapply(x, function(x) x[x == 3], FUN.VALUE = 1) : </span></span>
+<span id="cb482-4"><a href="apply-function.html#cb482-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 值的长度必需为1，</span></span>
+<span id="cb482-5"><a href="apply-function.html#cb482-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  但FUN(X[[2]])结果的长度却是2</span></span>
+<span id="cb482-6"><a href="apply-function.html#cb482-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-7"><a href="apply-function.html#cb482-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-8"><a href="apply-function.html#cb482-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 同上</span></span>
+<span id="cb482-9"><a href="apply-function.html#cb482-9" aria-hidden="true" tabindex="-1"></a><span class="co"># vapply(x,function(x) x[x==3],FUN.VALUE = as.numeric(1))</span></span>
+<span id="cb482-10"><a href="apply-function.html#cb482-10" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(y,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>],<span class="at">FUN.VALUE =</span> <span class="fu">as.numeric</span>(<span class="dv">1</span>))</span></code></pre></div>
 <p>相同的列表，相同的函数，使用 sapply 会返回信息不会报错，但是使用 vapply 会报错，因为b中有2个3，而a,d中只有1个3。</p>
 <ul>
 <li>类型</li>
 </ul>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="apply-function.html#cb467-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="cn">NA</span>), <span class="at">int =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">logic =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
-<span id="cb467-2"><a href="apply-function.html#cb467-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(x,mean,<span class="at">FUN.VALUE =</span> 1L)</span>
-<span id="cb467-3"><a href="apply-function.html#cb467-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in vapply(x, mean, FUN.VALUE = 1L) : 值的种类必需是&#39;integer&#39;，</span></span>
-<span id="cb467-4"><a href="apply-function.html#cb467-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 但FUN(X[[1]])结果的种类却是&#39;double&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="apply-function.html#cb483-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="cn">NA</span>), <span class="at">int =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">logic =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
+<span id="cb483-2"><a href="apply-function.html#cb483-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(x,mean,<span class="at">FUN.VALUE =</span> 1L)</span>
+<span id="cb483-3"><a href="apply-function.html#cb483-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in vapply(x, mean, FUN.VALUE = 1L) : 值的种类必需是&#39;integer&#39;，</span></span>
+<span id="cb483-4"><a href="apply-function.html#cb483-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 但FUN(X[[1]])结果的种类却是&#39;double&#39;</span></span></code></pre></div>
 <blockquote>
 <p>vapply 函数的 FUN.VALUE 参数必须设置，可以通过 as.integer/character等函数进行设置</p>
 </blockquote>
@@ -612,26 +613,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="apply-多维数据-apply" class="section level3" number="9.3.4">
 <h3><span class="header-section-number">9.3.4</span> apply 多维数据{# apply}</h3>
 <p>apply 专门用来处理矩阵和数组数据。参数如下：</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="apply-function.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, MARGIN, FUN, ..., <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="apply-function.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, MARGIN, FUN, ..., <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>其中 MARGIN 参数,1代表行，2代表列，<code>c(1,2)</code>代表行列。</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="apply-function.html#cb469-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">x1 =</span> <span class="dv">3</span>, <span class="at">x2 =</span> <span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>))</span>
-<span id="cb469-2"><a href="apply-function.html#cb469-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb469-3"><a href="apply-function.html#cb469-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;matrix&quot; &quot;array&quot;</span></span>
-<span id="cb469-4"><a href="apply-function.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="dv">1</span>,<span class="at">FUN =</span> mean)</span>
-<span id="cb469-5"><a href="apply-function.html#cb469-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.5 3.0 2.5 2.0 2.5 3.0 3.5 4.0</span></span>
-<span id="cb469-6"><a href="apply-function.html#cb469-6" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="dv">2</span>,<span class="at">FUN =</span> mean)</span>
-<span id="cb469-7"><a href="apply-function.html#cb469-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1 x2 </span></span>
-<span id="cb469-8"><a href="apply-function.html#cb469-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3  3</span></span>
-<span id="cb469-9"><a href="apply-function.html#cb469-9" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">FUN =</span> mean)</span>
-<span id="cb469-10"><a href="apply-function.html#cb469-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      x1 x2</span></span>
-<span id="cb469-11"><a href="apply-function.html#cb469-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  3  4</span></span>
-<span id="cb469-12"><a href="apply-function.html#cb469-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  3  3</span></span>
-<span id="cb469-13"><a href="apply-function.html#cb469-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]  3  2</span></span>
-<span id="cb469-14"><a href="apply-function.html#cb469-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]  3  1</span></span>
-<span id="cb469-15"><a href="apply-function.html#cb469-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]  3  2</span></span>
-<span id="cb469-16"><a href="apply-function.html#cb469-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]  3  3</span></span>
-<span id="cb469-17"><a href="apply-function.html#cb469-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7,]  3  4</span></span>
-<span id="cb469-18"><a href="apply-function.html#cb469-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [8,]  3  5</span></span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="apply-function.html#cb485-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">x1 =</span> <span class="dv">3</span>, <span class="at">x2 =</span> <span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>))</span>
+<span id="cb485-2"><a href="apply-function.html#cb485-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb485-3"><a href="apply-function.html#cb485-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;matrix&quot; &quot;array&quot;</span></span>
+<span id="cb485-4"><a href="apply-function.html#cb485-4" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="dv">1</span>,<span class="at">FUN =</span> mean)</span>
+<span id="cb485-5"><a href="apply-function.html#cb485-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.5 3.0 2.5 2.0 2.5 3.0 3.5 4.0</span></span>
+<span id="cb485-6"><a href="apply-function.html#cb485-6" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="dv">2</span>,<span class="at">FUN =</span> mean)</span>
+<span id="cb485-7"><a href="apply-function.html#cb485-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1 x2 </span></span>
+<span id="cb485-8"><a href="apply-function.html#cb485-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3  3</span></span>
+<span id="cb485-9"><a href="apply-function.html#cb485-9" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">FUN =</span> mean)</span>
+<span id="cb485-10"><a href="apply-function.html#cb485-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      x1 x2</span></span>
+<span id="cb485-11"><a href="apply-function.html#cb485-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  3  4</span></span>
+<span id="cb485-12"><a href="apply-function.html#cb485-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  3  3</span></span>
+<span id="cb485-13"><a href="apply-function.html#cb485-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]  3  2</span></span>
+<span id="cb485-14"><a href="apply-function.html#cb485-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]  3  1</span></span>
+<span id="cb485-15"><a href="apply-function.html#cb485-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]  3  2</span></span>
+<span id="cb485-16"><a href="apply-function.html#cb485-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]  3  3</span></span>
+<span id="cb485-17"><a href="apply-function.html#cb485-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7,]  3  4</span></span>
+<span id="cb485-18"><a href="apply-function.html#cb485-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [8,]  3  5</span></span></code></pre></div>
 <blockquote>
 <p>对于大部分商业数据分析师而言，较少遇到多维数据集</p>
 </blockquote>

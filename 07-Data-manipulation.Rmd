@@ -201,16 +201,15 @@ select * from starwars where species = "Droid" -- 注意=与==的区别
 
 - 多条件
 
-多条件筛选时，用英文逗号隔开多个条件。用“and”连接多个条件与用逗号隔开效果相同,“and”在R中用&表示。
+多条件筛选时，用英文逗号隔开多个条件。sql中用“and”连接多个条件，与 R 中用逗号隔开效果相同,“and” 在 R 中用 & 表示。
 
 ```{r}
 starwars %>% 
   filter(species == "Droid",skin_color == "gold")
 
-# same above
+# 同上
 # starwars %>% 
 #   filter(species == "Droid" & skin_color == "gold")
-
 ```
 
 
@@ -222,7 +221,7 @@ select * from starwars where species = "Droid" and skin_color = "gold"
 
 - 多情况筛选
 
-类似`SQL`中 `in` 的用法，或Excel中筛选条件时"或"条件
+`%in%`类似`SQL`中 `in` 的用法，与Excel中筛选条件时"或"条件相当。
 
 
 ```{r}
@@ -281,13 +280,11 @@ starwars %>%
 starwars %>% 
   select(name : eye_color)
 
-#same above
+# 同上
 starwars %>% 
   select(1:6)
 
 # starwars %>% select(c(1,2,4,5,7))
-
-
 ```
 
 - 新增列筛选方式
@@ -330,7 +327,7 @@ relocate(.data, ..., .before = NULL, .after = NULL)
 
 
 ```{r}
-# sex:homeworld列在height列前面
+# sex:homeworld 列在 height 列前面
 starwars %>% relocate(sex:homeworld, .before = height)
 ```
 
@@ -399,6 +396,8 @@ mtcars %>%
 
 > n()是dplyr包中的计算当前组大小的函数，用在summarise()和mutate()中。通常用来组计算。
 
+
+
 ### group_by {#dplyr-groupby}
 
 聚合前一般都需要分组，`group_by()`动词实现该功能，与`SQL`中`group by ···`类似。
@@ -431,15 +430,19 @@ GROUP BY  species
 
 ### 条件判断 
 
-相比于`base::ifelse`,`if_else`输出类型更为严格，无论`TRUE`或`FALSE`输出类型一致，这样计算速度更快。
+dplyr::`if_else()`相比于`base::ifelse`,`if_else`输出类型更为严格，无论`TRUE`或`FALSE`输出类型一致，这样计算速度更快。
 
-> 与`data.table::fifelse()`功能相似
-
-`if_else()`参数
+dplyr::`if_else()`参数:
 
 ```{r dplyr-ifelse ,eval=FALSE}
 if_else(condition, true, false, missing = NULL)
 ```
+
+```{r}
+x <- sample(1:10,5)
+if_else(x>5,"大于五","小于等于五",missing = "空值")
+```
+
 
 与`ifelse`不同的是，`if_else`保留类型
 
@@ -449,10 +452,24 @@ ifelse(x %in% c("a", "b", "c"), x, factor(NA))
 if_else(x %in% c("a", "b", "c"), x, factor(NA))
 ```
 
+> 与`data.table::fifelse()`功能相似
+
 
 ### case_when 
 
-当条件嵌套条件较多时，使用`case_when`,使代码可读并且不易出错。与sql 中的case when 等价。
+当条件嵌套较多时，使用`case_when`,使代码可读并且不易出错。与sql 中的case when 等价。
+
+
+```{r}
+x <- 1:50
+case_when(
+  x %% 35 == 0 ~ "fizz buzz",
+  x %% 5 == 0 ~ "fizz",
+  x %% 7 == 0 ~ "buzz",
+  TRUE ~ as.character(x)
+)
+```
+
 
 ```{r dplyr-casewhen}
 Dates <- as.Date(c('2018-10-01', '2018-10-02', '2018-10-03','2018-10-04'))
@@ -463,6 +480,23 @@ case_when(
   TRUE ~ Dates
 )
 ```
+
+结合 mutate　动词使用
+
+```{r}
+starwars %>% 
+  mutate(性别 = case_when(
+    sex == "male" ~ "雄性",
+    sex == "female" ~ "雌性",
+    sex == "hermaphroditic" ~ "雌雄同体",
+    TRUE ~ "无"
+    )) %>% 
+  pull(性别) %>% 
+  table()
+```
+
+> pull()功能与　data$．类似，为了在管道中使用设计
+
 
 ### 计数函数
 
@@ -485,7 +519,7 @@ starwars %>% group_by(species) %>% summarise(n = n())
 
 - 非重复计数
 
-`n_distinct()`与` length(unique(x))`等价，但是更快更简洁。当我们需要给门店或订单之类数据需要去重计算时采用该函数。
+`n_distinct()`与` length(unique(x))`等价，但是更快更简洁。当我们需要给门店或订单之类数据去重计算时采用该函数。
 
 ```{r}
 x <- sample(1:10, 1e5, rep = TRUE)
@@ -514,7 +548,7 @@ cume_dist(x)
 
 ### 提取向量
 
-该系列函数是对`[[`的包装。
+该系列函数是对`[[`的包装，方便提取向量。
 
 ```{r eval=FALSE}
 nth(x, n, order_by = NULL, default = default_missing(x))
@@ -531,12 +565,138 @@ nth(x, 1)
 nth(x, 5)
 ```
 
+### slice 系列 {#dplyr:slice}
+
+`slice()`函数让我们按照行数切片，让我们筛选，删除、重复某些行。和 python 中的 pandas 库的切片类似。 `slice()`共有如下几组函数：
+
+- slice_head() 和 slice_tail()，选着头和尾行 。
+
+- slice_sample() 随机选择行。
+
+- slice_min() 和 slice_max() 按照变量的最低值和最高值选择行。
+
+如果用于 slice() 系列函数的数据集.data 是被 group_by() 过，那每个函数将作用在每一组上。例如，按照商品大类取每个商品大类前五的商品。
+
+```{r eval=FALSE}
+dt %>% 
+  group_by(商品大类) %>% 
+  slice_head(n = 5)
+```
+
+
+#### 函数用法
+
+```{r eval=FALSE}
+slice(.data, ..., .preserve = FALSE)
+
+slice_head(.data, ..., n, prop)
+
+slice_tail(.data, ..., n, prop)
+
+slice_min(.data, order_by, ..., n, prop, with_ties = TRUE)
+
+slice_max(.data, order_by, ..., n, prop, with_ties = TRUE)
+
+slice_sample(.data, ..., n, prop, weight_by = NULL, replace = FALSE)
+```
+
+
+#### 参数解释
+
+.data: 一个 data.frame , data frame extension (tibble)
+
+...: 必须是整数，如果是正数将保留，负值将删除。提供的值超过行数的将会被忽略
+
+.preserve :默认为FALSE,根据结果数据重新计算分组结构，否则保持原样分组
+
+n,p: 提供要选择的行数 n,或行的比列比如 prop = 0.4，如果都未提供则默认n = 1
+
+order_by: 要排序的变量或者是被函数作用的变量
+
+with_ties: 针对 _min 或 _max 函数，相等时候是否强制输出指定行数。
+
+weight_by: 抽样的权重
+
+replace: 是否允许重复抽样，默认为FALSE
+
+
+#### slice 案例
+
+- slice()
+
+```{r}
+# 筛选第一行
+mtcars %>% slice(1L)
+
+# 筛选最后一行
+mtcars %>% slice(n())
+
+# 筛选5至最后一行
+mtcars %>% slice(5:n())
+
+# 删除前面四行
+slice(mtcars, -(1:4))
+```
+
+- slice_head slice_tail
+
+```{r}
+# 基于现有顺序筛选前面行或最后行
+mtcars %>% slice_head(n = 5)
+mtcars %>% slice_tail(n = 5)
+```
+
+- slice_min slice_max
+
+```{r}
+# 基于变量筛选
+mtcars %>% slice_min(mpg, n = 5) #最小的五行
+mtcars %>% slice_max(mpg, n = 5) #最大的五行
+
+# slice_min()可能返回更多行，通过with_ties参数控制
+mtcars %>% slice_min(cyl, n = 1)
+mtcars %>% slice_min(cyl, n = 1, with_ties = FALSE)
+
+```
+
+- slice_sample
+
+在数据集中抽样，通过 replace 参数控制是否可以重复。
+
+```{r}
+mtcars %>% slice_sample(n = 5)
+mtcars %>% slice_sample(n = 5, replace = TRUE)
+```
+
+weight_by 参数调整抽样权重
+
+```{r}
+# 重量大的会更容易抽到
+mtcars %>% slice_sample(weight_by = wt, n = 5)
+```
+
+
+- 分组操作
+
+```{r}
+df <- tibble(
+  group = rep(c("a", "b", "c"), c(1, 2, 4)),
+  x = runif(7)
+)
+df %>% group_by(group) %>% slice_head(n = 2)
+
+# 注意体会使用prop参数时的差异
+df %>% group_by(group) %>% slice_head(prop = 0.4)  #仅c组返回一个，因为c组3个数字的 40%的前面还有数
+df %>% group_by(group) %>% slice_head(prop = 0.5) # 因为a组只有一个数字，前50%位没有数字
+
+```
+
+
 
 ### group 系列
 
-group_by(),group_map(), group_nest(), group_split(), group_trim()等一系列函数。
-
-其中我常用group_by(),group_split()两个函数。group_by()是大部分数据操作中的分组操作，按照group_by()的指定分组条件。
+group 系列函数包含　group_by(),group_map(), group_nest(), group_split(), group_trim()等。
+其中我常用group_by(),group_split()两个函数。group_by()是我们熟悉的动词，大部分数据操作中的分组操作由它完成。
 
 - group_by()
 
@@ -553,6 +713,19 @@ by_cyl %>% summarise(
 mtcars %>% group_by(vsam = vs + am) %>%
   group_vars()
 ```
+
+－ group_split()
+
+group_split() 功能与 base::split()相似。
+
+```{r}
+ir <- iris %>%
+  group_by(Species)
+
+group_split(ir)
+group_keys(ir)
+```
+
 
 
 - group_map()
@@ -610,17 +783,15 @@ gdf %>% select(group_cols())
 
 - between
 
-- cummean cumsum cumall cumany
+```{r}
+between(1:12, 7, 9)
+```
 
-累计系列函数
+- pull
 
 ```{r}
-x <- c(1, 3, 5, 2, 2)
-cummean(x)
-cumsum(x) / seq_along(x)
-
-cumall(x < 5)
-cumany(x == 3)
+mtcars %>% pull(-1)
+mtcars %>% pull(cyl)
 ```
 
 
@@ -638,22 +809,38 @@ distinct(df, diff = abs(x - y))
 ```
 
 
+- cummean cumsum cumall cumany
+
+累计系列函数
+
+```{r}
+x <- c(1, 3, 5, 2, 2)
+cummean(x)
+cumsum(x) / seq_along(x)
+
+cumall(x < 5)
+cumany(x == 3)
+```
+
+
+
+
 ## 表关联 {#dplyr:merge-two-table}
 
 表关联指像`sql`中的`left join`,`inner join`等表格之间的操作，或者是Excel中`Power Piovt`建模的建立关系，从而实现不同表格间的关联。
 
 
-### 基础操作 {#dplyr:merge-table-usage}
+### 两表关联 {#dplyr:merge-table-usage}
 
 `left_join()`,`full_join`,`inner_join()`等动词关联两个表。详情请查看：`vignette("two-table")`
 
 `left_join()`实现类似Excel中`VLOOKUP`函数功能或数据库中`left join`功能，将“右表”的字段依据“主键”关联到“左表”上。
 
-- 基础用法
+#### 基础用法
 
 `left_join()`,`right_join()`,`full_join()`,`inner_join`()，第一个以左表为主，第二个右表为主，第三个全连接，第四个内连接(只返回两表中都有的记录)，和数据库中连接方式一致。
 
-默认会自动寻找两表中相同的字段名作为关联的条件
+函数默认会自动寻找两表中相同的字段名作为关联的条件。
 
 ```{r dplyr-merge-data}
 library("nycflights13")
@@ -664,7 +851,7 @@ flights2 %>%
   left_join(airlines)
 ```
 
-指定关联条件列，类似数据库中`on a.column = b.column `。
+指定关联条件列，类似数据库中`on a.column = b.column `，R 中写起来会简单些。
 
 - R实现
 
@@ -686,12 +873,15 @@ select * from flights2 a left join planes b on a.tailnum = b.tailnum
 ```{r}
 #出发机场和目的机场信息
 flights2 %>% left_join(airports, by = c("dest" = "faa"))
+
 #flights2 %>% left_join(airports, c("origin" = "faa"))
-# 组合条件 多条件时用向量包裹即可c("dest" = "faa","cola" = "colb"))
+
+# 组合条件 多条件时用向量包裹即可
+# by = c("dest" = "faa","cola" = "colb"))
 ```
 
 
-- 筛选连接
+#### 筛选关联
 
 `anti_join()` 删除所有左表中在右表中匹配到的行
 
@@ -702,11 +892,12 @@ flights2 %>% left_join(airports, by = c("dest" = "faa"))
 df1 <- tibble(a=letters[1:20],b=1:20)
 df2 <- tibble(a=letters,b=1:26)
 
-df1 %>% semi_join(df2)
 df2 %>% anti_join(df1)
+df1 %>% semi_join(df2)
+
 ```
 
-- 集合操作
+#### 集合操作
 
 1. `intersect(x,y)`返回x,y交集
 
@@ -714,14 +905,33 @@ df2 %>% anti_join(df1)
 
 3. `setdiff(x,y)`返回存在x中但是不存在y中的记录
 
+4. `union_all(x,y)`返回全部值，不删除重复值
+
 ```{r dplyr-35}
 (df1 <- tibble(x = 1:2, y = c(1L, 1L)))
 (df2 <- tibble(x = 1:2, y = 1:2))
 intersect(df1, df2)
 union(df1, df2)
+union_all(df1, df2)
 setdiff(df1, df2)
 setdiff(df2, df1)
 ```
+
+
+
+在我们工作中可能需要求两个表之间的笛卡尔乘积[^笛卡尔乘积]，改如何求？
+
+[^笛卡尔乘积]:(笛卡尔乘积是指在数学中，两个集合X和Y的笛卡尔积(Cartesian product)，又称直积，表示为X × Y，第一个对象是X的成员而第二个对象是Y的所有可能有序对的其中一个成员)
+
+
+```{r}
+dta <- data.frame(a=letters)
+dtb <- data.frame(b=LETTERS)
+full_join(dta,dtb,by = character())
+```
+
+
+
 
 ### 多表操作 {#dplyr:merge-multiple-table}
 
