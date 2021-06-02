@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-31" />
+<meta name="date" content="2021-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
 <li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
@@ -434,6 +434,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.2" data-path="loop-changes.html"><a href="loop-changes.html#循环模式"><i class="fa fa-check"></i><b>9.2.2</b> 循环模式</a></li>
 <li class="chapter" data-level="9.2.3" data-path="loop-changes.html"><a href="loop-changes.html#未知长度输出"><i class="fa fa-check"></i><b>9.2.3</b> 未知长度输出</a></li>
 </ul></li>
+<li class="chapter" data-level="9.3" data-path="apply-function.html"><a href="apply-function.html"><i class="fa fa-check"></i><b>9.3</b> apply系列函数</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="apply-function.html"><a href="apply-function.html#lapply"><i class="fa fa-check"></i><b>9.3.1</b> lapply 循环迭代</a></li>
+<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply-sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply {# sapply}</a></li>
+<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply-迭代安全函数-vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数{# vapply}</a></li>
+<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply-多维数据-apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据{# apply}</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
@@ -515,12 +522,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.4.1</span> RODBC包</h3>
 <p>RODBC包是R语言对ODBC数据库接口的封装,可连接所有的ODBC数据库，但是读写效率较低。</p>
 <p>1.安装包</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="database-else-package.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RODBC&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="database-else-package.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RODBC&#39;</span>)</span></code></pre></div>
 <p>2.SQL SERVER 数据库举例</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="database-else-package.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RODBC)</span>
-<span id="cb409-2"><a href="database-else-package.html#cb409-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;driver={SQL Server};server=192.168.2.62;database=dbname;uid=zhongyf;pwd=Zyf123456&quot;</span>)</span>
-<span id="cb409-3"><a href="database-else-package.html#cb409-3" aria-hidden="true" tabindex="-1"></a>con</span>
-<span id="cb409-4"><a href="database-else-package.html#cb409-4" aria-hidden="true" tabindex="-1"></a>RODBC<span class="sc">::</span><span class="fu">sqlQuery</span>(con,<span class="st">&#39;select * from test&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="database-else-package.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RODBC)</span>
+<span id="cb410-2"><a href="database-else-package.html#cb410-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;driver={SQL Server};server=192.168.2.62;database=dbname;uid=zhongyf;pwd=Zyf123456&quot;</span>)</span>
+<span id="cb410-3"><a href="database-else-package.html#cb410-3" aria-hidden="true" tabindex="-1"></a>con</span>
+<span id="cb410-4"><a href="database-else-package.html#cb410-4" aria-hidden="true" tabindex="-1"></a>RODBC<span class="sc">::</span><span class="fu">sqlQuery</span>(con,<span class="st">&#39;select * from test&#39;</span>)</span></code></pre></div>
 <p>`</p>
 <ul>
 <li>怎样安装驱动</li>
@@ -529,8 +536,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ODBC for sql server driver 下载地址<a href="https://docs.microsoft.com/zh-cn/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">地址</a></p>
 <p>3.数据库字符串</p>
 <p>请参照<a href="https://www.connectionstrings.com/">数据库连接字符串</a></p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="database-else-package.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ODBC Driver 17 for SQL Server</span></span>
-<span id="cb410-2"><a href="database-else-package.html#cb410-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=name;UID=username;PWD=123456;&quot;</span>) <span class="co">#server 数据库 UID 数据库账户 PWD 数据库账户密码</span></span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="database-else-package.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ODBC Driver 17 for SQL Server</span></span>
+<span id="cb411-2"><a href="database-else-package.html#cb411-2" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">odbcDriverConnect</span>(<span class="st">&quot;Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=name;UID=username;PWD=123456;&quot;</span>) <span class="co">#server 数据库 UID 数据库账户 PWD 数据库账户密码</span></span></code></pre></div>
 <p>sql server 请参照<a href="https://www.connectionstrings.com/microsoft-odbc-driver-17-for-sql-server/">sql server连接字符串</a></p>
 </div>
 <div id="roracle包" class="section level3" number="8.4.2">
@@ -544,36 +551,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>配置环境变量</li>
 </ol>
 <p>根据自己所使用的系统，配置环境变量</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb411-1"><a href="database-else-package.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="va">OCI_INC=</span><span class="st">&#39;D:\app\zhongyf\product\11.2.0\client_1\oci\include&#39;</span></span>
-<span id="cb411-2"><a href="database-else-package.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="va">OCI_LIB64=</span><span class="st">&#39;D:\app\zhongyf\product\11.2.0\client_1\BIN&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb412-1"><a href="database-else-package.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="va">OCI_INC=</span><span class="st">&#39;D:\app\zhongyf\product\11.2.0\client_1\oci\include&#39;</span></span>
+<span id="cb412-2"><a href="database-else-package.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="va">OCI_LIB64=</span><span class="st">&#39;D:\app\zhongyf\product\11.2.0\client_1\BIN&#39;</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>安装包</li>
 </ol>
 <p>安装Roracle包需要配置相应版本的Rtools并添加到环境变量，另外配置两个oracle的环境变量。代码中有注释,按照自己安装版本路径修改。</p>
 <p>由于ROracle依赖于Oracle Instant Client,安装之前一定要先安装好客户端。</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="database-else-package.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;ROracle&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="database-else-package.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;ROracle&#39;</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>连接数据库</li>
 </ol>
 <p><code>Roracle</code>可以通过<code>DBI</code>包链接，除了驱动和连接字符串有差异，其他部分一样。</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="database-else-package.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROracle)</span>
-<span id="cb413-2"><a href="database-else-package.html#cb413-2" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span><span class="fu">dbDriver</span>(<span class="st">&quot;Oracle&quot;</span>)</span>
-<span id="cb413-3"><a href="database-else-package.html#cb413-3" aria-hidden="true" tabindex="-1"></a>connect.string <span class="ot">&lt;-</span> <span class="st">&#39;(DESCRIPTION =</span></span>
-<span id="cb413-4"><a href="database-else-package.html#cb413-4" aria-hidden="true" tabindex="-1"></a><span class="st">                    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.16.88.129)(PORT = 1521))</span></span>
-<span id="cb413-5"><a href="database-else-package.html#cb413-5" aria-hidden="true" tabindex="-1"></a><span class="st">                  (CONNECT_DATA =</span></span>
-<span id="cb413-6"><a href="database-else-package.html#cb413-6" aria-hidden="true" tabindex="-1"></a><span class="st">                      (SERVER = DEDICATED)</span></span>
-<span id="cb413-7"><a href="database-else-package.html#cb413-7" aria-hidden="true" tabindex="-1"></a><span class="st">                    (SERVICE_NAME = bidev)</span></span>
-<span id="cb413-8"><a href="database-else-package.html#cb413-8" aria-hidden="true" tabindex="-1"></a><span class="st">                  ))&#39;</span> <span class="co">#连接字符串</span></span>
-<span id="cb413-9"><a href="database-else-package.html#cb413-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb413-10"><a href="database-else-package.html#cb413-10" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv,<span class="at">username =</span> <span class="st">&quot;query&quot;</span>, <span class="at">password =</span> <span class="st">&quot;query&quot;</span>,<span class="at">dbname =</span> connect.string)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="database-else-package.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROracle)</span>
+<span id="cb414-2"><a href="database-else-package.html#cb414-2" aria-hidden="true" tabindex="-1"></a>drv <span class="ot">&lt;-</span><span class="fu">dbDriver</span>(<span class="st">&quot;Oracle&quot;</span>)</span>
+<span id="cb414-3"><a href="database-else-package.html#cb414-3" aria-hidden="true" tabindex="-1"></a>connect.string <span class="ot">&lt;-</span> <span class="st">&#39;(DESCRIPTION =</span></span>
+<span id="cb414-4"><a href="database-else-package.html#cb414-4" aria-hidden="true" tabindex="-1"></a><span class="st">                    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.16.88.129)(PORT = 1521))</span></span>
+<span id="cb414-5"><a href="database-else-package.html#cb414-5" aria-hidden="true" tabindex="-1"></a><span class="st">                  (CONNECT_DATA =</span></span>
+<span id="cb414-6"><a href="database-else-package.html#cb414-6" aria-hidden="true" tabindex="-1"></a><span class="st">                      (SERVER = DEDICATED)</span></span>
+<span id="cb414-7"><a href="database-else-package.html#cb414-7" aria-hidden="true" tabindex="-1"></a><span class="st">                    (SERVICE_NAME = bidev)</span></span>
+<span id="cb414-8"><a href="database-else-package.html#cb414-8" aria-hidden="true" tabindex="-1"></a><span class="st">                  ))&#39;</span> <span class="co">#连接字符串</span></span>
+<span id="cb414-9"><a href="database-else-package.html#cb414-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-10"><a href="database-else-package.html#cb414-10" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(drv,<span class="at">username =</span> <span class="st">&quot;query&quot;</span>, <span class="at">password =</span> <span class="st">&quot;query&quot;</span>,<span class="at">dbname =</span> connect.string)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>乱码问题</li>
 </ol>
 <p>如果连接oracle数据库，中文乱码设置以下环境变量即可，或者在启动文件配置该环境变量。</p>
 <p>linux下可以在文件Renviron中添加，记得引号，路径为[/opt/R/4.0.2/lib/R/etc/Renviron]</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="database-else-package.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查询数据库编码</span></span>
-<span id="cb414-2"><a href="database-else-package.html#cb414-2" aria-hidden="true" tabindex="-1"></a>select <span class="fu">userenv</span>(<span class="st">&#39;language&#39;</span>) from dual</span>
-<span id="cb414-3"><a href="database-else-package.html#cb414-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">NLS_LANG=</span><span class="st">&quot;SIMPLIFIED CHINESE_CHINA.AL32UTF8&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="database-else-package.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查询数据库编码</span></span>
+<span id="cb415-2"><a href="database-else-package.html#cb415-2" aria-hidden="true" tabindex="-1"></a>select <span class="fu">userenv</span>(<span class="st">&#39;language&#39;</span>) from dual</span>
+<span id="cb415-3"><a href="database-else-package.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">NLS_LANG=</span><span class="st">&quot;SIMPLIFIED CHINESE_CHINA.AL32UTF8&quot;</span>)</span></code></pre></div>
 <p>由于ROracle包的安装存在一定难度，具体安装说明可以参考微信公众号-宇飞的世界<a href="https://mp.weixin.qq.com/s/QLwedZ5mTybqSXdHMTGRIw">R包ROracle安装</a></p>
 </div>
 <div id="rmysql包" class="section level3" number="8.4.3">
@@ -581,62 +588,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>RMySQL包的主要作用可以提供驱动与mysql数据库进行连接，在本机未安装mysql的驱动的情况下.该包正在逐渐被淘汰，可以使用RMariaDB包替换。</p>
 <p>1.安装</p>
 <p>Win系统下直接安装即可，其它平台下需提前安装依赖环境。</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb415-1"><a href="database-else-package.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co">#On recent Debian or Ubuntu install libmariadbclient-dev</span></span>
-<span id="cb415-2"><a href="database-else-package.html#cb415-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-3"><a href="database-else-package.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> libmariadbclient-dev</span>
-<span id="cb415-4"><a href="database-else-package.html#cb415-4" aria-hidden="true" tabindex="-1"></a><span class="co">#On Fedora, CentOS or RHEL we need mariadb-devel:</span></span>
-<span id="cb415-5"><a href="database-else-package.html#cb415-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-6"><a href="database-else-package.html#cb415-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install mariadb-devel</span>
-<span id="cb415-7"><a href="database-else-package.html#cb415-7" aria-hidden="true" tabindex="-1"></a><span class="co">#On OS-X use mariadb-connector-c from Homebrew:</span></span>
-<span id="cb415-8"><a href="database-else-package.html#cb415-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-9"><a href="database-else-package.html#cb415-9" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install mariadb-connector-c</span></code></pre></div>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="database-else-package.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMySQL&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb416-1"><a href="database-else-package.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="co">#On recent Debian or Ubuntu install libmariadbclient-dev</span></span>
+<span id="cb416-2"><a href="database-else-package.html#cb416-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb416-3"><a href="database-else-package.html#cb416-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> libmariadbclient-dev</span>
+<span id="cb416-4"><a href="database-else-package.html#cb416-4" aria-hidden="true" tabindex="-1"></a><span class="co">#On Fedora, CentOS or RHEL we need mariadb-devel:</span></span>
+<span id="cb416-5"><a href="database-else-package.html#cb416-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb416-6"><a href="database-else-package.html#cb416-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install mariadb-devel</span>
+<span id="cb416-7"><a href="database-else-package.html#cb416-7" aria-hidden="true" tabindex="-1"></a><span class="co">#On OS-X use mariadb-connector-c from Homebrew:</span></span>
+<span id="cb416-8"><a href="database-else-package.html#cb416-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb416-9"><a href="database-else-package.html#cb416-9" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install mariadb-connector-c</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="database-else-package.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMySQL&#39;</span>)</span></code></pre></div>
 <p>2.连接使用</p>
 <p>上述连接方式一致，仅仅是指驱动差异</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="database-else-package.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
-<span id="cb417-2"><a href="database-else-package.html#cb417-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;mysql&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="database-else-package.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb418-2"><a href="database-else-package.html#cb418-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;mysql&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
 <p><code>RMariaDB</code>包与<code>RMySQL</code>包用法基本一致，在连接时注意驱动的选择即可。</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="database-else-package.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMariaDB&#39;</span>)</span>
-<span id="cb418-2"><a href="database-else-package.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
-<span id="cb418-3"><a href="database-else-package.html#cb418-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>() ,<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;dbtest&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="database-else-package.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RMariaDB&#39;</span>)</span>
+<span id="cb419-2"><a href="database-else-package.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
+<span id="cb419-3"><a href="database-else-package.html#cb419-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> RMySQL<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>() ,<span class="at">host=</span><span class="st">&#39;localhost&#39;</span>,<span class="at">dbname=</span><span class="st">&quot;dbtest&quot;</span>,<span class="at">username=</span><span class="st">&quot;root&quot;</span>,<span class="at">password=</span><span class="st">&#39;123456&#39;</span>)</span></code></pre></div>
 </div>
 <div id="rsqlite" class="section level3" number="8.4.4">
 <h3><span class="header-section-number">8.4.4</span> RSQLite</h3>
 <p>RSQLite是练习使用R中的数据库的最简单方法，因为程序包本身包含SQLite，无需任何外部软件。</p>
 <p><a href="https://rsqlite.r-dbi.org/">项目地址</a></p>
 <p>1.安装</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="database-else-package.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RSQLite&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="database-else-package.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RSQLite&quot;</span>)</span></code></pre></div>
 <p>2.基础用法</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="database-else-package.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb420-2"><a href="database-else-package.html#cb420-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 在内存中创建一个临时数据库</span></span>
-<span id="cb420-3"><a href="database-else-package.html#cb420-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
-<span id="cb420-4"><a href="database-else-package.html#cb420-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-5"><a href="database-else-package.html#cb420-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span>
-<span id="cb420-6"><a href="database-else-package.html#cb420-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; character(0)</span></span></code></pre></div>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="database-else-package.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;mtcars&quot;</span>, mtcars)</span>
-<span id="cb421-2"><a href="database-else-package.html#cb421-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span>
-<span id="cb421-3"><a href="database-else-package.html#cb421-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mtcars&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="database-else-package.html#cb422-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">&quot;mtcars&quot;</span>)</span>
-<span id="cb422-2"><a href="database-else-package.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb422-3"><a href="database-else-package.html#cb422-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    mpg cyl disp  hp drat   wt qsec vs am gear carb</span></span>
-<span id="cb422-4"><a href="database-else-package.html#cb422-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4</span></span>
-<span id="cb422-5"><a href="database-else-package.html#cb422-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4</span></span>
-<span id="cb422-6"><a href="database-else-package.html#cb422-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 22.8   4  108  93 3.85 2.32 18.6  1  1    4    1</span></span>
-<span id="cb422-7"><a href="database-else-package.html#cb422-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1</span></span>
-<span id="cb422-8"><a href="database-else-package.html#cb422-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2</span></span>
-<span id="cb422-9"><a href="database-else-package.html#cb422-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1</span></span></code></pre></div>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="database-else-package.html#cb423-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * FROM mtcars WHERE cyl = 4&quot;</span>)</span>
-<span id="cb423-2"><a href="database-else-package.html#cb423-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">dbFetch</span>(res)</span>
-<span id="cb423-3"><a href="database-else-package.html#cb423-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
-<span id="cb423-4"><a href="database-else-package.html#cb423-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb423-5"><a href="database-else-package.html#cb423-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    mpg cyl  disp hp drat   wt qsec vs am gear carb</span></span>
-<span id="cb423-6"><a href="database-else-package.html#cb423-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 22.8   4 108.0 93 3.85 2.32 18.6  1  1    4    1</span></span>
-<span id="cb423-7"><a href="database-else-package.html#cb423-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 24.4   4 146.7 62 3.69 3.19 20.0  1  0    4    2</span></span>
-<span id="cb423-8"><a href="database-else-package.html#cb423-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 22.8   4 140.8 95 3.92 3.15 22.9  1  0    4    2</span></span>
-<span id="cb423-9"><a href="database-else-package.html#cb423-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 32.4   4  78.7 66 4.08 2.20 19.5  1  1    4    1</span></span>
-<span id="cb423-10"><a href="database-else-package.html#cb423-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 30.4   4  75.7 52 4.93 1.61 18.5  1  1    4    2</span></span>
-<span id="cb423-11"><a href="database-else-package.html#cb423-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 33.9   4  71.1 65 4.22 1.83 19.9  1  1    4    1</span></span>
-<span id="cb423-12"><a href="database-else-package.html#cb423-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="database-else-package.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb421-2"><a href="database-else-package.html#cb421-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 在内存中创建一个临时数据库</span></span>
+<span id="cb421-3"><a href="database-else-package.html#cb421-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
+<span id="cb421-4"><a href="database-else-package.html#cb421-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb421-5"><a href="database-else-package.html#cb421-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span>
+<span id="cb421-6"><a href="database-else-package.html#cb421-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; character(0)</span></span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="database-else-package.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;mtcars&quot;</span>, mtcars)</span>
+<span id="cb422-2"><a href="database-else-package.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span>
+<span id="cb422-3"><a href="database-else-package.html#cb422-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mtcars&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="database-else-package.html#cb423-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb423-2"><a href="database-else-package.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb423-3"><a href="database-else-package.html#cb423-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    mpg cyl disp  hp drat   wt qsec vs am gear carb</span></span>
+<span id="cb423-4"><a href="database-else-package.html#cb423-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4</span></span>
+<span id="cb423-5"><a href="database-else-package.html#cb423-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4</span></span>
+<span id="cb423-6"><a href="database-else-package.html#cb423-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 22.8   4  108  93 3.85 2.32 18.6  1  1    4    1</span></span>
+<span id="cb423-7"><a href="database-else-package.html#cb423-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1</span></span>
+<span id="cb423-8"><a href="database-else-package.html#cb423-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2</span></span>
+<span id="cb423-9"><a href="database-else-package.html#cb423-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="database-else-package.html#cb424-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">&quot;SELECT * FROM mtcars WHERE cyl = 4&quot;</span>)</span>
+<span id="cb424-2"><a href="database-else-package.html#cb424-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">dbFetch</span>(res)</span>
+<span id="cb424-3"><a href="database-else-package.html#cb424-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
+<span id="cb424-4"><a href="database-else-package.html#cb424-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb424-5"><a href="database-else-package.html#cb424-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    mpg cyl  disp hp drat   wt qsec vs am gear carb</span></span>
+<span id="cb424-6"><a href="database-else-package.html#cb424-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 22.8   4 108.0 93 3.85 2.32 18.6  1  1    4    1</span></span>
+<span id="cb424-7"><a href="database-else-package.html#cb424-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 24.4   4 146.7 62 3.69 3.19 20.0  1  0    4    2</span></span>
+<span id="cb424-8"><a href="database-else-package.html#cb424-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 22.8   4 140.8 95 3.92 3.15 22.9  1  0    4    2</span></span>
+<span id="cb424-9"><a href="database-else-package.html#cb424-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 32.4   4  78.7 66 4.08 2.20 19.5  1  1    4    1</span></span>
+<span id="cb424-10"><a href="database-else-package.html#cb424-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 30.4   4  75.7 52 4.93 1.61 18.5  1  1    4    2</span></span>
+<span id="cb424-11"><a href="database-else-package.html#cb424-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 33.9   4  71.1 65 4.22 1.83 19.9  1  1    4    1</span></span>
+<span id="cb424-12"><a href="database-else-package.html#cb424-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 <p>基础用法与DBI功能一致。</p>
 </div>
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-31" />
+<meta name="date" content="2021-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
 <li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
@@ -434,6 +434,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.2" data-path="loop-changes.html"><a href="loop-changes.html#循环模式"><i class="fa fa-check"></i><b>9.2.2</b> 循环模式</a></li>
 <li class="chapter" data-level="9.2.3" data-path="loop-changes.html"><a href="loop-changes.html#未知长度输出"><i class="fa fa-check"></i><b>9.2.3</b> 未知长度输出</a></li>
 </ul></li>
+<li class="chapter" data-level="9.3" data-path="apply-function.html"><a href="apply-function.html"><i class="fa fa-check"></i><b>9.3</b> apply系列函数</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="apply-function.html"><a href="apply-function.html#lapply"><i class="fa fa-check"></i><b>9.3.1</b> lapply 循环迭代</a></li>
+<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply-sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply {# sapply}</a></li>
+<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply-迭代安全函数-vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数{# vapply}</a></li>
+<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply-多维数据-apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据{# apply}</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
@@ -511,34 +518,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="purrr:multi-parameter" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> 映射多个参数</h2>
 <p>map2 和 pmap 函数可以映射两个及以上参数。</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="purrr-multi-parameter.html#cb467-1" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb467-2"><a href="purrr-multi-parameter.html#cb467-2" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb467-3"><a href="purrr-multi-parameter.html#cb467-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(li1,li2,<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
-<span id="cb467-4"><a href="purrr-multi-parameter.html#cb467-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb467-5"><a href="purrr-multi-parameter.html#cb467-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
-<span id="cb467-6"><a href="purrr-multi-parameter.html#cb467-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb467-7"><a href="purrr-multi-parameter.html#cb467-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb467-8"><a href="purrr-multi-parameter.html#cb467-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7</span></span>
-<span id="cb467-9"><a href="purrr-multi-parameter.html#cb467-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb467-10"><a href="purrr-multi-parameter.html#cb467-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb467-11"><a href="purrr-multi-parameter.html#cb467-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="purrr-multi-parameter.html#cb478-1" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb478-2"><a href="purrr-multi-parameter.html#cb478-2" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb478-3"><a href="purrr-multi-parameter.html#cb478-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(li1,li2,<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
+<span id="cb478-4"><a href="purrr-multi-parameter.html#cb478-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb478-5"><a href="purrr-multi-parameter.html#cb478-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb478-6"><a href="purrr-multi-parameter.html#cb478-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb478-7"><a href="purrr-multi-parameter.html#cb478-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb478-8"><a href="purrr-multi-parameter.html#cb478-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7</span></span>
+<span id="cb478-9"><a href="purrr-multi-parameter.html#cb478-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb478-10"><a href="purrr-multi-parameter.html#cb478-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb478-11"><a href="purrr-multi-parameter.html#cb478-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span></code></pre></div>
 <p>类似函数 map2_dbl,map2_chr,map2_dfr等等。</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="purrr-multi-parameter.html#cb468-1" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb468-2"><a href="purrr-multi-parameter.html#cb468-2" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb468-3"><a href="purrr-multi-parameter.html#cb468-3" aria-hidden="true" tabindex="-1"></a>li3 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb468-4"><a href="purrr-multi-parameter.html#cb468-4" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb468-5"><a href="purrr-multi-parameter.html#cb468-5" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb468-6"><a href="purrr-multi-parameter.html#cb468-6" aria-hidden="true" tabindex="-1"></a>li3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb468-7"><a href="purrr-multi-parameter.html#cb468-7" aria-hidden="true" tabindex="-1"></a>li <span class="ot">&lt;-</span> <span class="fu">list</span>(li1,li2,li3)</span>
-<span id="cb468-8"><a href="purrr-multi-parameter.html#cb468-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(li,sum)</span>
-<span id="cb468-9"><a href="purrr-multi-parameter.html#cb468-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb468-10"><a href="purrr-multi-parameter.html#cb468-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span>
-<span id="cb468-11"><a href="purrr-multi-parameter.html#cb468-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb468-12"><a href="purrr-multi-parameter.html#cb468-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb468-13"><a href="purrr-multi-parameter.html#cb468-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
-<span id="cb468-14"><a href="purrr-multi-parameter.html#cb468-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb468-15"><a href="purrr-multi-parameter.html#cb468-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb468-16"><a href="purrr-multi-parameter.html#cb468-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="purrr-multi-parameter.html#cb479-1" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb479-2"><a href="purrr-multi-parameter.html#cb479-2" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb479-3"><a href="purrr-multi-parameter.html#cb479-3" aria-hidden="true" tabindex="-1"></a>li3 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb479-4"><a href="purrr-multi-parameter.html#cb479-4" aria-hidden="true" tabindex="-1"></a>li1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb479-5"><a href="purrr-multi-parameter.html#cb479-5" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb479-6"><a href="purrr-multi-parameter.html#cb479-6" aria-hidden="true" tabindex="-1"></a>li3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb479-7"><a href="purrr-multi-parameter.html#cb479-7" aria-hidden="true" tabindex="-1"></a>li <span class="ot">&lt;-</span> <span class="fu">list</span>(li1,li2,li3)</span>
+<span id="cb479-8"><a href="purrr-multi-parameter.html#cb479-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(li,sum)</span>
+<span id="cb479-9"><a href="purrr-multi-parameter.html#cb479-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb479-10"><a href="purrr-multi-parameter.html#cb479-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span>
+<span id="cb479-11"><a href="purrr-multi-parameter.html#cb479-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-12"><a href="purrr-multi-parameter.html#cb479-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb479-13"><a href="purrr-multi-parameter.html#cb479-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
+<span id="cb479-14"><a href="purrr-multi-parameter.html#cb479-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-15"><a href="purrr-multi-parameter.html#cb479-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb479-16"><a href="purrr-multi-parameter.html#cb479-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 15</span></span></code></pre></div>
 <p>同上有pmap_int,pmap_dbl,pmap_dfr等函数。</p>
 </div>
             </section>

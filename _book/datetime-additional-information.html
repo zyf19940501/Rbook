@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-31" />
+<meta name="date" content="2021-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
 <li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
@@ -434,6 +434,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.2" data-path="loop-changes.html"><a href="loop-changes.html#循环模式"><i class="fa fa-check"></i><b>9.2.2</b> 循环模式</a></li>
 <li class="chapter" data-level="9.2.3" data-path="loop-changes.html"><a href="loop-changes.html#未知长度输出"><i class="fa fa-check"></i><b>9.2.3</b> 未知长度输出</a></li>
 </ul></li>
+<li class="chapter" data-level="9.3" data-path="apply-function.html"><a href="apply-function.html"><i class="fa fa-check"></i><b>9.3</b> apply系列函数</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="apply-function.html"><a href="apply-function.html#lapply"><i class="fa fa-check"></i><b>9.3.1</b> lapply 循环迭代</a></li>
+<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply-sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply {# sapply}</a></li>
+<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply-迭代安全函数-vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数{# vapply}</a></li>
+<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply-多维数据-apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据{# apply}</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
@@ -518,18 +525,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="差异" class="section level4" number="5.4.1.1">
 <h4><span class="header-section-number">5.4.1.1</span> 差异</h4>
 <p><code>R</code>中日期起始时间是<code>1970-01-01</code>,Excel中起始日期<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>(Windows)是<code>1900-01-01</code>,转化成数字两者相差25568。如下所示：</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="datetime-additional-information.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>)</span>
-<span id="cb300-2"><a href="datetime-additional-information.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span>
-<span id="cb300-3"><a href="datetime-additional-information.html#cb300-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1900-01-01&#39;</span>) <span class="co"># 1970-01-02</span></span>
-<span id="cb300-4"><a href="datetime-additional-information.html#cb300-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-02&quot;</span></span>
-<span id="cb300-5"><a href="datetime-additional-information.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1899-12-31&#39;</span>) <span class="co"># 1970-01-01</span></span>
-<span id="cb300-6"><a href="datetime-additional-information.html#cb300-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="datetime-additional-information.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>)</span>
+<span id="cb301-2"><a href="datetime-additional-information.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span>
+<span id="cb301-3"><a href="datetime-additional-information.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1900-01-01&#39;</span>) <span class="co"># 1970-01-02</span></span>
+<span id="cb301-4"><a href="datetime-additional-information.html#cb301-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-02&quot;</span></span>
+<span id="cb301-5"><a href="datetime-additional-information.html#cb301-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">25568</span>,<span class="at">origin=</span><span class="st">&#39;1899-12-31&#39;</span>) <span class="co"># 1970-01-01</span></span>
+<span id="cb301-6"><a href="datetime-additional-information.html#cb301-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1970-01-01&quot;</span></span></code></pre></div>
 <p>Excel中1900-01-01代表数字1，但是R中1970-01-01代表0。这也是比较怪异的点，毕竟R一般都是从1开始。</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="datetime-additional-information.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>))</span>
-<span id="cb301-2"><a href="datetime-additional-information.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="datetime-additional-information.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.Date</span>(<span class="st">&#39;1970-01-01&#39;</span>))</span>
+<span id="cb302-2"><a href="datetime-additional-information.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
 <p>这样导致:
-R日期2021-05-31转化成数字是18778,
-Excel中日期2021-05-31转化成数字是44347,<strong>两者相差25569</strong>。</p>
+R日期2021-06-01转化成数字是18779,
+Excel中日期2021-06-01转化成数字是44348,<strong>两者相差25569</strong>。</p>
 <p><del>在用R读取Excel文件时，涉及到数字日期转化时需要注意其中差异。</del></p>
 </div>
 <div id="excel时间函数" class="section level4" number="5.4.1.2">

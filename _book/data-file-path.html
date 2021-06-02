@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.7 文件路径 | R语言学习笔记</title>
-  <meta name="description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>1.7 文件路径 | R 语言学习笔记</title>
+  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.7 文件路径 | R语言学习笔记" />
+  <meta property="og:title" content="1.7 文件路径 | R 语言学习笔记" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.7 文件路径 | R语言学习笔记" />
+  <meta name="twitter:title" content="1.7 文件路径 | R 语言学习笔记" />
   
-  <meta name="twitter:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-31" />
+<meta name="date" content="2021-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="data-rstudio-addins.html"/>
 <link rel="next" href="data-expand.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,15 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -159,7 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
 <li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
@@ -188,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html"><i class="fa fa-check"></i><b>1.6</b> Rstudio导入</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#利用rstudio工具栏导入"><i class="fa fa-check"></i><b>1.6.1</b> 利用rstudio工具栏导入</a></li>
+<li class="chapter" data-level="1.6.1" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#rstudio-工具栏导入"><i class="fa fa-check"></i><b>1.6.1</b> rstudio 工具栏导入</a></li>
 <li class="chapter" data-level="1.6.2" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#插件导入"><i class="fa fa-check"></i><b>1.6.2</b> 插件导入</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="data-file-path.html"><a href="data-file-path.html"><i class="fa fa-check"></i><b>1.7</b> 文件路径</a>
@@ -434,6 +425,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.2" data-path="loop-changes.html"><a href="loop-changes.html#循环模式"><i class="fa fa-check"></i><b>9.2.2</b> 循环模式</a></li>
 <li class="chapter" data-level="9.2.3" data-path="loop-changes.html"><a href="loop-changes.html#未知长度输出"><i class="fa fa-check"></i><b>9.2.3</b> 未知长度输出</a></li>
 </ul></li>
+<li class="chapter" data-level="9.3" data-path="apply-function.html"><a href="apply-function.html"><i class="fa fa-check"></i><b>9.3</b> apply系列函数</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="apply-function.html"><a href="apply-function.html#lapply"><i class="fa fa-check"></i><b>9.3.1</b> lapply 循环迭代</a></li>
+<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply-sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply {# sapply}</a></li>
+<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply-迭代安全函数-vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数{# vapply}</a></li>
+<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply-多维数据-apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据{# apply}</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
@@ -500,7 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
           </h1>
         </div>
 
@@ -516,29 +514,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>win 路径</li>
 </ul>
-<p>winOS系统：<code>C:\Users\zhongyf\Desktop\Rbook</code>，注意路径中是一个反斜杠()。</p>
+<p>windows 系统：<code>C:\Users\zhongyf\Desktop\Rbook</code>，注意路径中是一个反斜杠\。</p>
 <div class="figure">
 <img src="picture/read-write/win-path.png" alt="" />
 <p class="caption">win-path</p>
 </div>
-<p>在R中读取时需要用一个正斜杠或两个反斜杠。</p>
+<p>在R中读取时需要用一个正斜杠或两个反斜杠，建议用正斜杠。</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-file-path.html#cb59-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data/flights.csv&#39;</span>)</span>
 <span id="cb59-2"><a href="data-file-path.html#cb59-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zhongyf</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">Rbook</span><span class="sc">\\</span><span class="st">data</span><span class="sc">\f</span><span class="st">lights.csv&#39;</span>) <span class="co"># same above</span></span>
 <span id="cb59-3"><a href="data-file-path.html#cb59-3" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">:::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(C:\Users\zhongyf\Desktop\Rbook\data</span><span class="sc">\f</span><span class="st">lights.csv)&quot;</span>) <span class="co"># same above</span></span></code></pre></div>
 <p>工作中，当需要读取或写入共享盘<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>中文件时，路径表示方式为：</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-file-path.html#cb60-1" aria-hidden="true" tabindex="-1"></a>the_shared_disk <span class="ot">&lt;-</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部\)&quot;</span></span>
 <span id="cb60-2"><a href="data-file-path.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-3"><a href="data-file-path.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data into R</span></span>
-<span id="cb60-4"><a href="data-file-path.html#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-5"><a href="data-file-path.html#cb60-5" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">192.168.2.117</span><span class="sc">\\</span><span class="st">公司A-新</span><span class="sc">\\</span><span class="st">01事业部</span><span class="sc">\\</span><span class="st">flights.csv&quot;</span>)</span>
-<span id="cb60-6"><a href="data-file-path.html#cb60-6" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部\)&quot;</span>)</span></code></pre></div>
+<span id="cb60-3"><a href="data-file-path.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取共享盘数据</span></span>
+<span id="cb60-4"><a href="data-file-path.html#cb60-4" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">192.168.2.117</span><span class="sc">\\</span><span class="st">公司A-新</span><span class="sc">\\</span><span class="st">01事业部</span><span class="sc">\\</span><span class="st">flights.csv&quot;</span>)</span>
+<span id="cb60-5"><a href="data-file-path.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 或者用r&quot;()&quot;指定路径</span></span>
+<span id="cb60-6"><a href="data-file-path.html#cb60-6" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部</span><span class="sc">\t</span><span class="st">est.csv)&quot;</span>)</span></code></pre></div>
 <blockquote>
-<p>r“()”用法是R-4.0-之后的特性。在win系统下表示路径特别有用</p>
+<p>r“()”用法是R-4.0-之后的特性。在win系统下表示路径特别有用，可以避免转义。</p>
 </blockquote>
 <ul>
 <li>mac 路径</li>
 </ul>
-<p>macOS系统: <code>/User/vega_mac/Desktop/r</code>,路径中是一个正斜杠。</p>
+<p>macOS系统: <code>/User/vega_mac/Desktop/r</code>,路径中是一个正斜杠//。</p>
 <div class="figure">
 <img src="picture/read-write/mac-path.png" alt="" />
 <p class="caption">mac-path</p>
@@ -547,12 +545,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="默认路径" class="section level3" number="1.7.2">
 <h3><span class="header-section-number">1.7.2</span> 默认路径</h3>
-<p><code>getwd()</code>是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，读取导出的默认路径是<code>getwd()</code>。想要改变工作目录，通过设定<code>setwd()</code>即可。</p>
+<p>在我们刚开始学习文件读写的时候，都会疑惑输出的文件到哪里去了？在 R 中有一个“当前默认工作目录”的概念，如果不做任何设置，当前默认工作目录一般在：</p>
+<p>Windows 系统默认目录一般都是用户文件夹下的文档文件，即./zhongyf/Documents 文件夹下。</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-file-path.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb62-2"><a href="data-file-path.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:/Users/zhongyf/Desktop/Rbook&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-file-path.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb63-2"><a href="data-file-path.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data&#39;</span>)</span>
-<span id="cb63-3"><a href="data-file-path.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<span id="cb62-2"><a href="data-file-path.html#cb62-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;C:/Users/zhongyf/Documents&quot;</span></span></code></pre></div>
+<p>Macos/linxu 默认目录一般都是用户文件夹下，即 /Users/zhongyf 或者是 /home/zhongyf 文件夹下。</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-file-path.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mac</span></span>
+<span id="cb63-2"><a href="data-file-path.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb63-3"><a href="data-file-path.html#cb63-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;/Users/zhongyf&quot;</span></span>
+<span id="cb63-4"><a href="data-file-path.html#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="data-file-path.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># linux</span></span>
+<span id="cb63-6"><a href="data-file-path.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb63-7"><a href="data-file-path.html#cb63-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;/home/zhongyf&quot;</span></span></code></pre></div>
+<p><code>getwd()</code>是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，文件读取输出的默认路径是<code>getwd()</code>。想要改变工作目录，通过设定<code>setwd()</code>即可。 如下所示：</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-file-path.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb64-2"><a href="data-file-path.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data&#39;</span>)</span></code></pre></div>
+<p>除了上述通过<code>setwd()</code>修改工作目录外，可以通过 Rsutdio 的 Tools 工具栏 -&gt; Global Options -&gt; Default working directory 设置工作目录。还可以通过
+Rstudio &gt; Session &gt; Set Working Directory &gt; Choose Directory 来调整【快捷键 Ctrl+Shift+H 】。修改工作目录后，通过<code>getwd()</code>查看修改是否生效。</p>
+<p>关于文件路径，我个人喜欢的解决办法是通过 File &gt; New Project &gt; New Directory 新建文件项目，将本次所有的数据需求放在该新建的文件夹下，那我们在做本次项目时就再也不用理会文件路径问题了，因为所有的默认路径都是刚新建的路径。这种项目管理的方法，我个人比较推崇。</p>
+<blockquote>
+<p>配上项目说明 Readme 文件，配合 git 做项目版本控制,方便我们后期查阅回溯。</p>
+</blockquote>
 </div>
 </div>
 <div class="footnotes">
@@ -618,20 +631,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

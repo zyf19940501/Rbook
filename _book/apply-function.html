@@ -4,37 +4,37 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.2 writexl | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>9.3 apply系列函数 | R语言学习笔记</title>
+  <meta name="description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.2 writexl | R 语言学习笔记" />
+  <meta property="og:title" content="9.3 apply系列函数 | R语言学习笔记" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.2 writexl | R 语言学习笔记" />
+  <meta name="twitter:title" content="9.3 apply系列函数 | R语言学习笔记" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="宇飞的R语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="readxl-description.html"/>
-<link rel="next" href="openxlsx-description.html"/>
+<link rel="prev" href="loop-changes.html"/>
+<link rel="next" href="purrr-Iteration.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,6 +53,15 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -179,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html"><i class="fa fa-check"></i><b>1.6</b> Rstudio导入</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#rstudio-工具栏导入"><i class="fa fa-check"></i><b>1.6.1</b> rstudio 工具栏导入</a></li>
+<li class="chapter" data-level="1.6.1" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#利用rstudio工具栏导入"><i class="fa fa-check"></i><b>1.6.1</b> 利用rstudio工具栏导入</a></li>
 <li class="chapter" data-level="1.6.2" data-path="data-rstudio-addins.html"><a href="data-rstudio-addins.html#插件导入"><i class="fa fa-check"></i><b>1.6.2</b> 插件导入</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="data-file-path.html"><a href="data-file-path.html"><i class="fa fa-check"></i><b>1.7</b> 文件路径</a>
@@ -498,7 +507,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言学习笔记</a>
           </h1>
         </div>
 
@@ -506,105 +515,137 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="writexl" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> writexl</h2>
-<p>截止到2021年5月17日，writexl包功能比较简单，仅有输出 Excel 功能。快速、不依赖 java 和 Excle 是它绝对的优势，并且输出文件相比<code>openxlsx</code>包较小。</p>
-<p><a href="https://docs.ropensci.org/writexl/">项目地址</a></p>
-<div id="writexl:usage" class="section level3" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> 用法</h3>
-<p>1.安装</p>
-<p>从CRAN安装发行版</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="writexl.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;writexl&quot;</span>)</span></code></pre></div>
-<p>2.函数参数</p>
-<p><code>write_xlsx()</code>函数参数如下：</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="writexl.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(</span>
-<span id="cb17-2"><a href="writexl.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  x,</span>
-<span id="cb17-3"><a href="writexl.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">&quot;.xlsx&quot;</span>),</span>
-<span id="cb17-4"><a href="writexl.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-5"><a href="writexl.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">format_headers =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-6"><a href="writexl.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">use_zip64 =</span> <span class="cn">FALSE</span></span>
-<span id="cb17-7"><a href="writexl.html#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th>write_xlsx参数</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>x</td>
-<td>要输出的数据框和数据框列表</td>
-</tr>
-<tr class="even">
-<td>path</td>
-<td>输出 Excel 的文件名称</td>
-</tr>
-<tr class="odd">
-<td>col_names</td>
-<td>是否输出表头，默认为TRUE</td>
-</tr>
-<tr class="even">
-<td>format_headers</td>
-<td>是否将表头居中并加粗，默认为TRUE</td>
-</tr>
-<tr class="odd">
-<td>use_zip64</td>
-<td>是否支持4Gb文件大小，不是所有的系统都支持</td>
-</tr>
-</tbody>
-</table>
+<div id="apply:function" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> apply系列函数</h2>
+<p>在 base R 中,apply系列函数是比较著名的一组函数，虽然<code>dplyr</code>和<code>purrr</code>包的功能可以取代。但是我们作为学习者，还是需要了解 base R 里面的原生用法。apply系列函数包含了8个以apply结尾的函数，分别是：apply,eapply,lappy,mapply,rapply,sapply,tapply,vapply。他们都是对 R 的对象执行一个或某个功能函数，然后返回不行形式的数据格式。听起来就有“循环”的味道，事实上大部分的 apply 系列函数都可以用<code>for</code>循环来实现，不过apply系列函数实现更加简洁高效。</p>
+<p>相比起来，我不太喜欢 base R apply 系列函数的用法，喜欢更加优雅简洁的<code>purrr</code>的循环迭代方式，所以该部分大家可以跳过或做简单了解即可。</p>
 <blockquote>
-<p>use_zip64:不确定该参数的理解是否正确，请自行阅读官方文档，绝大部分时候不用理解该参数。</p>
+<p>apply系列函数简洁高效的原因是因为 R 语言里面的向量化，具体可以参考《R语言编程艺术》。</p>
 </blockquote>
-<p>3.输出Excel</p>
-<p><code>write_xlsx()</code>函数将数据框保存到 Excel。如想要输出多个 sheet 时，用<code>list(mysheet1 = iris,mysheet2 = iris)</code>表示即可，代码如下：</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="writexl.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
-<span id="cb18-2"><a href="writexl.html#cb18-2" aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(iris,<span class="at">path =</span> <span class="st">&#39;iris.xlsx&#39;</span>)</span>
-<span id="cb18-3"><a href="writexl.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="writexl.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 输出多sheet</span></span>
-<span id="cb18-5"><a href="writexl.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(<span class="fu">list</span>(<span class="at">mysheet1 =</span> iris,<span class="at">mysheet2 =</span> iris),<span class="at">path =</span> <span class="st">&#39;iris.xlsx&#39;</span>)</span></code></pre></div>
-<p>4.效率比较</p>
-<p>和<a href="openxlsx-description.html#openxlsx:description"><code>openxlsx</code></a>包比较输出效率。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="writexl.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
-<span id="cb19-2"><a href="writexl.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb19-3"><a href="writexl.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
-<span id="cb19-4"><a href="writexl.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">writexl =</span> writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(flights, <span class="fu">tempfile</span>()),</span>
-<span id="cb19-5"><a href="writexl.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">openxlsx =</span> openxlsx<span class="sc">::</span><span class="fu">write.xlsx</span>(flights, <span class="fu">tempfile</span>()),</span>
-<span id="cb19-6"><a href="writexl.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">2</span></span>
-<span id="cb19-7"><a href="writexl.html#cb19-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>5.文件大小比较</p>
-<p>和<a href="openxlsx-description.html#openxlsx:description"><code>openxlsx</code></a>包比较输出后的 Excel 文件大小。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="writexl.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb20-2"><a href="writexl.html#cb20-2" aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(flights, tmp1 <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
-<span id="cb20-3"><a href="writexl.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(tmp1)<span class="sc">$</span>size</span>
-<span id="cb20-4"><a href="writexl.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 29139352</span></span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="writexl.html#cb21-1" aria-hidden="true" tabindex="-1"></a>openxlsx<span class="sc">::</span><span class="fu">write.xlsx</span>(flights, tmp2 <span class="ot">&lt;-</span> <span class="fu">tempfile</span>())</span>
-<span id="cb21-2"><a href="writexl.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(tmp2)<span class="sc">$</span>size</span>
-<span id="cb21-3"><a href="writexl.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 26833692</span></span></code></pre></div>
-<p>按照<code>writexl</code>官方文档的说法，<code>writexl</code>输出的 Excel 文件应该较少，但实际上并不是，不确定是不是<code>openxlsx</code>更新优化过。</p>
-<p>6.其它功能</p>
-<p>Excel 公式以及超级链接格式。</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="writexl.html#cb22-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb22-2"><a href="writexl.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;UCLA&quot;</span>, <span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;Jeroen&quot;</span>),</span>
-<span id="cb22-3"><a href="writexl.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">founded =</span> <span class="fu">c</span>(<span class="dv">1919</span>, <span class="dv">1868</span>, <span class="dv">2030</span>),</span>
-<span id="cb22-4"><a href="writexl.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">website =</span> <span class="fu">xl_hyperlink</span>(<span class="fu">c</span>(<span class="st">&quot;http://www.ucla.edu&quot;</span>, <span class="st">&quot;http://www.berkeley.edu&quot;</span>, <span class="cn">NA</span>), <span class="st">&quot;homepage&quot;</span>)</span>
-<span id="cb22-5"><a href="writexl.html#cb22-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-6"><a href="writexl.html#cb22-6" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="fu">xl_formula</span>(<span class="st">&#39;=(YEAR(TODAY()) - INDIRECT(&quot;B&quot; &amp; ROW()))&#39;</span>)</span>
-<span id="cb22-7"><a href="writexl.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(df, <span class="st">&#39;universities.xlsx&#39;</span>)</span>
-<span id="cb22-8"><a href="writexl.html#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="writexl.html#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># cleanup</span></span>
-<span id="cb22-10"><a href="writexl.html#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">&#39;universities.xlsx&#39;</span>)</span></code></pre></div>
-<p>当需要输出大型 Excel 文件时，比如超过50万行，我会采用<code>writexl</code>包输出。但是在曾经使用过程中，定时任务采用 writexl 包输出 Excel 文件有时会报错，感觉不稳定，原因不明。现在一般临时性的输出我会采用<code>writexl</code>包，定时任务中采用<a href="openxlsx-description.html#openxlsx:description"><code>openxlsx</code></a></p>
+<div id="lapply" class="section level3" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> lapply 循环迭代</h3>
+<p>lapply 是 list 和 apply 的结合，lapply是对向量或列表数据应有一个功能函数，返回的数据结构是和前面的数据长度相等的列表。函数的参数如下：</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="apply-function.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(X, FUN, ...)</span></code></pre></div>
+<p>其参数说明如下:</p>
+<p>X: 一个向量或列表，或者是“expression” ,同样是列表。关于“expression” 可以查看帮助<code>?expression</code>。</p>
+<p>FUN：需要运行的函数，可以是任意函数，无论是base R ，R packages，或者是自定义的函数。</p>
+<p>…： 函数中其它参数的设置，如有需要的话。</p>
+<p>我们首先看一个简单的示例:</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="apply-function.html#cb461-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="cn">NA</span>), <span class="at">int =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">logic =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
+<span id="cb461-2"><a href="apply-function.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, mean)</span>
+<span id="cb461-3"><a href="apply-function.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vec</span></span>
+<span id="cb461-4"><a href="apply-function.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb461-5"><a href="apply-function.html#cb461-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb461-6"><a href="apply-function.html#cb461-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $int</span></span>
+<span id="cb461-7"><a href="apply-function.html#cb461-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.5</span></span>
+<span id="cb461-8"><a href="apply-function.html#cb461-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb461-9"><a href="apply-function.html#cb461-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $logic</span></span>
+<span id="cb461-10"><a href="apply-function.html#cb461-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
+<p>添加 … 参数 ，给 mean 函数添加参数 na.rm=TRUE</p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="apply-function.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb462-2"><a href="apply-function.html#cb462-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vec</span></span>
+<span id="cb462-3"><a href="apply-function.html#cb462-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb462-4"><a href="apply-function.html#cb462-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb462-5"><a href="apply-function.html#cb462-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $int</span></span>
+<span id="cb462-6"><a href="apply-function.html#cb462-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.5</span></span>
+<span id="cb462-7"><a href="apply-function.html#cb462-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb462-8"><a href="apply-function.html#cb462-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $logic</span></span>
+<span id="cb462-9"><a href="apply-function.html#cb462-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
+<p>lapply 函数调用均值函数 mean 分别计算 vec,int,logic 三个向量的平均值，最后返回一个长度为3的列表。另外在 … 参数位置上我们添加了 na.rm =TRUE 参数，使mean 函数能忽略 NA 值。</p>
+<p>lapply 的功能强大，并且应用场景多，在我们要使用“循环”时，多考虑能否通过 apply 函数实现。如<a href="#%20batch:read">前文所见</a>,我们可以使用 apply 批量读取文件。</p>
+<blockquote>
+<p>lapply 是 apply 系列函数中我唯一一个可能使用的</p>
+</blockquote>
+</div>
+<div id="sapply-sapply" class="section level3" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> sapply {# sapply}</h3>
+<p>sapply 是lapply的简化版。函数的参数如下：</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="apply-function.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(X, FUN, ..., <span class="at">simplify =</span> <span class="cn">TRUE</span>, <span class="at">USE.NAMES =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>和 lapply 函数的参数差异，simplify 默认为TRUE,是否返回向量，矩阵，数组，如果情况允许。我们用lapply 的例子查看 sapply 的功能。</p>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="apply-function.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x ,mean)</span>
+<span id="cb464-2"><a href="apply-function.html#cb464-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   vec   int logic </span></span>
+<span id="cb464-3"><a href="apply-function.html#cb464-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    NA   5.5   0.5</span></span>
+<span id="cb464-4"><a href="apply-function.html#cb464-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x ,mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb464-5"><a href="apply-function.html#cb464-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   vec   int logic </span></span>
+<span id="cb464-6"><a href="apply-function.html#cb464-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3.0   5.5   0.5</span></span></code></pre></div>
+</div>
+<div id="vapply-迭代安全函数-vapply" class="section level3" number="9.3.3">
+<h3><span class="header-section-number">9.3.3</span> vapply 迭代安全函数{# vapply}</h3>
+<p>vapply 函数通过FUN.VALUE 参数确保返回值长度以及类型一致，详见<code>?vapply</code>。</p>
+<ul>
+<li>长度</li>
+</ul>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="apply-function.html#cb465-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">a =</span> <span class="fu">c</span>(<span class="fl">1.0</span>,<span class="fl">2.0</span>,<span class="fl">3.0</span>),<span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>),<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb465-2"><a href="apply-function.html#cb465-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="at">b =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">3</span>))</span>
+<span id="cb465-3"><a href="apply-function.html#cb465-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb465-4"><a href="apply-function.html#cb465-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>])</span>
+<span id="cb465-5"><a href="apply-function.html#cb465-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $a</span></span>
+<span id="cb465-6"><a href="apply-function.html#cb465-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb465-7"><a href="apply-function.html#cb465-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb465-8"><a href="apply-function.html#cb465-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $b</span></span>
+<span id="cb465-9"><a href="apply-function.html#cb465-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3 3</span></span>
+<span id="cb465-10"><a href="apply-function.html#cb465-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb465-11"><a href="apply-function.html#cb465-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $d</span></span>
+<span id="cb465-12"><a href="apply-function.html#cb465-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="apply-function.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(x,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>],<span class="at">FUN.VALUE =</span> <span class="fl">1.0</span>)</span>
+<span id="cb466-2"><a href="apply-function.html#cb466-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb466-3"><a href="apply-function.html#cb466-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in vapply(x, function(x) x[x == 3], FUN.VALUE = 1) : </span></span>
+<span id="cb466-4"><a href="apply-function.html#cb466-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 值的长度必需为1，</span></span>
+<span id="cb466-5"><a href="apply-function.html#cb466-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  但FUN(X[[2]])结果的长度却是2</span></span>
+<span id="cb466-6"><a href="apply-function.html#cb466-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb466-7"><a href="apply-function.html#cb466-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb466-8"><a href="apply-function.html#cb466-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 同上</span></span>
+<span id="cb466-9"><a href="apply-function.html#cb466-9" aria-hidden="true" tabindex="-1"></a><span class="co"># vapply(x,function(x) x[x==3],FUN.VALUE = as.numeric(1))</span></span>
+<span id="cb466-10"><a href="apply-function.html#cb466-10" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(y,<span class="cf">function</span>(x) x[x<span class="sc">==</span><span class="dv">3</span>],<span class="at">FUN.VALUE =</span> <span class="fu">as.numeric</span>(<span class="dv">1</span>))</span></code></pre></div>
+<p>相同的列表，相同的函数，使用 sapply 会返回信息不会报错，但是使用 vapply 会报错，因为b中有2个3，而a,d中只有1个3。</p>
+<ul>
+<li>类型</li>
+</ul>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="apply-function.html#cb467-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="cn">NA</span>), <span class="at">int =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">logic =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>))</span>
+<span id="cb467-2"><a href="apply-function.html#cb467-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(x,mean,<span class="at">FUN.VALUE =</span> 1L)</span>
+<span id="cb467-3"><a href="apply-function.html#cb467-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in vapply(x, mean, FUN.VALUE = 1L) : 值的种类必需是&#39;integer&#39;，</span></span>
+<span id="cb467-4"><a href="apply-function.html#cb467-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 但FUN(X[[1]])结果的种类却是&#39;double&#39;</span></span></code></pre></div>
+<blockquote>
+<p>vapply 函数的 FUN.VALUE 参数必须设置，可以通过 as.integer/character等函数进行设置</p>
+</blockquote>
+</div>
+<div id="apply-多维数据-apply" class="section level3" number="9.3.4">
+<h3><span class="header-section-number">9.3.4</span> apply 多维数据{# apply}</h3>
+<p>apply 专门用来处理矩阵和数组数据。参数如下：</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="apply-function.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, MARGIN, FUN, ..., <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>其中 MARGIN 参数,1代表行，2代表列，<code>c(1,2)</code>代表行列。</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="apply-function.html#cb469-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">x1 =</span> <span class="dv">3</span>, <span class="at">x2 =</span> <span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>))</span>
+<span id="cb469-2"><a href="apply-function.html#cb469-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb469-3"><a href="apply-function.html#cb469-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;matrix&quot; &quot;array&quot;</span></span>
+<span id="cb469-4"><a href="apply-function.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="dv">1</span>,<span class="at">FUN =</span> mean)</span>
+<span id="cb469-5"><a href="apply-function.html#cb469-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.5 3.0 2.5 2.0 2.5 3.0 3.5 4.0</span></span>
+<span id="cb469-6"><a href="apply-function.html#cb469-6" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="dv">2</span>,<span class="at">FUN =</span> mean)</span>
+<span id="cb469-7"><a href="apply-function.html#cb469-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1 x2 </span></span>
+<span id="cb469-8"><a href="apply-function.html#cb469-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3  3</span></span>
+<span id="cb469-9"><a href="apply-function.html#cb469-9" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x,<span class="at">MARGIN =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">FUN =</span> mean)</span>
+<span id="cb469-10"><a href="apply-function.html#cb469-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      x1 x2</span></span>
+<span id="cb469-11"><a href="apply-function.html#cb469-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  3  4</span></span>
+<span id="cb469-12"><a href="apply-function.html#cb469-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  3  3</span></span>
+<span id="cb469-13"><a href="apply-function.html#cb469-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]  3  2</span></span>
+<span id="cb469-14"><a href="apply-function.html#cb469-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]  3  1</span></span>
+<span id="cb469-15"><a href="apply-function.html#cb469-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]  3  2</span></span>
+<span id="cb469-16"><a href="apply-function.html#cb469-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]  3  3</span></span>
+<span id="cb469-17"><a href="apply-function.html#cb469-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7,]  3  4</span></span>
+<span id="cb469-18"><a href="apply-function.html#cb469-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [8,]  3  5</span></span></code></pre></div>
+<blockquote>
+<p>对于大部分商业数据分析师而言，较少遇到多维数据集</p>
+</blockquote>
+
 </div>
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="readxl-description.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="openxlsx-description.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="loop-changes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="purrr-Iteration.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -655,6 +696,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

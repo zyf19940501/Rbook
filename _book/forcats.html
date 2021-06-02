@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-05-31" />
+<meta name="date" content="2021-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
 <li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
@@ -434,6 +434,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.2" data-path="loop-changes.html"><a href="loop-changes.html#循环模式"><i class="fa fa-check"></i><b>9.2.2</b> 循环模式</a></li>
 <li class="chapter" data-level="9.2.3" data-path="loop-changes.html"><a href="loop-changes.html#未知长度输出"><i class="fa fa-check"></i><b>9.2.3</b> 未知长度输出</a></li>
 </ul></li>
+<li class="chapter" data-level="9.3" data-path="apply-function.html"><a href="apply-function.html"><i class="fa fa-check"></i><b>9.3</b> apply系列函数</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="apply-function.html"><a href="apply-function.html#lapply"><i class="fa fa-check"></i><b>9.3.1</b> lapply 循环迭代</a></li>
+<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply-sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply {# sapply}</a></li>
+<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply-迭代安全函数-vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数{# vapply}</a></li>
+<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply-多维数据-apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据{# apply}</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
@@ -513,10 +520,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>我在实际工作中因子数据类型使用较少,forcats软件包用来处理因子,该软件包是tidyverse的一部分.</p>
 <p>因子是用于对数据进行分类的R的一种数据类型. 它们可以存储字符串和整数.它们在具有有限数量的唯一值的列中很有用. 像“男性”，“女性”和True，False等。它们在统计建模的数据分析中很有用.</p>
 <p>因子变量会占用更小空间,R4.0改变了字符默认为因子的方式.想了解更多请参考 <a href="https://r4ds.had.co.nz/factors.html" class="uri">https://r4ds.had.co.nz/factors.html</a></p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="forcats.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(<span class="fu">rep</span>(letters,<span class="dv">100000</span>))</span>
-<span id="cb302-2"><a href="forcats.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20801504 bytes</span></span>
-<span id="cb302-3"><a href="forcats.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(<span class="fu">rep</span>(forcats<span class="sc">::</span><span class="fu">as_factor</span>(letters),<span class="dv">100000</span>))</span>
-<span id="cb302-4"><a href="forcats.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10402096 bytes</span></span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="forcats.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(<span class="fu">rep</span>(letters,<span class="dv">100000</span>))</span>
+<span id="cb303-2"><a href="forcats.html#cb303-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20801504 bytes</span></span>
+<span id="cb303-3"><a href="forcats.html#cb303-3" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(<span class="fu">rep</span>(forcats<span class="sc">::</span><span class="fu">as_factor</span>(letters),<span class="dv">100000</span>))</span>
+<span id="cb303-4"><a href="forcats.html#cb303-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10402096 bytes</span></span></code></pre></div>
 </div>
             </section>
 

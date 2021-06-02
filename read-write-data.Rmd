@@ -2,30 +2,32 @@
 # 数据导入导出 {#data:read-write-description}
 
 
-作为一名普通的数据分析师，我日常接触最多的数据是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表，但最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有很明确操作数据的意义，没有代入感。在刚开始学习使用R做数据处理后，我就想使用自己的数据集来操作数据，用R去实现Excel的透视表或sql功能。这时就首先需要将原始数据导入[^loaddata]R中。
+作为一名普通的数据分析师，我日常接触最多的数据是业务系统中的销售订单表、商品库存表、会员信息表，门店信息表，商品信息表等之类的业务表，但最初接触R时，看到的演示代码以及数据集大部分都是R包中内置的数据集，没有很明确操作数据的意义，没有代入感。在刚开始学习使用R做数据处理后，我就想使用自己的数据集来操作数据，用 R 去实现 Excel 的透视表或 sql 功能。这时就首先需要将原始数据导入[^loaddata]R中。
 
-现实生活中数据来源复杂，商业环境中数据源同样具有多样性，如SAP,不同的数据库、OA系统、EXCEL手工文件等;我们想要统一数据做分析，就需要将不同的数据源整合导入R中。
+现实生活中数据来源复杂，商业环境中数据源同样具有多样性，如 SAP,不同的数据库、OA系统、EXCEL 手工文件等;我们想要统一数据做分析，就需要将不同的数据源整合导入R中。
 
-我们从读取方式简单区分为本地文件数据、数据库数据，本章主要说明常用的Excel文件和csv[^csv]、txt等文本文件的读写方式。关于数据库的数据的读取，可以参照后续database章节。
+我们从读取方式简单区分为本地文件数据、数据库数据，本章主要说明常用的 Excel 文件和csv[^csv]、txt 等文本文件的读写方式。关于数据库的数据的读取，可以参照后续 database [数据库章节](#database)。
 
-相信大家随便使用搜索引擎搜索诸如"将Excel导入R"的关键词都能得到一些行之有效的方法，但是不够系统全面。本章主要简述R中数据导入导出的相关R包，如`readxl`,`writexl`,`openxlsx`,`readr`, `vroom`等主要处理csv或Excel的R包。
-
-
+相信大家随便使用搜索引擎搜索诸如"将 Excel 导入 R "的关键词都能得到一些行之有效的方法，但是不够系统全面。本章主要简述R中数据导入导出的相关 R 包，如`readxl`,`writexl`,`openxlsx`,`readr`, `vroom`等主要处理 csv 或 Excel 的 R 包。
 
 
-[^loaddata]:由于R是将数据加载至内存中，故数据集大小超过内存大小将导入失败。
 
-[^csv]:csv即Comma-Separated Values，逗号分隔值，分隔符也可是不是逗号。
-csv文件是一种以纯文本形式存储的表格数据,可以通过记事本打开。与Excel不同的是，CSV是一种文本格式，也不受Excel最大行数(1048576)限制。
-csv文件也被称作平面文件，结构简单，平面文件比结构文件占用更少的空间；平面文件在数据仓库项目中广泛用于导入数据。 
+
+[^loaddata]:由于 R 是将数据加载至内存中，故数据集大小超过内存大小将导入失败。
+
+[^csv]:csv 即 Comma-Separated Values，逗号分隔值，分隔符也可是不是逗号。
+csv 文件是一种以纯文本形式存储的表格数据,可以通过记事本打开。与 Excel 不同的是，CSV 是一种文本格式，也不受 Excel 最大行数(1048576)限制。
+csv 文件也被称作平面文件，结构简单，平面文件比结构文件占用更少的空间；平面文件在数据仓库项目中广泛用于导入数据。 
 
 >当有其它数据格式需求的时候，那时候的你肯定已经会自行查找相关R包使用了。
 
 
-在本章开始前，假定已经有一些R相关基础。如使用Rstudio查看导入的数据，R的数据结构等有一定认识。本章节主要分为:
+在本章开始前，假定已经有一些 R 相关基础。如使用 Rstudio 查看导入的数据，R 的数据结构等有一定认识。本章节主要分为:
 
-- excel读写
-- csv等平面文件读写 
+- excel 读写
+
+- csv 等平面文件读写 
+
 - 文件路径
 
 
@@ -35,13 +37,13 @@ csv文件也被称作平面文件，结构简单，平面文件比结构文件�
 
 ## readxl {#readxl:description}
 
-readxl软件包使R获取Excel数据变得方便简洁。与现有的软件包(例如：xlsx)相比，readxl没有外部依赖性，xlsx等包依赖java环境。readxl包容易在所有的操作系统安装使用。
+readxl 软件包使 R 获取 Excel 数据变得方便简洁。与现有的软件包(例如：xlsx)相比，readxl 没有外部依赖性，xlsx 等包依赖 java 环境。readxl 包容易在所有的操作系统安装使用。
 
 readxl[项目地址](https://readxl.tidyverse.org/)，本节大部分代码来源项目官网介绍，可自行查阅官网。
 
 ### 安装{#readxl:install}
 
-从CRAN安装最新发行版本的最简单方法是安装整个tidyverse。
+从 CRAN 安装最新发行版本的最简单方法是安装整个 tidyverse。
 
 ```{r eval=FALSE}
 install.packages("tidyverse")
@@ -65,12 +67,12 @@ devtools::install_github("tidyverse/readxl")
 
 ### 用法 {#readxl:usage}
 
-readxl包的核心函数是读取函数`read_excel()`，该函数能将Excel文件数据加载到R中。readxl包中包含了几个示例文件，我们在接下来的案例中使用。
+readxl 包的核心函数是读取函数`read_excel()`，该函数能将 Excel 文件数据加载到R中。readxl 包中包含了几个示例文件，我们在接下来的案例中使用。
 
 
 1.读取
 
-通过`readxl_example()`查看readxl包中自带xlsx文件。
+通过`readxl_example()`查看 readxl 包中自带 xlsx 文件。
 
 ```{r}
 library(readxl)
@@ -78,12 +80,12 @@ readxl_example()
 readxl_example("clippy.xls")
 ```
 
-需要注意`read_excel()`可读取xls和xlsx文件，函数会自动识别。
+需要注意`read_excel()`可读取 xls 和 xlsx 文件，函数会自动识别。
 
-> xls和xlsx的区别: xls 是 excel2003 及以前版本生成的文件格式，而 xlsx 是 excel2007 及以后版本生成的文件格式。xlsx格式是向下兼容的，可兼容xls格式。老旧的业务使用的格式可能是xls格式。
+> xls 和 xlsx 的区别: xls 是 excel2003 及以前版本生成的文件格式，而 xlsx 是 excel2007 及以后版本生成的文件格式。xlsx 格式是向下兼容的，可兼容 xls 格式。老旧的业务使用的格式可能是 xls 格式。
 
 ```{r}
-xlsx_example <- readxl_example("datasets.xlsx") #返回datasets.xlsx文件所在路径
+xlsx_example <- readxl_example("datasets.xlsx") #返回 datasets.xlsx文件所在路径
 dt <- read_excel(xlsx_example)
 ```
 
@@ -93,7 +95,7 @@ dt <- read_excel(xlsx_example)
 head(dt)
 ```
 
-将Excel中的数据通过`read_excel()`读取保存到R中，该对象属于`tbl_df`类，是tidyverse系列的数据框结构，是对base R中的`data.frame`结构的改造，但是兼容`data.frame`。
+将 Excel 中的数据通过`read_excel()`读取保存到R中，该对象属于`tbl_df`类，是 tidyverse 系列的包数据框结构，是对 base R中的`data.frame`结构的改造，但是兼容`data.frame`。
 
 ```{r}
 # 查看dt类
@@ -107,16 +109,16 @@ str(dt)
 > 关于`tbl_df`类，可以查阅`vignette("tibble")`。
 
 
-2.指定sheet读取
+2.指定 sheet 读取
 
-通过函数`excel_sheets()`查看Excel的sheet名称
+通过函数`excel_sheets()`查看 Excel 的sheet名称
 
 ```{r}
 excel_sheets(xlsx_example)
 ```
 
 
-当我们要读取Excel文件有多个sheets时，通过指定sheet参数,读取指定的sheet，sheet参数可以是sheet的名称或顺序号。
+当我们要读取 Excel 文件有多个 sheets 时，通过指定 sheet 参数,读取指定的 sheet，sheet 参数可以 是 sheet 的名称或顺序号。
 
 ```{r}
 read_excel(xlsx_example, sheet = "chickwts")
@@ -127,7 +129,7 @@ read_excel(xlsx_example, sheet = "chickwts")
 
 3.指定读取范围
 
-读取Excel文件指定范围。`read_excel()`中range参数接受单元格范围，最简单的表示方式即Excle中单元格表示方法,如 range = "D12:F15" or range = "R1C12:R6C15"。
+读取 Excel 文件指定范围。`read_excel()`中 range 参数接受单元格范围，最简单的表示方式即 Excle 中单元格表示方法,如 range = "D12:F15" or range = "R1C12:R6C15"。
 
 ```{r}
 read_excel(xlsx_example, sheet = "iris")
@@ -142,7 +144,7 @@ identical(dt1,dt2)
 
 4.read_excel参数
 
-readxl::read_excel参数如下,请`?read_excel()`查看参数。
+readxl::read_excel 参数如下,请`?read_excel()`查看参数。
 
 ```{r eval=FALSE}
 read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
@@ -171,13 +173,13 @@ read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
 
 col_types 参数个人觉得比较重要，可以指定列的类型，可以避免一些错误。可用选项:"skip", "guess", "logical", "numeric", "date", "text" or "list"。
 
-.name_repair 参数能自动避免重复字段，可避免手工Excel出现字段名不唯一的情况。
+.name_repair 参数能自动避免重复字段，可避免手工 Excel 出现字段名不唯一的情况。
 
 
 
-### 批量读取
+### 批量读取 {# batch:read}
 
-实际工作中，某文件夹下有相同格式的Excel文件(sheet名称以及列字段相同)，想要合并全部Excel数据，熟悉Excel的可以通过Excel的`power query`的获取数据完成合并，那么在R中该如何实现呢？
+实际工作中，某文件夹下有相同格式的 Excel 文件(sheet名称以及列字段相同)，想要合并全部 Excel 数据，熟悉 Excel 的可以通过 Excel 的`power query`的获取数据完成合并，那么在R中该如何实现呢？
 
 示例：
 
@@ -188,12 +190,25 @@ fs::dir_tree('data/read-write/',regexp = 'xlsx$')
 ```
 
 
-R代码如下
+将文件夹『data/read-write』里以 a-z 开头的 xlsx 文件合并读取，R代码如下：
 
+- base R
 
-```{r eval=FALSE}
-allfiles <- list.files(path = './data/read-write/',pattern = '.xlsx$',full.names = T)
-# 使用purrr包合并读取
+不借助R包，使用 base R 实现
+
+```{r}
+allfiles <- list.files(path = 'data/read-write/',pattern = '^[a-z].xlsx$',full.names = TRUE)
+datalist <- lapply(allfiles,readxl::read_excel)
+do.call(rbind,datalist)
+```
+
+- purrr
+
+使用 purrr 包合并读取
+
+```{r }
+allfiles <- list.files(path = './data/read-write/',pattern = '^[a-z].xlsx$',full.names = T)
+
 purrr::map_dfr(allfiles,read_excel)
 ```
 
@@ -226,7 +241,7 @@ list.files(path = 'data/read-write/')
 ## writexl {#writexl}
 
 
-截止到2021年5月17日，writexl包功能比较简单，仅有输出Excel功能。快速、不依赖java和Excle是它绝对的优势，并且输出文件相比`openxlsx`包较小。
+截止到2021年5月17日，writexl包功能比较简单，仅有输出 Excel 功能。快速、不依赖 java 和 Excle 是它绝对的优势，并且输出文件相比`openxlsx`包较小。
 
 [项目地址](https://docs.ropensci.org/writexl/)
 
@@ -258,7 +273,7 @@ write_xlsx(
 | write_xlsx参数 | 解释                                      |
 | -------------- | ----------------------------------------- |
 | x              | 要输出的数据框和数据框列表                |
-| path           | 输出Excel的文件名称                       |
+| path           | 输出 Excel 的文件名称                       |
 | col_names      | 是否输出表头，默认为TRUE                  |
 | format_headers | 是否将表头居中并加粗，默认为TRUE          |
 | use_zip64      | 是否支持4Gb文件大小，不是所有的系统都支持 |
@@ -269,7 +284,7 @@ write_xlsx(
 
 3.输出Excel
 
-`write_xlsx()`函数将数据框保存到Excel。如想要输出多个sheet时，用`list(mysheet1 = iris,mysheet2 = iris)`表示即可，代码如下：
+`write_xlsx()`函数将数据框保存到 Excel。如想要输出多个 sheet 时，用`list(mysheet1 = iris,mysheet2 = iris)`表示即可，代码如下：
 
 ```{r eval=FALSE}
 library(writexl)
@@ -297,7 +312,7 @@ microbenchmark(
 
 5.文件大小比较
 
-和[`openxlsx`](#openxlsx:description)包比较输出后的Excel文件大小。
+和[`openxlsx`](#openxlsx:description)包比较输出后的 Excel 文件大小。
 
 ```{r}
 library(nycflights13)
@@ -311,7 +326,7 @@ openxlsx::write.xlsx(flights, tmp2 <- tempfile())
 file.info(tmp2)$size
 ```
 
-按照`writexl`官方文档的说法，`writexl`输出的Excel文件应该较少，但实际上并不是，不确定是不是`openxlsx`更新优化过。
+按照`writexl`官方文档的说法，`writexl`输出的 Excel 文件应该较少，但实际上并不是，不确定是不是`openxlsx`更新优化过。
 
 6.其它功能
 
@@ -331,22 +346,22 @@ unlink('universities.xlsx')
 ```
 
 
-当需要输出大型Excel文件时，比如超过50万行，我会采用`writexl`包输出。但是在曾经使用过程中，定时任务采用writexl包输出Excel有时会报错，感觉不稳定，原因不明。现在一般临时性的输出我会采用`writexl`包，定时任务中采用[`openxlsx`](#openxlsx:description)
+当需要输出大型 Excel 文件时，比如超过50万行，我会采用`writexl`包输出。但是在曾经使用过程中，定时任务采用 writexl 包输出 Excel 文件有时会报错，感觉不稳定，原因不明。现在一般临时性的输出我会采用`writexl`包，定时任务中采用[`openxlsx`](#openxlsx:description)
 
 ## openxlsx {#openxlsx:description}
 
-openxlsx是当我需要定制输出Excel表格或报表时常用R包。目前该包的版本4.2.3，通过使用Rcpp加速，包的读写速度在Excel的百万级下是可接受状态，包的相关函数功能完善且简易好用，并且正在积极开发中，相信它以后功能会越来越强大。
+openxlsx 包是当我需要定制输出 Excel 表格或报表时常用R包。目前该包的版本4.2.3，通过使用 Rcpp 加速，包的读写速度在 Excel 的百万级下是可接受状态，包的相关函数功能完善且简易好用，并且正在积极开发中，相信它以后功能会越来越强大。
 
 项目官方地址:<https://ycphs.github.io/openxlsx/index.html>
 
-openxlsx主要优势：
+openxlsx 主要优势：
 
-- 不依赖java环境
+- 不依赖 java 环境
 - 读写速度可接受
-- 可设置条件格式，与Excel中『开始』选项卡的条件格式功能接近
-- 可批量插入ggplot2图
+- 可设置条件格式，与 Excel 中『开始』选项卡的条件格式功能接近
+- 可批量插入 ggplot2 图
 - 可插入公式
-- 可渲染大部分Excel格式，并且效率相比部分python包高效
+- 可渲染大部分 Excel 格式，并且效率相比部分 python 包高效
 - 可添加页眉页脚以及其他格式，方便直接打印
 - 功能稳定可用并且在积极开发中
 
@@ -357,7 +372,7 @@ packageVersion("openxlsx")
 ```
 
 
-关于openxlsx更加详细的阐述:<https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ>
+关于 openxlsx 更加详细的阐述:<https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ>
 
 ### 安装 {#openxlsx:install}
 
@@ -379,11 +394,11 @@ install_github("ycphs/openxlsx")
 
 ### 基础功能 {#openxlsx:functions}
 
-本文仅呈现基础功能部分，即读写EXCEL文件。其它功能，请查阅项目官方地址或微信公众号文章[R包-openxlsx-学习笔记](https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ)
+本文仅呈现基础功能部分，即读写 Excel 文件。其它功能，请查阅项目官方地址或微信公众号文章[R包-openxlsx-学习笔记](https://mp.weixin.qq.com/s/ZD0dJb0y8fsWGI1dCPh2mQ)
 
-#### 读取Excel {#openxlsx:read-function}
+#### 读取 Excel {#openxlsx:read-function}
 
-`read.xlsx()`函数读取Excel文件。
+`read.xlsx()`函数读取 Excel 文件。
 
 ```{r}
 library(openxlsx) 
@@ -413,7 +428,7 @@ read.xlsx(
 )
 ```
 
-以上参数中需要注意：detecDates参数，当你的Excel表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。
+以上参数中需要注意：detecDates 参数，当你的 Excel 表格中带日期列时需要将参数设置为TRUE,不然将会把日期识别为数字读入。
 
 fillMergedCells参数，当你读取的表格中存在合并单元格，将用值填充其他全部单元格,如下所示：
 
@@ -428,7 +443,7 @@ read.xlsx('./test.xlsx',detectDates = TRUE,fillMergedCells = TRUE)
 ![openxlsx-merge-xlsx](https://gitee.com/zhongyufei/photo-bed/raw/pic/img/R-read-merge-xlsx.png)
 
 
-readWorkbook()也可以读取Excel表格数据，参数与read.xlsx基本一致。
+readWorkbook()也可以读取 Excel 表格数据，参数与read.xlsx基本一致。
 
 ```{r eval=FALSE}
 xlsxFile <- system.file("extdata", "readTest.xlsx", package = "openxlsx")
@@ -437,7 +452,7 @@ df1 <- readWorkbook(xlsxFile = xlsxFile, sheet = 1)
 
 #### 写入Excel {#openxlsx:write-function}
 
-数据清洗完后，或者是分组聚合完成，需要将结果从R导出到Excle，这时就利用`write.xlsx()`函数将结果数据集写入Excel中。
+数据清洗完后，或者是分组聚合完成，需要将结果从R导出到Excle，这时就利用`write.xlsx()`函数将结果数据集写入 Excel 中。
 
 write.xlsx()函数写入
 
@@ -568,7 +583,7 @@ wb <- createWorkbook(
 
 ```
 
-在win系统上右击Excel文件属性，点击详细信息：
+在win系统上右击 Excel 文件属性，点击详细信息：
 
 ![win-excel-attribute](picture/read-write/open-wb-attribute.png)
 
@@ -634,7 +649,7 @@ hdpi: 屏幕分辨率 默认值即可，不用调整
 
 - writeDataTable
 
-writeDataTable()函数将data.frame写入Excel。
+writeDataTable()函数将data.frame写入 Excel 。
 
 ```{r eval=FALSE}
 writeDataTable(
@@ -690,7 +705,7 @@ withFilter: 在第一行是否有筛选
 
 keepNA:如果TRUE,NA值转化为#NA，如果否，变为空
 
-na.string :如果参数不是NULL,如果keepNA是TRUE,NA将会在Excel中转为该参数指定的字符
+na.string :如果参数不是NULL,如果keepNA是TRUE,NA将会在 Excel 中转为该参数指定的字符
 
 sep：列表列的分隔符，默认为","
 
@@ -825,12 +840,12 @@ read_csv(
 )
 ```
 
-通过对前文readxl的了解，我们发现两个函数的部分参数是一致的。
+通过对 readxl 包的了解，我们发现两个包的读写函数的部分参数是一致的。
 
 col_types :指定列类型，可用项如下所示(含简写):
-c = character，i = integer，n = number，d = double，l = logical，f = factor，D = date，T = date time，t = time，默认值为guess.
+c = character，i = integer，n = number，d = double，l = logical，f = factor，D = date，T = date time，t = time，默认值为 guess。
   
-locale:locale参数是readr中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。
+locale:locale参数是 readr 包中很重要的一个参数，指定日期使用的月和日的名称，时区，字符编码，日期格式，数字的小数和点位数和分隔符。
 
 
 
@@ -872,14 +887,14 @@ read_csv('test.csv',col_types = 'cccnnnnDcnn')
 ```
 
 
-由于Excel数字位数限制，在输出数字订单号或身份证时需要注意,:
+由于 Excel 数字位数限制，在输出数字订单号或身份证时需要注意,:
 
 ```{r eval=FALSE}
 id_card <- c('440327199910010123','440327199910010125')
 write_excel_csv(data.frame(id_card),'test.csv')
 ```
 
-> Excel最多只能存储15位数字型数字，15为之后都为0。
+>  Excel 最多只能存储15位数字型数字，15为之后都为0。
 
 上面的输出显然会改变真实的身份证号码，这时我们就建议输出为xlsx的字符型或者是txt等格式，因为输出CSV会导致后面的全部变成0。
 
@@ -898,7 +913,7 @@ read_csv(readr_example("mtcars.csv"),locale = locale(encoding = 'UTF-8',tz = 'As
 
 ## vroom {#data:vroom} 
 
-vroom实现读取矩形数据到R中,如 comma separated(csv),tab separated(tsv), fixed width files(fwf)。该包的功能类似`readr::read_csv()`,`data.table::fread()`和`read.csv()`,但是对于许多数据集来说，`vroom::vroom()`读取速度会快得多。
+vroom包 实现读取矩形数据到 R 中,如 comma separated(csv),tab separated(tsv), fixed width files(fwf)。该包的功能类似`readr::read_csv()`,`data.table::fread()`和`read.csv()`,但是对于许多数据集来说，`vroom::vroom()`读取速度会快得多。
 
 [vroom项目地址](https://vroom.r-lib.org/index.html)
 
@@ -984,7 +999,9 @@ vroom(file, col_select = c(model, cyl, gear))
 ## Rstudio导入 {#data:rstudio-addins}
 
 
-### 利用rstudio工具栏导入
+使用 Rstudio 工具栏自带的 import Dataset 或者借助 R 包插件实现数据与 R 的交互。
+
+### rstudio 工具栏导入
 
 本质也是调用`readr`和`readxl`包，如下所示：
 
@@ -995,7 +1012,7 @@ vroom(file, col_select = c(model, cyl, gear))
 
 [项目地址](https://github.com/milesmcbain/datapasta)
 
-datapasta是一个addins插件，方便将数据复制到R。
+datapasta 是一个 addins 插件，方便将数据复制到 R。
 
 1.安装
 
@@ -1017,11 +1034,11 @@ install.packages("datapasta")
 
 - win 路径
 
-winOS系统：`C:\Users\zhongyf\Desktop\Rbook`，注意路径中是一个反斜杠(\)。
+windows 系统：`C:\Users\zhongyf\Desktop\Rbook`，注意路径中是一个反斜杠\\。
 
 ![win-path](picture/read-write/win-path.png)
 
-在R中读取时需要用一个正斜杠或两个反斜杠。
+在R中读取时需要用一个正斜杠或两个反斜杠，建议用正斜杠。
 
 ```{r eval=FALSE}
 readr::read_csv('C:/Users/zhongyf/Desktop/Rbook/data/flights.csv')
@@ -1036,19 +1053,19 @@ readr:::read_csv(file = r"(C:\Users\zhongyf\Desktop\Rbook\data\flights.csv)") # 
 ```{r eval=FALSE}
 the_shared_disk <- r"(\\192.168.2.117\公司A-新\01事业部\)"
 
-# load data into R
-
+# 读取共享盘数据
 readr::read_csv(file = "\\\\192.168.2.117\\公司A-新\\01事业部\\flights.csv")
-readr::read_csv(file = r"(\\192.168.2.117\公司A-新\01事业部\)")
+# 或者用r"()"指定路径
+readr::read_csv(file = r"(\\192.168.2.117\公司A-新\01事业部\test.csv)")
 
 ```
 
-> r"()"用法是R-4.0-之后的特性。在win系统下表示路径特别有用
+> r"()"用法是R-4.0-之后的特性。在win系统下表示路径特别有用，可以避免转义。
 
 
 - mac 路径
 
-macOS系统: `/User/vega_mac/Desktop/r`,路径中是一个正斜杠。
+macOS系统: `/User/vega_mac/Desktop/r`,路径中是一个正斜杠//。
 
 ![mac-path](picture/read-write/mac-path.png)
 
@@ -1058,25 +1075,53 @@ readr::read_csv('/User/vega_mac/Desktop/r/Rbook/data/flights.csv')
 
 ### 默认路径
 
-`getwd()`是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，读取导出的默认路径是`getwd()`。想要改变工作目录，通过设定`setwd()`即可。
+在我们刚开始学习文件读写的时候，都会疑惑输出的文件到哪里去了？在 R 中有一个“当前默认工作目录”的概念，如果不做任何设置，当前默认工作目录一般在：
 
+Windows 系统默认目录一般都是用户文件夹下的文档文件，即./zhongyf/Documents 文件夹下。
 
-```{r}
+```{r eval=FALSE}
 getwd()
+[1] "C:/Users/zhongyf/Documents"
 ```
+
+Macos/linxu 默认目录一般都是用户文件夹下，即 /Users/zhongyf 或者是 /home/zhongyf 文件夹下。
+
+```{r eval=FALSE}
+# Mac
+getwd()
+[1] "/Users/zhongyf"
+
+# linux
+getwd()
+[1] "/home/zhongyf"
+```
+
+
+`getwd()`是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，文件读取输出的默认路径是`getwd()`。想要改变工作目录，通过设定`setwd()`即可。 如下所示：
+
 
 ```{r eval=FALSE}
 # not run
 setwd('C:/Users/zhongyf/Desktop/Rbook/data')
-getwd()
 ```
+ 
+除了上述通过`setwd()`修改工作目录外，可以通过 Rsutdio 的 Tools 工具栏 -> Global Options -> Default working directory 设置工作目录。还可以通过
+Rstudio > Session > Set Working Directory > Choose Directory 来调整【快捷键 Ctrl+Shift+H 】。修改工作目录后，通过`getwd()`查看修改是否生效。
+
+
+关于文件路径，我个人喜欢的解决办法是通过 File > New Project > New Directory  新建文件项目，将本次所有的数据需求放在该新建的文件夹下，那我们在做本次项目时就再也不用理会文件路径问题了，因为所有的默认路径都是刚新建的路径。这种项目管理的方法，我个人比较推崇。
+
+> 配上项目说明 Readme 文件，配合 git 做项目版本控制,方便我们后期查阅回溯。
+
+
+
 
 ## 拓展 {#data:expand}
 
 ### tidyxl{#tidyxl:package}
 
-tidyxl:Imports non-tabular from Excel files into R。tidyxl将不规则数据导入R。
-我们可以通过`readxl`包读取整洁的excel数据，那如果是Excel的透视表怎么读取？
+tidyxl:Imports non-tabular from Excel files into R。tidyxl 将不规则数据导入R。
+我们可以通过`readxl`包读取整洁的 Excel 数据，那如果是 Excel 的透视表怎么读取？
 
 [tidyxl项目地址](https://github.com/nacnudus/tidyxl/)。
 
@@ -1113,13 +1158,14 @@ unpivot
 
 ### 参考资料
 
-1. feather项目地址<https://github.com/wesm/feather>
+1. feather 项目地址<https://github.com/wesm/feather>
 
-2. qs提供接口，用于快速将R对象保存到磁盘以及从磁盘读取。该包的目标是替换R中的`saveRDS`和`readRDS`。项目地址<https://github.com/traversc/qs>
+2. qs 提供接口，用于快速将R对象保存到磁盘以及从磁盘读取。该包的目标是替换R中的`saveRDS`和`readRDS`。项目地址<https://github.com/traversc/qs>
 
-3. arrow是feather的接替项目，地址<https://arrow.apache.org/docs/r/>
+3. arrow 是 feather 的接替项目，地址<https://arrow.apache.org/docs/r/>
 
-4. 其它统计学软件数据如spss，stata,SAs等可用`foreign`包读取
+4. 其它统计学软件数据如 spss，stata,SAs 等可用`foreign`包读取
 
 5. tidyxl and unpivotr: <https://nacnudus.github.io/spreadsheet-munging-strategies/pivot-simple.html>
+
 6. janitor package <https://sfirke.github.io/janitor/index.html>
