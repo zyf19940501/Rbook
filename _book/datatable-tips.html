@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.5 小技巧 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>7.5 小技巧 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.5 小技巧 | R 语言学习笔记" />
+  <meta property="og:title" content="7.5 小技巧 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.5 小技巧 | R 语言学习笔记" />
+  <meta name="twitter:title" content="7.5 小技巧 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -521,61 +523,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="用抑制中间过程输出" class="section level3" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> 用{}抑制中间过程输出</h3>
 <p>默认只返回未命名花括号中定义的最后一个对象。</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="datatable-tips.html#cb374-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(mtcars)</span>
-<span id="cb374-2"><a href="datatable-tips.html#cb374-2" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg); tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1)); tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>)}, by<span class="ot">=</span>cyl]</span>
-<span id="cb374-3"><a href="datatable-tips.html#cb374-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl   V1</span></span>
-<span id="cb374-4"><a href="datatable-tips.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19</span></span>
-<span id="cb374-5"><a href="datatable-tips.html#cb374-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83</span></span>
-<span id="cb374-6"><a href="datatable-tips.html#cb374-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79</span></span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="datatable-tips.html#cb401-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(mtcars)</span>
+<span id="cb401-2"><a href="datatable-tips.html#cb401-2" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg); tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1)); tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>)}, by<span class="ot">=</span>cyl]</span>
+<span id="cb401-3"><a href="datatable-tips.html#cb401-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl   V1</span></span>
+<span id="cb401-4"><a href="datatable-tips.html#cb401-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19</span></span>
+<span id="cb401-5"><a href="datatable-tips.html#cb401-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83</span></span>
+<span id="cb401-6"><a href="datatable-tips.html#cb401-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79</span></span></code></pre></div>
 <p>在我不知道上述技巧之前，我可能的操作是</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="datatable-tips.html#cb375-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(mtcars)</span>
-<span id="cb375-2"><a href="datatable-tips.html#cb375-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> dt[,tmp1<span class="sc">:</span><span class="er">=</span><span class="fu">mean</span>(mpg), by<span class="ot">=</span>cyl][,.(<span class="at">tmp2=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1))), by<span class="ot">=</span>.(cyl)]</span>
-<span id="cb375-3"><a href="datatable-tips.html#cb375-3" aria-hidden="true" tabindex="-1"></a>res[,.(<span class="fu">round</span>(tmp2,<span class="dv">2</span>)),by<span class="ot">=</span>.(cyl)][]</span>
-<span id="cb375-4"><a href="datatable-tips.html#cb375-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl   V1</span></span>
-<span id="cb375-5"><a href="datatable-tips.html#cb375-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19</span></span>
-<span id="cb375-6"><a href="datatable-tips.html#cb375-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83</span></span>
-<span id="cb375-7"><a href="datatable-tips.html#cb375-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79</span></span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="datatable-tips.html#cb402-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(mtcars)</span>
+<span id="cb402-2"><a href="datatable-tips.html#cb402-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> dt[,tmp1<span class="sc">:</span><span class="er">=</span><span class="fu">mean</span>(mpg), by<span class="ot">=</span>cyl][,.(<span class="at">tmp2=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1))), by<span class="ot">=</span>.(cyl)]</span>
+<span id="cb402-3"><a href="datatable-tips.html#cb402-3" aria-hidden="true" tabindex="-1"></a>res[,.(<span class="fu">round</span>(tmp2,<span class="dv">2</span>)),by<span class="ot">=</span>.(cyl)][]</span>
+<span id="cb402-4"><a href="datatable-tips.html#cb402-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl   V1</span></span>
+<span id="cb402-5"><a href="datatable-tips.html#cb402-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19</span></span>
+<span id="cb402-6"><a href="datatable-tips.html#cb402-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83</span></span>
+<span id="cb402-7"><a href="datatable-tips.html#cb402-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79</span></span></code></pre></div>
 <p>保留中间变量</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="datatable-tips.html#cb376-1" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg); tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1)); tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>); <span class="fu">list</span>(<span class="at">tmp2=</span>tmp2, <span class="at">tmp3=</span>tmp3)}, by<span class="ot">=</span>cyl][]</span>
-<span id="cb376-2"><a href="datatable-tips.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl tmp2 tmp3</span></span>
-<span id="cb376-3"><a href="datatable-tips.html#cb376-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19 1.19</span></span>
-<span id="cb376-4"><a href="datatable-tips.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83 3.83</span></span>
-<span id="cb376-5"><a href="datatable-tips.html#cb376-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79 1.79</span></span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="datatable-tips.html#cb403-1" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg); tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1)); tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>); <span class="fu">list</span>(<span class="at">tmp2=</span>tmp2, <span class="at">tmp3=</span>tmp3)}, by<span class="ot">=</span>cyl][]</span>
+<span id="cb403-2"><a href="datatable-tips.html#cb403-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl tmp2 tmp3</span></span>
+<span id="cb403-3"><a href="datatable-tips.html#cb403-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19 1.19</span></span>
+<span id="cb403-4"><a href="datatable-tips.html#cb403-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83 3.83</span></span>
+<span id="cb403-5"><a href="datatable-tips.html#cb403-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79 1.79</span></span></code></pre></div>
 <p>不写分号的方式</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="datatable-tips.html#cb377-1" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg)</span>
-<span id="cb377-2"><a href="datatable-tips.html#cb377-2" aria-hidden="true" tabindex="-1"></a>     tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1))</span>
-<span id="cb377-3"><a href="datatable-tips.html#cb377-3" aria-hidden="true" tabindex="-1"></a>     tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>)</span>
-<span id="cb377-4"><a href="datatable-tips.html#cb377-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">list</span>(<span class="at">tmp2=</span>tmp2, <span class="at">tmp3=</span>tmp3)},</span>
-<span id="cb377-5"><a href="datatable-tips.html#cb377-5" aria-hidden="true" tabindex="-1"></a>   by<span class="ot">=</span>cyl][]</span>
-<span id="cb377-6"><a href="datatable-tips.html#cb377-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl tmp2 tmp3</span></span>
-<span id="cb377-7"><a href="datatable-tips.html#cb377-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19 1.19</span></span>
-<span id="cb377-8"><a href="datatable-tips.html#cb377-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83 3.83</span></span>
-<span id="cb377-9"><a href="datatable-tips.html#cb377-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79 1.79</span></span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="datatable-tips.html#cb404-1" aria-hidden="true" tabindex="-1"></a>dt[,{tmp1<span class="ot">=</span><span class="fu">mean</span>(mpg)</span>
+<span id="cb404-2"><a href="datatable-tips.html#cb404-2" aria-hidden="true" tabindex="-1"></a>     tmp2<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">abs</span>(mpg<span class="sc">-</span>tmp1))</span>
+<span id="cb404-3"><a href="datatable-tips.html#cb404-3" aria-hidden="true" tabindex="-1"></a>     tmp3<span class="ot">=</span><span class="fu">round</span>(tmp2, <span class="dv">2</span>)</span>
+<span id="cb404-4"><a href="datatable-tips.html#cb404-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">list</span>(<span class="at">tmp2=</span>tmp2, <span class="at">tmp3=</span>tmp3)},</span>
+<span id="cb404-5"><a href="datatable-tips.html#cb404-5" aria-hidden="true" tabindex="-1"></a>   by<span class="ot">=</span>cyl][]</span>
+<span id="cb404-6"><a href="datatable-tips.html#cb404-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cyl tmp2 tmp3</span></span>
+<span id="cb404-7"><a href="datatable-tips.html#cb404-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   6 1.19 1.19</span></span>
+<span id="cb404-8"><a href="datatable-tips.html#cb404-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   4 3.83 3.83</span></span>
+<span id="cb404-9"><a href="datatable-tips.html#cb404-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   8 1.79 1.79</span></span></code></pre></div>
 </div>
 <div id="使用打印data.table" class="section level3" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> 使用[]打印data.table</h3>
 <p>在测试代码查看结果时很有用。</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="datatable-tips.html#cb378-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars) <span class="co"># doesn&#39;t print</span></span>
-<span id="cb378-2"><a href="datatable-tips.html#cb378-2" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars)) <span class="co"># does print</span></span>
-<span id="cb378-3"><a href="datatable-tips.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 11</span></span>
-<span id="cb378-4"><a href="datatable-tips.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
-<span id="cb378-5"><a href="datatable-tips.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb378-6"><a href="datatable-tips.html#cb378-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  21       6   160   110  3.9   2.62  16.5     0     1     4     4</span></span>
-<span id="cb378-7"><a href="datatable-tips.html#cb378-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span></span>
-<span id="cb378-8"><a href="datatable-tips.html#cb378-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span></span>
-<span id="cb378-9"><a href="datatable-tips.html#cb378-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span></span>
-<span id="cb378-10"><a href="datatable-tips.html#cb378-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
-<span id="cb378-11"><a href="datatable-tips.html#cb378-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span></span></code></pre></div>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="datatable-tips.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table way of printing after an assignment</span></span>
-<span id="cb379-2"><a href="datatable-tips.html#cb379-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="fu">head</span>(mtcars)) <span class="co"># doesn&#39;t print</span></span>
-<span id="cb379-3"><a href="datatable-tips.html#cb379-3" aria-hidden="true" tabindex="-1"></a>dt[,hp2wt<span class="sc">:</span><span class="er">=</span>hp<span class="sc">/</span>wt][] <span class="co"># does print</span></span>
-<span id="cb379-4"><a href="datatable-tips.html#cb379-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg cyl disp  hp drat   wt qsec vs am gear carb hp2wt</span></span>
-<span id="cb379-5"><a href="datatable-tips.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4  42.0</span></span>
-<span id="cb379-6"><a href="datatable-tips.html#cb379-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4  38.3</span></span>
-<span id="cb379-7"><a href="datatable-tips.html#cb379-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 22.8   4  108  93 3.85 2.32 18.6  1  1    4    1  40.1</span></span>
-<span id="cb379-8"><a href="datatable-tips.html#cb379-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1  34.2</span></span>
-<span id="cb379-9"><a href="datatable-tips.html#cb379-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2  50.9</span></span>
-<span id="cb379-10"><a href="datatable-tips.html#cb379-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1  30.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="datatable-tips.html#cb405-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars) <span class="co"># doesn&#39;t print</span></span>
+<span id="cb405-2"><a href="datatable-tips.html#cb405-2" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> <span class="fu">head</span>(mtcars)) <span class="co"># does print</span></span>
+<span id="cb405-3"><a href="datatable-tips.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 11</span></span>
+<span id="cb405-4"><a href="datatable-tips.html#cb405-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span></span>
+<span id="cb405-5"><a href="datatable-tips.html#cb405-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb405-6"><a href="datatable-tips.html#cb405-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  21       6   160   110  3.9   2.62  16.5     0     1     4     4</span></span>
+<span id="cb405-7"><a href="datatable-tips.html#cb405-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span></span>
+<span id="cb405-8"><a href="datatable-tips.html#cb405-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span></span>
+<span id="cb405-9"><a href="datatable-tips.html#cb405-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span></span>
+<span id="cb405-10"><a href="datatable-tips.html#cb405-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span></span>
+<span id="cb405-11"><a href="datatable-tips.html#cb405-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span></span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="datatable-tips.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table way of printing after an assignment</span></span>
+<span id="cb406-2"><a href="datatable-tips.html#cb406-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="fu">head</span>(mtcars)) <span class="co"># doesn&#39;t print</span></span>
+<span id="cb406-3"><a href="datatable-tips.html#cb406-3" aria-hidden="true" tabindex="-1"></a>dt[,hp2wt<span class="sc">:</span><span class="er">=</span>hp<span class="sc">/</span>wt][] <span class="co"># does print</span></span>
+<span id="cb406-4"><a href="datatable-tips.html#cb406-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mpg cyl disp  hp drat   wt qsec vs am gear carb hp2wt</span></span>
+<span id="cb406-5"><a href="datatable-tips.html#cb406-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4  42.0</span></span>
+<span id="cb406-6"><a href="datatable-tips.html#cb406-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4  38.3</span></span>
+<span id="cb406-7"><a href="datatable-tips.html#cb406-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 22.8   4  108  93 3.85 2.32 18.6  1  1    4    1  40.1</span></span>
+<span id="cb406-8"><a href="datatable-tips.html#cb406-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1  34.2</span></span>
+<span id="cb406-9"><a href="datatable-tips.html#cb406-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2  50.9</span></span>
+<span id="cb406-10"><a href="datatable-tips.html#cb406-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1  30.3</span></span></code></pre></div>
 </div>
 </div>
             </section>

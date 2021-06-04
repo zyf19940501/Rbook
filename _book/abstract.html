@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>内容概要 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>内容概要 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="内容概要 | R 语言学习笔记" />
+  <meta property="og:title" content="内容概要 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="内容概要 | R 语言学习笔记" />
+  <meta name="twitter:title" content="内容概要 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -520,26 +522,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>内容概要</h2>
 <p>主要内容是为了将数据报表，数据报告，数据可视化等需求利用 R 语言自动化实现，从而解放双手。</p>
 <ul>
-<li>数据导入导出</li>
-</ul>
-<p>读 Excel:readxl,openxlsx;写 Excel:openxlsx,writexl,读写 CSV,TSV,TXT 等:readr,vroom,data.table;</p>
-<ul>
+<li><p>数据导入导出</p>
+<p>读 Excel:readxl,openxlsx;写 Excel:openxlsx,writexl,读写 CSV,TSV,TXT 等:readr,vroom,data.table;</p></li>
 <li><p>数据操作 dplyr</p></li>
 <li><p>数据整洁 tidyr</p></li>
 <li><p>字符处理 stringr</p></li>
 <li><p>日期时间处理 lubridate</p></li>
 <li><p>因子处理 forcats</p></li>
 <li><p>数据处理利器 data.table</p></li>
-<li><p>数据库使用</p></li>
-</ul>
-<p>主要是 odbc,DBI,ROracle,RMySQL等</p>
-<ul>
+<li><p>数据库使用</p>
+<p>主要是 odbc,DBI,ROracle,RMySQL等</p></li>
 <li><p>循环结构</p></li>
 <li><p>循环迭代之purrr包介绍</p></li>
 <li><p>自定义函数功能</p></li>
 <li><p>文件系统管理</p></li>
 </ul>
-<p>数据操作处理分为:tidyverse 系列，data.table 两大语法体系。</p>
+<p>在本书中，数据操作处理分为:tidyverse 系列，data.table 两大语法体系，任选其一学习即可，待对 R 语言认知更深，以及更加清楚自己的需求后再行调整数据处理框架体系。就我个人而言，我目前使用 data.table 体系做数据处理较多，当然不可避免的需要借助其他 R包。</p>
 </div>
             </section>
 

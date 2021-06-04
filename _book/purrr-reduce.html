@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.3 归约累计函数 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>10.3 归约累计函数 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.3 归约累计函数 | R 语言学习笔记" />
+  <meta property="og:title" content="10.3 归约累计函数 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.3 归约累计函数 | R 语言学习笔记" />
+  <meta name="twitter:title" content="10.3 归约累计函数 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -523,27 +525,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>reduce</li>
 </ul>
 <p>在实际工作中,我长用reduce函数实现merge()功能。示例如下：</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="purrr-reduce.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
-<span id="cb489-2"><a href="purrr-reduce.html#cb489-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5050</span></span>
-<span id="cb489-3"><a href="purrr-reduce.html#cb489-3" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">1</span>,<span class="st">`</span><span class="at">-</span><span class="st">`</span>)</span>
-<span id="cb489-4"><a href="purrr-reduce.html#cb489-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -4850</span></span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="purrr-reduce.html#cb516-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
+<span id="cb516-2"><a href="purrr-reduce.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5050</span></span>
+<span id="cb516-3"><a href="purrr-reduce.html#cb516-3" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">1</span>,<span class="st">`</span><span class="at">-</span><span class="st">`</span>)</span>
+<span id="cb516-4"><a href="purrr-reduce.html#cb516-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -4850</span></span></code></pre></div>
 <p>将函数功能不断运用到list上得到最后结果。</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="purrr-reduce.html#cb490-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb490-2"><a href="purrr-reduce.html#cb490-2" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b1=</span><span class="fu">rnorm</span>(n))</span>
-<span id="cb490-3"><a href="purrr-reduce.html#cb490-3" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b2=</span><span class="fu">rnorm</span>(n))</span>
-<span id="cb490-4"><a href="purrr-reduce.html#cb490-4" aria-hidden="true" tabindex="-1"></a>dt3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b3=</span><span class="fu">rnorm</span>(n))</span>
-<span id="cb490-5"><a href="purrr-reduce.html#cb490-5" aria-hidden="true" tabindex="-1"></a>dt4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b4=</span><span class="fu">rnorm</span>(n))</span>
-<span id="cb490-6"><a href="purrr-reduce.html#cb490-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb490-7"><a href="purrr-reduce.html#cb490-7" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="fu">list</span>(dt1,dt2,dt3,dt4),merge)</span>
-<span id="cb490-8"><a href="purrr-reduce.html#cb490-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb490-9"><a href="purrr-reduce.html#cb490-9" aria-hidden="true" tabindex="-1"></a><span class="co"># reduce(list(dt1,dt2,dt3,dt4),merge,by=&#39;a&#39;) same above</span></span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="purrr-reduce.html#cb517-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb517-2"><a href="purrr-reduce.html#cb517-2" aria-hidden="true" tabindex="-1"></a>dt1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b1=</span><span class="fu">rnorm</span>(n))</span>
+<span id="cb517-3"><a href="purrr-reduce.html#cb517-3" aria-hidden="true" tabindex="-1"></a>dt2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b2=</span><span class="fu">rnorm</span>(n))</span>
+<span id="cb517-4"><a href="purrr-reduce.html#cb517-4" aria-hidden="true" tabindex="-1"></a>dt3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b3=</span><span class="fu">rnorm</span>(n))</span>
+<span id="cb517-5"><a href="purrr-reduce.html#cb517-5" aria-hidden="true" tabindex="-1"></a>dt4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>letters[n],<span class="at">b4=</span><span class="fu">rnorm</span>(n))</span>
+<span id="cb517-6"><a href="purrr-reduce.html#cb517-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb517-7"><a href="purrr-reduce.html#cb517-7" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="fu">list</span>(dt1,dt2,dt3,dt4),merge)</span>
+<span id="cb517-8"><a href="purrr-reduce.html#cb517-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb517-9"><a href="purrr-reduce.html#cb517-9" aria-hidden="true" tabindex="-1"></a><span class="co"># reduce(list(dt1,dt2,dt3,dt4),merge,by=&#39;a&#39;) same above</span></span></code></pre></div>
 <ul>
 <li>accumulate</li>
 </ul>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="purrr-reduce.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">%&gt;%</span> <span class="fu">accumulate</span>(<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
-<span id="cb491-2"><a href="purrr-reduce.html#cb491-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  1  3  6 10 15</span></span>
-<span id="cb491-3"><a href="purrr-reduce.html#cb491-3" aria-hidden="true" tabindex="-1"></a><span class="fu">accumulate</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], paste, <span class="at">sep =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb491-4"><a href="purrr-reduce.html#cb491-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a&quot;         &quot;a.b&quot;       &quot;a.b.c&quot;     &quot;a.b.c.d&quot;   &quot;a.b.c.d.e&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="purrr-reduce.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">%&gt;%</span> <span class="fu">accumulate</span>(<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
+<span id="cb518-2"><a href="purrr-reduce.html#cb518-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  1  3  6 10 15</span></span>
+<span id="cb518-3"><a href="purrr-reduce.html#cb518-3" aria-hidden="true" tabindex="-1"></a><span class="fu">accumulate</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], paste, <span class="at">sep =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb518-4"><a href="purrr-reduce.html#cb518-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a&quot;         &quot;a.b&quot;       &quot;a.b.c&quot;     &quot;a.b.c.d&quot;   &quot;a.b.c.d.e&quot;</span></span></code></pre></div>
 </div>
             </section>
 

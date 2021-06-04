@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8.2 odbc包 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>8.2 odbc包 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.2 odbc包 | R 语言学习笔记" />
+  <meta property="og:title" content="8.2 odbc包 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.2 odbc包 | R 语言学习笔记" />
+  <meta name="twitter:title" content="8.2 odbc包 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -527,31 +529,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Windows</li>
 </ul>
 <p>Windows与ODBC库捆绑在一起，但是每个数据库的驱动程序需要单独安装。windows系统上可以通过以下命令直接安装。</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="database-odbc-package.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="co">#安装包</span></span>
-<span id="cb388-2"><a href="database-odbc-package.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;odbc&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="database-odbc-package.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co">#安装包</span></span>
+<span id="cb415-2"><a href="database-odbc-package.html#cb415-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;odbc&#39;</span>)</span></code></pre></div>
 <ul>
 <li>其它系统</li>
 </ul>
 <p>其它系统在安装前需要安装依赖环境，如下所示:</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb389-1"><a href="database-odbc-package.html#cb389-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># Macos</span></span>
-<span id="cb389-2"><a href="database-odbc-package.html#cb389-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">brew</span> install unixodbc</span>
-<span id="cb389-3"><a href="database-odbc-package.html#cb389-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb389-4"><a href="database-odbc-package.html#cb389-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># Debian /Ubuntu</span></span>
-<span id="cb389-5"><a href="database-odbc-package.html#cb389-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">apt-get</span> install unixodbc unixodbc-dev</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb416-1"><a href="database-odbc-package.html#cb416-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># Macos</span></span>
+<span id="cb416-2"><a href="database-odbc-package.html#cb416-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">brew</span> install unixodbc</span>
+<span id="cb416-3"><a href="database-odbc-package.html#cb416-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb416-4"><a href="database-odbc-package.html#cb416-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># Debian /Ubuntu</span></span>
+<span id="cb416-5"><a href="database-odbc-package.html#cb416-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">apt-get</span> install unixodbc unixodbc-dev</span></code></pre></div>
 </div>
 <div id="驱动安装" class="section level3" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> 驱动安装</h3>
 <p>由于Win系统绑定ODBC库，不需要安装依赖环境即可正常安装使用R包odbc，其它系统经过上面依赖环境安装，现在系统已经能正常安装odbc包。</p>
 <p>最后通过<code>odbc::odbcListDrivers()</code>查看系统上是否存在可用驱动程序。</p>
 <p>查看可用系统可用驱动：</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="database-odbc-package.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(odbc<span class="sc">::</span><span class="fu">odbcListDrivers</span>())</span>
-<span id="cb390-2"><a href="database-odbc-package.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         name        attribute value</span></span>
-<span id="cb390-3"><a href="database-odbc-package.html#cb390-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 SQL Server         APILevel     2</span></span>
-<span id="cb390-4"><a href="database-odbc-package.html#cb390-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 SQL Server ConnectFunctions   YYY</span></span>
-<span id="cb390-5"><a href="database-odbc-package.html#cb390-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 SQL Server        CPTimeout    60</span></span>
-<span id="cb390-6"><a href="database-odbc-package.html#cb390-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 SQL Server    DriverODBCVer 03.50</span></span>
-<span id="cb390-7"><a href="database-odbc-package.html#cb390-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 SQL Server        FileUsage     0</span></span>
-<span id="cb390-8"><a href="database-odbc-package.html#cb390-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 SQL Server         SQLLevel     1</span></span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="database-odbc-package.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(odbc<span class="sc">::</span><span class="fu">odbcListDrivers</span>())</span>
+<span id="cb417-2"><a href="database-odbc-package.html#cb417-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         name        attribute value</span></span>
+<span id="cb417-3"><a href="database-odbc-package.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 SQL Server         APILevel     2</span></span>
+<span id="cb417-4"><a href="database-odbc-package.html#cb417-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 SQL Server ConnectFunctions   YYY</span></span>
+<span id="cb417-5"><a href="database-odbc-package.html#cb417-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 SQL Server        CPTimeout    60</span></span>
+<span id="cb417-6"><a href="database-odbc-package.html#cb417-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 SQL Server    DriverODBCVer 03.50</span></span>
+<span id="cb417-7"><a href="database-odbc-package.html#cb417-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 SQL Server        FileUsage     0</span></span>
+<span id="cb417-8"><a href="database-odbc-package.html#cb417-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 SQL Server         SQLLevel     1</span></span></code></pre></div>
 <p>1.Windows</p>
 <p>默认情况下，win系统即使不安装也可使用驱动“SQL Server,”如下所示：</p>
 <div class="figure">
@@ -563,12 +565,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>其它系统上如果安装sql server驱动请参照<a href="https://docs.microsoft.com/zh-cn/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">安装说明</a></p>
 <p>2.Macos</p>
 <p>Macos安装驱动</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb391-1"><a href="database-odbc-package.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install unixodbc</span>
-<span id="cb391-2"><a href="database-odbc-package.html#cb391-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb391-3"><a href="database-odbc-package.html#cb391-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Microsoft SQL Server ODBC Drivers (Recommended)</span></span>
-<span id="cb391-4"><a href="database-odbc-package.html#cb391-4" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release</span>
-<span id="cb391-5"><a href="database-odbc-package.html#cb391-5" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> update</span>
-<span id="cb391-6"><a href="database-odbc-package.html#cb391-6" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install msodbcsql17 mssql-tools</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb418-1"><a href="database-odbc-package.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install unixodbc</span>
+<span id="cb418-2"><a href="database-odbc-package.html#cb418-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb418-3"><a href="database-odbc-package.html#cb418-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Microsoft SQL Server ODBC Drivers (Recommended)</span></span>
+<span id="cb418-4"><a href="database-odbc-package.html#cb418-4" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release</span>
+<span id="cb418-5"><a href="database-odbc-package.html#cb418-5" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> update</span>
+<span id="cb418-6"><a href="database-odbc-package.html#cb418-6" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install msodbcsql17 mssql-tools</span></code></pre></div>
 <p>成功安装后如下所示:</p>
 <div class="figure">
 <img src="picture/chap2/mac-odbcdriver.jpg" alt="" />
@@ -581,92 +583,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>数据库连接有几种方式，详情请参照<a href="https://www.connectionstrings.com/">数据库连接字符串</a>,我们以SQL Server2019数据库，驱动<code>ODBC Driver 17 for SQL Server</code>举例。</p>
 <p>1.标准模式</p>
 <p>连接字符串</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb392-1"><a href="database-odbc-package.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="va">Driver=</span>{ODBC <span class="ex">Driver</span> 17 for SQL Server}<span class="kw">;</span><span class="va">Server=</span>myServerAddress<span class="kw">;</span><span class="va">Database=</span>myDataBase<span class="kw">;</span><span class="va">UID=</span>myUsername<span class="kw">;</span><span class="va">PWD=</span>myPassword<span class="kw">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb419-1"><a href="database-odbc-package.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="va">Driver=</span>{ODBC <span class="ex">Driver</span> 17 for SQL Server}<span class="kw">;</span><span class="va">Server=</span>myServerAddress<span class="kw">;</span><span class="va">Database=</span>myDataBase<span class="kw">;</span><span class="va">UID=</span>myUsername<span class="kw">;</span><span class="va">PWD=</span>myPassword<span class="kw">;</span></span></code></pre></div>
 <p>参数形式:</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="database-odbc-package.html#cb393-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv=</span><span class="fu">odbc</span>(),<span class="at">driver=</span><span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>,<span class="at">server=</span><span class="st">&#39;172.16.88.2&#39;</span>,<span class="at">database=</span><span class="st">&#39;spb&#39;</span>,<span class="at">uid=</span><span class="st">&#39;zhongyf&#39;</span>,<span class="at">pwd=</span><span class="st">&#39;Zyf123456&#39;</span>,<span class="at">encoding=</span><span class="st">&#39;UTF-8&#39;</span>,<span class="at">timezone=</span><span class="st">&quot;Asia/Shanghai&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="database-odbc-package.html#cb420-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv=</span><span class="fu">odbc</span>(),<span class="at">driver=</span><span class="st">&quot;ODBC Driver 17 for SQL Server&quot;</span>,<span class="at">server=</span><span class="st">&#39;172.16.88.2&#39;</span>,<span class="at">database=</span><span class="st">&#39;spb&#39;</span>,<span class="at">uid=</span><span class="st">&#39;zhongyf&#39;</span>,<span class="at">pwd=</span><span class="st">&#39;Zyf123456&#39;</span>,<span class="at">encoding=</span><span class="st">&#39;UTF-8&#39;</span>,<span class="at">timezone=</span><span class="st">&quot;Asia/Shanghai&quot;</span>)</span></code></pre></div>
 <p>字符串形式：</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="database-odbc-package.html#cb394-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> <span class="fu">odbc</span>(),<span class="at">.connection_string=</span><span class="st">&#39;Driver={ODBC Driver 17 for SQL Server};Server=172.16.88.2;Database=spb;UID=zhongyf;PWD=Zyf123456;&#39;</span>,<span class="at">encoding=</span><span class="st">&#39;UTF-8&#39;</span>,<span class="at">timezone=</span><span class="st">&quot;Asia/Shanghai&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="database-odbc-package.html#cb421-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> <span class="fu">odbc</span>(),<span class="at">.connection_string=</span><span class="st">&#39;Driver={ODBC Driver 17 for SQL Server};Server=172.16.88.2;Database=spb;UID=zhongyf;PWD=Zyf123456;&#39;</span>,<span class="at">encoding=</span><span class="st">&#39;UTF-8&#39;</span>,<span class="at">timezone=</span><span class="st">&quot;Asia/Shanghai&quot;</span>)</span></code></pre></div>
 <p>2.信任连接</p>
 <p>通过windows身份认证连接，通过数据库管理员配置相关账户权限即可。</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb395-1"><a href="database-odbc-package.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="va">Driver=</span>{ODBC <span class="ex">Driver</span> 17 for SQL Server}<span class="kw">;</span><span class="va">Server=</span>myServerAddress<span class="kw">;</span><span class="va">Database=</span>myDataBase<span class="kw">;</span><span class="va">Trusted_Connection=</span>yes<span class="kw">;</span></span></code></pre></div>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="database-odbc-package.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(odbc)</span>
-<span id="cb396-2"><a href="database-odbc-package.html#cb396-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
-<span id="cb396-3"><a href="database-odbc-package.html#cb396-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">Server =</span> <span class="st">&quot;Vega&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;ghzy&quot;</span>,</span>
-<span id="cb396-4"><a href="database-odbc-package.html#cb396-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Trusted_Connection =</span> <span class="st">&quot;True&quot;</span></span>
-<span id="cb396-5"><a href="database-odbc-package.html#cb396-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb422-1"><a href="database-odbc-package.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="va">Driver=</span>{ODBC <span class="ex">Driver</span> 17 for SQL Server}<span class="kw">;</span><span class="va">Server=</span>myServerAddress<span class="kw">;</span><span class="va">Database=</span>myDataBase<span class="kw">;</span><span class="va">Trusted_Connection=</span>yes<span class="kw">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="database-odbc-package.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(odbc)</span>
+<span id="cb423-2"><a href="database-odbc-package.html#cb423-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="fu">odbc</span>(),</span>
+<span id="cb423-3"><a href="database-odbc-package.html#cb423-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Driver =</span> <span class="st">&quot;SQL Server&quot;</span>, <span class="at">Server =</span> <span class="st">&quot;Vega&quot;</span>, <span class="at">Database =</span> <span class="st">&quot;ghzy&quot;</span>,</span>
+<span id="cb423-4"><a href="database-odbc-package.html#cb423-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Trusted_Connection =</span> <span class="st">&quot;True&quot;</span></span>
+<span id="cb423-5"><a href="database-odbc-package.html#cb423-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>3.连接SQL Server实例<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a></p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb397-1"><a href="database-odbc-package.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="va">Driver=</span>{ODBC <span class="ex">Driver</span> 17 for SQL Server}<span class="kw">;</span><span class="va">Server=</span>serverName<span class="dt">\i</span>nstanceName<span class="kw">;</span></span>
-<span id="cb397-2"><a href="database-odbc-package.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="va">Database=</span>myDataBase<span class="kw">;</span><span class="va">Trusted_Connection=</span>yes<span class="kw">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb424-1"><a href="database-odbc-package.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="va">Driver=</span>{ODBC <span class="ex">Driver</span> 17 for SQL Server}<span class="kw">;</span><span class="va">Server=</span>serverName<span class="dt">\i</span>nstanceName<span class="kw">;</span></span>
+<span id="cb424-2"><a href="database-odbc-package.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="va">Database=</span>myDataBase<span class="kw">;</span><span class="va">Trusted_Connection=</span>yes<span class="kw">;</span></span></code></pre></div>
 <p>4.非标准端口</p>
 <p>SQL Server数据库的默认端口是1433，连接非标端口字符串如下所示：</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb398-1"><a href="database-odbc-package.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="va">Driver=</span>{ODBC <span class="ex">Driver</span> 17 for SQL Server}<span class="kw">;</span><span class="va">Server=</span>myServerName,myPortNumber<span class="kw">;</span><span class="va">Database=</span>myDataBase<span class="kw">;</span><span class="va">UID=</span>myUsername<span class="kw">;</span><span class="va">PWD=</span>myPassword<span class="kw">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb425-1"><a href="database-odbc-package.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="va">Driver=</span>{ODBC <span class="ex">Driver</span> 17 for SQL Server}<span class="kw">;</span><span class="va">Server=</span>myServerName,myPortNumber<span class="kw">;</span><span class="va">Database=</span>myDataBase<span class="kw">;</span><span class="va">UID=</span>myUsername<span class="kw">;</span><span class="va">PWD=</span>myPassword<span class="kw">;</span></span></code></pre></div>
 <p>通过配置DSN也可连接数据库，但是这样写的脚本在同事间分享不方便，故不推荐。</p>
 <p>win10开始–&gt;运行 打开ODBC数据源(64) 配置。</p>
 <div class="figure">
 <img src="picture/chap2/ODBC-DSN.png" alt="" />
 <p class="caption">odbc-dsn</p>
 </div>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="database-odbc-package.html#cb399-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">dsn=</span><span class="st">&quot;ghzy&quot;</span>)</span>
-<span id="cb399-2"><a href="database-odbc-package.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetInfo</span>(con) <span class="co">#查看连接信息</span></span>
-<span id="cb399-3"><a href="database-odbc-package.html#cb399-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-4"><a href="database-odbc-package.html#cb399-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-5"><a href="database-odbc-package.html#cb399-5" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>dbname</span>
-<span id="cb399-6"><a href="database-odbc-package.html#cb399-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;spb&quot;</span></span>
-<span id="cb399-7"><a href="database-odbc-package.html#cb399-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-8"><a href="database-odbc-package.html#cb399-8" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>dbms.name</span>
-<span id="cb399-9"><a href="database-odbc-package.html#cb399-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Microsoft SQL Server&quot;</span></span>
-<span id="cb399-10"><a href="database-odbc-package.html#cb399-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-11"><a href="database-odbc-package.html#cb399-11" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>db.version</span>
-<span id="cb399-12"><a href="database-odbc-package.html#cb399-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;12.00.5203&quot;</span></span>
-<span id="cb399-13"><a href="database-odbc-package.html#cb399-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-14"><a href="database-odbc-package.html#cb399-14" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>username</span>
-<span id="cb399-15"><a href="database-odbc-package.html#cb399-15" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;dbo&quot;</span></span>
-<span id="cb399-16"><a href="database-odbc-package.html#cb399-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-17"><a href="database-odbc-package.html#cb399-17" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>host</span>
-<span id="cb399-18"><a href="database-odbc-package.html#cb399-18" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;&quot;</span></span>
-<span id="cb399-19"><a href="database-odbc-package.html#cb399-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-20"><a href="database-odbc-package.html#cb399-20" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>port</span>
-<span id="cb399-21"><a href="database-odbc-package.html#cb399-21" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;&quot;</span></span>
-<span id="cb399-22"><a href="database-odbc-package.html#cb399-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-23"><a href="database-odbc-package.html#cb399-23" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>sourcename</span>
-<span id="cb399-24"><a href="database-odbc-package.html#cb399-24" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;ghzy&quot;</span></span>
-<span id="cb399-25"><a href="database-odbc-package.html#cb399-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-26"><a href="database-odbc-package.html#cb399-26" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>servername</span>
-<span id="cb399-27"><a href="database-odbc-package.html#cb399-27" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;personalSQL&quot;</span></span>
-<span id="cb399-28"><a href="database-odbc-package.html#cb399-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-29"><a href="database-odbc-package.html#cb399-29" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>drivername</span>
-<span id="cb399-30"><a href="database-odbc-package.html#cb399-30" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;msodbcsql17.dll&quot;</span></span>
-<span id="cb399-31"><a href="database-odbc-package.html#cb399-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-32"><a href="database-odbc-package.html#cb399-32" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>odbc.version</span>
-<span id="cb399-33"><a href="database-odbc-package.html#cb399-33" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;03.80.0000&quot;</span></span>
-<span id="cb399-34"><a href="database-odbc-package.html#cb399-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-35"><a href="database-odbc-package.html#cb399-35" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>driver.version</span>
-<span id="cb399-36"><a href="database-odbc-package.html#cb399-36" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;17.05.0002&quot;</span></span>
-<span id="cb399-37"><a href="database-odbc-package.html#cb399-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-38"><a href="database-odbc-package.html#cb399-38" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>odbcdriver.version</span>
-<span id="cb399-39"><a href="database-odbc-package.html#cb399-39" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;03.80&quot;</span></span>
-<span id="cb399-40"><a href="database-odbc-package.html#cb399-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-41"><a href="database-odbc-package.html#cb399-41" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>supports.transactions</span>
-<span id="cb399-42"><a href="database-odbc-package.html#cb399-42" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">TRUE</span></span>
-<span id="cb399-43"><a href="database-odbc-package.html#cb399-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-44"><a href="database-odbc-package.html#cb399-44" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>getdata.extensions.any_column</span>
-<span id="cb399-45"><a href="database-odbc-package.html#cb399-45" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span>
-<span id="cb399-46"><a href="database-odbc-package.html#cb399-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-47"><a href="database-odbc-package.html#cb399-47" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>getdata.extensions.any_order</span>
-<span id="cb399-48"><a href="database-odbc-package.html#cb399-48" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span>
-<span id="cb399-49"><a href="database-odbc-package.html#cb399-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-50"><a href="database-odbc-package.html#cb399-50" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(,<span class="st">&quot;class&quot;</span>)</span>
-<span id="cb399-51"><a href="database-odbc-package.html#cb399-51" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Microsoft SQL Server&quot;</span> <span class="st">&quot;driver_info&quot;</span>          <span class="st">&quot;list&quot;</span>   </span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="database-odbc-package.html#cb426-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="at">dsn=</span><span class="st">&quot;ghzy&quot;</span>)</span>
+<span id="cb426-2"><a href="database-odbc-package.html#cb426-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetInfo</span>(con) <span class="co">#查看连接信息</span></span>
+<span id="cb426-3"><a href="database-odbc-package.html#cb426-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-4"><a href="database-odbc-package.html#cb426-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-5"><a href="database-odbc-package.html#cb426-5" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>dbname</span>
+<span id="cb426-6"><a href="database-odbc-package.html#cb426-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;spb&quot;</span></span>
+<span id="cb426-7"><a href="database-odbc-package.html#cb426-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-8"><a href="database-odbc-package.html#cb426-8" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>dbms.name</span>
+<span id="cb426-9"><a href="database-odbc-package.html#cb426-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Microsoft SQL Server&quot;</span></span>
+<span id="cb426-10"><a href="database-odbc-package.html#cb426-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-11"><a href="database-odbc-package.html#cb426-11" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>db.version</span>
+<span id="cb426-12"><a href="database-odbc-package.html#cb426-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;12.00.5203&quot;</span></span>
+<span id="cb426-13"><a href="database-odbc-package.html#cb426-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-14"><a href="database-odbc-package.html#cb426-14" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>username</span>
+<span id="cb426-15"><a href="database-odbc-package.html#cb426-15" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;dbo&quot;</span></span>
+<span id="cb426-16"><a href="database-odbc-package.html#cb426-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-17"><a href="database-odbc-package.html#cb426-17" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>host</span>
+<span id="cb426-18"><a href="database-odbc-package.html#cb426-18" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;&quot;</span></span>
+<span id="cb426-19"><a href="database-odbc-package.html#cb426-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-20"><a href="database-odbc-package.html#cb426-20" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>port</span>
+<span id="cb426-21"><a href="database-odbc-package.html#cb426-21" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;&quot;</span></span>
+<span id="cb426-22"><a href="database-odbc-package.html#cb426-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-23"><a href="database-odbc-package.html#cb426-23" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>sourcename</span>
+<span id="cb426-24"><a href="database-odbc-package.html#cb426-24" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;ghzy&quot;</span></span>
+<span id="cb426-25"><a href="database-odbc-package.html#cb426-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-26"><a href="database-odbc-package.html#cb426-26" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>servername</span>
+<span id="cb426-27"><a href="database-odbc-package.html#cb426-27" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;personalSQL&quot;</span></span>
+<span id="cb426-28"><a href="database-odbc-package.html#cb426-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-29"><a href="database-odbc-package.html#cb426-29" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>drivername</span>
+<span id="cb426-30"><a href="database-odbc-package.html#cb426-30" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;msodbcsql17.dll&quot;</span></span>
+<span id="cb426-31"><a href="database-odbc-package.html#cb426-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-32"><a href="database-odbc-package.html#cb426-32" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>odbc.version</span>
+<span id="cb426-33"><a href="database-odbc-package.html#cb426-33" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;03.80.0000&quot;</span></span>
+<span id="cb426-34"><a href="database-odbc-package.html#cb426-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-35"><a href="database-odbc-package.html#cb426-35" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>driver.version</span>
+<span id="cb426-36"><a href="database-odbc-package.html#cb426-36" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;17.05.0002&quot;</span></span>
+<span id="cb426-37"><a href="database-odbc-package.html#cb426-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-38"><a href="database-odbc-package.html#cb426-38" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>odbcdriver.version</span>
+<span id="cb426-39"><a href="database-odbc-package.html#cb426-39" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;03.80&quot;</span></span>
+<span id="cb426-40"><a href="database-odbc-package.html#cb426-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-41"><a href="database-odbc-package.html#cb426-41" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>supports.transactions</span>
+<span id="cb426-42"><a href="database-odbc-package.html#cb426-42" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">TRUE</span></span>
+<span id="cb426-43"><a href="database-odbc-package.html#cb426-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-44"><a href="database-odbc-package.html#cb426-44" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>getdata.extensions.any_column</span>
+<span id="cb426-45"><a href="database-odbc-package.html#cb426-45" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span>
+<span id="cb426-46"><a href="database-odbc-package.html#cb426-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-47"><a href="database-odbc-package.html#cb426-47" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>getdata.extensions.any_order</span>
+<span id="cb426-48"><a href="database-odbc-package.html#cb426-48" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span>
+<span id="cb426-49"><a href="database-odbc-package.html#cb426-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-50"><a href="database-odbc-package.html#cb426-50" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(,<span class="st">&quot;class&quot;</span>)</span>
+<span id="cb426-51"><a href="database-odbc-package.html#cb426-51" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Microsoft SQL Server&quot;</span> <span class="st">&quot;driver_info&quot;</span>          <span class="st">&quot;list&quot;</span>   </span></code></pre></div>
 </div>
 <div id="读写数据库" class="section level3" number="8.2.4">
 <h3><span class="header-section-number">8.2.4</span> 读写数据库</h3>
 <p>1.查询</p>
 <p><code>odbc::dbGetQuery()</code>函数执行sql语句并返回数据</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="database-odbc-package.html#cb400-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from DT&#39;</span>)</span>
-<span id="cb400-2"><a href="database-odbc-package.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="database-odbc-package.html#cb427-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> odbc<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,<span class="st">&#39;select * from DT&#39;</span>)</span>
+<span id="cb427-2"><a href="database-odbc-package.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span></code></pre></div>
 <p>2.写入数据库</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="database-odbc-package.html#cb401-1" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">overwrite =</span> T ) <span class="co"># 是否覆盖</span></span>
-<span id="cb401-2"><a href="database-odbc-package.html#cb401-2" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">append =</span> T ) <span class="co"># 是否追加</span></span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="database-odbc-package.html#cb428-1" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">overwrite =</span> T ) <span class="co"># 是否覆盖</span></span>
+<span id="cb428-2"><a href="database-odbc-package.html#cb428-2" aria-hidden="true" tabindex="-1"></a>odbc<span class="sc">::</span><span class="fu">dbWriteTable</span>(con,<span class="at">name =</span> <span class="st">&#39;表名&#39;</span>,<span class="at">value =</span> dt,<span class="at">append =</span> T ) <span class="co"># 是否追加</span></span></code></pre></div>
 <p>由于odbc包的函数都是DBI中一些函数的实现，我们将其它的一些函数放在接下来的DBI包中讲解。</p>
 <p>综上，我们使用odbc包主要是作为连接<a href="https://docs.microsoft.com/zh-cn/sql/odbc/microsoft-open-database-connectivity-odbc?view=sql-server-ver15">开放式数据库</a>(odbc)中介使用。</p>
 </div>

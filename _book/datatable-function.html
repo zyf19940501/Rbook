@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.3 常用函数 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>7.3 常用函数 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.3 常用函数 | R 语言学习笔记" />
+  <meta property="og:title" content="7.3 常用函数 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.3 常用函数 | R 语言学习笔记" />
+  <meta name="twitter:title" content="7.3 常用函数 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -523,146 +525,146 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.3.1</span> 特殊符号</h3>
 <p>.SD,.BY,.N,.I,.NGRP和.GRP,.SDcols等,只能用在 j 的位置,.N 可以用在 i 的位置。</p>
 <p>如果想要记住用法需要自己多尝试练习，对于我来说.N使用较多。</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="datatable-function.html#cb345-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="at">each=</span><span class="dv">3</span>), <span class="at">v=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>), <span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">b=</span><span class="dv">9</span><span class="sc">:</span><span class="dv">1</span>)</span>
-<span id="cb345-2"><a href="datatable-function.html#cb345-2" aria-hidden="true" tabindex="-1"></a>DT</span>
-<span id="cb345-3"><a href="datatable-function.html#cb345-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y a b</span></span>
-<span id="cb345-4"><a href="datatable-function.html#cb345-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 1 1 1 9</span></span>
-<span id="cb345-5"><a href="datatable-function.html#cb345-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: b 1 3 2 8</span></span>
-<span id="cb345-6"><a href="datatable-function.html#cb345-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: b 1 6 3 7</span></span>
-<span id="cb345-7"><a href="datatable-function.html#cb345-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: a 2 1 4 6</span></span>
-<span id="cb345-8"><a href="datatable-function.html#cb345-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: a 2 3 5 5</span></span>
-<span id="cb345-9"><a href="datatable-function.html#cb345-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: a 1 6 6 4</span></span>
-<span id="cb345-10"><a href="datatable-function.html#cb345-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: c 1 1 7 3</span></span>
-<span id="cb345-11"><a href="datatable-function.html#cb345-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: c 2 3 8 2</span></span>
-<span id="cb345-12"><a href="datatable-function.html#cb345-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9: c 2 6 9 1</span></span>
-<span id="cb345-13"><a href="datatable-function.html#cb345-13" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>), <span class="at">v=</span><span class="dv">8</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">foo=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>))</span>
-<span id="cb345-14"><a href="datatable-function.html#cb345-14" aria-hidden="true" tabindex="-1"></a>X</span>
-<span id="cb345-15"><a href="datatable-function.html#cb345-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v foo</span></span>
-<span id="cb345-16"><a href="datatable-function.html#cb345-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: c 8   4</span></span>
-<span id="cb345-17"><a href="datatable-function.html#cb345-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: b 7   2</span></span>
-<span id="cb345-18"><a href="datatable-function.html#cb345-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-19"><a href="datatable-function.html#cb345-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 用在i的位置</span></span>
-<span id="cb345-20"><a href="datatable-function.html#cb345-20" aria-hidden="true" tabindex="-1"></a>DT[.N] <span class="co">#取DT最后一行,.N 计数函数</span></span>
-<span id="cb345-21"><a href="datatable-function.html#cb345-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y a b</span></span>
-<span id="cb345-22"><a href="datatable-function.html#cb345-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: c 2 6 9 1</span></span>
-<span id="cb345-23"><a href="datatable-function.html#cb345-23" aria-hidden="true" tabindex="-1"></a>DT[,.N] <span class="co">#DT 共有多少行记录 返回一个整数</span></span>
-<span id="cb345-24"><a href="datatable-function.html#cb345-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
-<span id="cb345-25"><a href="datatable-function.html#cb345-25" aria-hidden="true" tabindex="-1"></a>DT[, .N, by<span class="ot">=</span>x]  <span class="co">#分组计数</span></span>
-<span id="cb345-26"><a href="datatable-function.html#cb345-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x N</span></span>
-<span id="cb345-27"><a href="datatable-function.html#cb345-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 3</span></span>
-<span id="cb345-28"><a href="datatable-function.html#cb345-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: a 3</span></span>
-<span id="cb345-29"><a href="datatable-function.html#cb345-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: c 3</span></span>
-<span id="cb345-30"><a href="datatable-function.html#cb345-30" aria-hidden="true" tabindex="-1"></a>DT[, .SD, .SDcols<span class="ot">=</span>x<span class="sc">:</span>y]  <span class="co"># 选择x 到y 列</span></span>
-<span id="cb345-31"><a href="datatable-function.html#cb345-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y</span></span>
-<span id="cb345-32"><a href="datatable-function.html#cb345-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 1 1</span></span>
-<span id="cb345-33"><a href="datatable-function.html#cb345-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: b 1 3</span></span>
-<span id="cb345-34"><a href="datatable-function.html#cb345-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: b 1 6</span></span>
-<span id="cb345-35"><a href="datatable-function.html#cb345-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: a 2 1</span></span>
-<span id="cb345-36"><a href="datatable-function.html#cb345-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: a 2 3</span></span>
-<span id="cb345-37"><a href="datatable-function.html#cb345-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: a 1 6</span></span>
-<span id="cb345-38"><a href="datatable-function.html#cb345-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: c 1 1</span></span>
-<span id="cb345-39"><a href="datatable-function.html#cb345-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: c 2 3</span></span>
-<span id="cb345-40"><a href="datatable-function.html#cb345-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9: c 2 6</span></span>
-<span id="cb345-41"><a href="datatable-function.html#cb345-41" aria-hidden="true" tabindex="-1"></a><span class="co">#DT[, .SD, .SDcols=c(&quot;x&quot;,&quot;y&quot;)] 与上面不一样</span></span>
-<span id="cb345-42"><a href="datatable-function.html#cb345-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-43"><a href="datatable-function.html#cb345-43" aria-hidden="true" tabindex="-1"></a>DT[, .SD[<span class="dv">1</span>]] <span class="co">#取第一行</span></span>
-<span id="cb345-44"><a href="datatable-function.html#cb345-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y a b</span></span>
-<span id="cb345-45"><a href="datatable-function.html#cb345-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 1 1 1 9</span></span>
-<span id="cb345-46"><a href="datatable-function.html#cb345-46" aria-hidden="true" tabindex="-1"></a>DT[, .SD[<span class="dv">1</span>], by<span class="ot">=</span>x] <span class="co">#按x列分组后</span></span>
-<span id="cb345-47"><a href="datatable-function.html#cb345-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y a b</span></span>
-<span id="cb345-48"><a href="datatable-function.html#cb345-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 1 1 1 9</span></span>
-<span id="cb345-49"><a href="datatable-function.html#cb345-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: a 2 1 4 6</span></span>
-<span id="cb345-50"><a href="datatable-function.html#cb345-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: c 1 1 7 3</span></span>
-<span id="cb345-51"><a href="datatable-function.html#cb345-51" aria-hidden="true" tabindex="-1"></a>DT[, <span class="fu">c</span>(.N, <span class="fu">lapply</span>(.SD, sum)), by<span class="ot">=</span>x] <span class="co">#按照x分组后 行数计数和每列求和</span></span>
-<span id="cb345-52"><a href="datatable-function.html#cb345-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x N v  y  a  b</span></span>
-<span id="cb345-53"><a href="datatable-function.html#cb345-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 3 3 10  6 24</span></span>
-<span id="cb345-54"><a href="datatable-function.html#cb345-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: a 3 5 10 15 15</span></span>
-<span id="cb345-55"><a href="datatable-function.html#cb345-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: c 3 5 10 24  6</span></span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="datatable-function.html#cb372-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="at">each=</span><span class="dv">3</span>), <span class="at">v=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>), <span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">b=</span><span class="dv">9</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb372-2"><a href="datatable-function.html#cb372-2" aria-hidden="true" tabindex="-1"></a>DT</span>
+<span id="cb372-3"><a href="datatable-function.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y a b</span></span>
+<span id="cb372-4"><a href="datatable-function.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 1 1 1 9</span></span>
+<span id="cb372-5"><a href="datatable-function.html#cb372-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: b 1 3 2 8</span></span>
+<span id="cb372-6"><a href="datatable-function.html#cb372-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: b 1 6 3 7</span></span>
+<span id="cb372-7"><a href="datatable-function.html#cb372-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: a 2 1 4 6</span></span>
+<span id="cb372-8"><a href="datatable-function.html#cb372-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: a 2 3 5 5</span></span>
+<span id="cb372-9"><a href="datatable-function.html#cb372-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: a 1 6 6 4</span></span>
+<span id="cb372-10"><a href="datatable-function.html#cb372-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: c 1 1 7 3</span></span>
+<span id="cb372-11"><a href="datatable-function.html#cb372-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: c 2 3 8 2</span></span>
+<span id="cb372-12"><a href="datatable-function.html#cb372-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9: c 2 6 9 1</span></span>
+<span id="cb372-13"><a href="datatable-function.html#cb372-13" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>), <span class="at">v=</span><span class="dv">8</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">foo=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb372-14"><a href="datatable-function.html#cb372-14" aria-hidden="true" tabindex="-1"></a>X</span>
+<span id="cb372-15"><a href="datatable-function.html#cb372-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v foo</span></span>
+<span id="cb372-16"><a href="datatable-function.html#cb372-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: c 8   4</span></span>
+<span id="cb372-17"><a href="datatable-function.html#cb372-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: b 7   2</span></span>
+<span id="cb372-18"><a href="datatable-function.html#cb372-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-19"><a href="datatable-function.html#cb372-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 用在i的位置</span></span>
+<span id="cb372-20"><a href="datatable-function.html#cb372-20" aria-hidden="true" tabindex="-1"></a>DT[.N] <span class="co">#取DT最后一行,.N 计数函数</span></span>
+<span id="cb372-21"><a href="datatable-function.html#cb372-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y a b</span></span>
+<span id="cb372-22"><a href="datatable-function.html#cb372-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: c 2 6 9 1</span></span>
+<span id="cb372-23"><a href="datatable-function.html#cb372-23" aria-hidden="true" tabindex="-1"></a>DT[,.N] <span class="co">#DT 共有多少行记录 返回一个整数</span></span>
+<span id="cb372-24"><a href="datatable-function.html#cb372-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
+<span id="cb372-25"><a href="datatable-function.html#cb372-25" aria-hidden="true" tabindex="-1"></a>DT[, .N, by<span class="ot">=</span>x]  <span class="co">#分组计数</span></span>
+<span id="cb372-26"><a href="datatable-function.html#cb372-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x N</span></span>
+<span id="cb372-27"><a href="datatable-function.html#cb372-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 3</span></span>
+<span id="cb372-28"><a href="datatable-function.html#cb372-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: a 3</span></span>
+<span id="cb372-29"><a href="datatable-function.html#cb372-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: c 3</span></span>
+<span id="cb372-30"><a href="datatable-function.html#cb372-30" aria-hidden="true" tabindex="-1"></a>DT[, .SD, .SDcols<span class="ot">=</span>x<span class="sc">:</span>y]  <span class="co"># 选择x 到y 列</span></span>
+<span id="cb372-31"><a href="datatable-function.html#cb372-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y</span></span>
+<span id="cb372-32"><a href="datatable-function.html#cb372-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 1 1</span></span>
+<span id="cb372-33"><a href="datatable-function.html#cb372-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: b 1 3</span></span>
+<span id="cb372-34"><a href="datatable-function.html#cb372-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: b 1 6</span></span>
+<span id="cb372-35"><a href="datatable-function.html#cb372-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: a 2 1</span></span>
+<span id="cb372-36"><a href="datatable-function.html#cb372-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: a 2 3</span></span>
+<span id="cb372-37"><a href="datatable-function.html#cb372-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: a 1 6</span></span>
+<span id="cb372-38"><a href="datatable-function.html#cb372-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: c 1 1</span></span>
+<span id="cb372-39"><a href="datatable-function.html#cb372-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8: c 2 3</span></span>
+<span id="cb372-40"><a href="datatable-function.html#cb372-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9: c 2 6</span></span>
+<span id="cb372-41"><a href="datatable-function.html#cb372-41" aria-hidden="true" tabindex="-1"></a><span class="co">#DT[, .SD, .SDcols=c(&quot;x&quot;,&quot;y&quot;)] 与上面不一样</span></span>
+<span id="cb372-42"><a href="datatable-function.html#cb372-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-43"><a href="datatable-function.html#cb372-43" aria-hidden="true" tabindex="-1"></a>DT[, .SD[<span class="dv">1</span>]] <span class="co">#取第一行</span></span>
+<span id="cb372-44"><a href="datatable-function.html#cb372-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y a b</span></span>
+<span id="cb372-45"><a href="datatable-function.html#cb372-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 1 1 1 9</span></span>
+<span id="cb372-46"><a href="datatable-function.html#cb372-46" aria-hidden="true" tabindex="-1"></a>DT[, .SD[<span class="dv">1</span>], by<span class="ot">=</span>x] <span class="co">#按x列分组后</span></span>
+<span id="cb372-47"><a href="datatable-function.html#cb372-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x v y a b</span></span>
+<span id="cb372-48"><a href="datatable-function.html#cb372-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 1 1 1 9</span></span>
+<span id="cb372-49"><a href="datatable-function.html#cb372-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: a 2 1 4 6</span></span>
+<span id="cb372-50"><a href="datatable-function.html#cb372-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: c 1 1 7 3</span></span>
+<span id="cb372-51"><a href="datatable-function.html#cb372-51" aria-hidden="true" tabindex="-1"></a>DT[, <span class="fu">c</span>(.N, <span class="fu">lapply</span>(.SD, sum)), by<span class="ot">=</span>x] <span class="co">#按照x分组后 行数计数和每列求和</span></span>
+<span id="cb372-52"><a href="datatable-function.html#cb372-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x N v  y  a  b</span></span>
+<span id="cb372-53"><a href="datatable-function.html#cb372-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: b 3 3 10  6 24</span></span>
+<span id="cb372-54"><a href="datatable-function.html#cb372-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: a 3 5 10 15 15</span></span>
+<span id="cb372-55"><a href="datatable-function.html#cb372-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: c 3 5 10 24  6</span></span></code></pre></div>
 </div>
 <div id="排序函数-1" class="section level3" number="7.3.2">
 <h3><span class="header-section-number">7.3.2</span> 排序函数</h3>
 <p><code>frank</code>和<code>frankv</code>函数参数如下：</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="datatable-function.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(x, ..., <span class="at">na.last=</span><span class="cn">TRUE</span>, <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>,</span>
-<span id="cb346-2"><a href="datatable-function.html#cb346-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span>
-<span id="cb346-3"><a href="datatable-function.html#cb346-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb346-4"><a href="datatable-function.html#cb346-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">order=</span>1L, <span class="at">na.last=</span><span class="cn">TRUE</span>,</span>
-<span id="cb346-5"><a href="datatable-function.html#cb346-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;random&quot;</span>,</span>
-<span id="cb346-6"><a href="datatable-function.html#cb346-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="datatable-function.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(x, ..., <span class="at">na.last=</span><span class="cn">TRUE</span>, <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>,</span>
+<span id="cb373-2"><a href="datatable-function.html#cb373-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;first&quot;</span>, <span class="st">&quot;last&quot;</span>, <span class="st">&quot;random&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span>
+<span id="cb373-3"><a href="datatable-function.html#cb373-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb373-4"><a href="datatable-function.html#cb373-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">order=</span>1L, <span class="at">na.last=</span><span class="cn">TRUE</span>,</span>
+<span id="cb373-5"><a href="datatable-function.html#cb373-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ties.method=</span><span class="fu">c</span>(<span class="st">&quot;average&quot;</span>, <span class="st">&quot;first&quot;</span>, <span class="st">&quot;random&quot;</span>,</span>
+<span id="cb373-6"><a href="datatable-function.html#cb373-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;max&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;dense&quot;</span>))</span></code></pre></div>
 <p>官方案例,如下所示:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="datatable-function.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on vectors</span></span>
-<span id="cb347-2"><a href="datatable-function.html#cb347-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
-<span id="cb347-3"><a href="datatable-function.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs are considered identical (unlike base R)</span></span>
-<span id="cb347-4"><a href="datatable-function.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default is average</span></span>
-<span id="cb347-5"><a href="datatable-function.html#cb347-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x) <span class="co"># na.last=TRUE</span></span>
-<span id="cb347-6"><a href="datatable-function.html#cb347-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
-<span id="cb347-7"><a href="datatable-function.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">na.last=</span><span class="cn">FALSE</span>)</span>
-<span id="cb347-8"><a href="datatable-function.html#cb347-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.0 3.5 6.0 1.5 3.5 1.5 6.0</span></span>
-<span id="cb347-9"><a href="datatable-function.html#cb347-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb347-10"><a href="datatable-function.html#cb347-10" aria-hidden="true" tabindex="-1"></a><span class="co"># on data.table</span></span>
-<span id="cb347-11"><a href="datatable-function.html#cb347-11" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(x, <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="cn">NA</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
-<span id="cb347-12"><a href="datatable-function.html#cb347-12" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>) <span class="co"># same as frankv(x) from before</span></span>
-<span id="cb347-13"><a href="datatable-function.html#cb347-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
-<span id="cb347-14"><a href="datatable-function.html#cb347-14" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">na.last=</span><span class="st">&quot;keep&quot;</span>)</span>
-<span id="cb347-15"><a href="datatable-function.html#cb347-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0  NA 1.5  NA 4.0</span></span>
-<span id="cb347-16"><a href="datatable-function.html#cb347-16" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>)</span>
-<span id="cb347-17"><a href="datatable-function.html#cb347-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 2 1 2</span></span>
-<span id="cb347-18"><a href="datatable-function.html#cb347-18" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(DT, x, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>) <span class="co"># equivalent of above using frank</span></span>
-<span id="cb347-19"><a href="datatable-function.html#cb347-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 2 1 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="datatable-function.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># on vectors</span></span>
+<span id="cb374-2"><a href="datatable-function.html#cb374-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb374-3"><a href="datatable-function.html#cb374-3" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs are considered identical (unlike base R)</span></span>
+<span id="cb374-4"><a href="datatable-function.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="co"># default is average</span></span>
+<span id="cb374-5"><a href="datatable-function.html#cb374-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x) <span class="co"># na.last=TRUE</span></span>
+<span id="cb374-6"><a href="datatable-function.html#cb374-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
+<span id="cb374-7"><a href="datatable-function.html#cb374-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x, <span class="at">na.last=</span><span class="cn">FALSE</span>)</span>
+<span id="cb374-8"><a href="datatable-function.html#cb374-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.0 3.5 6.0 1.5 3.5 1.5 6.0</span></span>
+<span id="cb374-9"><a href="datatable-function.html#cb374-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb374-10"><a href="datatable-function.html#cb374-10" aria-hidden="true" tabindex="-1"></a><span class="co"># on data.table</span></span>
+<span id="cb374-11"><a href="datatable-function.html#cb374-11" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(x, <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="cn">NA</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb374-12"><a href="datatable-function.html#cb374-12" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>) <span class="co"># same as frankv(x) from before</span></span>
+<span id="cb374-13"><a href="datatable-function.html#cb374-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
+<span id="cb374-14"><a href="datatable-function.html#cb374-14" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">na.last=</span><span class="st">&quot;keep&quot;</span>)</span>
+<span id="cb374-15"><a href="datatable-function.html#cb374-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0  NA 1.5  NA 4.0</span></span>
+<span id="cb374-16"><a href="datatable-function.html#cb374-16" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(DT, <span class="at">cols=</span><span class="st">&quot;x&quot;</span>, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>)</span>
+<span id="cb374-17"><a href="datatable-function.html#cb374-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 2 1 2</span></span>
+<span id="cb374-18"><a href="datatable-function.html#cb374-18" aria-hidden="true" tabindex="-1"></a><span class="fu">frank</span>(DT, x, <span class="at">ties.method=</span><span class="st">&quot;dense&quot;</span>, <span class="at">na.last=</span><span class="cn">NA</span>) <span class="co"># equivalent of above using frank</span></span>
+<span id="cb374-19"><a href="datatable-function.html#cb374-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 2 1 2</span></span></code></pre></div>
 <ul>
 <li>frankv在排序时,NA被认为是一样的,基础base R 中认为不一样.</li>
 </ul>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="datatable-function.html#cb348-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>) </span>
-<span id="cb348-2"><a href="datatable-function.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)</span>
-<span id="cb348-3"><a href="datatable-function.html#cb348-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
-<span id="cb348-4"><a href="datatable-function.html#cb348-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(x)</span>
-<span id="cb348-5"><a href="datatable-function.html#cb348-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.0 1.5 7.0 4.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="datatable-function.html#cb375-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">4</span>) </span>
+<span id="cb375-2"><a href="datatable-function.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)</span>
+<span id="cb375-3"><a href="datatable-function.html#cb375-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
+<span id="cb375-4"><a href="datatable-function.html#cb375-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(x)</span>
+<span id="cb375-5"><a href="datatable-function.html#cb375-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.0 1.5 7.0 4.0</span></span></code></pre></div>
 <ul>
 <li>升序降序选择</li>
 </ul>
 <p>order参数只能为1或者-1.默认为1代表升序</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="datatable-function.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> 1L)</span>
-<span id="cb349-2"><a href="datatable-function.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
-<span id="cb349-3"><a href="datatable-function.html#cb349-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> <span class="sc">-</span>1L)</span>
-<span id="cb349-4"><a href="datatable-function.html#cb349-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.0 4.5 2.0 6.5 4.5 6.5 2.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="datatable-function.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> 1L)</span>
+<span id="cb376-2"><a href="datatable-function.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.0 1.5 4.0 6.5 1.5 6.5 4.0</span></span>
+<span id="cb376-3"><a href="datatable-function.html#cb376-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">order =</span> <span class="sc">-</span>1L)</span>
+<span id="cb376-4"><a href="datatable-function.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.0 4.5 2.0 6.5 4.5 6.5 2.0</span></span></code></pre></div>
 <ul>
 <li>排序方式选择</li>
 </ul>
 <p>默认 average,还有dense,random,first,last,max,min等方式。其中dense是紧凑排名，random是随机让相同的随机排列后排名</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="datatable-function.html#cb350-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb350-2"><a href="datatable-function.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)  <span class="co">#大小相同 排名相同,下一位排名除以2</span></span>
-<span id="cb350-3"><a href="datatable-function.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;min&#39;</span>)  <span class="co">#大小相同 排名相同,取最小排名</span></span>
-<span id="cb350-4"><a href="datatable-function.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;max&#39;</span>)  <span class="co">#大小相同 排名相同,取最大排名</span></span>
-<span id="cb350-5"><a href="datatable-function.html#cb350-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>) <span class="co">#相同大小排名以后往后递增 根据实际情况决定</span></span>
-<span id="cb350-6"><a href="datatable-function.html#cb350-6" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;dense&#39;</span>)</span>
-<span id="cb350-7"><a href="datatable-function.html#cb350-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;random&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="datatable-function.html#cb377-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb377-2"><a href="datatable-function.html#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x)  <span class="co">#大小相同 排名相同,下一位排名除以2</span></span>
+<span id="cb377-3"><a href="datatable-function.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;min&#39;</span>)  <span class="co">#大小相同 排名相同,取最小排名</span></span>
+<span id="cb377-4"><a href="datatable-function.html#cb377-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;max&#39;</span>)  <span class="co">#大小相同 排名相同,取最大排名</span></span>
+<span id="cb377-5"><a href="datatable-function.html#cb377-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>) <span class="co">#相同大小排名以后往后递增 根据实际情况决定</span></span>
+<span id="cb377-6"><a href="datatable-function.html#cb377-6" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;dense&#39;</span>)</span>
+<span id="cb377-7"><a href="datatable-function.html#cb377-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(x,<span class="at">ties.method =</span> <span class="st">&#39;random&#39;</span>)</span></code></pre></div>
 <ul>
 <li>NA处理</li>
 </ul>
 <p>默认是将NA排在最后,NAs是相同的，与base R 不一样。</p>
 <p>na.last参数等于TRUE时，缺失值被排最后；如果等于FALSE,放在前面；如果等于NA，将被移除；如果等于“keep,”将会保留NA.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="datatable-function.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">TRUE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
-<span id="cb351-2"><a href="datatable-function.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 5 1 2 3</span></span>
-<span id="cb351-3"><a href="datatable-function.html#cb351-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">FALSE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
-<span id="cb351-4"><a href="datatable-function.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
-<span id="cb351-5"><a href="datatable-function.html#cb351-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">NA</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
-<span id="cb351-6"><a href="datatable-function.html#cb351-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb351-7"><a href="datatable-function.html#cb351-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="st">&#39;keep&#39;</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
-<span id="cb351-8"><a href="datatable-function.html#cb351-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA NA  1  2  3</span></span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="datatable-function.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">TRUE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb378-2"><a href="datatable-function.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 5 1 2 3</span></span>
+<span id="cb378-3"><a href="datatable-function.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">FALSE</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb378-4"><a href="datatable-function.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
+<span id="cb378-5"><a href="datatable-function.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="cn">NA</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb378-6"><a href="datatable-function.html#cb378-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb378-7"><a href="datatable-function.html#cb378-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frankv</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">na.last =</span> <span class="st">&#39;keep&#39;</span>,<span class="at">ties.method =</span> <span class="st">&#39;first&#39;</span>)</span>
+<span id="cb378-8"><a href="datatable-function.html#cb378-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA NA  1  2  3</span></span></code></pre></div>
 </div>
 <div id="非重复计数" class="section level3" number="7.3.3">
 <h3><span class="header-section-number">7.3.3</span> 非重复计数</h3>
 <p><code>uniqueN</code>相当于<code>length(unique(x))</code>,但是计算更快，内存效率更高。</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="datatable-function.html#cb352-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">50</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb352-2"><a href="datatable-function.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(x)</span>
-<span id="cb352-3"><a href="datatable-function.html#cb352-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
-<span id="cb352-4"><a href="datatable-function.html#cb352-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-5"><a href="datatable-function.html#cb352-5" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">A =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each=</span><span class="dv">4</span>), <span class="at">B =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">each=</span><span class="dv">3</span>),</span>
-<span id="cb352-6"><a href="datatable-function.html#cb352-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">C =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">6</span>), <span class="at">key =</span> <span class="st">&quot;A,B&quot;</span>)</span>
-<span id="cb352-7"><a href="datatable-function.html#cb352-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-8"><a href="datatable-function.html#cb352-8" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT, <span class="at">by =</span> <span class="fu">key</span>(DT))</span>
-<span id="cb352-9"><a href="datatable-function.html#cb352-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
-<span id="cb352-10"><a href="datatable-function.html#cb352-10" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT)</span>
-<span id="cb352-11"><a href="datatable-function.html#cb352-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="datatable-function.html#cb379-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">50</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb379-2"><a href="datatable-function.html#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(x)</span>
+<span id="cb379-3"><a href="datatable-function.html#cb379-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
+<span id="cb379-4"><a href="datatable-function.html#cb379-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb379-5"><a href="datatable-function.html#cb379-5" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">A =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each=</span><span class="dv">4</span>), <span class="at">B =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">each=</span><span class="dv">3</span>),</span>
+<span id="cb379-6"><a href="datatable-function.html#cb379-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">C =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">6</span>), <span class="at">key =</span> <span class="st">&quot;A,B&quot;</span>)</span>
+<span id="cb379-7"><a href="datatable-function.html#cb379-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb379-8"><a href="datatable-function.html#cb379-8" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT, <span class="at">by =</span> <span class="fu">key</span>(DT))</span>
+<span id="cb379-9"><a href="datatable-function.html#cb379-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
+<span id="cb379-10"><a href="datatable-function.html#cb379-10" aria-hidden="true" tabindex="-1"></a><span class="fu">uniqueN</span>(DT)</span>
+<span id="cb379-11"><a href="datatable-function.html#cb379-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
 </div>
 <div id="判断函数" class="section level3" number="7.3.4">
 <h3><span class="header-section-number">7.3.4</span> 判断函数</h3>
@@ -670,55 +672,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>fifelse</li>
 </ul>
 <p>fifelse()类似<code>dplyr::if_else()</code>函数,相比base::ifelse() 更快。</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="datatable-function.html#cb353-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb353-2"><a href="datatable-function.html#cb353-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L, x, x <span class="sc">-</span> 1L)</span>
-<span id="cb353-3"><a href="datatable-function.html#cb353-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 1 3 4 3 1 0 1 3 4 5</span></span>
-<span id="cb353-4"><a href="datatable-function.html#cb353-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-5"><a href="datatable-function.html#cb353-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L,<span class="fu">fifelse</span>(x <span class="sc">&gt;=</span> 4L,x <span class="sc">+</span> 1L,x),x<span class="sc">-</span>1L)</span>
-<span id="cb353-6"><a href="datatable-function.html#cb353-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 1 3 5 3 1 0 1 3 5 6</span></span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="datatable-function.html#cb380-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb380-2"><a href="datatable-function.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L, x, x <span class="sc">-</span> 1L)</span>
+<span id="cb380-3"><a href="datatable-function.html#cb380-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 1 3 4 3 1 0 1 3 4 5</span></span>
+<span id="cb380-4"><a href="datatable-function.html#cb380-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb380-5"><a href="datatable-function.html#cb380-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> 2L,<span class="fu">fifelse</span>(x <span class="sc">&gt;=</span> 4L,x <span class="sc">+</span> 1L,x),x<span class="sc">-</span>1L)</span>
+<span id="cb380-6"><a href="datatable-function.html#cb380-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 1 3 5 3 1 0 1 3 5 6</span></span></code></pre></div>
 <ul>
 <li>fcase</li>
 </ul>
 <p>与sql中的case when，与dplyr中的<code>case_when()</code>函数用法相似。相比fifelse相比，嵌套更加方便。</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="datatable-function.html#cb354-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb354-2"><a href="datatable-function.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
-<span id="cb354-3"><a href="datatable-function.html#cb354-3" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&lt;</span> 5L, 1L,</span>
-<span id="cb354-4"><a href="datatable-function.html#cb354-4" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&gt;</span> 5L, 3L</span>
-<span id="cb354-5"><a href="datatable-function.html#cb354-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb354-6"><a href="datatable-function.html#cb354-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  1  1  1 NA  3  3  3  3  3</span></span>
-<span id="cb354-7"><a href="datatable-function.html#cb354-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb354-8"><a href="datatable-function.html#cb354-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 两种函数实现方式</span></span>
-<span id="cb354-9"><a href="datatable-function.html#cb354-9" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="fu">fifelse</span>(x <span class="sc">&gt;</span><span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dv">0</span>)</span>
-<span id="cb354-10"><a href="datatable-function.html#cb354-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 0 0 0 0 1 1 1 2 2</span></span>
-<span id="cb354-11"><a href="datatable-function.html#cb354-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
-<span id="cb354-12"><a href="datatable-function.html#cb354-12" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">8</span>,<span class="dv">2</span>,</span>
-<span id="cb354-13"><a href="datatable-function.html#cb354-13" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="dv">1</span>,</span>
-<span id="cb354-14"><a href="datatable-function.html#cb354-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">default =</span> <span class="dv">0</span></span>
-<span id="cb354-15"><a href="datatable-function.html#cb354-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb354-16"><a href="datatable-function.html#cb354-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 0 0 0 0 1 1 1 2 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="datatable-function.html#cb381-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb381-2"><a href="datatable-function.html#cb381-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
+<span id="cb381-3"><a href="datatable-function.html#cb381-3" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&lt;</span> 5L, 1L,</span>
+<span id="cb381-4"><a href="datatable-function.html#cb381-4" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&gt;</span> 5L, 3L</span>
+<span id="cb381-5"><a href="datatable-function.html#cb381-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb381-6"><a href="datatable-function.html#cb381-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  1  1  1 NA  3  3  3  3  3</span></span>
+<span id="cb381-7"><a href="datatable-function.html#cb381-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-8"><a href="datatable-function.html#cb381-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 两种函数实现方式</span></span>
+<span id="cb381-9"><a href="datatable-function.html#cb381-9" aria-hidden="true" tabindex="-1"></a><span class="fu">fifelse</span>(x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="fu">fifelse</span>(x <span class="sc">&gt;</span><span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dv">0</span>)</span>
+<span id="cb381-10"><a href="datatable-function.html#cb381-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 0 0 0 0 1 1 1 2 2</span></span>
+<span id="cb381-11"><a href="datatable-function.html#cb381-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fcase</span>(</span>
+<span id="cb381-12"><a href="datatable-function.html#cb381-12" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">8</span>,<span class="dv">2</span>,</span>
+<span id="cb381-13"><a href="datatable-function.html#cb381-13" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&gt;</span> <span class="dv">5</span>,<span class="dv">1</span>,</span>
+<span id="cb381-14"><a href="datatable-function.html#cb381-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">default =</span> <span class="dv">0</span></span>
+<span id="cb381-15"><a href="datatable-function.html#cb381-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb381-16"><a href="datatable-function.html#cb381-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0 0 0 0 0 1 1 1 2 2</span></span></code></pre></div>
 </div>
 <div id="交集-差集-合并" class="section level3" number="7.3.5">
 <h3><span class="header-section-number">7.3.5</span> 交集 差集 合并</h3>
 <p>相当于base R 中 union(),intersect(),setdiff() 和setequal() 功能.all参数控制如何处理重复的行,和SQL中不同的是,data.table将保留行顺序.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="datatable-function.html#cb355-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-2"><a href="datatable-function.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb355-3"><a href="datatable-function.html#cb355-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb355-4"><a href="datatable-function.html#cb355-4" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb355-5"><a href="datatable-function.html#cb355-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, y, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb355-6"><a href="datatable-function.html#cb355-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-7"><a href="datatable-function.html#cb355-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb355-8"><a href="datatable-function.html#cb355-8" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># same set of rows as x</span></span>
-<span id="cb355-9"><a href="datatable-function.html#cb355-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span>
-<span id="cb355-10"><a href="datatable-function.html#cb355-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-11"><a href="datatable-function.html#cb355-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y)            <span class="co"># intersect</span></span>
-<span id="cb355-12"><a href="datatable-function.html#cb355-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)  <span class="co"># intersect all</span></span>
-<span id="cb355-13"><a href="datatable-function.html#cb355-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-14"><a href="datatable-function.html#cb355-14" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y)              <span class="co"># except</span></span>
-<span id="cb355-15"><a href="datatable-function.html#cb355-15" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)    <span class="co"># except all</span></span>
-<span id="cb355-16"><a href="datatable-function.html#cb355-16" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y)                <span class="co"># union</span></span>
-<span id="cb355-17"><a href="datatable-function.html#cb355-17" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)      <span class="co"># union all</span></span>
-<span id="cb355-18"><a href="datatable-function.html#cb355-18" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2, <span class="at">all=</span><span class="cn">FALSE</span>) <span class="co"># setequal</span></span>
-<span id="cb355-19"><a href="datatable-function.html#cb355-19" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2)            <span class="co"># setequal all</span></span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="datatable-function.html#cb382-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-2"><a href="datatable-function.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb382-3"><a href="datatable-function.html#cb382-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb382-4"><a href="datatable-function.html#cb382-4" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb382-5"><a href="datatable-function.html#cb382-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, y, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb382-6"><a href="datatable-function.html#cb382-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-7"><a href="datatable-function.html#cb382-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb382-8"><a href="datatable-function.html#cb382-8" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># same set of rows as x</span></span>
+<span id="cb382-9"><a href="datatable-function.html#cb382-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span>
+<span id="cb382-10"><a href="datatable-function.html#cb382-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-11"><a href="datatable-function.html#cb382-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y)            <span class="co"># intersect</span></span>
+<span id="cb382-12"><a href="datatable-function.html#cb382-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fintersect</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)  <span class="co"># intersect all</span></span>
+<span id="cb382-13"><a href="datatable-function.html#cb382-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-14"><a href="datatable-function.html#cb382-14" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y)              <span class="co"># except</span></span>
+<span id="cb382-15"><a href="datatable-function.html#cb382-15" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetdiff</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)    <span class="co"># except all</span></span>
+<span id="cb382-16"><a href="datatable-function.html#cb382-16" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y)                <span class="co"># union</span></span>
+<span id="cb382-17"><a href="datatable-function.html#cb382-17" aria-hidden="true" tabindex="-1"></a><span class="fu">funion</span>(x, y, <span class="at">all=</span><span class="cn">TRUE</span>)      <span class="co"># union all</span></span>
+<span id="cb382-18"><a href="datatable-function.html#cb382-18" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2, <span class="at">all=</span><span class="cn">FALSE</span>) <span class="co"># setequal</span></span>
+<span id="cb382-19"><a href="datatable-function.html#cb382-19" aria-hidden="true" tabindex="-1"></a><span class="fu">fsetequal</span>(x, x2)            <span class="co"># setequal all</span></span></code></pre></div>
 </div>
 <div id="长宽转换" class="section level3" number="7.3.6">
 <h3><span class="header-section-number">7.3.6</span> 长宽转换</h3>
@@ -727,94 +729,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>dcast函数能实现长转宽</li>
 </ul>
 <p>参数如下：fun.aggregate函数指定聚合函数，value.var参数指定参与聚合的字段。formula指定聚合维度，格式用x+y~z，其中x,y在行的位置，z在列的位置。</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="datatable-function.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(data, formula, <span class="at">fun.aggregate =</span> <span class="cn">NULL</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>,</span>
-<span id="cb356-2"><a href="datatable-function.html#cb356-2" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">margins =</span> <span class="cn">NULL</span>, <span class="at">subset =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
-<span id="cb356-3"><a href="datatable-function.html#cb356-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">value.var =</span> <span class="fu">guess</span>(data),</span>
-<span id="cb356-4"><a href="datatable-function.html#cb356-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="datatable-function.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(data, formula, <span class="at">fun.aggregate =</span> <span class="cn">NULL</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>,</span>
+<span id="cb383-2"><a href="datatable-function.html#cb383-2" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">margins =</span> <span class="cn">NULL</span>, <span class="at">subset =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb383-3"><a href="datatable-function.html#cb383-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">value.var =</span> <span class="fu">guess</span>(data),</span>
+<span id="cb383-4"><a href="datatable-function.html#cb383-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
 <p>示例如下：</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="datatable-function.html#cb357-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(分公司<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="dv">1000</span>),</span>
-<span id="cb357-2"><a href="datatable-function.html#cb357-2" aria-hidden="true" tabindex="-1"></a>              季度<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;一季度&#39;</span>,<span class="st">&#39;二季度&#39;</span>,<span class="st">&#39;三季度&#39;</span>,<span class="st">&#39;四季度&#39;</span>),<span class="dv">1000</span>),</span>
-<span id="cb357-3"><a href="datatable-function.html#cb357-3" aria-hidden="true" tabindex="-1"></a>              销售额<span class="ot">=</span><span class="fu">sample</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">4000</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb357-4"><a href="datatable-function.html#cb357-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt,分公司<span class="sc">~</span>季度,<span class="at">value.var =</span> <span class="st">&quot;销售额&quot;</span>,<span class="at">fun.aggregate =</span> sum)</span>
-<span id="cb357-5"><a href="datatable-function.html#cb357-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    分公司 一季度 三季度 二季度 四季度</span></span>
-<span id="cb357-6"><a href="datatable-function.html#cb357-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   华东 149470      0      0      0</span></span>
-<span id="cb357-7"><a href="datatable-function.html#cb357-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   华北      0      0      0 149343</span></span>
-<span id="cb357-8"><a href="datatable-function.html#cb357-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   华南      0      0 150489      0</span></span>
-<span id="cb357-9"><a href="datatable-function.html#cb357-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:   华西      0 150698      0      0</span></span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="datatable-function.html#cb384-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(分公司<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="dv">1000</span>),</span>
+<span id="cb384-2"><a href="datatable-function.html#cb384-2" aria-hidden="true" tabindex="-1"></a>              季度<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&#39;一季度&#39;</span>,<span class="st">&#39;二季度&#39;</span>,<span class="st">&#39;三季度&#39;</span>,<span class="st">&#39;四季度&#39;</span>),<span class="dv">1000</span>),</span>
+<span id="cb384-3"><a href="datatable-function.html#cb384-3" aria-hidden="true" tabindex="-1"></a>              销售额<span class="ot">=</span><span class="fu">sample</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">200</span>,<span class="dv">4000</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb384-4"><a href="datatable-function.html#cb384-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt,分公司<span class="sc">~</span>季度,<span class="at">value.var =</span> <span class="st">&quot;销售额&quot;</span>,<span class="at">fun.aggregate =</span> sum)</span>
+<span id="cb384-5"><a href="datatable-function.html#cb384-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    分公司 一季度 三季度 二季度 四季度</span></span>
+<span id="cb384-6"><a href="datatable-function.html#cb384-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   华东 149470      0      0      0</span></span>
+<span id="cb384-7"><a href="datatable-function.html#cb384-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   华北      0      0      0 149343</span></span>
+<span id="cb384-8"><a href="datatable-function.html#cb384-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   华南      0      0 150489      0</span></span>
+<span id="cb384-9"><a href="datatable-function.html#cb384-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:   华西      0 150698      0      0</span></span></code></pre></div>
 <p>从版本V1.9.6起可以同时对多个值实现不同聚合后的长转宽。</p>
 <p>fun参数即 fun.aggregate的简写，可以是自定义的函数。</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="datatable-function.html#cb358-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">sample</span>(<span class="dv">5</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">y=</span><span class="fu">sample</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>),</span>
-<span id="cb358-2"><a href="datatable-function.html#cb358-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">z=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">d1 =</span> <span class="fu">runif</span>(<span class="dv">20</span>), <span class="at">d2=</span>1L)</span>
-<span id="cb358-3"><a href="datatable-function.html#cb358-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>))</span>
-<span id="cb358-4"><a href="datatable-function.html#cb358-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x y d1_sum_a d1_sum_b d2_sum_a d2_sum_b d1_mean_a d1_mean_b d2_mean_a</span></span>
-<span id="cb358-5"><a href="datatable-function.html#cb358-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1: 1 1   0.8454   0.3717        1        2    0.8454    0.1858         1</span></span>
-<span id="cb358-6"><a href="datatable-function.html#cb358-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2: 1 2   0.3769   0.0000        1        0    0.3769       NaN         1</span></span>
-<span id="cb358-7"><a href="datatable-function.html#cb358-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3: 2 1   1.3419   0.4810        2        1    0.6709    0.4810         1</span></span>
-<span id="cb358-8"><a href="datatable-function.html#cb358-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4: 2 2   0.0000   0.6666        0        1       NaN    0.6666       NaN</span></span>
-<span id="cb358-9"><a href="datatable-function.html#cb358-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5: 3 1   0.8703   0.1866        1        1    0.8703    0.1866         1</span></span>
-<span id="cb358-10"><a href="datatable-function.html#cb358-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6: 3 2   0.0000   0.9074        0        2       NaN    0.4537       NaN</span></span>
-<span id="cb358-11"><a href="datatable-function.html#cb358-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7: 4 1   0.0957   0.0000        1        0    0.0957       NaN         1</span></span>
-<span id="cb358-12"><a href="datatable-function.html#cb358-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8: 4 2   0.1103   0.1867        1        1    0.1103    0.1867         1</span></span>
-<span id="cb358-13"><a href="datatable-function.html#cb358-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9: 5 1   1.1344   0.0000        2        0    0.5672       NaN         1</span></span>
-<span id="cb358-14"><a href="datatable-function.html#cb358-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10: 5 2   1.0839   0.0707        2        1    0.5419    0.0707         1</span></span>
-<span id="cb358-15"><a href="datatable-function.html#cb358-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     d2_mean_b</span></span>
-<span id="cb358-16"><a href="datatable-function.html#cb358-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:         1</span></span>
-<span id="cb358-17"><a href="datatable-function.html#cb358-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:       NaN</span></span>
-<span id="cb358-18"><a href="datatable-function.html#cb358-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:         1</span></span>
-<span id="cb358-19"><a href="datatable-function.html#cb358-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:         1</span></span>
-<span id="cb358-20"><a href="datatable-function.html#cb358-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:         1</span></span>
-<span id="cb358-21"><a href="datatable-function.html#cb358-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:         1</span></span>
-<span id="cb358-22"><a href="datatable-function.html#cb358-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:       NaN</span></span>
-<span id="cb358-23"><a href="datatable-function.html#cb358-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:         1</span></span>
-<span id="cb358-24"><a href="datatable-function.html#cb358-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:       NaN</span></span>
-<span id="cb358-25"><a href="datatable-function.html#cb358-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:         1</span></span>
-<span id="cb358-26"><a href="datatable-function.html#cb358-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">list</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>)) <span class="co">#注意value.var是向量和列表时的区别</span></span>
-<span id="cb358-27"><a href="datatable-function.html#cb358-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x y d1_sum_a d1_sum_b d2_mean_a d2_mean_b</span></span>
-<span id="cb358-28"><a href="datatable-function.html#cb358-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1: 1 1   0.8454   0.3717         1         1</span></span>
-<span id="cb358-29"><a href="datatable-function.html#cb358-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2: 1 2   0.3769   0.0000         1       NaN</span></span>
-<span id="cb358-30"><a href="datatable-function.html#cb358-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3: 2 1   1.3419   0.4810         1         1</span></span>
-<span id="cb358-31"><a href="datatable-function.html#cb358-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4: 2 2   0.0000   0.6666       NaN         1</span></span>
-<span id="cb358-32"><a href="datatable-function.html#cb358-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5: 3 1   0.8703   0.1866         1         1</span></span>
-<span id="cb358-33"><a href="datatable-function.html#cb358-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6: 3 2   0.0000   0.9074       NaN         1</span></span>
-<span id="cb358-34"><a href="datatable-function.html#cb358-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7: 4 1   0.0957   0.0000         1       NaN</span></span>
-<span id="cb358-35"><a href="datatable-function.html#cb358-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8: 4 2   0.1103   0.1867         1         1</span></span>
-<span id="cb358-36"><a href="datatable-function.html#cb358-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9: 5 1   1.1344   0.0000         1       NaN</span></span>
-<span id="cb358-37"><a href="datatable-function.html#cb358-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10: 5 2   1.0839   0.0707         1         1</span></span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="datatable-function.html#cb385-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">sample</span>(<span class="dv">5</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">y=</span><span class="fu">sample</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="cn">TRUE</span>),</span>
+<span id="cb385-2"><a href="datatable-function.html#cb385-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">z=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="dv">20</span>,<span class="cn">TRUE</span>), <span class="at">d1 =</span> <span class="fu">runif</span>(<span class="dv">20</span>), <span class="at">d2=</span>1L)</span>
+<span id="cb385-3"><a href="datatable-function.html#cb385-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">c</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>))</span>
+<span id="cb385-4"><a href="datatable-function.html#cb385-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x y d1_sum_a d1_sum_b d2_sum_a d2_sum_b d1_mean_a d1_mean_b d2_mean_a</span></span>
+<span id="cb385-5"><a href="datatable-function.html#cb385-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1: 1 1   0.8454   0.3717        1        2    0.8454    0.1858         1</span></span>
+<span id="cb385-6"><a href="datatable-function.html#cb385-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2: 1 2   0.3769   0.0000        1        0    0.3769       NaN         1</span></span>
+<span id="cb385-7"><a href="datatable-function.html#cb385-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3: 2 1   1.3419   0.4810        2        1    0.6709    0.4810         1</span></span>
+<span id="cb385-8"><a href="datatable-function.html#cb385-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4: 2 2   0.0000   0.6666        0        1       NaN    0.6666       NaN</span></span>
+<span id="cb385-9"><a href="datatable-function.html#cb385-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5: 3 1   0.8703   0.1866        1        1    0.8703    0.1866         1</span></span>
+<span id="cb385-10"><a href="datatable-function.html#cb385-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6: 3 2   0.0000   0.9074        0        2       NaN    0.4537       NaN</span></span>
+<span id="cb385-11"><a href="datatable-function.html#cb385-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7: 4 1   0.0957   0.0000        1        0    0.0957       NaN         1</span></span>
+<span id="cb385-12"><a href="datatable-function.html#cb385-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8: 4 2   0.1103   0.1867        1        1    0.1103    0.1867         1</span></span>
+<span id="cb385-13"><a href="datatable-function.html#cb385-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9: 5 1   1.1344   0.0000        2        0    0.5672       NaN         1</span></span>
+<span id="cb385-14"><a href="datatable-function.html#cb385-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10: 5 2   1.0839   0.0707        2        1    0.5419    0.0707         1</span></span>
+<span id="cb385-15"><a href="datatable-function.html#cb385-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     d2_mean_b</span></span>
+<span id="cb385-16"><a href="datatable-function.html#cb385-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:         1</span></span>
+<span id="cb385-17"><a href="datatable-function.html#cb385-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:       NaN</span></span>
+<span id="cb385-18"><a href="datatable-function.html#cb385-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:         1</span></span>
+<span id="cb385-19"><a href="datatable-function.html#cb385-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:         1</span></span>
+<span id="cb385-20"><a href="datatable-function.html#cb385-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:         1</span></span>
+<span id="cb385-21"><a href="datatable-function.html#cb385-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:         1</span></span>
+<span id="cb385-22"><a href="datatable-function.html#cb385-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:       NaN</span></span>
+<span id="cb385-23"><a href="datatable-function.html#cb385-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:         1</span></span>
+<span id="cb385-24"><a href="datatable-function.html#cb385-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:       NaN</span></span>
+<span id="cb385-25"><a href="datatable-function.html#cb385-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:         1</span></span>
+<span id="cb385-26"><a href="datatable-function.html#cb385-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dcast</span>(dt, x <span class="sc">+</span> y <span class="sc">~</span> z, <span class="at">fun=</span><span class="fu">list</span>(sum,mean), <span class="at">value.var=</span><span class="fu">list</span>(<span class="st">&quot;d1&quot;</span>,<span class="st">&quot;d2&quot;</span>)) <span class="co">#注意value.var是向量和列表时的区别</span></span>
+<span id="cb385-27"><a href="datatable-function.html#cb385-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x y d1_sum_a d1_sum_b d2_mean_a d2_mean_b</span></span>
+<span id="cb385-28"><a href="datatable-function.html#cb385-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1: 1 1   0.8454   0.3717         1         1</span></span>
+<span id="cb385-29"><a href="datatable-function.html#cb385-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2: 1 2   0.3769   0.0000         1       NaN</span></span>
+<span id="cb385-30"><a href="datatable-function.html#cb385-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3: 2 1   1.3419   0.4810         1         1</span></span>
+<span id="cb385-31"><a href="datatable-function.html#cb385-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4: 2 2   0.0000   0.6666       NaN         1</span></span>
+<span id="cb385-32"><a href="datatable-function.html#cb385-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5: 3 1   0.8703   0.1866         1         1</span></span>
+<span id="cb385-33"><a href="datatable-function.html#cb385-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6: 3 2   0.0000   0.9074       NaN         1</span></span>
+<span id="cb385-34"><a href="datatable-function.html#cb385-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7: 4 1   0.0957   0.0000         1       NaN</span></span>
+<span id="cb385-35"><a href="datatable-function.html#cb385-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8: 4 2   0.1103   0.1867         1         1</span></span>
+<span id="cb385-36"><a href="datatable-function.html#cb385-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9: 5 1   1.1344   0.0000         1       NaN</span></span>
+<span id="cb385-37"><a href="datatable-function.html#cb385-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10: 5 2   1.0839   0.0707         1         1</span></span></code></pre></div>
 <ul>
 <li>melt函数实现宽转长</li>
 </ul>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="datatable-function.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">melt</span>(data, id.vars, measure.vars,</span>
-<span id="cb359-2"><a href="datatable-function.html#cb359-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable.name =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">value.name =</span> <span class="st">&quot;value&quot;</span>,</span>
-<span id="cb359-3"><a href="datatable-function.html#cb359-3" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">variable.factor =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb359-4"><a href="datatable-function.html#cb359-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">value.factor =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb359-5"><a href="datatable-function.html#cb359-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="datatable-function.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">melt</span>(data, id.vars, measure.vars,</span>
+<span id="cb386-2"><a href="datatable-function.html#cb386-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable.name =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">value.name =</span> <span class="st">&quot;value&quot;</span>,</span>
+<span id="cb386-3"><a href="datatable-function.html#cb386-3" aria-hidden="true" tabindex="-1"></a>    ..., <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">variable.factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb386-4"><a href="datatable-function.html#cb386-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">value.factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb386-5"><a href="datatable-function.html#cb386-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;datatable.verbose&quot;</span>))</span></code></pre></div>
 <p>示例如下:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="datatable-function.html#cb360-1" aria-hidden="true" tabindex="-1"></a>ChickWeight <span class="ot">=</span> <span class="fu">as.data.table</span>(ChickWeight)</span>
-<span id="cb360-2"><a href="datatable-function.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setnames</span>(ChickWeight, <span class="fu">tolower</span>(<span class="fu">names</span>(ChickWeight)))</span>
-<span id="cb360-3"><a href="datatable-function.html#cb360-3" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">as.data.table</span>(ChickWeight), <span class="at">id=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># calls melt.data.table</span></span>
-<span id="cb360-4"><a href="datatable-function.html#cb360-4" aria-hidden="true" tabindex="-1"></a>DT</span>
-<span id="cb360-5"><a href="datatable-function.html#cb360-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      time chick diet variable value</span></span>
-<span id="cb360-6"><a href="datatable-function.html#cb360-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:    0     1    1   weight    42</span></span>
-<span id="cb360-7"><a href="datatable-function.html#cb360-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2:    2     1    1   weight    51</span></span>
-<span id="cb360-8"><a href="datatable-function.html#cb360-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3:    4     1    1   weight    59</span></span>
-<span id="cb360-9"><a href="datatable-function.html#cb360-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4:    6     1    1   weight    64</span></span>
-<span id="cb360-10"><a href="datatable-function.html#cb360-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5:    8     1    1   weight    76</span></span>
-<span id="cb360-11"><a href="datatable-function.html#cb360-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ---                               </span></span>
-<span id="cb360-12"><a href="datatable-function.html#cb360-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 574:   14    50    4   weight   175</span></span>
-<span id="cb360-13"><a href="datatable-function.html#cb360-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 575:   16    50    4   weight   205</span></span>
-<span id="cb360-14"><a href="datatable-function.html#cb360-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 576:   18    50    4   weight   234</span></span>
-<span id="cb360-15"><a href="datatable-function.html#cb360-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 577:   20    50    4   weight   264</span></span>
-<span id="cb360-16"><a href="datatable-function.html#cb360-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 578:   21    50    4   weight   264</span></span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="datatable-function.html#cb387-1" aria-hidden="true" tabindex="-1"></a>ChickWeight <span class="ot">=</span> <span class="fu">as.data.table</span>(ChickWeight)</span>
+<span id="cb387-2"><a href="datatable-function.html#cb387-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setnames</span>(ChickWeight, <span class="fu">tolower</span>(<span class="fu">names</span>(ChickWeight)))</span>
+<span id="cb387-3"><a href="datatable-function.html#cb387-3" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">as.data.table</span>(ChickWeight), <span class="at">id=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># calls melt.data.table</span></span>
+<span id="cb387-4"><a href="datatable-function.html#cb387-4" aria-hidden="true" tabindex="-1"></a>DT</span>
+<span id="cb387-5"><a href="datatable-function.html#cb387-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      time chick diet variable value</span></span>
+<span id="cb387-6"><a href="datatable-function.html#cb387-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:    0     1    1   weight    42</span></span>
+<span id="cb387-7"><a href="datatable-function.html#cb387-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2:    2     1    1   weight    51</span></span>
+<span id="cb387-8"><a href="datatable-function.html#cb387-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3:    4     1    1   weight    59</span></span>
+<span id="cb387-9"><a href="datatable-function.html#cb387-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4:    6     1    1   weight    64</span></span>
+<span id="cb387-10"><a href="datatable-function.html#cb387-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5:    8     1    1   weight    76</span></span>
+<span id="cb387-11"><a href="datatable-function.html#cb387-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ---                               </span></span>
+<span id="cb387-12"><a href="datatable-function.html#cb387-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 574:   14    50    4   weight   175</span></span>
+<span id="cb387-13"><a href="datatable-function.html#cb387-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 575:   16    50    4   weight   205</span></span>
+<span id="cb387-14"><a href="datatable-function.html#cb387-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 576:   18    50    4   weight   234</span></span>
+<span id="cb387-15"><a href="datatable-function.html#cb387-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 577:   20    50    4   weight   264</span></span>
+<span id="cb387-16"><a href="datatable-function.html#cb387-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 578:   21    50    4   weight   264</span></span></code></pre></div>
 </div>
 <div id="表连接" class="section level3" number="7.3.7">
 <h3><span class="header-section-number">7.3.7</span> 表连接</h3>
 <p>两个数据框之间左连,右连等操作,类似数据库中的left_join right_join,inner_join 等函数.</p>
 <p>键入?merge()查看函数帮助,data.table 包中和base R 中都有merge 函数,当第一个数据框是data.table格式时启用data.table::merge().</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="datatable-function.html#cb361-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">merge</span>()</span>
-<span id="cb361-2"><a href="datatable-function.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(x, y, <span class="at">by =</span> <span class="cn">NULL</span>, <span class="at">by.x =</span> <span class="cn">NULL</span>, <span class="at">by.y =</span> <span class="cn">NULL</span>, <span class="at">all =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb361-3"><a href="datatable-function.html#cb361-3" aria-hidden="true" tabindex="-1"></a><span class="at">all.x =</span> all, <span class="at">all.y =</span> all, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">suffixes =</span> <span class="fu">c</span>(<span class="st">&quot;.x&quot;</span>, <span class="st">&quot;.y&quot;</span>), <span class="at">no.dups =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb361-4"><a href="datatable-function.html#cb361-4" aria-hidden="true" tabindex="-1"></a><span class="at">allow.cartesian=</span><span class="fu">getOption</span>(<span class="st">&quot;datatable.allow.cartesian&quot;</span>),  <span class="co"># default FALSE</span></span>
-<span id="cb361-5"><a href="datatable-function.html#cb361-5" aria-hidden="true" tabindex="-1"></a>...)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="datatable-function.html#cb388-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">merge</span>()</span>
+<span id="cb388-2"><a href="datatable-function.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(x, y, <span class="at">by =</span> <span class="cn">NULL</span>, <span class="at">by.x =</span> <span class="cn">NULL</span>, <span class="at">by.y =</span> <span class="cn">NULL</span>, <span class="at">all =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb388-3"><a href="datatable-function.html#cb388-3" aria-hidden="true" tabindex="-1"></a><span class="at">all.x =</span> all, <span class="at">all.y =</span> all, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">suffixes =</span> <span class="fu">c</span>(<span class="st">&quot;.x&quot;</span>, <span class="st">&quot;.y&quot;</span>), <span class="at">no.dups =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb388-4"><a href="datatable-function.html#cb388-4" aria-hidden="true" tabindex="-1"></a><span class="at">allow.cartesian=</span><span class="fu">getOption</span>(<span class="st">&quot;datatable.allow.cartesian&quot;</span>),  <span class="co"># default FALSE</span></span>
+<span id="cb388-5"><a href="datatable-function.html#cb388-5" aria-hidden="true" tabindex="-1"></a>...)</span></code></pre></div>
 <p>x.y为连个数据框,当两个数据框连接字段相同时,用by=c(’‘,’’)连接,不同时采用,by.x=,by.y= ,all,all.x,all.y等参数决定连接方式,sort 默认为排序,当不需要排序时更改参数,allow.cartesian=是否允许笛卡尔,默认不允许,当需要时设置为TURE.</p>
 </div>
 </div>

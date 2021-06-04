@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.1 安装 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>3.1 安装 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.1 安装 | R 语言学习笔记" />
+  <meta property="og:title" content="3.1 安装 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.1 安装 | R 语言学习笔记" />
+  <meta name="twitter:title" content="3.1 安装 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -519,17 +521,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tidyr:install" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> 安装</h2>
 <p>本章节，我们重点关注<code>tidyr</code>包，这个软件包提供了许多的功能函数整理混乱的数据。tidyr是tidyverse的核心成员包</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="tidyr-install.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 最简单是的方式就是安装tidyverse</span></span>
-<span id="cb164-2"><a href="tidyr-install.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
-<span id="cb164-3"><a href="tidyr-install.html#cb164-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-4"><a href="tidyr-install.html#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者仅仅安装 tidyr:</span></span>
-<span id="cb164-5"><a href="tidyr-install.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyr&#39;</span>)</span>
-<span id="cb164-6"><a href="tidyr-install.html#cb164-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-7"><a href="tidyr-install.html#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者从github 安装开发版本</span></span>
-<span id="cb164-8"><a href="tidyr-install.html#cb164-8" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb164-9"><a href="tidyr-install.html#cb164-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/tidyr&quot;</span>)</span>
-<span id="cb164-10"><a href="tidyr-install.html#cb164-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-11"><a href="tidyr-install.html#cb164-11" aria-hidden="true" tabindex="-1"></a><span class="co"># CTEST CODE</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="tidyr-install.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 最简单是的方式就是安装tidyverse</span></span>
+<span id="cb191-2"><a href="tidyr-install.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
+<span id="cb191-3"><a href="tidyr-install.html#cb191-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-4"><a href="tidyr-install.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者仅仅安装 tidyr:</span></span>
+<span id="cb191-5"><a href="tidyr-install.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyr&#39;</span>)</span>
+<span id="cb191-6"><a href="tidyr-install.html#cb191-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-7"><a href="tidyr-install.html#cb191-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者从github 安装开发版本</span></span>
+<span id="cb191-8"><a href="tidyr-install.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb191-9"><a href="tidyr-install.html#cb191-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/tidyr&quot;</span>)</span>
+<span id="cb191-10"><a href="tidyr-install.html#cb191-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-11"><a href="tidyr-install.html#cb191-11" aria-hidden="true" tabindex="-1"></a><span class="co"># CTEST CODE</span></span></code></pre></div>
 </div>
             </section>
 

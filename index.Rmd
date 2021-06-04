@@ -1,5 +1,5 @@
 --- 
-title: "R 语言学习笔记"
+title: "商业数据分析师-R 语言数据处理"
 knit: "bookdown::render_book"
 author: "Yufei Zhong"
 date: "`r Sys.Date()`"
@@ -8,17 +8,22 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。"
+description: "商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。"
 ---
 
 
 # 欢迎 {#welcome .unnumbered}
 
 
-本文主要是我作为商业数据分析师的 R 语言学习笔记，主要是数据清洗相关包的介绍。
+本文主要是我作为商业数据分析师使用 R 语言做数据处理的学习笔记，主要是数据清洗相关包的介绍。
+
+笔记内容包含：从数据导入到完成报表、报告、可视化等整个分析流程。
 
 
-使用R语言自动完成如下报表:
+
+> 注意：R 包介绍时很多 demo 是照搬官方案例
+
+如下报表:
 
 ```{r result= 'flextable-tbl-daily-report',echo=FALSE,warning=FALSE,message=FALSE}
 library(flextable)
@@ -53,7 +58,7 @@ ft
 
 - 数据导入导出
 
-读 Excel:readxl,openxlsx;写 Excel:openxlsx,writexl,读写 CSV,TSV,TXT 等:readr,vroom,data.table;
+  读 Excel:readxl,openxlsx;写 Excel:openxlsx,writexl,读写 CSV,TSV,TXT 等:readr,vroom,data.table;
 
 - 数据操作 dplyr
 
@@ -69,7 +74,7 @@ ft
 
 - 数据库使用 
 
-主要是 odbc,DBI,ROracle,RMySQL等
+  主要是 odbc,DBI,ROracle,RMySQL等
 
 - 循环结构
 - 循环迭代之purrr包介绍
@@ -77,7 +82,8 @@ ft
 
 - 文件系统管理
 
-数据操作处理分为:tidyverse 系列，data.table 两大语法体系。
+
+在本书中，数据操作处理分为:tidyverse 系列，data.table 两大语法体系，任选其一学习即可，待对 R 语言认知更深，以及更加清楚自己的需求后再行调整数据处理框架体系。就我个人而言，我目前使用 data.table 体系做数据处理较多，当然不可避免的需要借助其他 R包。
 
 
 ## 授权说明 {#sec:licenses .unnumbered}
@@ -87,10 +93,14 @@ ft
 项目中代码使用 [MIT协议](https://github.com/zyf19940501/Rbook) 开源。
 :::
 
+本文仅为个人学习笔记，仅代表个人观点,本文提供的信息仅供参考之用，不对信息正确性负责。
 
-Creative Commons Attribution-ShareAlike 4.0 International License.
+
+
 
 ## 运行信息{#session  .unnumbered}
+
+本书用 R 语言以及 R 包 bookdown 制作而成，运行环境如下：
 
 ```{r}
 xfun::session_info(packages = c(
@@ -116,3 +126,4 @@ Email: <598253220@qq.com>
 
 语雀: https://www.yuque.com/zyufei
 
+B站视频: https://www.bilibili.com/video/BV1vK4y1R7Vz/

@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 自定义函数 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>11 自定义函数 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 自定义函数 | R 语言学习笔记" />
+  <meta property="og:title" content="11 自定义函数 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 自定义函数 | R 语言学习笔记" />
+  <meta name="twitter:title" content="11 自定义函数 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -521,83 +523,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>函数功能使我们尽可能避免复制粘贴代码,而且需要更改的时候不需要大面积修改代码仅需要调整函数参数,使代码整体更加模块化.</p>
 <p>假设有工作任务需要给商品SKU排名,在代码中需要重复以下代码5次,当区间需要修改的时候就是灾难.</p>
 <p>原始代码示例如下:</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="self-define-function.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb499-2"><a href="self-define-function.html#cb499-2" aria-hidden="true" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="dv">1000</span>)</span>
-<span id="cb499-3"><a href="self-define-function.html#cb499-3" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">50</span>,<span class="st">&quot;1-50&quot;</span>,</span>
-<span id="cb499-4"><a href="self-define-function.html#cb499-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">100</span>,<span class="st">&quot;51-100&quot;</span>,</span>
-<span id="cb499-5"><a href="self-define-function.html#cb499-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">150</span>,<span class="st">&quot;101-150&quot;</span>,</span>
-<span id="cb499-6"><a href="self-define-function.html#cb499-6" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">200</span> ,<span class="st">&quot;151-200&quot;</span>,</span>
-<span id="cb499-7"><a href="self-define-function.html#cb499-7" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">if_else</span>(num <span class="sc">&gt;</span><span class="dv">200</span>,<span class="st">&quot;200以上&quot;</span>,<span class="st">&#39;其他&#39;</span>)))))</span>
-<span id="cb499-8"><a href="self-define-function.html#cb499-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb499-9"><a href="self-define-function.html#cb499-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb499-10"><a href="self-define-function.html#cb499-10" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb499-11"><a href="self-define-function.html#cb499-11" aria-hidden="true" tabindex="-1"></a><span class="co"># case_when(num &lt;= 50 ~ &#39;1-50&#39;,</span></span>
-<span id="cb499-12"><a href="self-define-function.html#cb499-12" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 100 ~ &#39;51-100&#39;,</span></span>
-<span id="cb499-13"><a href="self-define-function.html#cb499-13" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 150 ~ &#39;101-150&#39;,</span></span>
-<span id="cb499-14"><a href="self-define-function.html#cb499-14" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 200 ~ &#39;151-200&#39;,</span></span>
-<span id="cb499-15"><a href="self-define-function.html#cb499-15" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &gt; 100 ~ &#39;200以上&#39;</span></span>
-<span id="cb499-16"><a href="self-define-function.html#cb499-16" aria-hidden="true" tabindex="-1"></a><span class="co">#           )</span></span>
-<span id="cb499-17"><a href="self-define-function.html#cb499-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb499-18"><a href="self-define-function.html#cb499-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 个人倾向data.table </span></span>
-<span id="cb499-19"><a href="self-define-function.html#cb499-19" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::fifelse()</span></span>
-<span id="cb499-20"><a href="self-define-function.html#cb499-20" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::fcase() 是sql中case when的实现</span></span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="self-define-function.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb526-2"><a href="self-define-function.html#cb526-2" aria-hidden="true" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="dv">1000</span>)</span>
+<span id="cb526-3"><a href="self-define-function.html#cb526-3" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">50</span>,<span class="st">&quot;1-50&quot;</span>,</span>
+<span id="cb526-4"><a href="self-define-function.html#cb526-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">100</span>,<span class="st">&quot;51-100&quot;</span>,</span>
+<span id="cb526-5"><a href="self-define-function.html#cb526-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">150</span>,<span class="st">&quot;101-150&quot;</span>,</span>
+<span id="cb526-6"><a href="self-define-function.html#cb526-6" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">if_else</span>(num <span class="sc">&lt;=</span> <span class="dv">200</span> ,<span class="st">&quot;151-200&quot;</span>,</span>
+<span id="cb526-7"><a href="self-define-function.html#cb526-7" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">if_else</span>(num <span class="sc">&gt;</span><span class="dv">200</span>,<span class="st">&quot;200以上&quot;</span>,<span class="st">&#39;其他&#39;</span>)))))</span>
+<span id="cb526-8"><a href="self-define-function.html#cb526-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-9"><a href="self-define-function.html#cb526-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-10"><a href="self-define-function.html#cb526-10" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb526-11"><a href="self-define-function.html#cb526-11" aria-hidden="true" tabindex="-1"></a><span class="co"># case_when(num &lt;= 50 ~ &#39;1-50&#39;,</span></span>
+<span id="cb526-12"><a href="self-define-function.html#cb526-12" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 100 ~ &#39;51-100&#39;,</span></span>
+<span id="cb526-13"><a href="self-define-function.html#cb526-13" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 150 ~ &#39;101-150&#39;,</span></span>
+<span id="cb526-14"><a href="self-define-function.html#cb526-14" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &lt;= 200 ~ &#39;151-200&#39;,</span></span>
+<span id="cb526-15"><a href="self-define-function.html#cb526-15" aria-hidden="true" tabindex="-1"></a><span class="co">#           num &gt; 100 ~ &#39;200以上&#39;</span></span>
+<span id="cb526-16"><a href="self-define-function.html#cb526-16" aria-hidden="true" tabindex="-1"></a><span class="co">#           )</span></span>
+<span id="cb526-17"><a href="self-define-function.html#cb526-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-18"><a href="self-define-function.html#cb526-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 个人倾向data.table </span></span>
+<span id="cb526-19"><a href="self-define-function.html#cb526-19" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::fifelse()</span></span>
+<span id="cb526-20"><a href="self-define-function.html#cb526-20" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::fcase() 是sql中case when的实现</span></span></code></pre></div>
 <p>函数化后代码示例如下:</p>
 <p>当需要修改区间时候仅仅只需要调整参数,而不必大量修改代码,当在脚本中需要调用多次时,能简洁代码.</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="self-define-function.html#cb500-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb500-2"><a href="self-define-function.html#cb500-2" aria-hidden="true" tabindex="-1"></a>cut_function <span class="ot">&lt;-</span> <span class="cf">function</span>(vecto,x,n){</span>
-<span id="cb500-3"><a href="self-define-function.html#cb500-3" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>)</span>
-<span id="cb500-4"><a href="self-define-function.html#cb500-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb500-5"><a href="self-define-function.html#cb500-5" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span>  i<span class="sc">*</span>x</span>
-<span id="cb500-6"><a href="self-define-function.html#cb500-6" aria-hidden="true" tabindex="-1"></a>    vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,kong)</span>
-<span id="cb500-7"><a href="self-define-function.html#cb500-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb500-8"><a href="self-define-function.html#cb500-8" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,<span class="cn">Inf</span>)</span>
-<span id="cb500-9"><a href="self-define-function.html#cb500-9" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb500-10"><a href="self-define-function.html#cb500-10" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb500-11"><a href="self-define-function.html#cb500-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb500-12"><a href="self-define-function.html#cb500-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (j<span class="sc">&lt;=</span>n) {</span>
-<span id="cb500-13"><a href="self-define-function.html#cb500-13" aria-hidden="true" tabindex="-1"></a>    labels[j] <span class="ot">&lt;-</span> <span class="fu">str_c</span>(vec[j]<span class="sc">+</span><span class="dv">1</span>,<span class="st">&quot;-&quot;</span>,vec[j<span class="sc">+</span><span class="dv">1</span>])</span>
-<span id="cb500-14"><a href="self-define-function.html#cb500-14" aria-hidden="true" tabindex="-1"></a>    j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb500-15"><a href="self-define-function.html#cb500-15" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb500-16"><a href="self-define-function.html#cb500-16" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>(labels,<span class="fu">paste0</span>(vec[j],<span class="st">&#39;以上&#39;</span>))</span>
-<span id="cb500-17"><a href="self-define-function.html#cb500-17" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">cut</span>(<span class="at">x =</span> vecto,<span class="at">breaks =</span> vec,<span class="at">labels =</span> labels) <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()</span>
-<span id="cb500-18"><a href="self-define-function.html#cb500-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb500-19"><a href="self-define-function.html#cb500-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb500-20"><a href="self-define-function.html#cb500-20" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cut_function</span>(num,<span class="dv">50</span>,<span class="dv">4</span>)</span>
-<span id="cb500-21"><a href="self-define-function.html#cb500-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb500-22"><a href="self-define-function.html#cb500-22" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(res1,res2)</span>
-<span id="cb500-23"><a href="self-define-function.html#cb500-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="self-define-function.html#cb527-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb527-2"><a href="self-define-function.html#cb527-2" aria-hidden="true" tabindex="-1"></a>cut_function <span class="ot">&lt;-</span> <span class="cf">function</span>(vecto,x,n){</span>
+<span id="cb527-3"><a href="self-define-function.html#cb527-3" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>)</span>
+<span id="cb527-4"><a href="self-define-function.html#cb527-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb527-5"><a href="self-define-function.html#cb527-5" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span>  i<span class="sc">*</span>x</span>
+<span id="cb527-6"><a href="self-define-function.html#cb527-6" aria-hidden="true" tabindex="-1"></a>    vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,kong)</span>
+<span id="cb527-7"><a href="self-define-function.html#cb527-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb527-8"><a href="self-define-function.html#cb527-8" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,<span class="cn">Inf</span>)</span>
+<span id="cb527-9"><a href="self-define-function.html#cb527-9" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb527-10"><a href="self-define-function.html#cb527-10" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb527-11"><a href="self-define-function.html#cb527-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb527-12"><a href="self-define-function.html#cb527-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (j<span class="sc">&lt;=</span>n) {</span>
+<span id="cb527-13"><a href="self-define-function.html#cb527-13" aria-hidden="true" tabindex="-1"></a>    labels[j] <span class="ot">&lt;-</span> <span class="fu">str_c</span>(vec[j]<span class="sc">+</span><span class="dv">1</span>,<span class="st">&quot;-&quot;</span>,vec[j<span class="sc">+</span><span class="dv">1</span>])</span>
+<span id="cb527-14"><a href="self-define-function.html#cb527-14" aria-hidden="true" tabindex="-1"></a>    j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb527-15"><a href="self-define-function.html#cb527-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb527-16"><a href="self-define-function.html#cb527-16" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>(labels,<span class="fu">paste0</span>(vec[j],<span class="st">&#39;以上&#39;</span>))</span>
+<span id="cb527-17"><a href="self-define-function.html#cb527-17" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">cut</span>(<span class="at">x =</span> vecto,<span class="at">breaks =</span> vec,<span class="at">labels =</span> labels) <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()</span>
+<span id="cb527-18"><a href="self-define-function.html#cb527-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb527-19"><a href="self-define-function.html#cb527-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb527-20"><a href="self-define-function.html#cb527-20" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cut_function</span>(num,<span class="dv">50</span>,<span class="dv">4</span>)</span>
+<span id="cb527-21"><a href="self-define-function.html#cb527-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb527-22"><a href="self-define-function.html#cb527-22" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(res1,res2)</span>
+<span id="cb527-23"><a href="self-define-function.html#cb527-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>当然以上的函数本质是用base R中<code>cut()</code>:</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="self-define-function.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">201</span>,<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">150</span>,<span class="dv">200</span>,<span class="cn">Inf</span>))</span>
-<span id="cb501-2"><a href="self-define-function.html#cb501-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   [1] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
-<span id="cb501-3"><a href="self-define-function.html#cb501-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   [8] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
-<span id="cb501-4"><a href="self-define-function.html#cb501-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [15] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
-<span id="cb501-5"><a href="self-define-function.html#cb501-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [22] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
-<span id="cb501-6"><a href="self-define-function.html#cb501-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [29] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
-<span id="cb501-7"><a href="self-define-function.html#cb501-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [36] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
-<span id="cb501-8"><a href="self-define-function.html#cb501-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [43] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
-<span id="cb501-9"><a href="self-define-function.html#cb501-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [50] (0,50]    (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
-<span id="cb501-10"><a href="self-define-function.html#cb501-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [57] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
-<span id="cb501-11"><a href="self-define-function.html#cb501-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [64] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
-<span id="cb501-12"><a href="self-define-function.html#cb501-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [71] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
-<span id="cb501-13"><a href="self-define-function.html#cb501-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [78] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
-<span id="cb501-14"><a href="self-define-function.html#cb501-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [85] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
-<span id="cb501-15"><a href="self-define-function.html#cb501-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [92] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
-<span id="cb501-16"><a href="self-define-function.html#cb501-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [99] (50,100]  (50,100]  (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
-<span id="cb501-17"><a href="self-define-function.html#cb501-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [106] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
-<span id="cb501-18"><a href="self-define-function.html#cb501-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [113] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
-<span id="cb501-19"><a href="self-define-function.html#cb501-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [120] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
-<span id="cb501-20"><a href="self-define-function.html#cb501-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [127] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
-<span id="cb501-21"><a href="self-define-function.html#cb501-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [134] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
-<span id="cb501-22"><a href="self-define-function.html#cb501-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [141] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
-<span id="cb501-23"><a href="self-define-function.html#cb501-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [148] (100,150] (100,150] (100,150] (150,200] (150,200] (150,200] (150,200]</span></span>
-<span id="cb501-24"><a href="self-define-function.html#cb501-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [155] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
-<span id="cb501-25"><a href="self-define-function.html#cb501-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [162] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
-<span id="cb501-26"><a href="self-define-function.html#cb501-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [169] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
-<span id="cb501-27"><a href="self-define-function.html#cb501-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [176] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
-<span id="cb501-28"><a href="self-define-function.html#cb501-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [183] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
-<span id="cb501-29"><a href="self-define-function.html#cb501-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [190] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
-<span id="cb501-30"><a href="self-define-function.html#cb501-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [197] (150,200] (150,200] (150,200] (150,200] (200,Inf]</span></span>
-<span id="cb501-31"><a href="self-define-function.html#cb501-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: (0,50] (50,100] (100,150] (150,200] (200,Inf]</span></span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="self-define-function.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">201</span>,<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">150</span>,<span class="dv">200</span>,<span class="cn">Inf</span>))</span>
+<span id="cb528-2"><a href="self-define-function.html#cb528-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   [1] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
+<span id="cb528-3"><a href="self-define-function.html#cb528-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   [8] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
+<span id="cb528-4"><a href="self-define-function.html#cb528-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [15] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
+<span id="cb528-5"><a href="self-define-function.html#cb528-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [22] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
+<span id="cb528-6"><a href="self-define-function.html#cb528-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [29] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
+<span id="cb528-7"><a href="self-define-function.html#cb528-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [36] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
+<span id="cb528-8"><a href="self-define-function.html#cb528-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [43] (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]    (0,50]   </span></span>
+<span id="cb528-9"><a href="self-define-function.html#cb528-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [50] (0,50]    (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
+<span id="cb528-10"><a href="self-define-function.html#cb528-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [57] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
+<span id="cb528-11"><a href="self-define-function.html#cb528-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [64] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
+<span id="cb528-12"><a href="self-define-function.html#cb528-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [71] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
+<span id="cb528-13"><a href="self-define-function.html#cb528-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [78] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
+<span id="cb528-14"><a href="self-define-function.html#cb528-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [85] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
+<span id="cb528-15"><a href="self-define-function.html#cb528-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [92] (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100]  (50,100] </span></span>
+<span id="cb528-16"><a href="self-define-function.html#cb528-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [99] (50,100]  (50,100]  (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
+<span id="cb528-17"><a href="self-define-function.html#cb528-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [106] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
+<span id="cb528-18"><a href="self-define-function.html#cb528-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [113] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
+<span id="cb528-19"><a href="self-define-function.html#cb528-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [120] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
+<span id="cb528-20"><a href="self-define-function.html#cb528-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [127] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
+<span id="cb528-21"><a href="self-define-function.html#cb528-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [134] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
+<span id="cb528-22"><a href="self-define-function.html#cb528-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [141] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150] (100,150]</span></span>
+<span id="cb528-23"><a href="self-define-function.html#cb528-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [148] (100,150] (100,150] (100,150] (150,200] (150,200] (150,200] (150,200]</span></span>
+<span id="cb528-24"><a href="self-define-function.html#cb528-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [155] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
+<span id="cb528-25"><a href="self-define-function.html#cb528-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [162] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
+<span id="cb528-26"><a href="self-define-function.html#cb528-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [169] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
+<span id="cb528-27"><a href="self-define-function.html#cb528-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [176] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
+<span id="cb528-28"><a href="self-define-function.html#cb528-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [183] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
+<span id="cb528-29"><a href="self-define-function.html#cb528-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [190] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200] (150,200]</span></span>
+<span id="cb528-30"><a href="self-define-function.html#cb528-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [197] (150,200] (150,200] (150,200] (150,200] (200,Inf]</span></span>
+<span id="cb528-31"><a href="self-define-function.html#cb528-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: (0,50] (50,100] (100,150] (150,200] (200,Inf]</span></span></code></pre></div>
 <p><a href="https://r4ds.had.co.nz/functions.html">参考资料</a></p>
 </div>
             </section>

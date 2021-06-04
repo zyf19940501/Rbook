@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.1 base R | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>4.1 base R | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.1 base R | R 语言学习笔记" />
+  <meta property="og:title" content="4.1 base R | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 base R | R 语言学习笔记" />
+  <meta name="twitter:title" content="4.1 base R | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -529,101 +531,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>R-4.0之后引入的R字符[newfeatures]，让单双引号基本没区别</p></li>
 </ul>
 <p>R中的字符用单双引号都可创建，如下所示:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="character-base-R.html#cb209-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;R语言&quot;</span></span>
-<span id="cb209-2"><a href="character-base-R.html#cb209-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb209-3"><a href="character-base-R.html#cb209-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span>
-<span id="cb209-4"><a href="character-base-R.html#cb209-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&#39;R语言&#39;</span></span>
-<span id="cb209-5"><a href="character-base-R.html#cb209-5" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb209-6"><a href="character-base-R.html#cb209-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="character-base-R.html#cb236-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;R语言&quot;</span></span>
+<span id="cb236-2"><a href="character-base-R.html#cb236-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb236-3"><a href="character-base-R.html#cb236-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span>
+<span id="cb236-4"><a href="character-base-R.html#cb236-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&#39;R语言&#39;</span></span>
+<span id="cb236-5"><a href="character-base-R.html#cb236-5" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb236-6"><a href="character-base-R.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R语言&quot;</span></span></code></pre></div>
 </div>
 <div id="转义" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> 转义</h3>
 <p>要在字符串中包含单引号或双引号，需用 转义它，即遇到特殊符号时需要转义,如果不正确使用转义，可能会报错，如下所示：</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="character-base-R.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;&quot;&quot;,&quot;</span>abc<span class="st">&quot;,sep=&quot;&quot;)</span></span>
-<span id="cb210-2"><a href="character-base-R.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="st">#&gt; 错误: unexpected string constant in &quot;</span><span class="fu">paste</span>(<span class="st">&quot;&quot;&quot;,&quot;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="character-base-R.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;&quot;&quot;,&quot;</span>abc<span class="st">&quot;,sep=&quot;&quot;)</span></span>
+<span id="cb237-2"><a href="character-base-R.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="st">#&gt; 错误: unexpected string constant in &quot;</span><span class="fu">paste</span>(<span class="st">&quot;&quot;&quot;,&quot;&quot;</span></span></code></pre></div>
 <p>R语言中使用“"把特定的字符转义为特殊字符，例如“是制表符，“”是换行符，或者是“”(系统差异)。想要正确显示“’”，需使用转义，如下所示：</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="character-base-R.html#cb211-1" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;我是一名</span><span class="sc">\&#39;</span><span class="st">小学生</span><span class="sc">\&#39;</span><span class="st">&quot;</span> </span>
-<span id="cb211-2"><a href="character-base-R.html#cb211-2" aria-hidden="true" tabindex="-1"></a>char</span>
-<span id="cb211-3"><a href="character-base-R.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;我是一名&#39;小学生&#39;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="character-base-R.html#cb238-1" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;我是一名</span><span class="sc">\&#39;</span><span class="st">小学生</span><span class="sc">\&#39;</span><span class="st">&quot;</span> </span>
+<span id="cb238-2"><a href="character-base-R.html#cb238-2" aria-hidden="true" tabindex="-1"></a>char</span>
+<span id="cb238-3"><a href="character-base-R.html#cb238-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;我是一名&#39;小学生&#39;&quot;</span></span></code></pre></div>
 <p>打印会显示转义符,主要是因为R语言内数据存储和打印是不一样的，运行结果为存储的数据形式，不是打印形式。</p>
 <p>要查看字符串的原始内容,可使用writeLines()或cat()</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="character-base-R.html#cb212-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span>)</span>
-<span id="cb212-2"><a href="character-base-R.html#cb212-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb212-3"><a href="character-base-R.html#cb212-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;\&quot;&quot; &quot;\\&quot;</span></span>
-<span id="cb212-4"><a href="character-base-R.html#cb212-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-5"><a href="character-base-R.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(x)</span>
-<span id="cb212-6"><a href="character-base-R.html#cb212-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &quot;</span></span>
-<span id="cb212-7"><a href="character-base-R.html#cb212-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \</span></span>
-<span id="cb212-8"><a href="character-base-R.html#cb212-8" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(char)</span>
-<span id="cb212-9"><a href="character-base-R.html#cb212-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;小学生&#39;</span></span>
-<span id="cb212-10"><a href="character-base-R.html#cb212-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
-<span id="cb212-11"><a href="character-base-R.html#cb212-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;小学生&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="character-base-R.html#cb239-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">&quot;</span>)</span>
+<span id="cb239-2"><a href="character-base-R.html#cb239-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb239-3"><a href="character-base-R.html#cb239-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;\&quot;&quot; &quot;\\&quot;</span></span>
+<span id="cb239-4"><a href="character-base-R.html#cb239-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb239-5"><a href="character-base-R.html#cb239-5" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(x)</span>
+<span id="cb239-6"><a href="character-base-R.html#cb239-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &quot;</span></span>
+<span id="cb239-7"><a href="character-base-R.html#cb239-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \</span></span>
+<span id="cb239-8"><a href="character-base-R.html#cb239-8" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(char)</span>
+<span id="cb239-9"><a href="character-base-R.html#cb239-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;小学生&#39;</span></span>
+<span id="cb239-10"><a href="character-base-R.html#cb239-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
+<span id="cb239-11"><a href="character-base-R.html#cb239-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;小学生&#39;</span></span></code></pre></div>
 </div>
 <div id="常用函数" class="section level3" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> 常用函数</h3>
 <ul>
 <li>字符数量</li>
 </ul>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="character-base-R.html#cb213-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="st">&#39;abcdefg&#39;</span></span>
-<span id="cb213-2"><a href="character-base-R.html#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(s)</span>
-<span id="cb213-3"><a href="character-base-R.html#cb213-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="character-base-R.html#cb240-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="st">&#39;abcdefg&#39;</span></span>
+<span id="cb240-2"><a href="character-base-R.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(s)</span>
+<span id="cb240-3"><a href="character-base-R.html#cb240-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7</span></span></code></pre></div>
 <ul>
 <li>大小写</li>
 </ul>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="character-base-R.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(<span class="st">&#39;abc&#39;</span>)</span>
-<span id="cb214-2"><a href="character-base-R.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ABC&quot;</span></span>
-<span id="cb214-3"><a href="character-base-R.html#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(<span class="st">&#39;ABC&#39;</span>)</span>
-<span id="cb214-4"><a href="character-base-R.html#cb214-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;abc&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="character-base-R.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(<span class="st">&#39;abc&#39;</span>)</span>
+<span id="cb241-2"><a href="character-base-R.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ABC&quot;</span></span>
+<span id="cb241-3"><a href="character-base-R.html#cb241-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(<span class="st">&#39;ABC&#39;</span>)</span>
+<span id="cb241-4"><a href="character-base-R.html#cb241-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;abc&quot;</span></span></code></pre></div>
 <ul>
 <li>拼接</li>
 </ul>
 <p>函数<code>paste()</code>将不同的字符向量拼接组合起来，返回的数据类型是字符向量。其中分割参数sep默认值是" "(空格)。collapse参数是使用指定的字符把各元素拼接在一次成一个单独的字符串。</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="character-base-R.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>)</span>
-<span id="cb215-2"><a href="character-base-R.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a b d&quot;</span></span>
-<span id="cb215-3"><a href="character-base-R.html#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="at">sep =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb215-4"><a href="character-base-R.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;abd&quot;</span></span>
-<span id="cb215-5"><a href="character-base-R.html#cb215-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="at">sep =</span> <span class="st">&#39;_&#39;</span>)</span>
-<span id="cb215-6"><a href="character-base-R.html#cb215-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a_b_d&quot;</span></span>
-<span id="cb215-7"><a href="character-base-R.html#cb215-7" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>),<span class="fu">c</span>(<span class="st">&#39;d&#39;</span>,<span class="st">&#39;e&#39;</span>),<span class="at">collapse =</span> <span class="st">&#39;_&#39;</span>)</span>
-<span id="cb215-8"><a href="character-base-R.html#cb215-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a d_b e&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="character-base-R.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>)</span>
+<span id="cb242-2"><a href="character-base-R.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a b d&quot;</span></span>
+<span id="cb242-3"><a href="character-base-R.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="at">sep =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb242-4"><a href="character-base-R.html#cb242-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;abd&quot;</span></span>
+<span id="cb242-5"><a href="character-base-R.html#cb242-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;d&#39;</span>,<span class="at">sep =</span> <span class="st">&#39;_&#39;</span>)</span>
+<span id="cb242-6"><a href="character-base-R.html#cb242-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a_b_d&quot;</span></span>
+<span id="cb242-7"><a href="character-base-R.html#cb242-7" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>),<span class="fu">c</span>(<span class="st">&#39;d&#39;</span>,<span class="st">&#39;e&#39;</span>),<span class="at">collapse =</span> <span class="st">&#39;_&#39;</span>)</span>
+<span id="cb242-8"><a href="character-base-R.html#cb242-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a d_b e&quot;</span></span></code></pre></div>
 <p>大家可以自行了解<code>paste</code>和<code>paste0</code>两个函数的差异。</p>
 <ul>
 <li>截取</li>
 </ul>
 <p><code>substr</code>函数用于字符串截取子字符串,start,stop参数是整数。</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="character-base-R.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 空格占据一个长度</span></span>
-<span id="cb216-2"><a href="character-base-R.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(<span class="st">&quot;R is free software&quot;</span> ,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">stop =</span> <span class="dv">6</span>)</span>
-<span id="cb216-3"><a href="character-base-R.html#cb216-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R is f&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="character-base-R.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 空格占据一个长度</span></span>
+<span id="cb243-2"><a href="character-base-R.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(<span class="st">&quot;R is free software&quot;</span> ,<span class="at">start =</span> <span class="dv">1</span>,<span class="at">stop =</span> <span class="dv">6</span>)</span>
+<span id="cb243-3"><a href="character-base-R.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R is f&quot;</span></span></code></pre></div>
 <ul>
 <li>分割</li>
 </ul>
 <p>函数<code>strsplit</code>按照指定的字符把字符分割成子字符。参数x被分割的字符，split是用于分割的字符标准，fixed是否完全匹配分隔符，默认是TRUE,完全匹配模式，当fixed参数为FALSE时，表名split参数是正则表达式，使用正则匹配。</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="character-base-R.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(x,split,fixed,perl,useBytes)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="character-base-R.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(x,split,fixed,perl,useBytes)</span></code></pre></div>
 <p>strsplit函数返回的结果是列表，大部分时候需要向量化后使用。</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="character-base-R.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(<span class="st">&#39;广东省-深圳市-宝安区&#39;</span>,<span class="at">split=</span><span class="st">&#39;-&#39;</span>)</span>
-<span id="cb218-2"><a href="character-base-R.html#cb218-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb218-3"><a href="character-base-R.html#cb218-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;广东省&quot; &quot;深圳市&quot; &quot;宝安区&quot;</span></span>
-<span id="cb218-4"><a href="character-base-R.html#cb218-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 向量化</span></span>
-<span id="cb218-5"><a href="character-base-R.html#cb218-5" aria-hidden="true" tabindex="-1"></a><span class="co"># unlist(strsplit(&#39;广东省-深圳市-宝安区&#39;,split=&#39;-&#39;))</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="character-base-R.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(<span class="st">&#39;广东省-深圳市-宝安区&#39;</span>,<span class="at">split=</span><span class="st">&#39;-&#39;</span>)</span>
+<span id="cb245-2"><a href="character-base-R.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb245-3"><a href="character-base-R.html#cb245-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;广东省&quot; &quot;深圳市&quot; &quot;宝安区&quot;</span></span>
+<span id="cb245-4"><a href="character-base-R.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 向量化</span></span>
+<span id="cb245-5"><a href="character-base-R.html#cb245-5" aria-hidden="true" tabindex="-1"></a><span class="co"># unlist(strsplit(&#39;广东省-深圳市-宝安区&#39;,split=&#39;-&#39;))</span></span></code></pre></div>
 <p>官方手册中提供一个字符倒叙的自定义编写的函数：</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="character-base-R.html#cb219-1" aria-hidden="true" tabindex="-1"></a>strReverse <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sapply</span>(<span class="fu">lapply</span>(<span class="fu">strsplit</span>(x, <span class="cn">NULL</span>), rev), paste, <span class="at">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb219-2"><a href="character-base-R.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="fu">strReverse</span>(<span class="fu">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;Statistics&quot;</span>))</span>
-<span id="cb219-3"><a href="character-base-R.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cba&quot;        &quot;scitsitatS&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="character-base-R.html#cb246-1" aria-hidden="true" tabindex="-1"></a>strReverse <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sapply</span>(<span class="fu">lapply</span>(<span class="fu">strsplit</span>(x, <span class="cn">NULL</span>), rev), paste, <span class="at">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb246-2"><a href="character-base-R.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">strReverse</span>(<span class="fu">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;Statistics&quot;</span>))</span>
+<span id="cb246-3"><a href="character-base-R.html#cb246-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cba&quot;        &quot;scitsitatS&quot;</span></span></code></pre></div>
 </div>
 <div id="newfeatures" class="section level3" number="4.1.4">
 <h3><span class="header-section-number">4.1.4</span> 新特性</h3>
 <p>该特性让反斜杠或单引号和双引号书写变得容易。用法r“(…)”，括号中可以是任意字符，详情请看<code>?Quotes</code>。</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="character-base-R.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># windows下路径 ,不用转义路径复制直接可用</span></span>
-<span id="cb220-2"><a href="character-base-R.html#cb220-2" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> r<span class="st">&quot;(C:\Users\zhongyf\Desktop\Rbook)&quot;</span> </span>
-<span id="cb220-3"><a href="character-base-R.html#cb220-3" aria-hidden="true" tabindex="-1"></a>char</span>
-<span id="cb220-4"><a href="character-base-R.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:\\Users\\zhongyf\\Desktop\\Rbook&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="character-base-R.html#cb221-1" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;我是一名</span><span class="sc">\&#39;</span><span class="st">小学生</span><span class="sc">\&#39;</span><span class="st">&quot;</span> </span>
-<span id="cb221-2"><a href="character-base-R.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
-<span id="cb221-3"><a href="character-base-R.html#cb221-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;小学生&#39;</span></span>
-<span id="cb221-4"><a href="character-base-R.html#cb221-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb221-5"><a href="character-base-R.html#cb221-5" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> r<span class="st">&quot;(我是一名&#39;R语言&#39;学习者)&quot;</span></span>
-<span id="cb221-6"><a href="character-base-R.html#cb221-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
-<span id="cb221-7"><a href="character-base-R.html#cb221-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;R语言&#39;学习者</span></span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="character-base-R.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># windows下路径 ,不用转义路径复制直接可用</span></span>
+<span id="cb247-2"><a href="character-base-R.html#cb247-2" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> r<span class="st">&quot;(C:\Users\zhongyf\Desktop\Rbook)&quot;</span> </span>
+<span id="cb247-3"><a href="character-base-R.html#cb247-3" aria-hidden="true" tabindex="-1"></a>char</span>
+<span id="cb247-4"><a href="character-base-R.html#cb247-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;C:\\Users\\zhongyf\\Desktop\\Rbook&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="character-base-R.html#cb248-1" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;我是一名</span><span class="sc">\&#39;</span><span class="st">小学生</span><span class="sc">\&#39;</span><span class="st">&quot;</span> </span>
+<span id="cb248-2"><a href="character-base-R.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
+<span id="cb248-3"><a href="character-base-R.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;小学生&#39;</span></span>
+<span id="cb248-4"><a href="character-base-R.html#cb248-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-5"><a href="character-base-R.html#cb248-5" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> r<span class="st">&quot;(我是一名&#39;R语言&#39;学习者)&quot;</span></span>
+<span id="cb248-6"><a href="character-base-R.html#cb248-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(char)</span>
+<span id="cb248-7"><a href="character-base-R.html#cb248-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 我是一名&#39;R语言&#39;学习者</span></span></code></pre></div>
 <p><strong>注意该特性需要在R-4.0.0之后的版本中使用</strong></p>
 </div>
 </div>

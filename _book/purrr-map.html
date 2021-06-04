@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.2 map系列常用函数 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>10.2 map系列常用函数 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.2 map系列常用函数 | R 语言学习笔记" />
+  <meta property="og:title" content="10.2 map系列常用函数 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.2 map系列常用函数 | R 语言学习笔记" />
+  <meta name="twitter:title" content="10.2 map系列常用函数 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -539,27 +541,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>map_int(.x, .f, ...)</code> 返回整数</p>
 <p>map_df()函数示例</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="purrr-map.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 采用匿名函数</span></span>
-<span id="cb488-2"><a href="purrr-map.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="cf">function</span>(.x) {</span>
-<span id="cb488-3"><a href="purrr-map.html#cb488-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">old_number =</span> .x, </span>
-<span id="cb488-4"><a href="purrr-map.html#cb488-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">new_number =</span> <span class="fu">addTen</span>(.x)))</span>
-<span id="cb488-5"><a href="purrr-map.html#cb488-5" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb488-6"><a href="purrr-map.html#cb488-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
-<span id="cb488-7"><a href="purrr-map.html#cb488-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
-<span id="cb488-8"><a href="purrr-map.html#cb488-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
-<span id="cb488-9"><a href="purrr-map.html#cb488-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span>
-<span id="cb488-10"><a href="purrr-map.html#cb488-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb488-11"><a href="purrr-map.html#cb488-11" aria-hidden="true" tabindex="-1"></a><span class="co">#同上</span></span>
-<span id="cb488-12"><a href="purrr-map.html#cb488-12" aria-hidden="true" tabindex="-1"></a><span class="co">#step1 定义函数</span></span>
-<span id="cb488-13"><a href="purrr-map.html#cb488-13" aria-hidden="true" tabindex="-1"></a>make_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb488-14"><a href="purrr-map.html#cb488-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">old_number =</span> x,<span class="at">new_number =</span> <span class="fu">addTen</span>(x))</span>
-<span id="cb488-15"><a href="purrr-map.html#cb488-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb488-16"><a href="purrr-map.html#cb488-16" aria-hidden="true" tabindex="-1"></a><span class="co">#step2 计算</span></span>
-<span id="cb488-17"><a href="purrr-map.html#cb488-17" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),make_dataframe)</span>
-<span id="cb488-18"><a href="purrr-map.html#cb488-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
-<span id="cb488-19"><a href="purrr-map.html#cb488-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
-<span id="cb488-20"><a href="purrr-map.html#cb488-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
-<span id="cb488-21"><a href="purrr-map.html#cb488-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="purrr-map.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 采用匿名函数</span></span>
+<span id="cb515-2"><a href="purrr-map.html#cb515-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="cf">function</span>(.x) {</span>
+<span id="cb515-3"><a href="purrr-map.html#cb515-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">old_number =</span> .x, </span>
+<span id="cb515-4"><a href="purrr-map.html#cb515-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">new_number =</span> <span class="fu">addTen</span>(.x)))</span>
+<span id="cb515-5"><a href="purrr-map.html#cb515-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb515-6"><a href="purrr-map.html#cb515-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
+<span id="cb515-7"><a href="purrr-map.html#cb515-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
+<span id="cb515-8"><a href="purrr-map.html#cb515-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
+<span id="cb515-9"><a href="purrr-map.html#cb515-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span>
+<span id="cb515-10"><a href="purrr-map.html#cb515-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb515-11"><a href="purrr-map.html#cb515-11" aria-hidden="true" tabindex="-1"></a><span class="co">#同上</span></span>
+<span id="cb515-12"><a href="purrr-map.html#cb515-12" aria-hidden="true" tabindex="-1"></a><span class="co">#step1 定义函数</span></span>
+<span id="cb515-13"><a href="purrr-map.html#cb515-13" aria-hidden="true" tabindex="-1"></a>make_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb515-14"><a href="purrr-map.html#cb515-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">old_number =</span> x,<span class="at">new_number =</span> <span class="fu">addTen</span>(x))</span>
+<span id="cb515-15"><a href="purrr-map.html#cb515-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb515-16"><a href="purrr-map.html#cb515-16" aria-hidden="true" tabindex="-1"></a><span class="co">#step2 计算</span></span>
+<span id="cb515-17"><a href="purrr-map.html#cb515-17" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),make_dataframe)</span>
+<span id="cb515-18"><a href="purrr-map.html#cb515-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
+<span id="cb515-19"><a href="purrr-map.html#cb515-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
+<span id="cb515-20"><a href="purrr-map.html#cb515-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
+<span id="cb515-21"><a href="purrr-map.html#cb515-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span></code></pre></div>
 </div>
             </section>
 

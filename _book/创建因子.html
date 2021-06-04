@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.1 创建因子 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>6.1 创建因子 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.1 创建因子 | R 语言学习笔记" />
+  <meta property="og:title" content="6.1 创建因子 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.1 创建因子 | R 语言学习笔记" />
+  <meta name="twitter:title" content="6.1 创建因子 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -519,14 +521,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="创建因子" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> 创建因子</h2>
 <p>实际工作中,可能各个事业部或部门之间没有实际顺序,但是在数据处理过程中需要指定顺序可以用因子.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="创建因子.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb320-2"><a href="创建因子.html#cb320-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;部门a&#39;</span>,<span class="st">&#39;部门b&#39;</span>,<span class="st">&#39;部门d&#39;</span>,<span class="st">&#39;部门f&#39;</span>)</span>
-<span id="cb320-3"><a href="创建因子.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(vec1)</span>
-<span id="cb320-4"><a href="创建因子.html#cb320-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;部门a&quot; &quot;部门b&quot; &quot;部门d&quot; &quot;部门f&quot;</span></span>
-<span id="cb320-5"><a href="创建因子.html#cb320-5" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="st">&#39;部门f&#39;</span>,<span class="st">&#39;部门d&#39;</span>,<span class="st">&#39;部门a&#39;</span>,<span class="st">&#39;部门b&#39;</span>))</span>
-<span id="cb320-6"><a href="创建因子.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(vec2)</span>
-<span id="cb320-7"><a href="创建因子.html#cb320-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 部门f 部门d 部门a 部门b</span></span>
-<span id="cb320-8"><a href="创建因子.html#cb320-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: 部门f 部门d 部门a 部门b</span></span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="创建因子.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb347-2"><a href="创建因子.html#cb347-2" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;部门a&#39;</span>,<span class="st">&#39;部门b&#39;</span>,<span class="st">&#39;部门d&#39;</span>,<span class="st">&#39;部门f&#39;</span>)</span>
+<span id="cb347-3"><a href="创建因子.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(vec1)</span>
+<span id="cb347-4"><a href="创建因子.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;部门a&quot; &quot;部门b&quot; &quot;部门d&quot; &quot;部门f&quot;</span></span>
+<span id="cb347-5"><a href="创建因子.html#cb347-5" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(<span class="fu">c</span>(<span class="st">&#39;部门f&#39;</span>,<span class="st">&#39;部门d&#39;</span>,<span class="st">&#39;部门a&#39;</span>,<span class="st">&#39;部门b&#39;</span>))</span>
+<span id="cb347-6"><a href="创建因子.html#cb347-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(vec2)</span>
+<span id="cb347-7"><a href="创建因子.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 部门f 部门d 部门a 部门b</span></span>
+<span id="cb347-8"><a href="创建因子.html#cb347-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: 部门f 部门d 部门a 部门b</span></span></code></pre></div>
 <p>如上所示:实际工作中可以通过指定因子水平从而达到排序效果,在可视化中也可以运用,像指定X轴的顺序.</p>
 
 </div>

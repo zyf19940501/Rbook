@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11.4 返回值 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>11.4 返回值 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.4 返回值 | R 语言学习笔记" />
+  <meta property="og:title" content="11.4 返回值 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.4 返回值 | R 语言学习笔记" />
+  <meta name="twitter:title" content="11.4 返回值 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -525,57 +527,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>A common reason to do this is because the inputs are empty:</li>
 </ul>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="function-return.html#cb511-1" aria-hidden="true" tabindex="-1"></a>complicated_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z) {</span>
-<span id="cb511-2"><a href="function-return.html#cb511-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span> <span class="sc">||</span> <span class="fu">length</span>(y) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb511-3"><a href="function-return.html#cb511-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
-<span id="cb511-4"><a href="function-return.html#cb511-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb511-5"><a href="function-return.html#cb511-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Complicated code here</span></span>
-<span id="cb511-6"><a href="function-return.html#cb511-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="function-return.html#cb538-1" aria-hidden="true" tabindex="-1"></a>complicated_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z) {</span>
+<span id="cb538-2"><a href="function-return.html#cb538-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span> <span class="sc">||</span> <span class="fu">length</span>(y) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb538-3"><a href="function-return.html#cb538-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
+<span id="cb538-4"><a href="function-return.html#cb538-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb538-5"><a href="function-return.html#cb538-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Complicated code here</span></span>
+<span id="cb538-6"><a href="function-return.html#cb538-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Another reason is because you have a if statement with one complex block and one simple block. For example, you might write an if statement like this:</li>
 </ul>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="function-return.html#cb512-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb512-2"><a href="function-return.html#cb512-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x) {</span>
-<span id="cb512-3"><a href="function-return.html#cb512-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Do </span></span>
-<span id="cb512-4"><a href="function-return.html#cb512-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># something</span></span>
-<span id="cb512-5"><a href="function-return.html#cb512-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># that</span></span>
-<span id="cb512-6"><a href="function-return.html#cb512-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># takes</span></span>
-<span id="cb512-7"><a href="function-return.html#cb512-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># many</span></span>
-<span id="cb512-8"><a href="function-return.html#cb512-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># lines</span></span>
-<span id="cb512-9"><a href="function-return.html#cb512-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># to</span></span>
-<span id="cb512-10"><a href="function-return.html#cb512-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># express</span></span>
-<span id="cb512-11"><a href="function-return.html#cb512-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb512-12"><a href="function-return.html#cb512-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return something short</span></span>
-<span id="cb512-13"><a href="function-return.html#cb512-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb512-14"><a href="function-return.html#cb512-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="function-return.html#cb539-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb539-2"><a href="function-return.html#cb539-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x) {</span>
+<span id="cb539-3"><a href="function-return.html#cb539-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Do </span></span>
+<span id="cb539-4"><a href="function-return.html#cb539-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># something</span></span>
+<span id="cb539-5"><a href="function-return.html#cb539-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># that</span></span>
+<span id="cb539-6"><a href="function-return.html#cb539-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># takes</span></span>
+<span id="cb539-7"><a href="function-return.html#cb539-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># many</span></span>
+<span id="cb539-8"><a href="function-return.html#cb539-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># lines</span></span>
+<span id="cb539-9"><a href="function-return.html#cb539-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># to</span></span>
+<span id="cb539-10"><a href="function-return.html#cb539-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># express</span></span>
+<span id="cb539-11"><a href="function-return.html#cb539-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb539-12"><a href="function-return.html#cb539-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return something short</span></span>
+<span id="cb539-13"><a href="function-return.html#cb539-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb539-14"><a href="function-return.html#cb539-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="编写管道函数" class="section level3" number="11.4.2">
 <h3><span class="header-section-number">11.4.2</span> 编写管道函数</h3>
 <p>管道函数有两种基本类型: transformations and side-effects。使用transformations时，会将对象传递到函数的第一个参数，然后返回修改后的对象。使用side-effects时,不会对传递的对象进行转换。相反，该函数对对象执行操作，例如绘制图或保存文件。副作用函数应该“无形地”返回第一个参数，以便在不打印它们时仍可以在管道中使用它们。例如，以下简单函数在数据框中打印缺失值的数量：</p>
 <p>以上从 R for Data Science 中翻译得来。</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="function-return.html#cb513-1" aria-hidden="true" tabindex="-1"></a>show_missings <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb513-2"><a href="function-return.html#cb513-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(df))</span>
-<span id="cb513-3"><a href="function-return.html#cb513-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Missing values: &quot;</span>, n, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb513-4"><a href="function-return.html#cb513-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb513-5"><a href="function-return.html#cb513-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">invisible</span>(df)</span>
-<span id="cb513-6"><a href="function-return.html#cb513-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="function-return.html#cb540-1" aria-hidden="true" tabindex="-1"></a>show_missings <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb540-2"><a href="function-return.html#cb540-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(df))</span>
+<span id="cb540-3"><a href="function-return.html#cb540-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Missing values: &quot;</span>, n, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb540-4"><a href="function-return.html#cb540-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb540-5"><a href="function-return.html#cb540-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">invisible</span>(df)</span>
+<span id="cb540-6"><a href="function-return.html#cb540-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>以交互invisible()方式调用它,则意味着输入df不会被打印出来:</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="function-return.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_missings</span>(mtcars)</span>
-<span id="cb514-2"><a href="function-return.html#cb514-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Missing values: 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="function-return.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_missings</span>(mtcars)</span>
+<span id="cb541-2"><a href="function-return.html#cb541-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Missing values: 0</span></span></code></pre></div>
 <p>但是结果仍存在，默认情况下只是不打印显示出来:</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="function-return.html#cb515-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">show_missings</span>(mtcars) </span>
-<span id="cb515-2"><a href="function-return.html#cb515-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Missing values: 0</span></span>
-<span id="cb515-3"><a href="function-return.html#cb515-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb515-4"><a href="function-return.html#cb515-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot;</span></span>
-<span id="cb515-5"><a href="function-return.html#cb515-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span>
-<span id="cb515-6"><a href="function-return.html#cb515-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32 11</span></span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="function-return.html#cb542-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">show_missings</span>(mtcars) </span>
+<span id="cb542-2"><a href="function-return.html#cb542-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Missing values: 0</span></span>
+<span id="cb542-3"><a href="function-return.html#cb542-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb542-4"><a href="function-return.html#cb542-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot;</span></span>
+<span id="cb542-5"><a href="function-return.html#cb542-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span>
+<span id="cb542-6"><a href="function-return.html#cb542-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32 11</span></span></code></pre></div>
 <p>在管道中继续使用</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="function-return.html#cb516-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb516-2"><a href="function-return.html#cb516-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_missings</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb516-3"><a href="function-return.html#cb516-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mpg =</span> <span class="fu">ifelse</span>(mpg <span class="sc">&lt;</span> <span class="dv">20</span>, <span class="cn">NA</span>, mpg)) <span class="sc">%&gt;%</span> </span>
-<span id="cb516-4"><a href="function-return.html#cb516-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_missings</span>() </span>
-<span id="cb516-5"><a href="function-return.html#cb516-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Missing values: 0</span></span>
-<span id="cb516-6"><a href="function-return.html#cb516-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Missing values: 18</span></span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="function-return.html#cb543-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb543-2"><a href="function-return.html#cb543-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_missings</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb543-3"><a href="function-return.html#cb543-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mpg =</span> <span class="fu">ifelse</span>(mpg <span class="sc">&lt;</span> <span class="dv">20</span>, <span class="cn">NA</span>, mpg)) <span class="sc">%&gt;%</span> </span>
+<span id="cb543-4"><a href="function-return.html#cb543-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_missings</span>() </span>
+<span id="cb543-5"><a href="function-return.html#cb543-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Missing values: 0</span></span>
+<span id="cb543-6"><a href="function-return.html#cb543-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Missing values: 18</span></span></code></pre></div>
 </div>
 </div>
             </section>

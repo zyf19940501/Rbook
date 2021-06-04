@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.1 简单用法 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>10.1 简单用法 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.1 简单用法 | R 语言学习笔记" />
+  <meta property="og:title" content="10.1 简单用法 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.1 简单用法 | R 语言学习笔记" />
+  <meta name="twitter:title" content="10.1 简单用法 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -522,45 +524,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>map</li>
 </ul>
 <p>用map循环迭代,map函数始终返回list对象。</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="purrr-basic-usage.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb486-2"><a href="purrr-basic-usage.html#cb486-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb486-3"><a href="purrr-basic-usage.html#cb486-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define function</span></span>
-<span id="cb486-4"><a href="purrr-basic-usage.html#cb486-4" aria-hidden="true" tabindex="-1"></a>addTen <span class="ot">&lt;-</span> <span class="cf">function</span>(.x) {</span>
-<span id="cb486-5"><a href="purrr-basic-usage.html#cb486-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.x <span class="sc">+</span> <span class="dv">10</span>)</span>
-<span id="cb486-6"><a href="purrr-basic-usage.html#cb486-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb486-7"><a href="purrr-basic-usage.html#cb486-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb486-8"><a href="purrr-basic-usage.html#cb486-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="at">.f =</span> addTen)</span>
-<span id="cb486-9"><a href="purrr-basic-usage.html#cb486-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb486-10"><a href="purrr-basic-usage.html#cb486-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
-<span id="cb486-11"><a href="purrr-basic-usage.html#cb486-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb486-12"><a href="purrr-basic-usage.html#cb486-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb486-13"><a href="purrr-basic-usage.html#cb486-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14</span></span>
-<span id="cb486-14"><a href="purrr-basic-usage.html#cb486-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb486-15"><a href="purrr-basic-usage.html#cb486-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb486-16"><a href="purrr-basic-usage.html#cb486-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 17</span></span>
-<span id="cb486-17"><a href="purrr-basic-usage.html#cb486-17" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb486-18"><a href="purrr-basic-usage.html#cb486-18" aria-hidden="true" tabindex="-1"></a><span class="co"># map(c(1, 4, 7), addTen) # same above</span></span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="purrr-basic-usage.html#cb513-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb513-2"><a href="purrr-basic-usage.html#cb513-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb513-3"><a href="purrr-basic-usage.html#cb513-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define function</span></span>
+<span id="cb513-4"><a href="purrr-basic-usage.html#cb513-4" aria-hidden="true" tabindex="-1"></a>addTen <span class="ot">&lt;-</span> <span class="cf">function</span>(.x) {</span>
+<span id="cb513-5"><a href="purrr-basic-usage.html#cb513-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(.x <span class="sc">+</span> <span class="dv">10</span>)</span>
+<span id="cb513-6"><a href="purrr-basic-usage.html#cb513-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb513-7"><a href="purrr-basic-usage.html#cb513-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb513-8"><a href="purrr-basic-usage.html#cb513-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="at">.f =</span> addTen)</span>
+<span id="cb513-9"><a href="purrr-basic-usage.html#cb513-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb513-10"><a href="purrr-basic-usage.html#cb513-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
+<span id="cb513-11"><a href="purrr-basic-usage.html#cb513-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb513-12"><a href="purrr-basic-usage.html#cb513-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb513-13"><a href="purrr-basic-usage.html#cb513-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14</span></span>
+<span id="cb513-14"><a href="purrr-basic-usage.html#cb513-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb513-15"><a href="purrr-basic-usage.html#cb513-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb513-16"><a href="purrr-basic-usage.html#cb513-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 17</span></span>
+<span id="cb513-17"><a href="purrr-basic-usage.html#cb513-17" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb513-18"><a href="purrr-basic-usage.html#cb513-18" aria-hidden="true" tabindex="-1"></a><span class="co"># map(c(1, 4, 7), addTen) # same above</span></span></code></pre></div>
 <ul>
 <li>map_dbl</li>
 </ul>
 <p>用map_dbl循环迭代，map_dbl函数返回vector。</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="purrr-basic-usage.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(purrr)</span></span>
-<span id="cb487-2"><a href="purrr-basic-usage.html#cb487-2" aria-hidden="true" tabindex="-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb487-3"><a href="purrr-basic-usage.html#cb487-3" aria-hidden="true" tabindex="-1"></a>  (x<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>x</span>
-<span id="cb487-4"><a href="purrr-basic-usage.html#cb487-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb487-5"><a href="purrr-basic-usage.html#cb487-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,add1) <span class="co"># maP_dbl 输出结果为向量</span></span>
-<span id="cb487-6"><a href="purrr-basic-usage.html#cb487-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb487-7"><a href="purrr-basic-usage.html#cb487-7" aria-hidden="true" tabindex="-1"></a><span class="co">#for版本</span></span>
-<span id="cb487-8"><a href="purrr-basic-usage.html#cb487-8" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">1000</span>)</span>
-<span id="cb487-9"><a href="purrr-basic-usage.html#cb487-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb487-10"><a href="purrr-basic-usage.html#cb487-10" aria-hidden="true" tabindex="-1"></a>  result2[i] <span class="ot">&lt;-</span> (i<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> i</span>
-<span id="cb487-11"><a href="purrr-basic-usage.html#cb487-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb487-12"><a href="purrr-basic-usage.html#cb487-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test </span></span>
-<span id="cb487-13"><a href="purrr-basic-usage.html#cb487-13" aria-hidden="true" tabindex="-1"></a><span class="co">#not run</span></span>
-<span id="cb487-14"><a href="purrr-basic-usage.html#cb487-14" aria-hidden="true" tabindex="-1"></a><span class="co">#table(result1 == result2)</span></span>
-<span id="cb487-15"><a href="purrr-basic-usage.html#cb487-15" aria-hidden="true" tabindex="-1"></a><span class="co"># all equal</span></span>
-<span id="cb487-16"><a href="purrr-basic-usage.html#cb487-16" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(result1,result2)</span>
-<span id="cb487-17"><a href="purrr-basic-usage.html#cb487-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="purrr-basic-usage.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(purrr)</span></span>
+<span id="cb514-2"><a href="purrr-basic-usage.html#cb514-2" aria-hidden="true" tabindex="-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb514-3"><a href="purrr-basic-usage.html#cb514-3" aria-hidden="true" tabindex="-1"></a>  (x<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>x</span>
+<span id="cb514-4"><a href="purrr-basic-usage.html#cb514-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb514-5"><a href="purrr-basic-usage.html#cb514-5" aria-hidden="true" tabindex="-1"></a>result1 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,add1) <span class="co"># maP_dbl 输出结果为向量</span></span>
+<span id="cb514-6"><a href="purrr-basic-usage.html#cb514-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb514-7"><a href="purrr-basic-usage.html#cb514-7" aria-hidden="true" tabindex="-1"></a><span class="co">#for版本</span></span>
+<span id="cb514-8"><a href="purrr-basic-usage.html#cb514-8" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb514-9"><a href="purrr-basic-usage.html#cb514-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb514-10"><a href="purrr-basic-usage.html#cb514-10" aria-hidden="true" tabindex="-1"></a>  result2[i] <span class="ot">&lt;-</span> (i<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> i</span>
+<span id="cb514-11"><a href="purrr-basic-usage.html#cb514-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb514-12"><a href="purrr-basic-usage.html#cb514-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test </span></span>
+<span id="cb514-13"><a href="purrr-basic-usage.html#cb514-13" aria-hidden="true" tabindex="-1"></a><span class="co">#not run</span></span>
+<span id="cb514-14"><a href="purrr-basic-usage.html#cb514-14" aria-hidden="true" tabindex="-1"></a><span class="co">#table(result1 == result2)</span></span>
+<span id="cb514-15"><a href="purrr-basic-usage.html#cb514-15" aria-hidden="true" tabindex="-1"></a><span class="co"># all equal</span></span>
+<span id="cb514-16"><a href="purrr-basic-usage.html#cb514-16" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(result1,result2)</span>
+<span id="cb514-17"><a href="purrr-basic-usage.html#cb514-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
             </section>
 

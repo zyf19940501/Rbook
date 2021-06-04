@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.1 基础介绍 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>7.1 基础介绍 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.1 基础介绍 | R 语言学习笔记" />
+  <meta property="og:title" content="7.1 基础介绍 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.1 基础介绍 | R 语言学习笔记" />
+  <meta name="twitter:title" content="7.1 基础介绍 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -521,13 +523,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>本部分从data.table安装，内置的案例查看，到data.table的句式语法，实现基础行列筛选和聚合计算。</p>
 <p>1.安装</p>
 <p>安装详细信息请参考<a href="https://github.com/Rdatatable/data.table/wiki/Installation">the Installation wiki</a>，有关于不同系统安装首次以及相关说明。</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="datatable-description.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;data.table&quot;</span>)</span>
-<span id="cb321-2"><a href="datatable-description.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="co"># latest development version:</span></span>
-<span id="cb321-3"><a href="datatable-description.html#cb321-3" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">update.dev.pkg</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="datatable-description.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb348-2"><a href="datatable-description.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="co"># latest development version:</span></span>
+<span id="cb348-3"><a href="datatable-description.html#cb348-3" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">update.dev.pkg</span>()</span></code></pre></div>
 <p>2.使用说明</p>
 <p>通过以下代码查看内置的使用案例。</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="datatable-description.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb322-2"><a href="datatable-description.html#cb322-2" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(data.table)</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="datatable-description.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb349-2"><a href="datatable-description.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(data.table)</span></code></pre></div>
 <div id="读取数据" class="section level3" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> 读取数据</h3>
 <p>在我实际工作中接触的数据大部分以数据库,csv,Excel等形式存在，并且CSV格式数据较少。但是data.table包读取数据的<code>fread</code>函数仅接受CSV格式。如果是Excel格式文件，需要通过如<code>readxl</code>，<code>openxlsx</code>等包读入后转换为<code>data.table</code>格式数据。</p>
@@ -535,31 +537,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>案例中使用的数据集是R包<code>nycflights13</code>带的flights数据集。</p>
 </blockquote>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="datatable-description.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb323-2"><a href="datatable-description.html#cb323-2" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)) {</span>
-<span id="cb323-3"><a href="datatable-description.html#cb323-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;./data/flights.csv&quot;</span> <span class="co">#本地文件</span></span>
-<span id="cb323-4"><a href="datatable-description.html#cb323-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb323-5"><a href="datatable-description.html#cb323-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://raw.githubusercontent.com/Rdatatable/data.table/master/vignettes/flights.csv&quot;</span> <span class="co">#在线文件需翻墙</span></span>
-<span id="cb323-6"><a href="datatable-description.html#cb323-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb323-7"><a href="datatable-description.html#cb323-7" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(input) <span class="co">#具体参数请参照文档  实际工作中可能会用到的encoding参数,编码 encoding=&#39;UTF-8&#39;</span></span>
-<span id="cb323-8"><a href="datatable-description.html#cb323-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb323-9"><a href="datatable-description.html#cb323-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(flights)</span>
-<span id="cb323-10"><a href="datatable-description.html#cb323-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year month day dep_delay arr_delay carrier origin dest air_time distance</span></span>
-<span id="cb323-11"><a href="datatable-description.html#cb323-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2014     1   1        14        13      AA    JFK  LAX      359     2475</span></span>
-<span id="cb323-12"><a href="datatable-description.html#cb323-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2014     1   1        -3        13      AA    JFK  LAX      363     2475</span></span>
-<span id="cb323-13"><a href="datatable-description.html#cb323-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2014     1   1         2         9      AA    JFK  LAX      351     2475</span></span>
-<span id="cb323-14"><a href="datatable-description.html#cb323-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2014     1   1        -8       -26      AA    LGA  PBI      157     1035</span></span>
-<span id="cb323-15"><a href="datatable-description.html#cb323-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2014     1   1         2         1      AA    JFK  LAX      350     2475</span></span>
-<span id="cb323-16"><a href="datatable-description.html#cb323-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 2014     1   1         4         0      AA    EWR  LAX      339     2454</span></span>
-<span id="cb323-17"><a href="datatable-description.html#cb323-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    hour</span></span>
-<span id="cb323-18"><a href="datatable-description.html#cb323-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    9</span></span>
-<span id="cb323-19"><a href="datatable-description.html#cb323-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   11</span></span>
-<span id="cb323-20"><a href="datatable-description.html#cb323-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   19</span></span>
-<span id="cb323-21"><a href="datatable-description.html#cb323-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    7</span></span>
-<span id="cb323-22"><a href="datatable-description.html#cb323-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:   13</span></span>
-<span id="cb323-23"><a href="datatable-description.html#cb323-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:   18</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="datatable-description.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb350-2"><a href="datatable-description.html#cb350-2" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)) {</span>
+<span id="cb350-3"><a href="datatable-description.html#cb350-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;./data/flights.csv&quot;</span> <span class="co">#本地文件</span></span>
+<span id="cb350-4"><a href="datatable-description.html#cb350-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb350-5"><a href="datatable-description.html#cb350-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://raw.githubusercontent.com/Rdatatable/data.table/master/vignettes/flights.csv&quot;</span> <span class="co">#在线文件需翻墙</span></span>
+<span id="cb350-6"><a href="datatable-description.html#cb350-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb350-7"><a href="datatable-description.html#cb350-7" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(input) <span class="co">#具体参数请参照文档  实际工作中可能会用到的encoding参数,编码 encoding=&#39;UTF-8&#39;</span></span>
+<span id="cb350-8"><a href="datatable-description.html#cb350-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb350-9"><a href="datatable-description.html#cb350-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(flights)</span>
+<span id="cb350-10"><a href="datatable-description.html#cb350-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year month day dep_delay arr_delay carrier origin dest air_time distance</span></span>
+<span id="cb350-11"><a href="datatable-description.html#cb350-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2014     1   1        14        13      AA    JFK  LAX      359     2475</span></span>
+<span id="cb350-12"><a href="datatable-description.html#cb350-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2014     1   1        -3        13      AA    JFK  LAX      363     2475</span></span>
+<span id="cb350-13"><a href="datatable-description.html#cb350-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2014     1   1         2         9      AA    JFK  LAX      351     2475</span></span>
+<span id="cb350-14"><a href="datatable-description.html#cb350-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2014     1   1        -8       -26      AA    LGA  PBI      157     1035</span></span>
+<span id="cb350-15"><a href="datatable-description.html#cb350-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2014     1   1         2         1      AA    JFK  LAX      350     2475</span></span>
+<span id="cb350-16"><a href="datatable-description.html#cb350-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 2014     1   1         4         0      AA    EWR  LAX      339     2454</span></span>
+<span id="cb350-17"><a href="datatable-description.html#cb350-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    hour</span></span>
+<span id="cb350-18"><a href="datatable-description.html#cb350-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    9</span></span>
+<span id="cb350-19"><a href="datatable-description.html#cb350-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:   11</span></span>
+<span id="cb350-20"><a href="datatable-description.html#cb350-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:   19</span></span>
+<span id="cb350-21"><a href="datatable-description.html#cb350-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    7</span></span>
+<span id="cb350-22"><a href="datatable-description.html#cb350-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:   13</span></span>
+<span id="cb350-23"><a href="datatable-description.html#cb350-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:   18</span></span></code></pre></div>
 <p>本文读取本地文件,如果该数据集下载失败,可更改地址为(<a href="http://www.zhongyufei.com/datatable/data/flights.csv" class="uri">http://www.zhongyufei.com/datatable/data/flights.csv</a>)</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="datatable-description.html#cb324-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;http://www.zhongyufei.com/Rbook/data/flights.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="datatable-description.html#cb351-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;http://www.zhongyufei.com/Rbook/data/flights.csv&quot;</span>)</span></code></pre></div>
 <p>数据集记录的是 2014 年,纽约市3大机场(分别为:JFK 肯尼迪国际机场、 LGA 拉瓜迪亚机场,和 EWR 纽瓦克自由国际机场)起飞的航班信息。</p>
 <p>具体的记录信息(特征列)，包括起飞时间、到达时间、延误时长、航空公司、始发机场、目的机场、飞行时长，和飞行距离等。</p>
 </div>
@@ -570,9 +572,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="https://gitee.com/zhongyufei/photo-bed/raw/pic/img/data.table-i-j-by%E4%BB%8B%E7%BB%8D.png" alt="" />
 <p class="caption">i-j-by</p>
 </div>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="datatable-description.html#cb325-1" aria-hidden="true" tabindex="-1"></a>DT[i, j, by]</span>
-<span id="cb325-2"><a href="datatable-description.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   R:                 i                 j        by</span></span>
-<span id="cb325-3"><a href="datatable-description.html#cb325-3" aria-hidden="true" tabindex="-1"></a><span class="do">## SQL:  where | order by   select | update  group by</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="datatable-description.html#cb352-1" aria-hidden="true" tabindex="-1"></a>DT[i, j, by]</span>
+<span id="cb352-2"><a href="datatable-description.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   R:                 i                 j        by</span></span>
+<span id="cb352-3"><a href="datatable-description.html#cb352-3" aria-hidden="true" tabindex="-1"></a><span class="do">## SQL:  where | order by   select | update  group by</span></span></code></pre></div>
 <p>data.table个人理解主要有三大类参数,i参数做筛选,j参数做计算,by参数做分组.</p>
 <p>拿Excel透视表类别,i位置参数当作『筛选』,by位置用来做汇总字段『行』,j位置当作『值』,如下所示:</p>
 <div class="figure">
@@ -581,21 +583,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>1.代码实例</p>
 <p>代码求2014年6月,从各始发机场到各目的机场的飞行距离求和.</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="datatable-description.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb326-2"><a href="datatable-description.html#cb326-2" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)</span>
-<span id="cb326-3"><a href="datatable-description.html#cb326-3" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span>
-<span id="cb326-4"><a href="datatable-description.html#cb326-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      origin dest 求和项distance</span></span>
-<span id="cb326-5"><a href="datatable-description.html#cb326-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:    JFK  LAX        2663100</span></span>
-<span id="cb326-6"><a href="datatable-description.html#cb326-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2:    JFK  DFW          82069</span></span>
-<span id="cb326-7"><a href="datatable-description.html#cb326-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3:    JFK  LAS         795792</span></span>
-<span id="cb326-8"><a href="datatable-description.html#cb326-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4:    JFK  SFO        1967946</span></span>
-<span id="cb326-9"><a href="datatable-description.html#cb326-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5:    JFK  SAN         349778</span></span>
-<span id="cb326-10"><a href="datatable-description.html#cb326-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ---                           </span></span>
-<span id="cb326-11"><a href="datatable-description.html#cb326-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 191:    EWR  ANC          13480</span></span>
-<span id="cb326-12"><a href="datatable-description.html#cb326-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 192:    EWR  BZN          15056</span></span>
-<span id="cb326-13"><a href="datatable-description.html#cb326-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 193:    LGA  TVC           7205</span></span>
-<span id="cb326-14"><a href="datatable-description.html#cb326-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 194:    LGA  BZN           3788</span></span>
-<span id="cb326-15"><a href="datatable-description.html#cb326-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 195:    JFK  HYA            980</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="datatable-description.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb353-2"><a href="datatable-description.html#cb353-2" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;./data/flights.csv&quot;</span>)</span>
+<span id="cb353-3"><a href="datatable-description.html#cb353-3" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span>
+<span id="cb353-4"><a href="datatable-description.html#cb353-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      origin dest 求和项distance</span></span>
+<span id="cb353-5"><a href="datatable-description.html#cb353-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1:    JFK  LAX        2663100</span></span>
+<span id="cb353-6"><a href="datatable-description.html#cb353-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2:    JFK  DFW          82069</span></span>
+<span id="cb353-7"><a href="datatable-description.html#cb353-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3:    JFK  LAS         795792</span></span>
+<span id="cb353-8"><a href="datatable-description.html#cb353-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4:    JFK  SFO        1967946</span></span>
+<span id="cb353-9"><a href="datatable-description.html#cb353-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5:    JFK  SAN         349778</span></span>
+<span id="cb353-10"><a href="datatable-description.html#cb353-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  ---                           </span></span>
+<span id="cb353-11"><a href="datatable-description.html#cb353-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 191:    EWR  ANC          13480</span></span>
+<span id="cb353-12"><a href="datatable-description.html#cb353-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 192:    EWR  BZN          15056</span></span>
+<span id="cb353-13"><a href="datatable-description.html#cb353-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 193:    LGA  TVC           7205</span></span>
+<span id="cb353-14"><a href="datatable-description.html#cb353-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 194:    LGA  BZN           3788</span></span>
+<span id="cb353-15"><a href="datatable-description.html#cb353-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 195:    JFK  HYA            980</span></span></code></pre></div>
 <p>2.代码解释</p>
 <p>i 的部分：条件year==2014 和 month==6 ;</p>
 <p>j 的部分：求和项distance=sum(distance)，写在.()中或者list()中；</p>
@@ -609,127 +611,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">7.1.3.1</span> i行筛选</h4>
 <p>行筛选是一种很常见的数据操作行为，类似我们Excel中的筛选，即按照一定条件筛选符合要求的数据。条件筛选一般分为单条件筛选、多条件筛选；</p>
 <p>在筛选时涉及到条件判断，R语言中常用的条件判断分为逻辑运算、关系运算。常用的关系运算符 &gt;、 &lt;、==、!=、&gt;=、&lt;=分别代表大于、小于、等于、不等于、大于等于、小于等于。常用的逻辑运算符 &amp;、|、！等。</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="datatable-description.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co">#单条件筛选</span></span>
-<span id="cb327-2"><a href="datatable-description.html#cb327-2" aria-hidden="true" tabindex="-1"></a>filghts[year <span class="sc">==</span> <span class="dv">2014</span>] <span class="co">#筛选year==2014</span></span>
-<span id="cb327-3"><a href="datatable-description.html#cb327-3" aria-hidden="true" tabindex="-1"></a><span class="co">#多条件筛选 用 &amp; 链接</span></span>
-<span id="cb327-4"><a href="datatable-description.html#cb327-4" aria-hidden="true" tabindex="-1"></a>flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
-<span id="cb327-5"><a href="datatable-description.html#cb327-5" aria-hidden="true" tabindex="-1"></a><span class="co"># | 相当于中文条件或 </span></span>
-<span id="cb327-6"><a href="datatable-description.html#cb327-6" aria-hidden="true" tabindex="-1"></a>flights[ month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">|</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
-<span id="cb327-7"><a href="datatable-description.html#cb327-7" aria-hidden="true" tabindex="-1"></a><span class="co"># %in% 类似sql中in用法</span></span>
-<span id="cb327-8"><a href="datatable-description.html#cb327-8" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>)] </span>
-<span id="cb327-9"><a href="datatable-description.html#cb327-9" aria-hidden="true" tabindex="-1"></a><span class="co"># %between% 类似sql中between and 用法</span></span>
-<span id="cb327-10"><a href="datatable-description.html#cb327-10" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="datatable-description.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="co">#单条件筛选</span></span>
+<span id="cb354-2"><a href="datatable-description.html#cb354-2" aria-hidden="true" tabindex="-1"></a>filghts[year <span class="sc">==</span> <span class="dv">2014</span>] <span class="co">#筛选year==2014</span></span>
+<span id="cb354-3"><a href="datatable-description.html#cb354-3" aria-hidden="true" tabindex="-1"></a><span class="co">#多条件筛选 用 &amp; 链接</span></span>
+<span id="cb354-4"><a href="datatable-description.html#cb354-4" aria-hidden="true" tabindex="-1"></a>flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
+<span id="cb354-5"><a href="datatable-description.html#cb354-5" aria-hidden="true" tabindex="-1"></a><span class="co"># | 相当于中文条件或 </span></span>
+<span id="cb354-6"><a href="datatable-description.html#cb354-6" aria-hidden="true" tabindex="-1"></a>flights[ month <span class="sc">==</span> <span class="dv">5</span> <span class="sc">|</span> month <span class="sc">==</span> <span class="dv">6</span>] </span>
+<span id="cb354-7"><a href="datatable-description.html#cb354-7" aria-hidden="true" tabindex="-1"></a><span class="co"># %in% 类似sql中in用法</span></span>
+<span id="cb354-8"><a href="datatable-description.html#cb354-8" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>)] </span>
+<span id="cb354-9"><a href="datatable-description.html#cb354-9" aria-hidden="true" tabindex="-1"></a><span class="co"># %between% 类似sql中between and 用法</span></span>
+<span id="cb354-10"><a href="datatable-description.html#cb354-10" aria-hidden="true" tabindex="-1"></a>flights[month <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>)]</span></code></pre></div>
 </div>
 <div id="j列操作" class="section level4" number="7.1.3.2">
 <h4><span class="header-section-number">7.1.3.2</span> j列操作</h4>
 <p>数据集较大、字段较多时，由于无效信息较多可以做适当精选，这时需要我们筛选列。与sql中的select用法一致，即保留想要的字段。</p>
 <p>.()或list()是data.table中的比较特殊的实现列筛选的用法。常规数字索引，字符向量索引同样有效。</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="datatable-description.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co">#注意前面的. .()</span></span>
-<span id="cb328-2"><a href="datatable-description.html#cb328-2" aria-hidden="true" tabindex="-1"></a>flights[,.(year,month,day,dep_delay,carrier,origin)] </span>
-<span id="cb328-3"><a href="datatable-description.html#cb328-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         year month day dep_delay carrier origin</span></span>
-<span id="cb328-4"><a href="datatable-description.html#cb328-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      1: 2014     1   1        14      AA    JFK</span></span>
-<span id="cb328-5"><a href="datatable-description.html#cb328-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      2: 2014     1   1        -3      AA    JFK</span></span>
-<span id="cb328-6"><a href="datatable-description.html#cb328-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      3: 2014     1   1         2      AA    JFK</span></span>
-<span id="cb328-7"><a href="datatable-description.html#cb328-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      4: 2014     1   1        -8      AA    LGA</span></span>
-<span id="cb328-8"><a href="datatable-description.html#cb328-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      5: 2014     1   1         2      AA    JFK</span></span>
-<span id="cb328-9"><a href="datatable-description.html#cb328-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ---                                        </span></span>
-<span id="cb328-10"><a href="datatable-description.html#cb328-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253312: 2014    10  31         1      UA    LGA</span></span>
-<span id="cb328-11"><a href="datatable-description.html#cb328-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253313: 2014    10  31        -5      UA    EWR</span></span>
-<span id="cb328-12"><a href="datatable-description.html#cb328-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253314: 2014    10  31        -8      MQ    LGA</span></span>
-<span id="cb328-13"><a href="datatable-description.html#cb328-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253315: 2014    10  31        -4      MQ    LGA</span></span>
-<span id="cb328-14"><a href="datatable-description.html#cb328-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253316: 2014    10  31        -5      MQ    LGA</span></span>
-<span id="cb328-15"><a href="datatable-description.html#cb328-15" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,list(year,month,day,dep_delay,carrier,origin)]  same above</span></span>
-<span id="cb328-16"><a href="datatable-description.html#cb328-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-17"><a href="datatable-description.html#cb328-17" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb328-18"><a href="datatable-description.html#cb328-18" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,1:3]</span></span>
-<span id="cb328-19"><a href="datatable-description.html#cb328-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-20"><a href="datatable-description.html#cb328-20" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb328-21"><a href="datatable-description.html#cb328-21" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,c(&#39;year&#39;,&#39;month&#39;,&#39;day&#39;)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="datatable-description.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="co">#注意前面的. .()</span></span>
+<span id="cb355-2"><a href="datatable-description.html#cb355-2" aria-hidden="true" tabindex="-1"></a>flights[,.(year,month,day,dep_delay,carrier,origin)] </span>
+<span id="cb355-3"><a href="datatable-description.html#cb355-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         year month day dep_delay carrier origin</span></span>
+<span id="cb355-4"><a href="datatable-description.html#cb355-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      1: 2014     1   1        14      AA    JFK</span></span>
+<span id="cb355-5"><a href="datatable-description.html#cb355-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      2: 2014     1   1        -3      AA    JFK</span></span>
+<span id="cb355-6"><a href="datatable-description.html#cb355-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      3: 2014     1   1         2      AA    JFK</span></span>
+<span id="cb355-7"><a href="datatable-description.html#cb355-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      4: 2014     1   1        -8      AA    LGA</span></span>
+<span id="cb355-8"><a href="datatable-description.html#cb355-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      5: 2014     1   1         2      AA    JFK</span></span>
+<span id="cb355-9"><a href="datatable-description.html#cb355-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ---                                        </span></span>
+<span id="cb355-10"><a href="datatable-description.html#cb355-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253312: 2014    10  31         1      UA    LGA</span></span>
+<span id="cb355-11"><a href="datatable-description.html#cb355-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253313: 2014    10  31        -5      UA    EWR</span></span>
+<span id="cb355-12"><a href="datatable-description.html#cb355-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253314: 2014    10  31        -8      MQ    LGA</span></span>
+<span id="cb355-13"><a href="datatable-description.html#cb355-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253315: 2014    10  31        -4      MQ    LGA</span></span>
+<span id="cb355-14"><a href="datatable-description.html#cb355-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 253316: 2014    10  31        -5      MQ    LGA</span></span>
+<span id="cb355-15"><a href="datatable-description.html#cb355-15" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,list(year,month,day,dep_delay,carrier,origin)]  same above</span></span>
+<span id="cb355-16"><a href="datatable-description.html#cb355-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-17"><a href="datatable-description.html#cb355-17" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb355-18"><a href="datatable-description.html#cb355-18" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,1:3]</span></span>
+<span id="cb355-19"><a href="datatable-description.html#cb355-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-20"><a href="datatable-description.html#cb355-20" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb355-21"><a href="datatable-description.html#cb355-21" aria-hidden="true" tabindex="-1"></a><span class="co"># flights[,c(&#39;year&#39;,&#39;month&#39;,&#39;day&#39;)]</span></span></code></pre></div>
 <p>setcolorder函数可以调整列的顺序，将常用的字段信息排在前面可以用过该函数实现。</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="datatable-description.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb329-2"><a href="datatable-description.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="co"># setcolorder(x = flights,neworder = c( &quot;month&quot;,&quot;day&quot;,&quot;dep_delay&quot; ,&quot;arr_delay&quot;,&quot;carrier&quot; )) </span></span>
-<span id="cb329-3"><a href="datatable-description.html#cb329-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按照指定列顺序排序 其余字段保持不变,不是建立副本,是直接修改了flights 数据的列顺序</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="datatable-description.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb356-2"><a href="datatable-description.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="co"># setcolorder(x = flights,neworder = c( &quot;month&quot;,&quot;day&quot;,&quot;dep_delay&quot; ,&quot;arr_delay&quot;,&quot;carrier&quot; )) </span></span>
+<span id="cb356-3"><a href="datatable-description.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按照指定列顺序排序 其余字段保持不变,不是建立副本,是直接修改了flights 数据的列顺序</span></span></code></pre></div>
 <ul>
 <li>常规计算</li>
 </ul>
 <p>根据最开始的Excel透视表截图，我们想要获得如截图一样的结果该怎么实现呢？代码如下：</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="datatable-description.html#cb330-1" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance),平均距离<span class="ot">=</span><span class="fu">mean</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="datatable-description.html#cb357-1" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(求和项<span class="at">distance=</span><span class="fu">sum</span>(distance),平均距离<span class="ot">=</span><span class="fu">mean</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span></code></pre></div>
 <p>在i的位置做筛选，j的位置做计算，by指定分组字段。在j的位置可以做各种各样的计算，R中自带的函数，或者是自己定义的函数。</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="datatable-description.html#cb331-1" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb331-2"><a href="datatable-description.html#cb331-2" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb331-3"><a href="datatable-description.html#cb331-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb331-4"><a href="datatable-description.html#cb331-4" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(<span class="fu">myfun</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span>
-<span id="cb331-5"><a href="datatable-description.html#cb331-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        origin dest      V1</span></span>
-<span id="cb331-6"><a href="datatable-description.html#cb331-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     1:    JFK  LAX 3062813</span></span>
-<span id="cb331-7"><a href="datatable-description.html#cb331-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     2:    JFK  LAX 3062813</span></span>
-<span id="cb331-8"><a href="datatable-description.html#cb331-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     3:    JFK  LAX 3062813</span></span>
-<span id="cb331-9"><a href="datatable-description.html#cb331-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     4:    JFK  LAX 3062813</span></span>
-<span id="cb331-10"><a href="datatable-description.html#cb331-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5:    JFK  LAX 3062813</span></span>
-<span id="cb331-11"><a href="datatable-description.html#cb331-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ---                    </span></span>
-<span id="cb331-12"><a href="datatable-description.html#cb331-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26484:    JFK  HYA   19208</span></span>
-<span id="cb331-13"><a href="datatable-description.html#cb331-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26485:    JFK  HYA   19208</span></span>
-<span id="cb331-14"><a href="datatable-description.html#cb331-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26486:    JFK  HYA   19208</span></span>
-<span id="cb331-15"><a href="datatable-description.html#cb331-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26487:    JFK  HYA   19208</span></span>
-<span id="cb331-16"><a href="datatable-description.html#cb331-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26488:    JFK  HYA   19208</span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="datatable-description.html#cb358-1" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb358-2"><a href="datatable-description.html#cb358-2" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb358-3"><a href="datatable-description.html#cb358-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb358-4"><a href="datatable-description.html#cb358-4" aria-hidden="true" tabindex="-1"></a>flights[year<span class="sc">==</span><span class="dv">2014</span> <span class="sc">&amp;</span> month<span class="sc">==</span><span class="dv">6</span>,.(<span class="fu">myfun</span>(distance)),by<span class="ot">=</span>.(origin,dest)]</span>
+<span id="cb358-5"><a href="datatable-description.html#cb358-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        origin dest      V1</span></span>
+<span id="cb358-6"><a href="datatable-description.html#cb358-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     1:    JFK  LAX 3062813</span></span>
+<span id="cb358-7"><a href="datatable-description.html#cb358-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     2:    JFK  LAX 3062813</span></span>
+<span id="cb358-8"><a href="datatable-description.html#cb358-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     3:    JFK  LAX 3062813</span></span>
+<span id="cb358-9"><a href="datatable-description.html#cb358-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     4:    JFK  LAX 3062813</span></span>
+<span id="cb358-10"><a href="datatable-description.html#cb358-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5:    JFK  LAX 3062813</span></span>
+<span id="cb358-11"><a href="datatable-description.html#cb358-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ---                    </span></span>
+<span id="cb358-12"><a href="datatable-description.html#cb358-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26484:    JFK  HYA   19208</span></span>
+<span id="cb358-13"><a href="datatable-description.html#cb358-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26485:    JFK  HYA   19208</span></span>
+<span id="cb358-14"><a href="datatable-description.html#cb358-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26486:    JFK  HYA   19208</span></span>
+<span id="cb358-15"><a href="datatable-description.html#cb358-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26487:    JFK  HYA   19208</span></span>
+<span id="cb358-16"><a href="datatable-description.html#cb358-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26488:    JFK  HYA   19208</span></span></code></pre></div>
 </div>
 <div id="by-分组" class="section level4" number="7.1.3.3">
 <h4><span class="header-section-number">7.1.3.3</span> by 分组</h4>
 <p>分组是按照某种分组实现一定条件下某种聚合方式的计算。分组可以是单字段，多字段以及条件字段等。</p>
 <p>1.按月分组</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="datatable-description.html#cb332-1" aria-hidden="true" tabindex="-1"></a>flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month)]</span>
-<span id="cb332-2"><a href="datatable-description.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     month       V1</span></span>
-<span id="cb332-3"><a href="datatable-description.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:     1 25112563</span></span>
-<span id="cb332-4"><a href="datatable-description.html#cb332-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:     2 22840391</span></span>
-<span id="cb332-5"><a href="datatable-description.html#cb332-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:     3 28716598</span></span>
-<span id="cb332-6"><a href="datatable-description.html#cb332-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:     4 27816797</span></span>
-<span id="cb332-7"><a href="datatable-description.html#cb332-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:     5 28030020</span></span>
-<span id="cb332-8"><a href="datatable-description.html#cb332-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:     6 29093557</span></span>
-<span id="cb332-9"><a href="datatable-description.html#cb332-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:     7 30059175</span></span>
-<span id="cb332-10"><a href="datatable-description.html#cb332-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:     8 30322047</span></span>
-<span id="cb332-11"><a href="datatable-description.html#cb332-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:     9 27615097</span></span>
-<span id="cb332-12"><a href="datatable-description.html#cb332-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    10 28900834</span></span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="datatable-description.html#cb359-1" aria-hidden="true" tabindex="-1"></a>flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month)]</span>
+<span id="cb359-2"><a href="datatable-description.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     month       V1</span></span>
+<span id="cb359-3"><a href="datatable-description.html#cb359-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:     1 25112563</span></span>
+<span id="cb359-4"><a href="datatable-description.html#cb359-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:     2 22840391</span></span>
+<span id="cb359-5"><a href="datatable-description.html#cb359-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:     3 28716598</span></span>
+<span id="cb359-6"><a href="datatable-description.html#cb359-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:     4 27816797</span></span>
+<span id="cb359-7"><a href="datatable-description.html#cb359-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:     5 28030020</span></span>
+<span id="cb359-8"><a href="datatable-description.html#cb359-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:     6 29093557</span></span>
+<span id="cb359-9"><a href="datatable-description.html#cb359-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:     7 30059175</span></span>
+<span id="cb359-10"><a href="datatable-description.html#cb359-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:     8 30322047</span></span>
+<span id="cb359-11"><a href="datatable-description.html#cb359-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:     9 27615097</span></span>
+<span id="cb359-12"><a href="datatable-description.html#cb359-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    10 28900834</span></span></code></pre></div>
 <p>2.多条件分组</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="datatable-description.html#cb333-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(carrier,origin)]</span>
-<span id="cb333-2"><a href="datatable-description.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb333-3"><a href="datatable-description.html#cb333-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    carrier origin       V1</span></span>
-<span id="cb333-4"><a href="datatable-description.html#cb333-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      AA    JFK 20492213</span></span>
-<span id="cb333-5"><a href="datatable-description.html#cb333-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:      AA    LGA 12365282</span></span>
-<span id="cb333-6"><a href="datatable-description.html#cb333-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      AA    EWR  3550217</span></span>
-<span id="cb333-7"><a href="datatable-description.html#cb333-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      AS    EWR  1378748</span></span>
-<span id="cb333-8"><a href="datatable-description.html#cb333-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      B6    JFK 38117662</span></span>
-<span id="cb333-9"><a href="datatable-description.html#cb333-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:      B6    EWR  4508574</span></span>
-<span id="cb333-10"><a href="datatable-description.html#cb333-10" aria-hidden="true" tabindex="-1"></a><span class="co">#可直接重新命名</span></span>
-<span id="cb333-11"><a href="datatable-description.html#cb333-11" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(<span class="at">newcol1 =</span> carrier,<span class="at">newcol2 =</span> origin)]</span>
-<span id="cb333-12"><a href="datatable-description.html#cb333-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb333-13"><a href="datatable-description.html#cb333-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    newcol1 newcol2       V1</span></span>
-<span id="cb333-14"><a href="datatable-description.html#cb333-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      AA     JFK 20492213</span></span>
-<span id="cb333-15"><a href="datatable-description.html#cb333-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:      AA     LGA 12365282</span></span>
-<span id="cb333-16"><a href="datatable-description.html#cb333-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      AA     EWR  3550217</span></span>
-<span id="cb333-17"><a href="datatable-description.html#cb333-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      AS     EWR  1378748</span></span>
-<span id="cb333-18"><a href="datatable-description.html#cb333-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      B6     JFK 38117662</span></span>
-<span id="cb333-19"><a href="datatable-description.html#cb333-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:      B6     EWR  4508574</span></span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="datatable-description.html#cb360-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(carrier,origin)]</span>
+<span id="cb360-2"><a href="datatable-description.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb360-3"><a href="datatable-description.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    carrier origin       V1</span></span>
+<span id="cb360-4"><a href="datatable-description.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      AA    JFK 20492213</span></span>
+<span id="cb360-5"><a href="datatable-description.html#cb360-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:      AA    LGA 12365282</span></span>
+<span id="cb360-6"><a href="datatable-description.html#cb360-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      AA    EWR  3550217</span></span>
+<span id="cb360-7"><a href="datatable-description.html#cb360-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      AS    EWR  1378748</span></span>
+<span id="cb360-8"><a href="datatable-description.html#cb360-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      B6    JFK 38117662</span></span>
+<span id="cb360-9"><a href="datatable-description.html#cb360-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:      B6    EWR  4508574</span></span>
+<span id="cb360-10"><a href="datatable-description.html#cb360-10" aria-hidden="true" tabindex="-1"></a><span class="co">#可直接重新命名</span></span>
+<span id="cb360-11"><a href="datatable-description.html#cb360-11" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(<span class="at">newcol1 =</span> carrier,<span class="at">newcol2 =</span> origin)]</span>
+<span id="cb360-12"><a href="datatable-description.html#cb360-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb360-13"><a href="datatable-description.html#cb360-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    newcol1 newcol2       V1</span></span>
+<span id="cb360-14"><a href="datatable-description.html#cb360-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:      AA     JFK 20492213</span></span>
+<span id="cb360-15"><a href="datatable-description.html#cb360-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:      AA     LGA 12365282</span></span>
+<span id="cb360-16"><a href="datatable-description.html#cb360-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:      AA     EWR  3550217</span></span>
+<span id="cb360-17"><a href="datatable-description.html#cb360-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:      AS     EWR  1378748</span></span>
+<span id="cb360-18"><a href="datatable-description.html#cb360-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      B6     JFK 38117662</span></span>
+<span id="cb360-19"><a href="datatable-description.html#cb360-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:      B6     EWR  4508574</span></span></code></pre></div>
 <p>3.按月份是否大于6分组</p>
 <p>即得到是否大于6的两类分组</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="datatable-description.html#cb334-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month<span class="sc">&gt;</span><span class="dv">6</span>)] <span class="co">#by里面可以做计算</span></span>
-<span id="cb334-2"><a href="datatable-description.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb334-3"><a href="datatable-description.html#cb334-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    month        V1</span></span>
-<span id="cb334-4"><a href="datatable-description.html#cb334-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: FALSE 161609926</span></span>
-<span id="cb334-5"><a href="datatable-description.html#cb334-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:  TRUE 116897153</span></span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="datatable-description.html#cb361-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[,.(<span class="fu">sum</span>(distance)),by<span class="ot">=</span>.(month<span class="sc">&gt;</span><span class="dv">6</span>)] <span class="co">#by里面可以做计算</span></span>
+<span id="cb361-2"><a href="datatable-description.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb361-3"><a href="datatable-description.html#cb361-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    month        V1</span></span>
+<span id="cb361-4"><a href="datatable-description.html#cb361-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: FALSE 161609926</span></span>
+<span id="cb361-5"><a href="datatable-description.html#cb361-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:  TRUE 116897153</span></span></code></pre></div>
 </div>
 </div>
 <div id="行列筛选总结" class="section level3" number="7.1.4">
 <h3><span class="header-section-number">7.1.4</span> 行列筛选总结</h3>
 <p>行筛选在 i 的位置上进行, 列筛选在 j 的位置上进行;data.table中j的位置比较灵活多变，但是i的位置大部分时候都是进行条件筛选。我们通过上述的行列筛选已经大概知道data.table中i,j的用法。也就是我们常规数据清洗过程中的数据筛选过程，筛选符合要求的数据记录。</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="datatable-description.html#cb335-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb335-2"><a href="datatable-description.html#cb335-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span> <span class="sc">&amp;</span> day <span class="sc">&gt;=</span><span class="dv">15</span>,.(year,month,day,dep_delay,carrier,origin)] </span>
-<span id="cb335-3"><a href="datatable-description.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb335-4"><a href="datatable-description.html#cb335-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year month day dep_delay carrier origin</span></span>
-<span id="cb335-5"><a href="datatable-description.html#cb335-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2014     6  15        -4      AA    JFK</span></span>
-<span id="cb335-6"><a href="datatable-description.html#cb335-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2014     6  15        -8      AA    JFK</span></span>
-<span id="cb335-7"><a href="datatable-description.html#cb335-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2014     6  15       -12      AA    JFK</span></span>
-<span id="cb335-8"><a href="datatable-description.html#cb335-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2014     6  15        -4      AA    LGA</span></span>
-<span id="cb335-9"><a href="datatable-description.html#cb335-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2014     6  15        -3      AA    JFK</span></span>
-<span id="cb335-10"><a href="datatable-description.html#cb335-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 2014     6  15         5      AA    JFK</span></span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="datatable-description.html#cb362-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-2"><a href="datatable-description.html#cb362-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> flights[ year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">6</span> <span class="sc">&amp;</span> day <span class="sc">&gt;=</span><span class="dv">15</span>,.(year,month,day,dep_delay,carrier,origin)] </span>
+<span id="cb362-3"><a href="datatable-description.html#cb362-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb362-4"><a href="datatable-description.html#cb362-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year month day dep_delay carrier origin</span></span>
+<span id="cb362-5"><a href="datatable-description.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2014     6  15        -4      AA    JFK</span></span>
+<span id="cb362-6"><a href="datatable-description.html#cb362-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2014     6  15        -8      AA    JFK</span></span>
+<span id="cb362-7"><a href="datatable-description.html#cb362-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2014     6  15       -12      AA    JFK</span></span>
+<span id="cb362-8"><a href="datatable-description.html#cb362-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2014     6  15        -4      AA    LGA</span></span>
+<span id="cb362-9"><a href="datatable-description.html#cb362-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2014     6  15        -3      AA    JFK</span></span>
+<span id="cb362-10"><a href="datatable-description.html#cb362-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: 2014     6  15         5      AA    JFK</span></span></code></pre></div>
 </div>
 </div>
             </section>

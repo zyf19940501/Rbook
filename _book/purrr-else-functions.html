@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.6 其他函数介绍 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>10.6 其他函数介绍 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.6 其他函数介绍 | R 语言学习笔记" />
+  <meta property="og:title" content="10.6 其他函数介绍 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.6 其他函数介绍 | R 语言学习笔记" />
+  <meta name="twitter:title" content="10.6 其他函数介绍 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -522,14 +524,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>flatten</li>
 </ul>
 <p>flatten()系列函数可以将列表输出为稳定类型。purrr package 自带Examples。</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="purrr-else-functions.html#cb496-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">2</span>, <span class="fu">sample</span>(<span class="dv">4</span>))</span>
-<span id="cb496-2"><a href="purrr-else-functions.html#cb496-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb496-3"><a href="purrr-else-functions.html#cb496-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">flatten</span>()</span>
-<span id="cb496-4"><a href="purrr-else-functions.html#cb496-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">flatten_int</span>()</span>
-<span id="cb496-5"><a href="purrr-else-functions.html#cb496-5" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use flatten in conjunction with map</span></span>
-<span id="cb496-6"><a href="purrr-else-functions.html#cb496-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">map</span>(1L) <span class="sc">%&gt;%</span> <span class="fu">flatten_int</span>()</span>
-<span id="cb496-7"><a href="purrr-else-functions.html#cb496-7" aria-hidden="true" tabindex="-1"></a><span class="co"># But it&#39;s more efficient to use the typed map instead.</span></span>
-<span id="cb496-8"><a href="purrr-else-functions.html#cb496-8" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(1L)</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="purrr-else-functions.html#cb523-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">2</span>, <span class="fu">sample</span>(<span class="dv">4</span>))</span>
+<span id="cb523-2"><a href="purrr-else-functions.html#cb523-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb523-3"><a href="purrr-else-functions.html#cb523-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">flatten</span>()</span>
+<span id="cb523-4"><a href="purrr-else-functions.html#cb523-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">flatten_int</span>()</span>
+<span id="cb523-5"><a href="purrr-else-functions.html#cb523-5" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use flatten in conjunction with map</span></span>
+<span id="cb523-6"><a href="purrr-else-functions.html#cb523-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">map</span>(1L) <span class="sc">%&gt;%</span> <span class="fu">flatten_int</span>()</span>
+<span id="cb523-7"><a href="purrr-else-functions.html#cb523-7" aria-hidden="true" tabindex="-1"></a><span class="co"># But it&#39;s more efficient to use the typed map instead.</span></span>
+<span id="cb523-8"><a href="purrr-else-functions.html#cb523-8" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(1L)</span></code></pre></div>
 <ul>
 <li>imap</li>
 </ul>
@@ -539,15 +541,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>使用公式快捷方式时,第一个参数是值(.x),第二个参数是位置/名称(.y)。</p>
 <p>详情请查看:?imap</p>
 <p>示例1：</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="purrr-else-functions.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_chr</span>(<span class="fu">sample</span>(<span class="dv">10</span>), <span class="sc">~</span> <span class="fu">paste0</span>(.y, <span class="st">&quot;: &quot;</span>, .x))</span>
-<span id="cb497-2"><a href="purrr-else-functions.html#cb497-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;1: 7&quot;  &quot;2: 5&quot;  &quot;3: 6&quot;  &quot;4: 10&quot; &quot;5: 4&quot;  &quot;6: 1&quot;  &quot;7: 9&quot;  &quot;8: 8&quot;  &quot;9: 3&quot; </span></span>
-<span id="cb497-3"><a href="purrr-else-functions.html#cb497-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;10: 2&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="purrr-else-functions.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_chr</span>(<span class="fu">sample</span>(<span class="dv">10</span>), <span class="sc">~</span> <span class="fu">paste0</span>(.y, <span class="st">&quot;: &quot;</span>, .x))</span>
+<span id="cb524-2"><a href="purrr-else-functions.html#cb524-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;1: 7&quot;  &quot;2: 5&quot;  &quot;3: 6&quot;  &quot;4: 10&quot; &quot;5: 4&quot;  &quot;6: 1&quot;  &quot;7: 9&quot;  &quot;8: 8&quot;  &quot;9: 3&quot; </span></span>
+<span id="cb524-3"><a href="purrr-else-functions.html#cb524-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;10: 2&quot;</span></span></code></pre></div>
 <p>sample(10),没有names(),只有长度信息。转化成map2表达如下:</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="purrr-else-functions.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co">#same above</span></span>
-<span id="cb498-2"><a href="purrr-else-functions.html#cb498-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-3"><a href="purrr-else-functions.html#cb498-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_chr</span>(<span class="fu">sample</span>(<span class="dv">10</span>),<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="sc">~</span><span class="fu">paste0</span>(.y,<span class="st">&quot;: &quot;</span>,.x)) <span class="co"># 第二个list 为位置信息.</span></span>
-<span id="cb498-4"><a href="purrr-else-functions.html#cb498-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;1: 2&quot;  &quot;2: 7&quot;  &quot;3: 3&quot;  &quot;4: 6&quot;  &quot;5: 8&quot;  &quot;6: 5&quot;  &quot;7: 1&quot;  &quot;8: 4&quot;  &quot;9: 10&quot;</span></span>
-<span id="cb498-5"><a href="purrr-else-functions.html#cb498-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;10: 9&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="purrr-else-functions.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="co">#same above</span></span>
+<span id="cb525-2"><a href="purrr-else-functions.html#cb525-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb525-3"><a href="purrr-else-functions.html#cb525-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_chr</span>(<span class="fu">sample</span>(<span class="dv">10</span>),<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="sc">~</span><span class="fu">paste0</span>(.y,<span class="st">&quot;: &quot;</span>,.x)) <span class="co"># 第二个list 为位置信息.</span></span>
+<span id="cb525-4"><a href="purrr-else-functions.html#cb525-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;1: 2&quot;  &quot;2: 7&quot;  &quot;3: 3&quot;  &quot;4: 6&quot;  &quot;5: 8&quot;  &quot;6: 5&quot;  &quot;7: 1&quot;  &quot;8: 4&quot;  &quot;9: 10&quot;</span></span>
+<span id="cb525-5"><a href="purrr-else-functions.html#cb525-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;10: 9&quot;</span></span></code></pre></div>
 
 </div>
 <!-- </div> -->

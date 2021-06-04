@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11.6 拓展部分 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>11.6 拓展部分 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.6 拓展部分 | R 语言学习笔记" />
+  <meta property="og:title" content="11.6 拓展部分 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.6 拓展部分 | R 语言学习笔记" />
+  <meta name="twitter:title" content="11.6 拓展部分 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -520,38 +522,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.6</span> 拓展部分</h2>
 <p>在我之前工作中遇到需要分组计算时,我想要编写一个函数实现某些功能,但是分组的group_by()字段不一样时,导致代码没办法复用。</p>
 <p>参考资料：<a href="https://dplyr.tidyverse.org/articles/programming.html" class="uri">https://dplyr.tidyverse.org/articles/programming.html</a></p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="function-expand.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tidyverse)</span></span>
-<span id="cb519-2"><a href="function-expand.html#cb519-2" aria-hidden="true" tabindex="-1"></a>mean_mpg <span class="ot">=</span> <span class="cf">function</span>(data, group_col) {</span>
-<span id="cb519-3"><a href="function-expand.html#cb519-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb519-4"><a href="function-expand.html#cb519-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(group_col) <span class="sc">%&gt;%</span></span>
-<span id="cb519-5"><a href="function-expand.html#cb519-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_mpg =</span> <span class="fu">mean</span>(mpg))</span>
-<span id="cb519-6"><a href="function-expand.html#cb519-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb519-7"><a href="function-expand.html#cb519-7" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mean_mpg</span>(cyl)</span>
-<span id="cb519-8"><a href="function-expand.html#cb519-8" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mean_mpg</span>(gear)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="function-expand.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tidyverse)</span></span>
+<span id="cb546-2"><a href="function-expand.html#cb546-2" aria-hidden="true" tabindex="-1"></a>mean_mpg <span class="ot">=</span> <span class="cf">function</span>(data, group_col) {</span>
+<span id="cb546-3"><a href="function-expand.html#cb546-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb546-4"><a href="function-expand.html#cb546-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(group_col) <span class="sc">%&gt;%</span></span>
+<span id="cb546-5"><a href="function-expand.html#cb546-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_mpg =</span> <span class="fu">mean</span>(mpg))</span>
+<span id="cb546-6"><a href="function-expand.html#cb546-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb546-7"><a href="function-expand.html#cb546-7" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mean_mpg</span>(cyl)</span>
+<span id="cb546-8"><a href="function-expand.html#cb546-8" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mean_mpg</span>(gear)</span></code></pre></div>
 <p>当编写如下函数时,代码将成功运行</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="function-expand.html#cb520-1" aria-hidden="true" tabindex="-1"></a><span class="co">#自定义函数</span></span>
-<span id="cb520-2"><a href="function-expand.html#cb520-2" aria-hidden="true" tabindex="-1"></a>my_summarise3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group_var,mean_var, sd_var) {</span>
-<span id="cb520-3"><a href="function-expand.html#cb520-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb520-4"><a href="function-expand.html#cb520-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>({{ group_var }}) <span class="sc">%&gt;%</span> </span>
-<span id="cb520-5"><a href="function-expand.html#cb520-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>({{ mean_var }}), <span class="at">sd =</span> <span class="fu">mean</span>({{ sd_var }}))</span>
-<span id="cb520-6"><a href="function-expand.html#cb520-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb520-7"><a href="function-expand.html#cb520-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb520-8"><a href="function-expand.html#cb520-8" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">my_summarise3</span>(<span class="at">data =</span> mtcars,<span class="at">group_var =</span> cyl,<span class="at">mean_var =</span> carb,<span class="at">sd_var =</span> gear)</span>
-<span id="cb520-9"><a href="function-expand.html#cb520-9" aria-hidden="true" tabindex="-1"></a><span class="fu">my_summarise3</span>(<span class="at">data =</span> mtcars,<span class="at">group_var =</span> am,<span class="at">mean_var =</span> carb,<span class="at">sd_var =</span> gear)</span>
-<span id="cb520-10"><a href="function-expand.html#cb520-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 3</span></span>
-<span id="cb520-11"><a href="function-expand.html#cb520-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      am  mean    sd</span></span>
-<span id="cb520-12"><a href="function-expand.html#cb520-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb520-13"><a href="function-expand.html#cb520-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0  2.74  3.21</span></span>
-<span id="cb520-14"><a href="function-expand.html#cb520-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     1  2.92  4.38</span></span>
-<span id="cb520-15"><a href="function-expand.html#cb520-15" aria-hidden="true" tabindex="-1"></a><span class="co">#正常写法</span></span>
-<span id="cb520-16"><a href="function-expand.html#cb520-16" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb520-17"><a href="function-expand.html#cb520-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb520-18"><a href="function-expand.html#cb520-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(carb),<span class="at">sd=</span><span class="fu">mean</span>(gear))</span>
-<span id="cb520-19"><a href="function-expand.html#cb520-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb520-20"><a href="function-expand.html#cb520-20" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(res1,res2)</span>
-<span id="cb520-21"><a href="function-expand.html#cb520-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb520-22"><a href="function-expand.html#cb520-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb520-23"><a href="function-expand.html#cb520-23" aria-hidden="true" tabindex="-1"></a><span class="co">#res1 和res2 结果完全一致</span></span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="function-expand.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="co">#自定义函数</span></span>
+<span id="cb547-2"><a href="function-expand.html#cb547-2" aria-hidden="true" tabindex="-1"></a>my_summarise3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group_var,mean_var, sd_var) {</span>
+<span id="cb547-3"><a href="function-expand.html#cb547-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb547-4"><a href="function-expand.html#cb547-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>({{ group_var }}) <span class="sc">%&gt;%</span> </span>
+<span id="cb547-5"><a href="function-expand.html#cb547-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>({{ mean_var }}), <span class="at">sd =</span> <span class="fu">mean</span>({{ sd_var }}))</span>
+<span id="cb547-6"><a href="function-expand.html#cb547-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb547-7"><a href="function-expand.html#cb547-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb547-8"><a href="function-expand.html#cb547-8" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">my_summarise3</span>(<span class="at">data =</span> mtcars,<span class="at">group_var =</span> cyl,<span class="at">mean_var =</span> carb,<span class="at">sd_var =</span> gear)</span>
+<span id="cb547-9"><a href="function-expand.html#cb547-9" aria-hidden="true" tabindex="-1"></a><span class="fu">my_summarise3</span>(<span class="at">data =</span> mtcars,<span class="at">group_var =</span> am,<span class="at">mean_var =</span> carb,<span class="at">sd_var =</span> gear)</span>
+<span id="cb547-10"><a href="function-expand.html#cb547-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 3</span></span>
+<span id="cb547-11"><a href="function-expand.html#cb547-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      am  mean    sd</span></span>
+<span id="cb547-12"><a href="function-expand.html#cb547-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb547-13"><a href="function-expand.html#cb547-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0  2.74  3.21</span></span>
+<span id="cb547-14"><a href="function-expand.html#cb547-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     1  2.92  4.38</span></span>
+<span id="cb547-15"><a href="function-expand.html#cb547-15" aria-hidden="true" tabindex="-1"></a><span class="co">#正常写法</span></span>
+<span id="cb547-16"><a href="function-expand.html#cb547-16" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb547-17"><a href="function-expand.html#cb547-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb547-18"><a href="function-expand.html#cb547-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(carb),<span class="at">sd=</span><span class="fu">mean</span>(gear))</span>
+<span id="cb547-19"><a href="function-expand.html#cb547-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb547-20"><a href="function-expand.html#cb547-20" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(res1,res2)</span>
+<span id="cb547-21"><a href="function-expand.html#cb547-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb547-22"><a href="function-expand.html#cb547-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb547-23"><a href="function-expand.html#cb547-23" aria-hidden="true" tabindex="-1"></a><span class="co">#res1 和res2 结果完全一致</span></span></code></pre></div>
 <p>以上my_summarise3()函数可以按照需求任意指定聚合汇总字段。</p>
 
 </div>

@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.2 常规操作 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>7.2 常规操作 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.2 常规操作 | R 语言学习笔记" />
+  <meta property="og:title" content="7.2 常规操作 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.2 常规操作 | R 语言学习笔记" />
+  <meta name="twitter:title" content="7.2 常规操作 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -525,48 +527,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>数字向量筛选</li>
 </ul>
 <p>%in%用法与 sql 中 in 用法类似。</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="datatable-usage.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 筛选 %in% </span></span>
-<span id="cb336-2"><a href="datatable-usage.html#cb336-2" aria-hidden="true" tabindex="-1"></a>flights[ hour <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">24</span>,<span class="dv">2</span>) ]</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="datatable-usage.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 筛选 %in% </span></span>
+<span id="cb363-2"><a href="datatable-usage.html#cb363-2" aria-hidden="true" tabindex="-1"></a>flights[ hour <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">24</span>,<span class="dv">2</span>) ]</span></code></pre></div>
 <ul>
 <li>字符向量筛选</li>
 </ul>
 <p>%chin%用法与 %in% 类似，但仅仅针对字符。</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="datatable-usage.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 字符筛选</span></span>
-<span id="cb337-2"><a href="datatable-usage.html#cb337-2" aria-hidden="true" tabindex="-1"></a>flights[ origin <span class="sc">%chin%</span> <span class="fu">c</span>(<span class="st">&#39;JFK&#39;</span>,<span class="st">&#39;LGA&#39;</span>)]</span>
-<span id="cb337-3"><a href="datatable-usage.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 同上 %chin% 对字符速度筛选速度更快</span></span>
-<span id="cb337-4"><a href="datatable-usage.html#cb337-4" aria-hidden="true" tabindex="-1"></a><span class="co">#flights[ origin %in% c(&#39;JFK&#39;,&#39;LGA&#39;)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="datatable-usage.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 字符筛选</span></span>
+<span id="cb364-2"><a href="datatable-usage.html#cb364-2" aria-hidden="true" tabindex="-1"></a>flights[ origin <span class="sc">%chin%</span> <span class="fu">c</span>(<span class="st">&#39;JFK&#39;</span>,<span class="st">&#39;LGA&#39;</span>)]</span>
+<span id="cb364-3"><a href="datatable-usage.html#cb364-3" aria-hidden="true" tabindex="-1"></a><span class="co"># not run 同上 %chin% 对字符速度筛选速度更快</span></span>
+<span id="cb364-4"><a href="datatable-usage.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="co">#flights[ origin %in% c(&#39;JFK&#39;,&#39;LGA&#39;)]</span></span></code></pre></div>
 <ul>
 <li>between 筛选</li>
 </ul>
 <p>该函数的新特性矢量化挺实用。</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="datatable-usage.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co">#between 函数参数</span></span>
-<span id="cb338-2"><a href="datatable-usage.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="co">#between(x, lower, upper, incbounds=TRUE, NAbounds=TRUE, check=FALSE)</span></span>
-<span id="cb338-3"><a href="datatable-usage.html#cb338-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">c=</span><span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>))</span>
-<span id="cb338-4"><a href="datatable-usage.html#cb338-4" aria-hidden="true" tabindex="-1"></a>X[b <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>)]</span>
-<span id="cb338-5"><a href="datatable-usage.html#cb338-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
-<span id="cb338-6"><a href="datatable-usage.html#cb338-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2 7 4</span></span>
-<span id="cb338-7"><a href="datatable-usage.html#cb338-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 3 8 3</span></span>
-<span id="cb338-8"><a href="datatable-usage.html#cb338-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 4 9 2</span></span>
-<span id="cb338-9"><a href="datatable-usage.html#cb338-9" aria-hidden="true" tabindex="-1"></a>X[<span class="fu">between</span>(b, <span class="dv">7</span>, <span class="dv">9</span>)] <span class="co">#效果同上</span></span>
-<span id="cb338-10"><a href="datatable-usage.html#cb338-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
-<span id="cb338-11"><a href="datatable-usage.html#cb338-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2 7 4</span></span>
-<span id="cb338-12"><a href="datatable-usage.html#cb338-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 3 8 3</span></span>
-<span id="cb338-13"><a href="datatable-usage.html#cb338-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 4 9 2</span></span>
-<span id="cb338-14"><a href="datatable-usage.html#cb338-14" aria-hidden="true" tabindex="-1"></a>X[c <span class="sc">%between%</span> <span class="fu">list</span>(a,b)] <span class="co"># 矢量化</span></span>
-<span id="cb338-15"><a href="datatable-usage.html#cb338-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
-<span id="cb338-16"><a href="datatable-usage.html#cb338-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 1 6 5</span></span>
-<span id="cb338-17"><a href="datatable-usage.html#cb338-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2 7 4</span></span>
-<span id="cb338-18"><a href="datatable-usage.html#cb338-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 3 8 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="datatable-usage.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="co">#between 函数参数</span></span>
+<span id="cb365-2"><a href="datatable-usage.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="co">#between(x, lower, upper, incbounds=TRUE, NAbounds=TRUE, check=FALSE)</span></span>
+<span id="cb365-3"><a href="datatable-usage.html#cb365-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span>  <span class="fu">data.table</span>(<span class="at">a=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b=</span><span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">c=</span><span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>))</span>
+<span id="cb365-4"><a href="datatable-usage.html#cb365-4" aria-hidden="true" tabindex="-1"></a>X[b <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>)]</span>
+<span id="cb365-5"><a href="datatable-usage.html#cb365-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
+<span id="cb365-6"><a href="datatable-usage.html#cb365-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2 7 4</span></span>
+<span id="cb365-7"><a href="datatable-usage.html#cb365-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 3 8 3</span></span>
+<span id="cb365-8"><a href="datatable-usage.html#cb365-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 4 9 2</span></span>
+<span id="cb365-9"><a href="datatable-usage.html#cb365-9" aria-hidden="true" tabindex="-1"></a>X[<span class="fu">between</span>(b, <span class="dv">7</span>, <span class="dv">9</span>)] <span class="co">#效果同上</span></span>
+<span id="cb365-10"><a href="datatable-usage.html#cb365-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
+<span id="cb365-11"><a href="datatable-usage.html#cb365-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2 7 4</span></span>
+<span id="cb365-12"><a href="datatable-usage.html#cb365-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 3 8 3</span></span>
+<span id="cb365-13"><a href="datatable-usage.html#cb365-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 4 9 2</span></span>
+<span id="cb365-14"><a href="datatable-usage.html#cb365-14" aria-hidden="true" tabindex="-1"></a>X[c <span class="sc">%between%</span> <span class="fu">list</span>(a,b)] <span class="co"># 矢量化</span></span>
+<span id="cb365-15"><a href="datatable-usage.html#cb365-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    a b c</span></span>
+<span id="cb365-16"><a href="datatable-usage.html#cb365-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 1 6 5</span></span>
+<span id="cb365-17"><a href="datatable-usage.html#cb365-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2 7 4</span></span>
+<span id="cb365-18"><a href="datatable-usage.html#cb365-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 3 8 3</span></span></code></pre></div>
 <ul>
 <li>like 筛选</li>
 </ul>
 <p>%like% 用法与SQL中 like 类似。</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="datatable-usage.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %like% 用法与SQL中 like 类似</span></span>
-<span id="cb339-2"><a href="datatable-usage.html#cb339-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">Name=</span><span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>,<span class="st">&quot;George&quot;</span>,<span class="st">&quot;Martha&quot;</span>), <span class="at">Salary=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb339-3"><a href="datatable-usage.html#cb339-3" aria-hidden="true" tabindex="-1"></a>DT[Name <span class="sc">%like%</span> <span class="st">&quot;^Mar&quot;</span>]</span>
-<span id="cb339-4"><a href="datatable-usage.html#cb339-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Name Salary</span></span>
-<span id="cb339-5"><a href="datatable-usage.html#cb339-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   Mary      2</span></span>
-<span id="cb339-6"><a href="datatable-usage.html#cb339-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: Martha      4</span></span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="datatable-usage.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %like% 用法与SQL中 like 类似</span></span>
+<span id="cb366-2"><a href="datatable-usage.html#cb366-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">Name=</span><span class="fu">c</span>(<span class="st">&quot;Mary&quot;</span>,<span class="st">&quot;George&quot;</span>,<span class="st">&quot;Martha&quot;</span>), <span class="at">Salary=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb366-3"><a href="datatable-usage.html#cb366-3" aria-hidden="true" tabindex="-1"></a>DT[Name <span class="sc">%like%</span> <span class="st">&quot;^Mar&quot;</span>]</span>
+<span id="cb366-4"><a href="datatable-usage.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Name Salary</span></span>
+<span id="cb366-5"><a href="datatable-usage.html#cb366-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:   Mary      2</span></span>
+<span id="cb366-6"><a href="datatable-usage.html#cb366-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: Martha      4</span></span></code></pre></div>
 </div>
 <div id="新增更新列" class="section level3" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> 新增更新列</h3>
@@ -574,115 +576,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>选择列</li>
 </ul>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="datatable-usage.html#cb340-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb340-2"><a href="datatable-usage.html#cb340-2" aria-hidden="true" tabindex="-1"></a>dt[,.(col1,col2)]</span>
-<span id="cb340-3"><a href="datatable-usage.html#cb340-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2</span></span>
-<span id="cb340-4"><a href="datatable-usage.html#cb340-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a</span></span>
-<span id="cb340-5"><a href="datatable-usage.html#cb340-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b</span></span>
-<span id="cb340-6"><a href="datatable-usage.html#cb340-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c</span></span>
-<span id="cb340-7"><a href="datatable-usage.html#cb340-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d</span></span>
-<span id="cb340-8"><a href="datatable-usage.html#cb340-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e</span></span>
-<span id="cb340-9"><a href="datatable-usage.html#cb340-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f</span></span>
-<span id="cb340-10"><a href="datatable-usage.html#cb340-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g</span></span>
-<span id="cb340-11"><a href="datatable-usage.html#cb340-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h</span></span>
-<span id="cb340-12"><a href="datatable-usage.html#cb340-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i</span></span>
-<span id="cb340-13"><a href="datatable-usage.html#cb340-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j</span></span>
-<span id="cb340-14"><a href="datatable-usage.html#cb340-14" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
-<span id="cb340-15"><a href="datatable-usage.html#cb340-15" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(col1,col2)]</span>
-<span id="cb340-16"><a href="datatable-usage.html#cb340-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2</span></span>
-<span id="cb340-17"><a href="datatable-usage.html#cb340-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a</span></span>
-<span id="cb340-18"><a href="datatable-usage.html#cb340-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b</span></span>
-<span id="cb340-19"><a href="datatable-usage.html#cb340-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c</span></span>
-<span id="cb340-20"><a href="datatable-usage.html#cb340-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d</span></span>
-<span id="cb340-21"><a href="datatable-usage.html#cb340-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e</span></span>
-<span id="cb340-22"><a href="datatable-usage.html#cb340-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f</span></span>
-<span id="cb340-23"><a href="datatable-usage.html#cb340-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g</span></span>
-<span id="cb340-24"><a href="datatable-usage.html#cb340-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h</span></span>
-<span id="cb340-25"><a href="datatable-usage.html#cb340-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i</span></span>
-<span id="cb340-26"><a href="datatable-usage.html#cb340-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j</span></span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="datatable-usage.html#cb367-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb367-2"><a href="datatable-usage.html#cb367-2" aria-hidden="true" tabindex="-1"></a>dt[,.(col1,col2)]</span>
+<span id="cb367-3"><a href="datatable-usage.html#cb367-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2</span></span>
+<span id="cb367-4"><a href="datatable-usage.html#cb367-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a</span></span>
+<span id="cb367-5"><a href="datatable-usage.html#cb367-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b</span></span>
+<span id="cb367-6"><a href="datatable-usage.html#cb367-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c</span></span>
+<span id="cb367-7"><a href="datatable-usage.html#cb367-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d</span></span>
+<span id="cb367-8"><a href="datatable-usage.html#cb367-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e</span></span>
+<span id="cb367-9"><a href="datatable-usage.html#cb367-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f</span></span>
+<span id="cb367-10"><a href="datatable-usage.html#cb367-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g</span></span>
+<span id="cb367-11"><a href="datatable-usage.html#cb367-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h</span></span>
+<span id="cb367-12"><a href="datatable-usage.html#cb367-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i</span></span>
+<span id="cb367-13"><a href="datatable-usage.html#cb367-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j</span></span>
+<span id="cb367-14"><a href="datatable-usage.html#cb367-14" aria-hidden="true" tabindex="-1"></a><span class="co"># same above</span></span>
+<span id="cb367-15"><a href="datatable-usage.html#cb367-15" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">list</span>(col1,col2)]</span>
+<span id="cb367-16"><a href="datatable-usage.html#cb367-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2</span></span>
+<span id="cb367-17"><a href="datatable-usage.html#cb367-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a</span></span>
+<span id="cb367-18"><a href="datatable-usage.html#cb367-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b</span></span>
+<span id="cb367-19"><a href="datatable-usage.html#cb367-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c</span></span>
+<span id="cb367-20"><a href="datatable-usage.html#cb367-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d</span></span>
+<span id="cb367-21"><a href="datatable-usage.html#cb367-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e</span></span>
+<span id="cb367-22"><a href="datatable-usage.html#cb367-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f</span></span>
+<span id="cb367-23"><a href="datatable-usage.html#cb367-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g</span></span>
+<span id="cb367-24"><a href="datatable-usage.html#cb367-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h</span></span>
+<span id="cb367-25"><a href="datatable-usage.html#cb367-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i</span></span>
+<span id="cb367-26"><a href="datatable-usage.html#cb367-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j</span></span></code></pre></div>
 <ul>
 <li>新增列</li>
 </ul>
 <p>如下所示:新增addcol列，最后的[]是为了显示新增列的数据框,可不增加。</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="datatable-usage.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data.table()函数创建data.table数据框</span></span>
-<span id="cb341-2"><a href="datatable-usage.html#cb341-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb341-3"><a href="datatable-usage.html#cb341-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增列 :=</span></span>
-<span id="cb341-4"><a href="datatable-usage.html#cb341-4" aria-hidden="true" tabindex="-1"></a>dt[,addcol<span class="sc">:</span><span class="er">=</span><span class="fu">rep</span>(<span class="st">&#39;新列&#39;</span>,<span class="dv">10</span>)][] <span class="co">#最后的[]是为了显示新增列的数据框,可不增加</span></span>
-<span id="cb341-5"><a href="datatable-usage.html#cb341-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2 col3 col4 addcol</span></span>
-<span id="cb341-6"><a href="datatable-usage.html#cb341-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a    A    1   新列</span></span>
-<span id="cb341-7"><a href="datatable-usage.html#cb341-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b    B    2   新列</span></span>
-<span id="cb341-8"><a href="datatable-usage.html#cb341-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c    C    3   新列</span></span>
-<span id="cb341-9"><a href="datatable-usage.html#cb341-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d    D    4   新列</span></span>
-<span id="cb341-10"><a href="datatable-usage.html#cb341-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e    E    5   新列</span></span>
-<span id="cb341-11"><a href="datatable-usage.html#cb341-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f    F    6   新列</span></span>
-<span id="cb341-12"><a href="datatable-usage.html#cb341-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g    G    7   新列</span></span>
-<span id="cb341-13"><a href="datatable-usage.html#cb341-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h    H    8   新列</span></span>
-<span id="cb341-14"><a href="datatable-usage.html#cb341-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i    I    9   新列</span></span>
-<span id="cb341-15"><a href="datatable-usage.html#cb341-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j    J   10   新列</span></span>
-<span id="cb341-16"><a href="datatable-usage.html#cb341-16" aria-hidden="true" tabindex="-1"></a><span class="co">#dt[,addcol:=rep(&#39;新列&#39;,10)] 不会显示返回结果,加上[]会显示返回</span></span>
-<span id="cb341-17"><a href="datatable-usage.html#cb341-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增多列</span></span>
-<span id="cb341-18"><a href="datatable-usage.html#cb341-18" aria-hidden="true" tabindex="-1"></a>dt[,<span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">newcol1=</span><span class="fu">rep</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="dv">10</span>),<span class="at">newcol2=</span><span class="fu">rep</span>(<span class="st">&#39;newcol2&#39;</span>,<span class="dv">10</span>))][]</span>
-<span id="cb341-19"><a href="datatable-usage.html#cb341-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2 col3 col4 addcol newcol1 newcol2</span></span>
-<span id="cb341-20"><a href="datatable-usage.html#cb341-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a    A    1   新列 newcol1 newcol2</span></span>
-<span id="cb341-21"><a href="datatable-usage.html#cb341-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b    B    2   新列 newcol1 newcol2</span></span>
-<span id="cb341-22"><a href="datatable-usage.html#cb341-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c    C    3   新列 newcol1 newcol2</span></span>
-<span id="cb341-23"><a href="datatable-usage.html#cb341-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d    D    4   新列 newcol1 newcol2</span></span>
-<span id="cb341-24"><a href="datatable-usage.html#cb341-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e    E    5   新列 newcol1 newcol2</span></span>
-<span id="cb341-25"><a href="datatable-usage.html#cb341-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f    F    6   新列 newcol1 newcol2</span></span>
-<span id="cb341-26"><a href="datatable-usage.html#cb341-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g    G    7   新列 newcol1 newcol2</span></span>
-<span id="cb341-27"><a href="datatable-usage.html#cb341-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h    H    8   新列 newcol1 newcol2</span></span>
-<span id="cb341-28"><a href="datatable-usage.html#cb341-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i    I    9   新列 newcol1 newcol2</span></span>
-<span id="cb341-29"><a href="datatable-usage.html#cb341-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j    J   10   新列 newcol1 newcol2</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="datatable-usage.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data.table()函数创建data.table数据框</span></span>
+<span id="cb368-2"><a href="datatable-usage.html#cb368-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">col1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">col2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col3=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">col4=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb368-3"><a href="datatable-usage.html#cb368-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增列 :=</span></span>
+<span id="cb368-4"><a href="datatable-usage.html#cb368-4" aria-hidden="true" tabindex="-1"></a>dt[,addcol<span class="sc">:</span><span class="er">=</span><span class="fu">rep</span>(<span class="st">&#39;新列&#39;</span>,<span class="dv">10</span>)][] <span class="co">#最后的[]是为了显示新增列的数据框,可不增加</span></span>
+<span id="cb368-5"><a href="datatable-usage.html#cb368-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2 col3 col4 addcol</span></span>
+<span id="cb368-6"><a href="datatable-usage.html#cb368-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a    A    1   新列</span></span>
+<span id="cb368-7"><a href="datatable-usage.html#cb368-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b    B    2   新列</span></span>
+<span id="cb368-8"><a href="datatable-usage.html#cb368-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c    C    3   新列</span></span>
+<span id="cb368-9"><a href="datatable-usage.html#cb368-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d    D    4   新列</span></span>
+<span id="cb368-10"><a href="datatable-usage.html#cb368-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e    E    5   新列</span></span>
+<span id="cb368-11"><a href="datatable-usage.html#cb368-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f    F    6   新列</span></span>
+<span id="cb368-12"><a href="datatable-usage.html#cb368-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g    G    7   新列</span></span>
+<span id="cb368-13"><a href="datatable-usage.html#cb368-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h    H    8   新列</span></span>
+<span id="cb368-14"><a href="datatable-usage.html#cb368-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i    I    9   新列</span></span>
+<span id="cb368-15"><a href="datatable-usage.html#cb368-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j    J   10   新列</span></span>
+<span id="cb368-16"><a href="datatable-usage.html#cb368-16" aria-hidden="true" tabindex="-1"></a><span class="co">#dt[,addcol:=rep(&#39;新列&#39;,10)] 不会显示返回结果,加上[]会显示返回</span></span>
+<span id="cb368-17"><a href="datatable-usage.html#cb368-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 新增多列</span></span>
+<span id="cb368-18"><a href="datatable-usage.html#cb368-18" aria-hidden="true" tabindex="-1"></a>dt[,<span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">newcol1=</span><span class="fu">rep</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="dv">10</span>),<span class="at">newcol2=</span><span class="fu">rep</span>(<span class="st">&#39;newcol2&#39;</span>,<span class="dv">10</span>))][]</span>
+<span id="cb368-19"><a href="datatable-usage.html#cb368-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col1 col2 col3 col4 addcol newcol1 newcol2</span></span>
+<span id="cb368-20"><a href="datatable-usage.html#cb368-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    1    a    A    1   新列 newcol1 newcol2</span></span>
+<span id="cb368-21"><a href="datatable-usage.html#cb368-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    2    b    B    2   新列 newcol1 newcol2</span></span>
+<span id="cb368-22"><a href="datatable-usage.html#cb368-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    3    c    C    3   新列 newcol1 newcol2</span></span>
+<span id="cb368-23"><a href="datatable-usage.html#cb368-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    4    d    D    4   新列 newcol1 newcol2</span></span>
+<span id="cb368-24"><a href="datatable-usage.html#cb368-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    5    e    E    5   新列 newcol1 newcol2</span></span>
+<span id="cb368-25"><a href="datatable-usage.html#cb368-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    6    f    F    6   新列 newcol1 newcol2</span></span>
+<span id="cb368-26"><a href="datatable-usage.html#cb368-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    7    g    G    7   新列 newcol1 newcol2</span></span>
+<span id="cb368-27"><a href="datatable-usage.html#cb368-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    8    h    H    8   新列 newcol1 newcol2</span></span>
+<span id="cb368-28"><a href="datatable-usage.html#cb368-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    9    i    I    9   新列 newcol1 newcol2</span></span>
+<span id="cb368-29"><a href="datatable-usage.html#cb368-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:   10    j    J   10   新列 newcol1 newcol2</span></span></code></pre></div>
 <ul>
 <li>删除列</li>
 </ul>
 <p>删除列即将列赋值NULL即可</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="datatable-usage.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除列</span></span>
-<span id="cb342-2"><a href="datatable-usage.html#cb342-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span>
-<span id="cb342-3"><a href="datatable-usage.html#cb342-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol newcol1 newcol2</span></span>
-<span id="cb342-4"><a href="datatable-usage.html#cb342-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列 newcol1 newcol2</span></span>
-<span id="cb342-5"><a href="datatable-usage.html#cb342-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列 newcol1 newcol2</span></span>
-<span id="cb342-6"><a href="datatable-usage.html#cb342-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列 newcol1 newcol2</span></span>
-<span id="cb342-7"><a href="datatable-usage.html#cb342-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列 newcol1 newcol2</span></span>
-<span id="cb342-8"><a href="datatable-usage.html#cb342-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列 newcol1 newcol2</span></span>
-<span id="cb342-9"><a href="datatable-usage.html#cb342-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列 newcol1 newcol2</span></span>
-<span id="cb342-10"><a href="datatable-usage.html#cb342-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列 newcol1 newcol2</span></span>
-<span id="cb342-11"><a href="datatable-usage.html#cb342-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列 newcol1 newcol2</span></span>
-<span id="cb342-12"><a href="datatable-usage.html#cb342-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列 newcol1 newcol2</span></span>
-<span id="cb342-13"><a href="datatable-usage.html#cb342-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列 newcol1 newcol2</span></span>
-<span id="cb342-14"><a href="datatable-usage.html#cb342-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除多列</span></span>
-<span id="cb342-15"><a href="datatable-usage.html#cb342-15" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">c</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="st">&#39;newcol2&#39;</span>)<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span>
-<span id="cb342-16"><a href="datatable-usage.html#cb342-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol</span></span>
-<span id="cb342-17"><a href="datatable-usage.html#cb342-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列</span></span>
-<span id="cb342-18"><a href="datatable-usage.html#cb342-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列</span></span>
-<span id="cb342-19"><a href="datatable-usage.html#cb342-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列</span></span>
-<span id="cb342-20"><a href="datatable-usage.html#cb342-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列</span></span>
-<span id="cb342-21"><a href="datatable-usage.html#cb342-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列</span></span>
-<span id="cb342-22"><a href="datatable-usage.html#cb342-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列</span></span>
-<span id="cb342-23"><a href="datatable-usage.html#cb342-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列</span></span>
-<span id="cb342-24"><a href="datatable-usage.html#cb342-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列</span></span>
-<span id="cb342-25"><a href="datatable-usage.html#cb342-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列</span></span>
-<span id="cb342-26"><a href="datatable-usage.html#cb342-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列</span></span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="datatable-usage.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除列</span></span>
+<span id="cb369-2"><a href="datatable-usage.html#cb369-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span>
+<span id="cb369-3"><a href="datatable-usage.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol newcol1 newcol2</span></span>
+<span id="cb369-4"><a href="datatable-usage.html#cb369-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列 newcol1 newcol2</span></span>
+<span id="cb369-5"><a href="datatable-usage.html#cb369-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列 newcol1 newcol2</span></span>
+<span id="cb369-6"><a href="datatable-usage.html#cb369-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列 newcol1 newcol2</span></span>
+<span id="cb369-7"><a href="datatable-usage.html#cb369-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列 newcol1 newcol2</span></span>
+<span id="cb369-8"><a href="datatable-usage.html#cb369-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列 newcol1 newcol2</span></span>
+<span id="cb369-9"><a href="datatable-usage.html#cb369-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列 newcol1 newcol2</span></span>
+<span id="cb369-10"><a href="datatable-usage.html#cb369-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列 newcol1 newcol2</span></span>
+<span id="cb369-11"><a href="datatable-usage.html#cb369-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列 newcol1 newcol2</span></span>
+<span id="cb369-12"><a href="datatable-usage.html#cb369-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列 newcol1 newcol2</span></span>
+<span id="cb369-13"><a href="datatable-usage.html#cb369-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列 newcol1 newcol2</span></span>
+<span id="cb369-14"><a href="datatable-usage.html#cb369-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除多列</span></span>
+<span id="cb369-15"><a href="datatable-usage.html#cb369-15" aria-hidden="true" tabindex="-1"></a>dt[,<span class="fu">c</span>(<span class="st">&#39;newcol1&#39;</span>,<span class="st">&#39;newcol2&#39;</span>)<span class="sc">:</span><span class="er">=</span><span class="cn">NULL</span>][]</span>
+<span id="cb369-16"><a href="datatable-usage.html#cb369-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol</span></span>
+<span id="cb369-17"><a href="datatable-usage.html#cb369-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列</span></span>
+<span id="cb369-18"><a href="datatable-usage.html#cb369-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列</span></span>
+<span id="cb369-19"><a href="datatable-usage.html#cb369-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列</span></span>
+<span id="cb369-20"><a href="datatable-usage.html#cb369-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列</span></span>
+<span id="cb369-21"><a href="datatable-usage.html#cb369-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列</span></span>
+<span id="cb369-22"><a href="datatable-usage.html#cb369-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列</span></span>
+<span id="cb369-23"><a href="datatable-usage.html#cb369-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列</span></span>
+<span id="cb369-24"><a href="datatable-usage.html#cb369-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列</span></span>
+<span id="cb369-25"><a href="datatable-usage.html#cb369-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列</span></span>
+<span id="cb369-26"><a href="datatable-usage.html#cb369-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列</span></span></code></pre></div>
 <ul>
 <li>更新</li>
 </ul>
 <p>更新即重新赋值，将现有列参与计算等于是重新赋值，可以看成是更新列。</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="datatable-usage.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 更新列</span></span>
-<span id="cb343-2"><a href="datatable-usage.html#cb343-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>][]</span>
-<span id="cb343-3"><a href="datatable-usage.html#cb343-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol col1</span></span>
-<span id="cb343-4"><a href="datatable-usage.html#cb343-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列   11</span></span>
-<span id="cb343-5"><a href="datatable-usage.html#cb343-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列   12</span></span>
-<span id="cb343-6"><a href="datatable-usage.html#cb343-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列   13</span></span>
-<span id="cb343-7"><a href="datatable-usage.html#cb343-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列   14</span></span>
-<span id="cb343-8"><a href="datatable-usage.html#cb343-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列   15</span></span>
-<span id="cb343-9"><a href="datatable-usage.html#cb343-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列   16</span></span>
-<span id="cb343-10"><a href="datatable-usage.html#cb343-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列   17</span></span>
-<span id="cb343-11"><a href="datatable-usage.html#cb343-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列   18</span></span>
-<span id="cb343-12"><a href="datatable-usage.html#cb343-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列   19</span></span>
-<span id="cb343-13"><a href="datatable-usage.html#cb343-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列   20</span></span>
-<span id="cb343-14"><a href="datatable-usage.html#cb343-14" aria-hidden="true" tabindex="-1"></a><span class="co"># not run </span></span>
-<span id="cb343-15"><a href="datatable-usage.html#cb343-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 两列间计算 也可以理解为更新</span></span>
-<span id="cb343-16"><a href="datatable-usage.html#cb343-16" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span>col1<span class="sc">/</span>col4]</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="datatable-usage.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 更新列</span></span>
+<span id="cb370-2"><a href="datatable-usage.html#cb370-2" aria-hidden="true" tabindex="-1"></a>dt[,col1<span class="sc">:</span><span class="er">=</span><span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>][]</span>
+<span id="cb370-3"><a href="datatable-usage.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     col2 col3 col4 addcol col1</span></span>
+<span id="cb370-4"><a href="datatable-usage.html#cb370-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:    a    A    1   新列   11</span></span>
+<span id="cb370-5"><a href="datatable-usage.html#cb370-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:    b    B    2   新列   12</span></span>
+<span id="cb370-6"><a href="datatable-usage.html#cb370-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:    c    C    3   新列   13</span></span>
+<span id="cb370-7"><a href="datatable-usage.html#cb370-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:    d    D    4   新列   14</span></span>
+<span id="cb370-8"><a href="datatable-usage.html#cb370-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:    e    E    5   新列   15</span></span>
+<span id="cb370-9"><a href="datatable-usage.html#cb370-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:    f    F    6   新列   16</span></span>
+<span id="cb370-10"><a href="datatable-usage.html#cb370-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:    g    G    7   新列   17</span></span>
+<span id="cb370-11"><a href="datatable-usage.html#cb370-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:    h    H    8   新列   18</span></span>
+<span id="cb370-12"><a href="datatable-usage.html#cb370-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:    i    I    9   新列   19</span></span>
+<span id="cb370-13"><a href="datatable-usage.html#cb370-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:    j    J   10   新列   20</span></span>
+<span id="cb370-14"><a href="datatable-usage.html#cb370-14" aria-hidden="true" tabindex="-1"></a><span class="co"># not run </span></span>
+<span id="cb370-15"><a href="datatable-usage.html#cb370-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 两列间计算 也可以理解为更新</span></span>
+<span id="cb370-16"><a href="datatable-usage.html#cb370-16" aria-hidden="true" tabindex="-1"></a>dt[,newcol<span class="sc">:</span><span class="er">=</span>col1<span class="sc">/</span>col4]</span></code></pre></div>
 <blockquote>
 <p>Note: DT[a &gt; 4, b := c] is different from DT[a &gt; 4][, b := c]</p>
 </blockquote>
@@ -691,14 +693,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.2.3</span> 排序</h3>
 <p>当我们清洗数据时，我们需要将数据框排序，我们可以使用<code>setorder</code>或<code>setorderv</code>函数实现排序。函数是<code>data.table</code>包的函数，比base R 中的<code>order</code>函数要节省内存。
 注意：按照函数文档说法：Note that queries like x[order(.)] are optimised internally to use data.table’s fast order。即x[order(.)]这样的用法会被优化为data.table的排序方法。</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="datatable-usage.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(45L)</span>
-<span id="cb344-2"><a href="datatable-usage.html#cb344-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">A=</span><span class="fu">sample</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb344-3"><a href="datatable-usage.html#cb344-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">B=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">10</span>, <span class="cn">TRUE</span>), <span class="at">C=</span><span class="fu">sample</span>(<span class="dv">10</span>))</span>
-<span id="cb344-4"><a href="datatable-usage.html#cb344-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb344-5"><a href="datatable-usage.html#cb344-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setorder</span>(DT, A, <span class="sc">-</span>B) <span class="co">#将DT按照A、B排序 A 升序,-B降序</span></span>
-<span id="cb344-6"><a href="datatable-usage.html#cb344-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb344-7"><a href="datatable-usage.html#cb344-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 和上面同样的效果 但是函数变成 setorderv</span></span>
-<span id="cb344-8"><a href="datatable-usage.html#cb344-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setorderv</span>(DT, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="datatable-usage.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(45L)</span>
+<span id="cb371-2"><a href="datatable-usage.html#cb371-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">A=</span><span class="fu">sample</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb371-3"><a href="datatable-usage.html#cb371-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">B=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">10</span>, <span class="cn">TRUE</span>), <span class="at">C=</span><span class="fu">sample</span>(<span class="dv">10</span>))</span>
+<span id="cb371-4"><a href="datatable-usage.html#cb371-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb371-5"><a href="datatable-usage.html#cb371-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setorder</span>(DT, A, <span class="sc">-</span>B) <span class="co">#将DT按照A、B排序 A 升序,-B降序</span></span>
+<span id="cb371-6"><a href="datatable-usage.html#cb371-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb371-7"><a href="datatable-usage.html#cb371-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 和上面同样的效果 但是函数变成 setorderv</span></span>
+<span id="cb371-8"><a href="datatable-usage.html#cb371-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setorderv</span>(DT, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>))</span></code></pre></div>
 </div>
 </div>
             </section>

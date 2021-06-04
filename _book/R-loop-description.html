@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.1 R循环介绍 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>9.1 R循环介绍 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.1 R循环介绍 | R 语言学习笔记" />
+  <meta property="og:title" content="9.1 R循环介绍 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.1 R循环介绍 | R 语言学习笔记" />
+  <meta name="twitter:title" content="9.1 R循环介绍 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -523,15 +525,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="R:loop-example" class="section level3" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> 简单示例</h3>
 <p>利用循环实现1到100连续相加求和</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="R-loop-description.html#cb463-1" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb463-2"><a href="R-loop-description.html#cb463-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb463-3"><a href="R-loop-description.html#cb463-3" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> total<span class="sc">+</span>i</span>
-<span id="cb463-4"><a href="R-loop-description.html#cb463-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb463-5"><a href="R-loop-description.html#cb463-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&#39;1到100连续相加求和等于:&#39;</span>,total))</span>
-<span id="cb463-6"><a href="R-loop-description.html#cb463-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1到100连续相加求和等于:5050&quot;</span></span>
-<span id="cb463-7"><a href="R-loop-description.html#cb463-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb463-8"><a href="R-loop-description.html#cb463-8" aria-hidden="true" tabindex="-1"></a><span class="co"># loop structure</span></span>
-<span id="cb463-9"><a href="R-loop-description.html#cb463-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for (var in seq) {expr}</span></span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="R-loop-description.html#cb490-1" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb490-2"><a href="R-loop-description.html#cb490-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb490-3"><a href="R-loop-description.html#cb490-3" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> total<span class="sc">+</span>i</span>
+<span id="cb490-4"><a href="R-loop-description.html#cb490-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb490-5"><a href="R-loop-description.html#cb490-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&#39;1到100连续相加求和等于:&#39;</span>,total))</span>
+<span id="cb490-6"><a href="R-loop-description.html#cb490-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1到100连续相加求和等于:5050&quot;</span></span>
+<span id="cb490-7"><a href="R-loop-description.html#cb490-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-8"><a href="R-loop-description.html#cb490-8" aria-hidden="true" tabindex="-1"></a><span class="co"># loop structure</span></span>
+<span id="cb490-9"><a href="R-loop-description.html#cb490-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for (var in seq) {expr}</span></span></code></pre></div>
 </div>
 <div id="three:loop-structure" class="section level3" number="9.1.2">
 <h3><span class="header-section-number">9.1.2</span> 循环结构</h3>
@@ -541,32 +543,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>for循环是大家使用最多的循环结构，for循环的迭代次数是固定的，并且事先知道。如最开始的示例中，1连续相加到100,共计加法次数是100次。</p>
 <p>for循环示例如下：</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="R-loop-description.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb464-2"><a href="R-loop-description.html#cb464-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb464-3"><a href="R-loop-description.html#cb464-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb464-4"><a href="R-loop-description.html#cb464-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb464-5"><a href="R-loop-description.html#cb464-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb464-6"><a href="R-loop-description.html#cb464-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb464-7"><a href="R-loop-description.html#cb464-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb464-8"><a href="R-loop-description.html#cb464-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb464-9"><a href="R-loop-description.html#cb464-9" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1. output</span></span>
-<span id="cb464-10"><a href="R-loop-description.html#cb464-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2. sequence</span></span>
-<span id="cb464-11"><a href="R-loop-description.html#cb464-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3. body</span></span>
-<span id="cb464-12"><a href="R-loop-description.html#cb464-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb464-13"><a href="R-loop-description.html#cb464-13" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb464-14"><a href="R-loop-description.html#cb464-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.2458 -0.2873 -0.0567  0.1443</span></span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="R-loop-description.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb491-2"><a href="R-loop-description.html#cb491-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb491-3"><a href="R-loop-description.html#cb491-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb491-4"><a href="R-loop-description.html#cb491-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb491-5"><a href="R-loop-description.html#cb491-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb491-6"><a href="R-loop-description.html#cb491-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb491-7"><a href="R-loop-description.html#cb491-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb491-8"><a href="R-loop-description.html#cb491-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb491-9"><a href="R-loop-description.html#cb491-9" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1. output</span></span>
+<span id="cb491-10"><a href="R-loop-description.html#cb491-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2. sequence</span></span>
+<span id="cb491-11"><a href="R-loop-description.html#cb491-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3. body</span></span>
+<span id="cb491-12"><a href="R-loop-description.html#cb491-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb491-13"><a href="R-loop-description.html#cb491-13" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb491-14"><a href="R-loop-description.html#cb491-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.2458 -0.2873 -0.0567  0.1443</span></span></code></pre></div>
 <p>代码解释：</p>
 <p>上面代码中 <code>vector</code>函数创建一个空向量带指定长度，有两个参数，第一个时向量类型(‘逻辑,’‘整数,’‘双精度,’’字符’等)，第二个是向量长度 <code>vector(length=5)</code>,类型默认是逻辑型。</p>
 <p><code>seq_along</code>可以<code>?seq</code>查看用法.</p>
 <p>hadely 解释如下:</p>
 <p>You might not have seen seq_along() before. It’s a safe version of the familiar 1:length(l), with an important difference: if you have a zero-length vector, seq_along() does the right thing:</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="R-loop-description.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wrong</span></span>
-<span id="cb465-2"><a href="R-loop-description.html#cb465-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(<span class="fu">c</span>())</span>
-<span id="cb465-3"><a href="R-loop-description.html#cb465-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; integer(0)</span></span>
-<span id="cb465-4"><a href="R-loop-description.html#cb465-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">c</span>())</span>
-<span id="cb465-5"><a href="R-loop-description.html#cb465-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 0</span></span>
-<span id="cb465-6"><a href="R-loop-description.html#cb465-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb465-7"><a href="R-loop-description.html#cb465-7" aria-hidden="true" tabindex="-1"></a><span class="co"># generates the integer sequence 1, 2, ..., length(along.with). (along.with is usually abbreviated to along, and  seq_along is much faster.)</span></span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="R-loop-description.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wrong</span></span>
+<span id="cb492-2"><a href="R-loop-description.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(<span class="fu">c</span>())</span>
+<span id="cb492-3"><a href="R-loop-description.html#cb492-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; integer(0)</span></span>
+<span id="cb492-4"><a href="R-loop-description.html#cb492-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">c</span>())</span>
+<span id="cb492-5"><a href="R-loop-description.html#cb492-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 0</span></span>
+<span id="cb492-6"><a href="R-loop-description.html#cb492-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb492-7"><a href="R-loop-description.html#cb492-7" aria-hidden="true" tabindex="-1"></a><span class="co"># generates the integer sequence 1, 2, ..., length(along.with). (along.with is usually abbreviated to along, and  seq_along is much faster.)</span></span></code></pre></div>
 <blockquote>
 <p>循环中尽可能利用R中的向量化,比如指定output的长度,当数据量大的时候效率提升将比较明显,养成向量化的意识对提高代码效率有显著效果.</p>
 </blockquote>
@@ -575,31 +577,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>当我们不知道要循环迭代的次数时，可以考虑使用while循环结构。</p>
 <p>示例如下：</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="R-loop-description.html#cb466-1" aria-hidden="true" tabindex="-1"></a>readinteger <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb466-2"><a href="R-loop-description.html#cb466-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Please, enter your ANSWER: &quot;</span>)</span>
-<span id="cb466-3"><a href="R-loop-description.html#cb466-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb466-4"><a href="R-loop-description.html#cb466-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb466-5"><a href="R-loop-description.html#cb466-5" aria-hidden="true" tabindex="-1"></a>response <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">readinteger</span>())</span>
-<span id="cb466-6"><a href="R-loop-description.html#cb466-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb466-7"><a href="R-loop-description.html#cb466-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (response<span class="sc">!=</span><span class="dv">42</span>) {   </span>
-<span id="cb466-8"><a href="R-loop-description.html#cb466-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Sorry, the answer to whatever the question MUST be 42&quot;</span>);</span>
-<span id="cb466-9"><a href="R-loop-description.html#cb466-9" aria-hidden="true" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">readinteger</span>());</span>
-<span id="cb466-10"><a href="R-loop-description.html#cb466-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="R-loop-description.html#cb493-1" aria-hidden="true" tabindex="-1"></a>readinteger <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb493-2"><a href="R-loop-description.html#cb493-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Please, enter your ANSWER: &quot;</span>)</span>
+<span id="cb493-3"><a href="R-loop-description.html#cb493-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb493-4"><a href="R-loop-description.html#cb493-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb493-5"><a href="R-loop-description.html#cb493-5" aria-hidden="true" tabindex="-1"></a>response <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">readinteger</span>())</span>
+<span id="cb493-6"><a href="R-loop-description.html#cb493-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb493-7"><a href="R-loop-description.html#cb493-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (response<span class="sc">!=</span><span class="dv">42</span>) {   </span>
+<span id="cb493-8"><a href="R-loop-description.html#cb493-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Sorry, the answer to whatever the question MUST be 42&quot;</span>);</span>
+<span id="cb493-9"><a href="R-loop-description.html#cb493-9" aria-hidden="true" tabindex="-1"></a>  response <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">readinteger</span>());</span>
+<span id="cb493-10"><a href="R-loop-description.html#cb493-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Repeat</li>
 </ul>
 <p>repeat循环与while循环类似。如下所示，直到满足if条件后才会跳出循环结构。</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="R-loop-description.html#cb467-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb467-2"><a href="R-loop-description.html#cb467-2" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb467-3"><a href="R-loop-description.html#cb467-3" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span>{</span>
-<span id="cb467-4"><a href="R-loop-description.html#cb467-4" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> total<span class="sc">+</span>i</span>
-<span id="cb467-5"><a href="R-loop-description.html#cb467-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb467-6"><a href="R-loop-description.html#cb467-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">&gt;</span> <span class="dv">100</span>){</span>
-<span id="cb467-7"><a href="R-loop-description.html#cb467-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&#39;连续相加求和等于:&#39;</span>,total))</span>
-<span id="cb467-8"><a href="R-loop-description.html#cb467-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb467-9"><a href="R-loop-description.html#cb467-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb467-10"><a href="R-loop-description.html#cb467-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb467-11"><a href="R-loop-description.html#cb467-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;连续相加求和等于:5050&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="R-loop-description.html#cb494-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb494-2"><a href="R-loop-description.html#cb494-2" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb494-3"><a href="R-loop-description.html#cb494-3" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span>{</span>
+<span id="cb494-4"><a href="R-loop-description.html#cb494-4" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> total<span class="sc">+</span>i</span>
+<span id="cb494-5"><a href="R-loop-description.html#cb494-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb494-6"><a href="R-loop-description.html#cb494-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">&gt;</span> <span class="dv">100</span>){</span>
+<span id="cb494-7"><a href="R-loop-description.html#cb494-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&#39;连续相加求和等于:&#39;</span>,total))</span>
+<span id="cb494-8"><a href="R-loop-description.html#cb494-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb494-9"><a href="R-loop-description.html#cb494-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb494-10"><a href="R-loop-description.html#cb494-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb494-11"><a href="R-loop-description.html#cb494-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;连续相加求和等于:5050&quot;</span></span></code></pre></div>
 </div>
 <div id="loop:control" class="section level3" number="9.1.3">
 <h3><span class="header-section-number">9.1.3</span> 循环控制</h3>
@@ -607,62 +609,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>next 用法</li>
 </ul>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="R-loop-description.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] ){</span>
-<span id="cb468-2"><a href="R-loop-description.html#cb468-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">==</span> <span class="st">&quot;d&quot;</span>){</span>
-<span id="cb468-3"><a href="R-loop-description.html#cb468-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">next</span></span>
-<span id="cb468-4"><a href="R-loop-description.html#cb468-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb468-5"><a href="R-loop-description.html#cb468-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb468-6"><a href="R-loop-description.html#cb468-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb468-7"><a href="R-loop-description.html#cb468-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a&quot;</span></span>
-<span id="cb468-8"><a href="R-loop-description.html#cb468-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;b&quot;</span></span>
-<span id="cb468-9"><a href="R-loop-description.html#cb468-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;c&quot;</span></span>
-<span id="cb468-10"><a href="R-loop-description.html#cb468-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e&quot;</span></span>
-<span id="cb468-11"><a href="R-loop-description.html#cb468-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;f&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="R-loop-description.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] ){</span>
+<span id="cb495-2"><a href="R-loop-description.html#cb495-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">==</span> <span class="st">&quot;d&quot;</span>){</span>
+<span id="cb495-3"><a href="R-loop-description.html#cb495-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">next</span></span>
+<span id="cb495-4"><a href="R-loop-description.html#cb495-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb495-5"><a href="R-loop-description.html#cb495-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb495-6"><a href="R-loop-description.html#cb495-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb495-7"><a href="R-loop-description.html#cb495-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a&quot;</span></span>
+<span id="cb495-8"><a href="R-loop-description.html#cb495-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;b&quot;</span></span>
+<span id="cb495-9"><a href="R-loop-description.html#cb495-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;c&quot;</span></span>
+<span id="cb495-10"><a href="R-loop-description.html#cb495-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e&quot;</span></span>
+<span id="cb495-11"><a href="R-loop-description.html#cb495-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;f&quot;</span></span></code></pre></div>
 <ul>
 <li>break 用法</li>
 </ul>
 <p>当条件满足时，跳出循环。</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="R-loop-description.html#cb469-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">=</span><span class="dv">10</span> </span>
-<span id="cb469-2"><a href="R-loop-description.html#cb469-2" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb469-3"><a href="R-loop-description.html#cb469-3" aria-hidden="true" tabindex="-1"></a>ctr<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb469-4"><a href="R-loop-description.html#cb469-4" aria-hidden="true" tabindex="-1"></a>mymat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,m,n)</span>
-<span id="cb469-5"><a href="R-loop-description.html#cb469-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb469-6"><a href="R-loop-description.html#cb469-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m) {</span>
-<span id="cb469-7"><a href="R-loop-description.html#cb469-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {   </span>
-<span id="cb469-8"><a href="R-loop-description.html#cb469-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(i<span class="sc">==</span>j) { </span>
-<span id="cb469-9"><a href="R-loop-description.html#cb469-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span>;</span>
-<span id="cb469-10"><a href="R-loop-description.html#cb469-10" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb469-11"><a href="R-loop-description.html#cb469-11" aria-hidden="true" tabindex="-1"></a>       <span class="co"># you assign the values only when i&lt;&gt;j</span></span>
-<span id="cb469-12"><a href="R-loop-description.html#cb469-12" aria-hidden="true" tabindex="-1"></a>      mymat[i,j] <span class="ot">=</span> i<span class="sc">*</span>j</span>
-<span id="cb469-13"><a href="R-loop-description.html#cb469-13" aria-hidden="true" tabindex="-1"></a>      ctr<span class="ot">=</span>ctr<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb469-14"><a href="R-loop-description.html#cb469-14" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb469-15"><a href="R-loop-description.html#cb469-15" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb469-16"><a href="R-loop-description.html#cb469-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i<span class="sc">*</span>j) </span>
-<span id="cb469-17"><a href="R-loop-description.html#cb469-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb469-18"><a href="R-loop-description.html#cb469-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb469-19"><a href="R-loop-description.html#cb469-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb469-20"><a href="R-loop-description.html#cb469-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
-<span id="cb469-21"><a href="R-loop-description.html#cb469-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
-<span id="cb469-22"><a href="R-loop-description.html#cb469-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 25</span></span>
-<span id="cb469-23"><a href="R-loop-description.html#cb469-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 36</span></span>
-<span id="cb469-24"><a href="R-loop-description.html#cb469-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 49</span></span>
-<span id="cb469-25"><a href="R-loop-description.html#cb469-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64</span></span>
-<span id="cb469-26"><a href="R-loop-description.html#cb469-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 81</span></span>
-<span id="cb469-27"><a href="R-loop-description.html#cb469-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 100</span></span>
-<span id="cb469-28"><a href="R-loop-description.html#cb469-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 共赋值多少次</span></span>
-<span id="cb469-29"><a href="R-loop-description.html#cb469-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ctr)</span>
-<span id="cb469-30"><a href="R-loop-description.html#cb469-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 45</span></span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="R-loop-description.html#cb496-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">=</span><span class="dv">10</span> </span>
+<span id="cb496-2"><a href="R-loop-description.html#cb496-2" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">10</span></span>
+<span id="cb496-3"><a href="R-loop-description.html#cb496-3" aria-hidden="true" tabindex="-1"></a>ctr<span class="ot">=</span><span class="dv">0</span></span>
+<span id="cb496-4"><a href="R-loop-description.html#cb496-4" aria-hidden="true" tabindex="-1"></a>mymat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>,m,n)</span>
+<span id="cb496-5"><a href="R-loop-description.html#cb496-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-6"><a href="R-loop-description.html#cb496-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m) {</span>
+<span id="cb496-7"><a href="R-loop-description.html#cb496-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {   </span>
+<span id="cb496-8"><a href="R-loop-description.html#cb496-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(i<span class="sc">==</span>j) { </span>
+<span id="cb496-9"><a href="R-loop-description.html#cb496-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span>;</span>
+<span id="cb496-10"><a href="R-loop-description.html#cb496-10" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb496-11"><a href="R-loop-description.html#cb496-11" aria-hidden="true" tabindex="-1"></a>       <span class="co"># you assign the values only when i&lt;&gt;j</span></span>
+<span id="cb496-12"><a href="R-loop-description.html#cb496-12" aria-hidden="true" tabindex="-1"></a>      mymat[i,j] <span class="ot">=</span> i<span class="sc">*</span>j</span>
+<span id="cb496-13"><a href="R-loop-description.html#cb496-13" aria-hidden="true" tabindex="-1"></a>      ctr<span class="ot">=</span>ctr<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb496-14"><a href="R-loop-description.html#cb496-14" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb496-15"><a href="R-loop-description.html#cb496-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb496-16"><a href="R-loop-description.html#cb496-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i<span class="sc">*</span>j) </span>
+<span id="cb496-17"><a href="R-loop-description.html#cb496-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb496-18"><a href="R-loop-description.html#cb496-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb496-19"><a href="R-loop-description.html#cb496-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb496-20"><a href="R-loop-description.html#cb496-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
+<span id="cb496-21"><a href="R-loop-description.html#cb496-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
+<span id="cb496-22"><a href="R-loop-description.html#cb496-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 25</span></span>
+<span id="cb496-23"><a href="R-loop-description.html#cb496-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 36</span></span>
+<span id="cb496-24"><a href="R-loop-description.html#cb496-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 49</span></span>
+<span id="cb496-25"><a href="R-loop-description.html#cb496-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64</span></span>
+<span id="cb496-26"><a href="R-loop-description.html#cb496-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 81</span></span>
+<span id="cb496-27"><a href="R-loop-description.html#cb496-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 100</span></span>
+<span id="cb496-28"><a href="R-loop-description.html#cb496-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 共赋值多少次</span></span>
+<span id="cb496-29"><a href="R-loop-description.html#cb496-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ctr)</span>
+<span id="cb496-30"><a href="R-loop-description.html#cb496-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 45</span></span></code></pre></div>
 </div>
 <div id="嵌套循环" class="section level3" number="9.1.4">
 <h3><span class="header-section-number">9.1.4</span> 嵌套循环</h3>
 <p>嵌套循环即在循环体中再循环。</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="R-loop-description.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb470-2"><a href="R-loop-description.html#cb470-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">100</span>)</span>
-<span id="cb470-3"><a href="R-loop-description.html#cb470-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb470-4"><a href="R-loop-description.html#cb470-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb470-5"><a href="R-loop-description.html#cb470-5" aria-hidden="true" tabindex="-1"></a>    v[i<span class="sc">*</span>j] <span class="ot">=</span> i <span class="sc">*</span> j </span>
-<span id="cb470-6"><a href="R-loop-description.html#cb470-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb470-7"><a href="R-loop-description.html#cb470-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="R-loop-description.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb497-2"><a href="R-loop-description.html#cb497-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb497-3"><a href="R-loop-description.html#cb497-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb497-4"><a href="R-loop-description.html#cb497-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb497-5"><a href="R-loop-description.html#cb497-5" aria-hidden="true" tabindex="-1"></a>    v[i<span class="sc">*</span>j] <span class="ot">=</span> i <span class="sc">*</span> j </span>
+<span id="cb497-6"><a href="R-loop-description.html#cb497-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb497-7"><a href="R-loop-description.html#cb497-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
             </section>

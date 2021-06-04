@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11.5 环境 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>11.5 环境 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.5 环境 | R 语言学习笔记" />
+  <meta property="og:title" content="11.5 环境 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.5 环境 | R 语言学习笔记" />
+  <meta name="twitter:title" content="11.5 环境 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -520,17 +522,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.5</span> 环境</h2>
 <p>环境是复杂的,建议阅读原文.</p>
 <p>The last component of a function is its environment. This is not something you need to understand deeply when you first start writing functions. However, it’s important to know a little bit about environments because they are crucial to how functions work. The environment of a function controls how R finds the value associated with a name. For example, take this function:</p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="function-environment.html#cb517-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb517-2"><a href="function-environment.html#cb517-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb517-3"><a href="function-environment.html#cb517-3" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="function-environment.html#cb544-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb544-2"><a href="function-environment.html#cb544-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb544-3"><a href="function-environment.html#cb544-3" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
 <p>在很多其他的编程语言中这样定义函数是错误的，因为没有定义<code>y</code>.在R中,这是有效的代码,因为R使用称为<code>lexical scoping</code>的方式寻找关联值.在函数内部没有定义<code>y</code>,将在上一层环境中查看<code>y</code>:</p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="function-environment.html#cb518-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb518-2"><a href="function-environment.html#cb518-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
-<span id="cb518-3"><a href="function-environment.html#cb518-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 110</span></span>
-<span id="cb518-4"><a href="function-environment.html#cb518-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb518-5"><a href="function-environment.html#cb518-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb518-6"><a href="function-environment.html#cb518-6" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
-<span id="cb518-7"><a href="function-environment.html#cb518-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1010</span></span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="function-environment.html#cb545-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb545-2"><a href="function-environment.html#cb545-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
+<span id="cb545-3"><a href="function-environment.html#cb545-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 110</span></span>
+<span id="cb545-4"><a href="function-environment.html#cb545-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb545-5"><a href="function-environment.html#cb545-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb545-6"><a href="function-environment.html#cb545-6" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
+<span id="cb545-7"><a href="function-environment.html#cb545-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1010</span></span></code></pre></div>
 <p>具体详细的资料请查阅：</p>
 <p><a href="https://r4ds.had.co.nz/functions.html#environment" class="uri">https://r4ds.had.co.nz/functions.html#environment</a></p>
 <p><a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a></p>

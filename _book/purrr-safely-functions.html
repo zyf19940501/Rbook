@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.4 安全函数 | R 语言学习笔记</title>
-  <meta name="description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <title>10.4 安全函数 | 商业数据分析师-R 语言数据处理</title>
+  <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.4 安全函数 | R 语言学习笔记" />
+  <meta property="og:title" content="10.4 安全函数 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.4 安全函数 | R 语言学习笔记" />
+  <meta name="twitter:title" content="10.4 安全函数 | 商业数据分析师-R 语言数据处理" />
   
-  <meta name="twitter:description" content="宇飞的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
+  <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,8 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -508,7 +510,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言学习笔记</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">商业数据分析师-R 语言数据处理</a>
           </h1>
         </div>
 
@@ -519,50 +521,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="purrr-safely-functions" class="section level2" number="10.4">
 <h2><span class="header-section-number">10.4</span> 安全函数</h2>
 <p>possibly() 和 safely(),当循环时候遇到错误报错导致整个程序停止,这不是我们想要的。</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="purrr-safely-functions.html#cb492-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">&#39;5&#39;</span>)</span>
-<span id="cb492-2"><a href="purrr-safely-functions.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l,<span class="cf">function</span>(.x) .x<span class="sc">+</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="purrr-safely-functions.html#cb519-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">&#39;5&#39;</span>)</span>
+<span id="cb519-2"><a href="purrr-safely-functions.html#cb519-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l,<span class="cf">function</span>(.x) .x<span class="sc">+</span><span class="dv">1</span>)</span></code></pre></div>
 <p>以上程序将会报错,不能正确得到结果。</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="purrr-safely-functions.html#cb493-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">&#39;5&#39;</span>)</span>
-<span id="cb493-2"><a href="purrr-safely-functions.html#cb493-2" aria-hidden="true" tabindex="-1"></a>test_fun <span class="ot">&lt;-</span> <span class="fu">safely</span>(<span class="cf">function</span>(.x) .x<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb493-3"><a href="purrr-safely-functions.html#cb493-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l,test_fun)</span>
-<span id="cb493-4"><a href="purrr-safely-functions.html#cb493-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb493-5"><a href="purrr-safely-functions.html#cb493-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]$result</span></span>
-<span id="cb493-6"><a href="purrr-safely-functions.html#cb493-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
-<span id="cb493-7"><a href="purrr-safely-functions.html#cb493-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-8"><a href="purrr-safely-functions.html#cb493-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]$error</span></span>
-<span id="cb493-9"><a href="purrr-safely-functions.html#cb493-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb493-10"><a href="purrr-safely-functions.html#cb493-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-11"><a href="purrr-safely-functions.html#cb493-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-12"><a href="purrr-safely-functions.html#cb493-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb493-13"><a href="purrr-safely-functions.html#cb493-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]$result</span></span>
-<span id="cb493-14"><a href="purrr-safely-functions.html#cb493-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
-<span id="cb493-15"><a href="purrr-safely-functions.html#cb493-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-16"><a href="purrr-safely-functions.html#cb493-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]$error</span></span>
-<span id="cb493-17"><a href="purrr-safely-functions.html#cb493-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb493-18"><a href="purrr-safely-functions.html#cb493-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-19"><a href="purrr-safely-functions.html#cb493-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-20"><a href="purrr-safely-functions.html#cb493-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb493-21"><a href="purrr-safely-functions.html#cb493-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]$result</span></span>
-<span id="cb493-22"><a href="purrr-safely-functions.html#cb493-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb493-23"><a href="purrr-safely-functions.html#cb493-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-24"><a href="purrr-safely-functions.html#cb493-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]$error</span></span>
-<span id="cb493-25"><a href="purrr-safely-functions.html#cb493-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb493-26"><a href="purrr-safely-functions.html#cb493-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-27"><a href="purrr-safely-functions.html#cb493-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-28"><a href="purrr-safely-functions.html#cb493-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]</span></span>
-<span id="cb493-29"><a href="purrr-safely-functions.html#cb493-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]$result</span></span>
-<span id="cb493-30"><a href="purrr-safely-functions.html#cb493-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span>
-<span id="cb493-31"><a href="purrr-safely-functions.html#cb493-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-32"><a href="purrr-safely-functions.html#cb493-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]$error</span></span>
-<span id="cb493-33"><a href="purrr-safely-functions.html#cb493-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb493-34"><a href="purrr-safely-functions.html#cb493-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-35"><a href="purrr-safely-functions.html#cb493-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-36"><a href="purrr-safely-functions.html#cb493-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]</span></span>
-<span id="cb493-37"><a href="purrr-safely-functions.html#cb493-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]$result</span></span>
-<span id="cb493-38"><a href="purrr-safely-functions.html#cb493-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb493-39"><a href="purrr-safely-functions.html#cb493-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb493-40"><a href="purrr-safely-functions.html#cb493-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]$error</span></span>
-<span id="cb493-41"><a href="purrr-safely-functions.html#cb493-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;simpleError in .x + 1: 二进列运算符中有非数值参数&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="purrr-safely-functions.html#cb520-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="st">&#39;5&#39;</span>)</span>
+<span id="cb520-2"><a href="purrr-safely-functions.html#cb520-2" aria-hidden="true" tabindex="-1"></a>test_fun <span class="ot">&lt;-</span> <span class="fu">safely</span>(<span class="cf">function</span>(.x) .x<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb520-3"><a href="purrr-safely-functions.html#cb520-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l,test_fun)</span>
+<span id="cb520-4"><a href="purrr-safely-functions.html#cb520-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb520-5"><a href="purrr-safely-functions.html#cb520-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]$result</span></span>
+<span id="cb520-6"><a href="purrr-safely-functions.html#cb520-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb520-7"><a href="purrr-safely-functions.html#cb520-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-8"><a href="purrr-safely-functions.html#cb520-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]$error</span></span>
+<span id="cb520-9"><a href="purrr-safely-functions.html#cb520-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb520-10"><a href="purrr-safely-functions.html#cb520-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-11"><a href="purrr-safely-functions.html#cb520-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-12"><a href="purrr-safely-functions.html#cb520-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb520-13"><a href="purrr-safely-functions.html#cb520-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]$result</span></span>
+<span id="cb520-14"><a href="purrr-safely-functions.html#cb520-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb520-15"><a href="purrr-safely-functions.html#cb520-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-16"><a href="purrr-safely-functions.html#cb520-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]$error</span></span>
+<span id="cb520-17"><a href="purrr-safely-functions.html#cb520-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb520-18"><a href="purrr-safely-functions.html#cb520-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-19"><a href="purrr-safely-functions.html#cb520-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-20"><a href="purrr-safely-functions.html#cb520-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb520-21"><a href="purrr-safely-functions.html#cb520-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]$result</span></span>
+<span id="cb520-22"><a href="purrr-safely-functions.html#cb520-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb520-23"><a href="purrr-safely-functions.html#cb520-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-24"><a href="purrr-safely-functions.html#cb520-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]$error</span></span>
+<span id="cb520-25"><a href="purrr-safely-functions.html#cb520-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb520-26"><a href="purrr-safely-functions.html#cb520-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-27"><a href="purrr-safely-functions.html#cb520-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-28"><a href="purrr-safely-functions.html#cb520-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]</span></span>
+<span id="cb520-29"><a href="purrr-safely-functions.html#cb520-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]$result</span></span>
+<span id="cb520-30"><a href="purrr-safely-functions.html#cb520-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span>
+<span id="cb520-31"><a href="purrr-safely-functions.html#cb520-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-32"><a href="purrr-safely-functions.html#cb520-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]$error</span></span>
+<span id="cb520-33"><a href="purrr-safely-functions.html#cb520-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb520-34"><a href="purrr-safely-functions.html#cb520-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-35"><a href="purrr-safely-functions.html#cb520-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-36"><a href="purrr-safely-functions.html#cb520-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]</span></span>
+<span id="cb520-37"><a href="purrr-safely-functions.html#cb520-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]$result</span></span>
+<span id="cb520-38"><a href="purrr-safely-functions.html#cb520-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb520-39"><a href="purrr-safely-functions.html#cb520-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb520-40"><a href="purrr-safely-functions.html#cb520-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]$error</span></span>
+<span id="cb520-41"><a href="purrr-safely-functions.html#cb520-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;simpleError in .x + 1: 二进列运算符中有非数值参数&gt;</span></span></code></pre></div>
 <p>用safely()函数将原始function包裹起来,即使执行过程中遇到错误也可以完成整个任务,不会因为中途报错停止,在大型循环过程中,如爬虫过程中比较实用。</p>
 </div>
             </section>
