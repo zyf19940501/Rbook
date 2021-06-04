@@ -1090,7 +1090,7 @@ purrr::reduce(dtlist,left_join,by='x')
 
 ## 分组操作 {#dplyr-groupby-manipulation}
 
-`group_by()`最重要的分组动词,需要一个数据框和一个或多个变量进行分组：
+`group_by()`是最重要的分组动词,需要一个数据框和一个或多个变量进行分组：
 
 详情: <https://cloud.r-project.org/web/packages/dplyr/vignettes/grouping.html>
 
@@ -1098,10 +1098,27 @@ purrr::reduce(dtlist,left_join,by='x')
 
 ### 添加分组
 
+
 ```{r dplyr-groupby-1}
 by_species <- starwars %>% group_by(species)
 by_sex_gender <- starwars %>% group_by(sex, gender)
 ```
+
+在添加分组后，print()打印时可以看到分组:
+
+```{r}
+by_species
+```
+
+
+计算每个分组的行数，可以通过`sort`参数控制排序方式。
+
+```{r}
+by_species %>% tally()
+by_sex_gender %>% tally(sort = TRUE)
+```
+
+> 在数据探索时比较有用。
 
 除了按照现有变量分组外，还可以按照函数处理后的变量分组，等效在`mutate()`之后执行`group_by`:
 
@@ -1111,6 +1128,79 @@ starwars %>%
   group_by(bmi_cat = cut(mass/(height/100)^2, breaks=bmi_breaks)) %>%
   tally()
 ```
+
+> group_by()可通过在group_by()计算产生的新字段分组
+
+### 查看分组
+
+使用`group_keys()`查看数据的分组，每个组一行，每个分组变量占一列：
+
+```{r}
+by_species %>% group_keys()
+
+by_sex_gender %>% group_keys()
+```
+
+
+也可以使用命令`group_indices()`查看每行属于哪个组：
+
+```{r}
+by_species %>% group_indices()
+```
+
+该特性方便增加组别列。
+
+```{r}
+df <- tibble(a = c('a','a','a','b','b','b','d','e','f'))
+df %>% 
+  group_by(a) %>%
+  mutate(组别列 = group_indices() )
+```
+
+上述用法在dplyr 1.0.0 中弃用，用`cur_group_id()`代替，如下所示：
+
+```{r}
+df %>% 
+  group_by(a) %>%
+  mutate(组别列 = cur_group_id())
+```
+
+
+> dplyr 在我看来 API 变化较快，所以我个人习惯使用 data.table 包处理数据。所以在学习的时候用最新的版本学习。
+
+`group_rows()`每个组包含哪些行:
+
+```{r}
+by_species %>% group_rows() %>% head()
+```
+
+`group_vars()`返回分组变量的名称，请使用：
+
+
+```{r}
+by_species %>% group_vars()
+
+by_sex_gender %>% group_vars()
+```
+
+### 更改和添加分组变量
+
+如果将`group_by()`应用已经分组的数据集，将覆盖现有的分组变量。例如，下面的分组变量是`homeworld`而不是之前的`species`。
+
+```{r}
+ by_species %>% 
+  group_by(homeworld) %>% 
+  tally()
+```
+
+要增加分组变量，使用`.add=TRUE`参数即可。例如：
+
+```{r}
+by_species %>% 
+  group_by(homeworld,.add = TRUE) %>% 
+  tally()
+```
+
 
 
 ### 删除分组变量
@@ -1123,10 +1213,23 @@ by_species %>%
   tally()
 ```
 
+还可以通过列出要删除的变量来有选择的删除分组变量：
+
+```{r}
+by_sex_gender %>% 
+  ungroup(sex) %>% 
+  tally()
+```
+
+
 
 ### 动词
 
-`summarise()` 计算每个组的汇总，表示从`group_keys`开始右侧添加汇总变量
+`group_by()`是如何影响 dplyr 的主要动词。
+
+- summarise
+
+`summarise()` 计算每个组的汇总，表示从`group_keys()`开始,在右侧添加`summarise()`的汇总变量。
 
 ```{r dplyr-groupby-4}
 by_species %>%
@@ -1137,7 +1240,18 @@ by_species %>%
 ```
 
 
-该`.groups=`参数控制输出的分组结构。删除右侧分组变量的历史行为对应于`.groups =` "drop_last"没有消息或.groups = NULL有消息（默认值）。
+该`.groups=`参数控制输出的分组结构。删除右侧分组变量的历史行为对应于`.groups =` "drop_last"没有提示消息，或.groups = NULL有消息（默认值）。
+
+```{r}
+by_sex_gender %>% 
+  summarise(n = n()) %>% 
+  group_vars()
+
+by_sex_gender %>% 
+  summarise(n = n(),.groups = 'drop_last') %>% 
+  group_vars()
+```
+
 
 从1.0.0版开始，分组信息可以保留`(.groups = "keep")`或删除 `(.groups = 'drop)`
 
@@ -1156,7 +1270,7 @@ object.size(a)
 object.size(b)
 ```
 
-在实际使用中，当数据较大时需要删掉分组信息。以上可以看到保留分组信息的比没保留的大了两倍多。
+以上,可以看到保留分组信息的比没保留的对象大了两倍多，在实际使用中，当数据较大时会占据更多内存，所以我们需要根据实际情况决定是否保留分组信息，我在大部分时候都会删除分组信息。
 
 
 
