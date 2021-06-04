@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-03" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -231,8 +231,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -1077,19 +1079,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb59-7"><a href="dplyr-functions.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, x, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb59-8"><a href="dplyr-functions.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(df, <span class="at">diff =</span> <span class="fu">abs</span>(x <span class="sc">-</span> y))</span></code></pre></div>
 <ul>
+<li>lead lag</li>
+</ul>
+<p>在向量中查找“向前”或滞后的值，在比较当前值以及前后值时比较有用。</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="dplyr-functions.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lag</span>(x, <span class="at">n =</span> 1L, <span class="at">default =</span> <span class="cn">NA</span>, <span class="at">order_by =</span> <span class="cn">NULL</span>, ...)</span>
+<span id="cb60-2"><a href="dplyr-functions.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="dplyr-functions.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lead</span>(x, <span class="at">n =</span> 1L, <span class="at">default =</span> <span class="cn">NA</span>, <span class="at">order_by =</span> <span class="cn">NULL</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="dplyr-functions.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lag</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb61-2"><a href="dplyr-functions.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  1  2  3  4</span></span>
+<span id="cb61-3"><a href="dplyr-functions.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lead</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb61-4"><a href="dplyr-functions.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  2  3  4  5 NA</span></span>
+<span id="cb61-5"><a href="dplyr-functions.html#cb61-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-6"><a href="dplyr-functions.html#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lag</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb61-7"><a href="dplyr-functions.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  1  2  3  4</span></span>
+<span id="cb61-8"><a href="dplyr-functions.html#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lag</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb61-9"><a href="dplyr-functions.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA NA  1  2  3</span></span></code></pre></div>
+<p>order_by 参数控制顺序。</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="dplyr-functions.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If data are not already ordered, use `order_by`</span></span>
+<span id="cb62-2"><a href="dplyr-functions.html#cb62-2" aria-hidden="true" tabindex="-1"></a>scrambled <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(<span class="fu">tibble</span>(<span class="at">year =</span> <span class="dv">2000</span><span class="sc">:</span><span class="dv">2005</span>, <span class="at">value =</span> (<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">^</span> <span class="dv">2</span>), <span class="at">prop =</span> <span class="dv">1</span>)</span>
+<span id="cb62-3"><a href="dplyr-functions.html#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="dplyr-functions.html#cb62-4" aria-hidden="true" tabindex="-1"></a>wrong <span class="ot">&lt;-</span> <span class="fu">mutate</span>(scrambled, <span class="at">previous_year_value =</span> <span class="fu">lag</span>(value))</span>
+<span id="cb62-5"><a href="dplyr-functions.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(wrong, year)</span>
+<span id="cb62-6"><a href="dplyr-functions.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
+<span id="cb62-7"><a href="dplyr-functions.html#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year value previous_year_value</span></span>
+<span id="cb62-8"><a href="dplyr-functions.html#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt;               &lt;dbl&gt;</span></span>
+<span id="cb62-9"><a href="dplyr-functions.html#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000     0                   1</span></span>
+<span id="cb62-10"><a href="dplyr-functions.html#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2001     1                  25</span></span>
+<span id="cb62-11"><a href="dplyr-functions.html#cb62-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2002     4                  NA</span></span>
+<span id="cb62-12"><a href="dplyr-functions.html#cb62-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2003     9                   4</span></span>
+<span id="cb62-13"><a href="dplyr-functions.html#cb62-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2004    16                   0</span></span>
+<span id="cb62-14"><a href="dplyr-functions.html#cb62-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2005    25                   9</span></span>
+<span id="cb62-15"><a href="dplyr-functions.html#cb62-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-16"><a href="dplyr-functions.html#cb62-16" aria-hidden="true" tabindex="-1"></a>right <span class="ot">&lt;-</span> <span class="fu">mutate</span>(scrambled, <span class="at">previous_year_value =</span> <span class="fu">lag</span>(value, <span class="at">order_by =</span> year))</span>
+<span id="cb62-17"><a href="dplyr-functions.html#cb62-17" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(right, year)</span>
+<span id="cb62-18"><a href="dplyr-functions.html#cb62-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
+<span id="cb62-19"><a href="dplyr-functions.html#cb62-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year value previous_year_value</span></span>
+<span id="cb62-20"><a href="dplyr-functions.html#cb62-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt;               &lt;dbl&gt;</span></span>
+<span id="cb62-21"><a href="dplyr-functions.html#cb62-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000     0                  NA</span></span>
+<span id="cb62-22"><a href="dplyr-functions.html#cb62-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2001     1                   0</span></span>
+<span id="cb62-23"><a href="dplyr-functions.html#cb62-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2002     4                   1</span></span>
+<span id="cb62-24"><a href="dplyr-functions.html#cb62-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2003     9                   4</span></span>
+<span id="cb62-25"><a href="dplyr-functions.html#cb62-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2004    16                   9</span></span>
+<span id="cb62-26"><a href="dplyr-functions.html#cb62-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2005    25                  16</span></span></code></pre></div>
+<blockquote>
+<p>该函数在我们计算下单间隔天数时比较简洁方便</p>
+</blockquote>
+<ul>
 <li>cummean cumsum cumall cumany</li>
 </ul>
 <p>累计系列函数</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="dplyr-functions.html#cb60-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb60-2"><a href="dplyr-functions.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cummean</span>(x)</span>
-<span id="cb60-3"><a href="dplyr-functions.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 2.00 3.00 2.75 2.60</span></span>
-<span id="cb60-4"><a href="dplyr-functions.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x) <span class="sc">/</span> <span class="fu">seq_along</span>(x)</span>
-<span id="cb60-5"><a href="dplyr-functions.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 2.00 3.00 2.75 2.60</span></span>
-<span id="cb60-6"><a href="dplyr-functions.html#cb60-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-7"><a href="dplyr-functions.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cumall</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>)</span>
-<span id="cb60-8"><a href="dplyr-functions.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE FALSE</span></span>
-<span id="cb60-9"><a href="dplyr-functions.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cumany</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span>
-<span id="cb60-10"><a href="dplyr-functions.html#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="dplyr-functions.html#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb63-2"><a href="dplyr-functions.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cummean</span>(x)</span>
+<span id="cb63-3"><a href="dplyr-functions.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 2.00 3.00 2.75 2.60</span></span>
+<span id="cb63-4"><a href="dplyr-functions.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(x) <span class="sc">/</span> <span class="fu">seq_along</span>(x)</span>
+<span id="cb63-5"><a href="dplyr-functions.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.00 2.00 3.00 2.75 2.60</span></span>
+<span id="cb63-6"><a href="dplyr-functions.html#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="dplyr-functions.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cumall</span>(x <span class="sc">&lt;</span> <span class="dv">5</span>)</span>
+<span id="cb63-8"><a href="dplyr-functions.html#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE FALSE</span></span>
+<span id="cb63-9"><a href="dplyr-functions.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cumany</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb63-10"><a href="dplyr-functions.html#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
 </div>
 </div>
             </section>

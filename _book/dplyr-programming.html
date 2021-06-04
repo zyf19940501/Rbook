@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-03" />
+<meta name="date" content="2021-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -231,8 +231,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html"><i class="fa fa-check"></i><b>2.5</b> 分组操作</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#添加分组"><i class="fa fa-check"></i><b>2.5.1</b> 添加分组</a></li>
-<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.2</b> 删除分组变量</a></li>
-<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词"><i class="fa fa-check"></i><b>2.5.3</b> 动词</a></li>
+<li class="chapter" data-level="2.5.2" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#查看分组"><i class="fa fa-check"></i><b>2.5.2</b> 查看分组</a></li>
+<li class="chapter" data-level="2.5.3" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#更改和添加分组变量"><i class="fa fa-check"></i><b>2.5.3</b> 更改和添加分组变量</a></li>
+<li class="chapter" data-level="2.5.4" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#删除分组变量"><i class="fa fa-check"></i><b>2.5.4</b> 删除分组变量</a></li>
+<li class="chapter" data-level="2.5.5" data-path="dplyr-groupby-manipulation.html"><a href="dplyr-groupby-manipulation.html#动词影响"><i class="fa fa-check"></i><b>2.5.5</b> 动词影响</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="dplyr-column-manipulation.html"><a href="dplyr-column-manipulation.html"><i class="fa fa-check"></i><b>2.6</b> 列操作</a>
 <ul>
@@ -517,87 +519,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>When you have the data-variable in a function argument (i.e. an env-variable that holds a promise2), you need to ** embrace ** the argument by surrounding it in doubled braces, like <code>filter(df, {{ var }})</code>.</li>
 </ul>
 <p>The following function uses embracing to create a wrapper around <code>summarise()</code> that computes the minimum and maximum values of a variable, as well as the number of observations that were summarised:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="dplyr-programming.html#cb96-1" aria-hidden="true" tabindex="-1"></a>var_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(data, var) {</span>
-<span id="cb96-2"><a href="dplyr-programming.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
-<span id="cb96-3"><a href="dplyr-programming.html#cb96-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">min =</span> <span class="fu">min</span>({{ var }}), <span class="at">max =</span> <span class="fu">max</span>({{ var }}))</span>
-<span id="cb96-4"><a href="dplyr-programming.html#cb96-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb96-5"><a href="dplyr-programming.html#cb96-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb96-6"><a href="dplyr-programming.html#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb96-7"><a href="dplyr-programming.html#cb96-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var_summary</span>(mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="dplyr-programming.html#cb118-1" aria-hidden="true" tabindex="-1"></a>var_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(data, var) {</span>
+<span id="cb118-2"><a href="dplyr-programming.html#cb118-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb118-3"><a href="dplyr-programming.html#cb118-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">min =</span> <span class="fu">min</span>({{ var }}), <span class="at">max =</span> <span class="fu">max</span>({{ var }}))</span>
+<span id="cb118-4"><a href="dplyr-programming.html#cb118-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb118-5"><a href="dplyr-programming.html#cb118-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb118-6"><a href="dplyr-programming.html#cb118-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-7"><a href="dplyr-programming.html#cb118-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var_summary</span>(mpg)</span></code></pre></div>
 <ul>
 <li>When you have an env-variable that is a character vector, you need to index into the .data pronoun with [[, like summarise(df, mean = mean(.data[[var]])).</li>
 </ul>
 <p>The following example uses .data to count the number of unique values in each variable of mtcars:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="dplyr-programming.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(mtcars)) {</span>
-<span id="cb97-2"><a href="dplyr-programming.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> <span class="fu">count</span>(.data[[var]]) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span>
-<span id="cb97-3"><a href="dplyr-programming.html#cb97-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="dplyr-programming.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(mtcars)) {</span>
+<span id="cb119-2"><a href="dplyr-programming.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  mtcars <span class="sc">%&gt;%</span> <span class="fu">count</span>(.data[[var]]) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span>
+<span id="cb119-3"><a href="dplyr-programming.html#cb119-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Note that .data is not a data frame; it’s a special construct, a pronoun, that allows you to access the current variables either directly, with <code>.data$x</code> or indirectly with <code>.data[[var]]</code>. Don’t expect other functions to work with it.</p>
 <div id="案例" class="section level3" number="2.8.1">
 <h3><span class="header-section-number">2.8.1</span> 案例</h3>
 <p>当我们不知道接下来会用哪个变量汇总时：</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="dplyr-programming.html#cb98-1" aria-hidden="true" tabindex="-1"></a>my_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group_var) {</span>
-<span id="cb98-2"><a href="dplyr-programming.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
-<span id="cb98-3"><a href="dplyr-programming.html#cb98-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>({{ group_var }}) <span class="sc">%&gt;%</span></span>
-<span id="cb98-4"><a href="dplyr-programming.html#cb98-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(mass))</span>
-<span id="cb98-5"><a href="dplyr-programming.html#cb98-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="dplyr-programming.html#cb120-1" aria-hidden="true" tabindex="-1"></a>my_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group_var) {</span>
+<span id="cb120-2"><a href="dplyr-programming.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb120-3"><a href="dplyr-programming.html#cb120-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>({{ group_var }}) <span class="sc">%&gt;%</span></span>
+<span id="cb120-4"><a href="dplyr-programming.html#cb120-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(mass))</span>
+<span id="cb120-5"><a href="dplyr-programming.html#cb120-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>如果在多个位置使用：</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="dplyr-programming.html#cb99-1" aria-hidden="true" tabindex="-1"></a>my_summarise2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, expr) {</span>
-<span id="cb99-2"><a href="dplyr-programming.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
-<span id="cb99-3"><a href="dplyr-programming.html#cb99-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>({{ expr }}),</span>
-<span id="cb99-4"><a href="dplyr-programming.html#cb99-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sum =</span> <span class="fu">sum</span>({{ expr }}),</span>
-<span id="cb99-5"><a href="dplyr-programming.html#cb99-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb99-6"><a href="dplyr-programming.html#cb99-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb99-7"><a href="dplyr-programming.html#cb99-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="dplyr-programming.html#cb121-1" aria-hidden="true" tabindex="-1"></a>my_summarise2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, expr) {</span>
+<span id="cb121-2"><a href="dplyr-programming.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb121-3"><a href="dplyr-programming.html#cb121-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>({{ expr }}),</span>
+<span id="cb121-4"><a href="dplyr-programming.html#cb121-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sum =</span> <span class="fu">sum</span>({{ expr }}),</span>
+<span id="cb121-5"><a href="dplyr-programming.html#cb121-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb121-6"><a href="dplyr-programming.html#cb121-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb121-7"><a href="dplyr-programming.html#cb121-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>当多个表达式时：</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="dplyr-programming.html#cb100-1" aria-hidden="true" tabindex="-1"></a>my_summarise3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mean_var, sd_var) {</span>
-<span id="cb100-2"><a href="dplyr-programming.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb100-3"><a href="dplyr-programming.html#cb100-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>({{ mean_var }}), <span class="at">sd =</span> <span class="fu">mean</span>({{ sd_var }}))</span>
-<span id="cb100-4"><a href="dplyr-programming.html#cb100-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="dplyr-programming.html#cb122-1" aria-hidden="true" tabindex="-1"></a>my_summarise3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mean_var, sd_var) {</span>
+<span id="cb122-2"><a href="dplyr-programming.html#cb122-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb122-3"><a href="dplyr-programming.html#cb122-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>({{ mean_var }}), <span class="at">sd =</span> <span class="fu">mean</span>({{ sd_var }}))</span>
+<span id="cb122-4"><a href="dplyr-programming.html#cb122-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>如果要输出变量名时：</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="dplyr-programming.html#cb101-1" aria-hidden="true" tabindex="-1"></a>my_summarise4 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, expr) {</span>
-<span id="cb101-2"><a href="dplyr-programming.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
-<span id="cb101-3"><a href="dplyr-programming.html#cb101-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ expr }}),</span>
-<span id="cb101-4"><a href="dplyr-programming.html#cb101-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sum_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">sum</span>({{ expr }}),</span>
-<span id="cb101-5"><a href="dplyr-programming.html#cb101-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;n_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">n</span>()</span>
-<span id="cb101-6"><a href="dplyr-programming.html#cb101-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb101-7"><a href="dplyr-programming.html#cb101-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb101-8"><a href="dplyr-programming.html#cb101-8" aria-hidden="true" tabindex="-1"></a>my_summarise5 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mean_var, sd_var) {</span>
-<span id="cb101-9"><a href="dplyr-programming.html#cb101-9" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb101-10"><a href="dplyr-programming.html#cb101-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb101-11"><a href="dplyr-programming.html#cb101-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;mean_{{mean_var}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ mean_var }}), </span>
-<span id="cb101-12"><a href="dplyr-programming.html#cb101-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;sd_{{sd_var}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ sd_var }})</span>
-<span id="cb101-13"><a href="dplyr-programming.html#cb101-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb101-14"><a href="dplyr-programming.html#cb101-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="dplyr-programming.html#cb123-1" aria-hidden="true" tabindex="-1"></a>my_summarise4 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, expr) {</span>
+<span id="cb123-2"><a href="dplyr-programming.html#cb123-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb123-3"><a href="dplyr-programming.html#cb123-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ expr }}),</span>
+<span id="cb123-4"><a href="dplyr-programming.html#cb123-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sum_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">sum</span>({{ expr }}),</span>
+<span id="cb123-5"><a href="dplyr-programming.html#cb123-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;n_{{expr}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">n</span>()</span>
+<span id="cb123-6"><a href="dplyr-programming.html#cb123-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb123-7"><a href="dplyr-programming.html#cb123-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb123-8"><a href="dplyr-programming.html#cb123-8" aria-hidden="true" tabindex="-1"></a>my_summarise5 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mean_var, sd_var) {</span>
+<span id="cb123-9"><a href="dplyr-programming.html#cb123-9" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb123-10"><a href="dplyr-programming.html#cb123-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb123-11"><a href="dplyr-programming.html#cb123-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;mean_{{mean_var}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ mean_var }}), </span>
+<span id="cb123-12"><a href="dplyr-programming.html#cb123-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;sd_{{sd_var}}&quot;</span> <span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>({{ sd_var }})</span>
+<span id="cb123-13"><a href="dplyr-programming.html#cb123-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb123-14"><a href="dplyr-programming.html#cb123-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>任意个表达式：</p>
 <p>这种使用场景更多</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="dplyr-programming.html#cb102-1" aria-hidden="true" tabindex="-1"></a>my_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>
-<span id="cb102-2"><a href="dplyr-programming.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  .data <span class="sc">%&gt;%</span></span>
-<span id="cb102-3"><a href="dplyr-programming.html#cb102-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span></span>
-<span id="cb102-4"><a href="dplyr-programming.html#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb102-5"><a href="dplyr-programming.html#cb102-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb102-6"><a href="dplyr-programming.html#cb102-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(homeworld)</span>
-<span id="cb102-7"><a href="dplyr-programming.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 49 x 3</span></span>
-<span id="cb102-8"><a href="dplyr-programming.html#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   homeworld       mass height</span></span>
-<span id="cb102-9"><a href="dplyr-programming.html#cb102-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span id="cb102-10"><a href="dplyr-programming.html#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Alderaan          64   176.</span></span>
-<span id="cb102-11"><a href="dplyr-programming.html#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Aleen Minor       15    79 </span></span>
-<span id="cb102-12"><a href="dplyr-programming.html#cb102-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Bespin            79   175 </span></span>
-<span id="cb102-13"><a href="dplyr-programming.html#cb102-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Bestine IV       110   180 </span></span>
-<span id="cb102-14"><a href="dplyr-programming.html#cb102-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Cato Neimoidia    90   191 </span></span>
-<span id="cb102-15"><a href="dplyr-programming.html#cb102-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Cerea             82   198 </span></span>
-<span id="cb102-16"><a href="dplyr-programming.html#cb102-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 43 more rows</span></span>
-<span id="cb102-17"><a href="dplyr-programming.html#cb102-17" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(sex, gender)</span>
-<span id="cb102-18"><a href="dplyr-programming.html#cb102-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;sex&#39;. You can override using the `.groups` argument.</span></span>
-<span id="cb102-19"><a href="dplyr-programming.html#cb102-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
-<span id="cb102-20"><a href="dplyr-programming.html#cb102-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   sex [5]</span></span>
-<span id="cb102-21"><a href="dplyr-programming.html#cb102-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sex            gender      mass height</span></span>
-<span id="cb102-22"><a href="dplyr-programming.html#cb102-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span id="cb102-23"><a href="dplyr-programming.html#cb102-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 female         feminine    54.7   169.</span></span>
-<span id="cb102-24"><a href="dplyr-programming.html#cb102-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 hermaphroditic masculine 1358     175 </span></span>
-<span id="cb102-25"><a href="dplyr-programming.html#cb102-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 male           masculine   81.0   179.</span></span>
-<span id="cb102-26"><a href="dplyr-programming.html#cb102-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 none           feminine   NaN      96 </span></span>
-<span id="cb102-27"><a href="dplyr-programming.html#cb102-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 none           masculine   69.8   140 </span></span>
-<span id="cb102-28"><a href="dplyr-programming.html#cb102-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 &lt;NA&gt;           &lt;NA&gt;        48     181.</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="dplyr-programming.html#cb124-1" aria-hidden="true" tabindex="-1"></a>my_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>
+<span id="cb124-2"><a href="dplyr-programming.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  .data <span class="sc">%&gt;%</span></span>
+<span id="cb124-3"><a href="dplyr-programming.html#cb124-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span></span>
+<span id="cb124-4"><a href="dplyr-programming.html#cb124-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mass =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb124-5"><a href="dplyr-programming.html#cb124-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb124-6"><a href="dplyr-programming.html#cb124-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(homeworld)</span>
+<span id="cb124-7"><a href="dplyr-programming.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 49 x 3</span></span>
+<span id="cb124-8"><a href="dplyr-programming.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   homeworld       mass height</span></span>
+<span id="cb124-9"><a href="dplyr-programming.html#cb124-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb124-10"><a href="dplyr-programming.html#cb124-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Alderaan          64   176.</span></span>
+<span id="cb124-11"><a href="dplyr-programming.html#cb124-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Aleen Minor       15    79 </span></span>
+<span id="cb124-12"><a href="dplyr-programming.html#cb124-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Bespin            79   175 </span></span>
+<span id="cb124-13"><a href="dplyr-programming.html#cb124-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Bestine IV       110   180 </span></span>
+<span id="cb124-14"><a href="dplyr-programming.html#cb124-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Cato Neimoidia    90   191 </span></span>
+<span id="cb124-15"><a href="dplyr-programming.html#cb124-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Cerea             82   198 </span></span>
+<span id="cb124-16"><a href="dplyr-programming.html#cb124-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 43 more rows</span></span>
+<span id="cb124-17"><a href="dplyr-programming.html#cb124-17" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">my_summarise</span>(sex, gender)</span>
+<span id="cb124-18"><a href="dplyr-programming.html#cb124-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;sex&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb124-19"><a href="dplyr-programming.html#cb124-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
+<span id="cb124-20"><a href="dplyr-programming.html#cb124-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   sex [5]</span></span>
+<span id="cb124-21"><a href="dplyr-programming.html#cb124-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sex            gender      mass height</span></span>
+<span id="cb124-22"><a href="dplyr-programming.html#cb124-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb124-23"><a href="dplyr-programming.html#cb124-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 female         feminine    54.7   169.</span></span>
+<span id="cb124-24"><a href="dplyr-programming.html#cb124-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 hermaphroditic masculine 1358     175 </span></span>
+<span id="cb124-25"><a href="dplyr-programming.html#cb124-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 male           masculine   81.0   179.</span></span>
+<span id="cb124-26"><a href="dplyr-programming.html#cb124-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 none           feminine   NaN      96 </span></span>
+<span id="cb124-27"><a href="dplyr-programming.html#cb124-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 none           masculine   69.8   140 </span></span>
+<span id="cb124-28"><a href="dplyr-programming.html#cb124-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 &lt;NA&gt;           &lt;NA&gt;        48     181.</span></span></code></pre></div>
 </div>
 </div>
             </section>
