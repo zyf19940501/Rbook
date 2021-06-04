@@ -1223,7 +1223,7 @@ by_sex_gender %>%
 
 
 
-### 动词
+### 动词影响
 
 `group_by()`是如何影响 dplyr 的主要动词。
 
@@ -1274,12 +1274,89 @@ object.size(b)
 
 
 
+- arrange
+
+默认情况下，分组和不分组的数据集应用在在`arrange()`效果相同。除非设置`.by_group = TRUE`,这时首先按照分组变量排序。
+
+```{r}
+df <- tibble(a = c('a','b','a','a','d','b','b','b','d','e','f'),b=1:11) %>% 
+  group_by(a)
+
+df %>% 
+  arrange(desc(b)) 
+df %>% 
+  arrange(desc(b),.by_group = TRUE)
+```
+
+实际上就是，默认情况下`arrange()`会忽略分组变量，除非通过设置参数`.by_group`参数。
+
+- mutate and transmute
+
+根据 mutate 中函数不同，返回值视情况而定。
+
+```{r}
+df <- tibble(a = c('a','b','a','a','d','b','b','b','d','e','f'),b=1:11)
+
+res1 <- df %>% 
+  mutate( d = mean(b))
+
+res2 <- df %>% 
+  group_by(a) %>% 
+  mutate(d = mean(b))
+
+# 分组后返回不同值，此时的 mutate 相当于汇总函数
+identical(res1,res2)
+```
 
 
+- filter
+
+filter 受 group_by 影响。
+
+```{r}
+df %>% 
+  group_by(a) %>% 
+  filter(b == max(b))
+```
+
+以上代码本质是先执行 `mutate(max(b))`，再filter，最后只保留 TRUE 所在行。如下所示：
+
+```{r}
+df %>% 
+  group_by(a) %>% 
+  mutate(max_num = max(b)) %>% 
+  filter(b==max_num) %>% 
+  select(-max_num)
+```
+
+想想以下代码的含义？
+
+```{r}
+df %>% 
+  group_by(a) %>% 
+  filter(n()!=1)
+```
 
 
+~~删除只有一行记录的数据行~~
 
+- slice 系列
 
+选择每个分组变量的第一个观测值。
+
+```{r}
+by_species %>% 
+  relocate(species) %>% 
+  slice(1)
+```
+
+同样，我同样可以使用`slice_min()`来选择 变量的最大值。
+
+```{r}
+by_species %>% 
+  filter(!is.na(height)) %>% 
+  slice_max(height,n=3)
+```
 
 
 
