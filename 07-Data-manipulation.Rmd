@@ -112,7 +112,7 @@ Sql实现：
 
 ```{r include=FALSE}
 library(DBI)
-data <- readr::read_csv("C:/Users/zhongyf/Desktop/Rbook/data/flights.csv")
+data <- readr::read_csv("./data/flights.csv")
 conn <- dbConnect(RSQLite::SQLite(), ":memory:")
 RSQLite::dbWriteTable(conn,'flights',data)
 ```
