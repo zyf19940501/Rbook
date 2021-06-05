@@ -1363,10 +1363,6 @@ by_species %>%
 
 ## 列操作 {#dplyr-column-manipulation}
 
-函数`across()`通过与`summarise()`和`mutate()`结合，很容易将某函数运用到多列上。函数`across()`取代了`summarise_all()`,`summarise_at()`,`summarise_if()`函数。
-
-通过`vignette("colwise")`查看详细信息。
-
 
 在多列上执行相同的函数是常用的操作，但是通过复制和粘贴代码，麻烦并且容易错,如下所示:
 
@@ -1392,7 +1388,9 @@ dt %>%
   mutate(across(a:d,ceiling))
 ```
 
+函数`across()`通过与`summarise()`和`mutate()`结合，很容易将某函数运用到多列上。函数`across()`取代了`summarise_all()`,`summarise_at()`,`summarise_if()`函数。
 
+通过`vignette("colwise")`查看详细信息。
 
 
 ### 基础用法 {#dplyr-column-manipulation-basic-usage}
