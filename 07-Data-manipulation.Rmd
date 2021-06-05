@@ -1364,7 +1364,7 @@ by_species %>%
 ## 列操作 {#dplyr-column-manipulation}
 
 
-在多列上执行相同的函数是常用的操作，但是通过复制和粘贴代码，麻烦并且容易错,如下所示:
+在多列上执行相同的函数是常有的操作，但是通过复制和粘贴代码，麻烦并且容易错,如下所示:
 
 ```{r eval=FALSE}
 df %>% 
@@ -1380,7 +1380,7 @@ df %>%
   summarise(across(a:d, mean))
 ```
 
-假设我们要将表格中多列向上取整?
+假设我们要将表格中多列向上取整，代码如下：
 
 ```{r}
 dt <- tibble(a= rnorm(100,mean = 1),b=rnorm(100,mean = 1),d=rnorm(100,mean = 1))
@@ -1390,16 +1390,23 @@ dt %>%
 
 函数`across()`通过与`summarise()`和`mutate()`结合，很容易将某函数运用到多列上。函数`across()`取代了`summarise_all()`,`summarise_at()`,`summarise_if()`函数。
 
-通过`vignette("colwise")`查看详细信息。
+
+```{r}
+starwars %>%
+  summarise_at(c("height", "mass"), mean, na.rm = TRUE)
+
+starwars %>% summarise(across(c("height", "mass"), ~ mean(.x, na.rm = TRUE))) # purrr风格函数
+```
+
 
 
 ### 基础用法 {#dplyr-column-manipulation-basic-usage}
 
 across() 有两个主要参数：
 
-- 第一个参数，.cols选择要操作的列。它使用`tidyr`的方式选择（例如select()），因此您可以按位置，名称和类型选择变量。
+- 第一个参数，.cols 选择要操作的列。它使用`tidyr`的方式选择（例如select()），因此您可以按位置，名称和类型选择变量。
 
-- 第二个参数，.fns是要应用于每一列的一个函数或函数列表。    也可以是purrr样式的公式（或公式列表），例如~ .x / 2。
+- 第二个参数，.fns是要应用于每一列的一个函数或函数列表。也可以是 purrr 样式的公式（或公式列表），例如~ .x / 2。
 
 
 ```{r}
@@ -1472,7 +1479,7 @@ starwars %>% summarise(across(where(is.numeric), min_max, .names = "{fn}——{c
 
 ### 当前列
 
-如果需要，可以通过调用访问内部的“当前”列的名称`cur_column()`,仅在`across()`使用。和Excel中power pivot的"上下文"概念类似。
+如果需要，可以通过调用访问内部的“当前”列的名称`cur_column()`,仅在`across()`使用。和 Excel 中power pivot的"上下文"概念类似。
 
 该函数不是特别容易理解，需要多尝试使用加深认识。
 
@@ -1483,7 +1490,7 @@ mult <- list(x = 1, y = 10, z = 100)
 df %>% mutate(across(all_of(names(mult)), ~ .x * mult[[cur_column()]]))
 ```
 
-代码解释：代码实现的是数据框df中列和mult中同名元素相乘得到新列。`mult[[cur_column()]]`依次返回mult[["x"]],mult[["y"]],mult[["z"]]。
+代码解释：代码实现的是数据框 df 中列和 mult 中同名元素相乘得到新列。`mult[[cur_column()]]`依次返回mult[["x"]],mult[["y"]],mult[["z"]]。
 
 
 以上部分是关于列操作的内容，详情查看`vignette("colwise")`。
@@ -1503,6 +1510,16 @@ df %>% rowwise()
 df %>% rowwise() %>% mutate(total = sum(c(x, y, z))) #返回结果与Excel一致
 
 df %>% mutate(total = sum(c(x, y, z))) # 返回结果不符合预期
+```
+
+通过自己定义函数实现：
+
+```{r}
+fun1 <- function(x,y,z){
+  x+y+z
+}
+
+df %>% mutate(total = fun1(x,y,z))
 ```
 
 
@@ -1557,9 +1574,12 @@ df %>% mutate(m = pmin(x, y, z))
 
 键入每个变量名称很繁琐，通过`c_across()`使更简单。
 
->详情可见vignette("rowwise")。
+
 
 ```{r eval=FALSE}
+df <- tibble(id = 1:6, w = 10:15, x = 20:25, y = 30:35, z = 40:45)
+rf <- df %>% rowwise(id)
+
 rf %>% mutate(total = sum(c_across(w:z)))
 rf %>% mutate(total = sum(c_across(where(is.numeric))))
 
@@ -1569,7 +1589,7 @@ rf %>%
   mutate(across(w:z, ~ . / total))
 ```
 
-
+有关更多信息请查看 vignette("rowwise")。
 
 
 
