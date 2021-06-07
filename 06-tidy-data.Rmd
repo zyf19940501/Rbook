@@ -536,16 +536,27 @@ df %>% extract(x, c("A", "B"), "([[:alnum:]]+)-([[:alnum:]]+)")
 
 ### 合并
 
+`expand_grid()`是受 base::expand.grid()影响创造，是所有输入的组合生成的数据框(tibble)。
+
 ```{r}
+expand_grid(x = 1:3, y = 1:2)
 df <- expand_grid(x = c("a", NA), y = c("b", NA))
 df
-df %>% unite("z", x:y, remove = FALSE)
-# expand_grid 类似笛卡尔积功能
 ```
+
+`expand_grid()`输入只有两个向量时，类似`dplyr::full_join()`创造笛卡尔乘积。
+
+```{r}
+expand_grid(letters,LETTERS) %>% 
+  glimpse()
+```
+
 
 移除缺失值
 
 ```{r}
+df %>% unite("z", x:y, remove = FALSE)
+
 df %>% unite("z", x:y, na.rm = TRUE, remove = FALSE)
 ```
 
