@@ -1,18 +1,23 @@
 # tidyr {#Data:tidyr-package}
 
-在实际工作中，我们数据分析工作者80%的时间可能贡献在数据准备和数据清晰上。另外发现新问题时，可能又要重复数据准备、数据清晰的过程。如果采用不能完全复现的方式做数据准备清洗的工作，那将是一场灾难。
+在实际工作中，我们数据分析工作者80%的时间可能贡献在数据准备和数据清洗上。另外发现新问题时，可能又要重复数据准备、数据清洗的过程。如果采用不能完全复现的方式做数据准备清洗类的工作，那将是一场灾难。
 
-数据工作者最常用的工具可能是Excel,但是Excel并不具备很强的数据清洗能力，即使Excel有POwer query 、Dax等两大利器。工作中，实际面临原始的数据是脏乱无须的，业务系统仅仅只是记录了历史过程数据。当我们需要分析某一现象时，需要按照自己的需求重新采集数据，清洗为“标准”的数据格式。
+数据工作者最常用的工具可能是Excel,但是Excel并不具备很强的数据清洗能力，即使Excel有Power query 等利器。
+工作中，实际面临原始的数据是脏乱无须的，业务系统仅仅只是记录了历史过程数据。当我们需要分析某一问题时，需要按照自己的需求重新采集数据，清洗为“标准”的数据格式。
 
-> 标准数据：达到工作需求的数据，可以直接用Excel,power bi ，tableau等BI工具直接使用的程度。
+> 标准数据：达到工作需求的数据，可以直接用Excel,power bi ，tableau 等 BI 工具直接使用的程度。
 
-`R`中的tidyverse系列构建了一种一致的数据结构，当我们用tidyverse软件包提供的“数据整洁工具”整洁数据时，我们将花费更少的时间将数据从一种形式迁移到另外一种形式。从而，我们拥有更多的时间专注在具体的业务问题上。
+`R`中的tidyverse系列为数据流工作构建了一种一致的数据结构[`tibble`](https://tibble.tidyverse.org/)，
+和我们使用 dplyr 包操作的数据结构一致，当我们用tidyverse软件包提供的“数据整洁工具”整洁数据时，我们将花费更少的时间将数据从一种形式迁移到另外一种形式。从而，我们拥有更多的时间专注在具体的业务问题上。本章节，我们介绍`tidyr`包，tidyr 是整洁数据的工具，提供了许多的功能函数整理混乱的数据。
+
+> 了解更多有关 tibbles 的信息，查看手册 vignette("tibble").
 
 
+本章节，大部分案例是照搬官方demo。
 
-## 安装{#tidyr:install}
+## 安装 {#tidyr:install}
 
-本章节，我们重点关注`tidyr`包，这个软件包提供了许多的功能函数整理混乱的数据。tidyr是tidyverse的核心成员包
+tidyr 是 tidyverse 系列的核心成员包，可以安装 tidyverse 或 tidyr 。
 
 ```{r eval=FALSE}
 ## 最简单是的方式就是安装tidyverse
@@ -24,12 +29,10 @@ install.packages('tidyr')
 ## 或者从github 安装开发版本
 ## install.packages("devtools")
 devtools::install_github("tidyverse/tidyr")
-
-# CTEST CODE
 ```
 
 
-## 主要功能 {#tidyr:useage}
+## tidyr 介绍 {#tidyr:useage}
 
 整洁的数据表现为：
 
@@ -39,11 +42,6 @@ devtools::install_github("tidyverse/tidyr")
 
 大部分的数据集都是用行和列构成的`data.frame`。用Excel的单元格来表示，即每列代表不同意义的字段，每行是某个情形下的一系列字段；单元格则是独立的值,属于某个变量的观察值，这样构建的二维数据结构则是“整洁数据”。
 
-
-
-```{r}
-library(tidyr)
-```
 
 `tidyr`包中的函数可以分为5个主要大类
 
@@ -57,42 +55,92 @@ library(tidyr)
 
 -  `replace_na()` 缺失值处理
 
+## 长宽转换{#pivoting}
+
+我们在使用 excel 的数据透视表时，即将"长数据" 转化成“宽数据”,这就是数据的长宽转化。有关`pivot`详情，请查看`vignette("pivot")`。
+接下来我们用`tidyr`包自带的插图案例查看相关函数用法。
 
 ### 宽转长 
 
-详情查看`vignette("pivot")`,以下是照搬该图册中的内容
-
-#### 基础
-
-长数据与宽数据之间的转换，类似我们常用的EXcel中的透视表功能。接下来用`tidyr`包自带的插图案例记录相关函数用法
+有时候方便我们肉眼观察，可能一个数据集会有很多列,
+方便观察，但是不方便统计分析，这是我们需要把数据做处理，从"宽数据变成长数据"即宽转长。如下案例：
 
 
+| 分公司 | 商品A | 商品B | 商品C | 商品D | 商品E | 商品F | 商品G | 商品H | 商品I |
+| ------ | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| 北京   | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
+| 深圳   | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
+| 上海   | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
+| 广州   | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
+| 成都   | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
+| 重庆   | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
+| 长沙   | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
 
-在Excel中有时候方便我们肉眼观察，可能一个数据集会有很多列,如下所示：
 
-col1 | col2 | col3  |col4   |col5 |col6 |col7
----- | ---- | ----- |------ |-----|-----|----
-v1   | v2   | v3    |v4     |v5   |v6   |v7
-vb1  | vb2  | vb3   |vb4    |vb5  |vb6  |vb7
-
-方便观察，但是不方便统计分析，这是我们需要把数据做处理，从"宽数据变成长数据"即宽转长。
+将上面的数据集从"宽数据集"转化成“长数据集”。
 
 ```{r}
+library(tidyverse,warn.conflicts = FALSE)
 library(tidyr)
-library(dplyr)
-library(readr)
 ```
+
+准备数据集 dt
 
 ```{r}
-relig_income %>% 
-  pivot_longer(cols = !religion,names_to = 'income',values_to = "count")
+dt <- tibble::tribble(
+  ~分公司, ~商品A, ~商品B, ~商品C, ~商品D, ~商品E, ~商品F, ~商品G, ~商品H, ~商品I,
+  "北京",   1L,   2L,   3L,   4L,   5L,   6L,   7L,   8L,   9L,
+  "深圳",   1L,   2L,   3L,   4L,   5L,   6L,   7L,   8L,   9L,
+  "上海",   1L,   2L,   3L,   4L,   5L,   6L,   7L,   8L,   9L,
+  "广州",   1L,   2L,   3L,   4L,   5L,   6L,   7L,   8L,   9L,
+  "成都",   1L,   2L,   3L,   4L,   5L,   6L,   7L,   8L,   9L,
+  "重庆",   1L,   2L,   3L,   4L,   5L,   6L,   7L,   8L,   9L,
+  "长沙",   1L,   2L,   3L,   4L,   5L,   6L,   7L,   8L,   9L
+  )
+```
+
+经过转化，数据由 10 列变成 3 列；
+
+```{r}
+dt %>% 
+  pivot_longer(cols = 商品A:商品I,names_to = '商品名称',values_to = '销量') %>% 
+  head()
 ```
 
 
-* 第一个参数是数据集
-* 第二个参数是那些列需要重塑，在该例中除了`religion`的其他全部列
-* `names_to`这个参数是新增的列名
-* `values_to`是新增的存储之前数据集中数据的列名
+
+### 用法
+
+```{r eval=FALSE}
+pivot_longer(
+  data,
+  cols,
+  names_to = "name",
+  names_prefix = NULL,
+  names_sep = NULL,
+  names_pattern = NULL,
+  names_ptypes = list(),
+  names_transform = list(),
+  names_repair = "check_unique",
+  values_to = "value",
+  values_drop_na = FALSE,
+  values_ptypes = list(),
+  values_transform = list(),
+  ...
+)
+```
+
+
+
+* `data`: 数据集
+* `cols`: 需要需要重塑，在上例中除了分公司的其他全部列
+* `names_to`: 新增的列名，即重塑列的新列名，如上列的商品名称
+* `values_to`: 新增存储数据新列名，如上列的销量
+* `names_prefix`: 一个正则表达式用来删除列名中匹配到的字符
+* `values_drop_na`: 是否删除空值行，默认为FALSE
+
+其余参数的使用比较复杂，建议自行查手册。
+
 
 #### 列名带数字
 
@@ -330,7 +378,7 @@ us_rent_income %>%
 ```
 
 
-### 处理json,html的数据
+## 处理json,html的数据
 
 实际工作中不是经常使用，需要使用的时候往往会用相关的包处理：`jsonlite` 
 
@@ -349,7 +397,7 @@ users %>% unnest_wider(user)
 ```
 
 
-### 嵌套数据
+## 嵌套数据
 
 ```{r}
 library(tidyr)
@@ -358,7 +406,7 @@ library(purrr)
 ```
 
 
-#### 基础
+### 基础
 
 嵌套数据即：数据框中嵌套数据框，如下所示：
 
@@ -420,10 +468,10 @@ mtcars_nested <- mtcars_nested %>%
 mtcars_nested  
 ```
 
-### 拆分和合并
+## 拆分和合并
 
 
-#### 拆分
+### 拆分
 
 有时我们需要将一列拆分为多列：
 
@@ -474,7 +522,7 @@ df <- data.frame(x = c(NA, "a?b", "a.d", "b:c"))
 df %>% separate(x, c("A","B"), sep = "([.?:])")
 ```
 
-#### 新列提取
+### 新列提取
 
 ```{r}
 df <- data.frame(x = c(NA, "a-b", "a-d", "b-c", "d-e"))
@@ -486,7 +534,7 @@ df %>% extract(x, c("A", "B"), "([[:alnum:]]+)-([[:alnum:]]+)")
 
 以上本质是字符处理，[正则表达式](http://baiy.cn/utils/_regex_doc/index.htm)
 
-#### 合并
+### 合并
 
 ```{r}
 df <- expand_grid(x = c("a", NA), y = c("b", NA))
@@ -510,9 +558,17 @@ df %>%
 ```
 
 
-### 缺失值处理
+## 缺失值处理
 
 `replace_na()`用特定值替换缺失值。
+
+
+```{r eval=FALSE}
+replace_na(data, replace, ...)
+```
+
+如果参数 data 是 数据框(data.frame),`replace_na()`返回 data.frame；如果参数是向量(vector)将返回向量。
+
 
 ```{r}
 df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))

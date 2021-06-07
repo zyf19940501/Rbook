@@ -314,6 +314,17 @@ select * ,homeworld  home_word from starwars
 
 > as 可以省略，但中间有一个以上空格。与R的差异是新增home_word列，原始列继续存在，R中是替换列名。
 
+有时我们需要批量修改列名，改如何实现？
+
+```{r eval=FALSE}
+names(starwars) <- paste0('col',1:ncol(starwars))
+colnames(starwars) <- paste0('col',1:ncol(starwars))
+
+# not run
+purrr::set_names(head(starwars), paste0, "_foo")
+```
+
+
 
 ### relocate {#dplyr-relocate}
 
@@ -716,7 +727,7 @@ mtcars %>% group_by(vsam = vs + am) %>%
 
 － group_split()
 
-group_split() 功能与 base::split()相似。
+目前该函数是实验性的，group_split() 功能与 base::split()相似，按照数据集的分组变量切割数据集。如下，将 iris 数据集按照 Species 分组并切割成长度为3的列表，每个子元素是 Species 变量的子数据集。Species 变量包含`setosa`、`versicolor`、` virginica`三种情况。
 
 ```{r}
 ir <- iris %>%
@@ -732,7 +743,7 @@ group_keys(ir)
 
 group_map，group_modify,group_walk等三个函数是purrr类具有迭代风格的函数。简单关系数据的数据清洗一般不涉及，常用在建模等方面。
 
-但是目前三个函数是实验性的，未来可能会发生变化。
+但是目前函数是实验性的，未来可能会发生变化。
 
 ```{r}
 # return a list
@@ -780,6 +791,8 @@ gdf %>% select(group_cols())
 
 
 ### 其它函数
+
+有针对性学习函数可以有效提高学习效率，先浏览一遍 dplyr 中函数，再挑选觉得对自己有用的函数学习即可。
 
 - between
 
@@ -847,6 +860,9 @@ arrange(right, year)
 > 该函数在我们计算下单间隔天数时比较简洁方便
 
 
+如需了解更多，可以通过学习[`slider`](https://github.com/DavisVaughan/slider)包知道更多"滑动窗口函数"。
+
+
 - cummean cumsum cumall cumany
 
 累计系列函数
@@ -860,6 +876,31 @@ cumall(x < 5)
 cumany(x == 3)
 ```
 
+
+- coalesce
+
+用一组向量值替换NAS，该函数受 SQL 的 COALESCE 函数启发。
+
+
+```{r}
+x <- sample(c(1:5, NA, NA, NA))
+coalesce(x, 0L)
+```
+
+
+```{r}
+y <- c(1, 2, NA, NA, 5)
+z <- c(NA, NA, 3, 4, 5)
+coalesce(y, z)
+```
+
+在数据框中替换NA
+
+```{r}
+df <- tibble( a= sample(c(1:3,NA,NA),10,replace = TRUE))
+df %>% 
+  mutate(a = coalesce(a,0))
+```
 
 
 
@@ -1706,4 +1747,5 @@ starwars %>% my_summarise(sex, gender)
 ## 参考资料 {#dplyr:reference-material}
 
 1.programming <https://dplyr.tidyverse.org/dev/articles/programming.html>
-2.https://cloud.r-project.org/web/packages/dplyr/vignettes/programming.html
+
+2.programming <https://cloud.r-project.org/web/packages/dplyr/vignettes/programming.html>
