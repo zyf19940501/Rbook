@@ -1640,9 +1640,7 @@ rf %>%
 
 [Programming with dplyr](https://cloud.r-project.org/web/packages/dplyr/vignettes/programming.html)
 
-本节概念性东西较多且复杂不易理解，先尝试会使用，概念再慢慢消化理解。虽然复杂,但是比较实用，尤其是当我们需要定义一些通用功能函数时。
-
-以下是对原文引用
+本小节概念性东西较多且复杂不易理解，先尝试会使用，概念再慢慢消化理解。虽然复杂,但是比较实用，尤其是当我们需要定义一些通用功能函数时。以下是对原文引用。
 
 两种情况：
 
@@ -1729,9 +1727,7 @@ my_summarise5 <- function(data, mean_var, sd_var) {
 ```
 
 
-任意个表达式：
-
-这种使用场景更多
+任意个表达式，这种使用场景更多。
 
 ```{r}
 my_summarise <- function(.data, ...) {
@@ -1743,9 +1739,16 @@ starwars %>% my_summarise(homeworld)
 starwars %>% my_summarise(sex, gender)
 ```
 
+本小节做为拓展学习部分，建议完全掌握基础动词的用法后再学习，尤其是在有相关需求的时候再研究效果更好，甚至大部分的商业数据分析师并不需要掌握使用"dplyr 编程"，可以直接跳过不学习本小节。
 
 ## 参考资料 {#dplyr:reference-material}
 
-1.programming <https://dplyr.tidyverse.org/dev/articles/programming.html>
+关于使用 dbplyr 包转换 dplyr 动词为 SQL 语句实现数据查询，请参考[R 包 dbplyr 学习](https://www.yuque.com/docs/share/2d5a9224-4be2-4043-9645-924892246bb2?# 《R包 dbplyr 学习》)。
 
-2.programming <https://cloud.r-project.org/web/packages/dplyr/vignettes/programming.html>
+1. dplyr 项目地址 <https://dplyr.tidyverse.org/>
+
+2. dplyr programming <https://dplyr.tidyverse.org/dev/articles/programming.html>
+
+3. dplyr programming <https://cloud.r-project.org/web/packages/dplyr/vignettes/programming.html>
+
+4. dbplyr 包学习 <https://www.yuque.com/docs/share/2d5a9224-4be2-4043-9645-924892246bb2?>

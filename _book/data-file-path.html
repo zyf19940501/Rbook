@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-04" />
+<meta name="date" content="2021-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="data-rstudio-addins.html"/>
 <link rel="next" href="data-expand.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,15 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -159,7 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#batch:read"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
 <li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
@@ -265,15 +256,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="tidyr-install.html"><a href="tidyr-install.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
+<li class="chapter" data-level="3.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.2</b> tidyr 介绍</a></li>
+<li class="chapter" data-level="3.3" data-path="pivoting.html"><a href="pivoting.html"><i class="fa fa-check"></i><b>3.3</b> 长宽转换</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
-<li class="chapter" data-level="3.2.3" data-path="tidyr-useage.html"><a href="tidyr-useage.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
-<li class="chapter" data-level="3.2.4" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
-<li class="chapter" data-level="3.2.5" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
-<li class="chapter" data-level="3.2.6" data-path="tidyr-useage.html"><a href="tidyr-useage.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
-<li class="chapter" data-level="3.2.7" data-path="tidyr-useage.html"><a href="tidyr-useage.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
+<li class="chapter" data-level="3.3.1" data-path="pivoting.html"><a href="pivoting.html#宽转长"><i class="fa fa-check"></i><b>3.3.1</b> 宽转长</a></li>
+<li class="chapter" data-level="3.3.2" data-path="pivoting.html"><a href="pivoting.html#用法-1"><i class="fa fa-check"></i><b>3.3.2</b> 用法</a></li>
+<li class="chapter" data-level="3.3.3" data-path="pivoting.html"><a href="pivoting.html#长转宽"><i class="fa fa-check"></i><b>3.3.3</b> 长转宽</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="tidyr-rectangle.html"><a href="tidyr-rectangle.html"><i class="fa fa-check"></i><b>3.4</b> 矩形数据</a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html"><i class="fa fa-check"></i><b>3.5</b> 嵌套数据</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html#基础-1"><i class="fa fa-check"></i><b>3.5.1</b> 基础</a></li>
+<li class="chapter" data-level="3.5.2" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.5.2</b> 嵌套数据和模型</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="character-vector.html"><a href="character-vector.html"><i class="fa fa-check"></i><b>3.6</b> 字符处理</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="character-vector.html"><a href="character-vector.html#新列提取"><i class="fa fa-check"></i><b>3.6.1</b> 新列提取</a></li>
+<li class="chapter" data-level="3.6.2" data-path="character-vector.html"><a href="character-vector.html#拆分"><i class="fa fa-check"></i><b>3.6.2</b> 拆分</a></li>
+<li class="chapter" data-level="3.6.3" data-path="character-vector.html"><a href="character-vector.html#列拆分行"><i class="fa fa-check"></i><b>3.6.3</b> 列拆分行</a></li>
+<li class="chapter" data-level="3.6.4" data-path="character-vector.html"><a href="character-vector.html#合并多列"><i class="fa fa-check"></i><b>3.6.4</b> 合并多列</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="tidyr-expand.html"><a href="tidyr-expand.html"><i class="fa fa-check"></i><b>3.7</b> 扩展数据框</a></li>
+<li class="chapter" data-level="3.8" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html"><i class="fa fa-check"></i><b>3.8</b> 缺失值</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#replace_na"><i class="fa fa-check"></i><b>3.8.1</b> replace_na</a></li>
+<li class="chapter" data-level="3.8.2" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#fill"><i class="fa fa-check"></i><b>3.8.2</b> fill</a></li>
+<li class="chapter" data-level="3.8.3" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#drop_na"><i class="fa fa-check"></i><b>3.8.3</b> drop_na</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="character-handling.html"><a href="character-handling.html"><i class="fa fa-check"></i><b>4</b> 字符处理</a>
@@ -465,7 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.3.1" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
 <li class="chapter" data-level="11.3.2" data-path="define-function-parameter.html"><a href="define-function-parameter.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
+<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-5"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="function-return.html"><a href="function-return.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
 <ul>
@@ -532,16 +540,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">win-path</p>
 </div>
 <p>在R中读取时需要用一个正斜杠或两个反斜杠，建议用正斜杠。</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-file-path.html#cb60-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data/flights.csv&#39;</span>)</span>
-<span id="cb60-2"><a href="data-file-path.html#cb60-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zhongyf</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">Rbook</span><span class="sc">\\</span><span class="st">data</span><span class="sc">\f</span><span class="st">lights.csv&#39;</span>) <span class="co"># same above</span></span>
-<span id="cb60-3"><a href="data-file-path.html#cb60-3" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">:::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(C:\Users\zhongyf\Desktop\Rbook\data</span><span class="sc">\f</span><span class="st">lights.csv)&quot;</span>) <span class="co"># same above</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-file-path.html#cb59-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data/flights.csv&#39;</span>)</span>
+<span id="cb59-2"><a href="data-file-path.html#cb59-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zhongyf</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">Rbook</span><span class="sc">\\</span><span class="st">data</span><span class="sc">\f</span><span class="st">lights.csv&#39;</span>) <span class="co"># same above</span></span>
+<span id="cb59-3"><a href="data-file-path.html#cb59-3" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">:::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(C:\Users\zhongyf\Desktop\Rbook\data</span><span class="sc">\f</span><span class="st">lights.csv)&quot;</span>) <span class="co"># same above</span></span></code></pre></div>
 <p>工作中，当需要读取或写入共享盘<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>中文件时，路径表示方式为：</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-file-path.html#cb61-1" aria-hidden="true" tabindex="-1"></a>the_shared_disk <span class="ot">&lt;-</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部\)&quot;</span></span>
-<span id="cb61-2"><a href="data-file-path.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="data-file-path.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取共享盘数据</span></span>
-<span id="cb61-4"><a href="data-file-path.html#cb61-4" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">192.168.2.117</span><span class="sc">\\</span><span class="st">公司A-新</span><span class="sc">\\</span><span class="st">01事业部</span><span class="sc">\\</span><span class="st">flights.csv&quot;</span>)</span>
-<span id="cb61-5"><a href="data-file-path.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 或者用r&quot;()&quot;指定路径</span></span>
-<span id="cb61-6"><a href="data-file-path.html#cb61-6" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部</span><span class="sc">\t</span><span class="st">est.csv)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-file-path.html#cb60-1" aria-hidden="true" tabindex="-1"></a>the_shared_disk <span class="ot">&lt;-</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部\)&quot;</span></span>
+<span id="cb60-2"><a href="data-file-path.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="data-file-path.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取共享盘数据</span></span>
+<span id="cb60-4"><a href="data-file-path.html#cb60-4" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">192.168.2.117</span><span class="sc">\\</span><span class="st">公司A-新</span><span class="sc">\\</span><span class="st">01事业部</span><span class="sc">\\</span><span class="st">flights.csv&quot;</span>)</span>
+<span id="cb60-5"><a href="data-file-path.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 或者用r&quot;()&quot;指定路径</span></span>
+<span id="cb60-6"><a href="data-file-path.html#cb60-6" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> r<span class="st">&quot;(</span><span class="sc">\\</span><span class="st">192.168.2.117\公司A-新</span><span class="sc">\01</span><span class="st">事业部</span><span class="sc">\t</span><span class="st">est.csv)&quot;</span>)</span></code></pre></div>
 <blockquote>
 <p>r“()”用法是R-4.0-之后的特性。在win系统下表示路径特别有用，可以避免转义。</p>
 </blockquote>
@@ -553,25 +561,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="picture/read-write/mac-path.png" alt="" />
 <p class="caption">mac-path</p>
 </div>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-file-path.html#cb62-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;/User/vega_mac/Desktop/r/Rbook/data/flights.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-file-path.html#cb61-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;/User/vega_mac/Desktop/r/Rbook/data/flights.csv&#39;</span>)</span></code></pre></div>
 </div>
 <div id="默认路径" class="section level3" number="1.7.2">
 <h3><span class="header-section-number">1.7.2</span> 默认路径</h3>
 <p>在我们刚开始学习文件读写的时候，都会疑惑输出的文件到哪里去了？在 R 中有一个“当前默认工作目录”的概念，如果不做任何设置，当前默认工作目录一般在：</p>
 <p>Windows 系统默认目录一般都是用户文件夹下的文档文件，即./zhongyf/Documents 文件夹下。</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-file-path.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb63-2"><a href="data-file-path.html#cb63-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;C:/Users/zhongyf/Documents&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-file-path.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb62-2"><a href="data-file-path.html#cb62-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;C:/Users/zhongyf/Documents&quot;</span></span></code></pre></div>
 <p>Macos/linxu 默认目录一般都是用户文件夹下，即 /Users/zhongyf 或者是 /home/zhongyf 文件夹下。</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-file-path.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mac</span></span>
-<span id="cb64-2"><a href="data-file-path.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb64-3"><a href="data-file-path.html#cb64-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;/Users/zhongyf&quot;</span></span>
-<span id="cb64-4"><a href="data-file-path.html#cb64-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-5"><a href="data-file-path.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co"># linux</span></span>
-<span id="cb64-6"><a href="data-file-path.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb64-7"><a href="data-file-path.html#cb64-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;/home/zhongyf&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-file-path.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mac</span></span>
+<span id="cb63-2"><a href="data-file-path.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb63-3"><a href="data-file-path.html#cb63-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;/Users/zhongyf&quot;</span></span>
+<span id="cb63-4"><a href="data-file-path.html#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="data-file-path.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># linux</span></span>
+<span id="cb63-6"><a href="data-file-path.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb63-7"><a href="data-file-path.html#cb63-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;/home/zhongyf&quot;</span></span></code></pre></div>
 <p><code>getwd()</code>是查看当前工作目录的函数，在进行文件读写时的默认路径，也就是当没有明确指定路径时，文件读取输出的默认路径是<code>getwd()</code>。想要改变工作目录，通过设定<code>setwd()</code>即可。 如下所示：</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-file-path.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
-<span id="cb65-2"><a href="data-file-path.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-file-path.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not run</span></span>
+<span id="cb64-2"><a href="data-file-path.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;C:/Users/zhongyf/Desktop/Rbook/data&#39;</span>)</span></code></pre></div>
 <p>除了上述通过<code>setwd()</code>修改工作目录外，可以通过 Rsutdio 的 Tools 工具栏 -&gt; Global Options -&gt; Default working directory 设置工作目录。还可以通过
 Rstudio &gt; Session &gt; Set Working Directory &gt; Choose Directory 来调整【快捷键 Ctrl+Shift+H 】。修改工作目录后，通过<code>getwd()</code>查看修改是否生效。</p>
 <p>关于文件路径，我个人喜欢的解决办法是通过 File &gt; New Project &gt; New Directory 新建文件项目，将本次所有的数据需求放在该新建的文件夹下，那我们在做本次项目时就再也不用理会文件路径问题了，因为所有的默认路径都是刚新建的路径。这种项目管理的方法，我个人比较推崇。</p>
@@ -643,20 +651,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
