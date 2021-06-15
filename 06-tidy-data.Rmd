@@ -5,19 +5,43 @@
 数据工作者最常用的工具可能是Excel,但是Excel并不具备很强的数据清洗能力，即使Excel有Power query 等利器。
 工作中，实际面临原始的数据是脏乱无须的，业务系统仅仅只是记录了历史过程数据。当我们需要分析某一问题时，需要按照自己的需求重新采集数据，清洗为“标准”的数据格式。
 
-> 标准数据：达到工作需求的数据，可以直接用Excel,power bi ，tableau 等 BI 工具直接使用的程度。
+> 标准数据：个人理解是达到工作需求的数据结构，可以直接用Excel,power bi ，tableau 等 BI 工具直接使用的程度。
 
-`R`中的tidyverse系列为数据流工作构建了一种一致的数据结构[`tibble`](https://tibble.tidyverse.org/)，
-和我们使用 dplyr 包操作的数据结构一致，当我们用tidyverse软件包提供的“数据整洁工具”整洁数据时，我们将花费更少的时间将数据从一种形式迁移到另外一种形式。从而，我们拥有更多的时间专注在具体的业务问题上。本章节，我们介绍`tidyr`包，tidyr 是整洁数据的工具，提供了许多的功能函数整理混乱的数据。
+`R`中的tidyverse系列为数据流工作构建了一种一致的数据结构[`tibble`](https://tibble.tidyverse.org/)[^tibble]，
+和我们使用 dplyr 包操作的数据结构一致，当我们用tidyverse软件包提供的“数据整洁工具”整洁数据时，我们将花费更少的时间将数据从一种形式迁移到另外一种形式。从而我们拥有更多的时间专注在具体的业务问题上。本章节，我们介绍`tidyr`包，tidyr 是整洁数据的工具，提供了许多的功能函数整理混乱的数据。
 
-> 了解更多有关 tibbles 的信息，查看手册 vignette("tibble").
+[^tibble]:了解更多有关 tibbles 的信息，查看手册 vignette("tibble").
+
+但是本人实际经历而言，使用 tidyr 清洗数据的时间较少，可能原因是：
+
+- 使用的数据源绝大部分来源于业务系统的数据库，数据已经相对“干净”
+- 数据源是经过公司的 BI 处理后的数据
+- 传统零售行业业务场景相对简单，数据结构简单
+- 大部分的数据需求可以直接使用 dplyr 动词处理
+
+鉴于以上原因，大家在阅读的时候可以暂时跳过本章节，最后再看本章节。
+
+需要说明的是，本章节大部分案例是照搬官方demo，所以大家也可以直接阅读[tidyr 官方项目](https://tidyr.tidyverse.org/)学习。
 
 
-本章节，大部分案例是照搬官方demo。
+tidyr 项目地址: <https://tidyr.tidyverse.org/>
 
-## 安装 {#tidyr:install}
 
-tidyr 是 tidyverse 系列的核心成员包，可以安装 tidyverse 或 tidyr 。
+
+## tidyr 介绍 {#tidyr:useage}
+
+tidyr 的主要目的是将数据变得整洁，整洁的数据表现为：
+
+1. 每个变量是单独的一列
+2. 每一个观察的值都在自己的行
+3. 每一个值都是独立的单元格
+
+大部分的数据集都是用行和列构成的`data.frame`。用Excel的单元格来表示，即每列代表不同意义的字段，每行是某个情形下的一系列字段；单元格则是独立的值,属于某个变量的观察值，这样构建的二维数据结构则是“整洁数据”。
+
+
+### 安装 {#tidyr:install}
+
+tidyr 是 tidyverse 系列的核心成员包，可以安装 tidyverse 或 仅安装 tidyr 。
 
 ```{r eval=FALSE}
 ## 最简单是的方式就是安装tidyverse
@@ -31,17 +55,7 @@ install.packages('tidyr')
 devtools::install_github("tidyverse/tidyr")
 ```
 
-
-## tidyr 介绍 {#tidyr:useage}
-
-整洁的数据表现为：
-
-1. 每个变量是单独的一列
-2. 每一个观察的值都在自己的行
-3. 每一个值都是独立的单元格
-
-大部分的数据集都是用行和列构成的`data.frame`。用Excel的单元格来表示，即每列代表不同意义的字段，每行是某个情形下的一系列字段；单元格则是独立的值,属于某个变量的观察值，这样构建的二维数据结构则是“整洁数据”。
-
+### 主要功能{#tidyr:functions}
 
 `tidyr`包中的函数可以分为5个主要大类
 
@@ -54,6 +68,8 @@ devtools::install_github("tidyverse/tidyr")
 - `separate()`,`extract()`拆分列,提取新列
 
 -  `replace_na()` 缺失值处理
+
+
 
 ## 长宽转换{#pivoting}
 
@@ -139,8 +155,7 @@ pivot_longer(
 * `names_prefix`: 一个正则表达式用来删除列名中匹配到的字符
 * `values_drop_na`: 是否删除空值行，默认为FALSE
 
-其余参数的使用比较复杂，建议自行查手册。
-
+其余参数的使用比较复杂，对于初学而言可以不掌握，当有更高阶需求的时候自行查函数手册了解用法即可。接下来了解几种常见的使用场景。
 
 #### 列名带数字
 
@@ -300,13 +315,15 @@ df %>% pivot_longer(!id, names_to = "name", values_to = "value")
 
 `pivot_wider()`功能与`pivot_longer()`相反。通过增加列数减少行数使数据集变得更宽，通常我们在汇总时候使用，达到类似Excel透视表结果。
 
-#### 基础
+### 用法
 
 ```{r}
 fish_encounters %>% pivot_wider(names_from = station, values_from = seen)
 ```
 
-缺失值填充
+#### 缺失值填充
+
+使用values_fill 参数填充缺失值。如下使用 0 填充缺失值：
 
 ```{r}
 fish_encounters %>% pivot_wider(
@@ -318,16 +335,37 @@ fish_encounters %>% pivot_wider(
 
 #### 聚合
 
+当将数据框长转宽时，通过指定`values_fn`参数，指定聚合方式，如下所示:
+
 ```{r}
 warpbreaks <- warpbreaks %>% as_tibble() 
-warpbreaks %>% count(wool, tension)
+warpbreaks %>%
+  pivot_wider(
+    names_from = wool,
+    values_from = breaks,
+    values_fn = mean
+  )
 ```
 
-需要通过`values_fn`指定聚合方式
+多个聚合方式
 
 ```{r}
-warpbreaks %>% pivot_wider(names_from = wool, values_from = breaks,values_fn= list(breaks = sum))
+df <- tibble::tribble(
+  ~name, ~TYPE, ~num, ~NUM,
+    "a",    1L,   1L,   9L,
+    "a",    1L,   2L,  10L,
+    "a",    2L,   3L,  11L,
+    "a",    2L,   4L,  12L,
+    "b",    1L,   5L,  13L,
+    "b",    2L,   6L,  14L,
+    "b",    2L,   7L,  15L,
+    "b",    2L,   8L,  16L
+  )
+
+df %>% pivot_wider(names_from = c(TYPE),values_from = c(num,NUM),values_fn = list(num = sum ,NUM = mean))
 ```
+
+
 
 
 #### 从多个变量生成新列名
