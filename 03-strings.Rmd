@@ -2,38 +2,41 @@
 # 字符处理 {#character:handling}
 
 
-实际数据分析工作中,经常需要处理字符串以便让数据整洁，符合分析需求。在我们常用的Excel或sql中也有处理字符串的经验，大部分时候截断、替换等基础实现就能满足我们的大部分字符处理需求。
+实际数据分析工作中,经常需要处理字符串以便让数据整洁，符合分析需求。在我们常用工具 Excel 或 SQL 中也有处理字符串的需求。绝大部分时候，截断、替换等基础实现就能满足我们的大部分字符处理需求。
 
 
-Excel中自带的字符串函数[^text]，如:`left`,`len`,`mid`,`find`,`Proper`,`rept`,`trim`,`upper`,`substitute`,`concatenate`,以及`Excle`2019新出的`concat`,`TEXTJOIN`等字符函数，`TEXTJOIN`函数我个人比较喜欢用。在学习R的字符处理时候可以自行尝试实现以上相对应功能。
+Excel 中自带的字符串函数[^text]，如:`left`,`len`,`mid`,`find`,`Proper`,`rept`,`trim`,`upper`,`substitute`,
+`concatenate`，以及`Excle`2019新出的`concat`,`TEXTJOIN`等字符函数，`TEXTJOIN`函数我个人比较喜欢用。
 
 但是Excel中字符处理功能存在一定局限性,没有直接可用的正则表达式[^Regularexpression]函数,在正则表达式本身就很困难的情况下，在VBA中实现较复杂的函数将会难上加难。
 
+> 在学习 R 的字符处理时候,可以自行尝试实现以上相对应 Excel 函数
 
 
-字符处理本人觉得本质上就是将字符定位后去实现不同的操作。所以觉得难点在于字符串中字符的定位，而实现这个功能就需要用到正则表达式，所以字符处理真正的难点在于正则表达式的编写，但是在我看来正则表达式想要掌握，难度过高，我们秉着随用随查的态度对待即可。
+字符处理，本人觉得本质上就是将字符定位后去实现不同的操作，比如替换、截断等。所以字符处理难点在于字符串中字符的定位，而实现这个功能就需要用到正则表达式，所以字符处理真正的难点在于正则表达式的编写。但是，在我看来正则表达式想要掌握，难度过高，我们秉着随用随查的态度对待即可。
 
 因为大部分的数据分析工作者并不会面临太多复杂的字符处理工作，对大部分常规商业数据分析工作者面对的数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒序等基础操作。面对舆情监控，购物评价等纯文本情感分析工作，个人觉得对普通数据分析岗位有点超纲，所以本章节的字符处理仅仅是常规的字符处理。
 
 
-[^text]:Excel中支持的[TEXT functions] (https://support.microsoft.com/zh-cn/office/%e6%96%87%e6%9c%ac%e5%87%bd%e6%95%b0%ef%bc%88%e5%8f%82%e8%80%83%ef%bc%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN&rs=zh-CN&ad=CN)
+[^text]:Excel中支持的[TEXT functions](https://support.microsoft.com/zh-cn/office/%e6%96%87%e6%9c%ac%e5%87%bd%e6%95%b0%ef%bc%88%e5%8f%82%e8%80%83%ef%bc%89-cccd86ad-547d-4ea9-a065-7bb697c2a56e?ui=zh-CN&rs=zh-CN&ad=CN)
 
 [^Regularexpression]:正则表达式(regular expression)描述了一种字符串匹配的模式(pattern),查看帮助`?regex`。
 
+在 R 语言中字符处理，可以分为两大方法，一种是 base R 中原生的字符处理函数，另外一种是使用 tidyverse 系列中的 stringr 处理字符。所以本章节着重从这两方面阐述字符处理函数用法。
 
 ## base R {#character:base-R}
 
-本部分简述base R中关于字符处理的常用函数。
+本小节简述 base R 中关于字符处理的常用函数。
 
 ### 单双引号
 
 `R`语言中字符串输入时，可以使用单引号，也可以使用双引号，详情请看`?Quotes`。
 
- - 单双引号用法和意义没有差别
+ - 单双引号，用法和意义没有差别
  
- - R中推荐使用双引号分隔符，打印、显示时都是用双引号
+ - R 中推荐使用双引号分隔符，打印、显示时都是用双引号
  
- - 单引号字符串通常用在字符串内包含双引号时，如用R执行sql字符串代码时
+ - 单引号字符串通常用在字符串内包含双引号时，如用 R 执行 sql 字符串代码时
  
  - R-4.0之后引入的R字符[newfeatures]，让单双引号基本没区别
 
@@ -64,14 +67,13 @@ char <- "我是一名\'小学生\'"
 char
 ```
 
-打印会显示转义符,主要是因为R语言内数据存储和打印是不一样的，运行结果为存储的数据形式，不是打印形式。
+打印会显示转义符,因为 R 语言内数据存储和打印是不一样的，运行结果为存储的数据形式，不是打印形式。
 
-要查看字符串的原始内容,可使用writeLines()或cat()
+要查看字符串的原始内容,可使用`writeLines()`或`cat()`。
 
 ```{r }
 x <- c("\"", "\\")
 x
-
 writeLines(x)
 writeLines(char)
 cat(char)
@@ -89,22 +91,26 @@ nchar(s)
 - 大小写
 
 ```{r}
+# 转换为大写
 toupper('abc')
+
+# 转换为小写
 tolower('ABC')
 ```
 
 - 拼接
 
-函数`paste()`将不同的字符向量拼接组合起来，返回的数据类型是字符向量。其中分割参数sep默认值是" "(空格)。collapse参数是使用指定的字符把各元素拼接在一次成一个单独的字符串。
+函数`paste()`将不同的字符向量拼接组合起来，返回的数据类型是字符向量。其中分割参数 sep 默认值是" "(空格)。collapse 参数是使用指定的字符把各元素拼接在一次成一个单独的字符串。
 
 ```{r}
 paste('a','b','d')
 paste('a','b','d',sep = '')
 paste('a','b','d',sep = '_')
 paste(c('a','b'),c('d','e'),collapse = '_')
+paste(c('a','b'),c('d','e'),sep = '-',collapse = '_')
 ```
 
-大家可以自行了解`paste`和`paste0`两个函数的差异。
+> 大家可以自行了解`paste`和`paste0`两个函数的差异。
 
 - 截取
 
@@ -117,7 +123,7 @@ substr("R is free software" ,start = 1,stop = 6)
 
 - 分割
 
-函数`strsplit`按照指定的字符把字符分割成子字符。参数x被分割的字符，split是用于分割的字符标准，fixed是否完全匹配分隔符，默认是TRUE,完全匹配模式，当fixed参数为FALSE时，表名split参数是正则表达式，使用正则匹配。
+函数`strsplit`按照指定的字符把字符分割成子字符。参数x指被分割的字符，split是用于分割的字符标准，fixed是否完全匹配分隔符，默认是TRUE,完全匹配模式，当fixed参数为FALSE时，表明split参数是正则表达式，使用正则匹配。
 
 ```{r eval=FALSE}
 strsplit(x,split,fixed,perl,useBytes)
@@ -138,6 +144,7 @@ strReverse <- function(x) sapply(lapply(strsplit(x, NULL), rev), paste, collapse
 strReverse(c("abc", "Statistics"))
 ```
 
+这个自定义编写的函数实现的逻辑是：将字符串全部切割成单个字符，然后使用`rev()`函数将字符向量倒序，最后通过`paste()`函数将字符向量合并在一起。最后将该过程使用 apply 系列函数包装，实现更好的向量化。
 
 ### 新特性{#newfeatures}
 
@@ -165,19 +172,16 @@ cat(char)
 ## stringr{#character:stringr-packages}
 
 
-本小节介绍R包`stringr`，stringr处理字符相对简单，并且是tidyverse系列的一部分，是很成熟的R包，API功能稳定。stringr是基于`stringi`之上构建的,stringr包集合了常见字符功能函数，如果发现stringr缺少某些功能可以查看`stringi`包。
+本小节介绍 R 包`stringr`，stringr 包的函数处理字符相对简单，并且是tidyverse系列的一部分，是很成熟的R包，API功能稳定。stringr是基于`stringi`之上构建的,stringr包集合了常见字符功能函数，如果发现 stringr 缺少某些功能可以查看`stringi`包。
 
-如上文所说，字符串处理的难点，个人觉得在于正则表达式的掌握程度。对大部分常规商业数据分析工作者的面对的表格数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作，所以stringr包基本满足字符处理需求。
-
-
-`stringr`项目地址:<https://github.com/tidyverse/stringr/>
+如上文所说，字符串处理的难点，个人觉得在于正则表达式的掌握程度。对大部分常规商业数据分析工作者的面对的表格数据而言，字符处理可能仅仅只是合并、剔除、删除空格、倒叙等基础操作，所以stringr 包基本满足字符处理需求。
 
 
-如果不熟悉R中的字符串，可以从[R for Data Science](https://r4ds.had.co.nz/strings.html)的字符串部分开始学习，
-
-本小节的部分案例照搬[R for Data Science](https://r4ds.had.co.nz/strings.html)。
+如果不熟悉R中的字符串，可以从[R for Data Science](https://r4ds.had.co.nz/strings.html)的字符串部分开始学习，本小节的部分案例照搬[R for Data Science](https://r4ds.had.co.nz/strings.html)。
 
 ### 安装 {#stringr-install}
+
+从 CRAN 安装发行版或者是通过 github 安装开发版。
 
 ```{r eval=FALSE}
 # Install the released version from CRAN:
@@ -190,7 +194,7 @@ devtools::install_github("tidyverse/stringr")
 
 ### 基本使用 {#stringr-usage}
 
-stringr包中所有的函数都已`str_`开头，让字符做第一个参数。
+stringr包中所有的函数都已`str_`开头，让待处理字符做第一个参数，这样处理好处明显，方便使用以及记忆。
 
 - 字符串长度
 
@@ -239,7 +243,6 @@ str_c(c('a','b','d','e'),collapse = ',')  #collapse 参数控制
 在正则表达式中\ 有特殊含义,有时需要两个\ ，多体会下面这段，代码实现移除"||"的功能。
 
 ```{r}
-library(stringr)
 str_remove(string = 'a||b',pattern = "\\|\\|")
 ```
 
@@ -249,11 +252,9 @@ str_remove(string = 'a||b',pattern = "\\|\\|")
 
 
 
-
-
-
 ### 常用函数{#stringr-functions}
 
+本小节介绍 stringr 中常用函数的用法。
 
 #### 截取字符
 
@@ -281,16 +282,16 @@ str_sub(string = '我是R语言学习者',start = 2,end = -3)
 查看函数帮助文档,str_match()按照指定pattern(正则表达式)查找字符。困难点在于正则表达式的编写。
 
 ```{r eval=FALSE}
-?str_match()
-?str_match_all()
-?str_extract()
-?str_extract_all()
+str_match(string, pattern)
+str_match_all(string, pattern)
+str_extract(string, pattern)
+str_extract_all(string, pattern, simplify = FALSE)
 ```
 
 str_extract()函数返回向量,str_match()函数返回矩阵.
 
 ```{r}
-#原文来源烽火戏诸侯的<剑来>
+# 测试文字来源烽火戏诸侯的<剑来>
 strings <- c('陈平安放下新折的那根桃枝,吹灭蜡烛,走出屋子后,坐在台阶上,仰头望去,星空璀璨.') 
 str_extract(strings,'陈平安')
 str_match(strings,'陈平安')
@@ -298,7 +299,7 @@ str_match(strings,'陈平安')
 
 * 匹配中文
 
-匹配中文的正则表达式\[\u4e00-\u9fa5\]
+匹配中文的正则表达式\\[\u4e00-\u9fa5\]
 
 ```{r}
 str_extract_all(strings,'[\u4e00-\u9fa5]') #返回list
@@ -319,9 +320,7 @@ str_extract_all(strings,'[a-zA-Z]')
 
 #### 添加字符
 
-str_pad() 函数向字符串添加字符
-
-像工作中处理月份的时候,1,2,3,4,5,6,7,8,9,10,11,12变成01,02,03,04,05,06,07,08,09,10,11,12.按照日期时间输出文件名称,如下所示:
+str_pad() 函数向字符串添加字符。像工作中处理月份的时候,1,2,3,4,5,6,7,8,9,10,11,12变成01,02,03,04,05,06,07,08,09,10,11,12.按照日期时间输出文件名称,如下所示:
 
 
 ```{r}
@@ -391,7 +390,7 @@ str_replace_all(string = ' d a  b ',pattern = ' ',replacement = '')
 
 #### 字符排序
 
-numeric参数决定是否按照数字排序。
+numeric 参数决定是否按照数字排序。
 
 ```{r eval=FALSE}
 str_order(x, decreasing = FALSE, na_last = TRUE, locale = "en",
@@ -445,26 +444,21 @@ word(str, 2, sep = fixed('..'))
 
 #### 其他函数
 
-* str_subset() str_which()
+* str_subset str_which
 
-匹配字符串本身行筛选时候能用
+`str_subset()`是对x[str_detect(x,pattern)]的包装，`str_which()`是which(str_detect(x,pattern))的包装。
 
 
 ```{r}
-
 fruit <- c("apple", "banana", "pear", "pinapple")
 str_subset(fruit, "a")
-str_which(fruit, "a") # 匹配字符首次出现的位置
+# 匹配字符首次出现的位置
+str_which(fruit, "a") 
 ```
 
+匹配字符串本身做行筛选。
  
 ```{r eval=FALSE}
-#str_which 是which(str_detect(x,pattern))的包装
-#str_which()
-
-#str_subset是对x[str_detect(x,pattern)]的包装
-#str_subset()
-
 #筛选出字母行
 set.seed(24)
 dt <- data.table::data.table(col=sample(c(letters,1:10),100,replace = T))
@@ -475,7 +469,7 @@ head(dt[str_which(col,pattern = '[a-z]')])
 
 * str_dup()
 
-复制字符串
+`str_dup()`功能是复制字符串。
 
 ```{r eval=FALSE}
 fruit <- c("apple", "pear", "banana")
@@ -496,11 +490,11 @@ str_detect('abd','^a')
 
 str_ends('abd','d')
 str_detect('abd','a$')
-
-
 ```
 
- * 大小写转换
+* 大小写转换
+ 
+`str_to_upper()`函数将全部字符转换为大写，`str_to_lower()`函数将全部字符转换为小写，`str_to_title()`将每个单词的首字母转换为大写，`str_to_sentence()`将一个字符的首字母转换为大写。
  
 ```{r}
 dog <- "The quick brown dog"
@@ -577,9 +571,9 @@ dt[,list(newcol=my_str_split(letters)),by=.(col)]
 
 
 
-## base和stringr{#character:the-difference-stringr-and-base}
+## base 和 stringr{#character:the-difference-stringr-and-base}
 
-以下表格数据对比，主要是base R 和 stringr中的相应字符处理功能函数对比。
+以下表格数据对比，主要是 base R 和 stringr 中相应字符处理功能函数对比。
 
 表格数据来源[stringr and base differences](https://stringr.tidyverse.org/articles/from-base.html)。表格数据可用以下代码获取(注意网络):
 
@@ -614,7 +608,7 @@ dt <- read_html('https://stringr.tidyverse.org/articles/from-base.html') %>%
 | trimws(x)                          | str_trim(x)                              |
 
 
-通过以上对比，方便我们从Base R 切换到stringr包的使用。
+通过以上对比，方便我们从 Base R 切换到 stringr 包的使用。
 
 
 ## 参考资料 {#character:reference-material}

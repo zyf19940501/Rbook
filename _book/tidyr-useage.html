@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 主要功能 | 商业数据分析师-R 语言数据处理</title>
+  <title>3.1 tidyr 介绍 | 商业数据分析师-R 语言数据处理</title>
   <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 主要功能 | 商业数据分析师-R 语言数据处理" />
+  <meta property="og:title" content="3.1 tidyr 介绍 | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 主要功能 | 商业数据分析师-R 语言数据处理" />
+  <meta name="twitter:title" content="3.1 tidyr 介绍 | 商业数据分析师-R 语言数据处理" />
   
   <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
@@ -24,17 +24,17 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-04" />
+<meta name="date" content="2021-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tidyr-install.html"/>
-<link rel="next" href="character-handling.html"/>
+<link rel="prev" href="Data-tidyr-package.html"/>
+<link rel="next" href="pivoting.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,15 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -159,7 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#batch:read"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
 <li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
@@ -264,16 +255,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="tidyr-install.html"><a href="tidyr-install.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
+<li class="chapter" data-level="3.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.1</b> tidyr 介绍</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
-<li class="chapter" data-level="3.2.3" data-path="tidyr-useage.html"><a href="tidyr-useage.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
-<li class="chapter" data-level="3.2.4" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
-<li class="chapter" data-level="3.2.5" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
-<li class="chapter" data-level="3.2.6" data-path="tidyr-useage.html"><a href="tidyr-useage.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
-<li class="chapter" data-level="3.2.7" data-path="tidyr-useage.html"><a href="tidyr-useage.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
+<li class="chapter" data-level="3.1.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#tidyr:install"><i class="fa fa-check"></i><b>3.1.1</b> 安装</a></li>
+<li class="chapter" data-level="3.1.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#tidyr:functions"><i class="fa fa-check"></i><b>3.1.2</b> 主要功能</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="pivoting.html"><a href="pivoting.html"><i class="fa fa-check"></i><b>3.2</b> 长宽转换</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="pivoting.html"><a href="pivoting.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
+<li class="chapter" data-level="3.2.2" data-path="pivoting.html"><a href="pivoting.html#用法-1"><i class="fa fa-check"></i><b>3.2.2</b> 用法</a></li>
+<li class="chapter" data-level="3.2.3" data-path="pivoting.html"><a href="pivoting.html#长转宽"><i class="fa fa-check"></i><b>3.2.3</b> 长转宽</a></li>
+<li class="chapter" data-level="3.2.4" data-path="pivoting.html"><a href="pivoting.html#用法-2"><i class="fa fa-check"></i><b>3.2.4</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="tidyr-rectangle.html"><a href="tidyr-rectangle.html"><i class="fa fa-check"></i><b>3.3</b> 矩形数据</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html"><i class="fa fa-check"></i><b>3.4</b> 嵌套数据</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html#基础"><i class="fa fa-check"></i><b>3.4.1</b> 基础</a></li>
+<li class="chapter" data-level="3.4.2" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.4.2</b> 嵌套数据和模型</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="character-vector.html"><a href="character-vector.html"><i class="fa fa-check"></i><b>3.5</b> 字符处理</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="character-vector.html"><a href="character-vector.html#新列提取"><i class="fa fa-check"></i><b>3.5.1</b> 新列提取</a></li>
+<li class="chapter" data-level="3.5.2" data-path="character-vector.html"><a href="character-vector.html#拆分"><i class="fa fa-check"></i><b>3.5.2</b> 拆分</a></li>
+<li class="chapter" data-level="3.5.3" data-path="character-vector.html"><a href="character-vector.html#列拆分行"><i class="fa fa-check"></i><b>3.5.3</b> 列拆分行</a></li>
+<li class="chapter" data-level="3.5.4" data-path="character-vector.html"><a href="character-vector.html#合并多列"><i class="fa fa-check"></i><b>3.5.4</b> 合并多列</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="tidyr-expand.html"><a href="tidyr-expand.html"><i class="fa fa-check"></i><b>3.6</b> 扩展数据框</a></li>
+<li class="chapter" data-level="3.7" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html"><i class="fa fa-check"></i><b>3.7</b> 缺失值</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#replace_na"><i class="fa fa-check"></i><b>3.7.1</b> replace_na</a></li>
+<li class="chapter" data-level="3.7.2" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#fill"><i class="fa fa-check"></i><b>3.7.2</b> fill</a></li>
+<li class="chapter" data-level="3.7.3" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#drop_na"><i class="fa fa-check"></i><b>3.7.3</b> drop_na</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="character-handling.html"><a href="character-handling.html"><i class="fa fa-check"></i><b>4</b> 字符处理</a>
@@ -465,7 +477,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.3.1" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
 <li class="chapter" data-level="11.3.2" data-path="define-function-parameter.html"><a href="define-function-parameter.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
+<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-5"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="function-return.html"><a href="function-return.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
 <ul>
@@ -518,16 +530,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tidyr:useage" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> 主要功能</h2>
-<p>整洁的数据表现为：</p>
+<div id="tidyr:useage" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> tidyr 介绍</h2>
+<p>tidyr 的主要目的是将数据变得整洁，整洁的数据表现为：</p>
 <ol style="list-style-type: decimal">
 <li>每个变量是单独的一列</li>
 <li>每一个观察的值都在自己的行</li>
 <li>每一个值都是独立的单元格</li>
 </ol>
 <p>大部分的数据集都是用行和列构成的<code>data.frame</code>。用Excel的单元格来表示，即每列代表不同意义的字段，每行是某个情形下的一系列字段；单元格则是独立的值,属于某个变量的观察值，这样构建的二维数据结构则是“整洁数据”。</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="tidyr-useage.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+<div id="tidyr:install" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> 安装</h3>
+<p>tidyr 是 tidyverse 系列的核心成员包，可以安装 tidyverse 或 仅安装 tidyr 。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tidyr-useage.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 最简单是的方式就是安装tidyverse</span></span>
+<span id="cb1-2"><a href="tidyr-useage.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
+<span id="cb1-3"><a href="tidyr-useage.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="tidyr-useage.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者仅仅安装 tidyr:</span></span>
+<span id="cb1-5"><a href="tidyr-useage.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyr&#39;</span>)</span>
+<span id="cb1-6"><a href="tidyr-useage.html#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="tidyr-useage.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 或者从github 安装开发版本</span></span>
+<span id="cb1-8"><a href="tidyr-useage.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb1-9"><a href="tidyr-useage.html#cb1-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/tidyr&quot;</span>)</span></code></pre></div>
+</div>
+<div id="tidyr:functions" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> 主要功能</h3>
 <p><code>tidyr</code>包中的函数可以分为5个主要大类</p>
 <ul>
 <li><p><code>pivot_longer()</code> 和 <code>pivot_wider()</code> 宽转长以及长转宽</p></li>
@@ -536,690 +562,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>separate()</code>,<code>extract()</code>拆分列,提取新列</p></li>
 <li><p><code>replace_na()</code> 缺失值处理</p></li>
 </ul>
-<div id="宽转长" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> 宽转长</h3>
-<p>详情查看<code>vignette("pivot")</code>,以下是照搬该图册中的内容</p>
-<div id="基础" class="section level4" number="3.2.1.1">
-<h4><span class="header-section-number">3.2.1.1</span> 基础</h4>
-<p>长数据与宽数据之间的转换，类似我们常用的EXcel中的透视表功能。接下来用<code>tidyr</code>包自带的插图案例记录相关函数用法</p>
-<p>在Excel中有时候方便我们肉眼观察，可能一个数据集会有很多列,如下所示：</p>
-<table>
-<thead>
-<tr class="header">
-<th>col1</th>
-<th>col2</th>
-<th>col3</th>
-<th>col4</th>
-<th>col5</th>
-<th>col6</th>
-<th>col7</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>v1</td>
-<td>v2</td>
-<td>v3</td>
-<td>v4</td>
-<td>v5</td>
-<td>v6</td>
-<td>v7</td>
-</tr>
-<tr class="even">
-<td>vb1</td>
-<td>vb2</td>
-<td>vb3</td>
-<td>vb4</td>
-<td>vb5</td>
-<td>vb6</td>
-<td>vb7</td>
-</tr>
-</tbody>
-</table>
-<p>方便观察，但是不方便统计分析，这是我们需要把数据做处理，从“宽数据变成长数据”即宽转长。</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="tidyr-useage.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb193-2"><a href="tidyr-useage.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb193-3"><a href="tidyr-useage.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="tidyr-useage.html#cb194-1" aria-hidden="true" tabindex="-1"></a>relig_income <span class="sc">%&gt;%</span> </span>
-<span id="cb194-2"><a href="tidyr-useage.html#cb194-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">!</span>religion,<span class="at">names_to =</span> <span class="st">&#39;income&#39;</span>,<span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>)</span>
-<span id="cb194-3"><a href="tidyr-useage.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 180 x 3</span></span>
-<span id="cb194-4"><a href="tidyr-useage.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   religion income  count</span></span>
-<span id="cb194-5"><a href="tidyr-useage.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb194-6"><a href="tidyr-useage.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Agnostic &lt;$10k      27</span></span>
-<span id="cb194-7"><a href="tidyr-useage.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Agnostic $10-20k    34</span></span>
-<span id="cb194-8"><a href="tidyr-useage.html#cb194-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Agnostic $20-30k    60</span></span>
-<span id="cb194-9"><a href="tidyr-useage.html#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Agnostic $30-40k    81</span></span>
-<span id="cb194-10"><a href="tidyr-useage.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Agnostic $40-50k    76</span></span>
-<span id="cb194-11"><a href="tidyr-useage.html#cb194-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Agnostic $50-75k   137</span></span>
-<span id="cb194-12"><a href="tidyr-useage.html#cb194-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 174 more rows</span></span></code></pre></div>
-<ul>
-<li>第一个参数是数据集</li>
-<li>第二个参数是那些列需要重塑，在该例中除了<code>religion</code>的其他全部列</li>
-<li><code>names_to</code>这个参数是新增的列名</li>
-<li><code>values_to</code>是新增的存储之前数据集中数据的列名</li>
-</ul>
-</div>
-<div id="列名带数字" class="section level4" number="3.2.1.2">
-<h4><span class="header-section-number">3.2.1.2</span> 列名带数字</h4>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="tidyr-useage.html#cb195-1" aria-hidden="true" tabindex="-1"></a>billboard <span class="sc">%&gt;%</span> </span>
-<span id="cb195-2"><a href="tidyr-useage.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb195-3"><a href="tidyr-useage.html#cb195-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;wk&quot;</span>), </span>
-<span id="cb195-4"><a href="tidyr-useage.html#cb195-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>, </span>
-<span id="cb195-5"><a href="tidyr-useage.html#cb195-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span>,</span>
-<span id="cb195-6"><a href="tidyr-useage.html#cb195-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
-<span id="cb195-7"><a href="tidyr-useage.html#cb195-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb195-8"><a href="tidyr-useage.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5,307 x 5</span></span>
-<span id="cb195-9"><a href="tidyr-useage.html#cb195-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   artist track                   date.entered week   rank</span></span>
-<span id="cb195-10"><a href="tidyr-useage.html#cb195-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span id="cb195-11"><a href="tidyr-useage.html#cb195-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk1      87</span></span>
-<span id="cb195-12"><a href="tidyr-useage.html#cb195-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk2      82</span></span>
-<span id="cb195-13"><a href="tidyr-useage.html#cb195-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk3      72</span></span>
-<span id="cb195-14"><a href="tidyr-useage.html#cb195-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk4      77</span></span>
-<span id="cb195-15"><a href="tidyr-useage.html#cb195-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk5      87</span></span>
-<span id="cb195-16"><a href="tidyr-useage.html#cb195-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk6      94</span></span>
-<span id="cb195-17"><a href="tidyr-useage.html#cb195-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 5,301 more rows</span></span></code></pre></div>
-<p><code>names_prefix</code> 调整内容前缀，配合<code>names_transform</code>参数使用</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="tidyr-useage.html#cb196-1" aria-hidden="true" tabindex="-1"></a>billboard <span class="sc">%&gt;%</span> </span>
-<span id="cb196-2"><a href="tidyr-useage.html#cb196-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb196-3"><a href="tidyr-useage.html#cb196-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;wk&quot;</span>), </span>
-<span id="cb196-4"><a href="tidyr-useage.html#cb196-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>, </span>
-<span id="cb196-5"><a href="tidyr-useage.html#cb196-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;wk&quot;</span>,</span>
-<span id="cb196-6"><a href="tidyr-useage.html#cb196-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">week =</span> as.integer),</span>
-<span id="cb196-7"><a href="tidyr-useage.html#cb196-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span>,</span>
-<span id="cb196-8"><a href="tidyr-useage.html#cb196-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb196-9"><a href="tidyr-useage.html#cb196-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb196-10"><a href="tidyr-useage.html#cb196-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5,307 x 5</span></span>
-<span id="cb196-11"><a href="tidyr-useage.html#cb196-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   artist track                   date.entered  week  rank</span></span>
-<span id="cb196-12"><a href="tidyr-useage.html#cb196-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;int&gt; &lt;dbl&gt;</span></span>
-<span id="cb196-13"><a href="tidyr-useage.html#cb196-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       1    87</span></span>
-<span id="cb196-14"><a href="tidyr-useage.html#cb196-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       2    82</span></span>
-<span id="cb196-15"><a href="tidyr-useage.html#cb196-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       3    72</span></span>
-<span id="cb196-16"><a href="tidyr-useage.html#cb196-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       4    77</span></span>
-<span id="cb196-17"><a href="tidyr-useage.html#cb196-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       5    87</span></span>
-<span id="cb196-18"><a href="tidyr-useage.html#cb196-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26       6    94</span></span>
-<span id="cb196-19"><a href="tidyr-useage.html#cb196-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 5,301 more rows</span></span></code></pre></div>
-<p>经过以上转换<code>week</code>列属性变成了整数，当然达到以上效果有其他的途径，如下：</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="tidyr-useage.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse,<span class="at">warn.conflicts =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb197-2"><a href="tidyr-useage.html#cb197-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-3"><a href="tidyr-useage.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="co"># method 1</span></span>
-<span id="cb197-4"><a href="tidyr-useage.html#cb197-4" aria-hidden="true" tabindex="-1"></a>billboard <span class="sc">%&gt;%</span> </span>
-<span id="cb197-5"><a href="tidyr-useage.html#cb197-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb197-6"><a href="tidyr-useage.html#cb197-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;wk&quot;</span>), </span>
-<span id="cb197-7"><a href="tidyr-useage.html#cb197-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>, </span>
-<span id="cb197-8"><a href="tidyr-useage.html#cb197-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">week =</span> readr<span class="sc">::</span>parse_number),</span>
-<span id="cb197-9"><a href="tidyr-useage.html#cb197-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span>,</span>
-<span id="cb197-10"><a href="tidyr-useage.html#cb197-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb197-11"><a href="tidyr-useage.html#cb197-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb197-12"><a href="tidyr-useage.html#cb197-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-13"><a href="tidyr-useage.html#cb197-13" aria-hidden="true" tabindex="-1"></a><span class="co"># method 2</span></span>
-<span id="cb197-14"><a href="tidyr-useage.html#cb197-14" aria-hidden="true" tabindex="-1"></a>billboard <span class="sc">%&gt;%</span></span>
-<span id="cb197-15"><a href="tidyr-useage.html#cb197-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb197-16"><a href="tidyr-useage.html#cb197-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;wk&quot;</span>),</span>
-<span id="cb197-17"><a href="tidyr-useage.html#cb197-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>,</span>
-<span id="cb197-18"><a href="tidyr-useage.html#cb197-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span>,</span>
-<span id="cb197-19"><a href="tidyr-useage.html#cb197-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb197-20"><a href="tidyr-useage.html#cb197-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb197-21"><a href="tidyr-useage.html#cb197-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">str_remove</span>(week, <span class="st">&quot;wk&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as.integer</span>())</span></code></pre></div>
-</div>
-<div id="多变量列名" class="section level4" number="3.2.1.3">
-<h4><span class="header-section-number">3.2.1.3</span> 多变量列名</h4>
-<p>该案列设计比较复杂的正则表达式,<code>new_?(.*)_(.)(.*)</code>需要一定正则表达式基础。
-<code>new_?</code>表示匹配<code>new</code>或<code>new_</code>，<code>(.*)</code>匹配任意0次或多次任意字符。</p>
-<p><a href="https://www.runoob.com/regexp/regexp-syntax.html">正则表达式介绍</a></p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="tidyr-useage.html#cb198-1" aria-hidden="true" tabindex="-1"></a>who <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb198-2"><a href="tidyr-useage.html#cb198-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65,</span>
-<span id="cb198-3"><a href="tidyr-useage.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>), </span>
-<span id="cb198-4"><a href="tidyr-useage.html#cb198-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>,</span>
-<span id="cb198-5"><a href="tidyr-useage.html#cb198-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span></span>
-<span id="cb198-6"><a href="tidyr-useage.html#cb198-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb198-7"><a href="tidyr-useage.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 405,440 x 8</span></span>
-<span id="cb198-8"><a href="tidyr-useage.html#cb198-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   country     iso2  iso3   year diagnosis gender age   count</span></span>
-<span id="cb198-9"><a href="tidyr-useage.html#cb198-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;</span></span>
-<span id="cb198-10"><a href="tidyr-useage.html#cb198-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Afghanistan AF    AFG    1980 sp        m      014      NA</span></span>
-<span id="cb198-11"><a href="tidyr-useage.html#cb198-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Afghanistan AF    AFG    1980 sp        m      1524     NA</span></span>
-<span id="cb198-12"><a href="tidyr-useage.html#cb198-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Afghanistan AF    AFG    1980 sp        m      2534     NA</span></span>
-<span id="cb198-13"><a href="tidyr-useage.html#cb198-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Afghanistan AF    AFG    1980 sp        m      3544     NA</span></span>
-<span id="cb198-14"><a href="tidyr-useage.html#cb198-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Afghanistan AF    AFG    1980 sp        m      4554     NA</span></span>
-<span id="cb198-15"><a href="tidyr-useage.html#cb198-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Afghanistan AF    AFG    1980 sp        m      5564     NA</span></span>
-<span id="cb198-16"><a href="tidyr-useage.html#cb198-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 405,434 more rows</span></span></code></pre></div>
-<p>进一步处理列<code>gender</code>，<code>age</code> 。</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="tidyr-useage.html#cb199-1" aria-hidden="true" tabindex="-1"></a>who <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb199-2"><a href="tidyr-useage.html#cb199-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65,</span>
-<span id="cb199-3"><a href="tidyr-useage.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>), </span>
-<span id="cb199-4"><a href="tidyr-useage.html#cb199-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>,</span>
-<span id="cb199-5"><a href="tidyr-useage.html#cb199-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_transform =</span> <span class="fu">list</span>(</span>
-<span id="cb199-6"><a href="tidyr-useage.html#cb199-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">gender =</span> <span class="sc">~</span> readr<span class="sc">::</span><span class="fu">parse_factor</span>(.x, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;f&quot;</span>, <span class="st">&quot;m&quot;</span>)),</span>
-<span id="cb199-7"><a href="tidyr-useage.html#cb199-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="sc">~</span> readr<span class="sc">::</span><span class="fu">parse_factor</span>(</span>
-<span id="cb199-8"><a href="tidyr-useage.html#cb199-8" aria-hidden="true" tabindex="-1"></a>      .x,</span>
-<span id="cb199-9"><a href="tidyr-useage.html#cb199-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;014&quot;</span>, <span class="st">&quot;1524&quot;</span>, <span class="st">&quot;2534&quot;</span>, <span class="st">&quot;3544&quot;</span>, <span class="st">&quot;4554&quot;</span>, <span class="st">&quot;5564&quot;</span>, <span class="st">&quot;65&quot;</span>), </span>
-<span id="cb199-10"><a href="tidyr-useage.html#cb199-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
-<span id="cb199-11"><a href="tidyr-useage.html#cb199-11" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb199-12"><a href="tidyr-useage.html#cb199-12" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb199-13"><a href="tidyr-useage.html#cb199-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>,</span>
-<span id="cb199-14"><a href="tidyr-useage.html#cb199-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb199-15"><a href="tidyr-useage.html#cb199-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 405,440 x 8</span></span>
-<span id="cb199-16"><a href="tidyr-useage.html#cb199-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   country     iso2  iso3   year diagnosis gender age   count</span></span>
-<span id="cb199-17"><a href="tidyr-useage.html#cb199-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;fct&gt;  &lt;ord&gt; &lt;int&gt;</span></span>
-<span id="cb199-18"><a href="tidyr-useage.html#cb199-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Afghanistan AF    AFG    1980 sp        m      014      NA</span></span>
-<span id="cb199-19"><a href="tidyr-useage.html#cb199-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Afghanistan AF    AFG    1980 sp        m      1524     NA</span></span>
-<span id="cb199-20"><a href="tidyr-useage.html#cb199-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Afghanistan AF    AFG    1980 sp        m      2534     NA</span></span>
-<span id="cb199-21"><a href="tidyr-useage.html#cb199-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Afghanistan AF    AFG    1980 sp        m      3544     NA</span></span>
-<span id="cb199-22"><a href="tidyr-useage.html#cb199-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Afghanistan AF    AFG    1980 sp        m      4554     NA</span></span>
-<span id="cb199-23"><a href="tidyr-useage.html#cb199-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Afghanistan AF    AFG    1980 sp        m      5564     NA</span></span>
-<span id="cb199-24"><a href="tidyr-useage.html#cb199-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 405,434 more rows</span></span></code></pre></div>
-</div>
-<div id="一行多观测值" class="section level4" number="3.2.1.4">
-<h4><span class="header-section-number">3.2.1.4</span> 一行多观测值</h4>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="tidyr-useage.html#cb200-1" aria-hidden="true" tabindex="-1"></a>family <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb200-2"><a href="tidyr-useage.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>family, <span class="sc">~</span>dob_child1, <span class="sc">~</span>dob_child2, <span class="sc">~</span>gender_child1, <span class="sc">~</span>gender_child2,</span>
-<span id="cb200-3"><a href="tidyr-useage.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  1L, <span class="st">&quot;1998-11-26&quot;</span>, <span class="st">&quot;2000-01-29&quot;</span>, 1L, 2L,</span>
-<span id="cb200-4"><a href="tidyr-useage.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  2L, <span class="st">&quot;1996-06-22&quot;</span>, <span class="cn">NA</span>, 2L, <span class="cn">NA</span>,</span>
-<span id="cb200-5"><a href="tidyr-useage.html#cb200-5" aria-hidden="true" tabindex="-1"></a>  3L, <span class="st">&quot;2002-07-11&quot;</span>, <span class="st">&quot;2004-04-05&quot;</span>, 2L, 2L,</span>
-<span id="cb200-6"><a href="tidyr-useage.html#cb200-6" aria-hidden="true" tabindex="-1"></a>  4L, <span class="st">&quot;2004-10-10&quot;</span>, <span class="st">&quot;2009-08-27&quot;</span>, 1L, 1L,</span>
-<span id="cb200-7"><a href="tidyr-useage.html#cb200-7" aria-hidden="true" tabindex="-1"></a>  5L, <span class="st">&quot;2000-12-05&quot;</span>, <span class="st">&quot;2005-02-28&quot;</span>, 2L, 1L,</span>
-<span id="cb200-8"><a href="tidyr-useage.html#cb200-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb200-9"><a href="tidyr-useage.html#cb200-9" aria-hidden="true" tabindex="-1"></a>family <span class="ot">&lt;-</span> family <span class="sc">%&gt;%</span> <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">&quot;dob&quot;</span>)), parse_date)</span>
-<span id="cb200-10"><a href="tidyr-useage.html#cb200-10" aria-hidden="true" tabindex="-1"></a>family</span>
-<span id="cb200-11"><a href="tidyr-useage.html#cb200-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
-<span id="cb200-12"><a href="tidyr-useage.html#cb200-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   family dob_child1 dob_child2 gender_child1 gender_child2</span></span>
-<span id="cb200-13"><a href="tidyr-useage.html#cb200-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt; &lt;date&gt;     &lt;date&gt;             &lt;int&gt;         &lt;int&gt;</span></span>
-<span id="cb200-14"><a href="tidyr-useage.html#cb200-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1 1998-11-26 2000-01-29             1             2</span></span>
-<span id="cb200-15"><a href="tidyr-useage.html#cb200-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      2 1996-06-22 NA                     2            NA</span></span>
-<span id="cb200-16"><a href="tidyr-useage.html#cb200-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      3 2002-07-11 2004-04-05             2             2</span></span>
-<span id="cb200-17"><a href="tidyr-useage.html#cb200-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      4 2004-10-10 2009-08-27             1             1</span></span>
-<span id="cb200-18"><a href="tidyr-useage.html#cb200-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      5 2000-12-05 2005-02-28             2             1</span></span></code></pre></div>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="tidyr-useage.html#cb201-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb201-2"><a href="tidyr-useage.html#cb201-2" aria-hidden="true" tabindex="-1"></a>family <span class="sc">%&gt;%</span> </span>
-<span id="cb201-3"><a href="tidyr-useage.html#cb201-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb201-4"><a href="tidyr-useage.html#cb201-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>family, </span>
-<span id="cb201-5"><a href="tidyr-useage.html#cb201-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;.value&quot;</span>, <span class="st">&quot;child&quot;</span>), </span>
-<span id="cb201-6"><a href="tidyr-useage.html#cb201-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="st">&quot;_&quot;</span>, </span>
-<span id="cb201-7"><a href="tidyr-useage.html#cb201-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
-<span id="cb201-8"><a href="tidyr-useage.html#cb201-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb201-9"><a href="tidyr-useage.html#cb201-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 9 x 4</span></span>
-<span id="cb201-10"><a href="tidyr-useage.html#cb201-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   family child  dob        gender</span></span>
-<span id="cb201-11"><a href="tidyr-useage.html#cb201-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;  &lt;date&gt;      &lt;int&gt;</span></span>
-<span id="cb201-12"><a href="tidyr-useage.html#cb201-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1 child1 1998-11-26      1</span></span>
-<span id="cb201-13"><a href="tidyr-useage.html#cb201-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1 child2 2000-01-29      2</span></span>
-<span id="cb201-14"><a href="tidyr-useage.html#cb201-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      2 child1 1996-06-22      2</span></span>
-<span id="cb201-15"><a href="tidyr-useage.html#cb201-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      3 child1 2002-07-11      2</span></span>
-<span id="cb201-16"><a href="tidyr-useage.html#cb201-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      3 child2 2004-04-05      2</span></span>
-<span id="cb201-17"><a href="tidyr-useage.html#cb201-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      4 child1 2004-10-10      1</span></span>
-<span id="cb201-18"><a href="tidyr-useage.html#cb201-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 3 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="tidyr-useage.html#cb202-1" aria-hidden="true" tabindex="-1"></a>anscombe <span class="sc">%&gt;%</span> </span>
-<span id="cb202-2"><a href="tidyr-useage.html#cb202-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), </span>
-<span id="cb202-3"><a href="tidyr-useage.html#cb202-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;.value&quot;</span>, <span class="st">&quot;set&quot;</span>), </span>
-<span id="cb202-4"><a href="tidyr-useage.html#cb202-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">&quot;(.)(.)&quot;</span></span>
-<span id="cb202-5"><a href="tidyr-useage.html#cb202-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb202-6"><a href="tidyr-useage.html#cb202-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(set)</span>
-<span id="cb202-7"><a href="tidyr-useage.html#cb202-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 44 x 3</span></span>
-<span id="cb202-8"><a href="tidyr-useage.html#cb202-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   set       x     y</span></span>
-<span id="cb202-9"><a href="tidyr-useage.html#cb202-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb202-10"><a href="tidyr-useage.html#cb202-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1        10  8.04</span></span>
-<span id="cb202-11"><a href="tidyr-useage.html#cb202-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1         8  6.95</span></span>
-<span id="cb202-12"><a href="tidyr-useage.html#cb202-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 1        13  7.58</span></span>
-<span id="cb202-13"><a href="tidyr-useage.html#cb202-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1         9  8.81</span></span>
-<span id="cb202-14"><a href="tidyr-useage.html#cb202-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1        11  8.33</span></span>
-<span id="cb202-15"><a href="tidyr-useage.html#cb202-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 1        14  9.96</span></span>
-<span id="cb202-16"><a href="tidyr-useage.html#cb202-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 38 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="tidyr-useage.html#cb203-1" aria-hidden="true" tabindex="-1"></a>pnl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb203-2"><a href="tidyr-useage.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb203-3"><a href="tidyr-useage.html#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>,<span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb203-4"><a href="tidyr-useage.html#cb203-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb203-5"><a href="tidyr-useage.html#cb203-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y1 =</span> <span class="fu">rnorm</span>(<span class="dv">4</span>),</span>
-<span id="cb203-6"><a href="tidyr-useage.html#cb203-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y2 =</span> <span class="fu">rnorm</span>(<span class="dv">4</span>),</span>
-<span id="cb203-7"><a href="tidyr-useage.html#cb203-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">z1 =</span> <span class="fu">rep</span>(<span class="dv">3</span>, <span class="dv">4</span>),</span>
-<span id="cb203-8"><a href="tidyr-useage.html#cb203-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">z2 =</span> <span class="fu">rep</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>),</span>
-<span id="cb203-9"><a href="tidyr-useage.html#cb203-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb203-10"><a href="tidyr-useage.html#cb203-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-11"><a href="tidyr-useage.html#cb203-11" aria-hidden="true" tabindex="-1"></a>pnl <span class="sc">%&gt;%</span> </span>
-<span id="cb203-12"><a href="tidyr-useage.html#cb203-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb203-13"><a href="tidyr-useage.html#cb203-13" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">c</span>(x, a, b), </span>
-<span id="cb203-14"><a href="tidyr-useage.html#cb203-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;.value&quot;</span>, <span class="st">&quot;time&quot;</span>), </span>
-<span id="cb203-15"><a href="tidyr-useage.html#cb203-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">&quot;(.)(.)&quot;</span></span>
-<span id="cb203-16"><a href="tidyr-useage.html#cb203-16" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb203-17"><a href="tidyr-useage.html#cb203-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 8 x 6</span></span>
-<span id="cb203-18"><a href="tidyr-useage.html#cb203-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     a     b time       y     z</span></span>
-<span id="cb203-19"><a href="tidyr-useage.html#cb203-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb203-20"><a href="tidyr-useage.html#cb203-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     1     0 1     -1.40      3</span></span>
-<span id="cb203-21"><a href="tidyr-useage.html#cb203-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     1     1     0 2      0.622    -2</span></span>
-<span id="cb203-22"><a href="tidyr-useage.html#cb203-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     2     1     1 1      0.255     3</span></span>
-<span id="cb203-23"><a href="tidyr-useage.html#cb203-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2     1     1 2      1.15     -2</span></span>
-<span id="cb203-24"><a href="tidyr-useage.html#cb203-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     3     0     1 1     -2.44      3</span></span>
-<span id="cb203-25"><a href="tidyr-useage.html#cb203-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     3     0     1 2     -1.82     -2</span></span>
-<span id="cb203-26"><a href="tidyr-useage.html#cb203-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 2 more rows</span></span></code></pre></div>
-</div>
-<div id="重复列名" class="section level4" number="3.2.1.5">
-<h4><span class="header-section-number">3.2.1.5</span> 重复列名</h4>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="tidyr-useage.html#cb204-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">y =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">y =</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">.name_repair =</span> <span class="st">&quot;minimal&quot;</span>)</span>
-<span id="cb204-2"><a href="tidyr-useage.html#cb204-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>id, <span class="at">names_to =</span> <span class="st">&quot;name&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span>
-<span id="cb204-3"><a href="tidyr-useage.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 9 x 3</span></span>
-<span id="cb204-4"><a href="tidyr-useage.html#cb204-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id name  value</span></span>
-<span id="cb204-5"><a href="tidyr-useage.html#cb204-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;int&gt;</span></span>
-<span id="cb204-6"><a href="tidyr-useage.html#cb204-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 y         4</span></span>
-<span id="cb204-7"><a href="tidyr-useage.html#cb204-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     1 y         5</span></span>
-<span id="cb204-8"><a href="tidyr-useage.html#cb204-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     1 y         7</span></span>
-<span id="cb204-9"><a href="tidyr-useage.html#cb204-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 y         5</span></span>
-<span id="cb204-10"><a href="tidyr-useage.html#cb204-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     2 y         6</span></span>
-<span id="cb204-11"><a href="tidyr-useage.html#cb204-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     2 y         8</span></span>
-<span id="cb204-12"><a href="tidyr-useage.html#cb204-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 3 more rows</span></span></code></pre></div>
 </div>
 </div>
-<div id="长转宽" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> 长转宽</h3>
-<p><code>pivot_wider()</code>功能与<code>pivot_longer()</code>相反。通过增加列数减少行数使数据集变得更宽，通常我们在汇总时候使用，达到类似Excel透视表结果。</p>
-<div id="基础-1" class="section level4" number="3.2.2.1">
-<h4><span class="header-section-number">3.2.2.1</span> 基础</h4>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="tidyr-useage.html#cb205-1" aria-hidden="true" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen)</span>
-<span id="cb205-2"><a href="tidyr-useage.html#cb205-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 19 x 12</span></span>
-<span id="cb205-3"><a href="tidyr-useage.html#cb205-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW</span></span>
-<span id="cb205-4"><a href="tidyr-useage.html#cb205-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb205-5"><a href="tidyr-useage.html#cb205-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 4842        1     1      1     1       1     1     1     1     1     1     1</span></span>
-<span id="cb205-6"><a href="tidyr-useage.html#cb205-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 4843        1     1      1     1       1     1     1     1     1     1     1</span></span>
-<span id="cb205-7"><a href="tidyr-useage.html#cb205-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 4844        1     1      1     1       1     1     1     1     1     1     1</span></span>
-<span id="cb205-8"><a href="tidyr-useage.html#cb205-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA</span></span>
-<span id="cb205-9"><a href="tidyr-useage.html#cb205-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA</span></span>
-<span id="cb205-10"><a href="tidyr-useage.html#cb205-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA</span></span>
-<span id="cb205-11"><a href="tidyr-useage.html#cb205-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 13 more rows</span></span></code></pre></div>
-<p>缺失值填充</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="tidyr-useage.html#cb206-1" aria-hidden="true" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
-<span id="cb206-2"><a href="tidyr-useage.html#cb206-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> station, </span>
-<span id="cb206-3"><a href="tidyr-useage.html#cb206-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> seen,</span>
-<span id="cb206-4"><a href="tidyr-useage.html#cb206-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_fill =</span> <span class="dv">0</span></span>
-<span id="cb206-5"><a href="tidyr-useage.html#cb206-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb206-6"><a href="tidyr-useage.html#cb206-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 19 x 12</span></span>
-<span id="cb206-7"><a href="tidyr-useage.html#cb206-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW</span></span>
-<span id="cb206-8"><a href="tidyr-useage.html#cb206-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb206-9"><a href="tidyr-useage.html#cb206-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 4842        1     1      1     1       1     1     1     1     1     1     1</span></span>
-<span id="cb206-10"><a href="tidyr-useage.html#cb206-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 4843        1     1      1     1       1     1     1     1     1     1     1</span></span>
-<span id="cb206-11"><a href="tidyr-useage.html#cb206-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 4844        1     1      1     1       1     1     1     1     1     1     1</span></span>
-<span id="cb206-12"><a href="tidyr-useage.html#cb206-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 4845        1     1      1     1       1     0     0     0     0     0     0</span></span>
-<span id="cb206-13"><a href="tidyr-useage.html#cb206-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 4847        1     1      1     0       0     0     0     0     0     0     0</span></span>
-<span id="cb206-14"><a href="tidyr-useage.html#cb206-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 4848        1     1      1     1       0     0     0     0     0     0     0</span></span>
-<span id="cb206-15"><a href="tidyr-useage.html#cb206-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 13 more rows</span></span></code></pre></div>
-</div>
-<div id="聚合" class="section level4" number="3.2.2.2">
-<h4><span class="header-section-number">3.2.2.2</span> 聚合</h4>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="tidyr-useage.html#cb207-1" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="ot">&lt;-</span> warpbreaks <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>() </span>
-<span id="cb207-2"><a href="tidyr-useage.html#cb207-2" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span> <span class="fu">count</span>(wool, tension)</span>
-<span id="cb207-3"><a href="tidyr-useage.html#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
-<span id="cb207-4"><a href="tidyr-useage.html#cb207-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   wool  tension     n</span></span>
-<span id="cb207-5"><a href="tidyr-useage.html#cb207-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
-<span id="cb207-6"><a href="tidyr-useage.html#cb207-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 A     L           9</span></span>
-<span id="cb207-7"><a href="tidyr-useage.html#cb207-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 A     M           9</span></span>
-<span id="cb207-8"><a href="tidyr-useage.html#cb207-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 A     H           9</span></span>
-<span id="cb207-9"><a href="tidyr-useage.html#cb207-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 B     L           9</span></span>
-<span id="cb207-10"><a href="tidyr-useage.html#cb207-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 B     M           9</span></span>
-<span id="cb207-11"><a href="tidyr-useage.html#cb207-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 B     H           9</span></span></code></pre></div>
-<p>需要通过<code>values_fn</code>指定聚合方式</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="tidyr-useage.html#cb208-1" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> wool, <span class="at">values_from =</span> breaks,<span class="at">values_fn=</span> <span class="fu">list</span>(<span class="at">breaks =</span> sum))</span>
-<span id="cb208-2"><a href="tidyr-useage.html#cb208-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
-<span id="cb208-3"><a href="tidyr-useage.html#cb208-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   tension     A     B</span></span>
-<span id="cb208-4"><a href="tidyr-useage.html#cb208-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb208-5"><a href="tidyr-useage.html#cb208-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 L         401   254</span></span>
-<span id="cb208-6"><a href="tidyr-useage.html#cb208-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 M         216   259</span></span>
-<span id="cb208-7"><a href="tidyr-useage.html#cb208-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 H         221   169</span></span></code></pre></div>
-</div>
-<div id="从多个变量生成新列名" class="section level4" number="3.2.2.3">
-<h4><span class="header-section-number">3.2.2.3</span> 从多个变量生成新列名</h4>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="tidyr-useage.html#cb209-1" aria-hidden="true" tabindex="-1"></a>production <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb209-2"><a href="tidyr-useage.html#cb209-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">product =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), </span>
-<span id="cb209-3"><a href="tidyr-useage.html#cb209-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="fu">c</span>(<span class="st">&quot;AI&quot;</span>, <span class="st">&quot;EI&quot;</span>), </span>
-<span id="cb209-4"><a href="tidyr-useage.html#cb209-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="dv">2000</span><span class="sc">:</span><span class="dv">2014</span></span>
-<span id="cb209-5"><a href="tidyr-useage.html#cb209-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb209-6"><a href="tidyr-useage.html#cb209-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>((product <span class="sc">==</span> <span class="st">&quot;A&quot;</span> <span class="sc">&amp;</span> country <span class="sc">==</span> <span class="st">&quot;AI&quot;</span>) <span class="sc">|</span> product <span class="sc">==</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb209-7"><a href="tidyr-useage.html#cb209-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">production =</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(.)))</span>
-<span id="cb209-8"><a href="tidyr-useage.html#cb209-8" aria-hidden="true" tabindex="-1"></a>production</span>
-<span id="cb209-9"><a href="tidyr-useage.html#cb209-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 45 x 4</span></span>
-<span id="cb209-10"><a href="tidyr-useage.html#cb209-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   product country  year production</span></span>
-<span id="cb209-11"><a href="tidyr-useage.html#cb209-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;      &lt;dbl&gt;</span></span>
-<span id="cb209-12"><a href="tidyr-useage.html#cb209-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 A       AI       2000     -0.244</span></span>
-<span id="cb209-13"><a href="tidyr-useage.html#cb209-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 A       AI       2001     -0.283</span></span>
-<span id="cb209-14"><a href="tidyr-useage.html#cb209-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 A       AI       2002     -0.554</span></span>
-<span id="cb209-15"><a href="tidyr-useage.html#cb209-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 A       AI       2003      0.629</span></span>
-<span id="cb209-16"><a href="tidyr-useage.html#cb209-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 A       AI       2004      2.07 </span></span>
-<span id="cb209-17"><a href="tidyr-useage.html#cb209-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 A       AI       2005     -1.63 </span></span>
-<span id="cb209-18"><a href="tidyr-useage.html#cb209-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 39 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="tidyr-useage.html#cb210-1" aria-hidden="true" tabindex="-1"></a>production <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
-<span id="cb210-2"><a href="tidyr-useage.html#cb210-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="fu">c</span>(product, country), </span>
-<span id="cb210-3"><a href="tidyr-useage.html#cb210-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> production</span>
-<span id="cb210-4"><a href="tidyr-useage.html#cb210-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb210-5"><a href="tidyr-useage.html#cb210-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 x 4</span></span>
-<span id="cb210-6"><a href="tidyr-useage.html#cb210-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year   A_AI    B_AI    B_EI</span></span>
-<span id="cb210-7"><a href="tidyr-useage.html#cb210-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb210-8"><a href="tidyr-useage.html#cb210-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000 -0.244  0.738  -0.313 </span></span>
-<span id="cb210-9"><a href="tidyr-useage.html#cb210-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2001 -0.283  1.89    1.07  </span></span>
-<span id="cb210-10"><a href="tidyr-useage.html#cb210-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2002 -0.554 -0.0974  0.0700</span></span>
-<span id="cb210-11"><a href="tidyr-useage.html#cb210-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2003  0.629 -0.936  -0.639 </span></span>
-<span id="cb210-12"><a href="tidyr-useage.html#cb210-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2004  2.07  -0.0160 -0.0500</span></span>
-<span id="cb210-13"><a href="tidyr-useage.html#cb210-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2005 -1.63  -0.827  -0.251 </span></span>
-<span id="cb210-14"><a href="tidyr-useage.html#cb210-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more rows</span></span></code></pre></div>
-<p>通过<code>names_sep</code>和<code>names_prefix</code>参数控制新的列名，或通过<code>names_glue</code></p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="tidyr-useage.html#cb211-1" aria-hidden="true" tabindex="-1"></a>production <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
-<span id="cb211-2"><a href="tidyr-useage.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="fu">c</span>(product, country), </span>
-<span id="cb211-3"><a href="tidyr-useage.html#cb211-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> production,</span>
-<span id="cb211-4"><a href="tidyr-useage.html#cb211-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_sep =</span> <span class="st">&quot;.&quot;</span>,</span>
-<span id="cb211-5"><a href="tidyr-useage.html#cb211-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_prefix =</span> <span class="st">&quot;prod.&quot;</span></span>
-<span id="cb211-6"><a href="tidyr-useage.html#cb211-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb211-7"><a href="tidyr-useage.html#cb211-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 x 4</span></span>
-<span id="cb211-8"><a href="tidyr-useage.html#cb211-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year prod.A.AI prod.B.AI prod.B.EI</span></span>
-<span id="cb211-9"><a href="tidyr-useage.html#cb211-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb211-10"><a href="tidyr-useage.html#cb211-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000    -0.244    0.738    -0.313 </span></span>
-<span id="cb211-11"><a href="tidyr-useage.html#cb211-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2001    -0.283    1.89      1.07  </span></span>
-<span id="cb211-12"><a href="tidyr-useage.html#cb211-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2002    -0.554   -0.0974    0.0700</span></span>
-<span id="cb211-13"><a href="tidyr-useage.html#cb211-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2003     0.629   -0.936    -0.639 </span></span>
-<span id="cb211-14"><a href="tidyr-useage.html#cb211-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2004     2.07    -0.0160   -0.0500</span></span>
-<span id="cb211-15"><a href="tidyr-useage.html#cb211-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2005    -1.63    -0.827    -0.251 </span></span>
-<span id="cb211-16"><a href="tidyr-useage.html#cb211-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="tidyr-useage.html#cb212-1" aria-hidden="true" tabindex="-1"></a>production <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
-<span id="cb212-2"><a href="tidyr-useage.html#cb212-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="fu">c</span>(product, country), </span>
-<span id="cb212-3"><a href="tidyr-useage.html#cb212-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> production,</span>
-<span id="cb212-4"><a href="tidyr-useage.html#cb212-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_glue =</span> <span class="st">&quot;prod_{product}_{country}&quot;</span></span>
-<span id="cb212-5"><a href="tidyr-useage.html#cb212-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb212-6"><a href="tidyr-useage.html#cb212-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 x 4</span></span>
-<span id="cb212-7"><a href="tidyr-useage.html#cb212-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year prod_A_AI prod_B_AI prod_B_EI</span></span>
-<span id="cb212-8"><a href="tidyr-useage.html#cb212-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb212-9"><a href="tidyr-useage.html#cb212-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000    -0.244    0.738    -0.313 </span></span>
-<span id="cb212-10"><a href="tidyr-useage.html#cb212-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2001    -0.283    1.89      1.07  </span></span>
-<span id="cb212-11"><a href="tidyr-useage.html#cb212-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2002    -0.554   -0.0974    0.0700</span></span>
-<span id="cb212-12"><a href="tidyr-useage.html#cb212-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2003     0.629   -0.936    -0.639 </span></span>
-<span id="cb212-13"><a href="tidyr-useage.html#cb212-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2004     2.07    -0.0160   -0.0500</span></span>
-<span id="cb212-14"><a href="tidyr-useage.html#cb212-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2005    -1.63    -0.827    -0.251 </span></span>
-<span id="cb212-15"><a href="tidyr-useage.html#cb212-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more rows</span></span></code></pre></div>
-</div>
-<div id="多值变宽" class="section level4" number="3.2.2.4">
-<h4><span class="header-section-number">3.2.2.4</span> 多值变宽</h4>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="tidyr-useage.html#cb213-1" aria-hidden="true" tabindex="-1"></a>us_rent_income <span class="sc">%&gt;%</span> </span>
-<span id="cb213-2"><a href="tidyr-useage.html#cb213-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe))</span>
-<span id="cb213-3"><a href="tidyr-useage.html#cb213-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 52 x 6</span></span>
-<span id="cb213-4"><a href="tidyr-useage.html#cb213-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   GEOID NAME       estimate_income estimate_rent moe_income moe_rent</span></span>
-<span id="cb213-5"><a href="tidyr-useage.html#cb213-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb213-6"><a href="tidyr-useage.html#cb213-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 01    Alabama              24476           747        136        3</span></span>
-<span id="cb213-7"><a href="tidyr-useage.html#cb213-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 02    Alaska               32940          1200        508       13</span></span>
-<span id="cb213-8"><a href="tidyr-useage.html#cb213-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 04    Arizona              27517           972        148        4</span></span>
-<span id="cb213-9"><a href="tidyr-useage.html#cb213-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 05    Arkansas             23789           709        165        5</span></span>
-<span id="cb213-10"><a href="tidyr-useage.html#cb213-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 06    California           29454          1358        109        3</span></span>
-<span id="cb213-11"><a href="tidyr-useage.html#cb213-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 08    Colorado             32401          1125        109        5</span></span>
-<span id="cb213-12"><a href="tidyr-useage.html#cb213-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 46 more rows</span></span></code></pre></div>
-</div>
-</div>
-<div id="处理jsonhtml的数据" class="section level3" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> 处理json,html的数据</h3>
-<p>实际工作中不是经常使用，需要使用的时候往往会用相关的包处理：<code>jsonlite</code></p>
-<p>可通过<code>vignette("rectangle")</code>自行学习</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="tidyr-useage.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb214-2"><a href="tidyr-useage.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb214-3"><a href="tidyr-useage.html#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(repurrrsive)</span></code></pre></div>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="tidyr-useage.html#cb215-1" aria-hidden="true" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">user =</span> gh_users)</span>
-<span id="cb215-2"><a href="tidyr-useage.html#cb215-2" aria-hidden="true" tabindex="-1"></a>users</span>
-<span id="cb215-3"><a href="tidyr-useage.html#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 1</span></span>
-<span id="cb215-4"><a href="tidyr-useage.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   user             </span></span>
-<span id="cb215-5"><a href="tidyr-useage.html#cb215-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;list&gt;           </span></span>
-<span id="cb215-6"><a href="tidyr-useage.html#cb215-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;named list [30]&gt;</span></span>
-<span id="cb215-7"><a href="tidyr-useage.html#cb215-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 &lt;named list [30]&gt;</span></span>
-<span id="cb215-8"><a href="tidyr-useage.html#cb215-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 &lt;named list [30]&gt;</span></span>
-<span id="cb215-9"><a href="tidyr-useage.html#cb215-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;named list [30]&gt;</span></span>
-<span id="cb215-10"><a href="tidyr-useage.html#cb215-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 &lt;named list [30]&gt;</span></span>
-<span id="cb215-11"><a href="tidyr-useage.html#cb215-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 &lt;named list [30]&gt;</span></span>
-<span id="cb215-12"><a href="tidyr-useage.html#cb215-12" aria-hidden="true" tabindex="-1"></a>users <span class="sc">%&gt;%</span> <span class="fu">unnest_wider</span>(user)</span>
-<span id="cb215-13"><a href="tidyr-useage.html#cb215-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 30</span></span>
-<span id="cb215-14"><a href="tidyr-useage.html#cb215-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   login     id avatar_url gravatar_id url   html_url followers_url following_url</span></span>
-<span id="cb215-15"><a href="tidyr-useage.html#cb215-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;        </span></span>
-<span id="cb215-16"><a href="tidyr-useage.html#cb215-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 gabo~ 6.60e5 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
-<span id="cb215-17"><a href="tidyr-useage.html#cb215-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 jenn~ 5.99e5 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
-<span id="cb215-18"><a href="tidyr-useage.html#cb215-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 jtle~ 1.57e6 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
-<span id="cb215-19"><a href="tidyr-useage.html#cb215-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 juli~ 1.25e7 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
-<span id="cb215-20"><a href="tidyr-useage.html#cb215-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 leep~ 3.51e6 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
-<span id="cb215-21"><a href="tidyr-useage.html#cb215-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 masa~ 8.36e6 https://a~ &quot;&quot;          http~ https:/~ https://api.~ https://api.~</span></span>
-<span id="cb215-22"><a href="tidyr-useage.html#cb215-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 22 more variables: gists_url &lt;chr&gt;, starred_url &lt;chr&gt;,</span></span>
-<span id="cb215-23"><a href="tidyr-useage.html#cb215-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   subscriptions_url &lt;chr&gt;, organizations_url &lt;chr&gt;, repos_url &lt;chr&gt;,</span></span>
-<span id="cb215-24"><a href="tidyr-useage.html#cb215-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   events_url &lt;chr&gt;, received_events_url &lt;chr&gt;, type &lt;chr&gt;, site_admin &lt;lgl&gt;,</span></span>
-<span id="cb215-25"><a href="tidyr-useage.html#cb215-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   name &lt;chr&gt;, company &lt;chr&gt;, blog &lt;chr&gt;, location &lt;chr&gt;, email &lt;chr&gt;,</span></span>
-<span id="cb215-26"><a href="tidyr-useage.html#cb215-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   public_repos &lt;int&gt;, public_gists &lt;int&gt;, followers &lt;int&gt;, following &lt;int&gt;,</span></span>
-<span id="cb215-27"><a href="tidyr-useage.html#cb215-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   created_at &lt;chr&gt;, updated_at &lt;chr&gt;, bio &lt;chr&gt;, hireable &lt;lgl&gt;</span></span></code></pre></div>
-</div>
-<div id="嵌套数据" class="section level3" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> 嵌套数据</h3>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="tidyr-useage.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb216-2"><a href="tidyr-useage.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb216-3"><a href="tidyr-useage.html#cb216-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code></pre></div>
-<div id="基础-2" class="section level4" number="3.2.4.1">
-<h4><span class="header-section-number">3.2.4.1</span> 基础</h4>
-<p>嵌套数据即：数据框中嵌套数据框，如下所示：</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="tidyr-useage.html#cb217-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb217-2"><a href="tidyr-useage.html#cb217-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">g =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb217-3"><a href="tidyr-useage.html#cb217-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">list</span>(</span>
-<span id="cb217-4"><a href="tidyr-useage.html#cb217-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">2</span>),</span>
-<span id="cb217-5"><a href="tidyr-useage.html#cb217-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">y =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>),</span>
-<span id="cb217-6"><a href="tidyr-useage.html#cb217-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">10</span>)</span>
-<span id="cb217-7"><a href="tidyr-useage.html#cb217-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb217-8"><a href="tidyr-useage.html#cb217-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb217-9"><a href="tidyr-useage.html#cb217-9" aria-hidden="true" tabindex="-1"></a>df1</span>
-<span id="cb217-10"><a href="tidyr-useage.html#cb217-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
-<span id="cb217-11"><a href="tidyr-useage.html#cb217-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       g data            </span></span>
-<span id="cb217-12"><a href="tidyr-useage.html#cb217-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;list&gt;          </span></span>
-<span id="cb217-13"><a href="tidyr-useage.html#cb217-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 &lt;tibble [1 x 2]&gt;</span></span>
-<span id="cb217-14"><a href="tidyr-useage.html#cb217-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 &lt;tibble [2 x 2]&gt;</span></span>
-<span id="cb217-15"><a href="tidyr-useage.html#cb217-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 &lt;tibble [1 x 1]&gt;</span></span></code></pre></div>
-<p>因为<code>data.frame()</code>的列特性【每列都是列表】【不确定理解对不对】：可以做如下操作：</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="tidyr-useage.html#cb218-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb218-2"><a href="tidyr-useage.html#cb218-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>g, <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
-<span id="cb218-3"><a href="tidyr-useage.html#cb218-3" aria-hidden="true" tabindex="-1"></a>   <span class="dv">1</span>,  <span class="dv">1</span>,  <span class="dv">2</span>,</span>
-<span id="cb218-4"><a href="tidyr-useage.html#cb218-4" aria-hidden="true" tabindex="-1"></a>   <span class="dv">2</span>,  <span class="dv">4</span>,  <span class="dv">6</span>,</span>
-<span id="cb218-5"><a href="tidyr-useage.html#cb218-5" aria-hidden="true" tabindex="-1"></a>   <span class="dv">2</span>,  <span class="dv">5</span>,  <span class="dv">7</span>,</span>
-<span id="cb218-6"><a href="tidyr-useage.html#cb218-6" aria-hidden="true" tabindex="-1"></a>   <span class="dv">3</span>, <span class="dv">10</span>,  <span class="cn">NA</span></span>
-<span id="cb218-7"><a href="tidyr-useage.html#cb218-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb218-8"><a href="tidyr-useage.html#cb218-8" aria-hidden="true" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">nest</span>(<span class="at">data =</span> <span class="fu">c</span>(x, y))</span>
-<span id="cb218-9"><a href="tidyr-useage.html#cb218-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
-<span id="cb218-10"><a href="tidyr-useage.html#cb218-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       g data            </span></span>
-<span id="cb218-11"><a href="tidyr-useage.html#cb218-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;list&gt;          </span></span>
-<span id="cb218-12"><a href="tidyr-useage.html#cb218-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 &lt;tibble [1 x 2]&gt;</span></span>
-<span id="cb218-13"><a href="tidyr-useage.html#cb218-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 &lt;tibble [2 x 2]&gt;</span></span>
-<span id="cb218-14"><a href="tidyr-useage.html#cb218-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 &lt;tibble [1 x 2]&gt;</span></span>
-<span id="cb218-15"><a href="tidyr-useage.html#cb218-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-16"><a href="tidyr-useage.html#cb218-16" aria-hidden="true" tabindex="-1"></a><span class="co">#sample above</span></span>
-<span id="cb218-17"><a href="tidyr-useage.html#cb218-17" aria-hidden="true" tabindex="-1"></a><span class="co">#df2 %&gt;% group_by(g) %&gt;% nest()</span></span></code></pre></div>
-<p>nest的反面 unnest</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="tidyr-useage.html#cb219-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(data)</span>
-<span id="cb219-2"><a href="tidyr-useage.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 3</span></span>
-<span id="cb219-3"><a href="tidyr-useage.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       g     x     y</span></span>
-<span id="cb219-4"><a href="tidyr-useage.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb219-5"><a href="tidyr-useage.html#cb219-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1     1     2</span></span>
-<span id="cb219-6"><a href="tidyr-useage.html#cb219-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6</span></span>
-<span id="cb219-7"><a href="tidyr-useage.html#cb219-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     2     5     7</span></span>
-<span id="cb219-8"><a href="tidyr-useage.html#cb219-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     3    10    NA</span></span></code></pre></div>
-</div>
-</div>
-<div id="嵌套数据和模型" class="section level3" number="3.2.5">
-<h3><span class="header-section-number">3.2.5</span> 嵌套数据和模型</h3>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="tidyr-useage.html#cb220-1" aria-hidden="true" tabindex="-1"></a>mtcars_nested <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb220-2"><a href="tidyr-useage.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb220-3"><a href="tidyr-useage.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>()</span>
-<span id="cb220-4"><a href="tidyr-useage.html#cb220-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-5"><a href="tidyr-useage.html#cb220-5" aria-hidden="true" tabindex="-1"></a>mtcars_nested</span>
-<span id="cb220-6"><a href="tidyr-useage.html#cb220-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
-<span id="cb220-7"><a href="tidyr-useage.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   cyl [3]</span></span>
-<span id="cb220-8"><a href="tidyr-useage.html#cb220-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     cyl data              </span></span>
-<span id="cb220-9"><a href="tidyr-useage.html#cb220-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;            </span></span>
-<span id="cb220-10"><a href="tidyr-useage.html#cb220-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     6 &lt;tibble [7 x 10]&gt; </span></span>
-<span id="cb220-11"><a href="tidyr-useage.html#cb220-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4 &lt;tibble [11 x 10]&gt;</span></span>
-<span id="cb220-12"><a href="tidyr-useage.html#cb220-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     8 &lt;tibble [14 x 10]&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="tidyr-useage.html#cb221-1" aria-hidden="true" tabindex="-1"></a>mtcars_nested <span class="ot">&lt;-</span> mtcars_nested <span class="sc">%&gt;%</span> </span>
-<span id="cb221-2"><a href="tidyr-useage.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="fu">map</span>(data, <span class="cf">function</span>(df) <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> df)))</span>
-<span id="cb221-3"><a href="tidyr-useage.html#cb221-3" aria-hidden="true" tabindex="-1"></a>mtcars_nested</span>
-<span id="cb221-4"><a href="tidyr-useage.html#cb221-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
-<span id="cb221-5"><a href="tidyr-useage.html#cb221-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   cyl [3]</span></span>
-<span id="cb221-6"><a href="tidyr-useage.html#cb221-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     cyl data               model </span></span>
-<span id="cb221-7"><a href="tidyr-useage.html#cb221-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;             &lt;list&gt;</span></span>
-<span id="cb221-8"><a href="tidyr-useage.html#cb221-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     6 &lt;tibble [7 x 10]&gt;  &lt;lm&gt;  </span></span>
-<span id="cb221-9"><a href="tidyr-useage.html#cb221-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4 &lt;tibble [11 x 10]&gt; &lt;lm&gt;  </span></span>
-<span id="cb221-10"><a href="tidyr-useage.html#cb221-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     8 &lt;tibble [14 x 10]&gt; &lt;lm&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="tidyr-useage.html#cb222-1" aria-hidden="true" tabindex="-1"></a>mtcars_nested <span class="ot">&lt;-</span> mtcars_nested <span class="sc">%&gt;%</span> </span>
-<span id="cb222-2"><a href="tidyr-useage.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="fu">map</span>(model, predict))</span>
-<span id="cb222-3"><a href="tidyr-useage.html#cb222-3" aria-hidden="true" tabindex="-1"></a>mtcars_nested  </span>
-<span id="cb222-4"><a href="tidyr-useage.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 3</span></span>
-<span id="cb222-5"><a href="tidyr-useage.html#cb222-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   cyl [3]</span></span>
-<span id="cb222-6"><a href="tidyr-useage.html#cb222-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     cyl data               model     </span></span>
-<span id="cb222-7"><a href="tidyr-useage.html#cb222-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;             &lt;list&gt;    </span></span>
-<span id="cb222-8"><a href="tidyr-useage.html#cb222-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     6 &lt;tibble [7 x 10]&gt;  &lt;dbl [7]&gt; </span></span>
-<span id="cb222-9"><a href="tidyr-useage.html#cb222-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     4 &lt;tibble [11 x 10]&gt; &lt;dbl [11]&gt;</span></span>
-<span id="cb222-10"><a href="tidyr-useage.html#cb222-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     8 &lt;tibble [14 x 10]&gt; &lt;dbl [14]&gt;</span></span></code></pre></div>
-</div>
-<div id="拆分和合并" class="section level3" number="3.2.6">
-<h3><span class="header-section-number">3.2.6</span> 拆分和合并</h3>
-<div id="拆分" class="section level4" number="3.2.6.1">
-<h4><span class="header-section-number">3.2.6.1</span> 拆分</h4>
-<p>有时我们需要将一列拆分为多列：</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="tidyr-useage.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb223-2"><a href="tidyr-useage.html#cb223-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a.b&quot;</span>, <span class="st">&quot;a.d&quot;</span>, <span class="st">&quot;b.c&quot;</span>))</span>
-<span id="cb223-3"><a href="tidyr-useage.html#cb223-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb223-4"><a href="tidyr-useage.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb223-5"><a href="tidyr-useage.html#cb223-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb223-6"><a href="tidyr-useage.html#cb223-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb223-7"><a href="tidyr-useage.html#cb223-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
-<span id="cb223-8"><a href="tidyr-useage.html#cb223-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span></code></pre></div>
-<p>拆分数多列或少列时用<code>NA</code>补齐：</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="tidyr-useage.html#cb224-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;a b&quot;</span>, <span class="st">&quot;a b c&quot;</span>, <span class="cn">NA</span>))</span>
-<span id="cb224-2"><a href="tidyr-useage.html#cb224-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))</span>
-<span id="cb224-3"><a href="tidyr-useage.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Additional pieces discarded in 1 rows [3].</span></span>
-<span id="cb224-4"><a href="tidyr-useage.html#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1 rows [1].</span></span>
-<span id="cb224-5"><a href="tidyr-useage.html#cb224-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
-<span id="cb224-6"><a href="tidyr-useage.html#cb224-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    a &lt;NA&gt;</span></span>
-<span id="cb224-7"><a href="tidyr-useage.html#cb224-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb224-8"><a href="tidyr-useage.html#cb224-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    b</span></span>
-<span id="cb224-9"><a href="tidyr-useage.html#cb224-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
-<p>多余的部分舍弃，缺失填充在左边还是右边：</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="tidyr-useage.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same behaviour as previous, but drops the c without warnings:</span></span>
-<span id="cb225-2"><a href="tidyr-useage.html#cb225-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;drop&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;right&quot;</span>)</span>
-<span id="cb225-3"><a href="tidyr-useage.html#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
-<span id="cb225-4"><a href="tidyr-useage.html#cb225-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    a &lt;NA&gt;</span></span>
-<span id="cb225-5"><a href="tidyr-useage.html#cb225-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb225-6"><a href="tidyr-useage.html#cb225-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    b</span></span>
-<span id="cb225-7"><a href="tidyr-useage.html#cb225-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
-<p>多余部分合并，缺失填充在左边</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="tidyr-useage.html#cb226-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;left&quot;</span>)</span>
-<span id="cb226-2"><a href="tidyr-useage.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
-<span id="cb226-3"><a href="tidyr-useage.html#cb226-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;    a</span></span>
-<span id="cb226-4"><a href="tidyr-useage.html#cb226-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb226-5"><a href="tidyr-useage.html#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a  b c</span></span>
-<span id="cb226-6"><a href="tidyr-useage.html#cb226-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
-<p>或者全部保留</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="tidyr-useage.html#cb227-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</span>
-<span id="cb227-2"><a href="tidyr-useage.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 3 pieces. Missing pieces filled with `NA` in 2 rows [1, 2].</span></span>
-<span id="cb227-3"><a href="tidyr-useage.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b    c</span></span>
-<span id="cb227-4"><a href="tidyr-useage.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    a &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb227-5"><a href="tidyr-useage.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b &lt;NA&gt;</span></span>
-<span id="cb227-6"><a href="tidyr-useage.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    b    c</span></span>
-<span id="cb227-7"><a href="tidyr-useage.html#cb227-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
-<p>指定分隔符</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="tidyr-useage.html#cb228-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;key&quot;</span>, <span class="st">&quot;value&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>, <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>)</span>
-<span id="cb228-2"><a href="tidyr-useage.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Missing pieces filled with `NA` in 3 rows [1, 2, 3].</span></span>
-<span id="cb228-3"><a href="tidyr-useage.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     key value</span></span>
-<span id="cb228-4"><a href="tidyr-useage.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     a  &lt;NA&gt;</span></span>
-<span id="cb228-5"><a href="tidyr-useage.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   a b  &lt;NA&gt;</span></span>
-<span id="cb228-6"><a href="tidyr-useage.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 a b c  &lt;NA&gt;</span></span>
-<span id="cb228-7"><a href="tidyr-useage.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  &lt;NA&gt;  &lt;NA&gt;</span></span></code></pre></div>
-<p>使用正则表达式</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="tidyr-useage.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use regular expressions to separate on multiple characters:</span></span>
-<span id="cb229-2"><a href="tidyr-useage.html#cb229-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a?b&quot;</span>, <span class="st">&quot;a.d&quot;</span>, <span class="st">&quot;b:c&quot;</span>))</span>
-<span id="cb229-3"><a href="tidyr-useage.html#cb229-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;([.?:])&quot;</span>)</span>
-<span id="cb229-4"><a href="tidyr-useage.html#cb229-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb229-5"><a href="tidyr-useage.html#cb229-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb229-6"><a href="tidyr-useage.html#cb229-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb229-7"><a href="tidyr-useage.html#cb229-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
-<span id="cb229-8"><a href="tidyr-useage.html#cb229-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span></code></pre></div>
-</div>
-<div id="新列提取" class="section level4" number="3.2.6.2">
-<h4><span class="header-section-number">3.2.6.2</span> 新列提取</h4>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="tidyr-useage.html#cb230-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a-b&quot;</span>, <span class="st">&quot;a-d&quot;</span>, <span class="st">&quot;b-c&quot;</span>, <span class="st">&quot;d-e&quot;</span>))</span>
-<span id="cb230-2"><a href="tidyr-useage.html#cb230-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="st">&quot;A&quot;</span>)</span>
-<span id="cb230-3"><a href="tidyr-useage.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A</span></span>
-<span id="cb230-4"><a href="tidyr-useage.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
-<span id="cb230-5"><a href="tidyr-useage.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a</span></span>
-<span id="cb230-6"><a href="tidyr-useage.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a</span></span>
-<span id="cb230-7"><a href="tidyr-useage.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b</span></span>
-<span id="cb230-8"><a href="tidyr-useage.html#cb230-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    d</span></span>
-<span id="cb230-9"><a href="tidyr-useage.html#cb230-9" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="st">&quot;([[:alnum:]]+)-([[:alnum:]]+)&quot;</span>)</span>
-<span id="cb230-10"><a href="tidyr-useage.html#cb230-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb230-11"><a href="tidyr-useage.html#cb230-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb230-12"><a href="tidyr-useage.html#cb230-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb230-13"><a href="tidyr-useage.html#cb230-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
-<span id="cb230-14"><a href="tidyr-useage.html#cb230-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span>
-<span id="cb230-15"><a href="tidyr-useage.html#cb230-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    d    e</span></span>
-<span id="cb230-16"><a href="tidyr-useage.html#cb230-16" aria-hidden="true" tabindex="-1"></a><span class="co"># [:alnum:] 匹配字母和数字</span></span></code></pre></div>
-<p>以上本质是字符处理，<a href="http://baiy.cn/utils/_regex_doc/index.htm">正则表达式</a></p>
-</div>
-<div id="合并" class="section level4" number="3.2.6.3">
-<h4><span class="header-section-number">3.2.6.3</span> 合并</h4>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="tidyr-useage.html#cb231-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="cn">NA</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;b&quot;</span>, <span class="cn">NA</span>))</span>
-<span id="cb231-2"><a href="tidyr-useage.html#cb231-2" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb231-3"><a href="tidyr-useage.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 2</span></span>
-<span id="cb231-4"><a href="tidyr-useage.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x     y    </span></span>
-<span id="cb231-5"><a href="tidyr-useage.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb231-6"><a href="tidyr-useage.html#cb231-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a     b    </span></span>
-<span id="cb231-7"><a href="tidyr-useage.html#cb231-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 a     &lt;NA&gt; </span></span>
-<span id="cb231-8"><a href="tidyr-useage.html#cb231-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 &lt;NA&gt;  b    </span></span>
-<span id="cb231-9"><a href="tidyr-useage.html#cb231-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt;  &lt;NA&gt;</span></span>
-<span id="cb231-10"><a href="tidyr-useage.html#cb231-10" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>, x<span class="sc">:</span>y, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb231-11"><a href="tidyr-useage.html#cb231-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 3</span></span>
-<span id="cb231-12"><a href="tidyr-useage.html#cb231-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   z     x     y    </span></span>
-<span id="cb231-13"><a href="tidyr-useage.html#cb231-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb231-14"><a href="tidyr-useage.html#cb231-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a_b   a     b    </span></span>
-<span id="cb231-15"><a href="tidyr-useage.html#cb231-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 a_NA  a     &lt;NA&gt; </span></span>
-<span id="cb231-16"><a href="tidyr-useage.html#cb231-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 NA_b  &lt;NA&gt;  b    </span></span>
-<span id="cb231-17"><a href="tidyr-useage.html#cb231-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 NA_NA &lt;NA&gt;  &lt;NA&gt;</span></span>
-<span id="cb231-18"><a href="tidyr-useage.html#cb231-18" aria-hidden="true" tabindex="-1"></a><span class="co"># expand_grid 类似笛卡尔积功能</span></span></code></pre></div>
-<p>移除缺失值</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="tidyr-useage.html#cb232-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>, x<span class="sc">:</span>y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb232-2"><a href="tidyr-useage.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 3</span></span>
-<span id="cb232-3"><a href="tidyr-useage.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   z     x     y    </span></span>
-<span id="cb232-4"><a href="tidyr-useage.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb232-5"><a href="tidyr-useage.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &quot;a_b&quot; a     b    </span></span>
-<span id="cb232-6"><a href="tidyr-useage.html#cb232-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 &quot;a&quot;   a     &lt;NA&gt; </span></span>
-<span id="cb232-7"><a href="tidyr-useage.html#cb232-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 &quot;b&quot;   &lt;NA&gt;  b    </span></span>
-<span id="cb232-8"><a href="tidyr-useage.html#cb232-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &quot;&quot;    &lt;NA&gt;  &lt;NA&gt;</span></span></code></pre></div>
-<p>合并后再拆分</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="tidyr-useage.html#cb233-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb233-2"><a href="tidyr-useage.html#cb233-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">&quot;xy&quot;</span>, x<span class="sc">:</span>y) <span class="sc">%&gt;%</span></span>
-<span id="cb233-3"><a href="tidyr-useage.html#cb233-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(xy, <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>))</span>
-<span id="cb233-4"><a href="tidyr-useage.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 2</span></span>
-<span id="cb233-5"><a href="tidyr-useage.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x     y    </span></span>
-<span id="cb233-6"><a href="tidyr-useage.html#cb233-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb233-7"><a href="tidyr-useage.html#cb233-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a     b    </span></span>
-<span id="cb233-8"><a href="tidyr-useage.html#cb233-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 a     NA   </span></span>
-<span id="cb233-9"><a href="tidyr-useage.html#cb233-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 NA    b    </span></span>
-<span id="cb233-10"><a href="tidyr-useage.html#cb233-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 NA    NA</span></span></code></pre></div>
-</div>
-</div>
-<div id="缺失值处理" class="section level3" number="3.2.7">
-<h3><span class="header-section-number">3.2.7</span> 缺失值处理</h3>
-<p><code>replace_na()</code>用特定值替换缺失值。</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="tidyr-useage.html#cb234-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;b&quot;</span>))</span>
-<span id="cb234-2"><a href="tidyr-useage.html#cb234-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="st">&quot;unknown&quot;</span>))</span>
-<span id="cb234-3"><a href="tidyr-useage.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
-<span id="cb234-4"><a href="tidyr-useage.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x y      </span></span>
-<span id="cb234-5"><a href="tidyr-useage.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  </span></span>
-<span id="cb234-6"><a href="tidyr-useage.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 a      </span></span>
-<span id="cb234-7"><a href="tidyr-useage.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 unknown</span></span>
-<span id="cb234-8"><a href="tidyr-useage.html#cb234-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0 b</span></span></code></pre></div>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="tidyr-useage.html#cb235-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">replace_na</span>(x, <span class="dv">0</span>))</span>
-<span id="cb235-2"><a href="tidyr-useage.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
-<span id="cb235-3"><a href="tidyr-useage.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x y    </span></span>
-<span id="cb235-4"><a href="tidyr-useage.html#cb235-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb235-5"><a href="tidyr-useage.html#cb235-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 a    </span></span>
-<span id="cb235-6"><a href="tidyr-useage.html#cb235-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 &lt;NA&gt; </span></span>
-<span id="cb235-7"><a href="tidyr-useage.html#cb235-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0 b</span></span></code></pre></div>
-
-</div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="tidyr-install.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="character-handling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Data-tidyr-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pivoting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1270,20 +621,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

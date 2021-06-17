@@ -1,4 +1,4 @@
-# tidyr {#Data:tidyr-package}
+# 整洁数据之 tidyr {#Data:tidyr-package}
 
 在实际工作中，我们数据分析工作者80%的时间可能贡献在数据准备和数据清洗上。另外发现新问题时，可能又要重复数据准备、数据清洗的过程。如果采用不能完全复现的方式做数据准备清洗类的工作，那将是一场灾难。
 
@@ -364,8 +364,6 @@ df <- tibble::tribble(
 
 df %>% pivot_wider(names_from = c(TYPE),values_from = c(num,NUM),values_fn = list(num = sum ,NUM = mean))
 ```
-
-
 
 
 #### 从多个变量生成新列名
