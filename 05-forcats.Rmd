@@ -1,30 +1,224 @@
 # 因子介绍{#forcats}
 
-我在实际工作中因子数据类型使用较少,forcats软件包用来处理因子,该软件包是tidyverse的一部分.
+我在实际工作中因子数据类型使用较少,forcats软件包用来处理因子,该软件包是tidyverse的一部分。
 
-因子是用于对数据进行分类的R的一种数据类型. 它们可以存储字符串和整数.它们在具有有限数量的唯一值的列中很有用. 像“男性”，“女性”和True，False等。它们在统计建模的数据分析中很有用.
+因子是用于对数据进行分类的R的一种数据类型。 它们可以存储字符串和整数.它们在具有有限数量的唯一值的列中很有用. 像“男性”，“女性”和True，False等。
+
+本章节简单了解即可。
 
 
-因子变量会占用更小空间,R4.0改变了字符默认为因子的方式.想了解更多请参考 <https://r4ds.had.co.nz/factors.html>
+## 介绍{#forcats:introduction}
 
+在 R 中 使用『因子[^factor]』处理具有固定已知的种类的变量，因子有助于字符向量重新排序获得较好的展示效果。 `forcats`包提供了一套工具，解决常见『因子』问题，包括更改级别以及值的顺序。
+
+[^factor]: R 中内置的一种数据结构，与向量，列表类似。
+
+`forcats` 常用函数:
+
+- `fct_reorder()`: 按照另一个变量重新排列因子
+- `fct_infreq()`:按值得频率重新排列一个因素
+- `fct_relevel()`: 手动指定因子的顺序
+- `fct_lump()`:将一个因素的最少/最频繁的值折叠成其他
+
+关于`forcats`包，可以直接阅读 R for Data Science 的[因子章节](https://r4ds.had.co.nz/factors.html)。本文大部分内容是从官方手册直译，案例照搬。
+
+
+因子变量会占用更小内存空间，如下：
 
 ```{r }
 object.size(rep(letters,100000))
 object.size(rep(forcats::as_factor(letters),100000))
 ```
 
-## 创建因子
+> R-4.0 之后改变了字符默认为因子的方式
 
-实际工作中,可能各个事业部或部门之间没有实际顺序,但是在数据处理过程中需要指定顺序可以用因子.
+### 安装{#forcats:install}
+
+由于`forcats`是tidyverse系列的核心包，可以直接安装tidyverse。
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+
+# 从cran 安装
+install.packages("forcats")
+
+# 安装开发版
+devtools::install_github("tidyverse/forcats")
+```
+
+由于`forcats`包功能相对简单，本章节接下来仅介绍常用函数用法
+
+## 用法{#forcats:usage}
+
+主要介绍`fct_reorder()`，`fct_infreq()`，`fct_relevel()`等函数用法。
+
+### 创建因子
+
+使用 base R 中 `factor`函数创建因子。
+
+```{r}
+x1 <- c("c事业部","a事业部","b事业部")
+x2 <- factor(x1)
+x3 <- factor(x1,levels = x1)
+x2
+x3
+```
+
+通过观察发现因子`x2`,`x3`的顺序不一致。在我们做报表的时候，可以利用这个特性给事业部或者是别的类似字段指定因子水平达到排序效果。
+
+
+当某水平因子未指定时，会被替换成NA,如下所示：
+
+```{r}
+x4 <- c("d事业部","a事业部","b事业部")
+factor(x1,levels = x4)
+```
+
+创建因子想因子顺序和初始顺序一样，可以通过如下方式创建。
 
 ```{r}
 library(forcats)
-vec1 <- c('部门a','部门b','部门d','部门f')
-sort(vec1)
-vec2 <- as_factor(c('部门f','部门d','部门a','部门b'))
-sort(vec2)
+x1 <- c("Dec", "Apr", "Jan", "Mar")
+f2 <- x1 %>% factor() %>% fct_inorder()
+```
+
+
+###  修改因子顺序
+
+在我们作图时更改因子级别的顺序往往很有用，如下所示：
+
+```{r}
+library(tidyverse)
+relig_summary <- gss_cat %>%
+  group_by(relig) %>%
+  summarise(
+    age = mean(age, na.rm = TRUE),
+    tvhours = mean(tvhours, na.rm = TRUE),
+    n = n()
+  )
+ggplot(relig_summary, aes(tvhours, relig)) + geom_point()
+```
+
+> gss_cat 是 forcats 包自带数据集，展示的是宗教间每天看电视的平均小时数
+
+根据绘制的图像，我们很难有效解释，因为图表是杂乱无序的。我们通过`fct_reorder()`重新指定因子水平使图表表达更加清晰。
+
+```{r}
+ggplot(relig_summary, aes(tvhours, fct_reorder(relig, tvhours))) +
+  geom_point()
+```
+
+`fct_reorder()`三个参数：
+
+- .f:你想要调整因子水平的因子或者是字符向量
+- .x:指定因子的水平
+- .fun:可选的，当一个x对应多个f时的聚合函数，默认是`median`
+
+
+```{r}
+df <- tibble::tribble(
+  ~color,     ~a, ~b,
+  "blue",      1,  2,
+  "green",     6,  2,
+  "purple",    3,  3,
+  "red",       2,  3,
+  "yellow",    5,  1
+)
+df$color <- factor(df$color)
+fct_reorder(df$color, df$a, min)
+fct_reorder2(df$color, df$a, df$b)
+```
+
+如果我们想看报告收入水平的平均年龄变化情况？
+
+```{r}
+rincome_summary <- gss_cat %>%
+  group_by(rincome) %>%
+  summarise(
+    age = mean(age, na.rm = TRUE),
+    tvhours = mean(tvhours, na.rm = TRUE),
+    n = n()
+  )
+
+ggplot(rincome_summary, aes(age, fct_reorder(rincome, age))) + geom_point()
+```
+
+如果我们像之前一样更改收入的因子水平，但这并不是一个好的决定，因为收入在一般意义上已经有了顺序。但是，如果我们修改特殊的因子水平还是有意义的，如下：
+
+```{r}
+ggplot(rincome_summary, aes(age, fct_relevel(rincome, "Not applicable"))) +
+  geom_point()
+```
+
+`fct_relevel()`用法：
+
+```{r}
+f <- factor(c("a", "b", "c", "d"), levels = c("b", "c", "d", "a"))
+fct_relevel(f)
+fct_relevel(f, "a")
+fct_relevel(f, "b", "a")
+fct_relevel(f, "a", after = 2)
+
 
 ```
 
-如上所示:实际工作中可以通过指定因子水平从而达到排序效果,在可视化中也可以运用,像指定X轴的顺序.
+`fct_infreq()`用法：
+
+```{r}
+gss_cat %>%
+  mutate(marital = marital %>% fct_infreq() %>% fct_rev()) %>%
+  ggplot(aes(marital)) +
+    geom_bar()
+```
+
+该系列函数功能是改变因子水平。
+
+- `fct_inorder()`: 以第一次出现的顺序为顺序
+- `fct_infreq()`:以每个因子出现的次数为顺序,数字大在前
+- `fct_inseq()`:以级别的数字为顺序
+
+
+```{r}
+f <- factor(c("b", "b", "a", "c", "c", "c"))
+f
+fct_inorder(f)
+fct_infreq(f)
+
+f <- factor(1:3, levels = c("3", "2", "1"))
+f
+fct_inseq(f)
+```
+
+
+### 修改因子级别
+
+前面我们通过函数修改因子顺序，我们还可以更改因子的级别。
+
+```{r}
+gss_cat %>%
+  mutate(partyid = fct_recode(partyid,
+    "Republican, strong"    = "Strong republican",
+    "Republican, weak"      = "Not str republican",
+    "Independent, near rep" = "Ind,near rep",
+    "Independent, near dem" = "Ind,near dem",
+    "Democrat, weak"        = "Not str democrat",
+    "Democrat, strong"      = "Strong democrat"
+  )) %>%
+  count(partyid)
+```
+
+`fct_recode()`用法：
+
+```{r}
+x <- factor(c("apple", "bear", "banana", "dear"))
+fct_recode(x, fruit = "apple", fruit = "banana")
+```
+
+
+```{r}
+x <- factor(c("apple", "bear", "banana", "dear"))
+levels <- c(fruit = "apple", fruit = "banana")
+fct_recode(x, !!!levels)
+```
+
 
