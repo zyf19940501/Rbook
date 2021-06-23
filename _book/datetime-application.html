@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-04" />
+<meta name="date" content="2021-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,8 +159,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
-<li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#batch:read"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#batch:write"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
 <ul>
@@ -262,18 +262,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.9" data-path="dplyr-reference-material.html"><a href="dplyr-reference-material.html"><i class="fa fa-check"></i><b>2.9</b> 参考资料</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
+<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> 整洁数据之 tidyr</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="tidyr-install.html"><a href="tidyr-install.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
+<li class="chapter" data-level="3.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.1</b> tidyr 介绍</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
-<li class="chapter" data-level="3.2.3" data-path="tidyr-useage.html"><a href="tidyr-useage.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
-<li class="chapter" data-level="3.2.4" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
-<li class="chapter" data-level="3.2.5" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
-<li class="chapter" data-level="3.2.6" data-path="tidyr-useage.html"><a href="tidyr-useage.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
-<li class="chapter" data-level="3.2.7" data-path="tidyr-useage.html"><a href="tidyr-useage.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
+<li class="chapter" data-level="3.1.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#tidyr:install"><i class="fa fa-check"></i><b>3.1.1</b> 安装</a></li>
+<li class="chapter" data-level="3.1.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#tidyr:functions"><i class="fa fa-check"></i><b>3.1.2</b> 主要功能</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="pivoting.html"><a href="pivoting.html"><i class="fa fa-check"></i><b>3.2</b> 长宽转换</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="pivoting.html"><a href="pivoting.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
+<li class="chapter" data-level="3.2.2" data-path="pivoting.html"><a href="pivoting.html#用法-1"><i class="fa fa-check"></i><b>3.2.2</b> 用法</a></li>
+<li class="chapter" data-level="3.2.3" data-path="pivoting.html"><a href="pivoting.html#长转宽"><i class="fa fa-check"></i><b>3.2.3</b> 长转宽</a></li>
+<li class="chapter" data-level="3.2.4" data-path="pivoting.html"><a href="pivoting.html#用法-2"><i class="fa fa-check"></i><b>3.2.4</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="tidyr-rectangle.html"><a href="tidyr-rectangle.html"><i class="fa fa-check"></i><b>3.3</b> 矩形数据</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html"><i class="fa fa-check"></i><b>3.4</b> 嵌套数据</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html#基础"><i class="fa fa-check"></i><b>3.4.1</b> 基础</a></li>
+<li class="chapter" data-level="3.4.2" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.4.2</b> 嵌套数据和模型</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="character-vector.html"><a href="character-vector.html"><i class="fa fa-check"></i><b>3.5</b> 字符处理</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="character-vector.html"><a href="character-vector.html#新列提取"><i class="fa fa-check"></i><b>3.5.1</b> 新列提取</a></li>
+<li class="chapter" data-level="3.5.2" data-path="character-vector.html"><a href="character-vector.html#拆分"><i class="fa fa-check"></i><b>3.5.2</b> 拆分</a></li>
+<li class="chapter" data-level="3.5.3" data-path="character-vector.html"><a href="character-vector.html#列拆分行"><i class="fa fa-check"></i><b>3.5.3</b> 列拆分行</a></li>
+<li class="chapter" data-level="3.5.4" data-path="character-vector.html"><a href="character-vector.html#合并多列"><i class="fa fa-check"></i><b>3.5.4</b> 合并多列</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="tidyr-expand.html"><a href="tidyr-expand.html"><i class="fa fa-check"></i><b>3.6</b> 扩展数据框</a></li>
+<li class="chapter" data-level="3.7" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html"><i class="fa fa-check"></i><b>3.7</b> 缺失值</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#replace_na"><i class="fa fa-check"></i><b>3.7.1</b> replace_na</a></li>
+<li class="chapter" data-level="3.7.2" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#fill"><i class="fa fa-check"></i><b>3.7.2</b> fill</a></li>
+<li class="chapter" data-level="3.7.3" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#drop_na"><i class="fa fa-check"></i><b>3.7.3</b> drop_na</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="character-handling.html"><a href="character-handling.html"><i class="fa fa-check"></i><b>4</b> 字符处理</a>
@@ -296,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="character-application.html"><a href="character-application.html#实现excel函数"><i class="fa fa-check"></i><b>4.3.1</b> 实现excel函数</a></li>
 <li class="chapter" data-level="4.3.2" data-path="character-application.html"><a href="character-application.html#使用案例"><i class="fa fa-check"></i><b>4.3.2</b> 使用案例</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="character-the-difference-stringr-and-base.html"><a href="character-the-difference-stringr-and-base.html"><i class="fa fa-check"></i><b>4.4</b> base和stringr</a></li>
+<li class="chapter" data-level="4.4" data-path="character-the-difference-stringr-and-base.html"><a href="character-the-difference-stringr-and-base.html"><i class="fa fa-check"></i><b>4.4</b> base 和 stringr</a></li>
 <li class="chapter" data-level="4.5" data-path="character-reference-material.html"><a href="character-reference-material.html"><i class="fa fa-check"></i><b>4.5</b> 参考资料</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="datetime.html"><a href="datetime.html"><i class="fa fa-check"></i><b>5</b> 时间处理</a>
@@ -332,7 +353,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> 因子介绍</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="创建因子.html"><a href="创建因子.html"><i class="fa fa-check"></i><b>6.1</b> 创建因子</a></li>
+<li class="chapter" data-level="6.1" data-path="forcats-introduction.html"><a href="forcats-introduction.html"><i class="fa fa-check"></i><b>6.1</b> 介绍</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="forcats-introduction.html"><a href="forcats-introduction.html#forcats:install"><i class="fa fa-check"></i><b>6.1.1</b> 安装</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="forcats-usage.html"><a href="forcats-usage.html"><i class="fa fa-check"></i><b>6.2</b> 用法</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="forcats-usage.html"><a href="forcats-usage.html#创建因子"><i class="fa fa-check"></i><b>6.2.1</b> 创建因子</a></li>
+<li class="chapter" data-level="6.2.2" data-path="forcats-usage.html"><a href="forcats-usage.html#修改因子顺序"><i class="fa fa-check"></i><b>6.2.2</b> 修改因子顺序</a></li>
+<li class="chapter" data-level="6.2.3" data-path="forcats-usage.html"><a href="forcats-usage.html#修改因子级别"><i class="fa fa-check"></i><b>6.2.3</b> 修改因子级别</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="Data-Manipulation-datatable.html"><a href="Data-Manipulation-datatable.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
 <ul>
@@ -440,19 +470,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="apply-function.html"><a href="apply-function.html"><i class="fa fa-check"></i><b>9.3</b> apply系列函数</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="apply-function.html"><a href="apply-function.html#lapply"><i class="fa fa-check"></i><b>9.3.1</b> lapply 循环迭代</a></li>
-<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply-sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply {# sapply}</a></li>
-<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply-迭代安全函数-vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数{# vapply}</a></li>
-<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply-多维数据-apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据{# apply}</a></li>
+<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply</a></li>
+<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数</a></li>
+<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
-<li class="chapter" data-level="10.2" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
-<li class="chapter" data-level="10.3" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
-<li class="chapter" data-level="10.4" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
-<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
-<li class="chapter" data-level="10.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
+<li class="chapter" data-level="10.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>10.1</b> 安装</a></li>
+<li class="chapter" data-level="10.2" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.2</b> 常规用法</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html#map-系列"><i class="fa fa-check"></i><b>10.2.1</b> map 系列</a></li>
+<li class="chapter" data-level="10.2.2" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html#pmap-系列"><i class="fa fa-check"></i><b>10.2.2</b> pmap 系列</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.3</b> map系列函数</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="purrr-map.html"><a href="purrr-map.html#用法-3"><i class="fa fa-check"></i><b>10.3.1</b> 用法</a></li>
+<li class="chapter" data-level="10.3.2" data-path="purrr-map.html"><a href="purrr-map.html#案例-5"><i class="fa fa-check"></i><b>10.3.2</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="purrr-map2.html"><a href="purrr-map2.html"><i class="fa fa-check"></i><b>10.4</b> map2 系列函数</a></li>
+<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> pmap系列函数</a></li>
+<li class="chapter" data-level="10.6" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.6</b> 归约累计函数</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="purrr-reduce.html"><a href="purrr-reduce.html#reduce-函数"><i class="fa fa-check"></i><b>10.6.1</b> reduce 函数</a></li>
+<li class="chapter" data-level="10.6.2" data-path="purrr-reduce.html"><a href="purrr-reduce.html#accumulate-函数"><i class="fa fa-check"></i><b>10.6.2</b> accumulate 函数</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.7</b> 安全函数</a></li>
+<li class="chapter" data-level="10.8" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.8</b> 其他函数介绍</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#flatten-系列"><i class="fa fa-check"></i><b>10.8.1</b> flatten 系列</a></li>
+<li class="chapter" data-level="10.8.2" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#imap-函数"><i class="fa fa-check"></i><b>10.8.2</b> imap 函数</a></li>
+<li class="chapter" data-level="10.8.3" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#walk-系列"><i class="fa fa-check"></i><b>10.8.3</b> walk 系列</a></li>
+<li class="chapter" data-level="10.8.4" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#逻辑判断函数"><i class="fa fa-check"></i><b>10.8.4</b> 逻辑判断函数</a></li>
+<li class="chapter" data-level="10.8.5" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#提取函数"><i class="fa fa-check"></i><b>10.8.5</b> 提取函数</a></li>
+<li class="chapter" data-level="10.8.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#筛选函数"><i class="fa fa-check"></i><b>10.8.6</b> 筛选函数</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="self-define-function.html"><a href="self-define-function.html"><i class="fa fa-check"></i><b>11</b> 自定义函数</a>
 <ul>
@@ -465,7 +517,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.3.1" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
 <li class="chapter" data-level="11.3.2" data-path="define-function-parameter.html"><a href="define-function-parameter.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
+<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-5"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="function-return.html"><a href="function-return.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
 <ul>
@@ -528,182 +580,182 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>常用函数</li>
 </ul>
 <p><code>round_date()</code>函数根据要求周期回滚日期</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="datetime-application.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
-<span id="cb331-2"><a href="datetime-application.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01&quot;</span></span>
-<span id="cb331-3"><a href="datetime-application.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;month&#39;</span>) </span>
-<span id="cb331-4"><a href="datetime-application.html#cb331-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-01&quot;</span></span>
-<span id="cb331-5"><a href="datetime-application.html#cb331-5" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;week&#39;</span>)</span>
-<span id="cb331-6"><a href="datetime-application.html#cb331-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-30&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="datetime-application.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
+<span id="cb356-2"><a href="datetime-application.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01&quot;</span></span>
+<span id="cb356-3"><a href="datetime-application.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;month&#39;</span>) </span>
+<span id="cb356-4"><a href="datetime-application.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-01&quot;</span></span>
+<span id="cb356-5"><a href="datetime-application.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(<span class="fu">today</span>(),<span class="at">unit =</span> <span class="st">&#39;week&#39;</span>)</span>
+<span id="cb356-6"><a href="datetime-application.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-20&quot;</span></span></code></pre></div>
 <p>以上同系列函数从名字就能大概看出端倪，其中关键参数是unit，可选想如下:
 1s,second,minute,5 mins,hour,dat,week,months,bimonth,quarter,season,halfyear,year。</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="datetime-application.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round_date</span>(</span>
-<span id="cb332-2"><a href="datetime-application.html#cb332-2" aria-hidden="true" tabindex="-1"></a>  x,</span>
-<span id="cb332-3"><a href="datetime-application.html#cb332-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">unit =</span> <span class="st">&quot;second&quot;</span>,</span>
-<span id="cb332-4"><a href="datetime-application.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">week_start =</span> <span class="fu">getOption</span>(<span class="st">&quot;lubridate.week.start&quot;</span>, <span class="dv">7</span>)</span>
-<span id="cb332-5"><a href="datetime-application.html#cb332-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb332-6"><a href="datetime-application.html#cb332-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb332-7"><a href="datetime-application.html#cb332-7" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(</span>
-<span id="cb332-8"><a href="datetime-application.html#cb332-8" aria-hidden="true" tabindex="-1"></a>  x,</span>
-<span id="cb332-9"><a href="datetime-application.html#cb332-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">unit =</span> <span class="st">&quot;seconds&quot;</span>,</span>
-<span id="cb332-10"><a href="datetime-application.html#cb332-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">week_start =</span> <span class="fu">getOption</span>(<span class="st">&quot;lubridate.week.start&quot;</span>, <span class="dv">7</span>)</span>
-<span id="cb332-11"><a href="datetime-application.html#cb332-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb332-12"><a href="datetime-application.html#cb332-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb332-13"><a href="datetime-application.html#cb332-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(</span>
-<span id="cb332-14"><a href="datetime-application.html#cb332-14" aria-hidden="true" tabindex="-1"></a>  x,</span>
-<span id="cb332-15"><a href="datetime-application.html#cb332-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">unit =</span> <span class="st">&quot;seconds&quot;</span>,</span>
-<span id="cb332-16"><a href="datetime-application.html#cb332-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">change_on_boundary =</span> <span class="cn">NULL</span>,</span>
-<span id="cb332-17"><a href="datetime-application.html#cb332-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">week_start =</span> <span class="fu">getOption</span>(<span class="st">&quot;lubridate.week.start&quot;</span>, <span class="dv">7</span>)</span>
-<span id="cb332-18"><a href="datetime-application.html#cb332-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="datetime-application.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round_date</span>(</span>
+<span id="cb357-2"><a href="datetime-application.html#cb357-2" aria-hidden="true" tabindex="-1"></a>  x,</span>
+<span id="cb357-3"><a href="datetime-application.html#cb357-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">unit =</span> <span class="st">&quot;second&quot;</span>,</span>
+<span id="cb357-4"><a href="datetime-application.html#cb357-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">week_start =</span> <span class="fu">getOption</span>(<span class="st">&quot;lubridate.week.start&quot;</span>, <span class="dv">7</span>)</span>
+<span id="cb357-5"><a href="datetime-application.html#cb357-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb357-6"><a href="datetime-application.html#cb357-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-7"><a href="datetime-application.html#cb357-7" aria-hidden="true" tabindex="-1"></a><span class="fu">floor_date</span>(</span>
+<span id="cb357-8"><a href="datetime-application.html#cb357-8" aria-hidden="true" tabindex="-1"></a>  x,</span>
+<span id="cb357-9"><a href="datetime-application.html#cb357-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">unit =</span> <span class="st">&quot;seconds&quot;</span>,</span>
+<span id="cb357-10"><a href="datetime-application.html#cb357-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">week_start =</span> <span class="fu">getOption</span>(<span class="st">&quot;lubridate.week.start&quot;</span>, <span class="dv">7</span>)</span>
+<span id="cb357-11"><a href="datetime-application.html#cb357-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb357-12"><a href="datetime-application.html#cb357-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-13"><a href="datetime-application.html#cb357-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(</span>
+<span id="cb357-14"><a href="datetime-application.html#cb357-14" aria-hidden="true" tabindex="-1"></a>  x,</span>
+<span id="cb357-15"><a href="datetime-application.html#cb357-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">unit =</span> <span class="st">&quot;seconds&quot;</span>,</span>
+<span id="cb357-16"><a href="datetime-application.html#cb357-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">change_on_boundary =</span> <span class="cn">NULL</span>,</span>
+<span id="cb357-17"><a href="datetime-application.html#cb357-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">week_start =</span> <span class="fu">getOption</span>(<span class="st">&quot;lubridate.week.start&quot;</span>, <span class="dv">7</span>)</span>
+<span id="cb357-18"><a href="datetime-application.html#cb357-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>change_on_boundary参数</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="datetime-application.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(<span class="fu">ymd_hms</span>(<span class="st">&#39;2021-01-1 00:00:00&#39;</span>),<span class="st">&#39;month&#39;</span>)</span>
-<span id="cb333-2"><a href="datetime-application.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01 UTC&quot;</span></span>
-<span id="cb333-3"><a href="datetime-application.html#cb333-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(<span class="fu">ymd_hms</span>(<span class="st">&#39;2021-01-1 00:00:00&#39;</span>),<span class="st">&#39;month&#39;</span>,<span class="at">change_on_boundary =</span> T)</span>
-<span id="cb333-4"><a href="datetime-application.html#cb333-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-02-01 UTC&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="datetime-application.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(<span class="fu">ymd_hms</span>(<span class="st">&#39;2021-01-1 00:00:00&#39;</span>),<span class="st">&#39;month&#39;</span>)</span>
+<span id="cb358-2"><a href="datetime-application.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01 UTC&quot;</span></span>
+<span id="cb358-3"><a href="datetime-application.html#cb358-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling_date</span>(<span class="fu">ymd_hms</span>(<span class="st">&#39;2021-01-1 00:00:00&#39;</span>),<span class="st">&#39;month&#39;</span>,<span class="at">change_on_boundary =</span> T)</span>
+<span id="cb358-4"><a href="datetime-application.html#cb358-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-02-01 UTC&quot;</span></span></code></pre></div>
 <ul>
 <li>计算年同比</li>
 </ul>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="datetime-application.html#cb334-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
-<span id="cb334-2"><a href="datetime-application.html#cb334-2" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
-<span id="cb334-3"><a href="datetime-application.html#cb334-3" aria-hidden="true" tabindex="-1"></a><span class="co"># current </span></span>
-<span id="cb334-4"><a href="datetime-application.html#cb334-4" aria-hidden="true" tabindex="-1"></a>current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
-<span id="cb334-5"><a href="datetime-application.html#cb334-5" aria-hidden="true" tabindex="-1"></a>current_start_date</span>
-<span id="cb334-6"><a href="datetime-application.html#cb334-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01&quot;</span></span>
-<span id="cb334-7"><a href="datetime-application.html#cb334-7" aria-hidden="true" tabindex="-1"></a>date </span>
-<span id="cb334-8"><a href="datetime-application.html#cb334-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-04&quot;</span></span>
-<span id="cb334-9"><a href="datetime-application.html#cb334-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb334-10"><a href="datetime-application.html#cb334-10" aria-hidden="true" tabindex="-1"></a><span class="co"># last year</span></span>
-<span id="cb334-11"><a href="datetime-application.html#cb334-11" aria-hidden="true" tabindex="-1"></a>last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb334-12"><a href="datetime-application.html#cb334-12" aria-hidden="true" tabindex="-1"></a>last_start_date</span>
-<span id="cb334-13"><a href="datetime-application.html#cb334-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-01-01&quot;</span></span>
-<span id="cb334-14"><a href="datetime-application.html#cb334-14" aria-hidden="true" tabindex="-1"></a>last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb334-15"><a href="datetime-application.html#cb334-15" aria-hidden="true" tabindex="-1"></a>last_end_date</span>
-<span id="cb334-16"><a href="datetime-application.html#cb334-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-06-04&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="datetime-application.html#cb359-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb359-2"><a href="datetime-application.html#cb359-2" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
+<span id="cb359-3"><a href="datetime-application.html#cb359-3" aria-hidden="true" tabindex="-1"></a><span class="co"># current </span></span>
+<span id="cb359-4"><a href="datetime-application.html#cb359-4" aria-hidden="true" tabindex="-1"></a>current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
+<span id="cb359-5"><a href="datetime-application.html#cb359-5" aria-hidden="true" tabindex="-1"></a>current_start_date</span>
+<span id="cb359-6"><a href="datetime-application.html#cb359-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-01-01&quot;</span></span>
+<span id="cb359-7"><a href="datetime-application.html#cb359-7" aria-hidden="true" tabindex="-1"></a>date </span>
+<span id="cb359-8"><a href="datetime-application.html#cb359-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-23&quot;</span></span>
+<span id="cb359-9"><a href="datetime-application.html#cb359-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-10"><a href="datetime-application.html#cb359-10" aria-hidden="true" tabindex="-1"></a><span class="co"># last year</span></span>
+<span id="cb359-11"><a href="datetime-application.html#cb359-11" aria-hidden="true" tabindex="-1"></a>last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb359-12"><a href="datetime-application.html#cb359-12" aria-hidden="true" tabindex="-1"></a>last_start_date</span>
+<span id="cb359-13"><a href="datetime-application.html#cb359-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-01-01&quot;</span></span>
+<span id="cb359-14"><a href="datetime-application.html#cb359-14" aria-hidden="true" tabindex="-1"></a>last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb359-15"><a href="datetime-application.html#cb359-15" aria-hidden="true" tabindex="-1"></a>last_end_date</span>
+<span id="cb359-16"><a href="datetime-application.html#cb359-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-06-23&quot;</span></span></code></pre></div>
 <p>以上,n表示间隔年数，大部分时候都是1。但特殊时候，比如2021年同比2020年2-4月(新冠疫情)基本没有同比意义，所以在此设置为参数。</p>
 <ul>
 <li>计算月同比</li>
 </ul>
 <p><code>rollback()</code>函数返回上个月的最后一天或当前月的第一天</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="datetime-application.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rollback</span>(<span class="fu">today</span>())</span>
-<span id="cb335-2"><a href="datetime-application.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-31&quot;</span></span>
-<span id="cb335-3"><a href="datetime-application.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rollback</span>(<span class="fu">today</span>(),<span class="at">roll_to_first =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb335-4"><a href="datetime-application.html#cb335-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-01&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="datetime-application.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rollback</span>(<span class="fu">today</span>())</span>
+<span id="cb360-2"><a href="datetime-application.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-31&quot;</span></span>
+<span id="cb360-3"><a href="datetime-application.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rollback</span>(<span class="fu">today</span>(),<span class="at">roll_to_first =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb360-4"><a href="datetime-application.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-01&quot;</span></span></code></pre></div>
 <ul>
 <li>计算月环比</li>
 </ul>
 <p>计算环比时，<code>%m+%</code>或<code>%m-%</code>可以很好解决月份天数不一的问题</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="datetime-application.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="st">&#39;2020-03-30&#39;</span>) <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
-<span id="cb336-2"><a href="datetime-application.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-02-29&quot;</span></span>
-<span id="cb336-3"><a href="datetime-application.html#cb336-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb336-4"><a href="datetime-application.html#cb336-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 环比月截止日</span></span>
-<span id="cb336-5"><a href="datetime-application.html#cb336-5" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb336-6"><a href="datetime-application.html#cb336-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-04&quot;</span></span>
-<span id="cb336-7"><a href="datetime-application.html#cb336-7" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
-<span id="cb336-8"><a href="datetime-application.html#cb336-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-04&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="datetime-application.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_date</span>(<span class="st">&#39;2020-03-30&#39;</span>) <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb361-2"><a href="datetime-application.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2020-02-29&quot;</span></span>
+<span id="cb361-3"><a href="datetime-application.html#cb361-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-4"><a href="datetime-application.html#cb361-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 环比月截止日</span></span>
+<span id="cb361-5"><a href="datetime-application.html#cb361-5" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
+<span id="cb361-6"><a href="datetime-application.html#cb361-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-06-23&quot;</span></span>
+<span id="cb361-7"><a href="datetime-application.html#cb361-7" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">%m-%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb361-8"><a href="datetime-application.html#cb361-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2021-05-23&quot;</span></span></code></pre></div>
 <p>经过以上计算，得到一对对时间周期，然后在订单或者其它数据中筛选即可获得同环比维度数据。</p>
 <ul>
 <li>模拟计算</li>
 </ul>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="datetime-application.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 构造数据</span></span>
-<span id="cb337-2"><a href="datetime-application.html#cb337-2" aria-hidden="true" tabindex="-1"></a>bill_date <span class="ot">&lt;-</span> <span class="fu">as_date</span>((<span class="fu">as_date</span>(<span class="st">&#39;2019-01-01&#39;</span>)<span class="sc">:</span><span class="fu">as_date</span>(<span class="st">&#39;2020-12-01&#39;</span>)))</span>
-<span id="cb337-3"><a href="datetime-application.html#cb337-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb337-4"><a href="datetime-application.html#cb337-4" aria-hidden="true" tabindex="-1"></a>category <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;品类A&#39;</span>,<span class="st">&#39;品类B&#39;</span>,<span class="st">&#39;品类C&#39;</span>,<span class="st">&#39;品类D&#39;</span>),<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb337-5"><a href="datetime-application.html#cb337-5" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">bill_date =</span> bill_date ,<span class="at">money =</span> <span class="fu">sample</span>(<span class="dv">80</span><span class="sc">:</span><span class="dv">150</span>,<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>),<span class="at">area =</span> area,<span class="at">category =</span> category)</span>
-<span id="cb337-6"><a href="datetime-application.html#cb337-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb337-7"><a href="datetime-application.html#cb337-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
-<span id="cb337-8"><a href="datetime-application.html#cb337-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   bill_date  money area  category</span></span>
-<span id="cb337-9"><a href="datetime-application.html#cb337-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;date&gt;     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   </span></span>
-<span id="cb337-10"><a href="datetime-application.html#cb337-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2019-01-01   138 华东  品类C   </span></span>
-<span id="cb337-11"><a href="datetime-application.html#cb337-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2019-01-02    80 华南  品类D   </span></span>
-<span id="cb337-12"><a href="datetime-application.html#cb337-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2019-01-03   111 华北  品类B   </span></span>
-<span id="cb337-13"><a href="datetime-application.html#cb337-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2019-01-04    97 华南  品类C   </span></span>
-<span id="cb337-14"><a href="datetime-application.html#cb337-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2019-01-05   126 华东  品类D   </span></span>
-<span id="cb337-15"><a href="datetime-application.html#cb337-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2019-01-06   149 华西  品类A</span></span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="datetime-application.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 构造数据</span></span>
+<span id="cb362-2"><a href="datetime-application.html#cb362-2" aria-hidden="true" tabindex="-1"></a>bill_date <span class="ot">&lt;-</span> <span class="fu">as_date</span>((<span class="fu">as_date</span>(<span class="st">&#39;2019-01-01&#39;</span>)<span class="sc">:</span><span class="fu">as_date</span>(<span class="st">&#39;2020-12-01&#39;</span>)))</span>
+<span id="cb362-3"><a href="datetime-application.html#cb362-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;华东&#39;</span>,<span class="st">&#39;华西&#39;</span>,<span class="st">&#39;华南&#39;</span>,<span class="st">&#39;华北&#39;</span>),<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb362-4"><a href="datetime-application.html#cb362-4" aria-hidden="true" tabindex="-1"></a>category <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;品类A&#39;</span>,<span class="st">&#39;品类B&#39;</span>,<span class="st">&#39;品类C&#39;</span>,<span class="st">&#39;品类D&#39;</span>),<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb362-5"><a href="datetime-application.html#cb362-5" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">bill_date =</span> bill_date ,<span class="at">money =</span> <span class="fu">sample</span>(<span class="dv">80</span><span class="sc">:</span><span class="dv">150</span>,<span class="at">size =</span> <span class="fu">length</span>(bill_date),<span class="at">replace =</span> <span class="cn">TRUE</span>),<span class="at">area =</span> area,<span class="at">category =</span> category)</span>
+<span id="cb362-6"><a href="datetime-application.html#cb362-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb362-7"><a href="datetime-application.html#cb362-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
+<span id="cb362-8"><a href="datetime-application.html#cb362-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   bill_date  money area  category</span></span>
+<span id="cb362-9"><a href="datetime-application.html#cb362-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;date&gt;     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   </span></span>
+<span id="cb362-10"><a href="datetime-application.html#cb362-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2019-01-01   138 华东  品类C   </span></span>
+<span id="cb362-11"><a href="datetime-application.html#cb362-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2019-01-02    80 华南  品类D   </span></span>
+<span id="cb362-12"><a href="datetime-application.html#cb362-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2019-01-03   111 华北  品类B   </span></span>
+<span id="cb362-13"><a href="datetime-application.html#cb362-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2019-01-04    97 华南  品类C   </span></span>
+<span id="cb362-14"><a href="datetime-application.html#cb362-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2019-01-05   126 华东  品类D   </span></span>
+<span id="cb362-15"><a href="datetime-application.html#cb362-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2019-01-06   149 华西  品类A</span></span></code></pre></div>
 <ul>
 <li>自定义函数</li>
 </ul>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="datetime-application.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr,<span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb338-2"><a href="datetime-application.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb338-3"><a href="datetime-application.html#cb338-3" aria-hidden="true" tabindex="-1"></a>y_to_y <span class="ot">&lt;-</span> <span class="cf">function</span>(.dt,date,<span class="at">n =</span> <span class="dv">1</span>,...){</span>
-<span id="cb338-4"><a href="datetime-application.html#cb338-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb338-5"><a href="datetime-application.html#cb338-5" aria-hidden="true" tabindex="-1"></a>  date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(date)</span>
-<span id="cb338-6"><a href="datetime-application.html#cb338-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb338-7"><a href="datetime-application.html#cb338-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.na</span>(date)){</span>
-<span id="cb338-8"><a href="datetime-application.html#cb338-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&#39;请输入正确日期格式，如20200101&#39;</span>)</span>
-<span id="cb338-9"><a href="datetime-application.html#cb338-9" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb338-10"><a href="datetime-application.html#cb338-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb338-11"><a href="datetime-application.html#cb338-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># current </span></span>
-<span id="cb338-12"><a href="datetime-application.html#cb338-12" aria-hidden="true" tabindex="-1"></a> current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
-<span id="cb338-13"><a href="datetime-application.html#cb338-13" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb338-14"><a href="datetime-application.html#cb338-14" aria-hidden="true" tabindex="-1"></a> <span class="co"># last year</span></span>
-<span id="cb338-15"><a href="datetime-application.html#cb338-15" aria-hidden="true" tabindex="-1"></a> last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb338-16"><a href="datetime-application.html#cb338-16" aria-hidden="true" tabindex="-1"></a> last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
-<span id="cb338-17"><a href="datetime-application.html#cb338-17" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb338-18"><a href="datetime-application.html#cb338-18" aria-hidden="true" tabindex="-1"></a> .dt <span class="sc">%&gt;%</span> <span class="fu">mutate</span>( 类型 <span class="ot">=</span> <span class="fu">case_when</span>(<span class="fu">between</span>(bill_date,current_start_date,date) <span class="sc">~</span> <span class="st">&quot;当前&quot;</span>,</span>
-<span id="cb338-19"><a href="datetime-application.html#cb338-19" aria-hidden="true" tabindex="-1"></a>               <span class="fu">between</span>(bill_date,last_start_date,last_end_date) <span class="sc">~</span> <span class="st">&quot;同期&quot;</span>,</span>
-<span id="cb338-20"><a href="datetime-application.html#cb338-20" aria-hidden="true" tabindex="-1"></a>               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;其他&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb338-21"><a href="datetime-application.html#cb338-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(类型 <span class="sc">!=</span> <span class="st">&quot;其他&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb338-22"><a href="datetime-application.html#cb338-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span> </span>
-<span id="cb338-23"><a href="datetime-application.html#cb338-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(金额 <span class="ot">=</span> <span class="fu">sum</span>(money,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb338-24"><a href="datetime-application.html#cb338-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() </span>
-<span id="cb338-25"><a href="datetime-application.html#cb338-25" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb338-26"><a href="datetime-application.html#cb338-26" aria-hidden="true" tabindex="-1"></a> <span class="co">#%&gt;% pivot_wider(names_from = &#39;类型&#39;,values_from = &#39;金额&#39;)</span></span>
-<span id="cb338-27"><a href="datetime-application.html#cb338-27" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb338-28"><a href="datetime-application.html#cb338-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="datetime-application.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20201001&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型) <span class="sc">%&gt;%</span> </span>
-<span id="cb339-2"><a href="datetime-application.html#cb339-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="st">&#39;area&#39;</span>,<span class="at">names_from =</span> <span class="st">&#39;类型&#39;</span>,<span class="at">values_from =</span> <span class="st">&#39;金额&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb339-3"><a href="datetime-application.html#cb339-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(增长率 <span class="ot">=</span> 当前 <span class="sc">/</span> 同期)</span>
-<span id="cb339-4"><a href="datetime-application.html#cb339-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;area&#39;. You can override using the `.groups` argument.</span></span>
-<span id="cb339-5"><a href="datetime-application.html#cb339-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 4</span></span>
-<span id="cb339-6"><a href="datetime-application.html#cb339-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   area   当前  同期 增长率</span></span>
-<span id="cb339-7"><a href="datetime-application.html#cb339-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;</span></span>
-<span id="cb339-8"><a href="datetime-application.html#cb339-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 华北   7572  7674  0.987</span></span>
-<span id="cb339-9"><a href="datetime-application.html#cb339-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 华东   8713  8344  1.04 </span></span>
-<span id="cb339-10"><a href="datetime-application.html#cb339-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 华南   6279  8150  0.770</span></span>
-<span id="cb339-11"><a href="datetime-application.html#cb339-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 华西   8805  7161  1.23</span></span>
-<span id="cb339-12"><a href="datetime-application.html#cb339-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-13"><a href="datetime-application.html#cb339-13" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20201001&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型,category) <span class="sc">%&gt;%</span> </span>
-<span id="cb339-14"><a href="datetime-application.html#cb339-14" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="fu">c</span>(<span class="st">&#39;area&#39;</span>,<span class="st">&#39;category&#39;</span>),<span class="at">names_from =</span> <span class="st">&#39;类型&#39;</span>,<span class="at">values_from =</span> <span class="st">&#39;金额&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb339-15"><a href="datetime-application.html#cb339-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(增长率 <span class="ot">=</span> 当前 <span class="sc">/</span> 同期)</span>
-<span id="cb339-16"><a href="datetime-application.html#cb339-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;area&#39;, &#39;类型&#39;. You can override using the `.groups` argument.</span></span>
-<span id="cb339-17"><a href="datetime-application.html#cb339-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 16 x 5</span></span>
-<span id="cb339-18"><a href="datetime-application.html#cb339-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   area  category  当前  同期 增长率</span></span>
-<span id="cb339-19"><a href="datetime-application.html#cb339-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;</span></span>
-<span id="cb339-20"><a href="datetime-application.html#cb339-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 华北  品类A     1515  1268  1.19 </span></span>
-<span id="cb339-21"><a href="datetime-application.html#cb339-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 华北  品类B     1807  2600  0.695</span></span>
-<span id="cb339-22"><a href="datetime-application.html#cb339-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 华北  品类C     1956  1837  1.06 </span></span>
-<span id="cb339-23"><a href="datetime-application.html#cb339-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 华北  品类D     2294  1969  1.17 </span></span>
-<span id="cb339-24"><a href="datetime-application.html#cb339-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 华东  品类A     1797  2400  0.749</span></span>
-<span id="cb339-25"><a href="datetime-application.html#cb339-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 华东  品类B     2507  2064  1.21 </span></span>
-<span id="cb339-26"><a href="datetime-application.html#cb339-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 10 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="datetime-application.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr,<span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb363-2"><a href="datetime-application.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb363-3"><a href="datetime-application.html#cb363-3" aria-hidden="true" tabindex="-1"></a>y_to_y <span class="ot">&lt;-</span> <span class="cf">function</span>(.dt,date,<span class="at">n =</span> <span class="dv">1</span>,...){</span>
+<span id="cb363-4"><a href="datetime-application.html#cb363-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb363-5"><a href="datetime-application.html#cb363-5" aria-hidden="true" tabindex="-1"></a>  date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(date)</span>
+<span id="cb363-6"><a href="datetime-application.html#cb363-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb363-7"><a href="datetime-application.html#cb363-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.na</span>(date)){</span>
+<span id="cb363-8"><a href="datetime-application.html#cb363-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&#39;请输入正确日期格式，如20200101&#39;</span>)</span>
+<span id="cb363-9"><a href="datetime-application.html#cb363-9" aria-hidden="true" tabindex="-1"></a>  } </span>
+<span id="cb363-10"><a href="datetime-application.html#cb363-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb363-11"><a href="datetime-application.html#cb363-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># current </span></span>
+<span id="cb363-12"><a href="datetime-application.html#cb363-12" aria-hidden="true" tabindex="-1"></a> current_start_date <span class="ot">&lt;-</span>  <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>)</span>
+<span id="cb363-13"><a href="datetime-application.html#cb363-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb363-14"><a href="datetime-application.html#cb363-14" aria-hidden="true" tabindex="-1"></a> <span class="co"># last year</span></span>
+<span id="cb363-15"><a href="datetime-application.html#cb363-15" aria-hidden="true" tabindex="-1"></a> last_start_date <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(date,<span class="at">unit =</span> <span class="st">&#39;year&#39;</span>) <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb363-16"><a href="datetime-application.html#cb363-16" aria-hidden="true" tabindex="-1"></a> last_end_date <span class="ot">&lt;-</span> date <span class="sc">%m-%</span> <span class="fu">years</span>(n)</span>
+<span id="cb363-17"><a href="datetime-application.html#cb363-17" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb363-18"><a href="datetime-application.html#cb363-18" aria-hidden="true" tabindex="-1"></a> .dt <span class="sc">%&gt;%</span> <span class="fu">mutate</span>( 类型 <span class="ot">=</span> <span class="fu">case_when</span>(<span class="fu">between</span>(bill_date,current_start_date,date) <span class="sc">~</span> <span class="st">&quot;当前&quot;</span>,</span>
+<span id="cb363-19"><a href="datetime-application.html#cb363-19" aria-hidden="true" tabindex="-1"></a>               <span class="fu">between</span>(bill_date,last_start_date,last_end_date) <span class="sc">~</span> <span class="st">&quot;同期&quot;</span>,</span>
+<span id="cb363-20"><a href="datetime-application.html#cb363-20" aria-hidden="true" tabindex="-1"></a>               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;其他&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb363-21"><a href="datetime-application.html#cb363-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(类型 <span class="sc">!=</span> <span class="st">&quot;其他&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb363-22"><a href="datetime-application.html#cb363-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb363-23"><a href="datetime-application.html#cb363-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(金额 <span class="ot">=</span> <span class="fu">sum</span>(money,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb363-24"><a href="datetime-application.html#cb363-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() </span>
+<span id="cb363-25"><a href="datetime-application.html#cb363-25" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb363-26"><a href="datetime-application.html#cb363-26" aria-hidden="true" tabindex="-1"></a> <span class="co">#%&gt;% pivot_wider(names_from = &#39;类型&#39;,values_from = &#39;金额&#39;)</span></span>
+<span id="cb363-27"><a href="datetime-application.html#cb363-27" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb363-28"><a href="datetime-application.html#cb363-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="datetime-application.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20201001&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型) <span class="sc">%&gt;%</span> </span>
+<span id="cb364-2"><a href="datetime-application.html#cb364-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="st">&#39;area&#39;</span>,<span class="at">names_from =</span> <span class="st">&#39;类型&#39;</span>,<span class="at">values_from =</span> <span class="st">&#39;金额&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb364-3"><a href="datetime-application.html#cb364-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(增长率 <span class="ot">=</span> 当前 <span class="sc">/</span> 同期)</span>
+<span id="cb364-4"><a href="datetime-application.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;area&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb364-5"><a href="datetime-application.html#cb364-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 4</span></span>
+<span id="cb364-6"><a href="datetime-application.html#cb364-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   area   当前  同期 增长率</span></span>
+<span id="cb364-7"><a href="datetime-application.html#cb364-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;</span></span>
+<span id="cb364-8"><a href="datetime-application.html#cb364-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 华北   7572  7674  0.987</span></span>
+<span id="cb364-9"><a href="datetime-application.html#cb364-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 华东   8713  8344  1.04 </span></span>
+<span id="cb364-10"><a href="datetime-application.html#cb364-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 华南   6279  8150  0.770</span></span>
+<span id="cb364-11"><a href="datetime-application.html#cb364-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 华西   8805  7161  1.23</span></span>
+<span id="cb364-12"><a href="datetime-application.html#cb364-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb364-13"><a href="datetime-application.html#cb364-13" aria-hidden="true" tabindex="-1"></a><span class="fu">y_to_y</span>(dt,<span class="at">date =</span> <span class="st">&#39;20201001&#39;</span>,<span class="at">n =</span> <span class="dv">1</span>,area,类型,category) <span class="sc">%&gt;%</span> </span>
+<span id="cb364-14"><a href="datetime-application.html#cb364-14" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="fu">c</span>(<span class="st">&#39;area&#39;</span>,<span class="st">&#39;category&#39;</span>),<span class="at">names_from =</span> <span class="st">&#39;类型&#39;</span>,<span class="at">values_from =</span> <span class="st">&#39;金额&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb364-15"><a href="datetime-application.html#cb364-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(增长率 <span class="ot">=</span> 当前 <span class="sc">/</span> 同期)</span>
+<span id="cb364-16"><a href="datetime-application.html#cb364-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;area&#39;, &#39;类型&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb364-17"><a href="datetime-application.html#cb364-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 16 x 5</span></span>
+<span id="cb364-18"><a href="datetime-application.html#cb364-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   area  category  当前  同期 增长率</span></span>
+<span id="cb364-19"><a href="datetime-application.html#cb364-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;</span></span>
+<span id="cb364-20"><a href="datetime-application.html#cb364-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 华北  品类A     1515  1268  1.19 </span></span>
+<span id="cb364-21"><a href="datetime-application.html#cb364-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 华北  品类B     1807  2600  0.695</span></span>
+<span id="cb364-22"><a href="datetime-application.html#cb364-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 华北  品类C     1956  1837  1.06 </span></span>
+<span id="cb364-23"><a href="datetime-application.html#cb364-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 华北  品类D     2294  1969  1.17 </span></span>
+<span id="cb364-24"><a href="datetime-application.html#cb364-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 华东  品类A     1797  2400  0.749</span></span>
+<span id="cb364-25"><a href="datetime-application.html#cb364-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 华东  品类B     2507  2064  1.21 </span></span>
+<span id="cb364-26"><a href="datetime-application.html#cb364-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 10 more rows</span></span></code></pre></div>
 </div>
 <div id="清洗不同类型日期格式" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> 清洗不同类型日期格式</h3>
 <p>如将<code>c('2001/2/13 10:33','1/24/13 11:16')</code>转换为相同格式的日期格式;</p>
 <p>通过一个简单自定义函数解决，本质是区分不同类型日期后采用不同函数去解析日期格式</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="datetime-application.html#cb340-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb340-2"><a href="datetime-application.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb340-3"><a href="datetime-application.html#cb340-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb340-4"><a href="datetime-application.html#cb340-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb340-5"><a href="datetime-application.html#cb340-5" aria-hidden="true" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;2001/2/13 10:33&#39;</span>,<span class="st">&#39;1/24/13 11:16&#39;</span>)</span>
-<span id="cb340-6"><a href="datetime-application.html#cb340-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb340-7"><a href="datetime-application.html#cb340-7" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb340-8"><a href="datetime-application.html#cb340-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb340-9"><a href="datetime-application.html#cb340-9" aria-hidden="true" tabindex="-1"></a>  n_length <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb340-10"><a href="datetime-application.html#cb340-10" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n_length)</span>
-<span id="cb340-11"><a href="datetime-application.html#cb340-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb340-12"><a href="datetime-application.html#cb340-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_length){</span>
-<span id="cb340-13"><a href="datetime-application.html#cb340-13" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x[i],<span class="st">&#39;/&#39;</span>) <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">[[</span><span class="st">`</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">[[</span><span class="st">`</span>(<span class="dv">1</span>)</span>
-<span id="cb340-14"><a href="datetime-application.html#cb340-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">str_length</span>(n)<span class="sc">==</span><span class="dv">4</span>){</span>
-<span id="cb340-15"><a href="datetime-application.html#cb340-15" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="ot">&lt;-</span> <span class="fu">ymd_hm</span>(x[i],<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
-<span id="cb340-16"><a href="datetime-application.html#cb340-16" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb340-17"><a href="datetime-application.html#cb340-17" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="ot">&lt;-</span> <span class="fu">mdy_hm</span>(x[i],<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
-<span id="cb340-18"><a href="datetime-application.html#cb340-18" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb340-19"><a href="datetime-application.html#cb340-19" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb340-20"><a href="datetime-application.html#cb340-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_datetime</span>(res,<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
-<span id="cb340-21"><a href="datetime-application.html#cb340-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb340-22"><a href="datetime-application.html#cb340-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb340-23"><a href="datetime-application.html#cb340-23" aria-hidden="true" tabindex="-1"></a><span class="fu">myfun</span>(date1)</span>
-<span id="cb340-24"><a href="datetime-application.html#cb340-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2001-02-13 10:33:00 CST&quot; &quot;2013-01-24 11:16:00 CST&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="datetime-application.html#cb365-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-2"><a href="datetime-application.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb365-3"><a href="datetime-application.html#cb365-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb365-4"><a href="datetime-application.html#cb365-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-5"><a href="datetime-application.html#cb365-5" aria-hidden="true" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;2001/2/13 10:33&#39;</span>,<span class="st">&#39;1/24/13 11:16&#39;</span>)</span>
+<span id="cb365-6"><a href="datetime-application.html#cb365-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-7"><a href="datetime-application.html#cb365-7" aria-hidden="true" tabindex="-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb365-8"><a href="datetime-application.html#cb365-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb365-9"><a href="datetime-application.html#cb365-9" aria-hidden="true" tabindex="-1"></a>  n_length <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb365-10"><a href="datetime-application.html#cb365-10" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n_length)</span>
+<span id="cb365-11"><a href="datetime-application.html#cb365-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb365-12"><a href="datetime-application.html#cb365-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_length){</span>
+<span id="cb365-13"><a href="datetime-application.html#cb365-13" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x[i],<span class="st">&#39;/&#39;</span>) <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">[[</span><span class="st">`</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">[[</span><span class="st">`</span>(<span class="dv">1</span>)</span>
+<span id="cb365-14"><a href="datetime-application.html#cb365-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">str_length</span>(n)<span class="sc">==</span><span class="dv">4</span>){</span>
+<span id="cb365-15"><a href="datetime-application.html#cb365-15" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="ot">&lt;-</span> <span class="fu">ymd_hm</span>(x[i],<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
+<span id="cb365-16"><a href="datetime-application.html#cb365-16" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb365-17"><a href="datetime-application.html#cb365-17" aria-hidden="true" tabindex="-1"></a>      res[i] <span class="ot">&lt;-</span> <span class="fu">mdy_hm</span>(x[i],<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
+<span id="cb365-18"><a href="datetime-application.html#cb365-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb365-19"><a href="datetime-application.html#cb365-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb365-20"><a href="datetime-application.html#cb365-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_datetime</span>(res,<span class="at">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)</span>
+<span id="cb365-21"><a href="datetime-application.html#cb365-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb365-22"><a href="datetime-application.html#cb365-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-23"><a href="datetime-application.html#cb365-23" aria-hidden="true" tabindex="-1"></a><span class="fu">myfun</span>(date1)</span>
+<span id="cb365-24"><a href="datetime-application.html#cb365-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2001-02-13 10:33:00 CST&quot; &quot;2013-01-24 11:16:00 CST&quot;</span></span></code></pre></div>
 </div>
 <div id="扫码后中奖时间匹配" class="section level3" number="5.3.3">
 <h3><span class="header-section-number">5.3.3</span> 扫码后中奖时间匹配</h3>
@@ -714,55 +766,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>由于中奖时间和扫码时间不完全一致，导致没办法直接通过<code>客户ID</code>以及<code>时间</code>关联匹配找到客户每次中奖时的积分码,现在要求找到客户每次中奖时对应的积分码？</p>
 <p>思路：通过观察数据，发现扫码后如果中奖，一般几秒钟内会有中奖记录，那我们就可以通过“每次中奖时间最近的一次扫码时间的积分码”就是该次中奖对应的积分码解决问题。这样我们通过简单编写自定义函数即可获取答案，即一个时间点从一串时间中找到离自己最近时间点。</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="datetime-application.html#cb341-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
-<span id="cb341-2"><a href="datetime-application.html#cb341-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>() <span class="co">#应采用列表存储结果向量化</span></span>
-<span id="cb341-3"><a href="datetime-application.html#cb341-3" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
-<span id="cb341-4"><a href="datetime-application.html#cb341-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb341-5"><a href="datetime-application.html#cb341-5" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
-<span id="cb341-6"><a href="datetime-application.html#cb341-6" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">abs</span>(res) <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() <span class="co">#本处不对，应该判断res大于0的部分中谁最小</span></span>
-<span id="cb341-7"><a href="datetime-application.html#cb341-7" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
-<span id="cb341-8"><a href="datetime-application.html#cb341-8" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kong,result)</span>
-<span id="cb341-9"><a href="datetime-application.html#cb341-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb341-10"><a href="datetime-application.html#cb341-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb341-11"><a href="datetime-application.html#cb341-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb341-12"><a href="datetime-application.html#cb341-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb341-13"><a href="datetime-application.html#cb341-13" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">testfun</span>(dt<span class="sc">$</span>时间,scan_dt<span class="sc">$</span>时间)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="datetime-application.html#cb366-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb366-2"><a href="datetime-application.html#cb366-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>() <span class="co">#应采用列表存储结果向量化</span></span>
+<span id="cb366-3"><a href="datetime-application.html#cb366-3" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
+<span id="cb366-4"><a href="datetime-application.html#cb366-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb366-5"><a href="datetime-application.html#cb366-5" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
+<span id="cb366-6"><a href="datetime-application.html#cb366-6" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">abs</span>(res) <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() <span class="co">#本处不对，应该判断res大于0的部分中谁最小</span></span>
+<span id="cb366-7"><a href="datetime-application.html#cb366-7" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
+<span id="cb366-8"><a href="datetime-application.html#cb366-8" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kong,result)</span>
+<span id="cb366-9"><a href="datetime-application.html#cb366-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb366-10"><a href="datetime-application.html#cb366-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb366-11"><a href="datetime-application.html#cb366-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb366-12"><a href="datetime-application.html#cb366-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb366-13"><a href="datetime-application.html#cb366-13" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">testfun</span>(dt<span class="sc">$</span>时间,scan_dt<span class="sc">$</span>时间)</span></code></pre></div>
 <p>改进代码</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="datetime-application.html#cb342-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
-<span id="cb342-2"><a href="datetime-application.html#cb342-2" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
-<span id="cb342-3"><a href="datetime-application.html#cb342-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb342-4"><a href="datetime-application.html#cb342-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb342-5"><a href="datetime-application.html#cb342-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb342-6"><a href="datetime-application.html#cb342-6" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> y[x<span class="sc">&gt;</span>y]</span>
-<span id="cb342-7"><a href="datetime-application.html#cb342-7" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
-<span id="cb342-8"><a href="datetime-application.html#cb342-8" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> res <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() </span>
-<span id="cb342-9"><a href="datetime-application.html#cb342-9" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
-<span id="cb342-10"><a href="datetime-application.html#cb342-10" aria-hidden="true" tabindex="-1"></a>    result[[i]] <span class="ot">&lt;-</span> kong</span>
-<span id="cb342-11"><a href="datetime-application.html#cb342-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb342-12"><a href="datetime-application.html#cb342-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb342-13"><a href="datetime-application.html#cb342-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb342-14"><a href="datetime-application.html#cb342-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb342-15"><a href="datetime-application.html#cb342-15" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">testfun</span>(dt<span class="sc">$</span>时间,scan_dt<span class="sc">$</span>时间)</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="datetime-application.html#cb367-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb367-2"><a href="datetime-application.html#cb367-2" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
+<span id="cb367-3"><a href="datetime-application.html#cb367-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb367-4"><a href="datetime-application.html#cb367-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb367-5"><a href="datetime-application.html#cb367-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb367-6"><a href="datetime-application.html#cb367-6" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> y[x<span class="sc">&gt;</span>y]</span>
+<span id="cb367-7"><a href="datetime-application.html#cb367-7" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
+<span id="cb367-8"><a href="datetime-application.html#cb367-8" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> res <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() </span>
+<span id="cb367-9"><a href="datetime-application.html#cb367-9" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
+<span id="cb367-10"><a href="datetime-application.html#cb367-10" aria-hidden="true" tabindex="-1"></a>    result[[i]] <span class="ot">&lt;-</span> kong</span>
+<span id="cb367-11"><a href="datetime-application.html#cb367-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb367-12"><a href="datetime-application.html#cb367-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb367-13"><a href="datetime-application.html#cb367-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb367-14"><a href="datetime-application.html#cb367-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb367-15"><a href="datetime-application.html#cb367-15" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">testfun</span>(dt<span class="sc">$</span>时间,scan_dt<span class="sc">$</span>时间)</span></code></pre></div>
 <p>理论上不同用户可以在同一时间扫码且同时中奖，那上面的代码即不可以获取正确答案。但是我们只要通过按照用户ID切割数据框后稍微改造上面的自定义函数即可。</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="datetime-application.html#cb343-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(dt){</span>
-<span id="cb343-2"><a href="datetime-application.html#cb343-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb343-3"><a href="datetime-application.html#cb343-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> dt<span class="sc">$</span>中奖时间</span>
-<span id="cb343-4"><a href="datetime-application.html#cb343-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> dt<span class="sc">$</span>扫的时间</span>
-<span id="cb343-5"><a href="datetime-application.html#cb343-5" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
-<span id="cb343-6"><a href="datetime-application.html#cb343-6" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb343-7"><a href="datetime-application.html#cb343-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb343-8"><a href="datetime-application.html#cb343-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb343-9"><a href="datetime-application.html#cb343-9" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> y[x<span class="sc">&gt;</span>y]</span>
-<span id="cb343-10"><a href="datetime-application.html#cb343-10" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
-<span id="cb343-11"><a href="datetime-application.html#cb343-11" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> res <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() </span>
-<span id="cb343-12"><a href="datetime-application.html#cb343-12" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
-<span id="cb343-13"><a href="datetime-application.html#cb343-13" aria-hidden="true" tabindex="-1"></a>    result[[i]] <span class="ot">&lt;-</span> kong</span>
-<span id="cb343-14"><a href="datetime-application.html#cb343-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb343-15"><a href="datetime-application.html#cb343-15" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(result)</span>
-<span id="cb343-16"><a href="datetime-application.html#cb343-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb343-17"><a href="datetime-application.html#cb343-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb343-18"><a href="datetime-application.html#cb343-18" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">split</span>(alldt,<span class="st">&#39;客户ID&#39;</span>)</span>
-<span id="cb343-19"><a href="datetime-application.html#cb343-19" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(dtlist,testfun)</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="datetime-application.html#cb368-1" aria-hidden="true" tabindex="-1"></a>testfun <span class="ot">&lt;-</span> <span class="cf">function</span>(dt){</span>
+<span id="cb368-2"><a href="datetime-application.html#cb368-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb368-3"><a href="datetime-application.html#cb368-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> dt<span class="sc">$</span>中奖时间</span>
+<span id="cb368-4"><a href="datetime-application.html#cb368-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> dt<span class="sc">$</span>扫的时间</span>
+<span id="cb368-5"><a href="datetime-application.html#cb368-5" aria-hidden="true" tabindex="-1"></a>  n  <span class="ot">&lt;-</span>  <span class="fu">length</span>(x)</span>
+<span id="cb368-6"><a href="datetime-application.html#cb368-6" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb368-7"><a href="datetime-application.html#cb368-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb368-8"><a href="datetime-application.html#cb368-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb368-9"><a href="datetime-application.html#cb368-9" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> y[x<span class="sc">&gt;</span>y]</span>
+<span id="cb368-10"><a href="datetime-application.html#cb368-10" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> x[i]<span class="sc">-</span>y</span>
+<span id="cb368-11"><a href="datetime-application.html#cb368-11" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> res <span class="sc">%&gt;%</span> <span class="fu">which.min</span>() </span>
+<span id="cb368-12"><a href="datetime-application.html#cb368-12" aria-hidden="true" tabindex="-1"></a>    kong <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(中奖时间 <span class="ot">=</span> x[i],扫的时间 <span class="ot">=</span> y[res])</span>
+<span id="cb368-13"><a href="datetime-application.html#cb368-13" aria-hidden="true" tabindex="-1"></a>    result[[i]] <span class="ot">&lt;-</span> kong</span>
+<span id="cb368-14"><a href="datetime-application.html#cb368-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb368-15"><a href="datetime-application.html#cb368-15" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(result)</span>
+<span id="cb368-16"><a href="datetime-application.html#cb368-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb368-17"><a href="datetime-application.html#cb368-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb368-18"><a href="datetime-application.html#cb368-18" aria-hidden="true" tabindex="-1"></a>dtlist <span class="ot">&lt;-</span> <span class="fu">split</span>(alldt,<span class="st">&#39;客户ID&#39;</span>)</span>
+<span id="cb368-19"><a href="datetime-application.html#cb368-19" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(dtlist,testfun)</span></code></pre></div>
 <p>虽然可以通过寻找最近一次的扫码记录判断积分码，但是因为网络延迟或中途接电话等各种原因导致扫码时间和中奖时间相差并不是几秒，导致情景复杂，那我们就应该在设计系统时就设计好锁定对应关系，从根本上解决问题。</p>
 </div>
 </div>

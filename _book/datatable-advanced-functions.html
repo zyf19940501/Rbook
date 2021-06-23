@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-04" />
+<meta name="date" content="2021-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,8 +159,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
-<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#批量读取-batchread"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取 {# batch:read}</a></li>
-<li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
+<li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#batch:read"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
+<li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#batch:write"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
 <ul>
@@ -262,18 +262,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.9" data-path="dplyr-reference-material.html"><a href="dplyr-reference-material.html"><i class="fa fa-check"></i><b>2.9</b> 参考资料</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
+<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> 整洁数据之 tidyr</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="tidyr-install.html"><a href="tidyr-install.html"><i class="fa fa-check"></i><b>3.1</b> 安装</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.2</b> 主要功能</a>
+<li class="chapter" data-level="3.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.1</b> tidyr 介绍</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#长转宽"><i class="fa fa-check"></i><b>3.2.2</b> 长转宽</a></li>
-<li class="chapter" data-level="3.2.3" data-path="tidyr-useage.html"><a href="tidyr-useage.html#处理jsonhtml的数据"><i class="fa fa-check"></i><b>3.2.3</b> 处理json,html的数据</a></li>
-<li class="chapter" data-level="3.2.4" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据"><i class="fa fa-check"></i><b>3.2.4</b> 嵌套数据</a></li>
-<li class="chapter" data-level="3.2.5" data-path="tidyr-useage.html"><a href="tidyr-useage.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.2.5</b> 嵌套数据和模型</a></li>
-<li class="chapter" data-level="3.2.6" data-path="tidyr-useage.html"><a href="tidyr-useage.html#拆分和合并"><i class="fa fa-check"></i><b>3.2.6</b> 拆分和合并</a></li>
-<li class="chapter" data-level="3.2.7" data-path="tidyr-useage.html"><a href="tidyr-useage.html#缺失值处理"><i class="fa fa-check"></i><b>3.2.7</b> 缺失值处理</a></li>
+<li class="chapter" data-level="3.1.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html#tidyr:install"><i class="fa fa-check"></i><b>3.1.1</b> 安装</a></li>
+<li class="chapter" data-level="3.1.2" data-path="tidyr-useage.html"><a href="tidyr-useage.html#tidyr:functions"><i class="fa fa-check"></i><b>3.1.2</b> 主要功能</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="pivoting.html"><a href="pivoting.html"><i class="fa fa-check"></i><b>3.2</b> 长宽转换</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="pivoting.html"><a href="pivoting.html#宽转长"><i class="fa fa-check"></i><b>3.2.1</b> 宽转长</a></li>
+<li class="chapter" data-level="3.2.2" data-path="pivoting.html"><a href="pivoting.html#用法-1"><i class="fa fa-check"></i><b>3.2.2</b> 用法</a></li>
+<li class="chapter" data-level="3.2.3" data-path="pivoting.html"><a href="pivoting.html#长转宽"><i class="fa fa-check"></i><b>3.2.3</b> 长转宽</a></li>
+<li class="chapter" data-level="3.2.4" data-path="pivoting.html"><a href="pivoting.html#用法-2"><i class="fa fa-check"></i><b>3.2.4</b> 用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="tidyr-rectangle.html"><a href="tidyr-rectangle.html"><i class="fa fa-check"></i><b>3.3</b> 矩形数据</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html"><i class="fa fa-check"></i><b>3.4</b> 嵌套数据</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html#基础"><i class="fa fa-check"></i><b>3.4.1</b> 基础</a></li>
+<li class="chapter" data-level="3.4.2" data-path="tidyr-nest-data.html"><a href="tidyr-nest-data.html#嵌套数据和模型"><i class="fa fa-check"></i><b>3.4.2</b> 嵌套数据和模型</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="character-vector.html"><a href="character-vector.html"><i class="fa fa-check"></i><b>3.5</b> 字符处理</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="character-vector.html"><a href="character-vector.html#新列提取"><i class="fa fa-check"></i><b>3.5.1</b> 新列提取</a></li>
+<li class="chapter" data-level="3.5.2" data-path="character-vector.html"><a href="character-vector.html#拆分"><i class="fa fa-check"></i><b>3.5.2</b> 拆分</a></li>
+<li class="chapter" data-level="3.5.3" data-path="character-vector.html"><a href="character-vector.html#列拆分行"><i class="fa fa-check"></i><b>3.5.3</b> 列拆分行</a></li>
+<li class="chapter" data-level="3.5.4" data-path="character-vector.html"><a href="character-vector.html#合并多列"><i class="fa fa-check"></i><b>3.5.4</b> 合并多列</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="tidyr-expand.html"><a href="tidyr-expand.html"><i class="fa fa-check"></i><b>3.6</b> 扩展数据框</a></li>
+<li class="chapter" data-level="3.7" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html"><i class="fa fa-check"></i><b>3.7</b> 缺失值</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#replace_na"><i class="fa fa-check"></i><b>3.7.1</b> replace_na</a></li>
+<li class="chapter" data-level="3.7.2" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#fill"><i class="fa fa-check"></i><b>3.7.2</b> fill</a></li>
+<li class="chapter" data-level="3.7.3" data-path="tidyr-fill-NA.html"><a href="tidyr-fill-NA.html#drop_na"><i class="fa fa-check"></i><b>3.7.3</b> drop_na</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="character-handling.html"><a href="character-handling.html"><i class="fa fa-check"></i><b>4</b> 字符处理</a>
@@ -296,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="character-application.html"><a href="character-application.html#实现excel函数"><i class="fa fa-check"></i><b>4.3.1</b> 实现excel函数</a></li>
 <li class="chapter" data-level="4.3.2" data-path="character-application.html"><a href="character-application.html#使用案例"><i class="fa fa-check"></i><b>4.3.2</b> 使用案例</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="character-the-difference-stringr-and-base.html"><a href="character-the-difference-stringr-and-base.html"><i class="fa fa-check"></i><b>4.4</b> base和stringr</a></li>
+<li class="chapter" data-level="4.4" data-path="character-the-difference-stringr-and-base.html"><a href="character-the-difference-stringr-and-base.html"><i class="fa fa-check"></i><b>4.4</b> base 和 stringr</a></li>
 <li class="chapter" data-level="4.5" data-path="character-reference-material.html"><a href="character-reference-material.html"><i class="fa fa-check"></i><b>4.5</b> 参考资料</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="datetime.html"><a href="datetime.html"><i class="fa fa-check"></i><b>5</b> 时间处理</a>
@@ -332,7 +353,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> 因子介绍</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="创建因子.html"><a href="创建因子.html"><i class="fa fa-check"></i><b>6.1</b> 创建因子</a></li>
+<li class="chapter" data-level="6.1" data-path="forcats-introduction.html"><a href="forcats-introduction.html"><i class="fa fa-check"></i><b>6.1</b> 介绍</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="forcats-introduction.html"><a href="forcats-introduction.html#forcats:install"><i class="fa fa-check"></i><b>6.1.1</b> 安装</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="forcats-usage.html"><a href="forcats-usage.html"><i class="fa fa-check"></i><b>6.2</b> 用法</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="forcats-usage.html"><a href="forcats-usage.html#创建因子"><i class="fa fa-check"></i><b>6.2.1</b> 创建因子</a></li>
+<li class="chapter" data-level="6.2.2" data-path="forcats-usage.html"><a href="forcats-usage.html#修改因子顺序"><i class="fa fa-check"></i><b>6.2.2</b> 修改因子顺序</a></li>
+<li class="chapter" data-level="6.2.3" data-path="forcats-usage.html"><a href="forcats-usage.html#修改因子级别"><i class="fa fa-check"></i><b>6.2.3</b> 修改因子级别</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="Data-Manipulation-datatable.html"><a href="Data-Manipulation-datatable.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
 <ul>
@@ -440,19 +470,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="apply-function.html"><a href="apply-function.html"><i class="fa fa-check"></i><b>9.3</b> apply系列函数</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="apply-function.html"><a href="apply-function.html#lapply"><i class="fa fa-check"></i><b>9.3.1</b> lapply 循环迭代</a></li>
-<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply-sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply {# sapply}</a></li>
-<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply-迭代安全函数-vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数{# vapply}</a></li>
-<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply-多维数据-apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据{# apply}</a></li>
+<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply</a></li>
+<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数</a></li>
+<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
-<li class="chapter" data-level="10.2" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
-<li class="chapter" data-level="10.3" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
-<li class="chapter" data-level="10.4" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
-<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
-<li class="chapter" data-level="10.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
+<li class="chapter" data-level="10.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>10.1</b> 安装</a></li>
+<li class="chapter" data-level="10.2" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.2</b> 常规用法</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html#map-系列"><i class="fa fa-check"></i><b>10.2.1</b> map 系列</a></li>
+<li class="chapter" data-level="10.2.2" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html#pmap-系列"><i class="fa fa-check"></i><b>10.2.2</b> pmap 系列</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.3</b> map系列函数</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="purrr-map.html"><a href="purrr-map.html#用法-3"><i class="fa fa-check"></i><b>10.3.1</b> 用法</a></li>
+<li class="chapter" data-level="10.3.2" data-path="purrr-map.html"><a href="purrr-map.html#案例-5"><i class="fa fa-check"></i><b>10.3.2</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="purrr-map2.html"><a href="purrr-map2.html"><i class="fa fa-check"></i><b>10.4</b> map2 系列函数</a></li>
+<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> pmap系列函数</a></li>
+<li class="chapter" data-level="10.6" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.6</b> 归约累计函数</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="purrr-reduce.html"><a href="purrr-reduce.html#reduce-函数"><i class="fa fa-check"></i><b>10.6.1</b> reduce 函数</a></li>
+<li class="chapter" data-level="10.6.2" data-path="purrr-reduce.html"><a href="purrr-reduce.html#accumulate-函数"><i class="fa fa-check"></i><b>10.6.2</b> accumulate 函数</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.7</b> 安全函数</a></li>
+<li class="chapter" data-level="10.8" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.8</b> 其他函数介绍</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#flatten-系列"><i class="fa fa-check"></i><b>10.8.1</b> flatten 系列</a></li>
+<li class="chapter" data-level="10.8.2" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#imap-函数"><i class="fa fa-check"></i><b>10.8.2</b> imap 函数</a></li>
+<li class="chapter" data-level="10.8.3" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#walk-系列"><i class="fa fa-check"></i><b>10.8.3</b> walk 系列</a></li>
+<li class="chapter" data-level="10.8.4" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#逻辑判断函数"><i class="fa fa-check"></i><b>10.8.4</b> 逻辑判断函数</a></li>
+<li class="chapter" data-level="10.8.5" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#提取函数"><i class="fa fa-check"></i><b>10.8.5</b> 提取函数</a></li>
+<li class="chapter" data-level="10.8.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#筛选函数"><i class="fa fa-check"></i><b>10.8.6</b> 筛选函数</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="self-define-function.html"><a href="self-define-function.html"><i class="fa fa-check"></i><b>11</b> 自定义函数</a>
 <ul>
@@ -465,7 +517,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.3.1" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数名称"><i class="fa fa-check"></i><b>11.3.1</b> 参数名称</a></li>
 <li class="chapter" data-level="11.3.2" data-path="define-function-parameter.html"><a href="define-function-parameter.html#检查参数值"><i class="fa fa-check"></i><b>11.3.2</b> 检查参数值</a></li>
-<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-1"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
+<li class="chapter" data-level="11.3.3" data-path="define-function-parameter.html"><a href="define-function-parameter.html#参数-5"><i class="fa fa-check"></i><b>11.3.3</b> …参数</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="function-return.html"><a href="function-return.html"><i class="fa fa-check"></i><b>11.4</b> 返回值</a>
 <ul>
@@ -526,12 +578,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.4.1</span> groupingsets</h3>
 <p>产生多个层次的合计数据，与<code>sql</code>中的<a href="https://www.postgresql.org/docs/9.5/queries-table-expressions.html#QUERIES-GROUPING-SETS">grouping set</a>功能相似。</p>
 <p><strong>用法</strong></p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="datatable-advanced-functions.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(x, j, by, .SDcols, <span class="at">id =</span> <span class="cn">FALSE</span>, ...)</span>
-<span id="cb389-2"><a href="datatable-advanced-functions.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(x, j, by, sets, .SDcols, <span class="at">id =</span> <span class="cn">FALSE</span>, jj, ...)</span>
-<span id="cb389-3"><a href="datatable-advanced-functions.html#cb389-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb389-4"><a href="datatable-advanced-functions.html#cb389-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rollup</span></span>
-<span id="cb389-5"><a href="datatable-advanced-functions.html#cb389-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(DT, <span class="at">j =</span> <span class="fu">lapply</span>(.SD, sum), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>), <span class="at">id=</span><span class="cn">TRUE</span>, <span class="at">.SDcols=</span><span class="st">&quot;value&quot;</span>)</span>
-<span id="cb389-6"><a href="datatable-advanced-functions.html#cb389-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(DT, <span class="at">j =</span> <span class="fu">c</span>(<span class="fu">list</span>(<span class="at">count=</span>.N), <span class="fu">lapply</span>(.SD, sum)), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>), <span class="at">id=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="datatable-advanced-functions.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(x, j, by, .SDcols, <span class="at">id =</span> <span class="cn">FALSE</span>, ...)</span>
+<span id="cb428-2"><a href="datatable-advanced-functions.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(x, j, by, sets, .SDcols, <span class="at">id =</span> <span class="cn">FALSE</span>, jj, ...)</span>
+<span id="cb428-3"><a href="datatable-advanced-functions.html#cb428-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-4"><a href="datatable-advanced-functions.html#cb428-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rollup</span></span>
+<span id="cb428-5"><a href="datatable-advanced-functions.html#cb428-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(DT, <span class="at">j =</span> <span class="fu">lapply</span>(.SD, sum), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>), <span class="at">id=</span><span class="cn">TRUE</span>, <span class="at">.SDcols=</span><span class="st">&quot;value&quot;</span>)</span>
+<span id="cb428-6"><a href="datatable-advanced-functions.html#cb428-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rollup</span>(DT, <span class="at">j =</span> <span class="fu">c</span>(<span class="fu">list</span>(<span class="at">count=</span>.N), <span class="fu">lapply</span>(.SD, sum)), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;color&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;status&quot;</span>), <span class="at">id=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p>如果要达到像Excel中透视表一样的效果，如下所示:</p>
 <div class="figure">
 <img src="picture/data-table/Excel-pivot-groupingsets.png" alt="" />
@@ -540,92 +592,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>rollup</li>
 </ul>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="datatable-advanced-functions.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb390-2"><a href="datatable-advanced-functions.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb390-3"><a href="datatable-advanced-functions.html#cb390-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 载入程辑包：&#39;magrittr&#39;</span></span>
-<span id="cb390-4"><a href="datatable-advanced-functions.html#cb390-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
-<span id="cb390-5"><a href="datatable-advanced-functions.html#cb390-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb390-6"><a href="datatable-advanced-functions.html#cb390-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     set_names</span></span>
-<span id="cb390-7"><a href="datatable-advanced-functions.html#cb390-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:tidyr&#39;:</span></span>
-<span id="cb390-8"><a href="datatable-advanced-functions.html#cb390-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb390-9"><a href="datatable-advanced-functions.html#cb390-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     extract</span></span>
-<span id="cb390-10"><a href="datatable-advanced-functions.html#cb390-10" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&#39;./data/data-table-groupingsets.csv&#39;</span>,<span class="at">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</span>
-<span id="cb390-11"><a href="datatable-advanced-functions.html#cb390-11" aria-hidden="true" tabindex="-1"></a>(<span class="fu">rollup</span>(DT,<span class="at">j =</span><span class="fu">list</span>(以下项目的总和 <span class="ot">=</span><span class="fu">sum</span>(value)),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">id =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">setorderv</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&#39;area&#39;</span>,<span class="st">&#39;grouping&#39;</span>),<span class="at">na.last =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb390-12"><a href="datatable-advanced-functions.html#cb390-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type 以下项目的总和</span></span>
-<span id="cb390-13"><a href="datatable-advanced-functions.html#cb390-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        0 华东     不可比              9</span></span>
-<span id="cb390-14"><a href="datatable-advanced-functions.html#cb390-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        0 华东       可比            309</span></span>
-<span id="cb390-15"><a href="datatable-advanced-functions.html#cb390-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华东       &lt;NA&gt;            318</span></span>
-<span id="cb390-16"><a href="datatable-advanced-functions.html#cb390-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        0 华北     不可比             72</span></span>
-<span id="cb390-17"><a href="datatable-advanced-functions.html#cb390-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华北       可比            173</span></span>
-<span id="cb390-18"><a href="datatable-advanced-functions.html#cb390-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        1 华北       &lt;NA&gt;            245</span></span>
-<span id="cb390-19"><a href="datatable-advanced-functions.html#cb390-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华南       可比             86</span></span>
-<span id="cb390-20"><a href="datatable-advanced-functions.html#cb390-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华南     不可比             79</span></span>
-<span id="cb390-21"><a href="datatable-advanced-functions.html#cb390-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        1 华南       &lt;NA&gt;            165</span></span>
-<span id="cb390-22"><a href="datatable-advanced-functions.html#cb390-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华西       可比              2</span></span>
-<span id="cb390-23"><a href="datatable-advanced-functions.html#cb390-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华西     不可比            198</span></span>
-<span id="cb390-24"><a href="datatable-advanced-functions.html#cb390-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        1 华西       &lt;NA&gt;            200</span></span>
-<span id="cb390-25"><a href="datatable-advanced-functions.html#cb390-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        3 &lt;NA&gt;       &lt;NA&gt;            928</span></span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="datatable-advanced-functions.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb429-2"><a href="datatable-advanced-functions.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb429-3"><a href="datatable-advanced-functions.html#cb429-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 载入程辑包：&#39;magrittr&#39;</span></span>
+<span id="cb429-4"><a href="datatable-advanced-functions.html#cb429-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb429-5"><a href="datatable-advanced-functions.html#cb429-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb429-6"><a href="datatable-advanced-functions.html#cb429-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     set_names</span></span>
+<span id="cb429-7"><a href="datatable-advanced-functions.html#cb429-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:tidyr&#39;:</span></span>
+<span id="cb429-8"><a href="datatable-advanced-functions.html#cb429-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb429-9"><a href="datatable-advanced-functions.html#cb429-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     extract</span></span>
+<span id="cb429-10"><a href="datatable-advanced-functions.html#cb429-10" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&#39;./data/data-table-groupingsets.csv&#39;</span>,<span class="at">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)</span>
+<span id="cb429-11"><a href="datatable-advanced-functions.html#cb429-11" aria-hidden="true" tabindex="-1"></a>(<span class="fu">rollup</span>(DT,<span class="at">j =</span><span class="fu">list</span>(以下项目的总和 <span class="ot">=</span><span class="fu">sum</span>(value)),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">id =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">setorderv</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&#39;area&#39;</span>,<span class="st">&#39;grouping&#39;</span>),<span class="at">na.last =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb429-12"><a href="datatable-advanced-functions.html#cb429-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type 以下项目的总和</span></span>
+<span id="cb429-13"><a href="datatable-advanced-functions.html#cb429-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        0 华东     不可比              9</span></span>
+<span id="cb429-14"><a href="datatable-advanced-functions.html#cb429-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        0 华东       可比            309</span></span>
+<span id="cb429-15"><a href="datatable-advanced-functions.html#cb429-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华东       &lt;NA&gt;            318</span></span>
+<span id="cb429-16"><a href="datatable-advanced-functions.html#cb429-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        0 华北     不可比             72</span></span>
+<span id="cb429-17"><a href="datatable-advanced-functions.html#cb429-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华北       可比            173</span></span>
+<span id="cb429-18"><a href="datatable-advanced-functions.html#cb429-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        1 华北       &lt;NA&gt;            245</span></span>
+<span id="cb429-19"><a href="datatable-advanced-functions.html#cb429-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华南       可比             86</span></span>
+<span id="cb429-20"><a href="datatable-advanced-functions.html#cb429-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华南     不可比             79</span></span>
+<span id="cb429-21"><a href="datatable-advanced-functions.html#cb429-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        1 华南       &lt;NA&gt;            165</span></span>
+<span id="cb429-22"><a href="datatable-advanced-functions.html#cb429-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华西       可比              2</span></span>
+<span id="cb429-23"><a href="datatable-advanced-functions.html#cb429-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华西     不可比            198</span></span>
+<span id="cb429-24"><a href="datatable-advanced-functions.html#cb429-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        1 华西       &lt;NA&gt;            200</span></span>
+<span id="cb429-25"><a href="datatable-advanced-functions.html#cb429-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        3 &lt;NA&gt;       &lt;NA&gt;            928</span></span></code></pre></div>
 <p>通过上述计算,发现计算结果与Excel透视表一样。</p>
 <ul>
 <li>cube</li>
 </ul>
 <p>观察<code>cube()</code>计算结果与<code>rollup()</code>差异，发现<code>cube()</code>聚合层次更多。</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="datatable-advanced-functions.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cube</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb391-2"><a href="datatable-advanced-functions.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
-<span id="cb391-3"><a href="datatable-advanced-functions.html#cb391-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        0 华东     不可比   9</span></span>
-<span id="cb391-4"><a href="datatable-advanced-functions.html#cb391-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        0 华东       可比 309</span></span>
-<span id="cb391-5"><a href="datatable-advanced-functions.html#cb391-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        0 华西       可比   2</span></span>
-<span id="cb391-6"><a href="datatable-advanced-functions.html#cb391-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        0 华西     不可比 198</span></span>
-<span id="cb391-7"><a href="datatable-advanced-functions.html#cb391-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华南       可比  86</span></span>
-<span id="cb391-8"><a href="datatable-advanced-functions.html#cb391-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华北     不可比  72</span></span>
-<span id="cb391-9"><a href="datatable-advanced-functions.html#cb391-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华南     不可比  79</span></span>
-<span id="cb391-10"><a href="datatable-advanced-functions.html#cb391-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华北       可比 173</span></span>
-<span id="cb391-11"><a href="datatable-advanced-functions.html#cb391-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        1 华东       &lt;NA&gt; 318</span></span>
-<span id="cb391-12"><a href="datatable-advanced-functions.html#cb391-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        1 华西       &lt;NA&gt; 200</span></span>
-<span id="cb391-13"><a href="datatable-advanced-functions.html#cb391-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        1 华南       &lt;NA&gt; 165</span></span>
-<span id="cb391-14"><a href="datatable-advanced-functions.html#cb391-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        1 华北       &lt;NA&gt; 245</span></span>
-<span id="cb391-15"><a href="datatable-advanced-functions.html#cb391-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        2 &lt;NA&gt;     不可比 358</span></span>
-<span id="cb391-16"><a href="datatable-advanced-functions.html#cb391-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:        2 &lt;NA&gt;       可比 570</span></span>
-<span id="cb391-17"><a href="datatable-advanced-functions.html#cb391-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="datatable-advanced-functions.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cube</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb430-2"><a href="datatable-advanced-functions.html#cb430-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
+<span id="cb430-3"><a href="datatable-advanced-functions.html#cb430-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        0 华东     不可比   9</span></span>
+<span id="cb430-4"><a href="datatable-advanced-functions.html#cb430-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        0 华东       可比 309</span></span>
+<span id="cb430-5"><a href="datatable-advanced-functions.html#cb430-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        0 华西       可比   2</span></span>
+<span id="cb430-6"><a href="datatable-advanced-functions.html#cb430-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        0 华西     不可比 198</span></span>
+<span id="cb430-7"><a href="datatable-advanced-functions.html#cb430-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华南       可比  86</span></span>
+<span id="cb430-8"><a href="datatable-advanced-functions.html#cb430-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华北     不可比  72</span></span>
+<span id="cb430-9"><a href="datatable-advanced-functions.html#cb430-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华南     不可比  79</span></span>
+<span id="cb430-10"><a href="datatable-advanced-functions.html#cb430-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华北       可比 173</span></span>
+<span id="cb430-11"><a href="datatable-advanced-functions.html#cb430-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        1 华东       &lt;NA&gt; 318</span></span>
+<span id="cb430-12"><a href="datatable-advanced-functions.html#cb430-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        1 华西       &lt;NA&gt; 200</span></span>
+<span id="cb430-13"><a href="datatable-advanced-functions.html#cb430-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        1 华南       &lt;NA&gt; 165</span></span>
+<span id="cb430-14"><a href="datatable-advanced-functions.html#cb430-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        1 华北       &lt;NA&gt; 245</span></span>
+<span id="cb430-15"><a href="datatable-advanced-functions.html#cb430-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        2 &lt;NA&gt;     不可比 358</span></span>
+<span id="cb430-16"><a href="datatable-advanced-functions.html#cb430-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:        2 &lt;NA&gt;       可比 570</span></span>
+<span id="cb430-17"><a href="datatable-advanced-functions.html#cb430-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span></code></pre></div>
 <ul>
 <li>groupingsets</li>
 </ul>
 <p>根据需要指定指定聚合的层次。</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="datatable-advanced-functions.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 与本例中rollup 结果一致</span></span>
-<span id="cb392-2"><a href="datatable-advanced-functions.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&#39;area&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>), <span class="fu">character</span>()),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb392-3"><a href="datatable-advanced-functions.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
-<span id="cb392-4"><a href="datatable-advanced-functions.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        1 华东       &lt;NA&gt; 318</span></span>
-<span id="cb392-5"><a href="datatable-advanced-functions.html#cb392-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        1 华西       &lt;NA&gt; 200</span></span>
-<span id="cb392-6"><a href="datatable-advanced-functions.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华南       &lt;NA&gt; 165</span></span>
-<span id="cb392-7"><a href="datatable-advanced-functions.html#cb392-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        1 华北       &lt;NA&gt; 245</span></span>
-<span id="cb392-8"><a href="datatable-advanced-functions.html#cb392-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华东     不可比   9</span></span>
-<span id="cb392-9"><a href="datatable-advanced-functions.html#cb392-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华东       可比 309</span></span>
-<span id="cb392-10"><a href="datatable-advanced-functions.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华西       可比   2</span></span>
-<span id="cb392-11"><a href="datatable-advanced-functions.html#cb392-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华西     不可比 198</span></span>
-<span id="cb392-12"><a href="datatable-advanced-functions.html#cb392-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        0 华南       可比  86</span></span>
-<span id="cb392-13"><a href="datatable-advanced-functions.html#cb392-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华北     不可比  72</span></span>
-<span id="cb392-14"><a href="datatable-advanced-functions.html#cb392-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华南     不可比  79</span></span>
-<span id="cb392-15"><a href="datatable-advanced-functions.html#cb392-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        0 华北       可比 173</span></span>
-<span id="cb392-16"><a href="datatable-advanced-functions.html#cb392-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span>
-<span id="cb392-17"><a href="datatable-advanced-functions.html#cb392-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-18"><a href="datatable-advanced-functions.html#cb392-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 与本例中cube 结果一致</span></span>
-<span id="cb392-19"><a href="datatable-advanced-functions.html#cb392-19" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&#39;area&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="st">&quot;store_type&quot;</span>, <span class="fu">character</span>()),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb392-20"><a href="datatable-advanced-functions.html#cb392-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
-<span id="cb392-21"><a href="datatable-advanced-functions.html#cb392-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        1 华东       &lt;NA&gt; 318</span></span>
-<span id="cb392-22"><a href="datatable-advanced-functions.html#cb392-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        1 华西       &lt;NA&gt; 200</span></span>
-<span id="cb392-23"><a href="datatable-advanced-functions.html#cb392-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华南       &lt;NA&gt; 165</span></span>
-<span id="cb392-24"><a href="datatable-advanced-functions.html#cb392-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        1 华北       &lt;NA&gt; 245</span></span>
-<span id="cb392-25"><a href="datatable-advanced-functions.html#cb392-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华东     不可比   9</span></span>
-<span id="cb392-26"><a href="datatable-advanced-functions.html#cb392-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华东       可比 309</span></span>
-<span id="cb392-27"><a href="datatable-advanced-functions.html#cb392-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华西       可比   2</span></span>
-<span id="cb392-28"><a href="datatable-advanced-functions.html#cb392-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华西     不可比 198</span></span>
-<span id="cb392-29"><a href="datatable-advanced-functions.html#cb392-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        0 华南       可比  86</span></span>
-<span id="cb392-30"><a href="datatable-advanced-functions.html#cb392-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华北     不可比  72</span></span>
-<span id="cb392-31"><a href="datatable-advanced-functions.html#cb392-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华南     不可比  79</span></span>
-<span id="cb392-32"><a href="datatable-advanced-functions.html#cb392-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        0 华北       可比 173</span></span>
-<span id="cb392-33"><a href="datatable-advanced-functions.html#cb392-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        2 &lt;NA&gt;     不可比 358</span></span>
-<span id="cb392-34"><a href="datatable-advanced-functions.html#cb392-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:        2 &lt;NA&gt;       可比 570</span></span>
-<span id="cb392-35"><a href="datatable-advanced-functions.html#cb392-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="datatable-advanced-functions.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 与本例中rollup 结果一致</span></span>
+<span id="cb431-2"><a href="datatable-advanced-functions.html#cb431-2" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&#39;area&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>), <span class="fu">character</span>()),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb431-3"><a href="datatable-advanced-functions.html#cb431-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
+<span id="cb431-4"><a href="datatable-advanced-functions.html#cb431-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        1 华东       &lt;NA&gt; 318</span></span>
+<span id="cb431-5"><a href="datatable-advanced-functions.html#cb431-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        1 华西       &lt;NA&gt; 200</span></span>
+<span id="cb431-6"><a href="datatable-advanced-functions.html#cb431-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华南       &lt;NA&gt; 165</span></span>
+<span id="cb431-7"><a href="datatable-advanced-functions.html#cb431-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        1 华北       &lt;NA&gt; 245</span></span>
+<span id="cb431-8"><a href="datatable-advanced-functions.html#cb431-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华东     不可比   9</span></span>
+<span id="cb431-9"><a href="datatable-advanced-functions.html#cb431-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华东       可比 309</span></span>
+<span id="cb431-10"><a href="datatable-advanced-functions.html#cb431-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华西       可比   2</span></span>
+<span id="cb431-11"><a href="datatable-advanced-functions.html#cb431-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华西     不可比 198</span></span>
+<span id="cb431-12"><a href="datatable-advanced-functions.html#cb431-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        0 华南       可比  86</span></span>
+<span id="cb431-13"><a href="datatable-advanced-functions.html#cb431-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华北     不可比  72</span></span>
+<span id="cb431-14"><a href="datatable-advanced-functions.html#cb431-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华南     不可比  79</span></span>
+<span id="cb431-15"><a href="datatable-advanced-functions.html#cb431-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        0 华北       可比 173</span></span>
+<span id="cb431-16"><a href="datatable-advanced-functions.html#cb431-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span>
+<span id="cb431-17"><a href="datatable-advanced-functions.html#cb431-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-18"><a href="datatable-advanced-functions.html#cb431-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 与本例中cube 结果一致</span></span>
+<span id="cb431-19"><a href="datatable-advanced-functions.html#cb431-19" aria-hidden="true" tabindex="-1"></a><span class="fu">groupingsets</span>(DT,<span class="at">j =</span> <span class="fu">sum</span>(value),<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="at">sets =</span> <span class="fu">list</span>(<span class="st">&#39;area&#39;</span>,<span class="fu">c</span>(<span class="st">&quot;area&quot;</span>,<span class="st">&quot;store_type&quot;</span>),<span class="st">&quot;store_type&quot;</span>, <span class="fu">character</span>()),<span class="at">id =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb431-20"><a href="datatable-advanced-functions.html#cb431-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     grouping area store_type  V1</span></span>
+<span id="cb431-21"><a href="datatable-advanced-functions.html#cb431-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:        1 华东       &lt;NA&gt; 318</span></span>
+<span id="cb431-22"><a href="datatable-advanced-functions.html#cb431-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:        1 华西       &lt;NA&gt; 200</span></span>
+<span id="cb431-23"><a href="datatable-advanced-functions.html#cb431-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:        1 华南       &lt;NA&gt; 165</span></span>
+<span id="cb431-24"><a href="datatable-advanced-functions.html#cb431-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:        1 华北       &lt;NA&gt; 245</span></span>
+<span id="cb431-25"><a href="datatable-advanced-functions.html#cb431-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:        0 华东     不可比   9</span></span>
+<span id="cb431-26"><a href="datatable-advanced-functions.html#cb431-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:        0 华东       可比 309</span></span>
+<span id="cb431-27"><a href="datatable-advanced-functions.html#cb431-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:        0 华西       可比   2</span></span>
+<span id="cb431-28"><a href="datatable-advanced-functions.html#cb431-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8:        0 华西     不可比 198</span></span>
+<span id="cb431-29"><a href="datatable-advanced-functions.html#cb431-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:        0 华南       可比  86</span></span>
+<span id="cb431-30"><a href="datatable-advanced-functions.html#cb431-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10:        0 华北     不可比  72</span></span>
+<span id="cb431-31"><a href="datatable-advanced-functions.html#cb431-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11:        0 华南     不可比  79</span></span>
+<span id="cb431-32"><a href="datatable-advanced-functions.html#cb431-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12:        0 华北       可比 173</span></span>
+<span id="cb431-33"><a href="datatable-advanced-functions.html#cb431-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13:        2 &lt;NA&gt;     不可比 358</span></span>
+<span id="cb431-34"><a href="datatable-advanced-functions.html#cb431-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14:        2 &lt;NA&gt;       可比 570</span></span>
+<span id="cb431-35"><a href="datatable-advanced-functions.html#cb431-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15:        3 &lt;NA&gt;       &lt;NA&gt; 928</span></span></code></pre></div>
 <blockquote>
 <p>groupingsets: sets参数,用list()包裹想要聚合的字段组合,最后character(),加上该部分相当于不区分层级全部聚合,用法类似sql中“().”</p>
 </blockquote>
@@ -637,72 +689,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.4.2</span> rleid</h3>
 <p>该函数根据分组生成长度列。</p>
 <p>即将0011001110111101类似这种分组成1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8。在特定时候是很便捷的一个函数。如在计算股票连续上涨或下跌天数时。</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="datatable-advanced-functions.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb393-2"><a href="datatable-advanced-functions.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="datatable-advanced-functions.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb432-2"><a href="datatable-advanced-functions.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 4 4 4 5 6 6 6 6 7 8</span></span></code></pre></div>
 <p>用法：</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="datatable-advanced-functions.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(..., <span class="at">prefix=</span><span class="cn">NULL</span>)</span>
-<span id="cb394-2"><a href="datatable-advanced-functions.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">prefix=</span><span class="cn">NULL</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="datatable-advanced-functions.html#cb395-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">grp=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)), <span class="at">value=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb395-2"><a href="datatable-advanced-functions.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp) <span class="co"># get run-length ids</span></span>
-<span id="cb395-3"><a href="datatable-advanced-functions.html#cb395-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
-<span id="cb395-4"><a href="datatable-advanced-functions.html#cb395-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(DT, <span class="st">&quot;grp&quot;</span>) <span class="co"># same as above</span></span>
-<span id="cb395-5"><a href="datatable-advanced-functions.html#cb395-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
-<span id="cb395-6"><a href="datatable-advanced-functions.html#cb395-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp, <span class="at">prefix=</span><span class="st">&quot;grp&quot;</span>) <span class="co"># prefix with &#39;grp&#39;</span></span>
-<span id="cb395-7"><a href="datatable-advanced-functions.html#cb395-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;grp1&quot; &quot;grp1&quot; &quot;grp2&quot; &quot;grp2&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp4&quot; &quot;grp5&quot; &quot;grp5&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="datatable-advanced-functions.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(..., <span class="at">prefix=</span><span class="cn">NULL</span>)</span>
+<span id="cb433-2"><a href="datatable-advanced-functions.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(x, <span class="at">cols=</span><span class="fu">seq_along</span>(x), <span class="at">prefix=</span><span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="datatable-advanced-functions.html#cb434-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">grp=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)), <span class="at">value=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb434-2"><a href="datatable-advanced-functions.html#cb434-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp) <span class="co"># get run-length ids</span></span>
+<span id="cb434-3"><a href="datatable-advanced-functions.html#cb434-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
+<span id="cb434-4"><a href="datatable-advanced-functions.html#cb434-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rleidv</span>(DT, <span class="st">&quot;grp&quot;</span>) <span class="co"># same as above</span></span>
+<span id="cb434-5"><a href="datatable-advanced-functions.html#cb434-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 2 2 3 3 3 4 5 5</span></span>
+<span id="cb434-6"><a href="datatable-advanced-functions.html#cb434-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rleid</span>(DT<span class="sc">$</span>grp, <span class="at">prefix=</span><span class="st">&quot;grp&quot;</span>) <span class="co"># prefix with &#39;grp&#39;</span></span>
+<span id="cb434-7"><a href="datatable-advanced-functions.html#cb434-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;grp1&quot; &quot;grp1&quot; &quot;grp2&quot; &quot;grp2&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp3&quot; &quot;grp4&quot; &quot;grp5&quot; &quot;grp5&quot;</span></span></code></pre></div>
 </div>
 <div id="shift" class="section level3" number="7.4.3">
 <h3><span class="header-section-number">7.4.3</span> shift</h3>
 <p>向前或向后功能,通俗来说就是向前或向后移动位置。</p>
 <p>示例如下：</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="datatable-advanced-functions.html#cb396-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb396-2"><a href="datatable-advanced-functions.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lag with n=1 and pad with NA (returns vector)</span></span>
-<span id="cb396-3"><a href="datatable-advanced-functions.html#cb396-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shift</span>(x, <span class="at">n=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">type=</span><span class="st">&quot;lag&quot;</span>)</span>
-<span id="cb396-4"><a href="datatable-advanced-functions.html#cb396-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  1  2  3  4</span></span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="datatable-advanced-functions.html#cb435-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb435-2"><a href="datatable-advanced-functions.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lag with n=1 and pad with NA (returns vector)</span></span>
+<span id="cb435-3"><a href="datatable-advanced-functions.html#cb435-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shift</span>(x, <span class="at">n=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">type=</span><span class="st">&quot;lag&quot;</span>)</span>
+<span id="cb435-4"><a href="datatable-advanced-functions.html#cb435-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  1  2  3  4</span></span></code></pre></div>
 <p>其中参数n控制偏移量，n正负数和type的参数相对应。, n=-1 and type=‘lead’ 与 n=1 and type=’lag’效果相同。</p>
 <p>在data.table上使用：</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="datatable-advanced-functions.html#cb397-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">year=</span><span class="dv">2010</span><span class="sc">:</span><span class="dv">2014</span>, <span class="at">v1=</span><span class="fu">runif</span>(<span class="dv">5</span>), <span class="at">v2=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">v3=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb397-2"><a href="datatable-advanced-functions.html#cb397-2" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;v1&quot;</span>,<span class="st">&quot;v2&quot;</span>,<span class="st">&quot;v3&quot;</span>)</span>
-<span id="cb397-3"><a href="datatable-advanced-functions.html#cb397-3" aria-hidden="true" tabindex="-1"></a>anscols <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&quot;lead&quot;</span>, cols, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
-<span id="cb397-4"><a href="datatable-advanced-functions.html#cb397-4" aria-hidden="true" tabindex="-1"></a>DT[, (anscols) <span class="sc">:</span><span class="er">=</span> <span class="fu">shift</span>(.SD, <span class="dv">1</span>, <span class="dv">0</span>, <span class="st">&quot;lead&quot;</span>), .SDcols<span class="ot">=</span>cols]</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="datatable-advanced-functions.html#cb436-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">year=</span><span class="dv">2010</span><span class="sc">:</span><span class="dv">2014</span>, <span class="at">v1=</span><span class="fu">runif</span>(<span class="dv">5</span>), <span class="at">v2=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">v3=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb436-2"><a href="datatable-advanced-functions.html#cb436-2" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;v1&quot;</span>,<span class="st">&quot;v2&quot;</span>,<span class="st">&quot;v3&quot;</span>)</span>
+<span id="cb436-3"><a href="datatable-advanced-functions.html#cb436-3" aria-hidden="true" tabindex="-1"></a>anscols <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">&quot;lead&quot;</span>, cols, <span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
+<span id="cb436-4"><a href="datatable-advanced-functions.html#cb436-4" aria-hidden="true" tabindex="-1"></a>DT[, (anscols) <span class="sc">:</span><span class="er">=</span> <span class="fu">shift</span>(.SD, <span class="dv">1</span>, <span class="dv">0</span>, <span class="st">&quot;lead&quot;</span>), .SDcols<span class="ot">=</span>cols]</span></code></pre></div>
 <p>例如求某人连续消费时间间隔天数时：</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="datatable-advanced-functions.html#cb398-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">dates =</span>lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="fu">c</span>(<span class="dv">20210105</span>,<span class="dv">20210115</span>,<span class="dv">20210124</span>,<span class="dv">20210218</span>,<span class="dv">20210424</span>)))</span>
-<span id="cb398-2"><a href="datatable-advanced-functions.html#cb398-2" aria-hidden="true" tabindex="-1"></a>DT[,newdate<span class="sc">:</span><span class="er">=</span><span class="fu">shift</span>(dates)]</span>
-<span id="cb398-3"><a href="datatable-advanced-functions.html#cb398-3" aria-hidden="true" tabindex="-1"></a>DT</span>
-<span id="cb398-4"><a href="datatable-advanced-functions.html#cb398-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         dates    newdate</span></span>
-<span id="cb398-5"><a href="datatable-advanced-functions.html#cb398-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2021-01-05       &lt;NA&gt;</span></span>
-<span id="cb398-6"><a href="datatable-advanced-functions.html#cb398-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2021-01-15 2021-01-05</span></span>
-<span id="cb398-7"><a href="datatable-advanced-functions.html#cb398-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2021-01-24 2021-01-15</span></span>
-<span id="cb398-8"><a href="datatable-advanced-functions.html#cb398-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2021-02-18 2021-01-24</span></span>
-<span id="cb398-9"><a href="datatable-advanced-functions.html#cb398-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2021-04-24 2021-02-18</span></span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="datatable-advanced-functions.html#cb437-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">dates =</span>lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="fu">c</span>(<span class="dv">20210105</span>,<span class="dv">20210115</span>,<span class="dv">20210124</span>,<span class="dv">20210218</span>,<span class="dv">20210424</span>)))</span>
+<span id="cb437-2"><a href="datatable-advanced-functions.html#cb437-2" aria-hidden="true" tabindex="-1"></a>DT[,newdate<span class="sc">:</span><span class="er">=</span><span class="fu">shift</span>(dates)]</span>
+<span id="cb437-3"><a href="datatable-advanced-functions.html#cb437-3" aria-hidden="true" tabindex="-1"></a>DT</span>
+<span id="cb437-4"><a href="datatable-advanced-functions.html#cb437-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         dates    newdate</span></span>
+<span id="cb437-5"><a href="datatable-advanced-functions.html#cb437-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: 2021-01-05       &lt;NA&gt;</span></span>
+<span id="cb437-6"><a href="datatable-advanced-functions.html#cb437-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: 2021-01-15 2021-01-05</span></span>
+<span id="cb437-7"><a href="datatable-advanced-functions.html#cb437-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: 2021-01-24 2021-01-15</span></span>
+<span id="cb437-8"><a href="datatable-advanced-functions.html#cb437-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: 2021-02-18 2021-01-24</span></span>
+<span id="cb437-9"><a href="datatable-advanced-functions.html#cb437-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: 2021-04-24 2021-02-18</span></span></code></pre></div>
 <p>通过构造新列newdate，然后将两列相减<code>dates-newdate</code>即可得到每次购物间隔天数。</p>
 </div>
 <div id="j" class="section level3" number="7.4.4">
 <h3><span class="header-section-number">7.4.4</span> J</h3>
 <p>J 是<code>.()</code>,<code>list()</code>等的别名。<code>SJ</code>是排序连接，<code>CJ</code>是交叉连接。</p>
 <p>用法：</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="datatable-advanced-functions.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DT[J(...)]                          # J() only for use inside DT[...]</span></span>
-<span id="cb399-2"><a href="datatable-advanced-functions.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DT[.(...)]                          # .() only for use inside DT[...]</span></span>
-<span id="cb399-3"><a href="datatable-advanced-functions.html#cb399-3" aria-hidden="true" tabindex="-1"></a><span class="co"># DT[list(...)]                       # same; .(), list() and J() are identical</span></span>
-<span id="cb399-4"><a href="datatable-advanced-functions.html#cb399-4" aria-hidden="true" tabindex="-1"></a><span class="fu">SJ</span>(...)                             <span class="co"># DT[SJ(...)]</span></span>
-<span id="cb399-5"><a href="datatable-advanced-functions.html#cb399-5" aria-hidden="true" tabindex="-1"></a><span class="fu">CJ</span>(..., <span class="at">sorted=</span><span class="cn">TRUE</span>, <span class="at">unique=</span><span class="cn">FALSE</span>)  <span class="co"># DT[CJ(...)]</span></span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="datatable-advanced-functions.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DT[J(...)]                          # J() only for use inside DT[...]</span></span>
+<span id="cb438-2"><a href="datatable-advanced-functions.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DT[.(...)]                          # .() only for use inside DT[...]</span></span>
+<span id="cb438-3"><a href="datatable-advanced-functions.html#cb438-3" aria-hidden="true" tabindex="-1"></a><span class="co"># DT[list(...)]                       # same; .(), list() and J() are identical</span></span>
+<span id="cb438-4"><a href="datatable-advanced-functions.html#cb438-4" aria-hidden="true" tabindex="-1"></a><span class="fu">SJ</span>(...)                             <span class="co"># DT[SJ(...)]</span></span>
+<span id="cb438-5"><a href="datatable-advanced-functions.html#cb438-5" aria-hidden="true" tabindex="-1"></a><span class="fu">CJ</span>(..., <span class="at">sorted=</span><span class="cn">TRUE</span>, <span class="at">unique=</span><span class="cn">FALSE</span>)  <span class="co"># DT[CJ(...)]</span></span></code></pre></div>
 <ul>
 <li>CJ</li>
 </ul>
 <p>我喜欢用<code>CJ()</code>函数创建笛卡尔积表。例如在商品运营中，时常需要将门店和商品形成笛卡尔积表，相比起<code>dplyr::full_join()</code> ,<code>data.table::merge.data.table(allow.cartesian = TRUE )</code>,<code>CJ</code>更加方便快捷。</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="datatable-advanced-functions.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CJ usage examples</span></span>
-<span id="cb400-2"><a href="datatable-advanced-functions.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CJ</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>))                 <span class="co"># sorted and keyed data.table</span></span>
-<span id="cb400-3"><a href="datatable-advanced-functions.html#cb400-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    V1 V2</span></span>
-<span id="cb400-4"><a href="datatable-advanced-functions.html#cb400-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: NA  1</span></span>
-<span id="cb400-5"><a href="datatable-advanced-functions.html#cb400-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: NA  2</span></span>
-<span id="cb400-6"><a href="datatable-advanced-functions.html#cb400-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: NA  3</span></span>
-<span id="cb400-7"><a href="datatable-advanced-functions.html#cb400-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:  1  1</span></span>
-<span id="cb400-8"><a href="datatable-advanced-functions.html#cb400-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:  1  2</span></span>
-<span id="cb400-9"><a href="datatable-advanced-functions.html#cb400-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:  1  3</span></span>
-<span id="cb400-10"><a href="datatable-advanced-functions.html#cb400-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7:  5  1</span></span>
-<span id="cb400-11"><a href="datatable-advanced-functions.html#cb400-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8:  5  2</span></span>
-<span id="cb400-12"><a href="datatable-advanced-functions.html#cb400-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9:  5  3</span></span>
-<span id="cb400-13"><a href="datatable-advanced-functions.html#cb400-13" aria-hidden="true" tabindex="-1"></a><span class="co"># do.call(CJ, list(c(5, NA, 1), c(1, 3, 2)))  # same as above</span></span>
-<span id="cb400-14"><a href="datatable-advanced-functions.html#cb400-14" aria-hidden="true" tabindex="-1"></a><span class="co"># CJ(c(5, NA, 1), c(1, 3, 2), sorted=FALSE)   # same order as input, unkeyed</span></span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="datatable-advanced-functions.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CJ usage examples</span></span>
+<span id="cb439-2"><a href="datatable-advanced-functions.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CJ</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>))                 <span class="co"># sorted and keyed data.table</span></span>
+<span id="cb439-3"><a href="datatable-advanced-functions.html#cb439-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    V1 V2</span></span>
+<span id="cb439-4"><a href="datatable-advanced-functions.html#cb439-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: NA  1</span></span>
+<span id="cb439-5"><a href="datatable-advanced-functions.html#cb439-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: NA  2</span></span>
+<span id="cb439-6"><a href="datatable-advanced-functions.html#cb439-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: NA  3</span></span>
+<span id="cb439-7"><a href="datatable-advanced-functions.html#cb439-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:  1  1</span></span>
+<span id="cb439-8"><a href="datatable-advanced-functions.html#cb439-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:  1  2</span></span>
+<span id="cb439-9"><a href="datatable-advanced-functions.html#cb439-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:  1  3</span></span>
+<span id="cb439-10"><a href="datatable-advanced-functions.html#cb439-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7:  5  1</span></span>
+<span id="cb439-11"><a href="datatable-advanced-functions.html#cb439-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8:  5  2</span></span>
+<span id="cb439-12"><a href="datatable-advanced-functions.html#cb439-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9:  5  3</span></span>
+<span id="cb439-13"><a href="datatable-advanced-functions.html#cb439-13" aria-hidden="true" tabindex="-1"></a><span class="co"># do.call(CJ, list(c(5, NA, 1), c(1, 3, 2)))  # same as above</span></span>
+<span id="cb439-14"><a href="datatable-advanced-functions.html#cb439-14" aria-hidden="true" tabindex="-1"></a><span class="co"># CJ(c(5, NA, 1), c(1, 3, 2), sorted=FALSE)   # same order as input, unkeyed</span></span></code></pre></div>
 <ul>
 <li>SJ</li>
 </ul>

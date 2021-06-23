@@ -34,7 +34,7 @@
 <link rel="prev" href="purrr-map.html"/>
 <link rel="next" href="purrr-multi-parameter.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,6 +53,15 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -564,76 +573,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="purrr:map2" class="section level2" number="10.4">
 <h2><span class="header-section-number">10.4</span> map2 系列函数</h2>
 <p>map2 系列函数是对 map 系列函数的升级，map 系列函数是一个列表参数，而 map2 系列是两个列表参数。常用函数如下：</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="purrr-map2.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(.x, .y, .f, ...)</span>
-<span id="cb24-2"><a href="purrr-map2.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="purrr-map2.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_lgl</span>(.x, .y, .f, ...)</span>
-<span id="cb24-4"><a href="purrr-map2.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="purrr-map2.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_int</span>(.x, .y, .f, ...)</span>
-<span id="cb24-6"><a href="purrr-map2.html#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="purrr-map2.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(.x, .y, .f, ...)</span>
-<span id="cb24-8"><a href="purrr-map2.html#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="purrr-map2.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_chr</span>(.x, .y, .f, ...)</span>
-<span id="cb24-10"><a href="purrr-map2.html#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="purrr-map2.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_raw</span>(.x, .y, .f, ...)</span>
-<span id="cb24-12"><a href="purrr-map2.html#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="purrr-map2.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfr</span>(.x, .y, .f, ..., <span class="at">.id =</span> <span class="cn">NULL</span>)</span>
-<span id="cb24-14"><a href="purrr-map2.html#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-15"><a href="purrr-map2.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfc</span>(.x, .y, .f, ...)</span>
-<span id="cb24-16"><a href="purrr-map2.html#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-17"><a href="purrr-map2.html#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(.x, .y, .f, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="purrr-map2.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(.x, .y, .f, ...)</span>
+<span id="cb575-2"><a href="purrr-map2.html#cb575-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-3"><a href="purrr-map2.html#cb575-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_lgl</span>(.x, .y, .f, ...)</span>
+<span id="cb575-4"><a href="purrr-map2.html#cb575-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-5"><a href="purrr-map2.html#cb575-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_int</span>(.x, .y, .f, ...)</span>
+<span id="cb575-6"><a href="purrr-map2.html#cb575-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-7"><a href="purrr-map2.html#cb575-7" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(.x, .y, .f, ...)</span>
+<span id="cb575-8"><a href="purrr-map2.html#cb575-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-9"><a href="purrr-map2.html#cb575-9" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_chr</span>(.x, .y, .f, ...)</span>
+<span id="cb575-10"><a href="purrr-map2.html#cb575-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-11"><a href="purrr-map2.html#cb575-11" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_raw</span>(.x, .y, .f, ...)</span>
+<span id="cb575-12"><a href="purrr-map2.html#cb575-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-13"><a href="purrr-map2.html#cb575-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfr</span>(.x, .y, .f, ..., <span class="at">.id =</span> <span class="cn">NULL</span>)</span>
+<span id="cb575-14"><a href="purrr-map2.html#cb575-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-15"><a href="purrr-map2.html#cb575-15" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfc</span>(.x, .y, .f, ...)</span>
+<span id="cb575-16"><a href="purrr-map2.html#cb575-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-17"><a href="purrr-map2.html#cb575-17" aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(.x, .y, .f, ...)</span></code></pre></div>
 <p>两个列表相加</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="purrr-map2.html#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb25-2"><a href="purrr-map2.html#cb25-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
-<span id="cb25-3"><a href="purrr-map2.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="purrr-map2.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x, y, <span class="sc">~</span> .x <span class="sc">+</span> .y)</span>
-<span id="cb25-5"><a href="purrr-map2.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb25-6"><a href="purrr-map2.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
-<span id="cb25-7"><a href="purrr-map2.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-8"><a href="purrr-map2.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb25-9"><a href="purrr-map2.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 21</span></span>
-<span id="cb25-10"><a href="purrr-map2.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-11"><a href="purrr-map2.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb25-12"><a href="purrr-map2.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 31</span></span>
-<span id="cb25-13"><a href="purrr-map2.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x, y, <span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
-<span id="cb25-14"><a href="purrr-map2.html#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb25-15"><a href="purrr-map2.html#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
-<span id="cb25-16"><a href="purrr-map2.html#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-17"><a href="purrr-map2.html#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb25-18"><a href="purrr-map2.html#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 21</span></span>
-<span id="cb25-19"><a href="purrr-map2.html#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-20"><a href="purrr-map2.html#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb25-21"><a href="purrr-map2.html#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 31</span></span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="purrr-map2.html#cb576-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb576-2"><a href="purrr-map2.html#cb576-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb576-3"><a href="purrr-map2.html#cb576-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb576-4"><a href="purrr-map2.html#cb576-4" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x, y, <span class="sc">~</span> .x <span class="sc">+</span> .y)</span>
+<span id="cb576-5"><a href="purrr-map2.html#cb576-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb576-6"><a href="purrr-map2.html#cb576-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
+<span id="cb576-7"><a href="purrr-map2.html#cb576-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb576-8"><a href="purrr-map2.html#cb576-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb576-9"><a href="purrr-map2.html#cb576-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 21</span></span>
+<span id="cb576-10"><a href="purrr-map2.html#cb576-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb576-11"><a href="purrr-map2.html#cb576-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb576-12"><a href="purrr-map2.html#cb576-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 31</span></span>
+<span id="cb576-13"><a href="purrr-map2.html#cb576-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x, y, <span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
+<span id="cb576-14"><a href="purrr-map2.html#cb576-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb576-15"><a href="purrr-map2.html#cb576-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
+<span id="cb576-16"><a href="purrr-map2.html#cb576-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb576-17"><a href="purrr-map2.html#cb576-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb576-18"><a href="purrr-map2.html#cb576-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 21</span></span>
+<span id="cb576-19"><a href="purrr-map2.html#cb576-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb576-20"><a href="purrr-map2.html#cb576-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb576-21"><a href="purrr-map2.html#cb576-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 31</span></span></code></pre></div>
 <p>两个向量分别相加后构造新的数据框</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="purrr-map2.html#cb26-1" aria-hidden="true" tabindex="-1"></a>ex_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2){</span>
-<span id="cb26-2"><a href="purrr-map2.html#cb26-2" aria-hidden="true" tabindex="-1"></a>col <span class="ot">&lt;-</span> arg1 <span class="sc">+</span> arg2</span>
-<span id="cb26-3"><a href="purrr-map2.html#cb26-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(col)</span>
-<span id="cb26-4"><a href="purrr-map2.html#cb26-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-5"><a href="purrr-map2.html#cb26-5" aria-hidden="true" tabindex="-1"></a>arg1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb26-6"><a href="purrr-map2.html#cb26-6" aria-hidden="true" tabindex="-1"></a>arg2 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">13</span></span>
-<span id="cb26-7"><a href="purrr-map2.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfr</span>(arg1, arg2, ex_fun)</span>
-<span id="cb26-8"><a href="purrr-map2.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   col</span></span>
-<span id="cb26-9"><a href="purrr-map2.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  11</span></span>
-<span id="cb26-10"><a href="purrr-map2.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  13</span></span>
-<span id="cb26-11"><a href="purrr-map2.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  15</span></span>
-<span id="cb26-12"><a href="purrr-map2.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  17</span></span>
-<span id="cb26-13"><a href="purrr-map2.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfc</span>(arg1, arg2, ex_fun)</span>
-<span id="cb26-14"><a href="purrr-map2.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; New names:</span></span>
-<span id="cb26-15"><a href="purrr-map2.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * col -&gt; col...1</span></span>
-<span id="cb26-16"><a href="purrr-map2.html#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * col -&gt; col...2</span></span>
-<span id="cb26-17"><a href="purrr-map2.html#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * col -&gt; col...3</span></span>
-<span id="cb26-18"><a href="purrr-map2.html#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * col -&gt; col...4</span></span>
-<span id="cb26-19"><a href="purrr-map2.html#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   col...1 col...2 col...3 col...4</span></span>
-<span id="cb26-20"><a href="purrr-map2.html#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      11      13      15      17</span></span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="purrr-map2.html#cb577-1" aria-hidden="true" tabindex="-1"></a>ex_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2){</span>
+<span id="cb577-2"><a href="purrr-map2.html#cb577-2" aria-hidden="true" tabindex="-1"></a>col <span class="ot">&lt;-</span> arg1 <span class="sc">+</span> arg2</span>
+<span id="cb577-3"><a href="purrr-map2.html#cb577-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(col)</span>
+<span id="cb577-4"><a href="purrr-map2.html#cb577-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb577-5"><a href="purrr-map2.html#cb577-5" aria-hidden="true" tabindex="-1"></a>arg1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb577-6"><a href="purrr-map2.html#cb577-6" aria-hidden="true" tabindex="-1"></a>arg2 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">13</span></span>
+<span id="cb577-7"><a href="purrr-map2.html#cb577-7" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfr</span>(arg1, arg2, ex_fun)</span>
+<span id="cb577-8"><a href="purrr-map2.html#cb577-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   col</span></span>
+<span id="cb577-9"><a href="purrr-map2.html#cb577-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  11</span></span>
+<span id="cb577-10"><a href="purrr-map2.html#cb577-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  13</span></span>
+<span id="cb577-11"><a href="purrr-map2.html#cb577-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  15</span></span>
+<span id="cb577-12"><a href="purrr-map2.html#cb577-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  17</span></span>
+<span id="cb577-13"><a href="purrr-map2.html#cb577-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfc</span>(arg1, arg2, ex_fun)</span>
+<span id="cb577-14"><a href="purrr-map2.html#cb577-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; New names:</span></span>
+<span id="cb577-15"><a href="purrr-map2.html#cb577-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * col -&gt; col...1</span></span>
+<span id="cb577-16"><a href="purrr-map2.html#cb577-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * col -&gt; col...2</span></span>
+<span id="cb577-17"><a href="purrr-map2.html#cb577-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * col -&gt; col...3</span></span>
+<span id="cb577-18"><a href="purrr-map2.html#cb577-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * col -&gt; col...4</span></span>
+<span id="cb577-19"><a href="purrr-map2.html#cb577-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   col...1 col...2 col...3 col...4</span></span>
+<span id="cb577-20"><a href="purrr-map2.html#cb577-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      11      13      15      17</span></span></code></pre></div>
 <p>两个列表中取较小值</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="purrr-map2.html#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb27-2"><a href="purrr-map2.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>),</span>
-<span id="cb27-3"><a href="purrr-map2.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">8</span>)</span>
-<span id="cb27-4"><a href="purrr-map2.html#cb27-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-5"><a href="purrr-map2.html#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="purrr-map2.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">pmin</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y)</span>
-<span id="cb27-7"><a href="purrr-map2.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 5</span></span>
-<span id="cb27-8"><a href="purrr-map2.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y, min)</span>
-<span id="cb27-9"><a href="purrr-map2.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="purrr-map2.html#cb578-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb578-2"><a href="purrr-map2.html#cb578-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>),</span>
+<span id="cb578-3"><a href="purrr-map2.html#cb578-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">8</span>)</span>
+<span id="cb578-4"><a href="purrr-map2.html#cb578-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb578-5"><a href="purrr-map2.html#cb578-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb578-6"><a href="purrr-map2.html#cb578-6" aria-hidden="true" tabindex="-1"></a><span class="fu">pmin</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y)</span>
+<span id="cb578-7"><a href="purrr-map2.html#cb578-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 5</span></span>
+<span id="cb578-8"><a href="purrr-map2.html#cb578-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y, min)</span>
+<span id="cb578-9"><a href="purrr-map2.html#cb578-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 5</span></span></code></pre></div>
 </div>
             </section>
 
@@ -692,6 +701,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -34,7 +34,7 @@
 <link rel="prev" href="purrr-basic-usage.html"/>
 <link rel="next" href="purrr-map2.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,6 +53,15 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -570,21 +579,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>map_lgl()</code>,<code>map_int()</code>,<code>map_dbl()</code>,<code>map_chr()</code>返回指定类型的原子向量,即逻辑型，整数型，实数型，字符型等。</li>
 <li><code>map_dfr()</code> 和 <code>map_dfc()</code>返回通过指定的行连接或列连接创建的数据框(data.frame)</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="purrr-map.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(.x, .f, ...)</span>
-<span id="cb9-2"><a href="purrr-map.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="purrr-map.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(.x, .f, ...)</span>
-<span id="cb9-4"><a href="purrr-map.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="purrr-map.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(.x, .f, ...)</span>
-<span id="cb9-6"><a href="purrr-map.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="purrr-map.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">map_int</span>(.x, .f, ...)</span>
-<span id="cb9-8"><a href="purrr-map.html#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="purrr-map.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(.x, .f, ...)</span>
-<span id="cb9-10"><a href="purrr-map.html#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="purrr-map.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">map_raw</span>(.x, .f, ...)</span>
-<span id="cb9-12"><a href="purrr-map.html#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="purrr-map.html#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(.x, .f, ..., <span class="at">.id =</span> <span class="cn">NULL</span>)</span>
-<span id="cb9-14"><a href="purrr-map.html#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="purrr-map.html#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfc</span>(.x, .f, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="purrr-map.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(.x, .f, ...)</span>
+<span id="cb560-2"><a href="purrr-map.html#cb560-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-3"><a href="purrr-map.html#cb560-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(.x, .f, ...)</span>
+<span id="cb560-4"><a href="purrr-map.html#cb560-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-5"><a href="purrr-map.html#cb560-5" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(.x, .f, ...)</span>
+<span id="cb560-6"><a href="purrr-map.html#cb560-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-7"><a href="purrr-map.html#cb560-7" aria-hidden="true" tabindex="-1"></a><span class="fu">map_int</span>(.x, .f, ...)</span>
+<span id="cb560-8"><a href="purrr-map.html#cb560-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-9"><a href="purrr-map.html#cb560-9" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(.x, .f, ...)</span>
+<span id="cb560-10"><a href="purrr-map.html#cb560-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-11"><a href="purrr-map.html#cb560-11" aria-hidden="true" tabindex="-1"></a><span class="fu">map_raw</span>(.x, .f, ...)</span>
+<span id="cb560-12"><a href="purrr-map.html#cb560-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-13"><a href="purrr-map.html#cb560-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(.x, .f, ..., <span class="at">.id =</span> <span class="cn">NULL</span>)</span>
+<span id="cb560-14"><a href="purrr-map.html#cb560-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-15"><a href="purrr-map.html#cb560-15" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfc</span>(.x, .f, ...)</span></code></pre></div>
 <p>在 purrr 中，参数<code>.f</code> 可以是一个 function，formula or vector,像 ~ .x + 2 这种形式的公式会被转换成 function 使用,关于参数的引用有如下三种方式：</p>
 <ol style="list-style-type: decimal">
 <li>对一个参数，使用 . 即可</li>
@@ -592,52 +601,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>对于更多参数，使用..1,..2,..3等等</li>
 </ol>
 <p>对于像 ~ .x + 2 会转换成：</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="purrr-map.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x){</span>
-<span id="cb10-2"><a href="purrr-map.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb10-3"><a href="purrr-map.html#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-4"><a href="purrr-map.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; function(x){</span></span>
-<span id="cb10-5"><a href="purrr-map.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x + 2</span></span>
-<span id="cb10-6"><a href="purrr-map.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; }</span></span>
-<span id="cb10-7"><a href="purrr-map.html#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="purrr-map.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ~ .x + . y</span></span>
-<span id="cb10-9"><a href="purrr-map.html#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="purrr-map.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x,y){</span>
-<span id="cb10-11"><a href="purrr-map.html#cb10-11" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb10-12"><a href="purrr-map.html#cb10-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-13"><a href="purrr-map.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; function(x,y){</span></span>
-<span id="cb10-14"><a href="purrr-map.html#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x + y</span></span>
-<span id="cb10-15"><a href="purrr-map.html#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; }</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="purrr-map.html#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb11-2"><a href="purrr-map.html#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
-<span id="cb11-3"><a href="purrr-map.html#cb11-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
-<span id="cb11-4"><a href="purrr-map.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="purrr-map.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(<span class="fu">list</span>(x,y,z),<span class="sc">~</span> (..<span class="dv">1</span> <span class="sc">+</span> ..<span class="dv">2</span> ) <span class="sc">*</span> ..<span class="dv">3</span>)</span>
-<span id="cb11-6"><a href="purrr-map.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb11-7"><a href="purrr-map.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1100</span></span>
-<span id="cb11-8"><a href="purrr-map.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-9"><a href="purrr-map.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb11-10"><a href="purrr-map.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4200</span></span>
-<span id="cb11-11"><a href="purrr-map.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-12"><a href="purrr-map.html#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb11-13"><a href="purrr-map.html#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9300</span></span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="purrr-map.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x){</span>
+<span id="cb561-2"><a href="purrr-map.html#cb561-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb561-3"><a href="purrr-map.html#cb561-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb561-4"><a href="purrr-map.html#cb561-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; function(x){</span></span>
+<span id="cb561-5"><a href="purrr-map.html#cb561-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x + 2</span></span>
+<span id="cb561-6"><a href="purrr-map.html#cb561-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; }</span></span>
+<span id="cb561-7"><a href="purrr-map.html#cb561-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb561-8"><a href="purrr-map.html#cb561-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ~ .x + . y</span></span>
+<span id="cb561-9"><a href="purrr-map.html#cb561-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb561-10"><a href="purrr-map.html#cb561-10" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x,y){</span>
+<span id="cb561-11"><a href="purrr-map.html#cb561-11" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb561-12"><a href="purrr-map.html#cb561-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb561-13"><a href="purrr-map.html#cb561-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; function(x,y){</span></span>
+<span id="cb561-14"><a href="purrr-map.html#cb561-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x + y</span></span>
+<span id="cb561-15"><a href="purrr-map.html#cb561-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; }</span></span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="purrr-map.html#cb562-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb562-2"><a href="purrr-map.html#cb562-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb562-3"><a href="purrr-map.html#cb562-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
+<span id="cb562-4"><a href="purrr-map.html#cb562-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb562-5"><a href="purrr-map.html#cb562-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(<span class="fu">list</span>(x,y,z),<span class="sc">~</span> (..<span class="dv">1</span> <span class="sc">+</span> ..<span class="dv">2</span> ) <span class="sc">*</span> ..<span class="dv">3</span>)</span>
+<span id="cb562-6"><a href="purrr-map.html#cb562-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb562-7"><a href="purrr-map.html#cb562-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1100</span></span>
+<span id="cb562-8"><a href="purrr-map.html#cb562-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb562-9"><a href="purrr-map.html#cb562-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb562-10"><a href="purrr-map.html#cb562-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4200</span></span>
+<span id="cb562-11"><a href="purrr-map.html#cb562-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb562-12"><a href="purrr-map.html#cb562-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb562-13"><a href="purrr-map.html#cb562-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9300</span></span></code></pre></div>
 <p>~ (..1 + ..2 ) * ..3转换成：</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="purrr-map.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x,y,z){</span>
-<span id="cb12-2"><a href="purrr-map.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">+</span> y) <span class="sc">*</span> z</span>
-<span id="cb12-3"><a href="purrr-map.html#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-4"><a href="purrr-map.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; function(x,y,z){</span></span>
-<span id="cb12-5"><a href="purrr-map.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   (x + y) * z</span></span>
-<span id="cb12-6"><a href="purrr-map.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; }</span></span>
-<span id="cb12-7"><a href="purrr-map.html#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="purrr-map.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pmap 实现</span></span>
-<span id="cb12-9"><a href="purrr-map.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(<span class="fu">list</span>(x,y,z),<span class="cf">function</span>(x,y,z) ( x <span class="sc">+</span> y ) <span class="sc">*</span>z)</span>
-<span id="cb12-10"><a href="purrr-map.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb12-11"><a href="purrr-map.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1100</span></span>
-<span id="cb12-12"><a href="purrr-map.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-13"><a href="purrr-map.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb12-14"><a href="purrr-map.html#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4200</span></span>
-<span id="cb12-15"><a href="purrr-map.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-16"><a href="purrr-map.html#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb12-17"><a href="purrr-map.html#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9300</span></span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="purrr-map.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x,y,z){</span>
+<span id="cb563-2"><a href="purrr-map.html#cb563-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">+</span> y) <span class="sc">*</span> z</span>
+<span id="cb563-3"><a href="purrr-map.html#cb563-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb563-4"><a href="purrr-map.html#cb563-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; function(x,y,z){</span></span>
+<span id="cb563-5"><a href="purrr-map.html#cb563-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   (x + y) * z</span></span>
+<span id="cb563-6"><a href="purrr-map.html#cb563-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; }</span></span>
+<span id="cb563-7"><a href="purrr-map.html#cb563-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb563-8"><a href="purrr-map.html#cb563-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pmap 实现</span></span>
+<span id="cb563-9"><a href="purrr-map.html#cb563-9" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(<span class="fu">list</span>(x,y,z),<span class="cf">function</span>(x,y,z) ( x <span class="sc">+</span> y ) <span class="sc">*</span>z)</span>
+<span id="cb563-10"><a href="purrr-map.html#cb563-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb563-11"><a href="purrr-map.html#cb563-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1100</span></span>
+<span id="cb563-12"><a href="purrr-map.html#cb563-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb563-13"><a href="purrr-map.html#cb563-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb563-14"><a href="purrr-map.html#cb563-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4200</span></span>
+<span id="cb563-15"><a href="purrr-map.html#cb563-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb563-16"><a href="purrr-map.html#cb563-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb563-17"><a href="purrr-map.html#cb563-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9300</span></span></code></pre></div>
 <blockquote>
 <p>对于 purrr 风格的公式，我们可以看自己心情，可以学习这种方式也可以不学，因为用 R 里面的 function 也可以完全满足需求</p>
 </blockquote>
@@ -645,14 +654,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>map_chr</li>
 </ul>
 <p><code>map_chr(.x, .f)</code> ,map_chr 返回对象为字符串</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="purrr-map.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(letters,paste,<span class="st">&#39;yufei-world&#39;</span>,<span class="at">sep=</span><span class="st">&#39;-&#39;</span>)</span>
-<span id="cb13-2"><a href="purrr-map.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;a-yufei-world&quot; &quot;b-yufei-world&quot; &quot;c-yufei-world&quot; &quot;d-yufei-world&quot;</span></span>
-<span id="cb13-3"><a href="purrr-map.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;e-yufei-world&quot; &quot;f-yufei-world&quot; &quot;g-yufei-world&quot; &quot;h-yufei-world&quot;</span></span>
-<span id="cb13-4"><a href="purrr-map.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;i-yufei-world&quot; &quot;j-yufei-world&quot; &quot;k-yufei-world&quot; &quot;l-yufei-world&quot;</span></span>
-<span id="cb13-5"><a href="purrr-map.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;m-yufei-world&quot; &quot;n-yufei-world&quot; &quot;o-yufei-world&quot; &quot;p-yufei-world&quot;</span></span>
-<span id="cb13-6"><a href="purrr-map.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;q-yufei-world&quot; &quot;r-yufei-world&quot; &quot;s-yufei-world&quot; &quot;t-yufei-world&quot;</span></span>
-<span id="cb13-7"><a href="purrr-map.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;u-yufei-world&quot; &quot;v-yufei-world&quot; &quot;w-yufei-world&quot; &quot;x-yufei-world&quot;</span></span>
-<span id="cb13-8"><a href="purrr-map.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;y-yufei-world&quot; &quot;z-yufei-world&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="purrr-map.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(letters,paste,<span class="st">&#39;yufei-world&#39;</span>,<span class="at">sep=</span><span class="st">&#39;-&#39;</span>)</span>
+<span id="cb564-2"><a href="purrr-map.html#cb564-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;a-yufei-world&quot; &quot;b-yufei-world&quot; &quot;c-yufei-world&quot; &quot;d-yufei-world&quot;</span></span>
+<span id="cb564-3"><a href="purrr-map.html#cb564-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;e-yufei-world&quot; &quot;f-yufei-world&quot; &quot;g-yufei-world&quot; &quot;h-yufei-world&quot;</span></span>
+<span id="cb564-4"><a href="purrr-map.html#cb564-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;i-yufei-world&quot; &quot;j-yufei-world&quot; &quot;k-yufei-world&quot; &quot;l-yufei-world&quot;</span></span>
+<span id="cb564-5"><a href="purrr-map.html#cb564-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;m-yufei-world&quot; &quot;n-yufei-world&quot; &quot;o-yufei-world&quot; &quot;p-yufei-world&quot;</span></span>
+<span id="cb564-6"><a href="purrr-map.html#cb564-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;q-yufei-world&quot; &quot;r-yufei-world&quot; &quot;s-yufei-world&quot; &quot;t-yufei-world&quot;</span></span>
+<span id="cb564-7"><a href="purrr-map.html#cb564-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;u-yufei-world&quot; &quot;v-yufei-world&quot; &quot;w-yufei-world&quot; &quot;x-yufei-world&quot;</span></span>
+<span id="cb564-8"><a href="purrr-map.html#cb564-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;y-yufei-world&quot; &quot;z-yufei-world&quot;</span></span></code></pre></div>
 </div>
 <div id="案例-5" class="section level3" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> 案例</h3>
@@ -660,117 +669,117 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>map</li>
 </ul>
 <p><code>map()</code>函数返回列表，如下：</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="purrr-map.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="purrr-map.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(rnorm, <span class="at">n =</span> <span class="dv">10</span>)</span>
-<span id="cb14-3"><a href="purrr-map.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="purrr-map.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 用匿名函数</span></span>
-<span id="cb14-5"><a href="purrr-map.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a href="purrr-map.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">10</span>, x))</span>
-<span id="cb14-7"><a href="purrr-map.html#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="purrr-map.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># purrr 风格公式</span></span>
-<span id="cb14-9"><a href="purrr-map.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
-<span id="cb14-10"><a href="purrr-map.html#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, .x))</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="purrr-map.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
+<span id="cb565-2"><a href="purrr-map.html#cb565-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(rnorm, <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb565-3"><a href="purrr-map.html#cb565-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb565-4"><a href="purrr-map.html#cb565-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 用匿名函数</span></span>
+<span id="cb565-5"><a href="purrr-map.html#cb565-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
+<span id="cb565-6"><a href="purrr-map.html#cb565-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">10</span>, x))</span>
+<span id="cb565-7"><a href="purrr-map.html#cb565-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb565-8"><a href="purrr-map.html#cb565-8" aria-hidden="true" tabindex="-1"></a><span class="co"># purrr 风格公式</span></span>
+<span id="cb565-9"><a href="purrr-map.html#cb565-9" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
+<span id="cb565-10"><a href="purrr-map.html#cb565-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, .x))</span></code></pre></div>
 <p>使用<code>map()</code>提取列表对象中的列表元素:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="purrr-map.html#cb15-1" aria-hidden="true" tabindex="-1"></a>l2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb15-2"><a href="purrr-map.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,     letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]),</span>
-<span id="cb15-3"><a href="purrr-map.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">num =</span> <span class="dv">101</span><span class="sc">:</span><span class="dv">103</span>, letters[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>]),</span>
-<span id="cb15-4"><a href="purrr-map.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>()</span>
-<span id="cb15-5"><a href="purrr-map.html#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-6"><a href="purrr-map.html#cb15-6" aria-hidden="true" tabindex="-1"></a>l2 <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb15-7"><a href="purrr-map.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb15-8"><a href="purrr-map.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;b&quot;</span></span>
-<span id="cb15-9"><a href="purrr-map.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-10"><a href="purrr-map.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb15-11"><a href="purrr-map.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e&quot;</span></span>
-<span id="cb15-12"><a href="purrr-map.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-13"><a href="purrr-map.html#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb15-14"><a href="purrr-map.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="purrr-map.html#cb566-1" aria-hidden="true" tabindex="-1"></a>l2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb566-2"><a href="purrr-map.html#cb566-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,     letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]),</span>
+<span id="cb566-3"><a href="purrr-map.html#cb566-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">num =</span> <span class="dv">101</span><span class="sc">:</span><span class="dv">103</span>, letters[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>]),</span>
+<span id="cb566-4"><a href="purrr-map.html#cb566-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>()</span>
+<span id="cb566-5"><a href="purrr-map.html#cb566-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb566-6"><a href="purrr-map.html#cb566-6" aria-hidden="true" tabindex="-1"></a>l2 <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb566-7"><a href="purrr-map.html#cb566-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb566-8"><a href="purrr-map.html#cb566-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;b&quot;</span></span>
+<span id="cb566-9"><a href="purrr-map.html#cb566-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb566-10"><a href="purrr-map.html#cb566-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb566-11"><a href="purrr-map.html#cb566-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e&quot;</span></span>
+<span id="cb566-12"><a href="purrr-map.html#cb566-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb566-13"><a href="purrr-map.html#cb566-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb566-14"><a href="purrr-map.html#cb566-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
 <p>提取每个列表中的元素，上述代码表示提取列表中第二个对象的第二位置的元素：</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="purrr-map.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])[[<span class="dv">2</span>]][<span class="dv">2</span>]</span>
-<span id="cb16-2"><a href="purrr-map.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;b&quot;</span></span>
-<span id="cb16-3"><a href="purrr-map.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">num =</span> <span class="dv">101</span><span class="sc">:</span><span class="dv">103</span>, letters[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>])[[<span class="dv">2</span>]][<span class="dv">2</span>]</span>
-<span id="cb16-4"><a href="purrr-map.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="purrr-map.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])[[<span class="dv">2</span>]][<span class="dv">2</span>]</span>
+<span id="cb567-2"><a href="purrr-map.html#cb567-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;b&quot;</span></span>
+<span id="cb567-3"><a href="purrr-map.html#cb567-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">num =</span> <span class="dv">101</span><span class="sc">:</span><span class="dv">103</span>, letters[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>])[[<span class="dv">2</span>]][<span class="dv">2</span>]</span>
+<span id="cb567-4"><a href="purrr-map.html#cb567-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e&quot;</span></span></code></pre></div>
 <p>通过list构建由“名称”和“数字”构建的提取器提取元素：</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="purrr-map.html#cb17-1" aria-hidden="true" tabindex="-1"></a>l2 <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="fu">list</span>(<span class="st">&quot;num&quot;</span>, <span class="dv">3</span>))</span>
-<span id="cb17-2"><a href="purrr-map.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb17-3"><a href="purrr-map.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
-<span id="cb17-4"><a href="purrr-map.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb17-5"><a href="purrr-map.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb17-6"><a href="purrr-map.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 103</span></span>
-<span id="cb17-7"><a href="purrr-map.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb17-8"><a href="purrr-map.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb17-9"><a href="purrr-map.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb17-10"><a href="purrr-map.html#cb17-10" aria-hidden="true" tabindex="-1"></a>l2 <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="fu">list</span>(<span class="st">&quot;num&quot;</span>, <span class="dv">3</span>), <span class="at">.default =</span> <span class="cn">NA</span>)</span>
-<span id="cb17-11"><a href="purrr-map.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]   3 103  NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="purrr-map.html#cb568-1" aria-hidden="true" tabindex="-1"></a>l2 <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="fu">list</span>(<span class="st">&quot;num&quot;</span>, <span class="dv">3</span>))</span>
+<span id="cb568-2"><a href="purrr-map.html#cb568-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb568-3"><a href="purrr-map.html#cb568-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb568-4"><a href="purrr-map.html#cb568-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb568-5"><a href="purrr-map.html#cb568-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb568-6"><a href="purrr-map.html#cb568-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 103</span></span>
+<span id="cb568-7"><a href="purrr-map.html#cb568-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb568-8"><a href="purrr-map.html#cb568-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb568-9"><a href="purrr-map.html#cb568-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb568-10"><a href="purrr-map.html#cb568-10" aria-hidden="true" tabindex="-1"></a>l2 <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="fu">list</span>(<span class="st">&quot;num&quot;</span>, <span class="dv">3</span>), <span class="at">.default =</span> <span class="cn">NA</span>)</span>
+<span id="cb568-11"><a href="purrr-map.html#cb568-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]   3 103  NA</span></span></code></pre></div>
 <ul>
 <li>map_dbl</li>
 </ul>
 <p><code>map_dbl()</code>返回数字向量(双精度)。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="purrr-map.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="purrr-map.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(rnorm, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span>  <span class="co">#输出列表</span></span>
-<span id="cb18-3"><a href="purrr-map.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(mean)</span>
-<span id="cb18-4"><a href="purrr-map.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  0.559  1.821  2.876  4.152  5.116  6.127  6.911  8.281  9.237 10.627</span></span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="purrr-map.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
+<span id="cb569-2"><a href="purrr-map.html#cb569-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(rnorm, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span>  <span class="co">#输出列表</span></span>
+<span id="cb569-3"><a href="purrr-map.html#cb569-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(mean)</span>
+<span id="cb569-4"><a href="purrr-map.html#cb569-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  0.559  1.821  2.876  4.152  5.116  6.127  6.911  8.281  9.237 10.627</span></span></code></pre></div>
 <p>在数据框上应用，由于数据框(data.frame)可以看成是特殊的列表，df[[1]],df[[2]],df[[3]]等。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="purrr-map.html#cb19-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(sum)</span>
-<span id="cb19-2"><a href="purrr-map.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  mpg  cyl disp   hp drat   wt qsec   vs   am gear carb </span></span>
-<span id="cb19-3"><a href="purrr-map.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  643  198 7383 4694  115  103  571   14   13  118   90</span></span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="purrr-map.html#cb570-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(sum)</span>
+<span id="cb570-2"><a href="purrr-map.html#cb570-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  mpg  cyl disp   hp drat   wt qsec   vs   am gear carb </span></span>
+<span id="cb570-3"><a href="purrr-map.html#cb570-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  643  198 7383 4694  115  103  571   14   13  118   90</span></span></code></pre></div>
 <p>上述计算可以理解为计算:sum(mtcars[[1]]),sum(mtcars[[2]]),sum(mtcars[[3]])等。</p>
 <ul>
 <li>map_chr</li>
 </ul>
 <p><code>map_chr()</code>返回字符向量。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="purrr-map.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;foo&quot;</span>, <span class="st">&quot;bar&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(paste0, <span class="st">&quot;:suffix&quot;</span>)</span>
-<span id="cb20-2"><a href="purrr-map.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;foo:suffix&quot; &quot;bar:suffix&quot;</span></span>
-<span id="cb20-3"><a href="purrr-map.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="purrr-map.html#cb20-4" aria-hidden="true" tabindex="-1"></a>favorite_desserts <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">Sophia =</span> <span class="st">&quot;banana bread&quot;</span>, <span class="at">Eliott =</span> <span class="st">&quot;pancakes&quot;</span>, <span class="at">Karina =</span> <span class="st">&quot;chocolate cake&quot;</span>)</span>
-<span id="cb20-5"><a href="purrr-map.html#cb20-5" aria-hidden="true" tabindex="-1"></a>favorite_desserts <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(<span class="sc">~</span> <span class="fu">paste</span>(.x, <span class="st">&quot;rocks!&quot;</span>))</span>
-<span id="cb20-6"><a href="purrr-map.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  Sophia                  Eliott                  Karina </span></span>
-<span id="cb20-7"><a href="purrr-map.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &quot;banana bread rocks!&quot;       &quot;pancakes rocks!&quot; &quot;chocolate cake rocks!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="purrr-map.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;foo&quot;</span>, <span class="st">&quot;bar&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(paste0, <span class="st">&quot;:suffix&quot;</span>)</span>
+<span id="cb571-2"><a href="purrr-map.html#cb571-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;foo:suffix&quot; &quot;bar:suffix&quot;</span></span>
+<span id="cb571-3"><a href="purrr-map.html#cb571-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb571-4"><a href="purrr-map.html#cb571-4" aria-hidden="true" tabindex="-1"></a>favorite_desserts <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">Sophia =</span> <span class="st">&quot;banana bread&quot;</span>, <span class="at">Eliott =</span> <span class="st">&quot;pancakes&quot;</span>, <span class="at">Karina =</span> <span class="st">&quot;chocolate cake&quot;</span>)</span>
+<span id="cb571-5"><a href="purrr-map.html#cb571-5" aria-hidden="true" tabindex="-1"></a>favorite_desserts <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(<span class="sc">~</span> <span class="fu">paste</span>(.x, <span class="st">&quot;rocks!&quot;</span>))</span>
+<span id="cb571-6"><a href="purrr-map.html#cb571-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  Sophia                  Eliott                  Karina </span></span>
+<span id="cb571-7"><a href="purrr-map.html#cb571-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &quot;banana bread rocks!&quot;       &quot;pancakes rocks!&quot; &quot;chocolate cake rocks!&quot;</span></span></code></pre></div>
 <ul>
 <li>map_int</li>
 </ul>
 <p>通过名字或者是数字位置提取内容。</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="purrr-map.html#cb21-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">list</span>(<span class="at">a =</span> 1L), <span class="fu">list</span>(<span class="at">a =</span> <span class="cn">NULL</span>, <span class="at">b =</span> 2L), <span class="fu">list</span>(<span class="at">b =</span> 3L))</span>
-<span id="cb21-2"><a href="purrr-map.html#cb21-2" aria-hidden="true" tabindex="-1"></a>l1 <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="st">&quot;a&quot;</span>, <span class="at">.default =</span> <span class="st">&quot;???&quot;</span>)</span>
-<span id="cb21-3"><a href="purrr-map.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb21-4"><a href="purrr-map.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb21-5"><a href="purrr-map.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb21-6"><a href="purrr-map.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb21-7"><a href="purrr-map.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;???&quot;</span></span>
-<span id="cb21-8"><a href="purrr-map.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb21-9"><a href="purrr-map.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb21-10"><a href="purrr-map.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;???&quot;</span></span>
-<span id="cb21-11"><a href="purrr-map.html#cb21-11" aria-hidden="true" tabindex="-1"></a>l1 <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="st">&quot;b&quot;</span>, <span class="at">.default =</span> <span class="cn">NA</span>)</span>
-<span id="cb21-12"><a href="purrr-map.html#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  2  3</span></span>
-<span id="cb21-13"><a href="purrr-map.html#cb21-13" aria-hidden="true" tabindex="-1"></a>l1 <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="dv">2</span>, <span class="at">.default =</span> <span class="cn">NA</span>)</span>
-<span id="cb21-14"><a href="purrr-map.html#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  2 NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="purrr-map.html#cb572-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">list</span>(<span class="at">a =</span> 1L), <span class="fu">list</span>(<span class="at">a =</span> <span class="cn">NULL</span>, <span class="at">b =</span> 2L), <span class="fu">list</span>(<span class="at">b =</span> 3L))</span>
+<span id="cb572-2"><a href="purrr-map.html#cb572-2" aria-hidden="true" tabindex="-1"></a>l1 <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="st">&quot;a&quot;</span>, <span class="at">.default =</span> <span class="st">&quot;???&quot;</span>)</span>
+<span id="cb572-3"><a href="purrr-map.html#cb572-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb572-4"><a href="purrr-map.html#cb572-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb572-5"><a href="purrr-map.html#cb572-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb572-6"><a href="purrr-map.html#cb572-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb572-7"><a href="purrr-map.html#cb572-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;???&quot;</span></span>
+<span id="cb572-8"><a href="purrr-map.html#cb572-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb572-9"><a href="purrr-map.html#cb572-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb572-10"><a href="purrr-map.html#cb572-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;???&quot;</span></span>
+<span id="cb572-11"><a href="purrr-map.html#cb572-11" aria-hidden="true" tabindex="-1"></a>l1 <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="st">&quot;b&quot;</span>, <span class="at">.default =</span> <span class="cn">NA</span>)</span>
+<span id="cb572-12"><a href="purrr-map.html#cb572-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  2  3</span></span>
+<span id="cb572-13"><a href="purrr-map.html#cb572-13" aria-hidden="true" tabindex="-1"></a>l1 <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="dv">2</span>, <span class="at">.default =</span> <span class="cn">NA</span>)</span>
+<span id="cb572-14"><a href="purrr-map.html#cb572-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA  2 NA</span></span></code></pre></div>
 <ul>
 <li>map_df</li>
 </ul>
 <p><code>map_df(.x, .f)</code>,map_df 返回对象为数据框,类似函数 <code>map_dfr(.x,.f)</code>,<code>map_dfc(.x,.f)</code></p>
 <p>map_df()函数示例</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="purrr-map.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="cf">function</span>(.x) {</span>
-<span id="cb22-2"><a href="purrr-map.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">old_number =</span> .x, </span>
-<span id="cb22-3"><a href="purrr-map.html#cb22-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">new_number =</span> <span class="fu">addTen</span>(.x)))</span>
-<span id="cb22-4"><a href="purrr-map.html#cb22-4" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb22-5"><a href="purrr-map.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
-<span id="cb22-6"><a href="purrr-map.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
-<span id="cb22-7"><a href="purrr-map.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
-<span id="cb22-8"><a href="purrr-map.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span>
-<span id="cb22-9"><a href="purrr-map.html#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="purrr-map.html#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-11"><a href="purrr-map.html#cb22-11" aria-hidden="true" tabindex="-1"></a>make_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb22-12"><a href="purrr-map.html#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">old_number =</span> x,<span class="at">new_number =</span> <span class="fu">addTen</span>(x))</span>
-<span id="cb22-13"><a href="purrr-map.html#cb22-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-14"><a href="purrr-map.html#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="purrr-map.html#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),make_dataframe)</span>
-<span id="cb22-16"><a href="purrr-map.html#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
-<span id="cb22-17"><a href="purrr-map.html#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
-<span id="cb22-18"><a href="purrr-map.html#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
-<span id="cb22-19"><a href="purrr-map.html#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="purrr-map.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>), <span class="cf">function</span>(.x) {</span>
+<span id="cb573-2"><a href="purrr-map.html#cb573-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">data.frame</span>(<span class="at">old_number =</span> .x, </span>
+<span id="cb573-3"><a href="purrr-map.html#cb573-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">new_number =</span> <span class="fu">addTen</span>(.x)))</span>
+<span id="cb573-4"><a href="purrr-map.html#cb573-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb573-5"><a href="purrr-map.html#cb573-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
+<span id="cb573-6"><a href="purrr-map.html#cb573-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
+<span id="cb573-7"><a href="purrr-map.html#cb573-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
+<span id="cb573-8"><a href="purrr-map.html#cb573-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span>
+<span id="cb573-9"><a href="purrr-map.html#cb573-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb573-10"><a href="purrr-map.html#cb573-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb573-11"><a href="purrr-map.html#cb573-11" aria-hidden="true" tabindex="-1"></a>make_dataframe <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb573-12"><a href="purrr-map.html#cb573-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">old_number =</span> x,<span class="at">new_number =</span> <span class="fu">addTen</span>(x))</span>
+<span id="cb573-13"><a href="purrr-map.html#cb573-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb573-14"><a href="purrr-map.html#cb573-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb573-15"><a href="purrr-map.html#cb573-15" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>),make_dataframe)</span>
+<span id="cb573-16"><a href="purrr-map.html#cb573-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   old_number new_number</span></span>
+<span id="cb573-17"><a href="purrr-map.html#cb573-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1         11</span></span>
+<span id="cb573-18"><a href="purrr-map.html#cb573-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          4         14</span></span>
+<span id="cb573-19"><a href="purrr-map.html#cb573-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          7         17</span></span></code></pre></div>
 <p>在<a href="#data-read-write-description">数据导入导出</a>章节中提到的<a href="readxl-description.html#batch:read">批量读取</a>,通过指定全部要读取的文件列表，使用<code>map_dfr()</code>函数读取全部文件并合并数据源。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="purrr-map.html#cb23-1" aria-hidden="true" tabindex="-1"></a>allfiles <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&#39;./data/read-write/&#39;</span>,<span class="at">pattern =</span> <span class="st">&#39;^[a-z].xlsx$&#39;</span>,<span class="at">full.names =</span> T)</span>
-<span id="cb23-2"><a href="purrr-map.html#cb23-2" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(allfiles,read_excel)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="purrr-map.html#cb574-1" aria-hidden="true" tabindex="-1"></a>allfiles <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&#39;./data/read-write/&#39;</span>,<span class="at">pattern =</span> <span class="st">&#39;^[a-z].xlsx$&#39;</span>,<span class="at">full.names =</span> T)</span>
+<span id="cb574-2"><a href="purrr-map.html#cb574-2" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dfr</span>(allfiles,read_excel)</span></code></pre></div>
 <blockquote>
 <p>在我实际工作中，实现传统零售行业门店之间商品调拨时就可使用该函数,更多详细信息可以查看我的语雀笔记。</p>
 </blockquote>
@@ -833,6 +842,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

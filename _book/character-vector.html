@@ -24,7 +24,7 @@
 <meta name="author" content="Yufei Zhong" />
 
 
-<meta name="date" content="2021-06-15" />
+<meta name="date" content="2021-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="tidyr-nest-data.html"/>
 <link rel="next" href="tidyr-expand.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,6 +53,15 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -151,7 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.1" data-path="readxl-description.html"><a href="readxl-description.html#readxl:install"><i class="fa fa-check"></i><b>1.1.1</b> 安装</a></li>
 <li class="chapter" data-level="1.1.2" data-path="readxl-description.html"><a href="readxl-description.html#readxl:usage"><i class="fa fa-check"></i><b>1.1.2</b> 用法</a></li>
 <li class="chapter" data-level="1.1.3" data-path="readxl-description.html"><a href="readxl-description.html#batch:read"><i class="fa fa-check"></i><b>1.1.3</b> 批量读取</a></li>
-<li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#批量输出"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
+<li class="chapter" data-level="1.1.4" data-path="readxl-description.html"><a href="readxl-description.html#batch:write"><i class="fa fa-check"></i><b>1.1.4</b> 批量输出</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="writexl.html"><a href="writexl.html"><i class="fa fa-check"></i><b>1.2</b> writexl</a>
 <ul>
@@ -253,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.9" data-path="dplyr-reference-material.html"><a href="dplyr-reference-material.html"><i class="fa fa-check"></i><b>2.9</b> 参考资料</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> tidyr</a>
+<li class="chapter" data-level="3" data-path="Data-tidyr-package.html"><a href="Data-tidyr-package.html"><i class="fa fa-check"></i><b>3</b> 整洁数据之 tidyr</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="tidyr-useage.html"><a href="tidyr-useage.html"><i class="fa fa-check"></i><b>3.1</b> tidyr 介绍</a>
 <ul>
@@ -308,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="character-application.html"><a href="character-application.html#实现excel函数"><i class="fa fa-check"></i><b>4.3.1</b> 实现excel函数</a></li>
 <li class="chapter" data-level="4.3.2" data-path="character-application.html"><a href="character-application.html#使用案例"><i class="fa fa-check"></i><b>4.3.2</b> 使用案例</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="character-the-difference-stringr-and-base.html"><a href="character-the-difference-stringr-and-base.html"><i class="fa fa-check"></i><b>4.4</b> base和stringr</a></li>
+<li class="chapter" data-level="4.4" data-path="character-the-difference-stringr-and-base.html"><a href="character-the-difference-stringr-and-base.html"><i class="fa fa-check"></i><b>4.4</b> base 和 stringr</a></li>
 <li class="chapter" data-level="4.5" data-path="character-reference-material.html"><a href="character-reference-material.html"><i class="fa fa-check"></i><b>4.5</b> 参考资料</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="datetime.html"><a href="datetime.html"><i class="fa fa-check"></i><b>5</b> 时间处理</a>
@@ -344,7 +353,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>6</b> 因子介绍</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="创建因子.html"><a href="创建因子.html"><i class="fa fa-check"></i><b>6.1</b> 创建因子</a></li>
+<li class="chapter" data-level="6.1" data-path="forcats-introduction.html"><a href="forcats-introduction.html"><i class="fa fa-check"></i><b>6.1</b> 介绍</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="forcats-introduction.html"><a href="forcats-introduction.html#forcats:install"><i class="fa fa-check"></i><b>6.1.1</b> 安装</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="forcats-usage.html"><a href="forcats-usage.html"><i class="fa fa-check"></i><b>6.2</b> 用法</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="forcats-usage.html"><a href="forcats-usage.html#创建因子"><i class="fa fa-check"></i><b>6.2.1</b> 创建因子</a></li>
+<li class="chapter" data-level="6.2.2" data-path="forcats-usage.html"><a href="forcats-usage.html#修改因子顺序"><i class="fa fa-check"></i><b>6.2.2</b> 修改因子顺序</a></li>
+<li class="chapter" data-level="6.2.3" data-path="forcats-usage.html"><a href="forcats-usage.html#修改因子级别"><i class="fa fa-check"></i><b>6.2.3</b> 修改因子级别</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="Data-Manipulation-datatable.html"><a href="Data-Manipulation-datatable.html"><i class="fa fa-check"></i><b>7</b> data.table</a>
 <ul>
@@ -452,19 +470,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="apply-function.html"><a href="apply-function.html"><i class="fa fa-check"></i><b>9.3</b> apply系列函数</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="apply-function.html"><a href="apply-function.html#lapply"><i class="fa fa-check"></i><b>9.3.1</b> lapply 循环迭代</a></li>
-<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply-sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply {# sapply}</a></li>
-<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply-迭代安全函数-vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数{# vapply}</a></li>
-<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply-多维数据-apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据{# apply}</a></li>
+<li class="chapter" data-level="9.3.2" data-path="apply-function.html"><a href="apply-function.html#sapply"><i class="fa fa-check"></i><b>9.3.2</b> sapply</a></li>
+<li class="chapter" data-level="9.3.3" data-path="apply-function.html"><a href="apply-function.html#vapply"><i class="fa fa-check"></i><b>9.3.3</b> vapply 迭代安全函数</a></li>
+<li class="chapter" data-level="9.3.4" data-path="apply-function.html"><a href="apply-function.html#apply"><i class="fa fa-check"></i><b>9.3.4</b> apply 多维数据</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="purrr-Iteration.html"><a href="purrr-Iteration.html"><i class="fa fa-check"></i><b>10</b> 循环迭代purrr介绍</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.1</b> 简单用法</a></li>
-<li class="chapter" data-level="10.2" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.2</b> map系列常用函数</a></li>
-<li class="chapter" data-level="10.3" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.3</b> 归约累计函数</a></li>
-<li class="chapter" data-level="10.4" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.4</b> 安全函数</a></li>
-<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> 映射多个参数</a></li>
-<li class="chapter" data-level="10.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.6</b> 其他函数介绍</a></li>
+<li class="chapter" data-level="10.1" data-path="安装-3.html"><a href="安装-3.html"><i class="fa fa-check"></i><b>10.1</b> 安装</a></li>
+<li class="chapter" data-level="10.2" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html"><i class="fa fa-check"></i><b>10.2</b> 常规用法</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html#map-系列"><i class="fa fa-check"></i><b>10.2.1</b> map 系列</a></li>
+<li class="chapter" data-level="10.2.2" data-path="purrr-basic-usage.html"><a href="purrr-basic-usage.html#pmap-系列"><i class="fa fa-check"></i><b>10.2.2</b> pmap 系列</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="purrr-map.html"><a href="purrr-map.html"><i class="fa fa-check"></i><b>10.3</b> map系列函数</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="purrr-map.html"><a href="purrr-map.html#用法-3"><i class="fa fa-check"></i><b>10.3.1</b> 用法</a></li>
+<li class="chapter" data-level="10.3.2" data-path="purrr-map.html"><a href="purrr-map.html#案例-5"><i class="fa fa-check"></i><b>10.3.2</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="purrr-map2.html"><a href="purrr-map2.html"><i class="fa fa-check"></i><b>10.4</b> map2 系列函数</a></li>
+<li class="chapter" data-level="10.5" data-path="purrr-multi-parameter.html"><a href="purrr-multi-parameter.html"><i class="fa fa-check"></i><b>10.5</b> pmap系列函数</a></li>
+<li class="chapter" data-level="10.6" data-path="purrr-reduce.html"><a href="purrr-reduce.html"><i class="fa fa-check"></i><b>10.6</b> 归约累计函数</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="purrr-reduce.html"><a href="purrr-reduce.html#reduce-函数"><i class="fa fa-check"></i><b>10.6.1</b> reduce 函数</a></li>
+<li class="chapter" data-level="10.6.2" data-path="purrr-reduce.html"><a href="purrr-reduce.html#accumulate-函数"><i class="fa fa-check"></i><b>10.6.2</b> accumulate 函数</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="purrr-safely-functions.html"><a href="purrr-safely-functions.html"><i class="fa fa-check"></i><b>10.7</b> 安全函数</a></li>
+<li class="chapter" data-level="10.8" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html"><i class="fa fa-check"></i><b>10.8</b> 其他函数介绍</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#flatten-系列"><i class="fa fa-check"></i><b>10.8.1</b> flatten 系列</a></li>
+<li class="chapter" data-level="10.8.2" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#imap-函数"><i class="fa fa-check"></i><b>10.8.2</b> imap 函数</a></li>
+<li class="chapter" data-level="10.8.3" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#walk-系列"><i class="fa fa-check"></i><b>10.8.3</b> walk 系列</a></li>
+<li class="chapter" data-level="10.8.4" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#逻辑判断函数"><i class="fa fa-check"></i><b>10.8.4</b> 逻辑判断函数</a></li>
+<li class="chapter" data-level="10.8.5" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#提取函数"><i class="fa fa-check"></i><b>10.8.5</b> 提取函数</a></li>
+<li class="chapter" data-level="10.8.6" data-path="purrr-else-functions.html"><a href="purrr-else-functions.html#筛选函数"><i class="fa fa-check"></i><b>10.8.6</b> 筛选函数</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="self-define-function.html"><a href="self-define-function.html"><i class="fa fa-check"></i><b>11</b> 自定义函数</a>
 <ul>
@@ -538,15 +578,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>extract()</code>函数将字符列提取为多列。所以该函数能实现的功能，大部分基于对<a href="http://baiy.cn/utils/_regex_doc/index.htm">正则表达式</a>的使用。和 Excel 中的 <code>Ctrl + E</code>用法类似。</p>
 <div id="参数-1" class="section level4" number="3.5.1.1">
 <h4><span class="header-section-number">3.5.1.1</span> 参数</h4>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="character-vector.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">extract</span>(</span>
-<span id="cb34-2"><a href="character-vector.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  data,</span>
-<span id="cb34-3"><a href="character-vector.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  col,</span>
-<span id="cb34-4"><a href="character-vector.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  into,</span>
-<span id="cb34-5"><a href="character-vector.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">regex =</span> <span class="st">&quot;([[:alnum:]]+)&quot;</span>,</span>
-<span id="cb34-6"><a href="character-vector.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb34-7"><a href="character-vector.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">convert =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb34-8"><a href="character-vector.html#cb34-8" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb34-9"><a href="character-vector.html#cb34-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="character-vector.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">extract</span>(</span>
+<span id="cb230-2"><a href="character-vector.html#cb230-2" aria-hidden="true" tabindex="-1"></a>  data,</span>
+<span id="cb230-3"><a href="character-vector.html#cb230-3" aria-hidden="true" tabindex="-1"></a>  col,</span>
+<span id="cb230-4"><a href="character-vector.html#cb230-4" aria-hidden="true" tabindex="-1"></a>  into,</span>
+<span id="cb230-5"><a href="character-vector.html#cb230-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">regex =</span> <span class="st">&quot;([[:alnum:]]+)&quot;</span>,</span>
+<span id="cb230-6"><a href="character-vector.html#cb230-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb230-7"><a href="character-vector.html#cb230-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">convert =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb230-8"><a href="character-vector.html#cb230-8" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb230-9"><a href="character-vector.html#cb230-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>data : 一个数据框</p>
 <p>col : 被提取的列</p>
 <p>into : 新列名</p>
@@ -555,52 +595,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="案例-1" class="section level4" number="3.5.1.2">
 <h4><span class="header-section-number">3.5.1.2</span> 案例</h4>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="character-vector.html#cb35-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a-b&quot;</span>, <span class="st">&quot;a-d&quot;</span>, <span class="st">&quot;b-c&quot;</span>, <span class="st">&quot;d-e&quot;</span>))</span>
-<span id="cb35-2"><a href="character-vector.html#cb35-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="st">&quot;A&quot;</span>)</span>
-<span id="cb35-3"><a href="character-vector.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A</span></span>
-<span id="cb35-4"><a href="character-vector.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
-<span id="cb35-5"><a href="character-vector.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a</span></span>
-<span id="cb35-6"><a href="character-vector.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a</span></span>
-<span id="cb35-7"><a href="character-vector.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b</span></span>
-<span id="cb35-8"><a href="character-vector.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    d</span></span>
-<span id="cb35-9"><a href="character-vector.html#cb35-9" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="st">&quot;([[:alnum:]]+)-([[:alnum:]]+)&quot;</span>)</span>
-<span id="cb35-10"><a href="character-vector.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb35-11"><a href="character-vector.html#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb35-12"><a href="character-vector.html#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb35-13"><a href="character-vector.html#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
-<span id="cb35-14"><a href="character-vector.html#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span>
-<span id="cb35-15"><a href="character-vector.html#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    d    e</span></span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="character-vector.html#cb231-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a-b&quot;</span>, <span class="st">&quot;a-d&quot;</span>, <span class="st">&quot;b-c&quot;</span>, <span class="st">&quot;d-e&quot;</span>))</span>
+<span id="cb231-2"><a href="character-vector.html#cb231-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="st">&quot;A&quot;</span>)</span>
+<span id="cb231-3"><a href="character-vector.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A</span></span>
+<span id="cb231-4"><a href="character-vector.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
+<span id="cb231-5"><a href="character-vector.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a</span></span>
+<span id="cb231-6"><a href="character-vector.html#cb231-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a</span></span>
+<span id="cb231-7"><a href="character-vector.html#cb231-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b</span></span>
+<span id="cb231-8"><a href="character-vector.html#cb231-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    d</span></span>
+<span id="cb231-9"><a href="character-vector.html#cb231-9" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">extract</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="st">&quot;([[:alnum:]]+)-([[:alnum:]]+)&quot;</span>)</span>
+<span id="cb231-10"><a href="character-vector.html#cb231-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb231-11"><a href="character-vector.html#cb231-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb231-12"><a href="character-vector.html#cb231-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb231-13"><a href="character-vector.html#cb231-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
+<span id="cb231-14"><a href="character-vector.html#cb231-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span>
+<span id="cb231-15"><a href="character-vector.html#cb231-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    d    e</span></span></code></pre></div>
 <blockquote>
 <p>[:alnum:] 匹配任何字母，[:alpha:] 匹配任何字母和数字</p>
 </blockquote>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="character-vector.html#cb36-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;1992-04&quot;</span>, <span class="st">&quot;1992-05&quot;</span>, <span class="st">&quot;1992-06&quot;</span>, <span class="st">&quot;1992-07&quot;</span>, <span class="st">&quot;1992-08&quot;</span>, <span class="st">&quot;1992-09&quot;</span>, <span class="st">&quot;1992-10&quot;</span>, <span class="st">&quot;1992-11&quot;</span>, <span class="st">&quot;1992-12&quot;</span>))</span>
-<span id="cb36-2"><a href="character-vector.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="character-vector.html#cb36-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb36-4"><a href="character-vector.html#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(<span class="at">col =</span> x,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;年&#39;</span>,<span class="st">&#39;月&#39;</span>),<span class="at">regex =</span> <span class="st">&quot;([1-9]{4})-([0-9]{2})&quot;</span>)</span>
-<span id="cb36-5"><a href="character-vector.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     年 月</span></span>
-<span id="cb36-6"><a href="character-vector.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1992 04</span></span>
-<span id="cb36-7"><a href="character-vector.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1992 05</span></span>
-<span id="cb36-8"><a href="character-vector.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 1992 06</span></span>
-<span id="cb36-9"><a href="character-vector.html#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1992 07</span></span>
-<span id="cb36-10"><a href="character-vector.html#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1992 08</span></span>
-<span id="cb36-11"><a href="character-vector.html#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 1992 09</span></span>
-<span id="cb36-12"><a href="character-vector.html#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 1992 10</span></span>
-<span id="cb36-13"><a href="character-vector.html#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8 1992 11</span></span>
-<span id="cb36-14"><a href="character-vector.html#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9 1992 12</span></span>
-<span id="cb36-15"><a href="character-vector.html#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-16"><a href="character-vector.html#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 字符转化为数字</span></span>
-<span id="cb36-17"><a href="character-vector.html#cb36-17" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb36-18"><a href="character-vector.html#cb36-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(<span class="at">col =</span> x,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;年&#39;</span>,<span class="st">&#39;月&#39;</span>),<span class="at">regex =</span> <span class="st">&quot;([1-9]{4})-([0-9]{2})&quot;</span>,<span class="at">convert =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb36-19"><a href="character-vector.html#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     年 月</span></span>
-<span id="cb36-20"><a href="character-vector.html#cb36-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1992  4</span></span>
-<span id="cb36-21"><a href="character-vector.html#cb36-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1992  5</span></span>
-<span id="cb36-22"><a href="character-vector.html#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 1992  6</span></span>
-<span id="cb36-23"><a href="character-vector.html#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1992  7</span></span>
-<span id="cb36-24"><a href="character-vector.html#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1992  8</span></span>
-<span id="cb36-25"><a href="character-vector.html#cb36-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 1992  9</span></span>
-<span id="cb36-26"><a href="character-vector.html#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 1992 10</span></span>
-<span id="cb36-27"><a href="character-vector.html#cb36-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8 1992 11</span></span>
-<span id="cb36-28"><a href="character-vector.html#cb36-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9 1992 12</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="character-vector.html#cb232-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;1992-04&quot;</span>, <span class="st">&quot;1992-05&quot;</span>, <span class="st">&quot;1992-06&quot;</span>, <span class="st">&quot;1992-07&quot;</span>, <span class="st">&quot;1992-08&quot;</span>, <span class="st">&quot;1992-09&quot;</span>, <span class="st">&quot;1992-10&quot;</span>, <span class="st">&quot;1992-11&quot;</span>, <span class="st">&quot;1992-12&quot;</span>))</span>
+<span id="cb232-2"><a href="character-vector.html#cb232-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb232-3"><a href="character-vector.html#cb232-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb232-4"><a href="character-vector.html#cb232-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(<span class="at">col =</span> x,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;年&#39;</span>,<span class="st">&#39;月&#39;</span>),<span class="at">regex =</span> <span class="st">&quot;([1-9]{4})-([0-9]{2})&quot;</span>)</span>
+<span id="cb232-5"><a href="character-vector.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     年 月</span></span>
+<span id="cb232-6"><a href="character-vector.html#cb232-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1992 04</span></span>
+<span id="cb232-7"><a href="character-vector.html#cb232-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1992 05</span></span>
+<span id="cb232-8"><a href="character-vector.html#cb232-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 1992 06</span></span>
+<span id="cb232-9"><a href="character-vector.html#cb232-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1992 07</span></span>
+<span id="cb232-10"><a href="character-vector.html#cb232-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1992 08</span></span>
+<span id="cb232-11"><a href="character-vector.html#cb232-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 1992 09</span></span>
+<span id="cb232-12"><a href="character-vector.html#cb232-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 1992 10</span></span>
+<span id="cb232-13"><a href="character-vector.html#cb232-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8 1992 11</span></span>
+<span id="cb232-14"><a href="character-vector.html#cb232-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9 1992 12</span></span>
+<span id="cb232-15"><a href="character-vector.html#cb232-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb232-16"><a href="character-vector.html#cb232-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 字符转化为数字</span></span>
+<span id="cb232-17"><a href="character-vector.html#cb232-17" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb232-18"><a href="character-vector.html#cb232-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(<span class="at">col =</span> x,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;年&#39;</span>,<span class="st">&#39;月&#39;</span>),<span class="at">regex =</span> <span class="st">&quot;([1-9]{4})-([0-9]{2})&quot;</span>,<span class="at">convert =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb232-19"><a href="character-vector.html#cb232-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     年 月</span></span>
+<span id="cb232-20"><a href="character-vector.html#cb232-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1992  4</span></span>
+<span id="cb232-21"><a href="character-vector.html#cb232-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1992  5</span></span>
+<span id="cb232-22"><a href="character-vector.html#cb232-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 1992  6</span></span>
+<span id="cb232-23"><a href="character-vector.html#cb232-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1992  7</span></span>
+<span id="cb232-24"><a href="character-vector.html#cb232-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1992  8</span></span>
+<span id="cb232-25"><a href="character-vector.html#cb232-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 1992  9</span></span>
+<span id="cb232-26"><a href="character-vector.html#cb232-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 1992 10</span></span>
+<span id="cb232-27"><a href="character-vector.html#cb232-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8 1992 11</span></span>
+<span id="cb232-28"><a href="character-vector.html#cb232-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9 1992 12</span></span></code></pre></div>
 <p>正则表达式<code>([1-9]{4})-([0-9]{2})</code>代表：字符分为两部分，中间用“-”连接，前半部分匹配1-9中的任意4位数，后半部分匹配0-9中任意两位数。</p>
 </div>
 </div>
@@ -609,162 +649,162 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>有时我们需要将一列拆分为多列，使用<code>separate()</code>函数。</p>
 <div id="参数-2" class="section level4" number="3.5.2.1">
 <h4><span class="header-section-number">3.5.2.1</span> 参数</h4>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="character-vector.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate</span>(</span>
-<span id="cb37-2"><a href="character-vector.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  data,</span>
-<span id="cb37-3"><a href="character-vector.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  col,</span>
-<span id="cb37-4"><a href="character-vector.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  into,</span>
-<span id="cb37-5"><a href="character-vector.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;[^[:alnum:]]+&quot;</span>,</span>
-<span id="cb37-6"><a href="character-vector.html#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb37-7"><a href="character-vector.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">convert =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb37-8"><a href="character-vector.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">extra =</span> <span class="st">&quot;warn&quot;</span>,</span>
-<span id="cb37-9"><a href="character-vector.html#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">&quot;warn&quot;</span>,</span>
-<span id="cb37-10"><a href="character-vector.html#cb37-10" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb37-11"><a href="character-vector.html#cb37-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="character-vector.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate</span>(</span>
+<span id="cb233-2"><a href="character-vector.html#cb233-2" aria-hidden="true" tabindex="-1"></a>  data,</span>
+<span id="cb233-3"><a href="character-vector.html#cb233-3" aria-hidden="true" tabindex="-1"></a>  col,</span>
+<span id="cb233-4"><a href="character-vector.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  into,</span>
+<span id="cb233-5"><a href="character-vector.html#cb233-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;[^[:alnum:]]+&quot;</span>,</span>
+<span id="cb233-6"><a href="character-vector.html#cb233-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb233-7"><a href="character-vector.html#cb233-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">convert =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb233-8"><a href="character-vector.html#cb233-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">extra =</span> <span class="st">&quot;warn&quot;</span>,</span>
+<span id="cb233-9"><a href="character-vector.html#cb233-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">&quot;warn&quot;</span>,</span>
+<span id="cb233-10"><a href="character-vector.html#cb233-10" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb233-11"><a href="character-vector.html#cb233-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>参数 sep 指定列之间的分隔符，sep 参数为字符时被解释为正则表达式，默认值是匹配任何非字母数字的正则表达式</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="character-vector.html#cb38-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a.b&quot;</span>, <span class="st">&quot;a.d&quot;</span>, <span class="st">&quot;b.c&quot;</span>))</span>
-<span id="cb38-2"><a href="character-vector.html#cb38-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(<span class="at">col =</span> x, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb38-3"><a href="character-vector.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb38-4"><a href="character-vector.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb38-5"><a href="character-vector.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb38-6"><a href="character-vector.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
-<span id="cb38-7"><a href="character-vector.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="character-vector.html#cb234-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a.b&quot;</span>, <span class="st">&quot;a.d&quot;</span>, <span class="st">&quot;b.c&quot;</span>))</span>
+<span id="cb234-2"><a href="character-vector.html#cb234-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(<span class="at">col =</span> x, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb234-3"><a href="character-vector.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb234-4"><a href="character-vector.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb234-5"><a href="character-vector.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb234-6"><a href="character-vector.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
+<span id="cb234-7"><a href="character-vector.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span></code></pre></div>
 </div>
 <div id="案例-2" class="section level4" number="3.5.2.2">
 <h4><span class="header-section-number">3.5.2.2</span> 案例</h4>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="character-vector.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sep 参数为字符时被解释为正则表达式，默认值是匹配任何非字母数字的正则表达式</span></span>
-<span id="cb39-2"><a href="character-vector.html#cb39-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(<span class="at">col =</span> x, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb39-3"><a href="character-vector.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb39-4"><a href="character-vector.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb39-5"><a href="character-vector.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb39-6"><a href="character-vector.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
-<span id="cb39-7"><a href="character-vector.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span>
-<span id="cb39-8"><a href="character-vector.html#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-9"><a href="character-vector.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 同上</span></span>
-<span id="cb39-10"><a href="character-vector.html#cb39-10" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),<span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\\</span><span class="st">.&#39;</span>)  </span>
-<span id="cb39-11"><a href="character-vector.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb39-12"><a href="character-vector.html#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb39-13"><a href="character-vector.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb39-14"><a href="character-vector.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
-<span id="cb39-15"><a href="character-vector.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span>
-<span id="cb39-16"><a href="character-vector.html#cb39-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-17"><a href="character-vector.html#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 只要第二个变量</span></span>
-<span id="cb39-18"><a href="character-vector.html#cb39-18" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb39-19"><a href="character-vector.html#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      B</span></span>
-<span id="cb39-20"><a href="character-vector.html#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
-<span id="cb39-21"><a href="character-vector.html#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    b</span></span>
-<span id="cb39-22"><a href="character-vector.html#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    d</span></span>
-<span id="cb39-23"><a href="character-vector.html#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    c</span></span>
-<span id="cb39-24"><a href="character-vector.html#cb39-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-25"><a href="character-vector.html#cb39-25" aria-hidden="true" tabindex="-1"></a><span class="co">#sep 参数为数字时被解释为要拆分的字符位置</span></span>
-<span id="cb39-26"><a href="character-vector.html#cb39-26" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),<span class="at">sep =</span> <span class="dv">2</span>) </span>
-<span id="cb39-27"><a href="character-vector.html#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb39-28"><a href="character-vector.html#cb39-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb39-29"><a href="character-vector.html#cb39-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   a.    b</span></span>
-<span id="cb39-30"><a href="character-vector.html#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   a.    d</span></span>
-<span id="cb39-31"><a href="character-vector.html#cb39-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   b.    c</span></span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="character-vector.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sep 参数为字符时被解释为正则表达式，默认值是匹配任何非字母数字的正则表达式</span></span>
+<span id="cb235-2"><a href="character-vector.html#cb235-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(<span class="at">col =</span> x, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb235-3"><a href="character-vector.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb235-4"><a href="character-vector.html#cb235-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb235-5"><a href="character-vector.html#cb235-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb235-6"><a href="character-vector.html#cb235-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
+<span id="cb235-7"><a href="character-vector.html#cb235-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span>
+<span id="cb235-8"><a href="character-vector.html#cb235-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-9"><a href="character-vector.html#cb235-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 同上</span></span>
+<span id="cb235-10"><a href="character-vector.html#cb235-10" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),<span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\\</span><span class="st">.&#39;</span>)  </span>
+<span id="cb235-11"><a href="character-vector.html#cb235-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb235-12"><a href="character-vector.html#cb235-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb235-13"><a href="character-vector.html#cb235-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb235-14"><a href="character-vector.html#cb235-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
+<span id="cb235-15"><a href="character-vector.html#cb235-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span>
+<span id="cb235-16"><a href="character-vector.html#cb235-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-17"><a href="character-vector.html#cb235-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 只要第二个变量</span></span>
+<span id="cb235-18"><a href="character-vector.html#cb235-18" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb235-19"><a href="character-vector.html#cb235-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      B</span></span>
+<span id="cb235-20"><a href="character-vector.html#cb235-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
+<span id="cb235-21"><a href="character-vector.html#cb235-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    b</span></span>
+<span id="cb235-22"><a href="character-vector.html#cb235-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    d</span></span>
+<span id="cb235-23"><a href="character-vector.html#cb235-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    c</span></span>
+<span id="cb235-24"><a href="character-vector.html#cb235-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-25"><a href="character-vector.html#cb235-25" aria-hidden="true" tabindex="-1"></a><span class="co">#sep 参数为数字时被解释为要拆分的字符位置</span></span>
+<span id="cb235-26"><a href="character-vector.html#cb235-26" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),<span class="at">sep =</span> <span class="dv">2</span>) </span>
+<span id="cb235-27"><a href="character-vector.html#cb235-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb235-28"><a href="character-vector.html#cb235-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb235-29"><a href="character-vector.html#cb235-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   a.    b</span></span>
+<span id="cb235-30"><a href="character-vector.html#cb235-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   a.    d</span></span>
+<span id="cb235-31"><a href="character-vector.html#cb235-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   b.    c</span></span></code></pre></div>
 <p>拆分时，多列或少列时用<code>NA</code>补齐：</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="character-vector.html#cb40-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;x y&quot;</span>, <span class="st">&quot;x y z&quot;</span>, <span class="cn">NA</span>))</span>
-<span id="cb40-2"><a href="character-vector.html#cb40-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))</span>
-<span id="cb40-3"><a href="character-vector.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Additional pieces discarded in 1 rows [3].</span></span>
-<span id="cb40-4"><a href="character-vector.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1 rows [1].</span></span>
-<span id="cb40-5"><a href="character-vector.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
-<span id="cb40-6"><a href="character-vector.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    x &lt;NA&gt;</span></span>
-<span id="cb40-7"><a href="character-vector.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    x    y</span></span>
-<span id="cb40-8"><a href="character-vector.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    x    y</span></span>
-<span id="cb40-9"><a href="character-vector.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="character-vector.html#cb236-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;x y&quot;</span>, <span class="st">&quot;x y z&quot;</span>, <span class="cn">NA</span>))</span>
+<span id="cb236-2"><a href="character-vector.html#cb236-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))</span>
+<span id="cb236-3"><a href="character-vector.html#cb236-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Additional pieces discarded in 1 rows [3].</span></span>
+<span id="cb236-4"><a href="character-vector.html#cb236-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1 rows [1].</span></span>
+<span id="cb236-5"><a href="character-vector.html#cb236-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
+<span id="cb236-6"><a href="character-vector.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    x &lt;NA&gt;</span></span>
+<span id="cb236-7"><a href="character-vector.html#cb236-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    x    y</span></span>
+<span id="cb236-8"><a href="character-vector.html#cb236-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    x    y</span></span>
+<span id="cb236-9"><a href="character-vector.html#cb236-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
 <p>多余的部分舍弃，缺失填充在左边还是右边：</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="character-vector.html#cb41-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;drop&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;right&quot;</span>)</span>
-<span id="cb41-2"><a href="character-vector.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
-<span id="cb41-3"><a href="character-vector.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    x &lt;NA&gt;</span></span>
-<span id="cb41-4"><a href="character-vector.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    x    y</span></span>
-<span id="cb41-5"><a href="character-vector.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    x    y</span></span>
-<span id="cb41-6"><a href="character-vector.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="character-vector.html#cb237-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;drop&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;right&quot;</span>)</span>
+<span id="cb237-2"><a href="character-vector.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
+<span id="cb237-3"><a href="character-vector.html#cb237-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    x &lt;NA&gt;</span></span>
+<span id="cb237-4"><a href="character-vector.html#cb237-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    x    y</span></span>
+<span id="cb237-5"><a href="character-vector.html#cb237-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    x    y</span></span>
+<span id="cb237-6"><a href="character-vector.html#cb237-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
 <p>多余部分合并，缺失填充在左边</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="character-vector.html#cb42-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;left&quot;</span>)</span>
-<span id="cb42-2"><a href="character-vector.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
-<span id="cb42-3"><a href="character-vector.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;    x</span></span>
-<span id="cb42-4"><a href="character-vector.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    x    y</span></span>
-<span id="cb42-5"><a href="character-vector.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    x  y z</span></span>
-<span id="cb42-6"><a href="character-vector.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="character-vector.html#cb238-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;left&quot;</span>)</span>
+<span id="cb238-2"><a href="character-vector.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b</span></span>
+<span id="cb238-3"><a href="character-vector.html#cb238-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;    x</span></span>
+<span id="cb238-4"><a href="character-vector.html#cb238-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    x    y</span></span>
+<span id="cb238-5"><a href="character-vector.html#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    x  y z</span></span>
+<span id="cb238-6"><a href="character-vector.html#cb238-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
 <p>或者全部保留</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="character-vector.html#cb43-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</span>
-<span id="cb43-2"><a href="character-vector.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 3 pieces. Missing pieces filled with `NA` in 2 rows [1, 2].</span></span>
-<span id="cb43-3"><a href="character-vector.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b    c</span></span>
-<span id="cb43-4"><a href="character-vector.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    x &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb43-5"><a href="character-vector.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    x    y &lt;NA&gt;</span></span>
-<span id="cb43-6"><a href="character-vector.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    x    y    z</span></span>
-<span id="cb43-7"><a href="character-vector.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="character-vector.html#cb239-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</span>
+<span id="cb239-2"><a href="character-vector.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 3 pieces. Missing pieces filled with `NA` in 2 rows [1, 2].</span></span>
+<span id="cb239-3"><a href="character-vector.html#cb239-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      a    b    c</span></span>
+<span id="cb239-4"><a href="character-vector.html#cb239-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    x &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb239-5"><a href="character-vector.html#cb239-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    x    y &lt;NA&gt;</span></span>
+<span id="cb239-6"><a href="character-vector.html#cb239-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    x    y    z</span></span>
+<span id="cb239-7"><a href="character-vector.html#cb239-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></span></code></pre></div>
 <p>指定分隔符</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="character-vector.html#cb44-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;key&quot;</span>, <span class="st">&quot;value&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>, <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>)</span>
-<span id="cb44-2"><a href="character-vector.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Missing pieces filled with `NA` in 3 rows [1, 2, 3].</span></span>
-<span id="cb44-3"><a href="character-vector.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     key value</span></span>
-<span id="cb44-4"><a href="character-vector.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     x  &lt;NA&gt;</span></span>
-<span id="cb44-5"><a href="character-vector.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   x y  &lt;NA&gt;</span></span>
-<span id="cb44-6"><a href="character-vector.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 x y z  &lt;NA&gt;</span></span>
-<span id="cb44-7"><a href="character-vector.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  &lt;NA&gt;  &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="character-vector.html#cb240-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;key&quot;</span>, <span class="st">&quot;value&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>, <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>)</span>
+<span id="cb240-2"><a href="character-vector.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Expected 2 pieces. Missing pieces filled with `NA` in 3 rows [1, 2, 3].</span></span>
+<span id="cb240-3"><a href="character-vector.html#cb240-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     key value</span></span>
+<span id="cb240-4"><a href="character-vector.html#cb240-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     x  &lt;NA&gt;</span></span>
+<span id="cb240-5"><a href="character-vector.html#cb240-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   x y  &lt;NA&gt;</span></span>
+<span id="cb240-6"><a href="character-vector.html#cb240-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 x y z  &lt;NA&gt;</span></span>
+<span id="cb240-7"><a href="character-vector.html#cb240-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  &lt;NA&gt;  &lt;NA&gt;</span></span></code></pre></div>
 <p>使用正则表达式</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="character-vector.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use regular expressions to separate on multiple characters:</span></span>
-<span id="cb45-2"><a href="character-vector.html#cb45-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a?b&quot;</span>, <span class="st">&quot;a.d&quot;</span>, <span class="st">&quot;b:c&quot;</span>))</span>
-<span id="cb45-3"><a href="character-vector.html#cb45-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;([.?:])&quot;</span>)</span>
-<span id="cb45-4"><a href="character-vector.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
-<span id="cb45-5"><a href="character-vector.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
-<span id="cb45-6"><a href="character-vector.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
-<span id="cb45-7"><a href="character-vector.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
-<span id="cb45-8"><a href="character-vector.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="character-vector.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use regular expressions to separate on multiple characters:</span></span>
+<span id="cb241-2"><a href="character-vector.html#cb241-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;a?b&quot;</span>, <span class="st">&quot;a.d&quot;</span>, <span class="st">&quot;b:c&quot;</span>))</span>
+<span id="cb241-3"><a href="character-vector.html#cb241-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(x, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;([.?:])&quot;</span>)</span>
+<span id="cb241-4"><a href="character-vector.html#cb241-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      A    B</span></span>
+<span id="cb241-5"><a href="character-vector.html#cb241-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span id="cb241-6"><a href="character-vector.html#cb241-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    a    b</span></span>
+<span id="cb241-7"><a href="character-vector.html#cb241-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    a    d</span></span>
+<span id="cb241-8"><a href="character-vector.html#cb241-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    b    c</span></span></code></pre></div>
 </div>
 </div>
 <div id="列拆分行" class="section level3" number="3.5.3">
 <h3><span class="header-section-number">3.5.3</span> 列拆分行</h3>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="character-vector.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_rows</span>(data, ..., <span class="at">sep =</span> <span class="st">&quot;[^[:alnum:].]+&quot;</span>, <span class="at">convert =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="character-vector.html#cb47-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb47-2"><a href="character-vector.html#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb47-3"><a href="character-vector.html#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;d,e,f&quot;</span>, <span class="st">&quot;g,h&quot;</span>),</span>
-<span id="cb47-4"><a href="character-vector.html#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2,3,4&quot;</span>, <span class="st">&quot;5,6&quot;</span>)</span>
-<span id="cb47-5"><a href="character-vector.html#cb47-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb47-6"><a href="character-vector.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_rows</span>(df, y, z, <span class="at">convert =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb47-7"><a href="character-vector.html#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
-<span id="cb47-8"><a href="character-vector.html#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x y         z</span></span>
-<span id="cb47-9"><a href="character-vector.html#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;int&gt;</span></span>
-<span id="cb47-10"><a href="character-vector.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 a         1</span></span>
-<span id="cb47-11"><a href="character-vector.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 d         2</span></span>
-<span id="cb47-12"><a href="character-vector.html#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     2 e         3</span></span>
-<span id="cb47-13"><a href="character-vector.html#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 f         4</span></span>
-<span id="cb47-14"><a href="character-vector.html#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     3 g         5</span></span>
-<span id="cb47-15"><a href="character-vector.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     3 h         6</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="character-vector.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_rows</span>(data, ..., <span class="at">sep =</span> <span class="st">&quot;[^[:alnum:].]+&quot;</span>, <span class="at">convert =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="character-vector.html#cb243-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb243-2"><a href="character-vector.html#cb243-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb243-3"><a href="character-vector.html#cb243-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;d,e,f&quot;</span>, <span class="st">&quot;g,h&quot;</span>),</span>
+<span id="cb243-4"><a href="character-vector.html#cb243-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2,3,4&quot;</span>, <span class="st">&quot;5,6&quot;</span>)</span>
+<span id="cb243-5"><a href="character-vector.html#cb243-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb243-6"><a href="character-vector.html#cb243-6" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_rows</span>(df, y, z, <span class="at">convert =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb243-7"><a href="character-vector.html#cb243-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
+<span id="cb243-8"><a href="character-vector.html#cb243-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x y         z</span></span>
+<span id="cb243-9"><a href="character-vector.html#cb243-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;int&gt;</span></span>
+<span id="cb243-10"><a href="character-vector.html#cb243-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 a         1</span></span>
+<span id="cb243-11"><a href="character-vector.html#cb243-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 d         2</span></span>
+<span id="cb243-12"><a href="character-vector.html#cb243-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     2 e         3</span></span>
+<span id="cb243-13"><a href="character-vector.html#cb243-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 f         4</span></span>
+<span id="cb243-14"><a href="character-vector.html#cb243-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     3 g         5</span></span>
+<span id="cb243-15"><a href="character-vector.html#cb243-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     3 h         6</span></span></code></pre></div>
 </div>
 <div id="合并多列" class="section level3" number="3.5.4">
 <h3><span class="header-section-number">3.5.4</span> 合并多列</h3>
 <p><code>unite()</code>方便将多列合并一列。</p>
 <p>用法</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="character-vector.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unite</span>(data, col, ..., <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>, <span class="at">remove =</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="character-vector.html#cb49-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>],<span class="at">y =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span>
-<span id="cb49-2"><a href="character-vector.html#cb49-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>,x<span class="sc">:</span>y,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
-<span id="cb49-3"><a href="character-vector.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     z</span></span>
-<span id="cb49-4"><a href="character-vector.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a_A</span></span>
-<span id="cb49-5"><a href="character-vector.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 b_B</span></span>
-<span id="cb49-6"><a href="character-vector.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 c_C</span></span>
-<span id="cb49-7"><a href="character-vector.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 d_D</span></span>
-<span id="cb49-8"><a href="character-vector.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 e_E</span></span>
-<span id="cb49-9"><a href="character-vector.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 f_F</span></span>
-<span id="cb49-10"><a href="character-vector.html#cb49-10" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>,x<span class="sc">:</span>y,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>,<span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb49-11"><a href="character-vector.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     z x y</span></span>
-<span id="cb49-12"><a href="character-vector.html#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a_A a A</span></span>
-<span id="cb49-13"><a href="character-vector.html#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 b_B b B</span></span>
-<span id="cb49-14"><a href="character-vector.html#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 c_C c C</span></span>
-<span id="cb49-15"><a href="character-vector.html#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 d_D d D</span></span>
-<span id="cb49-16"><a href="character-vector.html#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 e_E e E</span></span>
-<span id="cb49-17"><a href="character-vector.html#cb49-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 f_F f F</span></span>
-<span id="cb49-18"><a href="character-vector.html#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-19"><a href="character-vector.html#cb49-19" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb49-20"><a href="character-vector.html#cb49-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>,x<span class="sc">:</span>y,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-21"><a href="character-vector.html#cb49-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> z,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;x&#39;</span>,<span class="st">&#39;y&#39;</span>),<span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
-<span id="cb49-22"><a href="character-vector.html#cb49-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x y</span></span>
-<span id="cb49-23"><a href="character-vector.html#cb49-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a A</span></span>
-<span id="cb49-24"><a href="character-vector.html#cb49-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 b B</span></span>
-<span id="cb49-25"><a href="character-vector.html#cb49-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 c C</span></span>
-<span id="cb49-26"><a href="character-vector.html#cb49-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 d D</span></span>
-<span id="cb49-27"><a href="character-vector.html#cb49-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 e E</span></span>
-<span id="cb49-28"><a href="character-vector.html#cb49-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 f F</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="character-vector.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unite</span>(data, col, ..., <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>, <span class="at">remove =</span> <span class="cn">TRUE</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="character-vector.html#cb245-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>],<span class="at">y =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span>
+<span id="cb245-2"><a href="character-vector.html#cb245-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>,x<span class="sc">:</span>y,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>)</span>
+<span id="cb245-3"><a href="character-vector.html#cb245-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     z</span></span>
+<span id="cb245-4"><a href="character-vector.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a_A</span></span>
+<span id="cb245-5"><a href="character-vector.html#cb245-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 b_B</span></span>
+<span id="cb245-6"><a href="character-vector.html#cb245-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 c_C</span></span>
+<span id="cb245-7"><a href="character-vector.html#cb245-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 d_D</span></span>
+<span id="cb245-8"><a href="character-vector.html#cb245-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 e_E</span></span>
+<span id="cb245-9"><a href="character-vector.html#cb245-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 f_F</span></span>
+<span id="cb245-10"><a href="character-vector.html#cb245-10" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>,x<span class="sc">:</span>y,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>,<span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb245-11"><a href="character-vector.html#cb245-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     z x y</span></span>
+<span id="cb245-12"><a href="character-vector.html#cb245-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a_A a A</span></span>
+<span id="cb245-13"><a href="character-vector.html#cb245-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 b_B b B</span></span>
+<span id="cb245-14"><a href="character-vector.html#cb245-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 c_C c C</span></span>
+<span id="cb245-15"><a href="character-vector.html#cb245-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 d_D d D</span></span>
+<span id="cb245-16"><a href="character-vector.html#cb245-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 e_E e E</span></span>
+<span id="cb245-17"><a href="character-vector.html#cb245-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 f_F f F</span></span>
+<span id="cb245-18"><a href="character-vector.html#cb245-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb245-19"><a href="character-vector.html#cb245-19" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb245-20"><a href="character-vector.html#cb245-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">&quot;z&quot;</span>,x<span class="sc">:</span>y,<span class="at">sep=</span><span class="st">&quot;_&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb245-21"><a href="character-vector.html#cb245-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> z,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&#39;x&#39;</span>,<span class="st">&#39;y&#39;</span>),<span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb245-22"><a href="character-vector.html#cb245-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x y</span></span>
+<span id="cb245-23"><a href="character-vector.html#cb245-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a A</span></span>
+<span id="cb245-24"><a href="character-vector.html#cb245-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 b B</span></span>
+<span id="cb245-25"><a href="character-vector.html#cb245-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 c C</span></span>
+<span id="cb245-26"><a href="character-vector.html#cb245-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 d D</span></span>
+<span id="cb245-27"><a href="character-vector.html#cb245-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 e E</span></span>
+<span id="cb245-28"><a href="character-vector.html#cb245-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 f F</span></span></code></pre></div>
 </div>
 </div>
             </section>
@@ -824,6 +864,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
