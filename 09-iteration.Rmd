@@ -305,7 +305,7 @@ purrr::map_dfr(allfiles,read_excel)
 
 > 在我实际工作中，实现传统零售行业门店之间商品调拨时就可使用该函数,更多详细信息可以查看我的语雀笔记。
 
-## map2 系列函数
+## map2 系列函数{#purrr:map2}
 
 map2 系列函数是对 map 系列函数的升级，map 系列函数是一个列表参数，而 map2 系列是两个列表参数。常用函数如下：
 
@@ -435,50 +435,106 @@ pmap(df, gsub)
 
 reduce、accumulate()函数用法介绍.
 
-- reduce
+### reduce 函数
 
-在实际工作中,我长用reduce函数实现merge()功能。示例如下：
+`reduce()` 将多个元素的值组合(由函数驱动)成一个，组合的动词(函数)由参数.f决定。
+
+```{r eval=FALSE}
+reduce(.x, .f, ..., .init, .dir = c("forward", "backward"))
+
+reduce2(.x, .y, .f, ..., .init)
+```
+
+如下，将 1 到 100 共 100 个元素由函数`+`组合成一个元素，即将 100 个数字连续相加：
 
 ```{r}
 reduce(1:100,`+`)
-reduce(100:1,`-`)
 ```
 
-将函数功能不断运用到 list 上得到最后结果。
 
-```{r eval=FALSE}
+连续相减
+
+```{r}
+reduce(5:1,`-`)
+ # 等同于
+5-4-3-2-1
+```
+
+.dir 参数决定动词(函数)方向：
+
+```{r}
+str(reduce(1:4, list))
+# 等同
+# list(list(list(list(1),2),3),4)
+str(reduce(1:4, list, .dir = "backward"))
+# 等同 
+# list(1,list(2,list(3,list(4))))
+```
+
+自己试着比较添加 .dir 参数后的差异。
+
+在实际工作中,我常用reduce函数实现连续`merge()`或`left_joind()`等功能，如下所示：
+
+
+```{r }
 n <- 10
 dt1 <- data.frame(a=letters[n],b1=rnorm(n))
 dt2 <- data.frame(a=letters[n],b2=rnorm(n))
 dt3 <- data.frame(a=letters[n],b3=rnorm(n))
 dt4 <- data.frame(a=letters[n],b4=rnorm(n))
 
-reduce(list(dt1,dt2,dt3,dt4),merge)
+reduce(list(dt1,dt2,dt3,dt4),merge) %>% 
+  head()
 # not run
 # reduce(list(dt1,dt2,dt3,dt4),merge,by='a') same above
 
 ```
 
+关于`reduce2()`函数，第二个元素需要比第一个元素长度少一个，如下所示：
 
-- accumulate
+```{r}
+paste2 <- function(x, y, sep = ".") paste(x, y, sep = sep)
+letters[1:4] %>% reduce(paste2)
+letters[1:4] %>% reduce2(c("-", ".", "-"), paste2)
+```
+
+
+```{r}
+x <- list(c(0, 1), c(2, 3), c(4, 5))
+y <- list(c(6, 7), c(8, 9))
+reduce2(x, y, paste)
+```
+
+
+### accumulate 函数
+
+`accumulate()`与`reduce()的区别是`accumulate()`记录过程结果，而`reduce()`仅保持最后结果。
 
 ```{r}
 1:5 %>% accumulate(`+`)
+1:5 %>% accumulate(`+`, .dir = "backward")
 accumulate(letters[1:5], paste, sep = ".")
 ```
 
 
-## 安全函数 {#purrr-safely-functions}
+```{r}
+paste2 <- function(x, y, sep = ".") paste(x, y, sep = sep)
+letters[1:4] %>% accumulate(paste2)
+letters[1:4] %>% accumulate2(c("-", ".", "-"), paste2)
+```
 
-possibly() 和 safely(),当循环时候遇到错误报错导致整个程序停止,这不是我们想要的。
+
+## 安全函数 {#purrr:safely-functions}
+
+当循环迭代时遇到错误报错，导致整个程序停止,这不是我们能接受的，尤其时在做大规模比较耗时的工作时。`purrr`提供了“安全函数” `possibly()`和 `safely()`处理该类问题。
 
 ```{r eval=FALSE}
 l <- list(1,2,3,4,'5')
 map(l,function(.x) .x+1)
-
+# Error in .x + 1 : 二进列运算符中有非数值参数
 ```
 
-以上程序将会报错,不能正确得到结果。
+由于字符 5 不能相加，导致以上代码报错,不能正确运行。通过函数`safely()`改进函数，即可避免：
 
 ```{r}
 l <- list(1,2,3,4,'5')
@@ -488,39 +544,51 @@ map(l,test_fun)
 
 用safely()函数将原始function包裹起来,即使执行过程中遇到错误也可以完成整个任务,不会因为中途报错停止,在大型循环过程中,如爬虫过程中比较实用。
 
+或者用`possibly()`函数：
+
+```{r}
+test_fun <- possibly(function(.x) .x+1,otherwise = NA)
+map(l,test_fun)
+```
+
+使用默认值替换错误发生时的“值”
+
+```{r}
+list("a", 10, 100) %>%
+  map_dbl(possibly(log, NA_real_))
+```
 
 
 ## 其他函数介绍{#purrr:else-functions}
 
-- flatten
+### flatten 系列
 
-flatten()系列函数可以将列表输出为稳定类型。purrr package 自带Examples。
+`flatten()`系列函数可以将列表输出为稳定类型，通过`flatten_`函数后缀表明输出类型。
 
 ```{r eval=FALSE}
-x <- rerun(2, sample(4))
+x <- rerun(2, sample(4)) # rerun purrr 中的函数
 x
 x %>% flatten()
 x %>% flatten_int()
-# You can use flatten in conjunction with map
+
+# 提取列表的第一个元素
 x %>% map(1L) %>% flatten_int()
-# But it's more efficient to use the typed map instead.
+# 下面的方式效率更高
 x %>% map_int(1L)
 ```
 
-- imap
+### imap 函数
 
 imap()系列函数官方描述：
 
 imap_xxx(x, ...), an indexed map, is short hand for map2(x, names(x), ...) if x has names, or map2(x, seq_along(x), ...) if it does not. This is useful if you need to compute on both the value and the position of an element.
 
-
 imap,当x有names(x)或者seq_along(x)属性,imap是map2的另一种表达方式。
 
-使用公式快捷方式时,第一个参数是值(.x),第二个参数是位置/名称(.y)。
 
 详情请查看:?imap
 
-示例1：
+案例：
 
 ```{r}
 imap_chr(sample(10), ~ paste0(.y, ": ", .x))
@@ -530,9 +598,111 @@ sample(10),没有names(),只有长度信息。转化成map2表达如下:
 
 
 ```{r}
-#same above
-
 map2_chr(sample(10),1:10,~paste0(.y,": ",.x)) # 第二个list 为位置信息.
 
+```
+
+### walk 系列
+
+对于不关心过程或结果的操作可以采用该系列函数，比如打印，做图，批量输出数据，上传数据库等。
+
+```{r}
+iwalk(mtcars, ~ cat(.y, ": ", median(.x), "\n", sep = ""))
+```
+
+个人觉得`iwalk()`和前文[数据导入导出](#data-read-write-description)章节中提到的[批量输出](#batch:write)`group_walk()`函数功能有相似之处。
+
+```{r eval=FALSE}
+dt %>% 
+  group_by(name) %>% 
+  group_walk(~ write.csv(.x,file = file.path('data/read-write',paste0(.y$name,'.csv'))))
+```
+
+同上，`iwalk()函数家族还有`walk2()`和`pwalk()`函数,函数间区别与 map 族函数间区别类似。
+
+### 逻辑判断函数
+
+判断序列中是否存在任意/存在元素满足条件
+
+```{r eval=FALSE}
+every(.x, .p, ...)
+
+some(.x, .p, ...)
+
+none(.x, .p, ...)
+```
+
+```{r}
+y <- list(0:10, 5.5)
+y %>% every(is.numeric)
+y %>% every(is.integer)
+y %>% some(is.integer)
+y %>% none(is.character)
+```
+
+应用在`dplyr`动词中：
+
+```{r}
+mpg %>%
+  group_by(manufacturer) %>% 
+  mutate(a = every(cty, ~ .x > 10) )
+```
+
+### 提取函数
+
+`pluck()`和`chuck()`实现一种通用形式的元素提取。
+
+```{r}
+obj1 <- list("a", list(1, elt = "foo"))
+obj2 <- list("b", list(2, elt = "bar"))
+x <- list(obj1, obj2)
+```
+
+```{r}
+pluck(x, 1)
+x[[1]]
+
+pluck(x, 1, 2)
+x[[1]][[2]]
+
+pluck(x, 1, 2, "elt")
+x[[1]][[2]][["elt"]]
+
+```
+
+###  筛选函数
+
+`keep()`和`discard()`函数筛选元素，`keep()`保留计算后为 TRUE 的结果，`discard()`保留计算后为 FALSE 的结果。
+
+```{r eval=FALSE}
+keep(.x, .p, ...)
+discard(.x, .p, ...)
+compact(.x, .p = identity)
+```
+
+.p 参数是一个谓词函数(predicate function),谓词函数返回单个的`TRUE`或`FALSE`。
+
+
+筛选从 1:10 中随机生成的 5 个数字，保留均值大于的记录。
+
+```{r}
+rep(10, 10) %>%
+  map(sample, 5) %>%
+  keep(~ mean(.x) > 6)
+```
+
+筛选列表(list) x 中“a”元素为 TRUE 或 FALSE 的记录。
+
+```{r}
+x <- rerun(5, a = rbernoulli(1), b = sample(10))
+x %>% keep("a")
+x %>% discard("a")
+```
+
+`compact()` 舍弃 NULL 元素和长度为 0 的元素。
+
+```{r}
+list(a = "a", b = NULL, c = integer(0), d = NA, e = list()) %>%
+  compact()
 ```
 

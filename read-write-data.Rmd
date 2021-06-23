@@ -177,7 +177,7 @@ col_types 参数个人觉得比较重要，可以指定列的类型，可以避�
 
 
 
-### 批量读取 {#batch:read}
+### 批量读取{#batch:read}
 
 实际工作中，某文件夹下有相同格式的 Excel 文件(sheet名称以及列字段相同)，想要合并全部 Excel 数据，熟悉 Excel 的可以通过 Excel 的`power query`的获取数据完成合并，那么在R中该如何实现呢？
 
@@ -214,7 +214,7 @@ purrr::map_dfr(allfiles,read_excel)
 
 `list.files()`函数按照规则返回某文件目录下的全部文件。关于R语言中文件系统操作可以查看章节[R语言文件系统操作](#file:system-operation)
 
-### 批量输出
+### 批量输出{#batch:write}
 
 我们按照一定条件拆解数据集，分别输出，代码如下：
 
@@ -974,7 +974,7 @@ vroom(file)
 
 4. 读取网络文件
 
-```{r}
+```{r eval=FALSE}
 #file <- "https://raw.githubusercontent.com/r-lib/vroom/master/inst/extdata/mtcars.csv"
 file <- "http://www.zhongyufei.com/Rbook/data/data-table-groupingsets.csv"
 vroom(file)
