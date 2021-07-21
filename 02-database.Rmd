@@ -456,7 +456,15 @@ dbExecute(con,'delete from table where num <=1000') # 执行sql语句
 # dbWriteTable()
 # 上传数据,指定表名,需上传的数据框df,overwrite是否覆盖,append是否可追加
 dbWriteTable(conn = con,name = '表名',value = df,overwrite=TURE,append=FALSE)
+
 ```
+
+上传数据通过`field.types`参数指定列类型。
+
+```{r eval=FALSE}
+DBI::dbWriteTable(conn = con,name = 'sales_order',field.types=c(交货类型描述="varchar(6000)"),value = dt,overwrite =TRUE)
+```
+
 
 参数化查询
 
