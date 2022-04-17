@@ -852,7 +852,31 @@ dbDisconnect(con)
 
 基础用法与DBI功能一致。
 
+###  RPostgres 
 
+[RPostgres](https://rpostgres.r-dbi.org/) 是 `postgres` 数据库的`DBI` 兼容接口。
+
+```{r eval=FALSE}
+library(RPostgres)
+
+con <- dbConnect(Postgres(),
+                 host='localhost',
+                 dbname = 'nextcloud',
+                 port=5432L,
+                 user = 'postgres',
+                 password = 'Zyf123456')
+
+
+dbGetInfo(con)
+
+dbDisconnect(con)
+```
+
+上述代码将连接本机上`postgres`的 nextcloud 数据库 。
+
+> 该数据库用来同步本地 nextcloud 应用的数据
+
+![postgres](./picture/chap2/postgres.png)
 
 ## 大数据相关R包{#database:big-data}
 

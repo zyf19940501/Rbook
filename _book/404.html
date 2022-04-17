@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 database | 商业数据分析师-R 语言数据处理</title>
+  <title>Page not found | 商业数据分析师-R 语言数据处理</title>
   <meta name="description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 database | 商业数据分析师-R 语言数据处理" />
+  <meta property="og:title" content="Page not found | 商业数据分析师-R 语言数据处理" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 database | 商业数据分析师-R 语言数据处理" />
+  <meta name="twitter:title" content="Page not found | 商业数据分析师-R 语言数据处理" />
   
   <meta name="twitter:description" content="商业数据分析师的 R 语言学习笔记,主要集中在数据清洗相关包的介绍，从数据导入(本地数据 数据库)到数据清洗，到固定报表输出的自动化流程。" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="datatable:application.html"/>
-<link rel="next" href="database:install.html"/>
+
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -561,42 +561,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="database" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">8</span> database<a href="database.html#database" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>我们作为数据分析师有必要和数据库打交道吗？实际工作中，数据量达到一定的程度，当你开始需要使用 Excel PowerPivot 做数据透视表<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>时，你就必须开始和数据库打交道，因为这时数据源超过Excel上限了，已经没办法承接。</p>
-<p>现实中的数据大部分都是脏数据，我们需要从数据库获取数据并清洗，再使用R、 Excel 、Power BI、tebleau等工具连接使用。那我们使用什么工具完成ETL<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>呢？经过实践发现，使用R语言完成该过程对我们个人用户来说足够使用。</p>
-<p>即使你暂时没有接触使用数据库，也建议你未来用数据库存储数据，尤其是当有一定数据量时;在我最开始接触数据时，数据一般保存在Excel中,那时候数据量大概在50万行左右，当表格中sumifs等公式较多时，Excel表格将会很卡顿，甚至发送崩溃。当需要大批量vlookup时，在Excel中操作也是一件很痛苦的事情。</p>
-<p>目前工作中打交道数据库主要是MSSQL,Oracle,MySQL等，R中与数据库交互的包主要有odbc,DBI,RODBC,RMySQL,ROracle等包。本文主要从以上数据库介绍记录“R与数据库的连接交互”，主要分为：</p>
-<ul>
-<li><p>安装 SQL Server 数据库</p></li>
-<li><p>odbc 包介绍</p></li>
-<li><p>DBI 包介绍</p></li>
-<li><p>其它R包介绍</p></li>
-<li><p>与数据库交互常见问题</p></li>
-<li><p>dbplyr 包介绍</p></li>
-<li><p>参考资料</p></li>
-</ul>
-<blockquote>
-<p>DBI库在查询或上传工作中效率比RODBC高,特别数据量较大时,上传效率差异巨大,具体<a href="https://github.com/r-dbi/odbc">差异</a>请点击查看详情。所以建议采用DBI包，但是RODBC对中文支持友好，在练习阶段可以尝试使用，加深印象。</p>
-</blockquote>
-<blockquote>
-<p>RSQLite是练习使用R中的数据库的最简单方法，因为程序包本身包含<a href="https://www.sqlite.org/index.html">SQLite</a>，无需任何外部软件。</p>
-</blockquote>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>PowerPivot 是一种数据建模技术，用于创建数据模型，建立关系，以及创建计算。 可使用 PowerPivot 处理大型数据集，构建广泛的关系，以及创建复杂（或简单）的计算，这些操作全部在高性能环境中和所你熟悉的 Excel 内执行。<a href="database.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Extract-Transform-Load,将数据从来源端经过抽取（extract）、转换（transform）、加载（load）至目的端的过程。<a href="database.html#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="datatable:application.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="database:install.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
